@@ -1,0 +1,572 @@
+<!DOCTYPE html><!--kOMToiePwU79Kzn0fZt4S--><html lang="zh"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js"/><script src="/agent-coding-lesson/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/76fed9c17f51393e.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/7de9141b1af425c3.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/turbopack-8800d0fd815877b2.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/076aae518584b842.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js" async=""></script><title>Agent Coding Lesson</title><meta name="description" content="从 0 到 1 构建一个 nano Claude Code-like agent，每次只增加一个机制"/><link rel="icon" href="/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico" sizes="256x256" type="image/x-icon"/><script>
+          (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script><script src="/agent-coding-lesson/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm"><div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a class="text-lg font-bold" href="/agent-coding-lesson/zh/">Agent Coding Lesson</a><nav class="hidden items-center gap-6 md:flex"><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/curriculum/">课程地图</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/timeline/">学习路径</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/compare/">版本对比</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/layers/">架构层</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/slides/s01/">幻灯片</a><div class="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5"><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">EN</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">中文</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">日本語</button></div><button class="rounded-md p-1.5 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Switch to dark mode"><span class="inline-block h-4 w-4"></span></button><a href="https://github.com/atom32/agent-coding-lesson" target="_blank" rel="noopener" class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Open project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a></nav><button class="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"><div class="flex gap-8"><nav class="hidden w-64 shrink-0 md:block"><div class="sticky top-[calc(3.5rem+2rem)] max-h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/curriculum/">课程地图</a><div class="space-y-1"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/summary/">中间摘要</a><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/glossary/">术语表</a></div><section class="space-y-5"><div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">实验室课程</div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">工具与执行</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s01/"><span class="font-mono text-xs">s01</span><span class="ml-1.5">Agent 循环</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s02/"><span class="font-mono text-xs">s02</span><span class="ml-1.5">工具使用</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">规划与协调</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s03/"><span class="font-mono text-xs">s03</span><span class="ml-1.5">TodoWrite</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s04/"><span class="font-mono text-xs">s04</span><span class="ml-1.5">子 Agent</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s05/"><span class="font-mono text-xs">s05</span><span class="ml-1.5">技能</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s07/"><span class="font-mono text-xs">s07</span><span class="ml-1.5">任务系统</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-purple-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">记忆管理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s06/"><span class="font-mono text-xs">s06</span><span class="ml-1.5">上下文压缩</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">并发</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s08/"><span class="font-mono text-xs">s08</span><span class="ml-1.5">后台任务</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-red-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">协作</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s09/"><span class="font-mono text-xs">s09</span><span class="ml-1.5">Agent 团队</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s10/"><span class="font-mono text-xs">s10</span><span class="ml-1.5">团队协议</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s11/"><span class="font-mono text-xs">s11</span><span class="ml-1.5">自主 Agent</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s12/"><span class="font-mono text-xs">s12</span><span class="ml-1.5">Worktree + 任务隔离</span></a></li></ul></div></section><section><div class="mb-2 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">真实系统解剖</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/00-overview/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->00</span><span class="ml-1.5">架构总览</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/01-query-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->01</span><span class="ml-1.5">查询引擎</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/02-tool-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->02</span><span class="ml-1.5">工具系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/03-coordinator/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->03</span><span class="ml-1.5">协调器</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/04-plugin-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->04</span><span class="ml-1.5">插件系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/05-hook-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->05</span><span class="ml-1.5">Hook 系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/06-bash-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->06</span><span class="ml-1.5">Bash 引擎</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/07-permission-pipeline/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->07</span><span class="ml-1.5">权限流水线</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/08-agent-swarms/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->08</span><span class="ml-1.5">Agent Swarm</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/09-session-persistence/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->09</span><span class="ml-1.5">会话持久化</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/10-context-assembly/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->10</span><span class="ml-1.5">上下文装配</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/11-compact-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->11</span><span class="ml-1.5">压缩系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/12-startup-bootstrap/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->12</span><span class="ml-1.5">启动与引导</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/13-bridge-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->13</span><span class="ml-1.5">桥接系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/14-ui-state-management/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->14</span><span class="ml-1.5">UI 状态与渲染</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white" href="/agent-coding-lesson/zh/advanced/15-services-api-layer/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->15</span><span class="ml-1.5">服务与 API 层</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/16-infrastructure-config/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->16</span><span class="ml-1.5">基础设施与配置</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/17-telemetry-privacy-operations/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->17</span><span class="ml-1.5">遥测与运营</span></a></li></ul></section></div></nav><div class="min-w-0 flex-1"><div class="mx-auto max-w-4xl space-y-8 py-4"><header class="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" href="/agent-coding-lesson/zh/curriculum/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>课程地图</a><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800">EP<!-- -->15</span><h1 class="text-2xl font-bold text-zinc-950 dark:text-zinc-50">服务与 API 层</h1></div><p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">模型客户端、流、重试、提供商和服务边界</p></header><section class="rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300">Prompt 补充材料</p><h2 class="mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Service references and API tool-use material</h2><p class="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">This chapter can use the embedded data prompts as service-layer reading material.</p></div><a href="https://github.com/Piebald-AI/claude-code-system-prompts" target="_blank" rel="noopener" class="inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>来源仓库</a></div><p class="mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70">这些条目是从 Claude Code npm 包抽取出的第三方 prompt reference，适合课堂对照阅读，不当作官方文档。</p><div class="mt-4 grid gap-3 md:grid-cols-2"><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-claude-api-reference-typescript.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Claude API reference TypeScript</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">data-claude-api-reference-typescript.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">SDK reference</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Connects service-layer clients to the actual API surface.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-streaming-reference-typescript.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Streaming reference TypeScript</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">data-streaming-reference-typescript.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Streaming service</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Useful for comparing API stream handling with QueryEngine behavior.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-tool-use-reference-python.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Tool use reference Python</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">data-tool-use-reference-python.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Tool runner</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Grounds tool-use loops in official-style API examples embedded into the package.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-http-error-codes-reference.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">HTTP error codes reference</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">data-http-error-codes-reference.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Error handling</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Complements retries, fallback, and failure surfaces.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-claude-model-catalog.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Model catalog</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">data-claude-model-catalog.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Model routing</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Pairs with service boundaries, model selection, and budget discussions.</p></a></div></section><article class="py-4"><div class="prose-custom"><h1>第 15 集：服务层与 API 架构 —— 神经系统</h1>
+<blockquote class="hero-callout">
+</blockquote>
+<blockquote>
+<p><strong>源码文件</strong>: <code>src/services/api/claude.ts</code> (~126KB, 3,420 行), <code>client.ts</code> (390 行), <code>withRetry.ts</code> (823 行), <code>errors.ts</code> (1,208 行), <code>src/services/mcp/client.ts</code> (~119KB), <code>src/services/analytics/growthbook.ts</code> (~41KB), <code>src/services/lsp/LSPServerManager.ts</code> (421 行)</p>
+<p><strong>一句话总结</strong>: 服务层是 Claude Code 的神经系统——一个多提供商 API 客户端工厂、一个 700 行的流式查询引擎、一个久经沙场的重试策略矩阵、一个 GrowthBook 驱动的特性开关系统、MCP 协议集成和 LSP 桥接——全部通过 AsyncGenerator 管道和闭包工厂模式串联起来。</p>
+</blockquote>
+<hr>
+<h2>架构总览</h2>
+<pre class="ascii-diagram"><code>src/services/
+├── api/                    # Anthropic API 客户端 (~300K)
+│   ├── claude.ts           # 核心 queryModel 引擎 (126K, 3,420 行)
+│   ├── client.ts           # 多提供商客户端工厂 (16K)
+│   ├── withRetry.ts        # 重试策略引擎 (28K, 823 行)
+│   ├── errors.ts           # 错误分类系统 (42K)
+│   ├── logging.ts          # API 遥测与诊断 (24K)
+│   ├── bootstrap.ts        # 引导 API 请求
+│   ├── filesApi.ts         # 文件上传 API
+│   ├── promptCacheBreakDetection.ts  # 缓存命中分析 (26K)
+│   └── sessionIngress.ts   # 会话日志持久化 (17K)
+├── mcp/                    # MCP 协议集成 (~250K)
+│   ├── client.ts           # MCP 客户端生命周期 (119K)
+│   ├── auth.ts             # OAuth/XAA 认证 (89K)
+│   ├── MCPConnectionManager.tsx  # React 连接上下文
+│   ├── types.ts            # Zod Schema 配置
+│   └── config.ts           # 多源配置合并 (51K)
+├── analytics/              # 特性开关与遥测
+│   ├── growthbook.ts       # GrowthBook 集成 (41K)
+│   ├── index.ts            # 事件分析管道
+│   └── sink.ts             # Sink 架构 (DD + 1P BQ)
+├── lsp/                    # Language Server Protocol
+│   ├── LSPServerManager.ts # 闭包工厂管理器 (13K)
+│   ├── manager.ts          # 全局单例 + 代际计数器 (10K)
+│   └── passiveFeedback.ts  # 诊断通知处理器
+├── compact/                # 上下文压缩 (→ 见第 11 集)
+├── oauth/                  # OAuth 2.0 客户端
+├── plugins/                # 插件市场管理
+├── policyLimits/           # 组织策略限制
+├── remoteManagedSettings/  # 远程配置同步
+├── teamMemorySync/         # 团队记忆同步
+└── extractMemories/        # 自动记忆提取
+</code></pre>
+<h3>设计原则</h3>
+<p>五个架构不变量贯穿整个服务层：</p>
+<ol>
+<li><strong>多提供商抽象</strong> —— 单个 <code>getAnthropicClient()</code> 工厂函数为 Anthropic 1P、AWS Bedrock、Azure Foundry 和 Google Vertex 生成 SDK 实例，通过动态 <code>await import()</code> 避免将未使用的 SDK 打入包中。</li>
+<li><strong>非关键服务 Fail-Open</strong> —— 企业功能（<code>policyLimits</code>、<code>remoteManagedSettings</code>）在失败时优雅降级。核心查询循环永远不会被它们阻塞。</li>
+<li><strong>会话稳定锁存机制</strong> —— 一旦发送了某个 beta header（如 <code>fast_mode</code>、<code>afk_mode</code>），它将在整个会话期间保持启用。这防止了对话中途 prompt cache 键的变化——单次缓存键翻转可以使成本增加 12 倍。</li>
+<li><strong>AsyncGenerator 管道</strong> —— 核心 API 调用链（<code>queryModel → withRetry → 流处理器</code>）通过 <code>AsyncGenerator&#x3C;StreamEvent | AssistantMessage | SystemAPIErrorMessage></code> 串联，使调用者能在等待最终结果的同时处理中间的重试/错误事件。</li>
+<li><strong>闭包工厂替代 Class</strong> —— 有状态的服务（LSP 管理器、缓存微压缩）使用 <code>createXxxManager()</code> 函数配合闭包作用域的私有状态，消除了 <code>this</code> 绑定问题。</li>
+</ol>
+<hr>
+<h2>1. 客户端工厂 —— 四个提供商，一个接口</h2>
+<p>整个 API 子系统的入口是 <code>client.ts</code> 中的 <code>getAnthropicClient()</code>。无论底层是哪个提供商，它都返回单一的 <code>Anthropic</code> SDK 实例：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/client.ts:88-100</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getAnthropicClient</span>(<span class="hljs-params">{
+  apiKey, maxRetries, model, fetchOverride, source,
+}: { ... }</span>): <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-title class_">Anthropic</span>> {
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">defaultHeaders</span>: { [<span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span> } = {
+    <span class="hljs-string">'x-app'</span>: <span class="hljs-string">'cli'</span>,
+    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-title function_">getUserAgent</span>(),
+    <span class="hljs-string">'X-Claude-Code-Session-Id'</span>: <span class="hljs-title function_">getSessionId</span>(),
+    ...customHeaders,
+  }
+  <span class="hljs-keyword">await</span> <span class="hljs-title function_">checkAndRefreshOAuthTokenIfNeeded</span>()
+  <span class="hljs-comment">// ... 构建 ARGS（代理、超时 600s 默认值等）</span>
+</code></pre>
+<h3>提供商分发链</h3>
+<p>工厂通过环境变量检测来选择提供商，利用动态导入将未使用的 SDK 排除在打包之外：</p>
+<pre class="ascii-diagram"><code>CLAUDE_CODE_USE_BEDROCK=1  → await import('@anthropic-ai/bedrock-sdk')
+CLAUDE_CODE_USE_FOUNDRY=1  → await import('@anthropic-ai/foundry-sdk')
+CLAUDE_CODE_USE_VERTEX=1   → await import('@anthropic-ai/vertex-sdk')
+（默认）                    → new Anthropic(...)
+</code></pre>
+<p>每个提供商分支都返回 <code>as unknown as Anthropic</code> —— 这是一个刻意的类型谎言。Bedrock、Foundry 和 Vertex SDK 的类型签名略有不同，但 <code>queryModel</code> 调用者统一处理。源码中的注释坦率得令人耳目一新：<em>"we have always been lying about the return type."</em></p>
+<h3>Bedrock 细节</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/client.ts:153-189</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEnvTruthy</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">CLAUDE_CODE_USE_BEDROCK</span>)) {
+  <span class="hljs-keyword">const</span> { <span class="hljs-title class_">AnthropicBedrock</span> } = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">'@anthropic-ai/bedrock-sdk'</span>)
+  <span class="hljs-keyword">const</span> awsRegion =
+    model === <span class="hljs-title function_">getSmallFastModel</span>() &#x26;&#x26; process.<span class="hljs-property">env</span>.<span class="hljs-property">ANTHROPIC_SMALL_FAST_MODEL_AWS_REGION</span>
+      ? process.<span class="hljs-property">env</span>.<span class="hljs-property">ANTHROPIC_SMALL_FAST_MODEL_AWS_REGION</span>
+      : <span class="hljs-title function_">getAWSRegion</span>()
+  <span class="hljs-comment">// Bearer token 认证 (AWS_BEARER_TOKEN_BEDROCK) 或 STS 凭证刷新</span>
+}
+</code></pre>
+<p>一个小但重要的细节：Bedrock 支持按模型指定区域。<code>ANTHROPIC_SMALL_FAST_MODEL_AWS_REGION</code> 变量允许你将 Haiku 路由到与主模型不同的区域——当你的 Opus 区域过载时非常有用。</p>
+<h3><code>buildFetch</code> 包装器</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/client.ts:358-389</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">buildFetch</span>(<span class="hljs-params">fetchOverride, source</span>): <span class="hljs-title class_">ClientOptions</span>[<span class="hljs-string">'fetch'</span>] {
+  <span class="hljs-keyword">const</span> inner = fetchOverride ?? globalThis.<span class="hljs-property">fetch</span>
+  <span class="hljs-keyword">const</span> injectClientRequestId =
+    <span class="hljs-title function_">getAPIProvider</span>() === <span class="hljs-string">'firstParty'</span> &#x26;&#x26; <span class="hljs-title function_">isFirstPartyAnthropicBaseUrl</span>()
+  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">input, init</span>) =></span> {
+    <span class="hljs-keyword">const</span> headers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Headers</span>(init?.<span class="hljs-property">headers</span>)
+    <span class="hljs-keyword">if</span> (injectClientRequestId &#x26;&#x26; !headers.<span class="hljs-title function_">has</span>(<span class="hljs-variable constant_">CLIENT_REQUEST_ID_HEADER</span>)) {
+      headers.<span class="hljs-title function_">set</span>(<span class="hljs-variable constant_">CLIENT_REQUEST_ID_HEADER</span>, <span class="hljs-title function_">randomUUID</span>())
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">inner</span>(input, { ...init, headers })
+  }
+}
+</code></pre>
+<p>这个小包装器解决了现实中的调试痛点：当 API 请求超时时，服务器不返回请求 ID。通过在每个第一方请求中注入客户端侧的 <code>x-client-request-id</code> UUID，API 团队仍然可以将超时与服务器日志关联起来。</p>
+<hr>
+<h2>2. queryModel —— 700 行的心脏</h2>
+<p><code>claude.ts</code> 中的 <code>queryModel()</code> 是整个代码库中最重要的单个函数。约 700 行代码编排了从 GrowthBook 熔断检查到流式事件累积的一切：</p>
+<pre class="ascii-diagram"><code>queryModel() 入口
+  │
+  ├─ 1. 熔断开关检查 (GrowthBook: tengu-off-switch)
+  ├─ 2. Beta headers 组装 (getMergedBetas)
+  ├─ 3. 工具搜索过滤 (仅包含已发现的延迟加载工具)
+  ├─ 4. 工具 Schema 构建 (并行生成)
+  ├─ 5. 消息规范化 (normalizeMessagesForAPI)
+  ├─ 6. Beta header 锁存 (fast_mode, afk_mode, cache_editing)
+  ├─ 7. paramsFromContext 闭包 (完整 API 请求构建)
+  ├─ 8. withRetry 包装器 (→ 见 §3)
+  ├─ 9. 原始 SSE 流消费 (→ 见 §4)
+  └─ 10. AssistantMessage 输出
+</code></pre>
+<h3>熔断开关</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1028-1049</span>
+<span class="hljs-keyword">if</span> (
+  !<span class="hljs-title function_">isClaudeAISubscriber</span>() &#x26;&#x26;
+  <span class="hljs-title function_">isNonCustomOpusModel</span>(options.<span class="hljs-property">model</span>) &#x26;&#x26;
+  (<span class="hljs-keyword">await</span> getDynamicConfig_BLOCKS_ON_INIT&#x3C;{ <span class="hljs-attr">activated</span>: <span class="hljs-built_in">boolean</span> }>(
+    <span class="hljs-string">'tengu-off-switch'</span>, { <span class="hljs-attr">activated</span>: <span class="hljs-literal">false</span> }
+  )).<span class="hljs-property">activated</span>
+) {
+  <span class="hljs-keyword">yield</span> <span class="hljs-title function_">getAssistantMessageFromError</span>(
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-variable constant_">CUSTOM_OFF_SWITCH_MESSAGE</span>), options.<span class="hljs-property">model</span>
+  )
+  <span class="hljs-keyword">return</span>
+}
+</code></pre>
+<p>这是 Claude Code 的紧急制动器。当 Opus 处于极端负载时，Anthropic 可以通过 GrowthBook 实时禁用它。检查被 <code>isNonCustomOpusModel()</code> 和 <code>!isClaudeAISubscriber()</code> 门控，不影响订阅用户或自定义模型。</p>
+<p>注意顺序优化：廉价的同步检查在 <code>await getDynamicConfig_BLOCKS_ON_INIT</code>（阻塞等待 GrowthBook 初始化 ~10ms）之前执行。</p>
+<h3>工具搜索过滤</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1128-1172</span>
+<span class="hljs-keyword">const</span> deferredToolNames = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>&#x3C;<span class="hljs-built_in">string</span>>()
+<span class="hljs-keyword">if</span> (useToolSearch) {
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> t <span class="hljs-keyword">of</span> tools) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isDeferredTool</span>(t)) deferredToolNames.<span class="hljs-title function_">add</span>(t.<span class="hljs-property">name</span>)
+  }
+}
+<span class="hljs-comment">// 仅包含通过 tool_reference 块发现的延迟加载工具</span>
+<span class="hljs-keyword">const</span> discoveredToolNames = <span class="hljs-title function_">extractDiscoveredToolNames</span>(messages)
+filteredTools = tools.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">tool</span> =></span> {
+  <span class="hljs-keyword">if</span> (!deferredToolNames.<span class="hljs-title function_">has</span>(tool.<span class="hljs-property">name</span>)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">toolMatchesName</span>(tool, <span class="hljs-variable constant_">TOOL_SEARCH_TOOL_NAME</span>)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+  <span class="hljs-keyword">return</span> discoveredToolNames.<span class="hljs-title function_">has</span>(tool.<span class="hljs-property">name</span>)
+})
+</code></pre>
+<p>这是动态工具加载系统。不必在每次请求时发送全部 42+ 工具（消耗大量 token），标记为 <code>deferred</code> 的工具只在通过对话历史中的 <code>tool_reference</code> 块被「发现」后才被包含。<code>ToolSearchTool</code> 本身始终包含，以便发现更多工具。</p>
+<h3>paramsFromContext 闭包</h3>
+<p><code>queryModel</code> 的核心是 <code>paramsFromContext</code> 闭包（约 190 行），它构建完整的 API 请求。它是闭包而非独立函数，因为它捕获了整个请求构建上下文（消息、系统提示、工具、betas）：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1538-1729</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">paramsFromContext</span> = (<span class="hljs-params"><span class="hljs-attr">retryContext</span>: <span class="hljs-title class_">RetryContext</span></span>) => {
+  <span class="hljs-keyword">const</span> betasParams = [...betas]
+  <span class="hljs-comment">// ... 配置 effort、task budget、thinking、context management</span>
+  <span class="hljs-comment">// ... 锁存 fast_mode、afk_mode、cache_editing headers</span>
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">model</span>: <span class="hljs-title function_">normalizeModelStringForAPI</span>(options.<span class="hljs-property">model</span>),
+    <span class="hljs-attr">messages</span>: <span class="hljs-title function_">addCacheBreakpoints</span>(messagesForAPI, ...),
+    system, <span class="hljs-attr">tools</span>: allTools, <span class="hljs-attr">betas</span>: betasParams,
+    <span class="hljs-attr">metadata</span>: <span class="hljs-title function_">getAPIMetadata</span>(),
+    <span class="hljs-attr">max_tokens</span>: maxOutputTokens, thinking,
+    <span class="hljs-comment">// ... speed, context_management, output_config</span>
+  }
+}
+</code></pre>
+<p>为什么要多次调用？它分别用于日志记录（fire-and-forget）、实际 API 请求和非流式降级重试。<code>RetryContext</code> 参数允许重试循环在上下文溢出错误缩小可用输出预算时覆盖 <code>maxTokensOverride</code>。</p>
+<h3>Beta Header 锁存</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1642-1689</span>
+<span class="hljs-comment">// Fast mode：header 锁存保持会话稳定（缓存安全），</span>
+<span class="hljs-comment">// 但 speed='fast' 保持动态，使冷却期仍能抑制实际的快速模式请求而不改变缓存键。</span>
+<span class="hljs-keyword">if</span> (fastModeHeaderLatched &#x26;&#x26; !betasParams.<span class="hljs-title function_">includes</span>(<span class="hljs-variable constant_">FAST_MODE_BETA_HEADER</span>)) {
+  betasParams.<span class="hljs-title function_">push</span>(<span class="hljs-variable constant_">FAST_MODE_BETA_HEADER</span>)
+}
+</code></pre>
+<p>锁存模式看似简单，实则解决了一个关键的成本问题：prompt cache 键包含 beta headers。如果 <code>fast_mode</code> 在会话中途开关切换，每次切换都会使缓存失效。系统提示约 20K token，单次缓存未命中的成本远超提示本身。锁存确保 header 一旦激活就保持整个会话——<code>speed='fast'</code> 参数仍然动态切换以控制行为，但缓存键保持稳定。</p>
+<hr>
+<h2>3. 重试策略引擎</h2>
+<p><code>withRetry.ts</code>（823 行）为每个 API 调用包装了精密的重试状态机：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/withRetry.ts:170-178</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span>* withRetry&#x3C;T>(
+  <span class="hljs-attr">getClient</span>: <span class="hljs-function">() =></span> <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-title class_">Anthropic</span>>,
+  <span class="hljs-attr">operation</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">client</span>: <span class="hljs-title class_">Anthropic</span>, <span class="hljs-attr">attempt</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">context</span>: <span class="hljs-title class_">RetryContext</span></span>) =></span> <span class="hljs-title class_">Promise</span>&#x3C;T>,
+  <span class="hljs-attr">options</span>: <span class="hljs-title class_">RetryOptions</span>,
+): <span class="hljs-title class_">AsyncGenerator</span>&#x3C;<span class="hljs-title class_">SystemAPIErrorMessage</span>, T> {
+</code></pre>
+<p><code>AsyncGenerator</code> 返回类型是关键设计选择：调用者在重试之间获得中间 <code>SystemAPIErrorMessage</code> 事件，UI 将其渲染为「X 秒后重试...」状态消息。</p>
+<h3>重试决策矩阵</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>错误</th><th>策略</th><th>原因</th></tr></thead><tbody><tr><td><strong>429 速率限制</strong></td><td>等待 <code>retry-after</code>，或快速模式冷却</td><td>遵守服务器指令</td></tr><tr><td><strong>529 过载</strong></td><td>最多 3 次重试 → 降级到 Sonnet</td><td>防止级联放大</td></tr><tr><td><strong>401 未授权</strong></td><td>强制刷新 OAuth token → 重试</td><td>Token 可能已过期</td></tr><tr><td><strong>403 Token 已撤销</strong></td><td><code>handleOAuth401Error()</code> → 重试</td><td>其他进程刷新了 token</td></tr><tr><td><strong>400 上下文溢出</strong></td><td>减小 <code>max_tokens</code> → 重试</td><td>缩小输出以适应上下文</td></tr><tr><td><strong>ECONNRESET/EPIPE</strong></td><td>禁用 keep-alive → 重试</td><td>检测到过期的 socket</td></tr><tr><td><strong>非前台 529</strong></td><td>立即放弃</td><td>减少后端放大</td></tr></tbody></table>
+<h3>前台查询源白名单</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/withRetry.ts:62-82</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">FOREGROUND_529_RETRY_SOURCES</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>&#x3C;<span class="hljs-title class_">QuerySource</span>>([
+  <span class="hljs-string">'repl_main_thread'</span>, <span class="hljs-string">'sdk'</span>, <span class="hljs-string">'agent:custom'</span>, <span class="hljs-string">'agent:default'</span>,
+  <span class="hljs-string">'compact'</span>, <span class="hljs-string">'hook_agent'</span>, <span class="hljs-string">'auto_mode'</span>, ...
+])
+</code></pre>
+<p>这是一项关键的反放大措施。在容量级联故障期间，每次重试将后端负载放大 3-10 倍。后台查询（摘要、标题、分类器）遇到 529 时立即放弃——用户永远看不到它们失败。只有用户正在等待结果的前台查询才会重试。</p>
+<h3>持久重试模式</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/withRetry.ts:96-98</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">PERSISTENT_MAX_BACKOFF_MS</span> = <span class="hljs-number">5</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>    <span class="hljs-comment">// 最大退避 5 分钟</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">PERSISTENT_RESET_CAP_MS</span> = <span class="hljs-number">6</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span> <span class="hljs-comment">// 6 小时上限</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">HEARTBEAT_INTERVAL_MS</span> = <span class="hljs-number">30_000</span>                <span class="hljs-comment">// 30 秒心跳</span>
+</code></pre>
+<p>对于无人值守的 CI/CD 会话（<code>CLAUDE_CODE_UNATTENDED_RETRY</code>），重试循环无限运行。等待期间每 30 秒发出一次心跳 <code>SystemAPIErrorMessage</code>，防止宿主环境（Docker、CI 运行器）认为会话空闲并终止它。</p>
+<hr>
+<h2>4. 流式处理架构</h2>
+<h3>为什么使用原始 SSE 而非 SDK 流</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1818-1836</span>
+<span class="hljs-comment">// 使用原始流代替 BetaMessageStream 以避免 O(n²) 的部分 JSON 解析</span>
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> anthropic.<span class="hljs-property">beta</span>.<span class="hljs-property">messages</span>
+  .<span class="hljs-title function_">create</span>({ ...params, <span class="hljs-attr">stream</span>: <span class="hljs-literal">true</span> }, { signal, ... })
+  .<span class="hljs-title function_">withResponse</span>()
+stream = result.<span class="hljs-property">data</span>  <span class="hljs-comment">// Stream&#x3C;BetaRawMessageStreamEvent></span>
+</code></pre>
+<p>Anthropic SDK 的 <code>BetaMessageStream</code> 在每个 <code>input_json_delta</code> 事件上调用 <code>partialParse()</code>。对于长工具输入，这会产生二次增长——每个 delta 都从头重新解析累积的 JSON。Claude Code 绕过了这一点，直接消费原始 SSE 事件并手动累积内容块。</p>
+<h3>流事件状态机</h3>
+<pre class="ascii-diagram"><code>message_start
+  → 初始化 usage，捕获 research 元数据
+  → 记录 TTFB（首字节时间）
+
+content_block_start
+  → 创建新的 block（text | thinking | tool_use | server_tool_use | connector_text）
+  → 初始化累加器：text=''，thinking=''，input=''
+
+content_block_delta
+  → 增量追加：text_delta | input_json_delta | thinking_delta | signature_delta
+  → 类型安全的累积（每种 delta 类型匹配其 block 类型）
+
+content_block_stop
+  → 构建完成的 content block
+  → 解析 tool_use 输入的累积 JSON：JSON.parse(accumulated)
+
+message_delta
+  → 更新 usage 计数器，捕获 stop_reason
+
+message_stop
+  → 完成 AssistantMessage，yield 给调用者
+</code></pre>
+<h3>空闲看门狗</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1874-1928</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">STREAM_IDLE_TIMEOUT_MS</span> = <span class="hljs-built_in">parseInt</span>(...) || <span class="hljs-number">90_000</span>  <span class="hljs-comment">// 默认 90 秒</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">STREAM_IDLE_WARNING_MS</span> = <span class="hljs-variable constant_">STREAM_IDLE_TIMEOUT_MS</span> / <span class="hljs-number">2</span>  <span class="hljs-comment">// 45 秒警告</span>
+
+streamIdleTimer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =></span> {
+  streamIdleAborted = <span class="hljs-literal">true</span>
+  <span class="hljs-title function_">releaseStreamResources</span>()
+}, <span class="hljs-variable constant_">STREAM_IDLE_TIMEOUT_MS</span>)
+</code></pre>
+<p>静默断开的连接是 SSE 流的真实问题。SDK 的请求超时只覆盖初始的 <code>fetch()</code>，不覆盖流式 body。看门狗监控 chunk 间隔：45 秒时发出警告，90 秒时中止。没有这个，挂起的流会无限期阻塞会话。</p>
+<hr>
+<h2>5. Prompt 缓存 —— 三层策略</h2>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:358-374</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getCacheControl</span>(<span class="hljs-params">{ scope, querySource } = {}</span>) {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'ephemeral'</span>,
+    ...(<span class="hljs-title function_">should1hCacheTTL</span>(querySource) &#x26;&#x26; { <span class="hljs-attr">ttl</span>: <span class="hljs-string">'1h'</span> }),
+    ...(scope === <span class="hljs-string">'global'</span> &#x26;&#x26; { scope }),
+  }
+}
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>层级</th><th>TTL</th><th>范围</th><th>资格</th></tr></thead><tbody><tr><td><strong>临时</strong></td><td>5 分钟（默认）</td><td>单用户</td><td>所有人</td></tr><tr><td><strong>1 小时</strong></td><td>1h</td><td>单用户</td><td>订阅者 + GrowthBook 白名单匹配</td></tr><tr><td><strong>全局</strong></td><td>5 分钟</td><td>跨用户</td><td>MCP 工具稳定时的系统提示</td></tr></tbody></table>
+<h3>1h TTL 资格与锁存</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:393-434</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">should1hCacheTTL</span>(<span class="hljs-params"><span class="hljs-attr">querySource</span>?: <span class="hljs-title class_">QuerySource</span></span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-comment">// 资格在首次评估时锁存到 bootstrap state</span>
+  <span class="hljs-keyword">let</span> userEligible = <span class="hljs-title function_">getPromptCache1hEligible</span>()
+  <span class="hljs-keyword">if</span> (userEligible === <span class="hljs-literal">null</span>) {
+    userEligible = process.<span class="hljs-property">env</span>.<span class="hljs-property">USER_TYPE</span> === <span class="hljs-string">'ant'</span> ||
+      (<span class="hljs-title function_">isClaudeAISubscriber</span>() &#x26;&#x26; !currentLimits.<span class="hljs-property">isUsingOverage</span>)
+    <span class="hljs-title function_">setPromptCache1hEligible</span>(userEligible)  <span class="hljs-comment">// 锁存！</span>
+  }
+  <span class="hljs-comment">// 白名单也锁存，防止会话中途混用 TTL</span>
+  <span class="hljs-keyword">let</span> allowlist = <span class="hljs-title function_">getPromptCache1hAllowlist</span>()
+  <span class="hljs-keyword">if</span> (allowlist === <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">const</span> config = <span class="hljs-title function_">getFeatureValue_CACHED_MAY_BE_STALE</span>(<span class="hljs-string">'tengu_prompt_cache_1h_config'</span>, {})
+    allowlist = config.<span class="hljs-property">allowlist</span> ?? []
+    <span class="hljs-title function_">setPromptCache1hAllowlist</span>(allowlist)  <span class="hljs-comment">// 锁存！</span>
+  }
+  <span class="hljs-comment">// 支持尾部 * 通配符的模式匹配</span>
+  <span class="hljs-keyword">return</span> allowlist.<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">pattern</span> =></span>
+    pattern.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">'*'</span>)
+      ? querySource.<span class="hljs-title function_">startsWith</span>(pattern.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>))
+      : querySource === pattern
+  )
+}
+</code></pre>
+<p>资格和白名单在首次评估时都锁存到 bootstrap state。这防止了会话中途的超额翻转（订阅者用完配额）改变缓存 TTL——每次翻转会造成 ~20K token 的服务端缓存失效惩罚。</p>
+<hr>
+<h2>6. 错误分类系统</h2>
+<p><code>errors.ts</code>（1,208 行）是 API 目录中最大的文件，为每种 API 失败模式提供结构化的错误分类：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/errors.ts:85-96</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">parsePromptTooLongTokenCounts</span>(<span class="hljs-params"><span class="hljs-attr">rawMessage</span>: <span class="hljs-built_in">string</span></span>) {
+  <span class="hljs-keyword">const</span> match = rawMessage.<span class="hljs-title function_">match</span>(
+    <span class="hljs-regexp">/prompt is too long[^0-9]*(\d+)\s*tokens?\s*>\s*(\d+)/i</span>
+  )
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">actualTokens</span>: match ? <span class="hljs-built_in">parseInt</span>(match[<span class="hljs-number">1</span>]!, <span class="hljs-number">10</span>) : <span class="hljs-literal">undefined</span>,
+    <span class="hljs-attr">limitTokens</span>: match ? <span class="hljs-built_in">parseInt</span>(match[<span class="hljs-number">2</span>]!, <span class="hljs-number">10</span>) : <span class="hljs-literal">undefined</span>,
+  }
+}
+</code></pre>
+<h3>错误分类层级</h3>
+<pre class="ascii-diagram"><code>getAssistantMessageFromError(error, model)
+  ├─ APIConnectionTimeoutError → "请求超时"
+  ├─ ImageSizeError → "图片太大"
+  ├─ 熔断开关消息 → "Opus 负载高，切换到 Sonnet"
+  ├─ 429 速率限制
+  │   ├─ 有统一 headers → getRateLimitErrorMessage(limits)
+  │   └─ 无 headers → 通用 "请求被拒绝 (429)"
+  ├─ prompt too long → PROMPT_TOO_LONG_ERROR_MESSAGE + errorDetails
+  ├─ PDF 错误 → 太大 / 密码保护 / 无效
+  ├─ 图片超限 / 多图限制 → 尺寸错误消息
+  ├─ tool_use/tool_result 不匹配 → 并发错误 + /rewind 提示
+  ├─ 组织已禁用 → 过期 API 密钥指引
+  └─ （默认）→ 格式化的 API 错误字符串
+</code></pre>
+<p>错误系统身兼双职：它为终端 UI 提供用户可读消息，同时为响应式压缩的重试逻辑提供机器可读的 <code>errorDetails</code> 字符串。<code>getPromptTooLongTokenGap()</code> 从 <code>errorDetails</code> 解析实际值与限制值的差距，让压缩系统在一次重试中跳过多个消息组，而不是逐个剥离。</p>
+<hr>
+<h2>7. GrowthBook 特性开关</h2>
+<p><code>growthbook.ts</code>（1,156 行）集成了 GrowthBook 特性开关平台，作为 Claude Code 的远程配置骨干。</p>
+<h3>两种读取模式</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 非阻塞：立即返回缓存/过期值</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> getFeatureValue_CACHED_MAY_BE_STALE&#x3C;T>(feature, defaultValue): T {
+  <span class="hljs-comment">// 优先级：环境变量覆盖 → 配置覆盖 → 内存载荷 → 磁盘缓存 → 默认值</span>
+}
+
+<span class="hljs-comment">// 阻塞：等待 GrowthBook 初始化完成</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> getDynamicConfig_BLOCKS_ON_INIT&#x3C;T>(feature, defaultValue): <span class="hljs-title class_">Promise</span>&#x3C;T> {
+  <span class="hljs-keyword">const</span> growthBookClient = <span class="hljs-keyword">await</span> <span class="hljs-title function_">initializeGrowthBook</span>()  <span class="hljs-comment">// 阻塞 ~10ms</span>
+}
+</code></pre>
+<p><code>CACHED_MAY_BE_STALE</code> 是热路径首选——在渲染循环、权限检查和模型选择中每次会话调用数百次。它首先从内存 Map 读取，然后回退到磁盘缓存（<code>~/.claude.json</code>）。<code>BLOCKS_ON_INIT</code> 保留给关键路径决策，如熔断开关，在这些场景中错误答案会造成严重后果。</p>
+<h3>用户属性与定向</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/analytics/growthbook.ts:32-47</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">GrowthBookUserAttributes</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>                    <span class="hljs-comment">// 设备 ID（跨会话稳定）</span>
+  <span class="hljs-attr">sessionId</span>: <span class="hljs-built_in">string</span>             <span class="hljs-comment">// 单次会话唯一 ID</span>
+  <span class="hljs-attr">platform</span>: <span class="hljs-string">'win32'</span> | <span class="hljs-string">'darwin'</span> | <span class="hljs-string">'linux'</span>
+  <span class="hljs-attr">organizationUUID</span>?: <span class="hljs-built_in">string</span>     <span class="hljs-comment">// 企业组织定向</span>
+  <span class="hljs-attr">userType</span>?: <span class="hljs-built_in">string</span>             <span class="hljs-comment">// 'ant'（内部）| 'external'</span>
+  <span class="hljs-attr">subscriptionType</span>?: <span class="hljs-built_in">string</span>     <span class="hljs-comment">// Pro, Max, Enterprise 等</span>
+  <span class="hljs-attr">rateLimitTier</span>?: <span class="hljs-built_in">string</span>        <span class="hljs-comment">// 速率限制等级（渐进发布）</span>
+  <span class="hljs-attr">appVersion</span>?: <span class="hljs-built_in">string</span>           <span class="hljs-comment">// 按版本门控特性</span>
+}
+</code></pre>
+<h3>Remote Eval 变通方案</h3>
+<p>GrowthBook 的远程评估模式在服务端评估 flag（让定向规则保持私密），但 SDK 返回 <code>{ value: ... }</code> 而期望 <code>{ defaultValue: ... }</code>。Claude Code 通过 <code>processRemoteEvalPayload()</code> 变通处理，将值缓存到内存 Map 和磁盘中，确保跨进程稳定性。</p>
+<hr>
+<h2>8. LSP 集成 —— 闭包工厂模式</h2>
+<p>LSP（语言服务器协议）集成展示了 Claude Code 对闭包工厂优于类的偏好：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/lsp/LSPServerManager.ts:59-65</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createLSPServerManager</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">LSPServerManager</span> {
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">servers</span>: <span class="hljs-title class_">Map</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">LSPServerInstance</span>> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>()
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">extensionMap</span>: <span class="hljs-title class_">Map</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>()
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">openedFiles</span>: <span class="hljs-title class_">Map</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>()
+  <span class="hljs-comment">// ... 360 行闭包方法</span>
+  <span class="hljs-keyword">return</span> { initialize, shutdown, getServerForFile, ensureServerStarted, sendRequest, ... }
+}
+</code></pre>
+<h3>基于文件扩展名的路由</h3>
+<p>当 Claude Code 读取或编辑文件时，LSP 管理器根据文件扩展名将通知路由到正确的语言服务器。</p>
+<h3>代际计数器</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/lsp/manager.ts:32-36</span>
+<span class="hljs-keyword">let</span> initializationGeneration = <span class="hljs-number">0</span>
+
+<span class="hljs-keyword">const</span> currentGeneration = ++initializationGeneration
+lspManagerInstance.<span class="hljs-title function_">initialize</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =></span> {
+  <span class="hljs-keyword">if</span> (currentGeneration === initializationGeneration) {
+    initializationState = <span class="hljs-string">'success'</span>
+  }
+})
+</code></pre>
+<p>这解决了一个微妙的竞态条件：如果在前一次初始化仍在进行时调用 <code>reinitializeLspServerManager()</code>，代际计数器确保过期初始化的 <code>.then()</code> 处理器被静默丢弃。</p>
+<hr>
+<h2>9. MCP 集成要点</h2>
+<p>MCP（模型上下文协议）子系统在<a href="04-plugin-system">第 4 集：插件系统</a>中详细介绍，但其服务层方面值得在此提及。</p>
+<h3>六种传输类型</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/mcp/types.ts</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title class_">TransportSchema</span> = z.<span class="hljs-title function_">enum</span>([
+  <span class="hljs-string">'stdio'</span>,    <span class="hljs-comment">// 本地子进程（stdin/stdout）—— 最常见</span>
+  <span class="hljs-string">'sse'</span>,      <span class="hljs-comment">// Server-Sent Events（远程）</span>
+  <span class="hljs-string">'http'</span>,     <span class="hljs-comment">// Streamable HTTP（MCP 2025 规范）</span>
+  <span class="hljs-string">'ws'</span>,       <span class="hljs-comment">// WebSocket（IDE 扩展）</span>
+  <span class="hljs-string">'sdk'</span>,      <span class="hljs-comment">// 进程内 SDK 控制传输</span>
+  <span class="hljs-string">'sse-ide'</span>,  <span class="hljs-comment">// 通过 IDE 桥接的 SSE</span>
+])
+</code></pre>
+<p>MCP 连接生命周期通过 React Context 管理，支持在不重启会话的情况下热重载 MCP 服务器。React Compiler 使用 <code>_c(6)</code> memo 插槽优化此组件。</p>
+<hr>
+<h2>可迁移设计模式</h2>
+<blockquote>
+<p>以下模式可直接应用于其他 Agentic 系统或 CLI 工具。</p>
+</blockquote>
+<h3>模式 1: 会话稳定锁存</h3>
+<p><strong>场景:</strong> 特性开关或 beta header 控制的行为同时也是缓存键的一部分。
+<strong>问题:</strong> 会话中途切换标志会使缓存失效，造成严重的成本放大。
+<strong>实践:</strong> 在首次评估时锁存标志值。锁存在 bootstrap state 中存储布尔值；一旦设为 <code>true</code>，在会话内不再恢复。</p>
+<p><strong>Claude Code 将此应用于:</strong> <code>fast_mode</code>、<code>afk_mode</code>、<code>cache_editing</code> beta headers，1h prompt cache 资格，以及 GrowthBook 白名单。</p>
+<h3>模式 2: AsyncGenerator 重试管道</h3>
+<p><strong>场景:</strong> 长时间运行的操作需要重试逻辑，但调用者也需要重试状态的可见性。
+<strong>问题:</strong> 传统重试包装器阻塞直到成功或最终失败。调用者无法显示「重试中...」UI。
+<strong>实践:</strong> 将重试包装器设为 <code>AsyncGenerator</code>，在尝试之间 <code>yield</code> 状态事件，最终 <code>return</code> 结果。</p>
+<h3>模式 3: 带代际计数器的闭包工厂</h3>
+<p><strong>场景:</strong> 可能需要重新初始化的单例服务（如插件刷新后）。
+<strong>问题:</strong> 异步初始化可能重叠：<code>init_1</code> 启动，<code>reinit</code> 启动 <code>init_2</code>，但 <code>init_1</code> 后完成并覆盖 <code>init_2</code> 的状态。
+<strong>实践:</strong> 每次初始化时递增代际计数器。<code>.then()</code> 回调在更新状态前检查其代际是否仍为当前值。</p>
+<h3>模式 4: 前台/后台重试分类</h3>
+<p><strong>场景:</strong> 服务遭遇级联故障（如 API 过载）。
+<strong>问题:</strong> 重试所有查询会按每层重试放大过载 3-10 倍。
+<strong>实践:</strong> 维护一个「前台」查询源白名单（用户在等待）。后台查询（摘要、分类器、标题）在过载错误时立即放弃。这是设计层面的反放大。</p>
+<hr>
+<h2>源码坐标</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>组件</th><th>路径</th><th>行数</th><th>核心函数</th></tr></thead><tbody><tr><td>客户端工厂</td><td><code>services/api/client.ts</code></td><td>390</td><td><code>getAnthropicClient()</code></td></tr><tr><td>查询引擎</td><td><code>services/api/claude.ts</code></td><td>3,420</td><td><code>queryModel()</code> L1017</td></tr><tr><td>重试引擎</td><td><code>services/api/withRetry.ts</code></td><td>823</td><td><code>withRetry()</code> L170</td></tr><tr><td>错误系统</td><td><code>services/api/errors.ts</code></td><td>1,208</td><td><code>getAssistantMessageFromError()</code> L425</td></tr><tr><td>缓存控制</td><td><code>services/api/claude.ts</code></td><td>—</td><td><code>getCacheControl()</code> L358</td></tr><tr><td>GrowthBook</td><td><code>services/analytics/growthbook.ts</code></td><td>1,156</td><td><code>getFeatureValue_CACHED_MAY_BE_STALE()</code> L734</td></tr><tr><td>LSP 管理器</td><td><code>services/lsp/LSPServerManager.ts</code></td><td>421</td><td><code>createLSPServerManager()</code> L59</td></tr><tr><td>LSP 单例</td><td><code>services/lsp/manager.ts</code></td><td>290</td><td><code>initializeLspServerManager()</code> L145</td></tr><tr><td>MCP 客户端</td><td><code>services/mcp/client.ts</code></td><td>~3,000</td><td>MCP 生命周期管理</td></tr><tr><td>分析</td><td><code>services/analytics/index.ts</code></td><td>—</td><td><code>logEvent()</code>，PII 保护</td></tr></tbody></table>
+<hr>
+<p><em>服务层是 Claude Code 的雄心与现实世界故障模式交汇的地方。下一集：<a href="16-infrastructure-config">第 16 集 —— 基础设施与配置系统</a></em></p>
+<p><a href="14-ui-state-management">← 第 14 集 —— UI 与状态管理</a></p></div></article><nav class="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800"><a class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/zh/advanced/14-ui-state-management/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left transition-transform group-hover:-translate-x-1" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg><span>EP<!-- -->14<!-- --> <!-- -->UI 状态与渲染</span></a><a class="group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/zh/advanced/16-infrastructure-config/"><span>EP<!-- -->16<!-- --> <!-- -->基础设施与配置</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></nav></div><!--$--><!--/$--></div></div></main><script src="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n3:I[37457,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n5:I[95914,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\"],\"Sidebar\"]\n7:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"OutletBoundary\"]\n8:\"$Sreact.suspense\"\na:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"MetadataBoundary\"]\ne:I[68027,[],\"default\"]\n:HL[\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"kOMToiePwU79Kzn0fZt4S\",\"c\":[\"\",\"zh\",\"advanced\",\"15-services-api-layer\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[[\"locale\",\"zh\",\"d\"],{\"children\":[\"(learn)\",{\"children\":[\"advanced\",{\"children\":[[\"chapter\",\"15-services-api-layer\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true]}],[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"div\",null,{\"className\":\"flex gap-8\",\"children\":[[\"$\",\"$L5\",null,{}],[\"$\",\"div\",null,{\"className\":\"min-w-0 flex-1\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@9\"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[33499,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"I18nProvider\"]\n10:I[45872,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"Header\"]\n11:I[22016,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"\"]\n4:[\"$\",\"html\",null,{\"lang\":\"zh\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n          (function() {\\n            var theme = localStorage.getItem('theme');\\n            if (theme === 'dark' || (!theme \u0026\u0026 window.matchMedia('(prefers-color-scheme: dark)').matches)) {\\n              document.documentElement.classList.add('dark');\\n            }\\n          })();\\n        \"}}]}],[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased\",\"children\":[\"$\",\"$Lf\",null,{\"locale\":\"zh\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-4xl space-y-8 py-4\",\"children\":[[\"$\",\"header\",null,{\"className\":\"rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/zh/curriculum\",\"className\":\"inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"课程地图\"]}],[\"$\",\"div\",null,{\"className\":\"mt-4 flex flex-wrap items-center gap-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800\",\"children\":[\"EP\",\"15\"]}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold text-zinc-950 dark:text-zinc-50\",\"children\":\"服务与 API 层\"}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"模型客户端、流、重试、提供商和服务边界\"}]]}],[\"$\",\"section\",null,{\"className\":\"rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-start justify-between gap-3\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300\",\"children\":\"Prompt 补充材料\"}],[\"$\",\"h2\",null,{\"className\":\"mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50\",\"children\":\"Service references and API tool-use material\"}],[\"$\",\"p\",null,{\"className\":\"mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200\",\"children\":\"This chapter can use the embedded data prompts as service-layer reading material.\"}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":14,\"height\":14,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}],\"来源仓库\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70\",\"children\":\"这些条目是从 Claude Code npm 包抽取出的第三方 prompt reference，适合课堂对照阅读，不当作官方文档。\"}],[\"$\",\"div\",null,{\"className\":\"mt-4 grid gap-3 md:grid-cols-2\",\"children\":[[\"$\",\"a\",\"data-claude-api-reference-typescript.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-claude-api-reference-typescript.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[\"$L12\",\"$L13\",\"$L14\",\"$L15\",\"$L16\",\"$undefined\"]}],\"$L17\"]}],\"$L18\",\"$L19\"]}],\"$L1a\",\"$L1b\",\"$L1c\",\"$L1d\"]}]]}],\"$L1e\",\"$L1f\"]}]\n"])</script><script>self.__next_f.push([1,"20:I[19004,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"AdvancedDocRenderer\"]\n12:[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}]\n13:[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}]\n14:[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}]\n15:[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}]\n16:[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}]\n17:[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Claude API reference TypeScript\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"data-claude-api-reference-typescript.md\"}]]}]\n18:[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"SDK reference\"}]\n19:[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Connects service-layer clients to the actual API surface.\"}]\n"])</script><script>self.__next_f.push([1,"1a:[\"$\",\"a\",\"data-streaming-reference-typescript.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-streaming-reference-typescript.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Streaming reference TypeScript\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"data-streaming-reference-typescript.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Streaming service\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Useful for comparing API stream handling with QueryEngine behavior.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1b:[\"$\",\"a\",\"data-tool-use-reference-python.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-tool-use-reference-python.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Tool use reference Python\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"data-tool-use-reference-python.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Tool runner\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Grounds tool-use loops in official-style API examples embedded into the package.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1c:[\"$\",\"a\",\"data-http-error-codes-reference.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-http-error-codes-reference.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"HTTP error codes reference\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"data-http-error-codes-reference.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Error handling\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Complements retries, fallback, and failure surfaces.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1d:[\"$\",\"a\",\"data-claude-model-catalog.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-claude-model-catalog.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Model catalog\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"data-claude-model-catalog.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Model routing\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Pairs with service boundaries, model selection, and budget discussions.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1e:[\"$\",\"$L20\",null,{\"chapter\":\"15\"}]\n"])</script><script>self.__next_f.push([1,"1f:[\"$\",\"nav\",null,{\"className\":\"flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/zh/advanced/14-ui-state-management\",\"className\":\"group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left transition-transform group-hover:-translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],[\"$\",\"span\",null,{\"children\":[\"EP\",\"14\",\" \",\"UI 状态与渲染\"]}]]}],[\"$\",\"$L11\",null,{\"href\":\"/zh/advanced/16-infrastructure-config\",\"className\":\"group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"span\",null,{\"children\":[\"EP\",\"16\",\" \",\"基础设施与配置\"]}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-right transition-transform group-hover:translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1ays0h\",{\"d\":\"M5 12h14\"}],[\"$\",\"path\",\"xquz4c\",{\"d\":\"m12 5 7 7-7 7\"}],\"$undefined\"]}]]}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"21:I[27201,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"IconMark\"]\n9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Agent Coding Lesson\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"从 0 到 1 构建一个 nano Claude Code-like agent，每次只增加一个机制\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L21\",\"3\",{}]]\n"])</script></body></html>

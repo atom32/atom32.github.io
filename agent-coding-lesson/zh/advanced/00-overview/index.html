@@ -1,0 +1,637 @@
+<!DOCTYPE html><!--kOMToiePwU79Kzn0fZt4S--><html lang="zh"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js"/><script src="/agent-coding-lesson/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/76fed9c17f51393e.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/7de9141b1af425c3.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/turbopack-8800d0fd815877b2.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/076aae518584b842.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js" async=""></script><title>Agent Coding Lesson</title><meta name="description" content="从 0 到 1 构建一个 nano Claude Code-like agent，每次只增加一个机制"/><link rel="icon" href="/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico" sizes="256x256" type="image/x-icon"/><script>
+          (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script><script src="/agent-coding-lesson/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm"><div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a class="text-lg font-bold" href="/agent-coding-lesson/zh/">Agent Coding Lesson</a><nav class="hidden items-center gap-6 md:flex"><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/curriculum/">课程地图</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/timeline/">学习路径</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/compare/">版本对比</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/layers/">架构层</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/slides/s01/">幻灯片</a><div class="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5"><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">EN</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">中文</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">日本語</button></div><button class="rounded-md p-1.5 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Switch to dark mode"><span class="inline-block h-4 w-4"></span></button><a href="https://github.com/atom32/agent-coding-lesson" target="_blank" rel="noopener" class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Open project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a></nav><button class="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"><div class="flex gap-8"><nav class="hidden w-64 shrink-0 md:block"><div class="sticky top-[calc(3.5rem+2rem)] max-h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/curriculum/">课程地图</a><div class="space-y-1"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/summary/">中间摘要</a><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/glossary/">术语表</a></div><section class="space-y-5"><div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">实验室课程</div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">工具与执行</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s01/"><span class="font-mono text-xs">s01</span><span class="ml-1.5">Agent 循环</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s02/"><span class="font-mono text-xs">s02</span><span class="ml-1.5">工具使用</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">规划与协调</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s03/"><span class="font-mono text-xs">s03</span><span class="ml-1.5">TodoWrite</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s04/"><span class="font-mono text-xs">s04</span><span class="ml-1.5">子 Agent</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s05/"><span class="font-mono text-xs">s05</span><span class="ml-1.5">技能</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s07/"><span class="font-mono text-xs">s07</span><span class="ml-1.5">任务系统</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-purple-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">记忆管理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s06/"><span class="font-mono text-xs">s06</span><span class="ml-1.5">上下文压缩</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">并发</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s08/"><span class="font-mono text-xs">s08</span><span class="ml-1.5">后台任务</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-red-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">协作</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s09/"><span class="font-mono text-xs">s09</span><span class="ml-1.5">Agent 团队</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s10/"><span class="font-mono text-xs">s10</span><span class="ml-1.5">团队协议</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s11/"><span class="font-mono text-xs">s11</span><span class="ml-1.5">自主 Agent</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s12/"><span class="font-mono text-xs">s12</span><span class="ml-1.5">Worktree + 任务隔离</span></a></li></ul></div></section><section><div class="mb-2 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">真实系统解剖</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white" href="/agent-coding-lesson/zh/advanced/00-overview/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->00</span><span class="ml-1.5">架构总览</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/01-query-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->01</span><span class="ml-1.5">查询引擎</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/02-tool-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->02</span><span class="ml-1.5">工具系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/03-coordinator/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->03</span><span class="ml-1.5">协调器</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/04-plugin-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->04</span><span class="ml-1.5">插件系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/05-hook-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->05</span><span class="ml-1.5">Hook 系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/06-bash-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->06</span><span class="ml-1.5">Bash 引擎</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/07-permission-pipeline/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->07</span><span class="ml-1.5">权限流水线</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/08-agent-swarms/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->08</span><span class="ml-1.5">Agent Swarm</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/09-session-persistence/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->09</span><span class="ml-1.5">会话持久化</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/10-context-assembly/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->10</span><span class="ml-1.5">上下文装配</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/11-compact-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->11</span><span class="ml-1.5">压缩系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/12-startup-bootstrap/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->12</span><span class="ml-1.5">启动与引导</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/13-bridge-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->13</span><span class="ml-1.5">桥接系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/14-ui-state-management/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->14</span><span class="ml-1.5">UI 状态与渲染</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/15-services-api-layer/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->15</span><span class="ml-1.5">服务与 API 层</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/16-infrastructure-config/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->16</span><span class="ml-1.5">基础设施与配置</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/17-telemetry-privacy-operations/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->17</span><span class="ml-1.5">遥测与运营</span></a></li></ul></section></div></nav><div class="min-w-0 flex-1"><div class="mx-auto max-w-4xl space-y-8 py-4"><header class="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" href="/agent-coding-lesson/zh/curriculum/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>课程地图</a><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800">EP<!-- -->00</span><h1 class="text-2xl font-bold text-zinc-950 dark:text-zinc-50">架构总览</h1></div><p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">作为生产级 harness 的 Claude Code 六大支柱</p></header><section class="rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300">Prompt 补充材料</p><h2 class="mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Prompt anatomy overview</h2><p class="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">Use these to show that the agent is assembled from many prompt fragments, not one magic system prompt.</p></div><a href="https://github.com/Piebald-AI/claude-code-system-prompts" target="_blank" rel="noopener" class="inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>来源仓库</a></div><p class="mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70">这些条目是从 Claude Code npm 包抽取出的第三方 prompt reference，适合课堂对照阅读，不当作官方文档。</p><div class="mt-4 grid gap-3 md:grid-cols-2"><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-harness-instructions.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Harness instructions</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-harness-instructions.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Core identity</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Shows the compact contract between markdown output, permissions, reminders, compaction, and tool use.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-doing-tasks-software-engineering-focus.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Software engineering focus</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-doing-tasks-software-engineering-focus.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Task framing</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Explains how generic user requests are interpreted as repository work inside the harness.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-communication-style.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Communication style</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-communication-style.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">User-facing layer</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Useful for discussing progress updates as a product surface, not just model personality.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-agent-usage-notes.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Agent tool usage notes</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">tool-description-agent-usage-notes.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Subagent contract</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Introduces the worker-return boundary and the trust-but-verify rule.</p></a></div></section><article class="py-4"><div class="prose-custom"><h1>00 — Claude Code 完整架构解析</h1>
+<blockquote class="hero-callout">
+</blockquote>
+<blockquote>
+<p><strong>本文档是什么。</strong> 这是 <em>Claude Code 深度解析</em> 系列的压轴篇章——一部将 17 篇架构分析浓缩为单一参考手册的微缩百科全书。在深入各章之前用它做地图，或在探索完各章后用它做复习。</p>
+<p><strong>本文档不是什么。</strong> 它不能替代各篇深度解析。下文每个小节都是一段"电梯演讲"——用 60 秒讲完一个在专篇中可能跨越 500-900 行的子系统。</p>
+</blockquote>
+<hr>
+<h2>目录</h2>
+<p><strong>第一部分 — 导航</strong></p>
+<ul>
+<li><a href="#1-%E5%85%A8%E5%B1%80%E6%9E%B6%E6%9E%84%E5%9B%BE">§1 全局架构图</a></li>
+<li><a href="#2-%E7%AF%87%E7%AB%A0%E7%B4%A2%E5%BC%95%E6%AF%8F%E7%AB%A0%E4%B8%80%E5%8F%A5%E8%AF%9D">§2 篇章索引：每章一句话</a></li>
+<li><a href="#3-%E9%98%85%E8%AF%BB%E9%A1%BA%E5%BA%8F%E5%85%AD%E6%9D%A1%E8%AE%A4%E7%9F%A5%E8%B7%AF%E5%BE%84">§3 阅读顺序：六条认知路径</a></li>
+</ul>
+<p><strong>第二部分 — 核心架构速览</strong></p>
+<ul>
+<li><a href="#4-harness%E5%A4%A7%E8%84%91%E5%91%A8%E5%9B%B4%E7%9A%84%E8%BA%AB%E4%BD%93">§4 Harness：大脑周围的身体</a></li>
+<li><a href="#5-%E6%A0%B8%E5%BF%83%E5%BE%AA%E7%8E%AF12-%E6%AD%A5%E7%8A%B6%E6%80%81%E6%9C%BA">§5 核心循环：12 步状态机</a></li>
+<li><a href="#6-%E5%B7%A5%E5%85%B7%E7%B3%BB%E7%BB%9F%E5%A5%91%E7%BA%A6%E5%BC%8F%E8%83%BD%E5%8A%9B%E8%BE%B9%E7%95%8C">§6 工具系统：契约式能力边界</a></li>
+<li><a href="#7-%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86%E6%9C%80%E7%A8%80%E7%BC%BA%E7%9A%84%E8%B5%84%E6%BA%90">§7 上下文管理：最稀缺的资源</a></li>
+<li><a href="#8-%E6%9D%83%E9%99%90%E4%B8%8E%E5%AE%89%E5%85%A8%E5%9C%B0%E5%9F%BA%E8%80%8C%E9%9D%9E%E5%A4%A9%E8%8A%B1%E6%9D%BF">§8 权限与安全：地基而非天花板</a></li>
+<li><a href="#9-%E5%A4%9A-agent%E4%BB%8E%E7%8B%AC%E5%A5%8F%E5%88%B0%E4%BA%A4%E5%93%8D%E4%B9%90">§9 多 Agent：从独奏到交响乐</a></li>
+<li><a href="#10-skill-%E4%B8%8E-plugin%E8%87%AA%E6%88%91%E8%BF%9B%E5%8C%96%E7%9A%84%E6%9E%B6%E6%9E%84">§10 Skill 与 Plugin：自我进化的架构</a></li>
+</ul>
+<p><strong>第三部分 — 工程卓越</strong></p>
+<ul>
+<li><a href="#11-%E4%B8%83%E4%B8%AA%E5%80%BC%E5%BE%97%E7%A0%94%E7%A9%B6%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5">§11 七个值得研究的工程实践</a></li>
+</ul>
+<p><strong>第四部分 — 独特视角</strong></p>
+<ul>
+<li><a href="#12-%E7%AC%AC%E4%B8%80%E4%BA%BA%E7%A7%B0%E8%A7%86%E8%A7%92%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E4%BD%9C%E7%9A%84">§12 第一人称视角：我是如何运作的</a></li>
+</ul>
+<p><strong>第五部分 — 可迁移的设计模式</strong></p>
+<ul>
+<li><a href="#13-%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%B8%A6%E8%B5%B0%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">§13 你可以带走的设计模式</a></li>
+</ul>
+<hr>
+<h1>第一部分 — 导航</h1>
+<h2>§1 全局架构图</h2>
+<p>Claude Code 的强大不是来自某个杀手锏功能，而是<strong>六大支柱协同运作</strong>——每一个都在放大其他支柱的效果：</p>
+<pre class="ascii-diagram"><code>                        ┌─────────────────────────┐
+                        │     System Prompt        │
+                        │  (身份 + 规则 +           │
+                        │   42+ 工具描述)           │
+                        └────────────┬────────────┘
+                                     │
+                  ┌──────────────────┼──────────────────┐
+                  │                  │                  │
+         ┌───────▼────────┐ ┌──────▼───────┐ ┌───────▼────────┐
+         │  工具系统       │ │  查询循环    │ │    上下文      │
+         │  (42+ 工具，    │ │  (12 步      │ │  管理          │
+         │   每个 30+方法) │ │   状态机)    │ │  (4 层压缩)    │
+         └───────┬────────┘ └──────┬───────┘ └───────┬────────┘
+                  │                  │                  │
+                  └──────────────────┼──────────────────┘
+                                     │
+                  ┌──────────────────┼──────────────────┐
+                  │                  │                  │
+         ┌───────▼────────┐ ┌──────▼───────┐ ┌───────▼────────┐
+         │  权限与安全     │ │  多 Agent    │ │  Skill &#x26;       │
+         │  (7 层纵深防御) │ │  集群        │ │  Plugin        │
+         │                │ │  (3 后端，   │ │  (6 源，       │
+         │                │ │   7 种任务)  │ │   MCP 协议)    │
+         └────────────────┘ └──────────────┘ └────────────────┘
+</code></pre>
+<blockquote>
+<p>💡 <strong>补充阅读</strong>: <a href="/advanced-assets/claude-code-architecture.html">详细架构图 (HTML 交互版)</a> — 包含完整模块边界、数据流、技术栈和安全边界的可视化视图</p>
+</blockquote>
+<p><strong>一句话数据流：</strong></p>
+<pre class="ascii-diagram"><code>用户输入 → CLI (cli.tsx) → QueryEngine.query() → System Prompt 组装
+  → 流式 API 调用 → 工具提取 → 权限检查 → 工具执行
+  → 结果注入 → 继续/结束决策 → 下一次迭代或响应
+</code></pre>
+<p><strong>六大设计哲学：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>哲学</th><th>一句话</th></tr></thead><tbody><tr><td>1</td><td><strong>LLM = 大脑，Harness = 身体</strong></td><td>LLM 负责推理；Harness 负责感知、行动、记忆和约束</td></tr><tr><td>2</td><td><strong>工具 = 能力边界</strong></td><td>Claude 只能做注册工具允许的事情</td></tr><tr><td>3</td><td><strong>上下文是最稀缺的资源</strong></td><td>200K token 听起来很多，一个中等项目就能填满</td></tr><tr><td>4</td><td><strong>零信任安全</strong></td><td>每一次工具调用都经过多层权限检查</td></tr><tr><td>5</td><td><strong>循环直到完成</strong></td><td>不是请求-响应，而是 <code>调用 → 工具 → 结果 → 重复</code></td></tr><tr><td>6</td><td><strong>可扩展性决定上限</strong></td><td>Skill、Plugin、MCP 让能力无限延伸</td></tr></tbody></table>
+<hr>
+<h2>§2 篇章索引：每章一句话</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>篇</th><th>标题</th><th>电梯演讲</th><th>行数</th></tr></thead><tbody><tr><td>01</td><td><a href="../01-query-engine.md">QueryEngine：大脑</a></td><td>将 LLM 变成 Agent 的 <code>while(true)</code> 循环——12 步流水线、AsyncGenerator 流式处理、错误恢复</td><td>711</td></tr><tr><td>02</td><td><a href="../02-tool-system.md">工具系统：42 模块统一接口</a></td><td>每个工具 30+ 方法契约，Schema 驱动注册，三层过滤，流式并行执行</td><td>665</td></tr><tr><td>03</td><td><a href="../03-coordinator.md">多 Agent 协调器</a></td><td>tmux/iTerm2/进程内后端，AsyncLocalStorage 隔离，自动环境检测</td><td>342</td></tr><tr><td>04</td><td><a href="../04-plugin-system.md">Plugin 系统：全生命周期</a></td><td>Plugin = Skills + Hooks + MCP 服务器；6 种 Skill 来源，后台安装协调</td><td>548</td></tr><tr><td>05</td><td><a href="../05-hook-system.md">Hook 系统：20 种事件类型</a></td><td>PreToolUse / PostToolUse / Notification 钩子，MCP 传输，否决与变异语义</td><td>299</td></tr><tr><td>06</td><td><a href="../06-bash-engine.md">Bash 引擎：沙箱与管道</a></td><td>6 层纵深防御，tree-sitter AST 解析，macOS Seatbelt 沙箱</td><td>458</td></tr><tr><td>07</td><td><a href="../07-permission-pipeline.md">权限管道：从规则到内核</a></td><td>7 种规则来源，Bash AST 安全，投机性 YOLO 分类器，OAuth 2.0 PKCE</td><td>619</td></tr><tr><td>08</td><td><a href="../08-agent-swarms.md">Agent 集群：团队协调</a></td><td>7 种 TaskState 变体，SendMessage 协议，DreamTask 记忆整理，UltraPlan</td><td>503</td></tr><tr><td>09</td><td><a href="../09-session-persistence.md">会话持久化</a></td><td>JSONL 追加存储，恢复/分叉/搜索，跨会话记忆</td><td>411</td></tr><tr><td>10</td><td><a href="../10-context-assembly.md">上下文组装</a></td><td>System Prompt 分层，Token 预算分配，动态附件，斜杠命令</td><td>473</td></tr><tr><td>11</td><td><a href="../11-compact-system.md">压缩系统</a></td><td>4 层压缩（微 → 截断 → 自动 → 紧急），电路断路器，Prompt Cache 共享</td><td>372</td></tr><tr><td>12</td><td><a href="../12-startup-bootstrap.md">启动与引导</a></td><td>Import-Gap 并行，快速路径分发，记忆化初始化，<code>state.ts</code> 叶模块模式</td><td>393</td></tr><tr><td>13</td><td><a href="../13-bridge-system.md">桥接系统</a></td><td>CLI ↔ IDE WebSocket 桥接，3 种 Spawn 模式，Chrome 扩展集成</td><td>346</td></tr><tr><td>14</td><td><a href="../14-ui-state-management.md">UI 与状态管理</a></td><td>Fork Ink + React 19，终端中的 W3C 事件模型，35 行 Store，Vim 状态机</td><td>980</td></tr><tr><td>15</td><td><a href="../15-services-api-layer.md">服务层与 API</a></td><td>queryModel() 700 行核心，多提供商工厂，SSE 流管道，重试引擎</td><td>691</td></tr><tr><td>16</td><td><a href="../16-infrastructure-config.md">基础设施与配置</a></td><td>Bootstrap 单例，5 层设置合并，安全存储，CLAUDE.md 记忆系统</td><td>876</td></tr></tbody></table>
+<blockquote>
+<p><strong>合计</strong>：16 篇深度解析 + 本总纲，共 8,600+ 行架构分析。</p>
+</blockquote>
+<hr>
+<h2>§3 阅读顺序：六条认知路径</h2>
+<p><img src="/advanced-assets/00-overview.svg" alt="00 overview"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>路径</th><th>名称</th><th>适合人群</th><th>篇章</th></tr></thead><tbody><tr><td>🟢 A</td><td><strong>核心循环</strong></td><td>初次阅读者</td><td>00 → 12 → 01 → 02</td></tr><tr><td>🔵 B</td><td><strong>安全与资源</strong></td><td>安全工程师、成本优化者</td><td>→ 06 → 07 → 10 → 11</td></tr><tr><td>🟣 C</td><td><strong>协作与扩展</strong></td><td>插件开发者、多 Agent 构建者</td><td>→ 03 → 08 → 04 → 05</td></tr><tr><td>🟠 D</td><td><strong>基础设施</strong></td><td>后端工程师、平台团队</td><td>→ 15 → 16 → 09</td></tr><tr><td>🔴 E</td><td><strong>体验层</strong></td><td>UI 开发者、IDE 集成者</td><td>→ 13 → 14</td></tr><tr><td>🟡 F</td><td><strong>暗面</strong></td><td>隐私研究者、运维工程师</td><td>→ 17</td></tr></tbody></table>
+<blockquote>
+<p><strong>最小可行阅读</strong>：仅路径 A（4 篇，~2,100 行）即可获得 60% 的架构理解。加上路径 B 达到 85%。路径 F 是独立的压轴篇——在任意路径之后阅读，了解生产环境中的遥测管道、模型代号隐匿和远程运营控制系统。</p>
+</blockquote>
+<hr>
+<h1>第二部分 — 核心架构速览</h1>
+<h2>§4 Harness：大脑周围的身体</h2>
+<p>LLM 是大脑，<em>Harness</em> 是其他一切——赋予大脑感知、行动、记忆和安全的运行时基础设施：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>能力</th><th>实现</th><th>大脑看到的</th></tr></thead><tbody><tr><td><strong>感知文件</strong></td><td>FileReadTool, GlobTool, GrepTool</td><td>"我能看到代码库"</td></tr><tr><td><strong>修改代码</strong></td><td>FileEditTool, FileWriteTool</td><td>"我能修改东西"</td></tr><tr><td><strong>执行命令</strong></td><td>BashTool（沙箱化）</td><td>"我能运行和测试"</td></tr><tr><td><strong>搜索网络</strong></td><td>WebSearchTool, WebFetchTool</td><td>"我能查资料"</td></tr><tr><td><strong>与用户交互</strong></td><td>AskUserQuestionTool, 权限对话框</td><td>"我能提问"</td></tr><tr><td><strong>分派工作</strong></td><td>AgentTool, TeamCreate, SendMessage</td><td>"我能委派任务"</td></tr><tr><td><strong>记忆</strong></td><td>CLAUDE.md, memdir, auto-memory</td><td>"我有长期记忆"</td></tr><tr><td><strong>扩展能力</strong></td><td>MCPTool, SkillTool, Plugin 系统</td><td>"我能学新技能"</td></tr></tbody></table>
+<p><strong>System Prompt 的分层构建：</strong></p>
+<pre class="ascii-diagram"><code>System Prompt 构建（按 Token 优先级排序）：
+  1. 核心身份与规则    ← 我是谁，能/不能做什么
+  2. 工具描述（42+）   ← ~10K+ tokens 的能力定义
+  3. Git 状态与项目上下文 ← 当前分支、最近提交
+  4. CLAUDE.md 内容    ← 项目级指令
+  5. 用户/企业规则     ← 偏好、组织策略
+  6. 动态附件          ← 技能发现、记忆注入、MCP 资源
+</code></pre>
+<blockquote>
+<p>→ 深度解析: <a href="12-startup-bootstrap">EP12: 启动与引导</a> | <a href="16-infrastructure-config">EP16: 基础设施</a></p>
+</blockquote>
+<hr>
+<h2>§5 核心循环：12 步状态机</h2>
+<p>Claude Code 不是"发送提示，得到回答"，而是一个 <strong>while(true) 循环</strong>——将单次调用的 LLM 变成迭代式 Agent 的核心放大器：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>步骤</th><th>名称</th><th>目的</th></tr></thead><tbody><tr><td>1</td><td><code>applyToolResultBudget</code></td><td>裁剪超大工具结果</td></tr><tr><td>2</td><td><code>snipCompact</code></td><td>截断最旧对话轮次</td></tr><tr><td>3</td><td><code>microcompact</code></td><td>清理过期工具输出（时间衰减）</td></tr><tr><td>4</td><td><code>contextCollapse</code></td><td>折叠冗余上下文</td></tr><tr><td>5</td><td><code>autocompact</code></td><td>AI 生成对话摘要</td></tr><tr><td>6</td><td><code>tokenWarningState</code></td><td>预算检查与用户告警</td></tr><tr><td>7</td><td><code>callModel</code></td><td>流式 API 调用</td></tr><tr><td>8</td><td><code>StreamingToolExecutor</code></td><td><em>边流式输出边执行</em>工具</td></tr><tr><td>9</td><td><code>stopHooks</code></td><td>评估停止条件</td></tr><tr><td>10</td><td><code>tokenBudget check</code></td><td>硬预算限制</td></tr><tr><td>11</td><td><code>getAttachmentMessages</code></td><td>注入记忆、技能发现</td></tr><tr><td>12</td><td><code>state transition</code></td><td>更新状态，继续循环</td></tr></tbody></table>
+<p><strong>错误恢复策略矩阵：</strong> 429 → 指数退避；529 → 降级到 Sonnet；prompt-too-long → 紧急压缩；max_output_tokens → 自动提升 8K→64K。</p>
+<blockquote>
+<p>→ 深度解析: <a href="01-query-engine">EP01: QueryEngine</a></p>
+</blockquote>
+<hr>
+<h2>§6 工具系统：契约式能力边界</h2>
+<p>每个工具实现 <strong>30+ 方法的完整契约</strong>——身份、执行、安全、并发、UI 渲染。<code>buildTool</code> 工厂提供 fail-closed 默认值（<code>isConcurrencySafe: false</code>，<code>isReadOnly: false</code>）。<strong>三层工具过滤</strong>确保模型只看到当前上下文适用的工具，<code>assembleToolPool()</code> 的稳定排序保证 Prompt Cache 键稳定。</p>
+<p><strong>BashTool</strong> 是最复杂的工具（~156K 代码），采用 6 层纵深防御——从安全包装器剥离到 tree-sitter AST 解析再到 macOS Seatbelt OS 级沙箱。</p>
+<blockquote>
+<p>→ 深度解析: <a href="02-tool-system">EP02: 工具系统</a> | <a href="06-bash-engine">EP06: Bash 引擎</a></p>
+</blockquote>
+<hr>
+<h2>§7 上下文管理：最稀缺的资源</h2>
+<p><strong>四层压缩保持系统活力：</strong> Layer 0（API 侧自动清除）→ Layer 1 微压缩（时间衰减清理旧结果）→ Layer 2 截断（丢弃最旧轮次）→ Layer 3 自动压缩（AI 生成摘要，带电路断路器）→ Layer 4 紧急压缩（仅在 API 返回 prompt-too-long 时触发）。</p>
+<p><strong>Token 估算三级精度：</strong> 粗略（<code>bytes/4</code>，零成本）→ 代理（Haiku <code>usage.input_tokens</code>，便宜）→ 精确（<code>countTokens</code> API，准确但慢）。</p>
+<p><strong>Prompt Cache 三层策略</strong> + <strong>Beta header 锁存</strong>保持缓存键稳定，避免 12 倍成本惩罚。</p>
+<blockquote>
+<p>→ 深度解析: <a href="10-context-assembly">EP10: 上下文组装</a> | <a href="11-compact-system">EP11: 压缩系统</a></p>
+</blockquote>
+<hr>
+<h2>§8 权限与安全：地基而非天花板</h2>
+<p>安全采用<strong>纵深防御</strong>——每层假设上一层已被绕过：工具级验证 → 7 源权限规则合并 → Bash AST 安全分析（23 种注入检测 + fail-closed）→ 投机性 YOLO 分类器（2 秒超时）→ 用户确认对话框 → OS 级沙箱。</p>
+<p><strong>设计原则：</strong> 安全相关 <strong>fail-closed</strong>（未知 → 拒绝）；可用性相关 <strong>fail-open</strong>（策略服务宕机 → 允许所有，使用本地缓存）。</p>
+<blockquote>
+<p>→ 深度解析: <a href="07-permission-pipeline">EP07: 权限管道</a> | <a href="06-bash-engine">EP06: Bash 引擎</a></p>
+</blockquote>
+<hr>
+<h2>§9 多 Agent：从独奏到交响乐</h2>
+<p>当任务超出单一上下文窗口时，系统<strong>分治而非压缩</strong>。三种执行后端自动检测（iTerm2 标签页 / tmux 面板 / 进程内 AsyncLocalStorage）。七种任务类型覆盖所有后台工作。团队协调使用 TaskList 共享状态 + SendMessage 异步通信 + 结构化消息类型。UltraPlan 模式启用分层规划。</p>
+<blockquote>
+<p>→ 深度解析: <a href="03-coordinator">EP03: 协调器</a> | <a href="08-agent-swarms">EP08: Agent 集群</a></p>
+</blockquote>
+<hr>
+<h2>§10 Skill 与 Plugin：自我进化的架构</h2>
+<p><strong>Skill 是可复用的 Prompt 工作流</strong>（YAML 前置元数据 + Markdown），6 种来源层级合并。<strong>Plugin 是组合单元</strong>（skills + hooks + mcpServers 捆绑）。<strong>MCP</strong> 是万能扩展管道（6 种传输类型，工具发现，OAuth 认证）。<strong>Hook 系统</strong> 提供 20 种事件类型的全生命周期拦截。</p>
+<blockquote>
+<p>→ 深度解析: <a href="04-plugin-system">EP04: Plugin 系统</a> | <a href="05-hook-system">EP05: Hook 系统</a></p>
+</blockquote>
+<hr>
+<h1>第三部分 — 工程卓越</h1>
+<h2>§11 七个值得研究的工程实践</h2>
+<h3>11.1 编译时死代码消除</h3>
+<p><code>feature('VOICE_MODE')</code> 在编译时被替换为 <code>true</code>/<code>false</code>，<code>false</code> 分支被 Bun 打包器<strong>完全移除</strong>。三种条件加载层级共存：编译时 DCE → 运行时环境检查 → 运行时能力检测。</p>
+<h3>11.2 循环依赖消除：叶模块模式</h3>
+<p><code>bootstrap/state.ts</code>（~55KB）被所有模块依赖，解决方案是让它成为<strong>依赖图的叶节点</strong>——禁止从 <code>src/</code> 导入任何东西。这不是建议，而是由自定义 ESLint 规则（<code>custom-rules/bootstrap-isolation</code>）<strong>强制执行</strong>的架构约束。</p>
+<h3>11.3 35 行 Store 替代 Redux</h3>
+<p>35 行 <code>createStore</code> 函数提供 <code>getState</code>/<code>setState</code>/<code>subscribe</code> 接口，配合 React 19 的 <code>useSyncExternalStore</code> 完成状态管理。<code>Object.is</code> 引用相等跳过避免不必要的重渲染。依赖成本：0 字节。</p>
+<h3>11.4 Fork Ink：在终端中构建浏览器</h3>
+<p>原版 Ink 的 LegacyRoot → <code>ConcurrentRoot</code>（React 19），无事件系统 → W3C 捕获/冒泡模型，单缓冲 → 双缓冲 + ANSI diff。渲染管线：<code>stdin → 按键解析 → DOM 事件分发 → React 更新 → Yoga 布局 → 屏幕缓冲 → ANSI diff → stdout</code>（16ms 节流）。</p>
+<h3>11.5 Vim 模式：教科书级状态机</h3>
+<p>四态有限状态机：Normal → Insert / Operator Pending / Find Pending。每个状态有明确的进入/退出动作和有限的状态转换集——行为可预测、可测试、可扩展。</p>
+<h3>11.6 Import-Gap 并行化</h3>
+<p>在 <code>import</code> 语句之间启动异步操作，利用 ES 模块评估的"空闲窗口"（~135ms）作为免费并行时间。无需 <code>Promise.all</code>，只需把异步启动放在 import 之间。</p>
+<h3>11.7 Fail-Open 与 Fail-Closed 的工程抉择</h3>
+<p><strong>Fail-Closed（安全优先）：</strong> Bash 解析错误 → 拒绝执行；权限超时 → 默认拒绝。<strong>Fail-Open（可用性优先）：</strong> 策略加载失败 → 允许所有；远程配置超时 → 用本地缓存；GrowthBook 不可用 → 用默认值。边界清晰：涉及用户数据/系统访问用 fail-closed，涉及配置/外部服务用 fail-open。</p>
+<blockquote>
+<p>→ 深度解析: <a href="12-startup-bootstrap">EP12: 启动</a> | <a href="14-ui-state-management">EP14: UI 与状态</a> | <a href="16-infrastructure-config">EP16: 基础设施</a></p>
+</blockquote>
+<hr>
+<h1>第四部分 — 独特视角</h1>
+<h2>§12 第一人称视角：我是如何运作的</h2>
+<h3>12.1 我的思维循环</h3>
+<p>每次工具调用都是一次完整的 API 往返。你感受到的"思考 → 行动 → 观察"循环，在底层是：<code>API 响应（tool_use）→ Harness 执行 → 结果注入 → 下一次 API 调用</code>。修复一个 bug 可能需要 5 次 API 调用：读文件 → 搜索 → 确认 → 编辑 → 测试。</p>
+<h3>12.2 我的并行能力</h3>
+<p>我可以在一次 API 响应中调用多个工具，Harness 通过 <code>StreamingToolExecutor</code> 并行执行所有 <code>isConcurrencySafe: true</code> 的工具。读操作并行，写操作串行。</p>
+<h3>12.3 我的上下文感知</h3>
+<p>我通过六个通道感知世界：System Prompt（我的"DNA"）、CLAUDE.md（我的"项目记忆"）、对话历史（我的"短期记忆"）、工具结果（我的"感官"）、Memory/memdir（我的"长期记忆"）、动态附件（我的"外部知识"）。</p>
+<h3>12.4 我的局限性</h3>
+<p>有限的上下文窗口 → 4 层压缩自动管理；不能直接执行代码 → BashTool 代劳；可能输出不安全命令 → 6 层安全管道拦截；单次输出有限 → <code>max_output_tokens</code> 自动提升；可能产生幻觉 → 工具结果提供事实反馈；API 不稳定 → 重试+降级+错误恢复；单一上下文不够 → 多 Agent 分治。</p>
+<h3>12.5 我为什么能高效工作</h3>
+<p>42+ 种工具覆盖几乎所有场景；可以迭代试错；可以并行化；有跨会话记忆；被安全约束（用户放心给权限）；能自我修复（错误恢复机制）。</p>
+<hr>
+<h1>第五部分 — 可迁移的设计模式</h1>
+<h2>§13 你可以带走的设计模式</h2>
+<blockquote>
+<p>以下模式从 17 篇架构分析中提炼而来。每条遵循<strong>场景 → 方案 → 效果</strong>闭环结构，可直接应用于任何 Agentic 系统、CLI 工具或复杂 TypeScript 应用。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>模式</th><th>核心洞察</th><th>来源</th></tr></thead><tbody><tr><td>1</td><td><strong>Import-Gap 并行预取</strong></td><td>在 ES 模块评估间隙获得免费并发</td><td>EP12</td></tr><tr><td>2</td><td><strong>AsyncGenerator 状态机</strong></td><td><code>yield</code> = 天然背压 + 可取消 + 可组合</td><td>EP01</td></tr><tr><td>3</td><td><strong>多层压缩管道</strong></td><td>逐级升级成本：便宜 → 昂贵，各层独立电路断路</td><td>EP10, EP11</td></tr><tr><td>4</td><td><strong>纵深防御安全</strong></td><td>每层假设上一层已被绕过</td><td>EP06, EP07</td></tr><tr><td>5</td><td><strong>Fail-Closed + Fail-Open</strong></td><td>安全默认拒绝；服务优雅降级</td><td>EP07, EP16</td></tr><tr><td>6</td><td><strong>Schema 驱动注册</strong></td><td>一份 Zod Schema → 验证 + API + 权限 + UI</td><td>EP02</td></tr><tr><td>7</td><td><strong>投机执行 + 逐级升级</strong></td><td>在确认需要之前就启动昂贵检查</td><td>EP07</td></tr><tr><td>8</td><td><strong>叶模块隔离</strong></td><td>被依赖最多的模块不导入任何东西；ESLint 强制</td><td>EP12, EP16</td></tr><tr><td>9</td><td><strong>锁存模式</strong></td><td>一旦激活永不关闭，防止缓存键不稳定</td><td>EP15</td></tr><tr><td>10</td><td><strong>Agent 分治</strong></td><td>用独立上下文窗口的子 Agent 突破容量限制</td><td>EP03, EP08</td></tr><tr><td>11</td><td><strong>35 行替代整个库</strong></td><td>只写你需要的 API 表面</td><td>EP14</td></tr><tr><td>12</td><td><strong>错误恢复是一等公民</strong></td><td>每种错误码 → 专指恢复策略</td><td>EP01, EP15</td></tr><tr><td>13</td><td><strong>Stale-While-Error</strong>（独有发现）</td><td>读取失败时返回上次已知好值</td><td>EP16</td></tr><tr><td>14</td><td><strong>闭包工厂替代 Class</strong>（独有发现）</td><td>函数返回对象，非类实例；代际计数器防竟态</td><td>EP15, EP16</td></tr></tbody></table>
+<h3>详解：锁存模式（Pattern 9）</h3>
+<p><strong>场景：</strong> API beta header 影响 Prompt Cache 键。<strong>问题：</strong> 中途切换 header 导致所有缓存失效（12 倍成本增加）。<strong>方案：</strong> 三态锁存——<code>null</code>（未知）→ <code>true</code>（锁定）→ 永远保持 <code>true</code>。<strong>效果：</strong> 整个会话缓存键稳定，一个决策，无翻转。</p>
+<h3>详解：闭包工厂（Pattern 14）</h3>
+<p><strong>场景：</strong> LSP 服务器管理器需要私有状态 + 公共接口。<strong>问题：</strong> Class 带来继承诱惑和 <code>this</code> 绑定问题。<strong>方案：</strong> 工厂函数返回闭包对象，私有状态在闭包作用域中。代际计数器（<code>++generationCounter</code>）防止过期的异步操作覆盖新状态。<strong>效果：</strong> 比 class 更干净的 API，无 <code>this</code> 困惑。</p>
+<hr>
+<h2>结语</h2>
+<p>Claude Code 的强大不是来自某个天才般的设计决策，而是来自<strong>数百个正确工程选择的累积效应</strong>：</p>
+<ul>
+<li>启动优化节省的每一毫秒</li>
+<li>纵深防御拦截的每一个危险操作</li>
+<li>多层压缩保住的每一个 token</li>
+<li>缓存稳定性避免的每一次重复计算</li>
+<li>错误恢复挽救的每一个即将中断的会话</li>
+<li>Agent 编排倍增的每一个上下文窗口</li>
+</ul>
+<p>共同的主线：<strong>尊重每一个资源</strong>——时间、token、安全、用户信任。</p>
+<pre class="ascii-diagram"><code>                    ╭─────────────────────────╮
+                    │                         │
+                    │   尊重每一个资源。        │
+                    │                         │
+                    │   从每一个故障中恢复。     │
+                    │                         │
+                    │   迭代直到完成。          │
+                    │                         │
+                    ╰─────────────────────────╯
+</code></pre>
+<blockquote>
+<p><strong>下一步：</strong> 选择一条<a href="#3-%E9%98%85%E8%AF%BB%E9%A1%BA%E5%BA%8F%E5%85%AD%E6%9D%A1%E8%AE%A4%E7%9F%A5%E8%B7%AF%E5%BE%84">阅读路径</a>，深入各篇章。每篇 15-30 分钟，将改变你对 Agentic 系统设计的思考方式。</p>
+</blockquote>
+<hr>
+<p><em>本文档是 <a href="../README.md">Claude Code 深度解析</a> 系列的一部分——17 篇架构分析，覆盖 8,600+ 行技术内容，中英双语提供。</em></p>
+<hr>
+<p><strong>下一篇</strong>: <a href="01-query-engine">→ 01 — 查询引擎</a></p></div></article><nav class="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800"><div></div><a class="group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/zh/advanced/01-query-engine/"><span>EP<!-- -->01<!-- --> <!-- -->查询引擎</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></nav></div><!--$--><!--/$--></div></div></main><script src="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n3:I[37457,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n5:I[95914,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\"],\"Sidebar\"]\n7:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"OutletBoundary\"]\n8:\"$Sreact.suspense\"\na:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"MetadataBoundary\"]\ne:I[68027,[],\"default\"]\n:HL[\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"kOMToiePwU79Kzn0fZt4S\",\"c\":[\"\",\"zh\",\"advanced\",\"00-overview\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[[\"locale\",\"zh\",\"d\"],{\"children\":[\"(learn)\",{\"children\":[\"advanced\",{\"children\":[[\"chapter\",\"00-overview\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true]}],[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"div\",null,{\"className\":\"flex gap-8\",\"children\":[[\"$\",\"$L5\",null,{}],[\"$\",\"div\",null,{\"className\":\"min-w-0 flex-1\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@9\"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[33499,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"I18nProvider\"]\n10:I[45872,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"Header\"]\n11:I[22016,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"\"]\n4:[\"$\",\"html\",null,{\"lang\":\"zh\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n          (function() {\\n            var theme = localStorage.getItem('theme');\\n            if (theme === 'dark' || (!theme \u0026\u0026 window.matchMedia('(prefers-color-scheme: dark)').matches)) {\\n              document.documentElement.classList.add('dark');\\n            }\\n          })();\\n        \"}}]}],[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased\",\"children\":[\"$\",\"$Lf\",null,{\"locale\":\"zh\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-4xl space-y-8 py-4\",\"children\":[[\"$\",\"header\",null,{\"className\":\"rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/zh/curriculum\",\"className\":\"inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"课程地图\"]}],[\"$\",\"div\",null,{\"className\":\"mt-4 flex flex-wrap items-center gap-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800\",\"children\":[\"EP\",\"00\"]}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold text-zinc-950 dark:text-zinc-50\",\"children\":\"架构总览\"}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"作为生产级 harness 的 Claude Code 六大支柱\"}]]}],[\"$\",\"section\",null,{\"className\":\"rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-start justify-between gap-3\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300\",\"children\":\"Prompt 补充材料\"}],[\"$\",\"h2\",null,{\"className\":\"mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50\",\"children\":\"Prompt anatomy overview\"}],[\"$\",\"p\",null,{\"className\":\"mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200\",\"children\":\"Use these to show that the agent is assembled from many prompt fragments, not one magic system prompt.\"}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":14,\"height\":14,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}],\"来源仓库\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70\",\"children\":\"这些条目是从 Claude Code npm 包抽取出的第三方 prompt reference，适合课堂对照阅读，不当作官方文档。\"}],[\"$\",\"div\",null,{\"className\":\"mt-4 grid gap-3 md:grid-cols-2\",\"children\":[[\"$\",\"a\",\"system-prompt-harness-instructions.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-harness-instructions.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[\"$L12\",\"$L13\",\"$L14\",\"$L15\",\"$L16\",\"$undefined\"]}],\"$L17\"]}],\"$L18\",\"$L19\"]}],\"$L1a\",\"$L1b\",\"$L1c\"]}]]}],\"$L1d\",\"$L1e\"]}]\n"])</script><script>self.__next_f.push([1,"1f:I[19004,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"AdvancedDocRenderer\"]\n12:[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}]\n13:[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}]\n14:[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}]\n15:[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}]\n16:[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}]\n17:[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Harness instructions\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-harness-instructions.md\"}]]}]\n18:[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Core identity\"}]\n19:[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Shows the compact contract between markdown output, permissions, reminders, compaction, and tool use.\"}]\n"])</script><script>self.__next_f.push([1,"1a:[\"$\",\"a\",\"system-prompt-doing-tasks-software-engineering-focus.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-doing-tasks-software-engineering-focus.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Software engineering focus\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-doing-tasks-software-engineering-focus.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Task framing\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Explains how generic user requests are interpreted as repository work inside the harness.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1b:[\"$\",\"a\",\"system-prompt-communication-style.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-communication-style.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Communication style\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-communication-style.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"User-facing layer\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Useful for discussing progress updates as a product surface, not just model personality.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1c:[\"$\",\"a\",\"tool-description-agent-usage-notes.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-agent-usage-notes.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Agent tool usage notes\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"tool-description-agent-usage-notes.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Subagent contract\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Introduces the worker-return boundary and the trust-but-verify rule.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1d:[\"$\",\"$L1f\",null,{\"chapter\":\"00\"}]\n1e:[\"$\",\"nav\",null,{\"className\":\"flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800\",\"children\":[[\"$\",\"div\",null,{}],[\"$\",\"$L11\",null,{\"href\":\"/zh/advanced/01-query-engine\",\"className\":\"group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"span\",null,{\"children\":[\"EP\",\"01\",\" \",\"查询引擎\"]}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-right transition-transform group-hover:translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1ays0h\",{\"d\":\"M5 12h14\"}],[\"$\",\"path\",\"xquz4c\",{\"d\":\"m12 5 7 7-7 7\"}],\"$undefined\"]}]]}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"20:I[27201,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"IconMark\"]\n9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Agent Coding Lesson\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"从 0 到 1 构建一个 nano Claude Code-like agent，每次只增加一个机制\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L20\",\"3\",{}]]\n"])</script></body></html>

@@ -1,0 +1,766 @@
+<!DOCTYPE html><!--kOMToiePwU79Kzn0fZt4S--><html lang="ja"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js"/><script src="/agent-coding-lesson/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/76fed9c17f51393e.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/7de9141b1af425c3.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/turbopack-8800d0fd815877b2.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/076aae518584b842.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js" async=""></script><title>Agent Coding Lesson</title><meta name="description" content="0 から 1 へ nano Claude Code-like agent を構築し、毎回 1 つの仕組みを追加"/><link rel="icon" href="/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico" sizes="256x256" type="image/x-icon"/><script>
+          (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script><script src="/agent-coding-lesson/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm"><div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a class="text-lg font-bold" href="/agent-coding-lesson/ja/">Agent Coding Lesson</a><nav class="hidden items-center gap-6 md:flex"><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/curriculum/">カリキュラム</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/timeline/">学習パス</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/compare/">バージョン比較</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/layers/">アーキテクチャ層</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/slides/s01/">スライド</a><div class="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5"><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">EN</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">中文</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">日本語</button></div><button class="rounded-md p-1.5 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Switch to dark mode"><span class="inline-block h-4 w-4"></span></button><a href="https://github.com/atom32/agent-coding-lesson" target="_blank" rel="noopener" class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Open project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a></nav><button class="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"><div class="flex gap-8"><nav class="hidden w-64 shrink-0 md:block"><div class="sticky top-[calc(3.5rem+2rem)] max-h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/curriculum/">カリキュラム</a><div class="space-y-1"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/summary/">サマリー</a><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/glossary/">用語集</a></div><section class="space-y-5"><div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">ラボレッスン</div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">ツールと実行</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s01/"><span class="font-mono text-xs">s01</span><span class="ml-1.5">エージェントループ</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s02/"><span class="font-mono text-xs">s02</span><span class="ml-1.5">ツール</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">計画と調整</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s03/"><span class="font-mono text-xs">s03</span><span class="ml-1.5">TodoWrite</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s04/"><span class="font-mono text-xs">s04</span><span class="ml-1.5">サブエージェント</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s05/"><span class="font-mono text-xs">s05</span><span class="ml-1.5">スキル</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s07/"><span class="font-mono text-xs">s07</span><span class="ml-1.5">タスクシステム</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-purple-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">メモリ管理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s06/"><span class="font-mono text-xs">s06</span><span class="ml-1.5">コンテキスト圧縮</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">並行処理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s08/"><span class="font-mono text-xs">s08</span><span class="ml-1.5">バックグラウンドタスク</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-red-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">コラボレーション</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s09/"><span class="font-mono text-xs">s09</span><span class="ml-1.5">エージェントチーム</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s10/"><span class="font-mono text-xs">s10</span><span class="ml-1.5">チームプロトコル</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s11/"><span class="font-mono text-xs">s11</span><span class="ml-1.5">自律エージェント</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s12/"><span class="font-mono text-xs">s12</span><span class="ml-1.5">Worktree + タスク分離</span></a></li></ul></div></section><section><div class="mb-2 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">実システム解剖</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/00-overview/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->00</span><span class="ml-1.5">Architecture Overview</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/01-query-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->01</span><span class="ml-1.5">QueryEngine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white" href="/agent-coding-lesson/ja/advanced/02-tool-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->02</span><span class="ml-1.5">Tool System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/03-coordinator/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->03</span><span class="ml-1.5">Coordinator</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/04-plugin-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->04</span><span class="ml-1.5">Plugin System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/05-hook-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->05</span><span class="ml-1.5">Hook System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/06-bash-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->06</span><span class="ml-1.5">Bash Engine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/07-permission-pipeline/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->07</span><span class="ml-1.5">Permission Pipeline</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/08-agent-swarms/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->08</span><span class="ml-1.5">Agent Swarms</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/09-session-persistence/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->09</span><span class="ml-1.5">Session Persistence</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/10-context-assembly/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->10</span><span class="ml-1.5">Context Assembly</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/11-compact-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->11</span><span class="ml-1.5">Compact System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/12-startup-bootstrap/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->12</span><span class="ml-1.5">Startup &amp; Bootstrap</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/13-bridge-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->13</span><span class="ml-1.5">Bridge System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/14-ui-state-management/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->14</span><span class="ml-1.5">UI State &amp; Rendering</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/15-services-api-layer/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->15</span><span class="ml-1.5">Services &amp; API Layer</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/16-infrastructure-config/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->16</span><span class="ml-1.5">Infrastructure &amp; Config</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/17-telemetry-privacy-operations/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->17</span><span class="ml-1.5">Telemetry &amp; Operations</span></a></li></ul></section></div></nav><div class="min-w-0 flex-1"><div class="mx-auto max-w-4xl space-y-8 py-4"><header class="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" href="/agent-coding-lesson/ja/curriculum/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Course map</a><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800">EP<!-- -->02</span><h1 class="text-2xl font-bold text-zinc-950 dark:text-zinc-50">Tool System</h1></div><p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">One tool contract for files, shell, web, MCP, and agents</p></header><section class="rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300">Prompt reference</p><h2 class="mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Tool contracts as prompt-visible API</h2><p class="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">These files are the clearest bridge from a Python dispatch map to production-grade tool descriptions.</p></div><a href="https://github.com/Piebald-AI/claude-code-system-prompts" target="_blank" rel="noopener" class="inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>Source repo</a></div><p class="mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70">Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.</p><div class="mt-4 grid gap-3 md:grid-cols-2"><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-bash-overview.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Bash tool overview</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">tool-description-bash-overview.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Execution tool</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Shows how a shell tool is constrained and explained before the model ever calls it.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-edit.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Edit tool</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">tool-description-edit.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Mutation tool</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Highlights exact replacement, prior read requirements, and edit safety constraints.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-readfile.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Read tool</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">tool-description-readfile.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Observation tool</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Pairs with tool_result design and read-window limits.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-toolsearch-second-part.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">ToolSearch</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">tool-description-toolsearch-second-part.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Dynamic tool discovery</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Useful for showing how large tool surfaces become searchable instead of fully injected.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-agent-usage-notes.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Agent tool usage notes</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">tool-description-agent-usage-notes.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Higher-order tool</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Shows how a tool can launch another agent and still have a structured result contract.</p></a></div></section><article class="py-4"><div class="prose-custom"><blockquote class="hero-callout">
+</blockquote>
+<h1>Tool System Architecture: 42 Modules, One Interface</h1>
+<blockquote>
+<p><strong>Source files</strong>: <code>Tool.ts</code> (793 lines — interface definition), <code>tools.ts</code> (390 lines — registry), <code>tools/</code> (42+ directories)</p>
+</blockquote>
+<h2>TL;DR</h2>
+<p>Every action Claude Code takes — reading a file, running bash, searching the web, spawning a sub-agent — goes through a single unified <code>Tool</code> interface. 42+ tool modules, each self-contained in its own directory, are assembled at startup through a layered filtering system: feature flags → permission rules → mode restrictions → deny lists.</p>
+<hr>
+<h2>1. The Tool Interface: 30+ Methods, One Contract</h2>
+<p>Every tool in Claude Code implements the same <code>Tool&#x3C;Input, Output, Progress></code> type. This is a massive interface (793-line file) that covers:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">Tool</span>&#x3C;<span class="hljs-title class_">Input</span>, <span class="hljs-title class_">Output</span>, P> = {
+  <span class="hljs-comment">// Identity</span>
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">aliases</span>?: <span class="hljs-built_in">string</span>[]              <span class="hljs-comment">// Legacy name support</span>
+  <span class="hljs-attr">searchHint</span>?: <span class="hljs-built_in">string</span>             <span class="hljs-comment">// Keyword for ToolSearch discovery</span>
+
+  <span class="hljs-comment">// Schema (Zod v4)</span>
+  <span class="hljs-keyword">readonly</span> <span class="hljs-attr">inputSchema</span>: <span class="hljs-title class_">Input</span>     <span class="hljs-comment">// Runtime validation + TS inference</span>
+  <span class="hljs-attr">outputSchema</span>?: z.<span class="hljs-property">ZodType</span>
+
+  <span class="hljs-comment">// Core execution</span>
+  <span class="hljs-title function_">call</span>(args, context, canUseTool, parentMessage, onProgress?): <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-title class_">ToolResult</span>&#x3C;<span class="hljs-title class_">Output</span>>>
+
+  <span class="hljs-comment">// Permission pipeline</span>
+  validateInput?(input, context): <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-title class_">ValidationResult</span>>
+  <span class="hljs-title function_">checkPermissions</span>(input, context): <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-title class_">PermissionResult</span>>
+  preparePermissionMatcher?(input): <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">pattern</span>: <span class="hljs-built_in">string</span></span>) =></span> <span class="hljs-built_in">boolean</span>>
+
+  <span class="hljs-comment">// Behavioral flags</span>
+  <span class="hljs-title function_">isEnabled</span>(): <span class="hljs-built_in">boolean</span>
+  <span class="hljs-title function_">isReadOnly</span>(input): <span class="hljs-built_in">boolean</span>
+  <span class="hljs-title function_">isConcurrencySafe</span>(input): <span class="hljs-built_in">boolean</span>
+  isDestructive?(input): <span class="hljs-built_in">boolean</span>
+  interruptBehavior?(): <span class="hljs-string">'cancel'</span> | <span class="hljs-string">'block'</span>
+
+  <span class="hljs-comment">// UI rendering (React + Ink)</span>
+  <span class="hljs-title function_">renderToolUseMessage</span>(input, options): <span class="hljs-title class_">React</span>.<span class="hljs-property">ReactNode</span>
+  renderToolResultMessage?(content, progress, options): <span class="hljs-title class_">React</span>.<span class="hljs-property">ReactNode</span>
+  renderToolUseProgressMessage?(progress, options): <span class="hljs-title class_">React</span>.<span class="hljs-property">ReactNode</span>
+  renderGroupedToolUse?(toolUses, options): <span class="hljs-title class_">React</span>.<span class="hljs-property">ReactNode</span> | <span class="hljs-literal">null</span>
+  <span class="hljs-comment">// ... 10+ more render methods</span>
+}
+</code></pre>
+<h3>The buildTool() Factory</h3>
+<p>Rather than requiring every tool to implement all 30+ methods, Claude Code uses a factory function with fail-closed defaults:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">TOOL_DEFAULTS</span> = {
+  <span class="hljs-attr">isEnabled</span>: <span class="hljs-function">() =></span> <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">isConcurrencySafe</span>: <span class="hljs-function">() =></span> <span class="hljs-literal">false</span>,    <span class="hljs-comment">// Assume NOT safe</span>
+  <span class="hljs-attr">isReadOnly</span>: <span class="hljs-function">() =></span> <span class="hljs-literal">false</span>,           <span class="hljs-comment">// Assume writes</span>
+  <span class="hljs-attr">isDestructive</span>: <span class="hljs-function">() =></span> <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">checkPermissions</span>: <span class="hljs-function">(<span class="hljs-params">input</span>) =></span>       <span class="hljs-comment">// Defer to general system</span>
+    <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>({ <span class="hljs-attr">behavior</span>: <span class="hljs-string">'allow'</span>, <span class="hljs-attr">updatedInput</span>: input }),
+  <span class="hljs-attr">toAutoClassifierInput</span>: <span class="hljs-function">() =></span> <span class="hljs-string">''</span>,   <span class="hljs-comment">// Skip classifier</span>
+  <span class="hljs-attr">userFacingName</span>: <span class="hljs-function">() =></span> <span class="hljs-string">''</span>,
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> buildTool&#x3C;D>(<span class="hljs-attr">def</span>: D): <span class="hljs-title class_">BuiltTool</span>&#x3C;D> {
+  <span class="hljs-keyword">return</span> { ...<span class="hljs-variable constant_">TOOL_DEFAULTS</span>, <span class="hljs-attr">userFacingName</span>: <span class="hljs-function">() =></span> def.<span class="hljs-property">name</span>, ...def }
+}
+</code></pre>
+<p><strong>Design insight</strong>: Defaults are intentionally conservative. A tool that forgets to declare <code>isConcurrencySafe</code> defaults to <code>false</code> (serialize), not <code>true</code> (parallel). A tool that forgets <code>isReadOnly</code> defaults to <code>false</code> (requires permission). This is <em>fail-closed</em> security by default.</p>
+<hr>
+<h2>2. The Tool Registry: Static Array with Dynamic Filtering</h2>
+<p>All tools are registered in <code>tools.ts</code> via <code>getAllBaseTools()</code>. This returns a flat array — <strong>not</strong> a plugin registry, not a map, not a DI container. Intentionally simple.</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getAllBaseTools</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Tools</span> {
+  <span class="hljs-keyword">return</span> [
+    <span class="hljs-title class_">AgentTool</span>,          <span class="hljs-comment">// Sub-agent spawning</span>
+    <span class="hljs-title class_">TaskOutputTool</span>,     <span class="hljs-comment">// Structured output</span>
+    <span class="hljs-title class_">BashTool</span>,           <span class="hljs-comment">// Shell commands</span>
+    <span class="hljs-title class_">GlobTool</span>, <span class="hljs-title class_">GrepTool</span>, <span class="hljs-comment">// Search (conditional)</span>
+    <span class="hljs-title class_">FileReadTool</span>,       <span class="hljs-comment">// Read files</span>
+    <span class="hljs-title class_">FileEditTool</span>,       <span class="hljs-comment">// Edit files</span>
+    <span class="hljs-title class_">FileWriteTool</span>,      <span class="hljs-comment">// Create files</span>
+    <span class="hljs-title class_">NotebookEditTool</span>,   <span class="hljs-comment">// Jupyter notebooks</span>
+    <span class="hljs-title class_">WebFetchTool</span>,       <span class="hljs-comment">// HTTP requests</span>
+    <span class="hljs-title class_">WebSearchTool</span>,      <span class="hljs-comment">// Web search</span>
+    <span class="hljs-title class_">TodoWriteTool</span>,      <span class="hljs-comment">// Todo management</span>
+    <span class="hljs-comment">// ... 30+ more</span>
+  ]
+}
+</code></pre>
+<h3>Feature-Gated Tools</h3>
+<p>Many tools only appear when specific build flags are enabled:</p>
+<p><img src="/advanced-assets/02-tool-system-1.svg" alt="02 tool system 1"></p>
+<p>The conditional loading pattern uses <code>bun:bundle</code> for compile-time elimination:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Compile-time: if PROACTIVE is false, this entire block is dead code</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">SleepTool</span> = <span class="hljs-title function_">feature</span>(<span class="hljs-string">'PROACTIVE'</span>) || <span class="hljs-title function_">feature</span>(<span class="hljs-string">'KAIROS'</span>)
+  ? <span class="hljs-built_in">require</span>(<span class="hljs-string">'./tools/SleepTool/SleepTool.js'</span>).<span class="hljs-property">SleepTool</span>
+  : <span class="hljs-literal">null</span>
+</code></pre>
+<p>This means the Bun bundler physically strips the tool from the binary when the flag is off — not just <code>if</code>-gating it at runtime.</p>
+<hr>
+<h2>3. Tool Categories</h2>
+<p>The 42+ tools fall into 6 functional categories:</p>
+<h3>📁 File Operations (7 tools)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>Purpose</th><th>Concurrency Safe?</th></tr></thead><tbody><tr><td><code>FileReadTool</code></td><td>Read file contents</td><td>✅ Yes</td></tr><tr><td><code>FileWriteTool</code></td><td>Create/overwrite files</td><td>❌ No</td></tr><tr><td><code>FileEditTool</code></td><td>Surgical text edits</td><td>❌ No</td></tr><tr><td><code>GlobTool</code></td><td>Find files by pattern</td><td>✅ Yes</td></tr><tr><td><code>GrepTool</code></td><td>Search file content</td><td>✅ Yes</td></tr><tr><td><code>NotebookEditTool</code></td><td>Edit Jupyter notebooks</td><td>❌ No</td></tr><tr><td><code>SnipTool</code></td><td>History snipping</td><td>❌ No</td></tr></tbody></table>
+<h3>🖥️ Execution (3-4 tools)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>Purpose</th><th>Feature Gate</th></tr></thead><tbody><tr><td><code>BashTool</code></td><td>Shell commands</td><td>Always</td></tr><tr><td><code>PowerShellTool</code></td><td>Windows PS commands</td><td>Runtime check</td></tr><tr><td><code>REPLTool</code></td><td>VM-based REPL</td><td><code>USER_TYPE=ant</code></td></tr><tr><td><code>SleepTool</code></td><td>Wait/delay</td><td><code>PROACTIVE</code> / <code>KAIROS</code></td></tr></tbody></table>
+<h3>🤖 Agent Management (6 tools)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>Purpose</th><th>Feature Gate</th></tr></thead><tbody><tr><td><code>AgentTool</code></td><td>Spawn sub-agents</td><td>Always</td></tr><tr><td><code>SendMessageTool</code></td><td>Continue a worker</td><td>Always</td></tr><tr><td><code>TaskStopTool</code></td><td>Kill a worker</td><td>Always</td></tr><tr><td><code>TeamCreateTool</code></td><td>Create agent swarm</td><td><code>AGENT_SWARMS</code></td></tr><tr><td><code>TeamDeleteTool</code></td><td>Delete agent swarm</td><td><code>AGENT_SWARMS</code></td></tr><tr><td><code>ListPeersTool</code></td><td>List peer agents</td><td><code>UDS_INBOX</code></td></tr></tbody></table>
+<h3>🌐 External (5+ tools)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>Purpose</th><th>Feature Gate</th></tr></thead><tbody><tr><td><code>WebFetchTool</code></td><td>HTTP fetch</td><td>Always</td></tr><tr><td><code>WebSearchTool</code></td><td>Web search</td><td>Always</td></tr><tr><td><code>WebBrowserTool</code></td><td>Browser automation</td><td><code>WEB_BROWSER_TOOL</code></td></tr><tr><td><code>ListMcpResourcesTool</code></td><td>Browse MCP resources</td><td>Conditional</td></tr><tr><td><code>ReadMcpResourceTool</code></td><td>Read MCP resource</td><td>Conditional</td></tr><tr><td><code>LSPTool</code></td><td>Language Server Protocol</td><td><code>ENABLE_LSP_TOOL</code></td></tr></tbody></table>
+<h3>📋 Workflow &#x26; Planning (8+ tools)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>Purpose</th><th>Feature Gate</th></tr></thead><tbody><tr><td><code>EnterPlanModeTool</code></td><td>Enter planning mode</td><td>Always</td></tr><tr><td><code>ExitPlanModeV2Tool</code></td><td>Exit planning mode</td><td>Always</td></tr><tr><td><code>EnterWorktreeTool</code></td><td>Git worktree isolation</td><td>Worktree mode</td></tr><tr><td><code>ExitWorktreeTool</code></td><td>Exit worktree</td><td>Worktree mode</td></tr><tr><td><code>SkillTool</code></td><td>Execute skill files</td><td>Always</td></tr><tr><td><code>TaskCreateTool</code></td><td>Create task</td><td>Todo v2</td></tr><tr><td><code>TaskUpdateTool</code></td><td>Update task</td><td>Todo v2</td></tr><tr><td><code>TaskListTool</code></td><td>List tasks</td><td>Todo v2</td></tr><tr><td><code>WorkflowTool</code></td><td>Run workflow scripts</td><td><code>WORKFLOW_SCRIPTS</code></td></tr></tbody></table>
+<h3>📡 Notifications &#x26; Monitoring (4 tools)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>Purpose</th><th>Feature Gate</th></tr></thead><tbody><tr><td><code>MonitorTool</code></td><td>Process monitoring</td><td><code>MONITOR_TOOL</code></td></tr><tr><td><code>SendUserFileTool</code></td><td>Send file to user</td><td><code>KAIROS</code></td></tr><tr><td><code>PushNotificationTool</code></td><td>Push notifications</td><td><code>KAIROS</code></td></tr><tr><td><code>SubscribePRTool</code></td><td>GitHub PR events</td><td><code>KAIROS_GITHUB_WEBHOOKS</code></td></tr></tbody></table>
+<hr>
+<h2>4. The Assembly Pipeline</h2>
+<p>Tools don't go from registry to LLM directly. They pass through a multi-stage filtering pipeline:</p>
+<p align="center">
+  <img src="/advanced-assets/02-tool-system-2.svg" width="240">
+</p>
+<h3>Stage 1: Deny Rules</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">filterToolsByDenyRules</span>(<span class="hljs-params">tools, permissionContext</span>) {
+  <span class="hljs-keyword">return</span> tools.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">tool</span> =></span> !<span class="hljs-title function_">getDenyRuleForTool</span>(permissionContext, tool))
+}
+</code></pre>
+<h3>Stage 2: Mode Filtering</h3>
+<p>In <strong>Simple mode</strong> (<code>CLAUDE_CODE_SIMPLE</code>), only 3 tools survive:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEnvTruthy</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">CLAUDE_CODE_SIMPLE</span>)) {
+  <span class="hljs-keyword">const</span> simpleTools = [<span class="hljs-title class_">BashTool</span>, <span class="hljs-title class_">FileReadTool</span>, <span class="hljs-title class_">FileEditTool</span>]
+  <span class="hljs-comment">// If also coordinator mode, add AgentTool + TaskStopTool</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">filterToolsByDenyRules</span>(simpleTools, permissionContext)
+}
+</code></pre>
+<p>In <strong>REPL mode</strong>, primitive tools are hidden (they're wrapped inside the REPL VM):</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">if</span> (<span class="hljs-title function_">isReplModeEnabled</span>()) {
+  allowedTools = allowedTools.<span class="hljs-title function_">filter</span>(
+    <span class="hljs-function"><span class="hljs-params">tool</span> =></span> !<span class="hljs-variable constant_">REPL_ONLY_TOOLS</span>.<span class="hljs-title function_">has</span>(tool.<span class="hljs-property">name</span>)
+  )
+}
+</code></pre>
+<h3>Stage 3: MCP Tool Merging</h3>
+<p>MCP (Model Context Protocol) tools from external servers are merged after built-in tools:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">assembleToolPool</span>(<span class="hljs-params">permissionContext, mcpTools</span>): <span class="hljs-title class_">Tools</span> {
+  <span class="hljs-keyword">const</span> builtInTools = <span class="hljs-title function_">getTools</span>(permissionContext)
+  <span class="hljs-keyword">const</span> allowedMcpTools = <span class="hljs-title function_">filterToolsByDenyRules</span>(mcpTools, permissionContext)
+
+  <span class="hljs-comment">// Sort: built-in prefix + MCP suffix for prompt cache stability</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">uniqBy</span>(
+    [...builtInTools].<span class="hljs-title function_">sort</span>(byName).<span class="hljs-title function_">concat</span>(allowedMcpTools.<span class="hljs-title function_">sort</span>(byName)),
+    <span class="hljs-string">'name'</span>,
+  )
+}
+</code></pre>
+<p><strong>Key insight</strong>: Built-in tools are sorted as a contiguous prefix, MCP tools as a suffix. This preserves prompt cache stability — adding/removing an MCP tool doesn't invalidate cache for built-in tools.</p>
+<hr>
+<h2>5. Tool Search: Lazy Loading for Large Tool Sets</h2>
+<p>When too many tools are available (MCP can add dozens), a <code>ToolSearchTool</code> enables lazy loading:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Tools can declare themselves as deferrable</span>
+<span class="hljs-keyword">readonly</span> <span class="hljs-attr">shouldDefer</span>?: <span class="hljs-built_in">boolean</span>    <span class="hljs-comment">// Sent with defer_loading: true</span>
+<span class="hljs-keyword">readonly</span> <span class="hljs-attr">alwaysLoad</span>?: <span class="hljs-built_in">boolean</span>     <span class="hljs-comment">// Never deferred, even with ToolSearch</span>
+
+<span class="hljs-comment">// ToolSearch uses keyword matching</span>
+<span class="hljs-attr">searchHint</span>?: <span class="hljs-built_in">string</span>  <span class="hljs-comment">// e.g., 'jupyter' for NotebookEditTool</span>
+</code></pre>
+<p>This prevents the LLM's tool schema from becoming overwhelming. Deferred tools aren't in the initial prompt — the model discovers them via <code>ToolSearchTool</code> by keyword.</p>
+<hr>
+<h2>6. Directory Convention</h2>
+<p>Each tool follows a consistent directory structure:</p>
+<pre class="ascii-diagram"><code>tools/BashTool/
+├── BashTool.ts      # Tool implementation (buildTool({ ... }))
+├── prompt.ts        # LLM-facing description text
+├── UI.tsx           # React+Ink rendering components
+├── constants.ts     # Tool name, limits
+└── (optional)
+    ├── utils.ts     # Helper functions
+    ├── types.ts     # Type definitions
+    └── __tests__/   # Tests
+</code></pre>
+<p>Larger tools like <code>AgentTool</code> have more complex structures:</p>
+<pre class="ascii-diagram"><code>tools/AgentTool/
+├── AgentTool.tsx     # 235K — main implementation
+├── UI.tsx            # 126K — rendering
+├── runAgent.ts       # 37K  — agent execution
+├── agentToolUtils.ts # 23K  — utilities
+├── prompt.ts         # 17K  — LLM description
+├── forkSubagent.ts   # 9K   — fork mechanism
+├── resumeAgent.ts    # 10K  — session resume
+├── agentMemory.ts    # 6K   — memory management
+├── loadAgentsDir.ts  # 27K  — agent definition loading
+├── constants.ts
+├── builtInAgents.ts
+├── agentColorManager.ts
+├── agentDisplay.ts
+└── built-in/         # Built-in agent definitions
+</code></pre>
+<hr>
+<h2>Transferable Design Patterns</h2>
+<blockquote>
+<p>The following patterns from the Tool System can be directly applied to any plugin or extension architecture.</p>
+</blockquote>
+<h3>Pattern 1: Behavioral Flags Over Capability Classes</h3>
+<p>Instead of inheritance hierarchies (<code>ReadOnlyTool</code>, <code>WritableTool</code>, <code>ConcurrentTool</code>), Claude Code uses boolean method flags:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-title function_">isReadOnly</span>(input): <span class="hljs-built_in">boolean</span>      <span class="hljs-comment">// Can skip permission for read-only ops</span>
+<span class="hljs-title function_">isConcurrencySafe</span>(input): <span class="hljs-built_in">boolean</span>  <span class="hljs-comment">// Can run in parallel</span>
+isDestructive?(input): <span class="hljs-built_in">boolean</span>  <span class="hljs-comment">// Irreversible (delete, overwrite)</span>
+</code></pre>
+<p>These flags can be <strong>input-dependent</strong> — e.g., <code>BashTool.isReadOnly()</code> returns <code>true</code> for <code>ls</code> but <code>false</code> for <code>rm</code>. This is more flexible than class hierarchies.</p>
+<h3>Pattern 2: Prompt Cache Stability via Sort Order</h3>
+<p>Tools are sorted deterministically (built-in prefix + MCP suffix) so that adding an MCP server doesn't invalidate the prompt cache for all tools. This saves significant API cost at scale.</p>
+<h3>Pattern 3: Self-Contained Modules</h3>
+<p>Each tool directory contains everything: implementation, prompt text, UI rendering, tests. No tool reaches into another tool's directory. This makes each tool independently maintainable and testable.</p>
+<h3>Pattern 4: Fail-Closed Defaults via buildTool()</h3>
+<p>The factory pattern ensures security by default — <code>isConcurrencySafe: false</code>, <code>isReadOnly: false</code>. A developer who forgets to set a flag gets the safer behavior, not the dangerous one.</p>
+<hr>
+<h2>8. Tool Pool Assembly: Where Prompt Cache Meets Economics</h2>
+<blockquote>
+<p>Why does tool ordering matter so much? Because a single MCP tool insertion in the wrong position can invalidate the entire prompt cache — costing 12x more input tokens per API call.</p>
+</blockquote>
+<p>// 源码位置: src/tools.ts:345-367</p>
+<h3>The Partition-Sort Strategy</h3>
+<p><code>assembleToolPool()</code> doesn't just merge tools — it enforces a strict partitioned sort order:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">assembleToolPool</span>(<span class="hljs-params">permissionContext, mcpTools</span>): <span class="hljs-title class_">Tools</span> {
+  <span class="hljs-keyword">const</span> builtInTools = <span class="hljs-title function_">getTools</span>(permissionContext)
+  <span class="hljs-keyword">const</span> allowedMcpTools = <span class="hljs-title function_">filterToolsByDenyRules</span>(mcpTools, permissionContext)
+
+  <span class="hljs-comment">// Partition-sort: built-ins as contiguous prefix, MCP as suffix</span>
+  <span class="hljs-comment">// A flat sort would interleave MCP into built-ins,</span>
+  <span class="hljs-comment">// invalidating all downstream cache keys</span>
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">byName</span> = (<span class="hljs-params"><span class="hljs-attr">a</span>: <span class="hljs-title class_">Tool</span>, <span class="hljs-attr">b</span>: <span class="hljs-title class_">Tool</span></span>) => a.<span class="hljs-property">name</span>.<span class="hljs-title function_">localeCompare</span>(b.<span class="hljs-property">name</span>)
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">uniqBy</span>(
+    [...builtInTools].<span class="hljs-title function_">sort</span>(byName).<span class="hljs-title function_">concat</span>(allowedMcpTools.<span class="hljs-title function_">sort</span>(byName)),
+    <span class="hljs-string">'name'</span>,  <span class="hljs-comment">// Built-in wins on name conflict (uniqBy preserves first)</span>
+  )
+}
+</code></pre>
+<p>The server's <code>claude_code_system_cache_policy</code> places a global cache breakpoint after the last built-in tool. If MCP tools interleave into built-ins, every downstream cache key shifts — turning $0.003 cache-hit calls into $0.036 full-price calls.</p>
+<h3>Deny Rule Pre-filtering</h3>
+<p>// 源码位置: src/tools.ts:262-269</p>
+<p>Tools are filtered <strong>before being sent to the model</strong> — not just at call time. The model never sees denied tools, avoiding wasted tokens on calls that would be rejected anyway.</p>
+<hr>
+<h2>9. Tool Search: Lazy Loading for the LLM Age</h2>
+<blockquote>
+<p>When MCP servers add dozens of tools, the model's prompt becomes overwhelming. ToolSearch provides an elegant solution: defer tools the model doesn't need yet, and let it discover them on demand.</p>
+</blockquote>
+<p>// 源码位置: src/tools.ts:247-249, Tool.ts shouldDefer/alwaysLoad</p>
+<h3>How Deferred Tools Work</h3>
+<p align="center">
+  <img src="/advanced-assets/02-tool-system-3.svg" width="360">
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Purpose</th></tr></thead><tbody><tr><td><code>shouldDefer</code></td><td>Tool is sent with <code>defer_loading: true</code> — model sees the name but not the schema</td></tr><tr><td><code>alwaysLoad</code></td><td>Never deferred, even when ToolSearch is active</td></tr><tr><td><code>searchHint</code></td><td>Keywords for ToolSearch matching (e.g., <code>'jupyter'</code> for NotebookEditTool)</td></tr></tbody></table>
+<h3>The Schema-Not-Sent Problem</h3>
+<p>// 源码位置: src/services/tools/toolExecution.ts:578-597</p>
+<p>When a model calls a deferred tool without discovering it first, typed parameters (arrays, numbers, booleans) arrive as strings — causing Zod validation failures. The system detects this and injects a helpful hint:</p>
+<pre class="ascii-diagram"><code>"This tool's schema was not sent to the API. Load it first:
+ call ToolSearchTool with query 'select:ToolName', then retry."
+</code></pre>
+<hr>
+<h2>10. Context Modification: Tools That Change the World</h2>
+<blockquote>
+<p>Some tools don't just produce output — they change the execution context itself. <code>cd</code> changes the working directory. How does the system handle this without breaking concurrent execution?</p>
+</blockquote>
+<p>// 源码位置: src/Tool.ts:321-336</p>
+<h3>The contextModifier Pattern</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">ToolResult</span>&#x3C;T> = {
+  <span class="hljs-attr">data</span>: T
+  <span class="hljs-attr">newMessages</span>?: <span class="hljs-title class_">Message</span>[]
+  <span class="hljs-attr">contextModifier</span>?: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">context</span>: <span class="hljs-title class_">ToolUseContext</span></span>) =></span> <span class="hljs-title class_">ToolUseContext</span>
+  <span class="hljs-attr">mcpMeta</span>?: { _meta?, structuredContent? }
+}
+</code></pre>
+<p>A tool can return a <code>contextModifier</code> function that transforms the <code>ToolUseContext</code> for subsequent operations. For example, a <code>cd</code> command modifies the working directory via this mechanism.</p>
+<h3>The Concurrency Guard</h3>
+<p><strong>Critical constraint</strong>: <code>contextModifier</code> only takes effect for tools where <code>isConcurrencySafe() === false</code>. The reasoning is simple — if two tools run in parallel and both try to modify the context (e.g., both <code>cd</code> to different directories), the final state is nondeterministic. By restricting context modification to serial-only tools, the system eliminates this race condition by design.</p>
+<hr>
+<h2>11. The Execution Pipeline: From Model Output to Side Effects</h2>
+<blockquote>
+<p>A tool call is not a simple function invocation. It's a multi-stage pipeline with validation, permission checks, hooks, execution, result processing, and context modification — all orchestrated through an AsyncGenerator.</p>
+</blockquote>
+<p>// 源码位置: src/services/tools/toolExecution.ts:337-490, 599-800+</p>
+<h3>runToolUse() Entry Point</h3>
+<pre class="ascii-diagram"><code>Model outputs tool_use block
+    │
+    ▼
+runToolUse() — AsyncGenerator&#x3C;MessageUpdateLazy>
+    │
+    ├── 1. Find tool (name match → alias fallback → error)
+    │
+    ├── 2. Check abort signal
+    │       → If aborted: yield cancel message, return
+    │
+    └── 3. streamedCheckPermissionsAndCallTool()
+            │
+            ├── 4. Zod schema validation (inputSchema.safeParse)
+            │       → On failure: check if ToolSearch hint needed
+            │
+            ├── 5. tool.validateInput() — tool-specific validation
+            │
+            ├── 6. [BashTool] Speculative classifier start (parallel)
+            │
+            ├── 7. PreToolUse hooks (can modify input or block)
+            │
+            ├── 8. canUseTool() — permission decision
+            │       ├── allow → proceed
+            │       ├── deny → return error
+            │       └── ask → interactive prompt / coordinator
+            │
+            ├── 9. tool.call(input, context, canUseTool, msg, onProgress)
+            │
+            ├── 10. PostToolUse hooks (can modify output)
+            │
+            ├── 11. mapToolResultToToolResultBlockParam()
+            │
+            ├── 12. processToolResultBlock()
+            │        → Large results persisted to ~/.claude/tool-results/
+            │
+            └── 13. Apply contextModifier + inject newMessages
+</code></pre>
+<h3>Large Result Persistence</h3>
+<p>// 源码位置: src/utils/toolResultStorage.ts</p>
+<p>When tool output exceeds <code>maxResultSizeChars</code>, the system writes it to disk and returns a preview with a file path. The model can then use <code>FileReadTool</code> to access the full output:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>maxResultSizeChars</th></tr></thead><tbody><tr><td>BashTool</td><td>30,000</td></tr><tr><td>FileEditTool</td><td>100,000</td></tr><tr><td>GlobTool</td><td>100,000</td></tr><tr><td>GrepTool</td><td>100,000</td></tr><tr><td>FileReadTool</td><td>∞ (has its own limits)</td></tr></tbody></table>
+<hr>
+<h2>12. Search Tools: GlobTool and GrepTool</h2>
+<blockquote>
+<p>These two tools provide the model's "find in project" capability — one for file discovery by pattern, one for content search by regex.</p>
+</blockquote>
+<h3>GlobTool</h3>
+<p>// 源码位置: src/tools/GlobTool/GlobTool.ts</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title class_">GlobTool</span> = <span class="hljs-title function_">buildTool</span>({
+  <span class="hljs-attr">name</span>: <span class="hljs-variable constant_">GLOB_TOOL_NAME</span>,
+  <span class="hljs-attr">isConcurrencySafe</span>: <span class="hljs-function">() =></span> <span class="hljs-literal">true</span>,   <span class="hljs-comment">// Pure read — safe for parallel execution</span>
+  <span class="hljs-attr">isReadOnly</span>: <span class="hljs-function">() =></span> <span class="hljs-literal">true</span>,          <span class="hljs-comment">// No permission needed</span>
+  <span class="hljs-attr">maxResultSizeChars</span>: <span class="hljs-number">100_000</span>,
+  <span class="hljs-keyword">async</span> <span class="hljs-title function_">call</span>(<span class="hljs-params">{ pattern, path }, context</span>) {
+    <span class="hljs-keyword">const</span> searchPath = path ? <span class="hljs-title function_">expandPath</span>(path) : <span class="hljs-title function_">getCwd</span>()
+    <span class="hljs-keyword">const</span> results = <span class="hljs-keyword">await</span> <span class="hljs-title function_">glob</span>(pattern, searchPath, {
+      <span class="hljs-attr">maxResults</span>: context.<span class="hljs-property">globLimits</span>?.<span class="hljs-property">maxResults</span> || <span class="hljs-number">100</span>,
+    })
+    <span class="hljs-keyword">return</span> { <span class="hljs-attr">data</span>: { <span class="hljs-attr">filenames</span>: results, <span class="hljs-attr">numFiles</span>: results.<span class="hljs-property">length</span> } }
+  }
+})
+</code></pre>
+<p>Results are sorted by modification time (most recently changed first) and capped at 100 files by default.</p>
+<h3>GrepTool</h3>
+<p>// 源码位置: src/tools/GrepTool/GrepTool.ts</p>
+<p>Wraps <code>ripgrep</code> (rg) with safety constraints:</p>
+<ul>
+<li>Results capped at 250 matches (<code>head_limit</code>) with <code>offset</code> for pagination</li>
+<li>Automatic exclusion of <code>.git</code>, <code>.svn</code>, <code>node_modules</code></li>
+<li>Plugin cache exclusion patterns applied</li>
+<li>Multiple output modes: content, files_with_matches, count</li>
+<li>Context lines support (-A, -B, -C)</li>
+</ul>
+<p>Both tools are marked <code>isConcurrencySafe: true</code> and <code>isReadOnly: true</code> — meaning they can run in parallel without permission prompts.</p>
+<hr>
+<h2>13. File Tools: The Model's Hands on Your Codebase</h2>
+<blockquote>
+<p>The file tools form a trinity — Read, Edit, Write — each with distinct safety properties and a shared <code>FileStateCache</code> that prevents the model from overwriting your unsaved changes.</p>
+</blockquote>
+<h3>FileReadTool: Six Output Types, One Interface</h3>
+<p>// 源码位置: src/tools/FileReadTool/FileReadTool.ts:337-718 (1,184 lines total)</p>
+<p>FileReadTool is the largest tool in the system. It's not just "read a file" — it's a polymorphic content ingestion engine:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Output</span> =
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'text'</span>,           <span class="hljs-attr">file</span>: { content, numLines, startLine, totalLines } }
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'image'</span>,          <span class="hljs-attr">file</span>: { base64, <span class="hljs-keyword">type</span>, originalSize, dimensions } }
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'notebook'</span>,       <span class="hljs-attr">file</span>: { filePath, cells } }
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'pdf'</span>,            <span class="hljs-attr">file</span>: { filePath, base64, originalSize } }
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'parts'</span>,          <span class="hljs-attr">file</span>: { filePath, count, outputDir } }  <span class="hljs-comment">// large PDF → page images</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'file_unchanged'</span>, <span class="hljs-attr">file</span>: { filePath } }                    <span class="hljs-comment">// dedup optimization</span>
+</code></pre>
+<p><strong>Dedup optimization</strong>: If the model reads the same file/range twice and the file hasn't changed (mtime match), it returns a <code>file_unchanged</code> stub instead of the full content. Internal telemetry shows ~18% of Read calls are same-file collisions — this saves significant <code>cache_creation</code> tokens.</p>
+<p><strong>Security constraints</strong>:</p>
+<ul>
+<li>Blocked device paths (<code>/dev/zero</code>, <code>/dev/random</code>, <code>/dev/stdin</code>) — would hang the process</li>
+<li>UNC path check — prevents Windows NTLM credential leakage via SMB</li>
+<li><code>maxResultSizeChars: Infinity</code> — because persisting to disk for the model to re-read creates a circular dependency</li>
+</ul>
+<h3>FileEditTool: String Replacement with Stale Write Detection</h3>
+<p>// 源码位置: src/tools/FileEditTool/FileEditTool.ts:86-595 (626 lines total)</p>
+<p>FileEditTool uses <strong>string replacement</strong>, not diff/patch. The model provides <code>old_string</code> and <code>new_string</code>:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">type</span> <span class="hljs-title class_">Input</span> = {
+  <span class="hljs-attr">file_path</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">old_string</span>: <span class="hljs-built_in">string</span>    <span class="hljs-comment">// must exist in file and be unique (or use replace_all)</span>
+  <span class="hljs-attr">new_string</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">replace_all</span>?: <span class="hljs-built_in">boolean</span>
+}
+</code></pre>
+<p><strong>The Stale Write Guard</strong> (the most critical safety mechanism):</p>
+<pre class="ascii-diagram"><code>1. Model reads file → FileStateCache records { content, mtime }
+2. User edits file externally → mtime changes
+3. Model attempts edit → mtime > cached mtime → REJECT
+   "File has been modified since read. Read it again."
+</code></pre>
+<p>This prevents the model from overwriting your manual edits. On Windows, a content-comparison fallback handles false positives from cloud sync and antivirus timestamp bumps.</p>
+<p><strong>Validation pipeline</strong> (8 checks before any write):</p>
+<ol>
+<li>Team memory secret detection (prevents API keys in shared memory)</li>
+<li><code>old_string !== new_string</code> (no-op guard)</li>
+<li>Deny rule check (permission settings)</li>
+<li>File size limit (1 GiB — V8 string length boundary)</li>
+<li>Stale write detection (mtime + content comparison)</li>
+<li><code>old_string</code> existence check</li>
+<li>Uniqueness check (non-<code>replace_all</code> mode)</li>
+<li>Settings file special validation</li>
+</ol>
+<h3>FileWriteTool: Create or Overwrite</h3>
+<p>FileWriteTool is deliberately simple — it creates new files or completely overwrites existing ones. It shares the same permission pipeline as FileEditTool. Auto-creates parent directories. Use it when <code>old_string</code> would be the entire file content.</p>
+<h3>The FileStateCache: Shared State Across All Three</h3>
+<p>All three tools share a <code>readFileState</code> Map keyed by absolute path. FileReadTool writes entries on read; FileEditTool checks entries before write and updates after write. This shared cache is what makes stale write detection possible across the Read→Edit workflow.</p>
+<hr>
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>Detail</th></tr></thead><tbody><tr><td><strong>Interface</strong></td><td>Single <code>Tool</code> type, 30+ methods (793-line file)</td></tr><tr><td><strong>Registry</strong></td><td>Flat array in <code>getAllBaseTools()</code>, not a plugin system</td></tr><tr><td><strong>Total tools</strong></td><td>42+ built-in + unlimited MCP tools</td></tr><tr><td><strong>Gating</strong></td><td>3 layers: build flags (<code>bun:bundle</code>), env vars, runtime checks</td></tr><tr><td><strong>Assembly</strong></td><td>Partition-sort (built-in prefix + MCP suffix) for prompt cache stability</td></tr><tr><td><strong>Schema</strong></td><td>Zod v4 for runtime validation + type inference</td></tr><tr><td><strong>Convention</strong></td><td>One directory per tool, self-contained (impl + prompt + UI)</td></tr><tr><td><strong>Defaults</strong></td><td>Fail-closed via <code>buildTool()</code> factory</td></tr><tr><td><strong>ToolSearch</strong></td><td>Deferred tools → discover on demand → schema-not-sent detection</td></tr><tr><td><strong>Execution</strong></td><td>13-step pipeline: find → validate → hooks → permissions → call → hooks → persist</td></tr><tr><td><strong>Context</strong></td><td><code>contextModifier</code> — only for non-concurrent tools (race condition prevention)</td></tr><tr><td><strong>Result Size</strong></td><td>Per-tool <code>maxResultSizeChars</code>; overflow → disk persistence + preview</td></tr><tr><td><strong>File Tools</strong></td><td>Read (6 output types + dedup) / Edit (8-check validation + stale write guard) / Write (simple overwrite)</td></tr></tbody></table>
+<hr>
+<p><strong>Previous</strong>: <a href="01-query-engine">← 01 — Query Engine</a>
+<strong>Next</strong>: <a href="03-coordinator">→ 03 — Multi-Agent Coordinator</a></p></div></article><nav class="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800"><a class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/ja/advanced/01-query-engine/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left transition-transform group-hover:-translate-x-1" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg><span>EP<!-- -->01<!-- --> <!-- -->QueryEngine</span></a><a class="group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/ja/advanced/03-coordinator/"><span>EP<!-- -->03<!-- --> <!-- -->Coordinator</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></nav></div><!--$--><!--/$--></div></div></main><script src="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n3:I[37457,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n5:I[95914,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\"],\"Sidebar\"]\n7:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"OutletBoundary\"]\n8:\"$Sreact.suspense\"\na:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"MetadataBoundary\"]\ne:I[68027,[],\"default\"]\n:HL[\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"kOMToiePwU79Kzn0fZt4S\",\"c\":[\"\",\"ja\",\"advanced\",\"02-tool-system\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[[\"locale\",\"ja\",\"d\"],{\"children\":[\"(learn)\",{\"children\":[\"advanced\",{\"children\":[[\"chapter\",\"02-tool-system\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true]}],[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"div\",null,{\"className\":\"flex gap-8\",\"children\":[[\"$\",\"$L5\",null,{}],[\"$\",\"div\",null,{\"className\":\"min-w-0 flex-1\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@9\"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[33499,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"I18nProvider\"]\n10:I[45872,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"Header\"]\n11:I[22016,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"\"]\n4:[\"$\",\"html\",null,{\"lang\":\"ja\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n          (function() {\\n            var theme = localStorage.getItem('theme');\\n            if (theme === 'dark' || (!theme \u0026\u0026 window.matchMedia('(prefers-color-scheme: dark)').matches)) {\\n              document.documentElement.classList.add('dark');\\n            }\\n          })();\\n        \"}}]}],[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased\",\"children\":[\"$\",\"$Lf\",null,{\"locale\":\"ja\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-4xl space-y-8 py-4\",\"children\":[[\"$\",\"header\",null,{\"className\":\"rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/ja/curriculum\",\"className\":\"inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Course map\"]}],[\"$\",\"div\",null,{\"className\":\"mt-4 flex flex-wrap items-center gap-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800\",\"children\":[\"EP\",\"02\"]}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold text-zinc-950 dark:text-zinc-50\",\"children\":\"Tool System\"}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"One tool contract for files, shell, web, MCP, and agents\"}]]}],[\"$\",\"section\",null,{\"className\":\"rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-start justify-between gap-3\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300\",\"children\":\"Prompt reference\"}],[\"$\",\"h2\",null,{\"className\":\"mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50\",\"children\":\"Tool contracts as prompt-visible API\"}],[\"$\",\"p\",null,{\"className\":\"mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200\",\"children\":\"These files are the clearest bridge from a Python dispatch map to production-grade tool descriptions.\"}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":14,\"height\":14,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}],\"Source repo\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70\",\"children\":\"Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.\"}],[\"$\",\"div\",null,{\"className\":\"mt-4 grid gap-3 md:grid-cols-2\",\"children\":[[\"$\",\"a\",\"tool-description-bash-overview.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-bash-overview.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[\"$L12\",\"$L13\",\"$L14\",\"$L15\",\"$L16\",\"$undefined\"]}],\"$L17\"]}],\"$L18\",\"$L19\"]}],\"$L1a\",\"$L1b\",\"$L1c\",\"$L1d\"]}]]}],\"$L1e\",\"$L1f\"]}]\n"])</script><script>self.__next_f.push([1,"20:I[19004,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"AdvancedDocRenderer\"]\n12:[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}]\n13:[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}]\n14:[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}]\n15:[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}]\n16:[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}]\n17:[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Bash tool overview\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"tool-description-bash-overview.md\"}]]}]\n18:[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Execution tool\"}]\n19:[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Shows how a shell tool is constrained and explained before the model ever calls it.\"}]\n"])</script><script>self.__next_f.push([1,"1a:[\"$\",\"a\",\"tool-description-edit.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-edit.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Edit tool\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"tool-description-edit.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Mutation tool\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Highlights exact replacement, prior read requirements, and edit safety constraints.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1b:[\"$\",\"a\",\"tool-description-readfile.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-readfile.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Read tool\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"tool-description-readfile.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Observation tool\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Pairs with tool_result design and read-window limits.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1c:[\"$\",\"a\",\"tool-description-toolsearch-second-part.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-toolsearch-second-part.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"ToolSearch\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"tool-description-toolsearch-second-part.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Dynamic tool discovery\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Useful for showing how large tool surfaces become searchable instead of fully injected.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1d:[\"$\",\"a\",\"tool-description-agent-usage-notes.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-agent-usage-notes.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Agent tool usage notes\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"tool-description-agent-usage-notes.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Higher-order tool\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Shows how a tool can launch another agent and still have a structured result contract.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1e:[\"$\",\"$L20\",null,{\"chapter\":\"02\"}]\n"])</script><script>self.__next_f.push([1,"1f:[\"$\",\"nav\",null,{\"className\":\"flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/ja/advanced/01-query-engine\",\"className\":\"group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left transition-transform group-hover:-translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],[\"$\",\"span\",null,{\"children\":[\"EP\",\"01\",\" \",\"QueryEngine\"]}]]}],[\"$\",\"$L11\",null,{\"href\":\"/ja/advanced/03-coordinator\",\"className\":\"group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"span\",null,{\"children\":[\"EP\",\"03\",\" \",\"Coordinator\"]}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-right transition-transform group-hover:translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1ays0h\",{\"d\":\"M5 12h14\"}],[\"$\",\"path\",\"xquz4c\",{\"d\":\"m12 5 7 7-7 7\"}],\"$undefined\"]}]]}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"21:I[27201,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"IconMark\"]\n9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Agent Coding Lesson\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"0 から 1 へ nano Claude Code-like agent を構築し、毎回 1 つの仕組みを追加\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L21\",\"3\",{}]]\n"])</script></body></html>

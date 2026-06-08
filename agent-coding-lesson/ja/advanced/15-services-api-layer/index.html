@@ -1,0 +1,668 @@
+<!DOCTYPE html><!--kOMToiePwU79Kzn0fZt4S--><html lang="ja"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js"/><script src="/agent-coding-lesson/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/76fed9c17f51393e.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/7de9141b1af425c3.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/turbopack-8800d0fd815877b2.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/076aae518584b842.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js" async=""></script><title>Agent Coding Lesson</title><meta name="description" content="0 から 1 へ nano Claude Code-like agent を構築し、毎回 1 つの仕組みを追加"/><link rel="icon" href="/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico" sizes="256x256" type="image/x-icon"/><script>
+          (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script><script src="/agent-coding-lesson/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm"><div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a class="text-lg font-bold" href="/agent-coding-lesson/ja/">Agent Coding Lesson</a><nav class="hidden items-center gap-6 md:flex"><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/curriculum/">カリキュラム</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/timeline/">学習パス</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/compare/">バージョン比較</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/layers/">アーキテクチャ層</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/slides/s01/">スライド</a><div class="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5"><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">EN</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">中文</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">日本語</button></div><button class="rounded-md p-1.5 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Switch to dark mode"><span class="inline-block h-4 w-4"></span></button><a href="https://github.com/atom32/agent-coding-lesson" target="_blank" rel="noopener" class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Open project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a></nav><button class="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"><div class="flex gap-8"><nav class="hidden w-64 shrink-0 md:block"><div class="sticky top-[calc(3.5rem+2rem)] max-h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/curriculum/">カリキュラム</a><div class="space-y-1"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/summary/">サマリー</a><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/glossary/">用語集</a></div><section class="space-y-5"><div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">ラボレッスン</div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">ツールと実行</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s01/"><span class="font-mono text-xs">s01</span><span class="ml-1.5">エージェントループ</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s02/"><span class="font-mono text-xs">s02</span><span class="ml-1.5">ツール</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">計画と調整</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s03/"><span class="font-mono text-xs">s03</span><span class="ml-1.5">TodoWrite</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s04/"><span class="font-mono text-xs">s04</span><span class="ml-1.5">サブエージェント</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s05/"><span class="font-mono text-xs">s05</span><span class="ml-1.5">スキル</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s07/"><span class="font-mono text-xs">s07</span><span class="ml-1.5">タスクシステム</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-purple-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">メモリ管理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s06/"><span class="font-mono text-xs">s06</span><span class="ml-1.5">コンテキスト圧縮</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">並行処理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s08/"><span class="font-mono text-xs">s08</span><span class="ml-1.5">バックグラウンドタスク</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-red-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">コラボレーション</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s09/"><span class="font-mono text-xs">s09</span><span class="ml-1.5">エージェントチーム</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s10/"><span class="font-mono text-xs">s10</span><span class="ml-1.5">チームプロトコル</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s11/"><span class="font-mono text-xs">s11</span><span class="ml-1.5">自律エージェント</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s12/"><span class="font-mono text-xs">s12</span><span class="ml-1.5">Worktree + タスク分離</span></a></li></ul></div></section><section><div class="mb-2 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">実システム解剖</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/00-overview/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->00</span><span class="ml-1.5">Architecture Overview</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/01-query-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->01</span><span class="ml-1.5">QueryEngine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/02-tool-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->02</span><span class="ml-1.5">Tool System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/03-coordinator/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->03</span><span class="ml-1.5">Coordinator</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/04-plugin-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->04</span><span class="ml-1.5">Plugin System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/05-hook-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->05</span><span class="ml-1.5">Hook System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/06-bash-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->06</span><span class="ml-1.5">Bash Engine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/07-permission-pipeline/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->07</span><span class="ml-1.5">Permission Pipeline</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/08-agent-swarms/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->08</span><span class="ml-1.5">Agent Swarms</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/09-session-persistence/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->09</span><span class="ml-1.5">Session Persistence</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/10-context-assembly/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->10</span><span class="ml-1.5">Context Assembly</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/11-compact-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->11</span><span class="ml-1.5">Compact System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/12-startup-bootstrap/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->12</span><span class="ml-1.5">Startup &amp; Bootstrap</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/13-bridge-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->13</span><span class="ml-1.5">Bridge System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/14-ui-state-management/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->14</span><span class="ml-1.5">UI State &amp; Rendering</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white" href="/agent-coding-lesson/ja/advanced/15-services-api-layer/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->15</span><span class="ml-1.5">Services &amp; API Layer</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/16-infrastructure-config/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->16</span><span class="ml-1.5">Infrastructure &amp; Config</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/17-telemetry-privacy-operations/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->17</span><span class="ml-1.5">Telemetry &amp; Operations</span></a></li></ul></section></div></nav><div class="min-w-0 flex-1"><div class="mx-auto max-w-4xl space-y-8 py-4"><header class="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" href="/agent-coding-lesson/ja/curriculum/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Course map</a><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800">EP<!-- -->15</span><h1 class="text-2xl font-bold text-zinc-950 dark:text-zinc-50">Services &amp; API Layer</h1></div><p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">Model clients, streams, retries, providers, and service boundaries</p></header><section class="rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300">Prompt reference</p><h2 class="mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Service references and API tool-use material</h2><p class="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">This chapter can use the embedded data prompts as service-layer reading material.</p></div><a href="https://github.com/Piebald-AI/claude-code-system-prompts" target="_blank" rel="noopener" class="inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>Source repo</a></div><p class="mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70">Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.</p><div class="mt-4 grid gap-3 md:grid-cols-2"><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-claude-api-reference-typescript.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Claude API reference TypeScript</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">data-claude-api-reference-typescript.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">SDK reference</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Connects service-layer clients to the actual API surface.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-streaming-reference-typescript.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Streaming reference TypeScript</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">data-streaming-reference-typescript.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Streaming service</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Useful for comparing API stream handling with QueryEngine behavior.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-tool-use-reference-python.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Tool use reference Python</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">data-tool-use-reference-python.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Tool runner</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Grounds tool-use loops in official-style API examples embedded into the package.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-http-error-codes-reference.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">HTTP error codes reference</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">data-http-error-codes-reference.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Error handling</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Complements retries, fallback, and failure surfaces.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-claude-model-catalog.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Model catalog</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">data-claude-model-catalog.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Model routing</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Pairs with service boundaries, model selection, and budget discussions.</p></a></div></section><article class="py-4"><div class="prose-custom"><h1>Episode 15: Services &#x26; API Layer — The Nervous System</h1>
+<blockquote class="hero-callout">
+</blockquote>
+<blockquote>
+<p><strong>Source files</strong>: <code>src/services/api/claude.ts</code> (~126KB, 3,420 lines), <code>client.ts</code> (390 lines), <code>withRetry.ts</code> (823 lines), <code>errors.ts</code> (1,208 lines), <code>src/services/mcp/client.ts</code> (~119KB), <code>src/services/analytics/growthbook.ts</code> (~41KB), <code>src/services/lsp/LSPServerManager.ts</code> (421 lines)</p>
+<p><strong>One-liner</strong>: The services layer is Claude Code's nervous system — a multi-provider API client factory, a 700-line streaming query engine, a battle-hardened retry strategy matrix, a GrowthBook-powered feature flag system, MCP protocol integration, and an LSP bridge — all wired together by AsyncGenerator pipelines and closure-factory patterns.</p>
+</blockquote>
+<hr>
+<h2>Architecture Overview</h2>
+<pre class="ascii-diagram"><code>src/services/
+├── api/                    # Anthropic API client (~300K)
+│   ├── claude.ts           # Core queryModel engine (126K, 3,420 lines)
+│   ├── client.ts           # Multi-provider client factory (16K)
+│   ├── withRetry.ts        # Retry strategy engine (28K, 823 lines)
+│   ├── errors.ts           # Error classification system (42K)
+│   ├── logging.ts          # API telemetry &#x26; diagnostics (24K)
+│   ├── bootstrap.ts        # Bootstrap API requests
+│   ├── filesApi.ts         # File upload API
+│   ├── promptCacheBreakDetection.ts  # Cache hit analysis (26K)
+│   └── sessionIngress.ts   # Session log persistence (17K)
+├── mcp/                    # MCP protocol integration (~250K)
+│   ├── client.ts           # MCP client lifecycle (119K)
+│   ├── auth.ts             # OAuth/XAA authentication (89K)
+│   ├── MCPConnectionManager.tsx  # React connection context
+│   ├── types.ts            # Zod schema configuration
+│   └── config.ts           # Multi-source config merge (51K)
+├── analytics/              # Feature flags &#x26; telemetry
+│   ├── growthbook.ts       # GrowthBook integration (41K)
+│   ├── index.ts            # Event analytics pipeline
+│   └── sink.ts             # Sink architecture (DD + 1P BQ)
+├── lsp/                    # Language Server Protocol
+│   ├── LSPServerManager.ts # Closure-factory manager (13K)
+│   ├── manager.ts          # Global singleton + generation counter (10K)
+│   └── passiveFeedback.ts  # Diagnostic notification handlers
+├── compact/                # Context compression (→ see Episode 11)
+├── oauth/                  # OAuth 2.0 client
+├── plugins/                # Plugin marketplace management
+├── policyLimits/           # Organization policy enforcement
+├── remoteManagedSettings/  # Remote config sync
+├── teamMemorySync/         # Team memory synchronization
+└── extractMemories/        # Auto-memory extraction
+</code></pre>
+<h3>Design Principles</h3>
+<p>Five architectural invariants govern the entire services layer:</p>
+<ol>
+<li><strong>Multi-Provider Abstraction</strong> — A single <code>getAnthropicClient()</code> factory produces SDK instances for Anthropic 1P, AWS Bedrock, Azure Foundry, and Google Vertex, with dynamic <code>await import()</code> to avoid bundling unused SDKs.</li>
+<li><strong>Fail-Open for Non-Critical Services</strong> — Enterprise features (<code>policyLimits</code>, <code>remoteManagedSettings</code>) degrade gracefully on failure. The core query loop never blocks on them.</li>
+<li><strong>Session-Stable Latch Mechanism</strong> — Once a beta header is sent (e.g., <code>fast_mode</code>, <code>afk_mode</code>), it stays on for the entire session. This prevents prompt cache key changes mid-conversation — a single cache-key flip can multiply costs by 12×.</li>
+<li><strong>AsyncGenerator Pipelines</strong> — The core API call chain (<code>queryModel → withRetry → stream handler</code>) is wired with <code>AsyncGenerator&#x3C;StreamEvent | AssistantMessage | SystemAPIErrorMessage></code>, enabling callers to process intermediate retry/error events while waiting for the final result.</li>
+<li><strong>Closure Factories over Classes</strong> — State-bearing services (LSP manager, cached microcompact) use <code>createXxxManager()</code> functions with closure-scoped private state, eliminating <code>this</code> binding issues.</li>
+</ol>
+<hr>
+<h2>1. The Client Factory — Four Providers, One Interface</h2>
+<p>The entry point to the entire API subsystem is <code>getAnthropicClient()</code> in <code>client.ts</code>. It returns a single <code>Anthropic</code> SDK instance regardless of the underlying provider:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/client.ts:88-100</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getAnthropicClient</span>(<span class="hljs-params">{
+  apiKey, maxRetries, model, fetchOverride, source,
+}: { ... }</span>): <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-title class_">Anthropic</span>> {
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">defaultHeaders</span>: { [<span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span> } = {
+    <span class="hljs-string">'x-app'</span>: <span class="hljs-string">'cli'</span>,
+    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-title function_">getUserAgent</span>(),
+    <span class="hljs-string">'X-Claude-Code-Session-Id'</span>: <span class="hljs-title function_">getSessionId</span>(),
+    ...customHeaders,
+  }
+  <span class="hljs-keyword">await</span> <span class="hljs-title function_">checkAndRefreshOAuthTokenIfNeeded</span>()
+  <span class="hljs-comment">// ... builds ARGS with proxy, timeout (600s default), etc.</span>
+</code></pre>
+<h3>Provider Dispatch Chain</h3>
+<p>The factory uses environment variable detection to select the provider, with dynamic imports to keep unused SDKs out of the bundle:</p>
+<pre class="ascii-diagram"><code>CLAUDE_CODE_USE_BEDROCK=1  → await import('@anthropic-ai/bedrock-sdk')
+CLAUDE_CODE_USE_FOUNDRY=1  → await import('@anthropic-ai/foundry-sdk')
+CLAUDE_CODE_USE_VERTEX=1   → await import('@anthropic-ai/vertex-sdk')
+(default)                  → new Anthropic(...)
+</code></pre>
+<p>Each provider branch returns <code>as unknown as Anthropic</code> — a deliberate type lie. The Bedrock, Foundry, and Vertex SDKs have slightly different type signatures, but the <code>queryModel</code> caller treats them uniformly. The comment in source is refreshingly honest: <em>"we have always been lying about the return type."</em></p>
+<h3>Bedrock Specifics</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/client.ts:153-189</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEnvTruthy</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">CLAUDE_CODE_USE_BEDROCK</span>)) {
+  <span class="hljs-keyword">const</span> { <span class="hljs-title class_">AnthropicBedrock</span> } = <span class="hljs-keyword">await</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">'@anthropic-ai/bedrock-sdk'</span>)
+  <span class="hljs-keyword">const</span> awsRegion =
+    model === <span class="hljs-title function_">getSmallFastModel</span>() &#x26;&#x26; process.<span class="hljs-property">env</span>.<span class="hljs-property">ANTHROPIC_SMALL_FAST_MODEL_AWS_REGION</span>
+      ? process.<span class="hljs-property">env</span>.<span class="hljs-property">ANTHROPIC_SMALL_FAST_MODEL_AWS_REGION</span>
+      : <span class="hljs-title function_">getAWSRegion</span>()
+  <span class="hljs-comment">// Bearer token auth (AWS_BEARER_TOKEN_BEDROCK) or STS credential refresh</span>
+}
+</code></pre>
+<p>A small but important detail: Bedrock supports per-model region overrides. The <code>ANTHROPIC_SMALL_FAST_MODEL_AWS_REGION</code> variable lets you route Haiku to a different region than your primary model — useful when your Opus region is overloaded.</p>
+<h3>The <code>buildFetch</code> Wrapper</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/client.ts:358-389</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">buildFetch</span>(<span class="hljs-params">fetchOverride, source</span>): <span class="hljs-title class_">ClientOptions</span>[<span class="hljs-string">'fetch'</span>] {
+  <span class="hljs-keyword">const</span> inner = fetchOverride ?? globalThis.<span class="hljs-property">fetch</span>
+  <span class="hljs-keyword">const</span> injectClientRequestId =
+    <span class="hljs-title function_">getAPIProvider</span>() === <span class="hljs-string">'firstParty'</span> &#x26;&#x26; <span class="hljs-title function_">isFirstPartyAnthropicBaseUrl</span>()
+  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">input, init</span>) =></span> {
+    <span class="hljs-keyword">const</span> headers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Headers</span>(init?.<span class="hljs-property">headers</span>)
+    <span class="hljs-keyword">if</span> (injectClientRequestId &#x26;&#x26; !headers.<span class="hljs-title function_">has</span>(<span class="hljs-variable constant_">CLIENT_REQUEST_ID_HEADER</span>)) {
+      headers.<span class="hljs-title function_">set</span>(<span class="hljs-variable constant_">CLIENT_REQUEST_ID_HEADER</span>, <span class="hljs-title function_">randomUUID</span>())
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">inner</span>(input, { ...init, headers })
+  }
+}
+</code></pre>
+<p>This small wrapper solves a real-world debugging pain: when API requests time out, the server returns no request ID. By injecting a client-side <code>x-client-request-id</code> UUID into every first-party request, the API team can still correlate timeouts with server-side logs.</p>
+<hr>
+<h2>2. queryModel — The 700-Line Heart</h2>
+<p><code>queryModel()</code> in <code>claude.ts</code> is the single most important function in the entire codebase. At ~700 lines, it orchestrates everything from GrowthBook kill-switch checks to streaming event accumulation. Here's the lifecycle:</p>
+<pre class="ascii-diagram"><code>queryModel() entry
+  │
+  ├─ 1. Off-switch check (GrowthBook: tengu-off-switch)
+  ├─ 2. Beta headers assembly (getMergedBetas)
+  ├─ 3. Tool search filtering (deferred tools only if discovered)
+  ├─ 4. Tool schema building (parallel generation)
+  ├─ 5. Message normalization (normalizeMessagesForAPI)
+  ├─ 6. Beta header latching (fast_mode, afk_mode, cache_editing)
+  ├─ 7. paramsFromContext closure (complete API request construction)
+  ├─ 8. withRetry wrapper (→ see §3)
+  ├─ 9. Raw SSE stream consumption (→ see §4)
+  └─ 10. AssistantMessage yield
+</code></pre>
+<h3>The Off-Switch</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1028-1049</span>
+<span class="hljs-keyword">if</span> (
+  !<span class="hljs-title function_">isClaudeAISubscriber</span>() &#x26;&#x26;
+  <span class="hljs-title function_">isNonCustomOpusModel</span>(options.<span class="hljs-property">model</span>) &#x26;&#x26;
+  (<span class="hljs-keyword">await</span> getDynamicConfig_BLOCKS_ON_INIT&#x3C;{ <span class="hljs-attr">activated</span>: <span class="hljs-built_in">boolean</span> }>(
+    <span class="hljs-string">'tengu-off-switch'</span>, { <span class="hljs-attr">activated</span>: <span class="hljs-literal">false</span> }
+  )).<span class="hljs-property">activated</span>
+) {
+  <span class="hljs-title function_">logEvent</span>(<span class="hljs-string">'tengu_off_switch_query'</span>, {})
+  <span class="hljs-keyword">yield</span> <span class="hljs-title function_">getAssistantMessageFromError</span>(
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-variable constant_">CUSTOM_OFF_SWITCH_MESSAGE</span>), options.<span class="hljs-property">model</span>
+  )
+  <span class="hljs-keyword">return</span>
+}
+</code></pre>
+<p>This is Claude Code's emergency brake. When Opus is under extreme load, Anthropic can remotely disable it for PAYG users in real-time via GrowthBook. The check is gated behind <code>isNonCustomOpusModel()</code> and <code>!isClaudeAISubscriber()</code> so it doesn't affect subscribers or custom models. The message politely suggests switching to Sonnet.</p>
+<p>Note the ordering optimization: cheap synchronous checks (<code>isClaudeAISubscriber</code>, <code>isNonCustomOpusModel</code>) execute before the <code>await getDynamicConfig_BLOCKS_ON_INIT</code> which blocks on GrowthBook initialization (~10ms).</p>
+<h3>Tool Search Filtering</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1128-1172</span>
+<span class="hljs-keyword">const</span> deferredToolNames = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>&#x3C;<span class="hljs-built_in">string</span>>()
+<span class="hljs-keyword">if</span> (useToolSearch) {
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> t <span class="hljs-keyword">of</span> tools) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isDeferredTool</span>(t)) deferredToolNames.<span class="hljs-title function_">add</span>(t.<span class="hljs-property">name</span>)
+  }
+}
+<span class="hljs-comment">// Only include deferred tools that have been discovered via tool_reference blocks</span>
+<span class="hljs-keyword">const</span> discoveredToolNames = <span class="hljs-title function_">extractDiscoveredToolNames</span>(messages)
+filteredTools = tools.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">tool</span> =></span> {
+  <span class="hljs-keyword">if</span> (!deferredToolNames.<span class="hljs-title function_">has</span>(tool.<span class="hljs-property">name</span>)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">toolMatchesName</span>(tool, <span class="hljs-variable constant_">TOOL_SEARCH_TOOL_NAME</span>)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+  <span class="hljs-keyword">return</span> discoveredToolNames.<span class="hljs-title function_">has</span>(tool.<span class="hljs-property">name</span>)
+})
+</code></pre>
+<p>This is the dynamic tool loading system. Instead of sending all 42+ tools to the API on every request (expensive in tokens), tools marked as <code>deferred</code> are only included after they've been "discovered" via <code>tool_reference</code> blocks in the conversation history. The <code>ToolSearchTool</code> itself is always included so it can discover more tools.</p>
+<h3>The paramsFromContext Closure</h3>
+<p>The crown jewel of <code>queryModel</code> is the <code>paramsFromContext</code> closure (~190 lines), which constructs the complete API request. It's a closure rather than a standalone function because it captures the entire request-building context (messages, system prompt, tools, betas):</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1538-1729</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">paramsFromContext</span> = (<span class="hljs-params"><span class="hljs-attr">retryContext</span>: <span class="hljs-title class_">RetryContext</span></span>) => {
+  <span class="hljs-keyword">const</span> betasParams = [...betas]
+  <span class="hljs-comment">// ... configure effort, task budget, thinking, context management</span>
+  <span class="hljs-comment">// ... latch fast_mode, afk_mode, cache_editing headers</span>
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">model</span>: <span class="hljs-title function_">normalizeModelStringForAPI</span>(options.<span class="hljs-property">model</span>),
+    <span class="hljs-attr">messages</span>: <span class="hljs-title function_">addCacheBreakpoints</span>(messagesForAPI, ...),
+    system,
+    <span class="hljs-attr">tools</span>: allTools,
+    <span class="hljs-attr">betas</span>: betasParams,
+    <span class="hljs-attr">metadata</span>: <span class="hljs-title function_">getAPIMetadata</span>(),
+    <span class="hljs-attr">max_tokens</span>: maxOutputTokens,
+    thinking,
+    <span class="hljs-comment">// ... speed, context_management, output_config</span>
+  }
+}
+</code></pre>
+<p>Why is it called multiple times? It's invoked for logging (fire-and-forget), for the actual API request, and potentially for non-streaming fallback retries. The <code>RetryContext</code> parameter allows the retry loop to override <code>maxTokensOverride</code> when a context overflow error shrinks the available output budget.</p>
+<h3>Beta Header Latching</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1642-1689</span>
+<span class="hljs-comment">// Fast mode: header is latched session-stable (cache-safe), but</span>
+<span class="hljs-comment">// speed='fast' stays dynamic so cooldown still suppresses the actual</span>
+<span class="hljs-comment">// fast-mode request without changing the cache key.</span>
+<span class="hljs-keyword">if</span> (fastModeHeaderLatched &#x26;&#x26; !betasParams.<span class="hljs-title function_">includes</span>(<span class="hljs-variable constant_">FAST_MODE_BETA_HEADER</span>)) {
+  betasParams.<span class="hljs-title function_">push</span>(<span class="hljs-variable constant_">FAST_MODE_BETA_HEADER</span>)
+}
+<span class="hljs-comment">// AFK mode beta: latched once auto mode is first activated.</span>
+<span class="hljs-keyword">if</span> (afkHeaderLatched &#x26;&#x26; <span class="hljs-title function_">shouldIncludeFirstPartyOnlyBetas</span>() &#x26;&#x26; isAgenticQuery) {
+  betasParams.<span class="hljs-title function_">push</span>(<span class="hljs-variable constant_">AFK_MODE_BETA_HEADER</span>)
+}
+</code></pre>
+<p>The latch pattern is deceptively simple but solves a critical cost problem: prompt cache keys include beta headers. If <code>fast_mode</code> toggles on and off mid-session, every toggle invalidates the cache. With ~20K tokens of system prompt, a single cache miss costs significantly more than the prompt itself. The latch ensures the header, once activated, stays on for the session — the <code>speed='fast'</code> parameter still toggles dynamically to control behavior, but the cache key stays stable.</p>
+<hr>
+<h2>3. The Retry Strategy Engine</h2>
+<p><code>withRetry.ts</code> (823 lines) wraps every API call with a sophisticated retry state machine:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/withRetry.ts:170-178</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span>* withRetry&#x3C;T>(
+  <span class="hljs-attr">getClient</span>: <span class="hljs-function">() =></span> <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-title class_">Anthropic</span>>,
+  <span class="hljs-attr">operation</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">client</span>: <span class="hljs-title class_">Anthropic</span>, <span class="hljs-attr">attempt</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">context</span>: <span class="hljs-title class_">RetryContext</span></span>) =></span> <span class="hljs-title class_">Promise</span>&#x3C;T>,
+  <span class="hljs-attr">options</span>: <span class="hljs-title class_">RetryOptions</span>,
+): <span class="hljs-title class_">AsyncGenerator</span>&#x3C;<span class="hljs-title class_">SystemAPIErrorMessage</span>, T> {
+</code></pre>
+<p>The <code>AsyncGenerator</code> return type is the key design choice: callers get intermediate <code>SystemAPIErrorMessage</code> events between retries, which the UI renders as "Retrying in X seconds..." status messages.</p>
+<h3>The Retry Decision Matrix</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Error</th><th>Strategy</th><th>Rationale</th></tr></thead><tbody><tr><td><strong>429 Rate Limit</strong></td><td>Wait <code>retry-after</code>, or fast-mode cooldown</td><td>Honors server directive</td></tr><tr><td><strong>529 Overloaded</strong></td><td>Max 3 retries → fallback to Sonnet</td><td>Prevents cascade amplification</td></tr><tr><td><strong>401 Unauthorized</strong></td><td>Force OAuth token refresh → retry</td><td>Token may have expired</td></tr><tr><td><strong>403 Token Revoked</strong></td><td><code>handleOAuth401Error()</code> → retry</td><td>Another process refreshed token</td></tr><tr><td><strong>400 Context Overflow</strong></td><td>Reduce <code>max_tokens</code> → retry</td><td>Shrink output to fit context</td></tr><tr><td><strong>ECONNRESET/EPIPE</strong></td><td>Disable keep-alive → retry</td><td>Stale socket detected</td></tr><tr><td><strong>Non-foreground 529</strong></td><td>Bail immediately</td><td>Reduces backend amplification</td></tr></tbody></table>
+<h3>Foreground Source Whitelist</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/withRetry.ts:62-82</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">FOREGROUND_529_RETRY_SOURCES</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>&#x3C;<span class="hljs-title class_">QuerySource</span>>([
+  <span class="hljs-string">'repl_main_thread'</span>, <span class="hljs-string">'sdk'</span>, <span class="hljs-string">'agent:custom'</span>, <span class="hljs-string">'agent:default'</span>,
+  <span class="hljs-string">'compact'</span>, <span class="hljs-string">'hook_agent'</span>, <span class="hljs-string">'auto_mode'</span>, ...
+])
+</code></pre>
+<p>This is a critical anti-amplification measure. During a capacity cascade, each retry multiplies backend load by 3-10×. Background queries (summaries, titles, classifiers) that hit 529 bail immediately — the user never sees them fail. Only foreground queries where the user is actively waiting get retried.</p>
+<h3>Persistent Retry Mode</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/withRetry.ts:96-98</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">PERSISTENT_MAX_BACKOFF_MS</span> = <span class="hljs-number">5</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>    <span class="hljs-comment">// 5 min max</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">PERSISTENT_RESET_CAP_MS</span> = <span class="hljs-number">6</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span> <span class="hljs-comment">// 6 hour cap</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">HEARTBEAT_INTERVAL_MS</span> = <span class="hljs-number">30_000</span>                <span class="hljs-comment">// 30s keep-alive</span>
+</code></pre>
+<p>For unattended CI/CD sessions (<code>CLAUDE_CODE_UNATTENDED_RETRY</code>), the retry loop runs indefinitely. Every 30 seconds during the wait, it yields a heartbeat <code>SystemAPIErrorMessage</code> so the host environment (Docker, CI runner) doesn't consider the session idle and kill it.</p>
+<h3>Fast Mode Retry Logic</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/withRetry.ts:284-304</span>
+<span class="hljs-keyword">const</span> retryAfterMs = <span class="hljs-title function_">getRetryAfterMs</span>(error)
+<span class="hljs-keyword">if</span> (retryAfterMs !== <span class="hljs-literal">null</span> &#x26;&#x26; retryAfterMs &#x3C; <span class="hljs-variable constant_">SHORT_RETRY_THRESHOLD_MS</span>) {
+  <span class="hljs-comment">// Short retry-after: wait and retry with fast mode still active</span>
+  <span class="hljs-keyword">await</span> <span class="hljs-title function_">sleep</span>(retryAfterMs, options.<span class="hljs-property">signal</span>, { abortError })
+  <span class="hljs-keyword">continue</span>
+}
+<span class="hljs-comment">// Long or unknown: enter cooldown (switch to standard speed)</span>
+<span class="hljs-keyword">const</span> cooldownMs = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(
+  retryAfterMs ?? <span class="hljs-variable constant_">DEFAULT_FAST_MODE_FALLBACK_HOLD_MS</span>, <span class="hljs-variable constant_">MIN_COOLDOWN_MS</span>
+)
+<span class="hljs-title function_">triggerFastModeCooldown</span>(<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() + cooldownMs, cooldownReason)
+</code></pre>
+<p>Fast mode retries split into two paths. Short <code>retry-after</code> (&#x3C; 20s): keep fast mode active and cache key stable. Long or absent <code>retry-after</code>: enter cooldown, switch to standard speed. The <code>MIN_COOLDOWN_MS</code> floor prevents flip-flopping between fast and standard within seconds.</p>
+<hr>
+<h2>4. Streaming Architecture</h2>
+<h3>Why Raw SSE Instead of SDK Streams</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1818-1836</span>
+<span class="hljs-comment">// Use raw stream instead of BetaMessageStream to avoid O(n²) partial JSON parsing</span>
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> anthropic.<span class="hljs-property">beta</span>.<span class="hljs-property">messages</span>
+  .<span class="hljs-title function_">create</span>({ ...params, <span class="hljs-attr">stream</span>: <span class="hljs-literal">true</span> }, { signal, ... })
+  .<span class="hljs-title function_">withResponse</span>()
+stream = result.<span class="hljs-property">data</span>  <span class="hljs-comment">// Stream&#x3C;BetaRawMessageStreamEvent></span>
+</code></pre>
+<p>The Anthropic SDK's <code>BetaMessageStream</code> calls <code>partialParse()</code> on every <code>input_json_delta</code> event. For long tool inputs, this grows quadratically — each delta re-parses the accumulated JSON from scratch. Claude Code bypasses this by consuming raw SSE events and accumulating content blocks manually.</p>
+<h3>The Stream Event State Machine</h3>
+<pre class="ascii-diagram"><code>message_start
+  → Initialize usage, capture research metadata
+  → Record TTFB (time to first token)
+
+content_block_start
+  → Create new block (text | thinking | tool_use | server_tool_use | connector_text)
+  → Initialize accumulator: text='', thinking='', input=''
+
+content_block_delta
+  → Incremental append: text_delta | input_json_delta | thinking_delta | signature_delta
+  → Type-safe accumulation (each delta type matches its block type)
+
+content_block_stop
+  → Build completed content block
+  → Parse accumulated JSON for tool_use inputs: JSON.parse(accumulated)
+
+message_delta
+  → Update usage counters, capture stop_reason
+
+message_stop
+  → Finalize AssistantMessage, yield to caller
+</code></pre>
+<h3>The Idle Watchdog</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:1874-1928</span>
+<span class="hljs-keyword">const</span> streamWatchdogEnabled = <span class="hljs-title function_">isEnvTruthy</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">CLAUDE_ENABLE_STREAM_WATCHDOG</span>)
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">STREAM_IDLE_TIMEOUT_MS</span> = <span class="hljs-built_in">parseInt</span>(...) || <span class="hljs-number">90_000</span>  <span class="hljs-comment">// 90s default</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">STREAM_IDLE_WARNING_MS</span> = <span class="hljs-variable constant_">STREAM_IDLE_TIMEOUT_MS</span> / <span class="hljs-number">2</span>  <span class="hljs-comment">// 45s warning</span>
+
+streamIdleTimer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =></span> {
+  streamIdleAborted = <span class="hljs-literal">true</span>
+  <span class="hljs-title function_">releaseStreamResources</span>()
+}, <span class="hljs-variable constant_">STREAM_IDLE_TIMEOUT_MS</span>)
+</code></pre>
+<p>Silently dropped connections are a real problem with SSE streams. The SDK's request timeout only covers the initial <code>fetch()</code>, not the streaming body. The watchdog monitors inter-chunk gaps: warning at 45 seconds, abort at 90 seconds. Without this, a hung stream blocks the session indefinitely.</p>
+<hr>
+<h2>5. Prompt Cache — Three-Layer Strategy</h2>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:358-374</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getCacheControl</span>(<span class="hljs-params">{ scope, querySource } = {}</span>) {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">type</span>: <span class="hljs-string">'ephemeral'</span>,
+    ...(<span class="hljs-title function_">should1hCacheTTL</span>(querySource) &#x26;&#x26; { <span class="hljs-attr">ttl</span>: <span class="hljs-string">'1h'</span> }),
+    ...(scope === <span class="hljs-string">'global'</span> &#x26;&#x26; { scope }),
+  }
+}
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Layer</th><th>TTL</th><th>Scope</th><th>Eligibility</th></tr></thead><tbody><tr><td><strong>Ephemeral</strong></td><td>5 min (default)</td><td>Per-user</td><td>Everyone</td></tr><tr><td><strong>1-Hour</strong></td><td>1h</td><td>Per-user</td><td>Subscribers + GrowthBook allowlist match</td></tr><tr><td><strong>Global</strong></td><td>5 min</td><td>Cross-user</td><td>System prompt when MCP tools are stable</td></tr></tbody></table>
+<h3>1h TTL Eligibility &#x26; Latching</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:393-434</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">should1hCacheTTL</span>(<span class="hljs-params"><span class="hljs-attr">querySource</span>?: <span class="hljs-title class_">QuerySource</span></span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-comment">// 3P Bedrock users: opt-in via ENABLE_PROMPT_CACHING_1H_BEDROCK</span>
+  <span class="hljs-comment">// 1P users: eligibility is latched in bootstrap state</span>
+  <span class="hljs-keyword">let</span> userEligible = <span class="hljs-title function_">getPromptCache1hEligible</span>()
+  <span class="hljs-keyword">if</span> (userEligible === <span class="hljs-literal">null</span>) {
+    userEligible =
+      process.<span class="hljs-property">env</span>.<span class="hljs-property">USER_TYPE</span> === <span class="hljs-string">'ant'</span> ||
+      (<span class="hljs-title function_">isClaudeAISubscriber</span>() &#x26;&#x26; !currentLimits.<span class="hljs-property">isUsingOverage</span>)
+    <span class="hljs-title function_">setPromptCache1hEligible</span>(userEligible)  <span class="hljs-comment">// Latch!</span>
+  }
+  <span class="hljs-comment">// Allowlist is also latched to prevent mixed TTLs mid-session</span>
+  <span class="hljs-keyword">let</span> allowlist = <span class="hljs-title function_">getPromptCache1hAllowlist</span>()
+  <span class="hljs-keyword">if</span> (allowlist === <span class="hljs-literal">null</span>) {
+    <span class="hljs-keyword">const</span> config = <span class="hljs-title function_">getFeatureValue_CACHED_MAY_BE_STALE</span>(<span class="hljs-string">'tengu_prompt_cache_1h_config'</span>, {})
+    allowlist = config.<span class="hljs-property">allowlist</span> ?? []
+    <span class="hljs-title function_">setPromptCache1hAllowlist</span>(allowlist)  <span class="hljs-comment">// Latch!</span>
+  }
+  <span class="hljs-comment">// Pattern matching with trailing * wildcard support</span>
+  <span class="hljs-keyword">return</span> allowlist.<span class="hljs-title function_">some</span>(<span class="hljs-function"><span class="hljs-params">pattern</span> =></span>
+    pattern.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">'*'</span>)
+      ? querySource.<span class="hljs-title function_">startsWith</span>(pattern.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>))
+      : querySource === pattern
+  )
+}
+</code></pre>
+<p>Both eligibility and the GrowthBook allowlist are latched in bootstrap state on first evaluation. This prevents a mid-session overage flip (subscriber runs out of quota) from changing cache TTL — which would bust the server-side cache with a ~20K token penalty per flip.</p>
+<hr>
+<h2>6. Error Classification System</h2>
+<p><code>errors.ts</code> (1,208 lines) is the largest file in the API directory. It provides structured error classification for every API failure mode:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/errors.ts:85-96</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">parsePromptTooLongTokenCounts</span>(<span class="hljs-params"><span class="hljs-attr">rawMessage</span>: <span class="hljs-built_in">string</span></span>) {
+  <span class="hljs-keyword">const</span> match = rawMessage.<span class="hljs-title function_">match</span>(
+    <span class="hljs-regexp">/prompt is too long[^0-9]*(\d+)\s*tokens?\s*>\s*(\d+)/i</span>
+  )
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">actualTokens</span>: match ? <span class="hljs-built_in">parseInt</span>(match[<span class="hljs-number">1</span>]!, <span class="hljs-number">10</span>) : <span class="hljs-literal">undefined</span>,
+    <span class="hljs-attr">limitTokens</span>: match ? <span class="hljs-built_in">parseInt</span>(match[<span class="hljs-number">2</span>]!, <span class="hljs-number">10</span>) : <span class="hljs-literal">undefined</span>,
+  }
+}
+</code></pre>
+<h3>Error Classification Hierarchy</h3>
+<pre class="ascii-diagram"><code>getAssistantMessageFromError(error, model)
+  ├─ APIConnectionTimeoutError → "Request timed out"
+  ├─ ImageSizeError / ImageResizeError → "Image too large"
+  ├─ CUSTOM_OFF_SWITCH_MESSAGE → "Opus under load, switch to Sonnet"
+  ├─ 429 Rate Limit
+  │   ├─ Unified headers present → getRateLimitErrorMessage(limits)
+  │   └─ No headers → generic "Request rejected (429)"
+  ├─ prompt too long → PROMPT_TOO_LONG_ERROR_MESSAGE + errorDetails
+  ├─ PDF errors → too large / password protected / invalid
+  ├─ image exceeds / many-image → size error messages
+  ├─ tool_use/tool_result mismatch → concurrency error + /rewind hint
+  ├─ organization disabled → stale API key guidance
+  ├─ credit balance too low → billing error
+  └─ (default) → formatted API error string
+</code></pre>
+<p>The error system does double duty: it provides user-facing messages for the terminal UI, and machine-readable <code>errorDetails</code> strings for reactive compact's retry logic. <code>getPromptTooLongTokenGap()</code> parses the actual-vs-limit gap from <code>errorDetails</code>, letting compact jump past multiple message groups in one retry instead of peeling one at a time.</p>
+<hr>
+<h2>7. GrowthBook Feature Flags</h2>
+<p><code>growthbook.ts</code> (1,156 lines) integrates the GrowthBook feature flag platform, serving as Claude Code's remote configuration backbone.</p>
+<h3>Two Read Modes</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Non-blocking: returns cached/stale value immediately</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> getFeatureValue_CACHED_MAY_BE_STALE&#x3C;T>(feature, defaultValue): T {
+  <span class="hljs-comment">// Priority: env overrides → config overrides → in-memory payload → disk cache → default</span>
+}
+
+<span class="hljs-comment">// Blocking: waits for GrowthBook initialization to complete</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> getDynamicConfig_BLOCKS_ON_INIT&#x3C;T>(feature, defaultValue): <span class="hljs-title class_">Promise</span>&#x3C;T> {
+  <span class="hljs-keyword">const</span> growthBookClient = <span class="hljs-keyword">await</span> <span class="hljs-title function_">initializeGrowthBook</span>()  <span class="hljs-comment">// blocks ~10ms</span>
+  <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<p><code>CACHED_MAY_BE_STALE</code> is the hot-path choice — used hundreds of times per session in render loops, permission checks, and model selection. It reads from an in-memory Map first, then falls back to disk cache (<code>~/.claude.json</code>). <code>BLOCKS_ON_INIT</code> is reserved for critical-path decisions like the off-switch, where a wrong answer has serious consequences.</p>
+<h3>User Attributes for Targeting</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/analytics/growthbook.ts:32-47</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">GrowthBookUserAttributes</span> = {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>                    <span class="hljs-comment">// Device ID (stable across sessions)</span>
+  <span class="hljs-attr">sessionId</span>: <span class="hljs-built_in">string</span>             <span class="hljs-comment">// Per-session unique ID</span>
+  <span class="hljs-attr">platform</span>: <span class="hljs-string">'win32'</span> | <span class="hljs-string">'darwin'</span> | <span class="hljs-string">'linux'</span>
+  <span class="hljs-attr">organizationUUID</span>?: <span class="hljs-built_in">string</span>     <span class="hljs-comment">// Enterprise org targeting</span>
+  <span class="hljs-attr">accountUUID</span>?: <span class="hljs-built_in">string</span>          <span class="hljs-comment">// Individual account targeting</span>
+  <span class="hljs-attr">userType</span>?: <span class="hljs-built_in">string</span>             <span class="hljs-comment">// 'ant' (internal) | 'external'</span>
+  <span class="hljs-attr">subscriptionType</span>?: <span class="hljs-built_in">string</span>     <span class="hljs-comment">// Pro, Max, Enterprise, etc.</span>
+  <span class="hljs-attr">rateLimitTier</span>?: <span class="hljs-built_in">string</span>        <span class="hljs-comment">// Rate limit tier (for gradual rollouts)</span>
+  <span class="hljs-attr">appVersion</span>?: <span class="hljs-built_in">string</span>           <span class="hljs-comment">// Version-specific feature gates</span>
+}
+</code></pre>
+<h3>Remote Eval Workaround</h3>
+<p>GrowthBook's remote eval mode evaluates flags server-side (so targeting rules stay private), but the SDK returns <code>{ value: ... }</code> while expecting <code>{ defaultValue: ... }</code>. Claude Code works around this with <code>processRemoteEvalPayload()</code>:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/analytics/growthbook.ts:327-394</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">processRemoteEvalPayload</span>(<span class="hljs-params"><span class="hljs-attr">gbClient</span>: <span class="hljs-title class_">GrowthBook</span></span>): <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-built_in">boolean</span>> {
+  <span class="hljs-keyword">const</span> payload = gbClient.<span class="hljs-title function_">getPayload</span>()
+  <span class="hljs-comment">// Transform: { value: ... } → { defaultValue: ... }</span>
+  <span class="hljs-comment">// Cache in remoteEvalFeatureValues Map (bypasses SDK's re-evaluation)</span>
+  <span class="hljs-comment">// Store experiment data for exposure logging</span>
+  <span class="hljs-comment">// Sync to disk for cross-process stability</span>
+}
+</code></pre>
+<p>The flag values are synced to disk via <code>syncRemoteEvalToDisk()</code> after every successful payload load. This serves as a cross-process cache: a new Claude Code process reads disk-cached flags immediately at startup, before GrowthBook's network init completes.</p>
+<hr>
+<h2>8. LSP Integration — Closure Factory Pattern</h2>
+<p>The LSP (Language Server Protocol) integration exemplifies Claude Code's preference for closure factories over classes:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/lsp/LSPServerManager.ts:59-65</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createLSPServerManager</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">LSPServerManager</span> {
+  <span class="hljs-comment">// Private state managed via closures</span>
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">servers</span>: <span class="hljs-title class_">Map</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">LSPServerInstance</span>> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>()
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">extensionMap</span>: <span class="hljs-title class_">Map</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>[]> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>()
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">openedFiles</span>: <span class="hljs-title class_">Map</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">string</span>> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>()
+  <span class="hljs-comment">// ... 360 lines of closure methods</span>
+  <span class="hljs-keyword">return</span> { initialize, shutdown, getServerForFile, ensureServerStarted, sendRequest, ... }
+}
+</code></pre>
+<h3>File-Based Routing</h3>
+<p>When Claude Code reads or edits a file, the LSP manager routes the notification to the correct language server based on file extension:</p>
+<pre class="ascii-diagram"><code>.ts, .tsx, .js  →  TypeScript Language Server
+.py             →  Python Language Server (Pyright/Pylsp)
+.rs             →  rust-analyzer
+(etc.)
+</code></pre>
+<h3>The Generation Counter</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/lsp/manager.ts:32-36</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">initializationState</span>: <span class="hljs-title class_">InitializationState</span> = <span class="hljs-string">'not-started'</span>
+<span class="hljs-keyword">let</span> initializationGeneration = <span class="hljs-number">0</span>
+
+<span class="hljs-comment">// On reinitialize (after plugin refresh):</span>
+<span class="hljs-keyword">const</span> currentGeneration = ++initializationGeneration
+lspManagerInstance.<span class="hljs-title function_">initialize</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =></span> {
+  <span class="hljs-comment">// Only update state if this is still the current initialization</span>
+  <span class="hljs-keyword">if</span> (currentGeneration === initializationGeneration) {
+    initializationState = <span class="hljs-string">'success'</span>
+  }
+})
+</code></pre>
+<p>This solves a subtle race condition: if <code>reinitializeLspServerManager()</code> is called while a previous initialization is still in-flight, the generation counter ensures the stale initialization's <code>.then()</code> handler is silently discarded. Without this, a slow init could overwrite state from a newer init.</p>
+<h3>Deferred Tool Loading for LSP</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/api/claude.ts:786-793</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">shouldDeferLspTool</span>(<span class="hljs-params"><span class="hljs-attr">tool</span>: <span class="hljs-title class_">Tool</span></span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-keyword">if</span> (!(<span class="hljs-string">'isLsp'</span> <span class="hljs-keyword">in</span> tool) || !tool.<span class="hljs-property">isLsp</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+  <span class="hljs-keyword">const</span> status = <span class="hljs-title function_">getInitializationStatus</span>()
+  <span class="hljs-keyword">return</span> status.<span class="hljs-property">status</span> === <span class="hljs-string">'pending'</span> || status.<span class="hljs-property">status</span> === <span class="hljs-string">'not-started'</span>
+}
+</code></pre>
+<p>LSP tools (code diagnostics, definition lookups) participate in the tool search system: they're deferred until the language server is ready, then lazily included once discovered.</p>
+<hr>
+<h2>9. MCP Integration Highlights</h2>
+<p>The MCP (Model Context Protocol) subsystem is covered in detail in <a href="04-plugin-system">Episode 4: Plugin System</a>, but its service-layer aspects deserve mention here.</p>
+<h3>Six Transport Types</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/mcp/types.ts</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title class_">TransportSchema</span> = z.<span class="hljs-title function_">enum</span>([
+  <span class="hljs-string">'stdio'</span>,    <span class="hljs-comment">// Local subprocess (stdin/stdout) — most common</span>
+  <span class="hljs-string">'sse'</span>,      <span class="hljs-comment">// Server-Sent Events (remote)</span>
+  <span class="hljs-string">'http'</span>,     <span class="hljs-comment">// Streamable HTTP (MCP 2025 spec)</span>
+  <span class="hljs-string">'ws'</span>,       <span class="hljs-comment">// WebSocket (IDE extensions)</span>
+  <span class="hljs-string">'sdk'</span>,      <span class="hljs-comment">// In-process SDK-controlled transport</span>
+  <span class="hljs-string">'sse-ide'</span>,  <span class="hljs-comment">// SSE via IDE bridge</span>
+])
+</code></pre>
+<h3>MCPConnectionManager (React Context)</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/services/mcp/MCPConnectionManager.tsx</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">MCPConnectionManager</span>(<span class="hljs-params">{ children, dynamicMcpConfig, isStrictMcpConfig }</span>) {
+  <span class="hljs-keyword">const</span> { reconnectMcpServer, toggleMcpServer } = <span class="hljs-title function_">useManageMCPConnections</span>(...)
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&#x3C;<span class="hljs-name">MCPConnectionContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{{</span> <span class="hljs-attr">reconnectMcpServer</span>, <span class="hljs-attr">toggleMcpServer</span> }}></span>
+      {children}
+    <span class="hljs-tag">&#x3C;/<span class="hljs-name">MCPConnectionContext.Provider</span>></span></span>
+  )
+}
+</code></pre>
+<p>The MCP connection lifecycle is managed through React context, enabling hot-reload of MCP servers without restarting the session. The React Compiler optimizes this with <code>_c(6)</code> memo slots.</p>
+<hr>
+<h2>Transferable Design Patterns</h2>
+<blockquote>
+<p>The following patterns can be directly applied to other Agentic systems or CLI tools.</p>
+</blockquote>
+<h3>Pattern 1: Session-Stable Latch</h3>
+<p><strong>Scenario:</strong> A feature flag or beta header controls a behavior that also serves as a cache key.
+<strong>Problem:</strong> Toggling the flag mid-session invalidates the cache, causing severe cost amplification.
+<strong>Practice:</strong> Latch the flag value on first evaluation. The latch stores a boolean in bootstrap state; once set to <code>true</code>, it never reverts within the session.</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">let</span> headerLatched = <span class="hljs-literal">false</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">ensureLatched</span>(<span class="hljs-params"><span class="hljs-attr">condition</span>: <span class="hljs-built_in">boolean</span></span>) {
+  <span class="hljs-keyword">if</span> (!headerLatched &#x26;&#x26; condition) {
+    headerLatched = <span class="hljs-literal">true</span>
+    <span class="hljs-title function_">setHeaderLatched</span>(<span class="hljs-literal">true</span>)  <span class="hljs-comment">// Persist in bootstrap state</span>
+  }
+  <span class="hljs-keyword">return</span> headerLatched
+}
+</code></pre>
+<p><strong>Claude Code applies this to:</strong> <code>fast_mode</code>, <code>afk_mode</code>, <code>cache_editing</code> beta headers, 1h prompt cache eligibility, and the GrowthBook allowlist.</p>
+<h3>Pattern 2: AsyncGenerator Retry Pipeline</h3>
+<p><strong>Scenario:</strong> A long-running operation needs retry logic, but callers also need visibility into retry status.
+<strong>Problem:</strong> Traditional retry wrappers block until success or final failure. The caller can't show "Retrying..." UI.
+<strong>Practice:</strong> Make the retry wrapper an <code>AsyncGenerator</code> that <code>yield</code>s status events between attempts and <code>return</code>s the final result.</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span>* withRetry&#x3C;T>(
+  operation, options
+): <span class="hljs-title class_">AsyncGenerator</span>&#x3C;<span class="hljs-title class_">StatusEvent</span>, T> {
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> attempt = <span class="hljs-number">1</span>; attempt &#x3C;= maxRetries; attempt++) {
+    <span class="hljs-keyword">try</span> { <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> <span class="hljs-title function_">operation</span>(attempt) }
+    <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-keyword">yield</span> { <span class="hljs-attr">type</span>: <span class="hljs-string">'retry'</span>, attempt, delayMs, error }
+      <span class="hljs-keyword">await</span> <span class="hljs-title function_">sleep</span>(delayMs)
+    }
+  }
+}
+</code></pre>
+<h3>Pattern 3: Closure Factory with Generation Counter</h3>
+<p><strong>Scenario:</strong> A singleton service that may need re-initialization (e.g., after plugin refresh).
+<strong>Problem:</strong> Async init can overlap: <code>init_1</code> starts, <code>reinit</code> starts <code>init_2</code>, but <code>init_1</code> finishes second and overwrites <code>init_2</code>'s state.
+<strong>Practice:</strong> Increment a generation counter on each init. The <code>.then()</code> callback checks if its generation is still current before updating state.</p>
+<h3>Pattern 4: Foreground/Background Retry Classification</h3>
+<p><strong>Scenario:</strong> A service experiences cascading failures (e.g., API overload).
+<strong>Problem:</strong> Retrying all queries amplifies the overload 3-10× per retry layer.
+<strong>Practice:</strong> Maintain a whitelist of "foreground" query sources (user is waiting). Background queries (summaries, classifiers, titles) bail immediately on overload errors. This is anti-amplification by design.</p>
+<hr>
+<h2>Source Coordinates</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Component</th><th>Path</th><th>Lines</th><th>Key Function</th></tr></thead><tbody><tr><td>Client Factory</td><td><code>services/api/client.ts</code></td><td>390</td><td><code>getAnthropicClient()</code></td></tr><tr><td>Query Engine</td><td><code>services/api/claude.ts</code></td><td>3,420</td><td><code>queryModel()</code> L1017</td></tr><tr><td>Retry Engine</td><td><code>services/api/withRetry.ts</code></td><td>823</td><td><code>withRetry()</code> L170</td></tr><tr><td>Error System</td><td><code>services/api/errors.ts</code></td><td>1,208</td><td><code>getAssistantMessageFromError()</code> L425</td></tr><tr><td>Cache Control</td><td><code>services/api/claude.ts</code></td><td>—</td><td><code>getCacheControl()</code> L358</td></tr><tr><td>GrowthBook</td><td><code>services/analytics/growthbook.ts</code></td><td>1,156</td><td><code>getFeatureValue_CACHED_MAY_BE_STALE()</code> L734</td></tr><tr><td>LSP Manager</td><td><code>services/lsp/LSPServerManager.ts</code></td><td>421</td><td><code>createLSPServerManager()</code> L59</td></tr><tr><td>LSP Singleton</td><td><code>services/lsp/manager.ts</code></td><td>290</td><td><code>initializeLspServerManager()</code> L145</td></tr><tr><td>MCP Client</td><td><code>services/mcp/client.ts</code></td><td>~3,000</td><td>MCP lifecycle management</td></tr><tr><td>MCP Types</td><td><code>services/mcp/types.ts</code></td><td>—</td><td><code>TransportSchema</code>, <code>ConfigScopeSchema</code></td></tr><tr><td>Analytics</td><td><code>services/analytics/index.ts</code></td><td>—</td><td><code>logEvent()</code>, PII protection</td></tr></tbody></table>
+<hr>
+<p><em>The services layer is where Claude Code's ambitions meet the real world's failure modes.</em></p>
+<p><a href="14-ui-state-management">← Episode 14 — UI &#x26; State Management</a> · <a href="16-infrastructure-config">Episode 16 — Infrastructure &#x26; Config →</a></p></div></article><nav class="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800"><a class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/ja/advanced/14-ui-state-management/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left transition-transform group-hover:-translate-x-1" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg><span>EP<!-- -->14<!-- --> <!-- -->UI State &amp; Rendering</span></a><a class="group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/ja/advanced/16-infrastructure-config/"><span>EP<!-- -->16<!-- --> <!-- -->Infrastructure &amp; Config</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></nav></div><!--$--><!--/$--></div></div></main><script src="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n3:I[37457,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n5:I[95914,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\"],\"Sidebar\"]\n7:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"OutletBoundary\"]\n8:\"$Sreact.suspense\"\na:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"MetadataBoundary\"]\ne:I[68027,[],\"default\"]\n:HL[\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"kOMToiePwU79Kzn0fZt4S\",\"c\":[\"\",\"ja\",\"advanced\",\"15-services-api-layer\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[[\"locale\",\"ja\",\"d\"],{\"children\":[\"(learn)\",{\"children\":[\"advanced\",{\"children\":[[\"chapter\",\"15-services-api-layer\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true]}],[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"div\",null,{\"className\":\"flex gap-8\",\"children\":[[\"$\",\"$L5\",null,{}],[\"$\",\"div\",null,{\"className\":\"min-w-0 flex-1\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@9\"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[33499,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"I18nProvider\"]\n10:I[45872,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"Header\"]\n11:I[22016,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"\"]\n4:[\"$\",\"html\",null,{\"lang\":\"ja\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n          (function() {\\n            var theme = localStorage.getItem('theme');\\n            if (theme === 'dark' || (!theme \u0026\u0026 window.matchMedia('(prefers-color-scheme: dark)').matches)) {\\n              document.documentElement.classList.add('dark');\\n            }\\n          })();\\n        \"}}]}],[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased\",\"children\":[\"$\",\"$Lf\",null,{\"locale\":\"ja\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-4xl space-y-8 py-4\",\"children\":[[\"$\",\"header\",null,{\"className\":\"rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/ja/curriculum\",\"className\":\"inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Course map\"]}],[\"$\",\"div\",null,{\"className\":\"mt-4 flex flex-wrap items-center gap-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800\",\"children\":[\"EP\",\"15\"]}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold text-zinc-950 dark:text-zinc-50\",\"children\":\"Services \u0026 API Layer\"}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Model clients, streams, retries, providers, and service boundaries\"}]]}],[\"$\",\"section\",null,{\"className\":\"rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-start justify-between gap-3\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300\",\"children\":\"Prompt reference\"}],[\"$\",\"h2\",null,{\"className\":\"mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50\",\"children\":\"Service references and API tool-use material\"}],[\"$\",\"p\",null,{\"className\":\"mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200\",\"children\":\"This chapter can use the embedded data prompts as service-layer reading material.\"}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":14,\"height\":14,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}],\"Source repo\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70\",\"children\":\"Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.\"}],[\"$\",\"div\",null,{\"className\":\"mt-4 grid gap-3 md:grid-cols-2\",\"children\":[[\"$\",\"a\",\"data-claude-api-reference-typescript.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-claude-api-reference-typescript.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[\"$L12\",\"$L13\",\"$L14\",\"$L15\",\"$L16\",\"$undefined\"]}],\"$L17\"]}],\"$L18\",\"$L19\"]}],\"$L1a\",\"$L1b\",\"$L1c\",\"$L1d\"]}]]}],\"$L1e\",\"$L1f\"]}]\n"])</script><script>self.__next_f.push([1,"20:I[19004,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"AdvancedDocRenderer\"]\n12:[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}]\n13:[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}]\n14:[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}]\n15:[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}]\n16:[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}]\n17:[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Claude API reference TypeScript\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"data-claude-api-reference-typescript.md\"}]]}]\n18:[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"SDK reference\"}]\n19:[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Connects service-layer clients to the actual API surface.\"}]\n"])</script><script>self.__next_f.push([1,"1a:[\"$\",\"a\",\"data-streaming-reference-typescript.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-streaming-reference-typescript.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Streaming reference TypeScript\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"data-streaming-reference-typescript.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Streaming service\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Useful for comparing API stream handling with QueryEngine behavior.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1b:[\"$\",\"a\",\"data-tool-use-reference-python.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-tool-use-reference-python.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Tool use reference Python\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"data-tool-use-reference-python.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Tool runner\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Grounds tool-use loops in official-style API examples embedded into the package.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1c:[\"$\",\"a\",\"data-http-error-codes-reference.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-http-error-codes-reference.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"HTTP error codes reference\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"data-http-error-codes-reference.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Error handling\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Complements retries, fallback, and failure surfaces.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1d:[\"$\",\"a\",\"data-claude-model-catalog.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/data-claude-model-catalog.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Model catalog\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"data-claude-model-catalog.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Model routing\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Pairs with service boundaries, model selection, and budget discussions.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1e:[\"$\",\"$L20\",null,{\"chapter\":\"15\"}]\n"])</script><script>self.__next_f.push([1,"1f:[\"$\",\"nav\",null,{\"className\":\"flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/ja/advanced/14-ui-state-management\",\"className\":\"group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left transition-transform group-hover:-translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],[\"$\",\"span\",null,{\"children\":[\"EP\",\"14\",\" \",\"UI State \u0026 Rendering\"]}]]}],[\"$\",\"$L11\",null,{\"href\":\"/ja/advanced/16-infrastructure-config\",\"className\":\"group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"span\",null,{\"children\":[\"EP\",\"16\",\" \",\"Infrastructure \u0026 Config\"]}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-right transition-transform group-hover:translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1ays0h\",{\"d\":\"M5 12h14\"}],[\"$\",\"path\",\"xquz4c\",{\"d\":\"m12 5 7 7-7 7\"}],\"$undefined\"]}]]}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"21:I[27201,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"IconMark\"]\n9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Agent Coding Lesson\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"0 から 1 へ nano Claude Code-like agent を構築し、毎回 1 つの仕組みを追加\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L21\",\"3\",{}]]\n"])</script></body></html>

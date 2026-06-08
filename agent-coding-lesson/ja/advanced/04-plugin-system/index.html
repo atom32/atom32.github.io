@@ -1,0 +1,519 @@
+<!DOCTYPE html><!--kOMToiePwU79Kzn0fZt4S--><html lang="ja"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js"/><script src="/agent-coding-lesson/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/76fed9c17f51393e.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/7de9141b1af425c3.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/turbopack-8800d0fd815877b2.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/076aae518584b842.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js" async=""></script><title>Agent Coding Lesson</title><meta name="description" content="0 から 1 へ nano Claude Code-like agent を構築し、毎回 1 つの仕組みを追加"/><link rel="icon" href="/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico" sizes="256x256" type="image/x-icon"/><script>
+          (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script><script src="/agent-coding-lesson/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm"><div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a class="text-lg font-bold" href="/agent-coding-lesson/ja/">Agent Coding Lesson</a><nav class="hidden items-center gap-6 md:flex"><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/curriculum/">カリキュラム</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/timeline/">学習パス</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/compare/">バージョン比較</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/layers/">アーキテクチャ層</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/slides/s01/">スライド</a><div class="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5"><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">EN</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">中文</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">日本語</button></div><button class="rounded-md p-1.5 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Switch to dark mode"><span class="inline-block h-4 w-4"></span></button><a href="https://github.com/atom32/agent-coding-lesson" target="_blank" rel="noopener" class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Open project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a></nav><button class="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"><div class="flex gap-8"><nav class="hidden w-64 shrink-0 md:block"><div class="sticky top-[calc(3.5rem+2rem)] max-h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/curriculum/">カリキュラム</a><div class="space-y-1"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/summary/">サマリー</a><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/glossary/">用語集</a></div><section class="space-y-5"><div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">ラボレッスン</div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">ツールと実行</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s01/"><span class="font-mono text-xs">s01</span><span class="ml-1.5">エージェントループ</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s02/"><span class="font-mono text-xs">s02</span><span class="ml-1.5">ツール</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">計画と調整</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s03/"><span class="font-mono text-xs">s03</span><span class="ml-1.5">TodoWrite</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s04/"><span class="font-mono text-xs">s04</span><span class="ml-1.5">サブエージェント</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s05/"><span class="font-mono text-xs">s05</span><span class="ml-1.5">スキル</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s07/"><span class="font-mono text-xs">s07</span><span class="ml-1.5">タスクシステム</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-purple-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">メモリ管理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s06/"><span class="font-mono text-xs">s06</span><span class="ml-1.5">コンテキスト圧縮</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">並行処理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s08/"><span class="font-mono text-xs">s08</span><span class="ml-1.5">バックグラウンドタスク</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-red-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">コラボレーション</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s09/"><span class="font-mono text-xs">s09</span><span class="ml-1.5">エージェントチーム</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s10/"><span class="font-mono text-xs">s10</span><span class="ml-1.5">チームプロトコル</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s11/"><span class="font-mono text-xs">s11</span><span class="ml-1.5">自律エージェント</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s12/"><span class="font-mono text-xs">s12</span><span class="ml-1.5">Worktree + タスク分離</span></a></li></ul></div></section><section><div class="mb-2 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">実システム解剖</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/00-overview/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->00</span><span class="ml-1.5">Architecture Overview</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/01-query-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->01</span><span class="ml-1.5">QueryEngine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/02-tool-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->02</span><span class="ml-1.5">Tool System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/03-coordinator/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->03</span><span class="ml-1.5">Coordinator</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white" href="/agent-coding-lesson/ja/advanced/04-plugin-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->04</span><span class="ml-1.5">Plugin System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/05-hook-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->05</span><span class="ml-1.5">Hook System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/06-bash-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->06</span><span class="ml-1.5">Bash Engine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/07-permission-pipeline/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->07</span><span class="ml-1.5">Permission Pipeline</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/08-agent-swarms/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->08</span><span class="ml-1.5">Agent Swarms</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/09-session-persistence/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->09</span><span class="ml-1.5">Session Persistence</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/10-context-assembly/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->10</span><span class="ml-1.5">Context Assembly</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/11-compact-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->11</span><span class="ml-1.5">Compact System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/12-startup-bootstrap/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->12</span><span class="ml-1.5">Startup &amp; Bootstrap</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/13-bridge-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->13</span><span class="ml-1.5">Bridge System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/14-ui-state-management/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->14</span><span class="ml-1.5">UI State &amp; Rendering</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/15-services-api-layer/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->15</span><span class="ml-1.5">Services &amp; API Layer</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/16-infrastructure-config/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->16</span><span class="ml-1.5">Infrastructure &amp; Config</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/17-telemetry-privacy-operations/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->17</span><span class="ml-1.5">Telemetry &amp; Operations</span></a></li></ul></section></div></nav><div class="min-w-0 flex-1"><div class="mx-auto max-w-4xl space-y-8 py-4"><header class="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" href="/agent-coding-lesson/ja/curriculum/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Course map</a><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800">EP<!-- -->04</span><h1 class="text-2xl font-bold text-zinc-950 dark:text-zinc-50">Plugin System</h1></div><p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">Skills, hooks, and MCP servers as installable capability packs</p></header><section class="rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300">Prompt reference</p><h2 class="mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Capabilities packaged as skills and tools</h2><p class="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">Use these to separate extension discovery from loading the full capability body.</p></div><a href="https://github.com/Piebald-AI/claude-code-system-prompts" target="_blank" rel="noopener" class="inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>Source repo</a></div><p class="mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70">Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.</p><div class="mt-4 grid gap-3 md:grid-cols-2"><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-skill.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Skill tool</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">tool-description-skill.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Skill invocation</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Shows how skills become explicit callable capability packs.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/skill-init-claudemd-and-skill-setup-new-version.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Skill setup</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">skill-init-claudemd-and-skill-setup-new-version.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Skill scaffolding</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Useful for explaining package shape and setup expectations.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/skill-create-verifier-skills.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Verifier skills</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">skill-create-verifier-skills.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Specialized skill creation</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Shows skills as reusable workflows rather than passive documentation.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-reminder-previously-invoked-skills.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Previously invoked skills</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-reminder-previously-invoked-skills.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Skill state reminder</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Shows how the harness remembers capability use across the session.</p></a></div></section><article class="py-4"><div class="prose-custom"><blockquote class="hero-callout">
+</blockquote>
+<h1>Plugin System: 44 Files, Full Lifecycle Management</h1>
+<blockquote>
+<p><strong>Source files</strong>: <code>utils/plugins/</code> (44 files, 18,856 lines), <code>components/ManagePlugins.tsx</code> (2,089 lines)</p>
+</blockquote>
+<h2>TL;DR</h2>
+<p>Claude Code has a full plugin ecosystem hidden under the hood — with a marketplace, dependency resolution, auto-update, blocklisting, zip caching, and hot-reload. It's far more sophisticated than the official docs suggest. The plugin loader alone (<code>pluginLoader.ts</code>) is 113K bytes — larger than most entire npm packages.</p>
+<hr>
+<h2>1. Plugin Architecture at a Glance</h2>
+<p><img src="/advanced-assets/04-plugin-system-1.svg" alt="04 plugin system 1"></p>
+<hr>
+<h2>2. The Plugin Manifest</h2>
+<p>Every plugin must have a <code>.claude-plugin/plugin.json</code> manifest:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// From schemas.ts (60K — the largest schema file in the codebase)</span>
+{
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"my-plugin"</span>,
+  <span class="hljs-string">"description"</span>: <span class="hljs-string">"What this plugin does"</span>,
+  <span class="hljs-string">"version"</span>: <span class="hljs-string">"1.0.0"</span>,
+  <span class="hljs-string">"commands"</span>: [<span class="hljs-string">"commands/*.md"</span>],
+  <span class="hljs-string">"agents"</span>: [<span class="hljs-string">"agents/*.md"</span>],
+  <span class="hljs-string">"hooks"</span>: { ... },
+  <span class="hljs-string">"mcpServers"</span>: { ... },
+  <span class="hljs-string">"skills"</span>: [<span class="hljs-string">"skills/*/SKILL.md"</span>],
+  <span class="hljs-string">"outputStyle"</span>: <span class="hljs-string">"styles/custom.md"</span>
+}
+</code></pre>
+<p>The schema validation in <code>schemas.ts</code> is <strong>60,595 bytes</strong> — more than most entire plugins. It validates everything from command frontmatter to MCP server configurations.</p>
+<hr>
+<h2>3. Key Files in the Plugin System</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>File</th><th>Size</th><th>Purpose</th></tr></thead><tbody><tr><td><strong><code>pluginLoader.ts</code></strong></td><td><strong>113K</strong></td><td>Core loader — discovers, reads, validates, and registers all plugins</td></tr><tr><td><strong><code>marketplaceManager.ts</code></strong></td><td><strong>96K</strong></td><td>Marketplace browsing, search, installation from official catalog</td></tr><tr><td><strong><code>schemas.ts</code></strong></td><td><strong>61K</strong></td><td>Zod validation schemas for all plugin manifest formats</td></tr><tr><td><strong><code>installedPluginsManager.ts</code></strong></td><td><strong>43K</strong></td><td>Manages installed plugin state, activation, deactivation</td></tr><tr><td><strong><code>loadPluginCommands.ts</code></strong></td><td><strong>31K</strong></td><td>Parses markdown command files with YAML frontmatter</td></tr><tr><td><strong><code>mcpbHandler.ts</code></strong></td><td><strong>32K</strong></td><td>MCP bridge handler for plugin-provided MCP servers</td></tr><tr><td><strong><code>validatePlugin.ts</code></strong></td><td><strong>29K</strong></td><td>Multi-pass plugin validation before activation</td></tr><tr><td><strong><code>pluginInstallationHelpers.ts</code></strong></td><td><strong>21K</strong></td><td>Git clone, npm install, dependency resolution</td></tr><tr><td><strong><code>mcpPluginIntegration.ts</code></strong></td><td><strong>21K</strong></td><td>Integrates plugin-declared MCP servers into the tool pool</td></tr><tr><td><strong><code>marketplaceHelpers.ts</code></strong></td><td><strong>19K</strong></td><td>Helper functions for marketplace operations</td></tr><tr><td><strong><code>dependencyResolver.ts</code></strong></td><td><strong>12K</strong></td><td>Resolves plugin dependency graphs</td></tr><tr><td><strong><code>zipCache.ts</code></strong></td><td><strong>14K</strong></td><td>Caches downloaded plugins as zip files for offline use</td></tr></tbody></table>
+<hr>
+<h2>4. Plugin Lifecycle</h2>
+<h3>4.1 Discovery</h3>
+<p>Plugins are discovered from multiple locations:</p>
+<pre class="ascii-diagram"><code>1. Built-in plugins    — bundled with the binary
+2. Project plugins     — .claude/ directory in the project
+3. User plugins        — ~/.config/claude-code/plugins/
+4. Marketplace plugins — official GCS bucket catalog
+</code></pre>
+<h3>4.2 Installation</h3>
+<p align="center">
+  <img src="/advanced-assets/04-plugin-system-2.svg" width="240">
+</p>
+<h3>4.3 Validation</h3>
+<p><code>validatePlugin.ts</code> (29K) runs extensive checks:</p>
+<ul>
+<li>Manifest schema validation (Zod)</li>
+<li>Command file syntax validation</li>
+<li>Hook command safety checks</li>
+<li>MCP server configuration validation</li>
+<li>Circular dependency detection</li>
+<li>Version compatibility checks</li>
+</ul>
+<h3>4.4 Loading</h3>
+<p><code>pluginLoader.ts</code> (113K — the second largest file in the codebase) handles:</p>
+<ul>
+<li>Parallel loading of all plugin components</li>
+<li>Hook registration</li>
+<li>Agent definition merging</li>
+<li>Command registration with deduplication</li>
+<li>MCP server startup</li>
+<li>Skill directory registration</li>
+<li>Error isolation (one plugin failing doesn't crash others)</li>
+</ul>
+<hr>
+<h2>5. Marketplace System</h2>
+<h3>Official Marketplace (<code>officialMarketplaceGcs.ts</code>)</h3>
+<p>The marketplace is a GCS (Google Cloud Storage) bucket serving a plugin catalog:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// officialMarketplace.ts</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">OFFICIAL_MARKETPLACE_NAMES</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>([
+  <span class="hljs-string">'official'</span>,     <span class="hljs-comment">// Production marketplace</span>
+  <span class="hljs-string">'staging'</span>,      <span class="hljs-comment">// Staging environment</span>
+])
+</code></pre>
+<p>Features:</p>
+<ul>
+<li><strong>Startup check</strong> (<code>officialMarketplaceStartupCheck.ts</code>, 15.6K) — checks for plugin updates on launch</li>
+<li><strong>Auto-update</strong> (<code>pluginAutoupdate.ts</code>, 9.8K) — background auto-update mechanism</li>
+<li><strong>Blocklist</strong> (<code>pluginBlocklist.ts</code>, 4.5K) — remotely disable compromised plugins</li>
+<li><strong>Flagging</strong> (<code>pluginFlagging.ts</code>, 5.8K) — flag plugins for review</li>
+<li><strong>Install counts</strong> (<code>installCounts.ts</code>, 8.6K) — telemetry for marketplace popularity</li>
+</ul>
+<h3>Zip Cache System</h3>
+<p>Downloaded plugins are cached as zip files to avoid re-downloading:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// zipCache.ts — 14K</span>
+<span class="hljs-comment">// Plugins are cached in ~/.config/claude-code/plugin-cache/</span>
+<span class="hljs-comment">// Keyed by content hash for deduplication</span>
+<span class="hljs-comment">// zipCacheAdapters.ts — 5.5K  </span>
+<span class="hljs-comment">// Adapters for different storage backends</span>
+</code></pre>
+<hr>
+<h2>6. What Plugins Can Provide</h2>
+<h3>Agents</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// loadPluginAgents.ts — 12.8K</span>
+<span class="hljs-comment">// Plugins define agents as markdown files:</span>
+<span class="hljs-comment">// agents/code-reviewer.md → becomes available as subagent_type: "code-reviewer"</span>
+</code></pre>
+<h3>Commands (Slash Commands)</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// loadPluginCommands.ts — 31K</span>
+<span class="hljs-comment">// Markdown files with YAML frontmatter:</span>
+<span class="hljs-comment">// commands/review-pr.md → becomes /review-pr</span>
+<span class="hljs-comment">// Frontmatter supports: allowed_tools, model, description</span>
+</code></pre>
+<h3>Hooks</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// loadPluginHooks.ts — 10.4K</span>
+<span class="hljs-comment">// Plugin hooks.json → registered as PreToolUse/PostToolUse/etc hooks</span>
+<span class="hljs-comment">// Plugin hooks run with workspace trust checks</span>
+</code></pre>
+<h3>MCP Servers</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// mcpPluginIntegration.ts — 21K</span>
+<span class="hljs-comment">// Plugins can declare MCP servers that auto-start</span>
+<span class="hljs-comment">// mcpbHandler.ts — 32K  </span>
+<span class="hljs-comment">// MCP bridge: proxies between plugin MCP servers and Claude Code</span>
+</code></pre>
+<h3>Skills</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Skills are markdown files (SKILL.md) with trigger patterns</span>
+<span class="hljs-comment">// Auto-discovered from plugin skill directories</span>
+</code></pre>
+<h3>Output Styles</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// loadPluginOutputStyles.ts — 5.9K</span>
+<span class="hljs-comment">// Custom output formatting (explanatory, learning, etc.)</span>
+</code></pre>
+<hr>
+<h2>7. Security &#x26; Trust Model</h2>
+<h3>Plugin Policy</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// pluginPolicy.ts</span>
+<span class="hljs-comment">// Plugins from untrusted sources require explicit user approval</span>
+<span class="hljs-comment">// Managed plugins (from official marketplace) have elevated trust</span>
+</code></pre>
+<h3>Blocklist</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// pluginBlocklist.ts</span>
+<span class="hljs-comment">// Remote blocklist can disable plugins by ID</span>
+<span class="hljs-comment">// Checked on every startup and plugin load</span>
+</code></pre>
+<h3>Orphan Filter</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// orphanedPluginFilter.ts — 4K</span>
+<span class="hljs-comment">// Detects plugins whose source repo was deleted</span>
+<span class="hljs-comment">// Prevents dangling references</span>
+</code></pre>
+<hr>
+<h2>8. Skill System Architecture</h2>
+<p><strong>Source coordinates</strong>: <code>src/skills/</code>, <code>src/commands/</code></p>
+<p>Skills are Claude Code's "prompt as code" system — each Skill is a Markdown file with YAML frontmatter that defines when and how a capability should be activated.</p>
+<h3>8.1 Six Source Layers</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/skills/types.ts</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">LoadedFrom</span> =
+  | <span class="hljs-string">'commands_DEPRECATED'</span>  <span class="hljs-comment">// Legacy commands/ directory (migration path)</span>
+  | <span class="hljs-string">'skills'</span>               <span class="hljs-comment">// .claude/skills/ directory</span>
+  | <span class="hljs-string">'plugin'</span>               <span class="hljs-comment">// Installed via plugin</span>
+  | <span class="hljs-string">'managed'</span>              <span class="hljs-comment">// Enterprise managed configuration</span>
+  | <span class="hljs-string">'bundled'</span>              <span class="hljs-comment">// CLI built-in skills</span>
+  | <span class="hljs-string">'mcp'</span>                  <span class="hljs-comment">// Provided by MCP server</span>
+</code></pre>
+<p>Search paths by priority:</p>
+<pre class="ascii-diagram"><code>policySettings → /path/to/managed/.claude/skills/
+userSettings   → ~/.claude/skills/
+projectSettings → .claude/skills/
+plugin         → from plugin installation
+bundled        → compiled into the binary
+mcp            → discovered at runtime from MCP servers
+</code></pre>
+<h3>8.2 Skill Frontmatter</h3>
+<p>Every Skill is a Markdown file parsed through YAML frontmatter:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">parseSkillFrontmatterFields</span>(<span class="hljs-params">frontmatter, markdownContent, resolvedName</span>): {
+  <span class="hljs-attr">displayName</span>: <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>
+  <span class="hljs-attr">description</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">allowedTools</span>: <span class="hljs-built_in">string</span>[]        <span class="hljs-comment">// Restrict available tools</span>
+  <span class="hljs-attr">argumentHint</span>: <span class="hljs-built_in">string</span>          <span class="hljs-comment">// Argument prompt hint</span>
+  <span class="hljs-attr">argumentNames</span>: <span class="hljs-built_in">string</span>[]       <span class="hljs-comment">// Named argument list</span>
+  <span class="hljs-attr">whenToUse</span>: <span class="hljs-built_in">string</span>             <span class="hljs-comment">// Model trigger condition</span>
+  <span class="hljs-attr">version</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">model</span>: <span class="hljs-built_in">string</span>                 <span class="hljs-comment">// Can specify 'inherit'</span>
+  <span class="hljs-attr">disableModelInvocation</span>: <span class="hljs-built_in">boolean</span>  <span class="hljs-comment">// Manual-only trigger</span>
+  <span class="hljs-attr">userInvocable</span>: <span class="hljs-built_in">boolean</span>         <span class="hljs-comment">// Show in /skill list</span>
+  <span class="hljs-attr">hooks</span>: <span class="hljs-title class_">HooksSettings</span>           <span class="hljs-comment">// Associated hooks</span>
+  <span class="hljs-attr">executionContext</span>: <span class="hljs-string">'fork'</span>       <span class="hljs-comment">// Run in isolated context</span>
+  <span class="hljs-attr">agent</span>: <span class="hljs-built_in">string</span>                  <span class="hljs-comment">// Bind to specific agent type</span>
+  <span class="hljs-attr">effort</span>: <span class="hljs-title class_">EffortValue</span>            <span class="hljs-comment">// Reasoning effort level</span>
+  <span class="hljs-attr">shell</span>: <span class="hljs-title class_">FrontmatterShell</span>        <span class="hljs-comment">// Shell execution config</span>
+}
+</code></pre>
+<h3>8.3 Bundled Skills Registration</h3>
+<p>Built-in skills are registered programmatically at startup:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/skills/initBundledSkills.ts</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">initBundledSkills</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">void</span> {
+  <span class="hljs-title function_">registerUpdateConfigSkill</span>()   <span class="hljs-comment">// /update-config</span>
+  <span class="hljs-title function_">registerKeybindingsSkill</span>()    <span class="hljs-comment">// /keybindings</span>
+  <span class="hljs-title function_">registerVerifySkill</span>()         <span class="hljs-comment">// /verify</span>
+  <span class="hljs-title function_">registerDebugSkill</span>()          <span class="hljs-comment">// /debug</span>
+  <span class="hljs-title function_">registerSimplifySkill</span>()       <span class="hljs-comment">// /simplify</span>
+  <span class="hljs-title function_">registerBatchSkill</span>()          <span class="hljs-comment">// /batch</span>
+  <span class="hljs-title function_">registerStuckSkill</span>()          <span class="hljs-comment">// /stuck</span>
+  <span class="hljs-comment">// Feature-gated:</span>
+  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">feature</span>(<span class="hljs-string">'AGENT_TRIGGERS'</span>)) <span class="hljs-title function_">registerLoopSkill</span>()       <span class="hljs-comment">// /loop</span>
+  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">feature</span>(<span class="hljs-string">'AGENT_TRIGGERS_REMOTE'</span>)) <span class="hljs-title function_">registerScheduleRemoteAgentsSkill</span>()
+  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">feature</span>(<span class="hljs-string">'BUILDING_CLAUDE_APPS'</span>)) <span class="hljs-title function_">registerClaudeApiSkill</span>()  <span class="hljs-comment">// /claude-api</span>
+}
+</code></pre>
+<h3>8.4 Inline vs Fork Execution Context</h3>
+<p>Skills can execute in two contexts:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Context</th><th>Behavior</th><th>Use Case</th></tr></thead><tbody><tr><td><strong>inline</strong></td><td>Injects prompt into current conversation</td><td>Simple commands, config changes</td></tr><tr><td><strong>fork</strong></td><td>Runs in an isolated sub-agent with independent token budget</td><td>Complex tasks, multi-step operations</td></tr></tbody></table>
+<p>Fork execution creates a fresh query loop with its own message history, preventing Skill execution from polluting the main conversation context.</p>
+<h3>8.5 Token Budget Management</h3>
+<p>Skill listings consume ~1% of the context window:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SKILL_BUDGET_CONTEXT_PERCENT</span> = <span class="hljs-number">0.01</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_LISTING_DESC_CHARS</span> = <span class="hljs-number">250</span>  <span class="hljs-comment">// Per-skill description limit</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">formatCommandsWithinBudget</span>(<span class="hljs-params">commands, contextWindowTokens?</span>): <span class="hljs-built_in">string</span> {
+  <span class="hljs-comment">// 1. Try full descriptions</span>
+  <span class="hljs-comment">// 2. Over budget? Bundled skills keep full descriptions, others truncated</span>
+  <span class="hljs-comment">// 3. Extreme case? Non-bundled show only names</span>
+}
+</code></pre>
+<p>This three-tier degradation ensures that even with hundreds of installed Skills, the listing never overwhelms the context window.</p>
+<h3>8.6 Bundled Skill File Safety</h3>
+<p>When a bundled Skill carries reference files, extraction uses OS-level security:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// O_NOFOLLOW | O_EXCL prevents symlink attacks</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SAFE_WRITE_FLAGS</span> = fsConstants.<span class="hljs-property">O_WRONLY</span> | <span class="hljs-variable constant_">O_CREAT</span> | <span class="hljs-variable constant_">O_EXCL</span> | <span class="hljs-variable constant_">O_NOFOLLOW</span>
+
+<span class="hljs-comment">// Path traversal validation</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">resolveSkillFilePath</span>(<span class="hljs-params"><span class="hljs-attr">baseDir</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">relPath</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">string</span> {
+  <span class="hljs-keyword">const</span> normalized = <span class="hljs-title function_">normalize</span>(relPath)
+  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isAbsolute</span>(normalized) || normalized.<span class="hljs-title function_">split</span>(pathSep).<span class="hljs-title function_">includes</span>(<span class="hljs-string">'..'</span>)) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`bundled skill file path escapes skill dir: <span class="hljs-subst">${relPath}</span>`</span>)
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">join</span>(baseDir, normalized)
+}
+</code></pre>
+<hr>
+<h2>9. Built-in Plugin Registration</h2>
+<p><strong>Source coordinates</strong>: <code>src/plugins/</code></p>
+<h3>9.1 Plugin Definition Type</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">BuiltinPluginDefinition</span> = {
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">description</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">version</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">defaultEnabled</span>?: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-attr">isAvailable</span>?: <span class="hljs-function">() =></span> <span class="hljs-built_in">boolean</span>   <span class="hljs-comment">// Environment detection</span>
+  <span class="hljs-attr">skills</span>?: <span class="hljs-title class_">BundledSkillDefinition</span>[]
+  <span class="hljs-attr">hooks</span>?: <span class="hljs-title class_">HooksSettings</span>
+  <span class="hljs-attr">mcpServers</span>?: <span class="hljs-title class_">McpServerConfig</span>[]
+}
+</code></pre>
+<p>Each built-in plugin is a <strong>triple</strong> of skills + hooks + MCP servers. The <code>isAvailable</code> function enables environment-aware activation (e.g., a JetBrains-specific plugin only activates when JetBrains IDE is detected).</p>
+<h3>9.2 Enable/Disable Logic</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getBuiltinPlugins</span>(<span class="hljs-params"></span>): { <span class="hljs-attr">enabled</span>: <span class="hljs-title class_">LoadedPlugin</span>[], <span class="hljs-attr">disabled</span>: <span class="hljs-title class_">LoadedPlugin</span>[] } {
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [name, definition] <span class="hljs-keyword">of</span> <span class="hljs-variable constant_">BUILTIN_PLUGINS</span>) {
+    <span class="hljs-comment">// 1. Skip if environment check fails</span>
+    <span class="hljs-keyword">if</span> (definition.<span class="hljs-property">isAvailable</span> &#x26;&#x26; !definition.<span class="hljs-title function_">isAvailable</span>()) <span class="hljs-keyword">continue</span>
+
+    <span class="hljs-comment">// 2. Check user setting override</span>
+    <span class="hljs-keyword">const</span> userSetting = settings?.<span class="hljs-property">enabledPlugins</span>?.[pluginId]
+
+    <span class="hljs-comment">// 3. Resolve: explicit setting > defaultEnabled > true</span>
+    <span class="hljs-keyword">const</span> isEnabled = userSetting !== <span class="hljs-literal">undefined</span>
+      ? userSetting === <span class="hljs-literal">true</span>
+      : (definition.<span class="hljs-property">defaultEnabled</span> ?? <span class="hljs-literal">true</span>)
+  }
+}
+</code></pre>
+<h3>9.3 Plugin → Skill → Command Conversion</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Plugin-provided skills become slash commands</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getBuiltinPluginSkillCommands</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">Command</span>[] {
+  <span class="hljs-keyword">const</span> { enabled } = <span class="hljs-title function_">getBuiltinPlugins</span>()
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> plugin <span class="hljs-keyword">of</span> enabled) {
+    <span class="hljs-keyword">const</span> definition = <span class="hljs-variable constant_">BUILTIN_PLUGINS</span>.<span class="hljs-title function_">get</span>(plugin.<span class="hljs-property">name</span>)
+    <span class="hljs-keyword">if</span> (!definition?.<span class="hljs-property">skills</span>) <span class="hljs-keyword">continue</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> skill <span class="hljs-keyword">of</span> definition.<span class="hljs-property">skills</span>) {
+      commands.<span class="hljs-title function_">push</span>(<span class="hljs-title function_">skillDefinitionToCommand</span>(skill))
+    }
+  }
+}
+</code></pre>
+<hr>
+<h2>10. MCP Integration Deep Dive</h2>
+<p><strong>Source coordinates</strong>: <code>src/services/mcp/client.ts</code>, <code>src/utils/plugins/mcpPluginIntegration.ts</code></p>
+<h3>10.1 Six Transport Types</h3>
+<p>MCP servers connect through six transport mechanisms:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Transport</th><th>Protocol</th><th>Use Case</th></tr></thead><tbody><tr><td><code>stdio</code></td><td>stdin/stdout</td><td>Local CLI tools</td></tr><tr><td><code>sse</code></td><td>Server-Sent Events</td><td>Remote HTTP servers</td></tr><tr><td><code>http</code></td><td>HTTP POST (streamable)</td><td>Stateless API servers</td></tr><tr><td><code>ws</code></td><td>WebSocket</td><td>Bidirectional streaming</td></tr><tr><td><code>sdk</code></td><td>In-process SDK</td><td>Same-process tools</td></tr><tr><td><code>sse-ide</code></td><td>SSE via IDE proxy</td><td>IDE-bridged servers</td></tr></tbody></table>
+<h3>10.2 Tool Discovery → Tool Object Conversion</h3>
+<p>When an MCP server registers tools, they are converted into Claude Code's internal <code>Tool</code> interface:</p>
+<pre class="ascii-diagram"><code>MCP Server Tool Discovery
+  ↓
+listTools() response
+  ↓
+Convert each MCP tool → Tool object:
+  - name: "mcp__{serverName}__{toolName}"
+  - inputSchema: from MCP tool schema
+  - checkPermissions: checks mcp permission rules
+  - call(): proxied to MCP server
+  ↓
+Injected into assembleToolPool() with stable ordering
+</code></pre>
+<h3>10.3 MCPConnectionManager</h3>
+<p>A React context component that manages MCP server lifecycle:</p>
+<pre class="ascii-diagram"><code>Session start → discover MCP servers from settings + plugins
+  ↓
+Parallel connection → health check → tool registration
+  ↓
+Mid-session changes → incremental reconnect
+  ↓
+Session end → graceful disconnect all
+</code></pre>
+<hr>
+<h2>11. Background Installation Manager</h2>
+<p><strong>Source coordinates</strong>: <code>src/utils/plugins/pluginInstallationManager.ts</code></p>
+<p>The <code>PluginInstallationManager</code> reconciles declared plugins with actual installations:</p>
+<pre class="ascii-diagram"><code>Declared plugins (from settings + marketplace)
+  ↓
+diff against actually installed plugins
+  ↓
+Missing? → Install (git clone/zip download)
+Extra? → Prompt user for cleanup
+Updated? → Auto-update if marketplace source
+  ↓
+Report progress via React state
+</code></pre>
+<p>Key design:</p>
+<ul>
+<li><strong>Reconciliation model</strong>: Instead of imperative "install this," the system declaratively states "these plugins should exist" and the manager handles the delta</li>
+<li><strong>Progress feedback</strong>: Each installation step emits progress events consumed by the ManagePlugins UI</li>
+<li><strong>Error isolation</strong>: One plugin failing to install doesn't block others</li>
+</ul>
+<hr>
+<h2>Transferable Design Patterns</h2>
+<blockquote>
+<p>The following patterns from the Plugin System can be directly applied to any extensible application architecture.</p>
+</blockquote>
+<h3>Pattern 1: Isolation by Default</h3>
+<p>Each plugin loads in isolation. One plugin crashing doesn't affect others. The loader wraps each plugin load in try/catch and reports failures individually.</p>
+<h3>Pattern 2: Multi-Source Discovery with Priority</h3>
+<p>Plugins from different sources (built-in, project, user, marketplace) are merged with clear priority rules. Project-local plugins override user-level ones.</p>
+<h3>Pattern 3: Content-Addressed Caching</h3>
+<p>The zip cache uses content hashes as keys, enabling deduplication across versions and users.</p>
+<h3>Pattern 4: Prompt as Code (Skills)</h3>
+<p>Skills turn Markdown files with YAML frontmatter into executable capabilities. The frontmatter provides structured metadata (triggers, tools, models) while the Markdown body provides the prompt content. This makes Skills version-controllable, shareable, and composable.</p>
+<h3>Pattern 5: Declarative Reconciliation</h3>
+<p>The <code>PluginInstallationManager</code> follows a declarative "desired state → actual state → diff → reconcile" model, borrowed from Kubernetes operators. This is more robust than imperative install/uninstall sequences because it's self-healing.</p>
+<hr>
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>Detail</th></tr></thead><tbody><tr><td><strong>Total code</strong></td><td>44 files, 18,856 lines in <code>utils/plugins/</code> alone</td></tr><tr><td><strong>Largest files</strong></td><td><code>pluginLoader.ts</code> (113K), <code>marketplaceManager.ts</code> (96K)</td></tr><tr><td><strong>Plugin sources</strong></td><td>Built-in, project, user, official marketplace (GCS)</td></tr><tr><td><strong>Components</strong></td><td>Agents, Commands, Hooks, Skills, MCP Servers, Output Styles</td></tr><tr><td><strong>Marketplace</strong></td><td>GCS bucket catalog, auto-update, blocklist, install counts</td></tr><tr><td><strong>Security</strong></td><td>Workspace trust, validation, blocklist, orphan detection</td></tr><tr><td><strong>Caching</strong></td><td>Content-addressed zip cache for offline use</td></tr></tbody></table>
+<hr>
+<p><strong>Previous</strong>: <a href="03-coordinator">← 03 — Multi-Agent Coordinator</a>
+<strong>Next</strong>: <a href="05-hook-system">→ 05 — Hook System</a></p></div></article><nav class="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800"><a class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/ja/advanced/03-coordinator/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left transition-transform group-hover:-translate-x-1" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg><span>EP<!-- -->03<!-- --> <!-- -->Coordinator</span></a><a class="group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/ja/advanced/05-hook-system/"><span>EP<!-- -->05<!-- --> <!-- -->Hook System</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></nav></div><!--$--><!--/$--></div></div></main><script src="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n3:I[37457,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n5:I[95914,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\"],\"Sidebar\"]\n7:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"OutletBoundary\"]\n8:\"$Sreact.suspense\"\na:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"MetadataBoundary\"]\ne:I[68027,[],\"default\"]\n:HL[\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"kOMToiePwU79Kzn0fZt4S\",\"c\":[\"\",\"ja\",\"advanced\",\"04-plugin-system\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[[\"locale\",\"ja\",\"d\"],{\"children\":[\"(learn)\",{\"children\":[\"advanced\",{\"children\":[[\"chapter\",\"04-plugin-system\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true]}],[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"div\",null,{\"className\":\"flex gap-8\",\"children\":[[\"$\",\"$L5\",null,{}],[\"$\",\"div\",null,{\"className\":\"min-w-0 flex-1\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@9\"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[33499,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"I18nProvider\"]\n10:I[45872,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"Header\"]\n11:I[22016,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"\"]\n4:[\"$\",\"html\",null,{\"lang\":\"ja\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n          (function() {\\n            var theme = localStorage.getItem('theme');\\n            if (theme === 'dark' || (!theme \u0026\u0026 window.matchMedia('(prefers-color-scheme: dark)').matches)) {\\n              document.documentElement.classList.add('dark');\\n            }\\n          })();\\n        \"}}]}],[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased\",\"children\":[\"$\",\"$Lf\",null,{\"locale\":\"ja\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-4xl space-y-8 py-4\",\"children\":[[\"$\",\"header\",null,{\"className\":\"rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/ja/curriculum\",\"className\":\"inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Course map\"]}],[\"$\",\"div\",null,{\"className\":\"mt-4 flex flex-wrap items-center gap-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800\",\"children\":[\"EP\",\"04\"]}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold text-zinc-950 dark:text-zinc-50\",\"children\":\"Plugin System\"}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Skills, hooks, and MCP servers as installable capability packs\"}]]}],[\"$\",\"section\",null,{\"className\":\"rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-start justify-between gap-3\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300\",\"children\":\"Prompt reference\"}],[\"$\",\"h2\",null,{\"className\":\"mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50\",\"children\":\"Capabilities packaged as skills and tools\"}],[\"$\",\"p\",null,{\"className\":\"mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200\",\"children\":\"Use these to separate extension discovery from loading the full capability body.\"}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":14,\"height\":14,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}],\"Source repo\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70\",\"children\":\"Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.\"}],[\"$\",\"div\",null,{\"className\":\"mt-4 grid gap-3 md:grid-cols-2\",\"children\":[[\"$\",\"a\",\"tool-description-skill.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-skill.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[\"$L12\",\"$L13\",\"$L14\",\"$L15\",\"$L16\",\"$undefined\"]}],\"$L17\"]}],\"$L18\",\"$L19\"]}],\"$L1a\",\"$L1b\",\"$L1c\"]}]]}],\"$L1d\",\"$L1e\"]}]\n"])</script><script>self.__next_f.push([1,"1f:I[19004,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"AdvancedDocRenderer\"]\n12:[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}]\n13:[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}]\n14:[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}]\n15:[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}]\n16:[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}]\n17:[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Skill tool\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"tool-description-skill.md\"}]]}]\n18:[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Skill invocation\"}]\n19:[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Shows how skills become explicit callable capability packs.\"}]\n"])</script><script>self.__next_f.push([1,"1a:[\"$\",\"a\",\"skill-init-claudemd-and-skill-setup-new-version.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/skill-init-claudemd-and-skill-setup-new-version.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Skill setup\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"skill-init-claudemd-and-skill-setup-new-version.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Skill scaffolding\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Useful for explaining package shape and setup expectations.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1b:[\"$\",\"a\",\"skill-create-verifier-skills.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/skill-create-verifier-skills.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Verifier skills\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"skill-create-verifier-skills.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Specialized skill creation\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Shows skills as reusable workflows rather than passive documentation.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1c:[\"$\",\"a\",\"system-reminder-previously-invoked-skills.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-reminder-previously-invoked-skills.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Previously invoked skills\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-reminder-previously-invoked-skills.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Skill state reminder\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Shows how the harness remembers capability use across the session.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1d:[\"$\",\"$L1f\",null,{\"chapter\":\"04\"}]\n"])</script><script>self.__next_f.push([1,"1e:[\"$\",\"nav\",null,{\"className\":\"flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/ja/advanced/03-coordinator\",\"className\":\"group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left transition-transform group-hover:-translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],[\"$\",\"span\",null,{\"children\":[\"EP\",\"03\",\" \",\"Coordinator\"]}]]}],[\"$\",\"$L11\",null,{\"href\":\"/ja/advanced/05-hook-system\",\"className\":\"group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"span\",null,{\"children\":[\"EP\",\"05\",\" \",\"Hook System\"]}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-right transition-transform group-hover:translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1ays0h\",{\"d\":\"M5 12h14\"}],[\"$\",\"path\",\"xquz4c\",{\"d\":\"m12 5 7 7-7 7\"}],\"$undefined\"]}]]}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"20:I[27201,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"IconMark\"]\n9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Agent Coding Lesson\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"0 から 1 へ nano Claude Code-like agent を構築し、毎回 1 つの仕組みを追加\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L20\",\"3\",{}]]\n"])</script></body></html>

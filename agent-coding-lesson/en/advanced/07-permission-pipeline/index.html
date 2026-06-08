@@ -1,0 +1,581 @@
+<!DOCTYPE html><!--kOMToiePwU79Kzn0fZt4S--><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js"/><script src="/agent-coding-lesson/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/76fed9c17f51393e.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/7de9141b1af425c3.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/turbopack-8800d0fd815877b2.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/076aae518584b842.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js" async=""></script><title>Agent Coding Lesson</title><meta name="description" content="Build a nano Claude Code-like agent from 0 to 1, one mechanism at a time"/><link rel="icon" href="/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico" sizes="256x256" type="image/x-icon"/><script>
+          (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script><script src="/agent-coding-lesson/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm"><div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a class="text-lg font-bold" href="/agent-coding-lesson/en/">Agent Coding Lesson</a><nav class="hidden items-center gap-6 md:flex"><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/en/curriculum/">Curriculum</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/en/timeline/">Timeline</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/en/compare/">Compare</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/en/layers/">Layers</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/en/slides/s01/">Slides</a><div class="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5"><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">EN</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">中文</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">日本語</button></div><button class="rounded-md p-1.5 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Switch to dark mode"><span class="inline-block h-4 w-4"></span></button><a href="https://github.com/atom32/agent-coding-lesson" target="_blank" rel="noopener" class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Open project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a></nav><button class="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"><div class="flex gap-8"><nav class="hidden w-64 shrink-0 md:block"><div class="sticky top-[calc(3.5rem+2rem)] max-h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/curriculum/">Curriculum</a><div class="space-y-1"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/summary/">Summary</a><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/glossary/">Glossary</a></div><section class="space-y-5"><div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Lab lessons</div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Tools &amp; Execution</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s01/"><span class="font-mono text-xs">s01</span><span class="ml-1.5">The Agent Loop</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s02/"><span class="font-mono text-xs">s02</span><span class="ml-1.5">Tools</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Planning &amp; Coordination</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s03/"><span class="font-mono text-xs">s03</span><span class="ml-1.5">TodoWrite</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s04/"><span class="font-mono text-xs">s04</span><span class="ml-1.5">Subagents</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s05/"><span class="font-mono text-xs">s05</span><span class="ml-1.5">Skills</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s07/"><span class="font-mono text-xs">s07</span><span class="ml-1.5">Tasks</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-purple-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Memory Management</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s06/"><span class="font-mono text-xs">s06</span><span class="ml-1.5">Compact</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Concurrency</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s08/"><span class="font-mono text-xs">s08</span><span class="ml-1.5">Background Tasks</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-red-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Collaboration</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s09/"><span class="font-mono text-xs">s09</span><span class="ml-1.5">Agent Teams</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s10/"><span class="font-mono text-xs">s10</span><span class="ml-1.5">Team Protocols</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s11/"><span class="font-mono text-xs">s11</span><span class="ml-1.5">Autonomous Agents</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s12/"><span class="font-mono text-xs">s12</span><span class="ml-1.5">Worktree + Task Isolation</span></a></li></ul></div></section><section><div class="mb-2 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Production anatomy</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/00-overview/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->00</span><span class="ml-1.5">Architecture Overview</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/01-query-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->01</span><span class="ml-1.5">QueryEngine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/02-tool-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->02</span><span class="ml-1.5">Tool System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/03-coordinator/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->03</span><span class="ml-1.5">Coordinator</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/04-plugin-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->04</span><span class="ml-1.5">Plugin System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/05-hook-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->05</span><span class="ml-1.5">Hook System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/06-bash-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->06</span><span class="ml-1.5">Bash Engine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white" href="/agent-coding-lesson/en/advanced/07-permission-pipeline/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->07</span><span class="ml-1.5">Permission Pipeline</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/08-agent-swarms/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->08</span><span class="ml-1.5">Agent Swarms</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/09-session-persistence/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->09</span><span class="ml-1.5">Session Persistence</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/10-context-assembly/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->10</span><span class="ml-1.5">Context Assembly</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/11-compact-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->11</span><span class="ml-1.5">Compact System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/12-startup-bootstrap/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->12</span><span class="ml-1.5">Startup &amp; Bootstrap</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/13-bridge-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->13</span><span class="ml-1.5">Bridge System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/14-ui-state-management/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->14</span><span class="ml-1.5">UI State &amp; Rendering</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/15-services-api-layer/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->15</span><span class="ml-1.5">Services &amp; API Layer</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/16-infrastructure-config/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->16</span><span class="ml-1.5">Infrastructure &amp; Config</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/17-telemetry-privacy-operations/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->17</span><span class="ml-1.5">Telemetry &amp; Operations</span></a></li></ul></section></div></nav><div class="min-w-0 flex-1"><div class="mx-auto max-w-4xl space-y-8 py-4"><header class="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" href="/agent-coding-lesson/en/curriculum/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Course map</a><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800">EP<!-- -->07</span><h1 class="text-2xl font-bold text-zinc-950 dark:text-zinc-50">Permission Pipeline</h1></div><p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">Defense in depth from rules to AST checks to sandbox boundaries</p></header><section class="rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300">Prompt reference</p><h2 class="mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Permission and autonomous-action classifiers</h2><p class="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">This is the strongest prompt-side companion to the permission pipeline chapter.</p></div><a href="https://github.com/Piebald-AI/claude-code-system-prompts" target="_blank" rel="noopener" class="inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>Source repo</a></div><p class="mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70">Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.</p><div class="mt-4 grid gap-3 md:grid-cols-2"><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Security monitor, first part</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Threat model</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Defines prompt injection, scope creep, accidental damage, and user-intent rules.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-security-monitor-for-autonomous-agent-actions-second-part.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Security monitor, second part</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">agent-prompt-security-monitor-for-autonomous-agent-actions-second-part.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Block and allow rules</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Complements the classifier threat model with concrete policy sections.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-auto-mode-rule-reviewer.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Auto mode rule reviewer</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">agent-prompt-auto-mode-rule-reviewer.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Policy authoring</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Helps discuss user-customized permission rules and conflicts.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-action-safety-and-truthful-reporting.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Action safety and truthful reporting</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-action-safety-and-truthful-reporting.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Human approval</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">A compact prompt fragment for reversible versus consequential actions.</p></a></div></section><article class="py-4"><div class="prose-custom"><h1>07 — Permission Pipeline: Defense-in-Depth from Rules to Kernel</h1>
+<blockquote class="hero-callout">
+</blockquote>
+<blockquote>
+<p><strong>Scope</strong>: <code>utils/permissions/</code> (24 files, ~320KB), <code>utils/settings/</code> (17 files, ~135KB), <code>utils/sandbox/</code> (2 files, ~37KB)</p>
+<p><strong>One-liner</strong>: How Claude Code decides whether a tool call lives or dies — through a seven-step gauntlet of rules, classifiers, hooks, and OS-level sandbox enforcement.</p>
+</blockquote>
+<hr>
+<h2>Architecture Overview</h2>
+<p><img src="/advanced-assets/07-permission-pipeline-1.svg" alt="07 permission pipeline 1"></p>
+<hr>
+<h2>1. The Seven-Step Gauntlet</h2>
+<p>The core function <code>hasPermissionsToUseToolInner()</code> implements a <strong>strictly ordered</strong> permission evaluation pipeline. Each step can short-circuit the entire chain:</p>
+<h3>Step 1a: Tool-Level Deny Rules</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/utils/permissions/permissions.ts:85-90</span>
+<span class="hljs-keyword">const</span> denyRule = <span class="hljs-title function_">getDenyRuleForTool</span>(appState.<span class="hljs-property">toolPermissionContext</span>, tool)
+<span class="hljs-keyword">if</span> (denyRule) <span class="hljs-keyword">return</span> { <span class="hljs-attr">behavior</span>: <span class="hljs-string">'deny'</span>, ... }
+</code></pre>
+<p>Hard deny — no override possible. Sourced from: <code>userSettings</code>, <code>projectSettings</code>, <code>localSettings</code>, <code>policySettings</code>, <code>flagSettings</code>, <code>cliArg</code>, <code>command</code>, <code>session</code>.</p>
+<h3>Step 1b: Tool-Level Ask Rules</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">const</span> askRule = <span class="hljs-title function_">getAskRuleForTool</span>(appState.<span class="hljs-property">toolPermissionContext</span>, tool)
+<span class="hljs-keyword">if</span> (askRule) {
+  <span class="hljs-comment">// Exception: sandbox can auto-allow Bash commands</span>
+  <span class="hljs-keyword">const</span> canSandboxAutoAllow =
+    tool.<span class="hljs-property">name</span> === <span class="hljs-string">'Bash'</span> &#x26;&#x26;
+    <span class="hljs-title class_">SandboxManager</span>.<span class="hljs-title function_">isSandboxingEnabled</span>() &#x26;&#x26;
+    <span class="hljs-title class_">SandboxManager</span>.<span class="hljs-title function_">isAutoAllowBashIfSandboxedEnabled</span>() &#x26;&#x26;
+    <span class="hljs-title function_">shouldUseSandbox</span>(input)
+  <span class="hljs-keyword">if</span> (!canSandboxAutoAllow) <span class="hljs-keyword">return</span> { <span class="hljs-attr">behavior</span>: <span class="hljs-string">'ask'</span>, ... }
+}
+</code></pre>
+<p>Critical design: when sandbox is enabled with auto-allow, sandboxed Bash commands <strong>skip</strong> the ask rule. Non-sandboxed commands (excluded commands, <code>dangerouslyDisableSandbox</code>) still respect it.</p>
+<h3>Step 1c: Tool-Specific Permission Check</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">const</span> parsedInput = tool.<span class="hljs-property">inputSchema</span>.<span class="hljs-title function_">parse</span>(input)
+toolPermissionResult = <span class="hljs-keyword">await</span> tool.<span class="hljs-title function_">checkPermissions</span>(parsedInput, context)
+</code></pre>
+<p>Each tool implements its own <code>checkPermissions()</code>. BashTool inspects subcommands, EditTool checks file paths, WebFetch validates domains.</p>
+<h3>Step 1d–1g: Safety Guardrails</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Step</th><th>Check</th><th>Immune to Bypass?</th></tr></thead><tbody><tr><td><strong>1d</strong></td><td>Tool implementation denied</td><td>✅ Yes</td></tr><tr><td><strong>1e</strong></td><td><code>requiresUserInteraction()</code> returns true</td><td>✅ Yes</td></tr><tr><td><strong>1f</strong></td><td>Content-specific ask rules (e.g., <code>Bash(npm publish:*)</code>)</td><td>✅ Yes</td></tr><tr><td><strong>1g</strong></td><td>Safety checks (<code>.git/</code>, <code>.claude/</code>, <code>.vscode/</code>, shell configs)</td><td>✅ Yes</td></tr></tbody></table>
+<p>These four checks are <strong>bypass-immune</strong> — they fire even in <code>bypassPermissions</code> mode.</p>
+<h3>Step 2a: Bypass Permissions Mode</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">const</span> shouldBypassPermissions =
+  mode === <span class="hljs-string">'bypassPermissions'</span> ||
+  (mode === <span class="hljs-string">'plan'</span> &#x26;&#x26; isBypassPermissionsModeAvailable)
+<span class="hljs-keyword">if</span> (shouldBypassPermissions) <span class="hljs-keyword">return</span> { <span class="hljs-attr">behavior</span>: <span class="hljs-string">'allow'</span>, ... }
+</code></pre>
+<h3>Step 2b: Always-Allow Rules</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">const</span> alwaysAllowedRule = <span class="hljs-title function_">toolAlwaysAllowedRule</span>(context, tool)
+<span class="hljs-keyword">if</span> (alwaysAllowedRule) <span class="hljs-keyword">return</span> { <span class="hljs-attr">behavior</span>: <span class="hljs-string">'allow'</span>, ... }
+</code></pre>
+<p>Supports MCP server-level matching: rule <code>mcp__server1</code> matches <code>mcp__server1__tool1</code>.</p>
+<h3>Step 3: Passthrough → Ask</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">const</span> result = toolPermissionResult.<span class="hljs-property">behavior</span> === <span class="hljs-string">'passthrough'</span>
+  ? { ...toolPermissionResult, <span class="hljs-attr">behavior</span>: <span class="hljs-string">'ask'</span> }
+  : toolPermissionResult
+</code></pre>
+<p>If nothing decided, the default is to ask the user.</p>
+<hr>
+<h2>2. Permission Modes</h2>
+<p>Six modes control how <code>ask</code> decisions are resolved:</p>
+<p><img src="/advanced-assets/07-permission-pipeline-2.svg" alt="07 permission pipeline 2"></p>
+<h3>Mode Behavior Matrix</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Mode</th><th><code>ask</code> becomes</th><th>Safety checks</th><th>Notes</th></tr></thead><tbody><tr><td><code>default</code></td><td>Prompt user</td><td>Prompt</td><td>Standard interactive mode</td></tr><tr><td><code>plan</code></td><td>Prompt user</td><td>Prompt</td><td>Stashes pre-plan mode for restoration</td></tr><tr><td><code>acceptEdits</code></td><td>Allow (file edits only)</td><td>Prompt</td><td>Non-edit tools still prompt</td></tr><tr><td><code>bypassPermissions</code></td><td>Allow all</td><td><strong>Still prompt</strong></td><td>Can be disabled by GrowthBook gate or settings</td></tr><tr><td><code>dontAsk</code></td><td><strong>Deny</strong></td><td>Prompt</td><td>Silent rejection, model sees denial message</td></tr><tr><td><code>auto</code></td><td>Classifier decides</td><td>Prompt</td><td>2-stage XML classifier, GrowthBook-gated</td></tr></tbody></table>
+<h3>Mode Transitions</h3>
+<p><code>transitionPermissionMode()</code> centralizes all side-effects:</p>
+<ul>
+<li><strong>Entering auto mode</strong>: Strips dangerous permissions (Bash(<em>), python:</em>, Agent allowlists) that would bypass the classifier</li>
+<li><strong>Leaving auto mode</strong>: Restores stripped permissions</li>
+<li><strong>Entering plan mode</strong>: Saves pre-plan mode for restoration</li>
+<li><strong>Leaving plan mode</strong>: Restores previous mode</li>
+</ul>
+<hr>
+<h2>3. Rule Sources and Priority</h2>
+<p>Rules are loaded from <strong>7 sources</strong>, evaluated in a flat list:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/utils/permissions/permissionsLoader.ts:12-20</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">PERMISSION_RULE_SOURCES</span> = [
+  ...<span class="hljs-variable constant_">SETTING_SOURCES</span>,  <span class="hljs-comment">// userSettings, projectSettings, localSettings,</span>
+                       <span class="hljs-comment">// policySettings, flagSettings</span>
+  <span class="hljs-string">'cliArg'</span>,
+  <span class="hljs-string">'command'</span>,
+  <span class="hljs-string">'session'</span>,
+]
+</code></pre>
+<h3>Rule Format</h3>
+<pre class="ascii-diagram"><code>ToolName                  → Match entire tool
+ToolName(content)         → Match tool with specific content
+Bash(npm test:*)          → Prefix match on Bash commands
+mcp__server1              → Match all tools from MCP server
+mcp__server1__*           → Wildcard match for MCP tools
+Agent(Explore)            → Match specific agent type
+</code></pre>
+<h3>Settings File Hierarchy</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Source</th><th>File</th><th>Scope</th></tr></thead><tbody><tr><td><code>userSettings</code></td><td><code>~/.claude/settings.json</code></td><td>Per-user global</td></tr><tr><td><code>projectSettings</code></td><td><code>.claude/settings.json</code></td><td>Per-project, committed</td></tr><tr><td><code>localSettings</code></td><td><code>.claude/settings.local.json</code></td><td>Per-project, gitignored</td></tr><tr><td><code>policySettings</code></td><td>Enterprise MDM policies</td><td>Organization-wide</td></tr><tr><td><code>flagSettings</code></td><td>GrowthBook feature flags</td><td>Remote config</td></tr><tr><td><code>cliArg</code></td><td><code>--allowed-tools</code>, <code>--disallowed-tools</code></td><td>Per-invocation</td></tr><tr><td><code>session</code></td><td>Runtime additions via permission dialog</td><td>Per-session</td></tr></tbody></table>
+<hr>
+<h2>4. The YOLO Classifier (Auto Mode)</h2>
+<p>When mode is <code>auto</code>, <code>ask</code> decisions go through a <strong>three-tier</strong> fast-path system before reaching the AI classifier:</p>
+<h3>Tier 1: acceptEdits Fast-Path</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Re-run tool.checkPermissions() with mode='acceptEdits'</span>
+<span class="hljs-keyword">const</span> acceptEditsResult = <span class="hljs-keyword">await</span> tool.<span class="hljs-title function_">checkPermissions</span>(parsedInput, {
+  ...context,
+  <span class="hljs-attr">getAppState</span>: <span class="hljs-function">() =></span> ({
+    ...state,
+    <span class="hljs-attr">toolPermissionContext</span>: { ...state.<span class="hljs-property">toolPermissionContext</span>, <span class="hljs-attr">mode</span>: <span class="hljs-string">'acceptEdits'</span> }
+  })
+})
+<span class="hljs-keyword">if</span> (acceptEditsResult.<span class="hljs-property">behavior</span> === <span class="hljs-string">'allow'</span>) <span class="hljs-keyword">return</span> { <span class="hljs-attr">behavior</span>: <span class="hljs-string">'allow'</span> }
+</code></pre>
+<p>Avoids expensive classifier API calls for safe file edits. Exception: <code>AgentTool</code> and <code>REPLTool</code> are excluded — REPL code can contain VM escapes.</p>
+<h3>Tier 2: Safe Tool Allowlist</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">if</span> (classifierDecisionModule.<span class="hljs-title function_">isAutoModeAllowlistedTool</span>(tool.<span class="hljs-property">name</span>)) {
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">behavior</span>: <span class="hljs-string">'allow'</span> }
+}
+</code></pre>
+<p>Allowlisted tools skip the classifier entirely.</p>
+<h3>Tier 3: 2-Stage XML Classifier</h3>
+<p>The classifier uses a separate LLM API call (<code>sideQuery</code>) with a specialized system prompt:</p>
+<p><img src="/advanced-assets/07-permission-pipeline-3.svg" alt="07 permission pipeline 3"></p>
+<p><strong>Stage 1 (Fast)</strong>: Nudges an immediate <code>&#x3C;block>yes/no</code> decision with 64 max tokens. If allowed → done.</p>
+<p><strong>Stage 2 (Thinking)</strong>: Only runs when Stage 1 blocks. Uses chain-of-thought to reduce false positives. The suffix instructs: <em>"Review the classification process... explicit user confirmation is required to override blocks."</em></p>
+<h3>Classifier Transcript Format</h3>
+<p>The classifier sees a <strong>compact transcript</strong> — not the full conversation:</p>
+<pre class="code-block" data-language="jsonl"><code class="hljs language-jsonl">{"user":"fix the login bug"}
+{"Bash":"ls src/"}
+{"Read":"src/auth.ts"}
+{"Bash":"npm test"}     ← This is the action being classified
+</code></pre>
+<p>Key security: <strong>assistant text is excluded</strong> — only tool_use blocks are included. This prevents the model from crafting text that influences the classifier's decision.</p>
+<h3>Dangerous Permission Stripping</h3>
+<p>When entering auto mode, permissions that would bypass the classifier are <strong>stripped</strong>:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">isDangerousBashPermission</span>(<span class="hljs-params">toolName, ruleContent</span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-comment">// Bash (no content) → allows ALL commands</span>
+  <span class="hljs-comment">// Bash(python:*) → allows arbitrary code execution</span>
+  <span class="hljs-comment">// Bash(node:*), Bash(ruby:*), etc.</span>
+  <span class="hljs-comment">// PowerShell(iex:*), PowerShell(Start-Process:*)</span>
+  <span class="hljs-comment">// Agent (any allow rule) → bypasses sub-agent evaluation</span>
+}
+</code></pre>
+<p>Stripped rules are <strong>stashed</strong> and restored when leaving auto mode.</p>
+<hr>
+<h2>5. Denial Tracking and Circuit Breakers</h2>
+<h3>Consecutive Denial Limits</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码位置: src/utils/permissions/denialTracking.ts:5-10</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DENIAL_LIMITS</span> = {
+  <span class="hljs-attr">maxConsecutive</span>: <span class="hljs-number">3</span>,   <span class="hljs-comment">// 3 consecutive blocks → fall back to prompting</span>
+  <span class="hljs-attr">maxTotal</span>: <span class="hljs-number">20</span>,        <span class="hljs-comment">// 20 total blocks per session → fall back</span>
+}
+</code></pre>
+<p>When limits are exceeded:</p>
+<ul>
+<li><strong>Interactive mode</strong>: Falls back to user prompting</li>
+<li><strong>Headless mode</strong>: Throws <code>AbortError</code> — session terminates</li>
+</ul>
+<h3>Classifier Fail Modes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Scenario</th><th>tengu_iron_gate_closed = true</th><th>tengu_iron_gate_closed = false</th></tr></thead><tbody><tr><td><strong>API error</strong></td><td>Deny (fail closed)</td><td>Fall back to prompting (fail open)</td></tr><tr><td><strong>Transcript too long</strong></td><td>Abort in headless; prompt in interactive</td><td>Same</td></tr><tr><td><strong>Unparseable response</strong></td><td>Treat as block</td><td>Same</td></tr></tbody></table>
+<h3>The "Iron Gate" Feature Flag</h3>
+<p><code>tengu_iron_gate_closed</code> controls fail-closed vs. fail-open behavior when the classifier API is unavailable. Refreshed every 30 minutes:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">CLASSIFIER_FAIL_CLOSED_REFRESH_MS</span> = <span class="hljs-number">30</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>
+</code></pre>
+<hr>
+<h2>6. Headless Agent Permissions</h2>
+<p>Background/async agents can't show permission prompts. The pipeline handles this:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">if</span> (appState.<span class="hljs-property">toolPermissionContext</span>.<span class="hljs-property">shouldAvoidPermissionPrompts</span>) {
+  <span class="hljs-comment">// 1. Run PermissionRequest hooks — give hooks a chance</span>
+  <span class="hljs-keyword">const</span> hookDecision = <span class="hljs-keyword">await</span> <span class="hljs-title function_">runPermissionRequestHooksForHeadlessAgent</span>(...)
+  <span class="hljs-keyword">if</span> (hookDecision) <span class="hljs-keyword">return</span> hookDecision
+
+  <span class="hljs-comment">// 2. No hook decision → auto-deny</span>
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">behavior</span>: <span class="hljs-string">'deny'</span>, <span class="hljs-attr">message</span>: <span class="hljs-title function_">AUTO_REJECT_MESSAGE</span>(tool.<span class="hljs-property">name</span>) }
+}
+</code></pre>
+<p>Hooks can <code>allow</code> (with optional input modifications), <code>deny</code>, or <code>interrupt</code> (abort the entire agent).</p>
+<hr>
+<h2>7. Sandbox Integration</h2>
+<p>The sandbox provides <strong>kernel-level enforcement</strong> that complements the application-level permission pipeline:</p>
+<h3>Auto-Allow with Sandbox</h3>
+<p>When <code>autoAllowBashIfSandboxed</code> is enabled:</p>
+<ol>
+<li>Bash commands that pass <code>shouldUseSandbox()</code> check → <strong>auto-allow</strong> (skip ask rule)</li>
+<li>The OS sandbox enforces filesystem and network restrictions</li>
+<li>Application-level checks become redundant for sandboxed operations</li>
+</ol>
+<h3>What the Sandbox Protects</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Protection</th><th>Implementation</th></tr></thead><tbody><tr><td>Filesystem writes</td><td><code>denyWrite</code> list (settings files, <code>.claude/skills</code>)</td></tr><tr><td>Filesystem reads</td><td><code>denyRead</code> list (sensitive paths)</td></tr><tr><td>Network access</td><td>Domain allowlist from WebFetch rules</td></tr><tr><td>Bare git repo attack</td><td>Pre/post-command file scrubbing</td></tr><tr><td>Symlink following</td><td><code>O_NOFOLLOW</code> on file operations</td></tr><tr><td>Settings escape</td><td>Unconditional deny on settings.json</td></tr></tbody></table>
+<hr>
+<h2>8. Complete Decision Flow</h2>
+<p><img src="/advanced-assets/07-permission-pipeline-4.svg" alt="07 permission pipeline 4"></p>
+<hr>
+<h2>Transferable Design Patterns</h2>
+<blockquote>
+<p>The following patterns can be directly applied to other AI agent permission systems or security pipelines.</p>
+</blockquote>
+<h3>Pattern 1: Ordered Pipeline with Bypass-Immune Safety Checks</h3>
+<p><strong>Scenario:</strong> Different rule sources need different override semantics.
+<strong>Practice:</strong> Structure permission evaluation as a strictly ordered pipeline where some steps are immune to all bypass modes.
+<strong>Claude Code application:</strong> Steps 1d-1g fire even in <code>bypassPermissions</code> mode.</p>
+<h3>Pattern 2: Classifier Sees Tools, Not Text</h3>
+<p><strong>Scenario:</strong> An AI safety classifier might be influenced by the model's own persuasive output.
+<strong>Practice:</strong> Strip assistant text from the classifier's input transcript, including only structured tool_use blocks.
+<strong>Claude Code application:</strong> The YOLO classifier transcript excludes assistant text to prevent social-engineering attacks.</p>
+<h3>Pattern 3: Reversible Permission Stripping</h3>
+<p><strong>Scenario:</strong> Entering a high-automation mode shouldn't permanently destroy manual permission rules.
+<strong>Practice:</strong> Stash stripped rules on mode entry, restore them on mode exit.
+<strong>Claude Code application:</strong> Dangerous <code>Bash(*)</code> rules are stashed when entering auto mode and restored when leaving.</p>
+<h3>Pattern 4: Denial Circuit Breakers</h3>
+<p><strong>Scenario:</strong> A blocked action causes infinite retry loops.
+<strong>Practice:</strong> Track consecutive and total denials; exceed limits triggers fallback (human intervention or clean shutdown).
+<strong>Claude Code application:</strong> 3 consecutive or 20 total denials trigger mode fallback.</p>
+<hr>
+<h2>10. OAuth 2.0 Authentication Pipeline</h2>
+<p><strong>Source coordinates</strong>: <code>src/services/oauth/client.ts</code>, <code>src/auth/</code></p>
+<p>The permission system's authority begins with identity verification. Claude Code supports two authentication paths:</p>
+<h3>Dual Authentication Paths</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Path</th><th>Method</th><th>Token Type</th></tr></thead><tbody><tr><td><strong>Console API Key</strong></td><td><code>ANTHROPIC_API_KEY</code> env var or config</td><td>Static key, no expiry management</td></tr><tr><td><strong>Claude.ai OAuth</strong></td><td>PKCE Authorization Code flow</td><td>JWT with refresh, 1h expiry</td></tr></tbody></table>
+<h3>PKCE Flow</h3>
+<pre class="ascii-diagram"><code>User → buildAuthUrl(codeChallenge) → Browser opens authorization URL
+Browser → Callback with auth code → exchangeCodeForToken(code, codeVerifier)
+Token → SecureStorage (Keychain on macOS) → refreshToken on expiry
+</code></pre>
+<p>Key security properties:</p>
+<ul>
+<li><strong>PKCE (S256)</strong>: Prevents authorization code interception — the <code>code_verifier</code> is generated client-side and never sent to the authorization server until exchange</li>
+<li><strong>Token lifecycle</strong>: Access tokens expire at ~1h; refresh tokens are stored in SecureStorage and automatically refreshed before expiry</li>
+<li><strong>Revocation handling</strong>: Expired/revoked tokens trigger re-authentication rather than silent failure</li>
+</ul>
+<h3>Token Refresh Scheduling</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Bridge sessions use a generation counter to prevent stale refresh races</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createTokenRefreshScheduler</span>(<span class="hljs-params">{
+  getAccessToken, onRefresh, label, refreshBufferMs = <span class="hljs-number">5</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>,
+}</span>): { schedule, cancel, cancelAll } {
+  <span class="hljs-comment">// 1. Decode JWT payload → extract exp claim</span>
+  <span class="hljs-comment">// 2. Schedule refresh 5 minutes before expiry</span>
+  <span class="hljs-comment">// 3. Retry up to 3 times on failure</span>
+  <span class="hljs-comment">// 4. Generation counter prevents concurrent doRefresh conflicts</span>
+}
+</code></pre>
+<hr>
+<h2>11. Settings Multi-Source Merge System</h2>
+<p><strong>Source coordinates</strong>: <code>src/utils/settings/settings.ts</code>, <code>src/utils/settings/constants.ts</code></p>
+<p>The permission pipeline's rules come from a sophisticated five-layer settings system (detailed in Episode 16), but the permission-specific aspects deserve coverage here.</p>
+<h3>Permission Rule Loading</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Rules are loaded from ALL settings sources + runtime sources</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">PERMISSION_RULE_SOURCES</span> = [
+  ...<span class="hljs-variable constant_">SETTING_SOURCES</span>,  <span class="hljs-comment">// user/project/local/flag/policy</span>
+  <span class="hljs-string">'cliArg'</span>,            <span class="hljs-comment">// --allowed-tools, --disallowed-tools</span>
+  <span class="hljs-string">'command'</span>,           <span class="hljs-comment">// Skill-injected rules</span>
+  <span class="hljs-string">'session'</span>,           <span class="hljs-comment">// Runtime additions via permission dialog</span>
+]
+
+<span class="hljs-comment">// Each source provides deny/allow/ask arrays</span>
+<span class="hljs-comment">// Denial rules from ANY source take absolute precedence</span>
+<span class="hljs-comment">// Allow rules accumulate across all sources</span>
+</code></pre>
+<h3>Enterprise Managed Permissions</h3>
+<p>Enterprise policy settings (<code>policySettings</code>) have a special property: they <strong>cannot be overridden</strong> by lower-priority sources. When a policy denies a tool, no amount of project or user settings can re-allow it:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Policy deny rules are checked FIRST in the pipeline</span>
+<span class="hljs-comment">// They cannot be bypassed, even by bypassPermissions mode</span>
+<span class="hljs-comment">// This enables IT departments to enforce security boundaries</span>
+</code></pre>
+<h3>The <code>disableBypassPermissionsMode</code> Setting</h3>
+<p>Enterprise deployments can completely disable bypass mode:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-attr">permissions</span>: {
+  <span class="hljs-attr">disableBypassPermissionsMode</span>: <span class="hljs-string">'disable'</span>,  <span class="hljs-comment">// Removes the option entirely</span>
+  <span class="hljs-attr">deny</span>: [
+    { <span class="hljs-attr">tool</span>: <span class="hljs-string">'Bash'</span>, <span class="hljs-attr">content</span>: <span class="hljs-string">'rm -rf:*'</span> },  <span class="hljs-comment">// Policy-level deny</span>
+  ]
+}
+</code></pre>
+<hr>
+<h2>12. Secure Credential Storage</h2>
+<p><strong>Source coordinates</strong>: <code>src/utils/secureStorage/</code></p>
+<p>OAuth tokens and API keys are stored through a platform-adaptive secure storage system:</p>
+<h3>Platform Adaptation Chain</h3>
+<pre class="ascii-diagram"><code>macOS?
+  ├─ Yes → createFallbackStorage(macOsKeychain, plainText)
+  │         ├─ Try macOS Keychain (security CLI)
+  │         └─ Fallback: plaintext if Keychain fails
+  └─ No  → plainTextStorage (Linux/Windows)
+</code></pre>
+<h3>Stale-While-Error Strategy</h3>
+<p>The most important pattern for credential storage resilience:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// macOsKeychainStorage.ts</span>
+<span class="hljs-title function_">read</span>(): <span class="hljs-title class_">SecureStorageData</span> | <span class="hljs-literal">null</span> {
+  <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - prev.<span class="hljs-property">cachedAt</span> &#x3C; <span class="hljs-variable constant_">KEYCHAIN_CACHE_TTL_MS</span>) {
+    <span class="hljs-keyword">return</span> prev.<span class="hljs-property">data</span>  <span class="hljs-comment">// Serve from cache</span>
+  }
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">execSyncWithDefaults_DEPRECATED</span>(
+      <span class="hljs-string">`security find-generic-password -a "<span class="hljs-subst">${username}</span>" -w -s "<span class="hljs-subst">${storeName}</span>"`</span>
+    )
+    <span class="hljs-comment">// Parse and cache result</span>
+  } <span class="hljs-keyword">catch</span> {
+    <span class="hljs-comment">// CRITICAL: Don't return null on failure</span>
+    <span class="hljs-comment">// Serve stale cached data instead</span>
+    <span class="hljs-keyword">if</span> (prev.<span class="hljs-property">data</span> !== <span class="hljs-literal">null</span>) {
+      keychainCacheState.<span class="hljs-property">cache</span> = { <span class="hljs-attr">data</span>: prev.<span class="hljs-property">data</span>, <span class="hljs-attr">cachedAt</span>: <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() }
+      <span class="hljs-keyword">return</span> prev.<span class="hljs-property">data</span>  <span class="hljs-comment">// Stale but functional</span>
+    }
+  }
+}
+</code></pre>
+<p>Without stale-while-error, a transient macOS Keychain Service restart would cause every in-flight request to fail with "Not logged in," forcing users to re-authenticate after a brief system hiccup.</p>
+<h3>The 4096-Byte stdin Limit</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// macOS security command has an undocumented stdin limit</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SECURITY_STDIN_LINE_LIMIT</span> = <span class="hljs-number">4096</span> - <span class="hljs-number">64</span>  <span class="hljs-comment">// 64B safety margin</span>
+<span class="hljs-comment">// Exceeding this causes SILENT data truncation → credential corruption</span>
+<span class="hljs-comment">// This forced the design choice to minimize stored credential size</span>
+</code></pre>
+<hr>
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Component</th><th>Lines</th><th>Role</th></tr></thead><tbody><tr><td><code>permissions.ts</code></td><td>1,487</td><td>Core pipeline: 7-step evaluation, mode transforms</td></tr><tr><td><code>permissionSetup.ts</code></td><td>1,533</td><td>Mode initialization, dangerous permission detection</td></tr><tr><td><code>yoloClassifier.ts</code></td><td>1,496</td><td>2-stage XML classifier for auto mode</td></tr><tr><td><code>PermissionMode.ts</code></td><td>142</td><td>6 permission modes + config</td></tr><tr><td><code>PermissionRule.ts</code></td><td>41</td><td>Rule type: <code>{toolName, ruleContent?}</code></td></tr><tr><td><code>denialTracking.ts</code></td><td>46</td><td>Circuit breakers: 3 consecutive / 20 total</td></tr><tr><td><code>permissionRuleParser.ts</code></td><td>~200</td><td>Rule string ↔ structured value conversion</td></tr><tr><td><code>permissionsLoader.ts</code></td><td>~250</td><td>Load rules from 7 settings sources</td></tr><tr><td><code>shadowedRuleDetection.ts</code></td><td>~250</td><td>Detect rules that shadow/conflict</td></tr><tr><td><code>sandbox-adapter.ts</code></td><td>986</td><td>OS sandbox: seatbelt / bubblewrap</td></tr></tbody></table>
+<p>The permission pipeline is Claude Code's most architecturally sophisticated subsystem. Its seven-step evaluation order — with four bypass-immune safety checks — represents hard-won lessons about what happens when AI agents can execute arbitrary code. The addition of the YOLO classifier shows the system evolving from pure rule-matching toward AI-assisted security decisions, while maintaining deterministic guardrails as a safety net.</p>
+<hr>
+<p><strong>Previous</strong>: <a href="06-bash-engine">← 06 — Bash Execution Engine</a>
+<strong>Next</strong>: <a href="08-agent-swarms">→ 08 — Agent Swarms</a></p></div></article><nav class="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800"><a class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/en/advanced/06-bash-engine/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left transition-transform group-hover:-translate-x-1" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg><span>EP<!-- -->06<!-- --> <!-- -->Bash Engine</span></a><a class="group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/en/advanced/08-agent-swarms/"><span>EP<!-- -->08<!-- --> <!-- -->Agent Swarms</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></nav></div><!--$--><!--/$--></div></div></main><script src="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n3:I[37457,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n5:I[95914,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\"],\"Sidebar\"]\n7:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"OutletBoundary\"]\n8:\"$Sreact.suspense\"\na:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"MetadataBoundary\"]\ne:I[68027,[],\"default\"]\n:HL[\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"kOMToiePwU79Kzn0fZt4S\",\"c\":[\"\",\"en\",\"advanced\",\"07-permission-pipeline\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[[\"locale\",\"en\",\"d\"],{\"children\":[\"(learn)\",{\"children\":[\"advanced\",{\"children\":[[\"chapter\",\"07-permission-pipeline\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true]}],[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"div\",null,{\"className\":\"flex gap-8\",\"children\":[[\"$\",\"$L5\",null,{}],[\"$\",\"div\",null,{\"className\":\"min-w-0 flex-1\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@9\"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[33499,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"I18nProvider\"]\n10:I[45872,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"Header\"]\n11:I[22016,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"\"]\n4:[\"$\",\"html\",null,{\"lang\":\"en\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n          (function() {\\n            var theme = localStorage.getItem('theme');\\n            if (theme === 'dark' || (!theme \u0026\u0026 window.matchMedia('(prefers-color-scheme: dark)').matches)) {\\n              document.documentElement.classList.add('dark');\\n            }\\n          })();\\n        \"}}]}],[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased\",\"children\":[\"$\",\"$Lf\",null,{\"locale\":\"en\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-4xl space-y-8 py-4\",\"children\":[[\"$\",\"header\",null,{\"className\":\"rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/en/curriculum\",\"className\":\"inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Course map\"]}],[\"$\",\"div\",null,{\"className\":\"mt-4 flex flex-wrap items-center gap-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800\",\"children\":[\"EP\",\"07\"]}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold text-zinc-950 dark:text-zinc-50\",\"children\":\"Permission Pipeline\"}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Defense in depth from rules to AST checks to sandbox boundaries\"}]]}],[\"$\",\"section\",null,{\"className\":\"rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-start justify-between gap-3\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300\",\"children\":\"Prompt reference\"}],[\"$\",\"h2\",null,{\"className\":\"mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50\",\"children\":\"Permission and autonomous-action classifiers\"}],[\"$\",\"p\",null,{\"className\":\"mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200\",\"children\":\"This is the strongest prompt-side companion to the permission pipeline chapter.\"}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":14,\"height\":14,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}],\"Source repo\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70\",\"children\":\"Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.\"}],[\"$\",\"div\",null,{\"className\":\"mt-4 grid gap-3 md:grid-cols-2\",\"children\":[[\"$\",\"a\",\"agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[\"$L12\",\"$L13\",\"$L14\",\"$L15\",\"$L16\",\"$undefined\"]}],\"$L17\"]}],\"$L18\",\"$L19\"]}],\"$L1a\",\"$L1b\",\"$L1c\"]}]]}],\"$L1d\",\"$L1e\"]}]\n"])</script><script>self.__next_f.push([1,"1f:I[19004,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"AdvancedDocRenderer\"]\n12:[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}]\n13:[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}]\n14:[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}]\n15:[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}]\n16:[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}]\n17:[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Security monitor, first part\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md\"}]]}]\n18:[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Threat model\"}]\n19:[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Defines prompt injection, scope creep, accidental damage, and user-intent rules.\"}]\n"])</script><script>self.__next_f.push([1,"1a:[\"$\",\"a\",\"agent-prompt-security-monitor-for-autonomous-agent-actions-second-part.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-security-monitor-for-autonomous-agent-actions-second-part.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Security monitor, second part\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"agent-prompt-security-monitor-for-autonomous-agent-actions-second-part.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Block and allow rules\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Complements the classifier threat model with concrete policy sections.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1b:[\"$\",\"a\",\"agent-prompt-auto-mode-rule-reviewer.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-auto-mode-rule-reviewer.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Auto mode rule reviewer\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"agent-prompt-auto-mode-rule-reviewer.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Policy authoring\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Helps discuss user-customized permission rules and conflicts.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1c:[\"$\",\"a\",\"system-prompt-action-safety-and-truthful-reporting.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-action-safety-and-truthful-reporting.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Action safety and truthful reporting\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-action-safety-and-truthful-reporting.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Human approval\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"A compact prompt fragment for reversible versus consequential actions.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1d:[\"$\",\"$L1f\",null,{\"chapter\":\"07\"}]\n"])</script><script>self.__next_f.push([1,"1e:[\"$\",\"nav\",null,{\"className\":\"flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/en/advanced/06-bash-engine\",\"className\":\"group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left transition-transform group-hover:-translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],[\"$\",\"span\",null,{\"children\":[\"EP\",\"06\",\" \",\"Bash Engine\"]}]]}],[\"$\",\"$L11\",null,{\"href\":\"/en/advanced/08-agent-swarms\",\"className\":\"group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"span\",null,{\"children\":[\"EP\",\"08\",\" \",\"Agent Swarms\"]}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-right transition-transform group-hover:translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1ays0h\",{\"d\":\"M5 12h14\"}],[\"$\",\"path\",\"xquz4c\",{\"d\":\"m12 5 7 7-7 7\"}],\"$undefined\"]}]]}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"20:I[27201,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"IconMark\"]\n9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Agent Coding Lesson\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Build a nano Claude Code-like agent from 0 to 1, one mechanism at a time\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L20\",\"3\",{}]]\n"])</script></body></html>

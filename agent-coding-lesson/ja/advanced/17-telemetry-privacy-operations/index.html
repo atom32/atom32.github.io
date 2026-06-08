@@ -1,0 +1,1068 @@
+<!DOCTYPE html><!--kOMToiePwU79Kzn0fZt4S--><html lang="ja"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js"/><script src="/agent-coding-lesson/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/76fed9c17f51393e.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/7de9141b1af425c3.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/turbopack-8800d0fd815877b2.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/076aae518584b842.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js" async=""></script><title>Agent Coding Lesson</title><meta name="description" content="0 から 1 へ nano Claude Code-like agent を構築し、毎回 1 つの仕組みを追加"/><link rel="icon" href="/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico" sizes="256x256" type="image/x-icon"/><script>
+          (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script><script src="/agent-coding-lesson/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm"><div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a class="text-lg font-bold" href="/agent-coding-lesson/ja/">Agent Coding Lesson</a><nav class="hidden items-center gap-6 md:flex"><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/curriculum/">カリキュラム</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/timeline/">学習パス</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/compare/">バージョン比較</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/layers/">アーキテクチャ層</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/slides/s01/">スライド</a><div class="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5"><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">EN</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">中文</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">日本語</button></div><button class="rounded-md p-1.5 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Switch to dark mode"><span class="inline-block h-4 w-4"></span></button><a href="https://github.com/atom32/agent-coding-lesson" target="_blank" rel="noopener" class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Open project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a></nav><button class="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"><div class="flex gap-8"><nav class="hidden w-64 shrink-0 md:block"><div class="sticky top-[calc(3.5rem+2rem)] max-h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/curriculum/">カリキュラム</a><div class="space-y-1"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/summary/">サマリー</a><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/glossary/">用語集</a></div><section class="space-y-5"><div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">ラボレッスン</div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">ツールと実行</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s01/"><span class="font-mono text-xs">s01</span><span class="ml-1.5">エージェントループ</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s02/"><span class="font-mono text-xs">s02</span><span class="ml-1.5">ツール</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">計画と調整</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s03/"><span class="font-mono text-xs">s03</span><span class="ml-1.5">TodoWrite</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s04/"><span class="font-mono text-xs">s04</span><span class="ml-1.5">サブエージェント</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s05/"><span class="font-mono text-xs">s05</span><span class="ml-1.5">スキル</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s07/"><span class="font-mono text-xs">s07</span><span class="ml-1.5">タスクシステム</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-purple-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">メモリ管理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s06/"><span class="font-mono text-xs">s06</span><span class="ml-1.5">コンテキスト圧縮</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">並行処理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s08/"><span class="font-mono text-xs">s08</span><span class="ml-1.5">バックグラウンドタスク</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-red-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">コラボレーション</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s09/"><span class="font-mono text-xs">s09</span><span class="ml-1.5">エージェントチーム</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s10/"><span class="font-mono text-xs">s10</span><span class="ml-1.5">チームプロトコル</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s11/"><span class="font-mono text-xs">s11</span><span class="ml-1.5">自律エージェント</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s12/"><span class="font-mono text-xs">s12</span><span class="ml-1.5">Worktree + タスク分離</span></a></li></ul></div></section><section><div class="mb-2 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">実システム解剖</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/00-overview/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->00</span><span class="ml-1.5">Architecture Overview</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/01-query-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->01</span><span class="ml-1.5">QueryEngine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/02-tool-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->02</span><span class="ml-1.5">Tool System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/03-coordinator/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->03</span><span class="ml-1.5">Coordinator</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/04-plugin-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->04</span><span class="ml-1.5">Plugin System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/05-hook-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->05</span><span class="ml-1.5">Hook System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/06-bash-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->06</span><span class="ml-1.5">Bash Engine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/07-permission-pipeline/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->07</span><span class="ml-1.5">Permission Pipeline</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/08-agent-swarms/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->08</span><span class="ml-1.5">Agent Swarms</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/09-session-persistence/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->09</span><span class="ml-1.5">Session Persistence</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/10-context-assembly/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->10</span><span class="ml-1.5">Context Assembly</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/11-compact-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->11</span><span class="ml-1.5">Compact System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/12-startup-bootstrap/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->12</span><span class="ml-1.5">Startup &amp; Bootstrap</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/13-bridge-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->13</span><span class="ml-1.5">Bridge System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/14-ui-state-management/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->14</span><span class="ml-1.5">UI State &amp; Rendering</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/15-services-api-layer/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->15</span><span class="ml-1.5">Services &amp; API Layer</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/16-infrastructure-config/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->16</span><span class="ml-1.5">Infrastructure &amp; Config</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white" href="/agent-coding-lesson/ja/advanced/17-telemetry-privacy-operations/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->17</span><span class="ml-1.5">Telemetry &amp; Operations</span></a></li></ul></section></div></nav><div class="min-w-0 flex-1"><div class="mx-auto max-w-4xl space-y-8 py-4"><header class="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" href="/agent-coding-lesson/ja/curriculum/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Course map</a><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800">EP<!-- -->17</span><h1 class="text-2xl font-bold text-zinc-950 dark:text-zinc-50">Telemetry &amp; Operations</h1></div><p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">Privacy, operational control, model routing, and observability</p></header><section class="rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300">Prompt reference</p><h2 class="mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Operations, telemetry, budgets, and autonomous monitors</h2><p class="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">These prompts support the operational layer: what is monitored, summarized, budgeted, and blocked.</p></div><a href="https://github.com/Piebald-AI/claude-code-system-prompts" target="_blank" rel="noopener" class="inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>Source repo</a></div><p class="mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70">Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.</p><div class="mt-4 grid gap-3 md:grid-cols-2"><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-reminder-token-usage.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Token usage reminder</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-reminder-token-usage.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Usage telemetry</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">A visible hook for token accounting.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-reminder-usd-budget.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">USD budget reminder</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-reminder-usd-budget.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Budget control</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Shows cost as a prompt-visible operational constraint.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-background-agent-state-classifier.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Background agent state classifier</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">agent-prompt-background-agent-state-classifier.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Operational state</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Classifies long-running background sessions as working, blocked, done, or failed.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Security monitor, first part</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Operational safety</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Useful for privacy and operational-control discussions.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-insights-at-a-glance-summary.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Insights at a glance</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-insights-at-a-glance-summary.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Usage insight</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Connects telemetry-like usage data to user-facing summaries.</p></a></div></section><article class="py-4"><div class="prose-custom"><h1>17 — Telemetry, Privacy &#x26; Operational Control: The Dark Side of Production</h1>
+<blockquote class="hero-callout">
+</blockquote>
+<blockquote>
+<p><strong>Scope</strong>: <code>services/analytics/</code> (9 modules, ~148KB), <code>utils/undercover.ts</code>, <code>utils/attribution.ts</code>, <code>utils/commitAttribution.ts</code>, <code>utils/fastMode.ts</code>, <code>services/remoteManagedSettings/</code>, <code>constants/prompts.ts</code>, <code>buddy/</code>, <code>voice/</code>, <code>tasks/DreamTask/</code></p>
+<p><strong>One-liner</strong>: The production infrastructure you don't see — dual analytics pipelines, model codename concealment, remote killswitches, and a glimpse of features waiting behind compile-time gates.</p>
+</blockquote>
+<hr>
+<hr>
+<h2>1. Dual-Channel Telemetry Pipeline</h2>
+<p><strong>Source coordinates</strong>: <code>src/services/analytics/</code> (9 files, ~148KB total)</p>
+<p>Every tool call, every API request, every session start — each generates telemetry events that flow through a <strong>dual-channel pipeline</strong>. One channel stays in-house; the other reaches a third-party observability platform. Together, they form one of the most comprehensive analytics systems in any CLI tool.</p>
+<h3>1.1 Channel A: First-Party (Anthropic Direct)</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/analytics/firstPartyEventLogger.ts:300-302</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DEFAULT_LOGS_EXPORT_INTERVAL_MS</span> = <span class="hljs-number">10000</span>    <span class="hljs-comment">// 10-second batch flush</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DEFAULT_MAX_EXPORT_BATCH_SIZE</span> = <span class="hljs-number">200</span>         <span class="hljs-comment">// Up to 200 events per batch</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DEFAULT_MAX_QUEUE_SIZE</span> = <span class="hljs-number">8192</span>               <span class="hljs-comment">// 8K events in-memory queue</span>
+</code></pre>
+<p>The first-party pipeline uses <strong>OpenTelemetry's <code>LoggerProvider</code></strong> — not the global one (which serves customer OTLP telemetry), but a dedicated internal provider. Events are serialized as Protocol Buffers and shipped to:</p>
+<pre class="ascii-diagram"><code>POST https://api.anthropic.com/api/event_logging/batch
+</code></pre>
+<p><strong>Resilience is aggressive.</strong> The exporter (<code>FirstPartyEventLoggingExporter</code>, 27KB) implements:</p>
+<ul>
+<li>Quadratic backoff retries with configurable max attempts</li>
+<li><strong>Disk persistence</strong> for failed batches — events survive process crashes and are retried on the next session startup from <code>~/.claude/telemetry/</code></li>
+<li>Batch configuration is remotely adjustable via GrowthBook (<code>tengu_1p_event_batch_config</code>), meaning Anthropic can change flush intervals, batch sizes, and even the target endpoint without shipping a new version</li>
+</ul>
+<p><strong>Hot-swap safety</strong> is a subtle engineering detail worth noting:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/analytics/firstPartyEventLogger.ts:396-449</span>
+<span class="hljs-comment">// When GrowthBook updates batch config mid-session:</span>
+<span class="hljs-comment">// 1. Null the logger first — concurrent calls bail at the guard</span>
+<span class="hljs-comment">// 2. forceFlush() drains the old processor's buffer</span>
+<span class="hljs-comment">// 3. Swap to new provider; old one shuts down in background</span>
+<span class="hljs-comment">// 4. Disk-persisted retry files use stable keys (BATCH_UUID + sessionId)</span>
+<span class="hljs-comment">//    so the new exporter picks up any failures from the old one</span>
+</code></pre>
+<p>This means the analytics pipeline can reconfigure itself on the fly — batch size, flush frequency, even the backend URL — without losing events or requiring a restart.</p>
+<h3>1.2 Channel B: Datadog (Third-Party Observability)</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/analytics/datadog.ts:12-17</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DATADOG_LOGS_ENDPOINT</span> = <span class="hljs-string">'https://http-intake.logs.us5.datadoghq.com/api/v2/logs'</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DATADOG_CLIENT_TOKEN</span> = <span class="hljs-string">'pubbbf48e6d78dae54bceaa4acf463299bf'</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DEFAULT_FLUSH_INTERVAL_MS</span> = <span class="hljs-number">15000</span>   <span class="hljs-comment">// 15-second flush</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_BATCH_SIZE</span> = <span class="hljs-number">100</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">NETWORK_TIMEOUT_MS</span> = <span class="hljs-number">5000</span>
+</code></pre>
+<p>The Datadog channel is more restrictive. Only <strong>64 pre-approved event types</strong> pass the whitelist filter — from <code>tengu_api_error</code> and <code>tengu_tool_use_success</code> to voice events and team memory sync signals. Every event name carries the <code>tengu_</code> prefix (more on this in §5).</p>
+<p><strong>Three cardinality-reduction techniques</strong> prevent Datadog cost explosion:</p>
+<ol>
+<li><strong>MCP tool name normalization</strong>: Any tool starting with <code>mcp__</code> gets collapsed to just <code>"mcp"</code> — preventing each unique MCP server tool from creating a new facet</li>
+<li><strong>Model name normalization</strong>: External users' model names are mapped to canonical names, with unrecognized models collapsed to <code>"other"</code></li>
+<li><strong>User bucketing</strong>: Instead of tracking individual user IDs (which would create millions of unique facets), users are hashed into 30 buckets via <code>SHA256(userId) % 30</code>, enabling approximate unique-user alerting without cardinality explosion</li>
+</ol>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/analytics/datadog.ts:281-299</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">NUM_USER_BUCKETS</span> = <span class="hljs-number">30</span>
+<span class="hljs-keyword">const</span> getUserBucket = <span class="hljs-title function_">memoize</span>((): <span class="hljs-function"><span class="hljs-params">number</span> =></span> {
+  <span class="hljs-keyword">const</span> userId = <span class="hljs-title function_">getOrCreateUserID</span>()
+  <span class="hljs-keyword">const</span> hash = <span class="hljs-title function_">createHash</span>(<span class="hljs-string">'sha256'</span>).<span class="hljs-title function_">update</span>(userId).<span class="hljs-title function_">digest</span>(<span class="hljs-string">'hex'</span>)
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>(hash.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">8</span>), <span class="hljs-number">16</span>) % <span class="hljs-variable constant_">NUM_USER_BUCKETS</span>
+})
+</code></pre>
+<h3>1.3 Event Sampling: GrowthBook-Controlled Volume Dial</h3>
+<p>Not every event type needs 100% capture. A <strong>per-event sampling configuration</strong> (<code>tengu_event_sampling_config</code>) allows Anthropic to dynamically throttle high-volume event types:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/analytics/firstPartyEventLogger.ts:38-85</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">shouldSampleEvent</span>(<span class="hljs-params"><span class="hljs-attr">eventName</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">number</span> | <span class="hljs-literal">null</span> {
+  <span class="hljs-keyword">const</span> config = <span class="hljs-title function_">getEventSamplingConfig</span>()           <span class="hljs-comment">// From GrowthBook</span>
+  <span class="hljs-keyword">const</span> eventConfig = config[eventName]
+  <span class="hljs-keyword">if</span> (!eventConfig) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>                     <span class="hljs-comment">// No config → 100% capture</span>
+  <span class="hljs-keyword">const</span> sampleRate = eventConfig.<span class="hljs-property">sample_rate</span>
+  <span class="hljs-keyword">if</span> (sampleRate >= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>                  <span class="hljs-comment">// Rate 1.0 → capture all</span>
+  <span class="hljs-keyword">if</span> (sampleRate &#x3C;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>                     <span class="hljs-comment">// Rate 0.0 → drop all</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() &#x3C; sampleRate ? sampleRate : <span class="hljs-number">0</span>  <span class="hljs-comment">// Probabilistic sampling</span>
+}
+</code></pre>
+<p>This means any event type can be remotely dialed from 0% to 100% capture rate without code changes — a production-grade volume management mechanism.</p>
+<blockquote>
+<p>→ Cross-reference: <a href="16-infrastructure-config">Episode 16: Infrastructure</a> for GrowthBook integration details</p>
+</blockquote>
+<hr>
+<h2>2. The Data Harvest: What Gets Collected</h2>
+<p><strong>Source coordinates</strong>: <code>src/services/analytics/metadata.ts</code> (33KB — the single largest analytics file)</p>
+<p>Every telemetry event carries three metadata layers, assembled by <code>getEventMetadata()</code>:</p>
+<h3>2.1 Layer 1: Environment Fingerprint</h3>
+<pre class="ascii-diagram"><code>// Source: metadata.ts (conceptual summary of fields)
+┌─────────────────────────────────────────────────────────────────┐
+│  Environment Fingerprint (14+ fields)                           │
+├──────────────────┬──────────────────────────────────────────────┤
+│ Runtime          │ platform, platformRaw, arch, nodeVersion     │
+│ Terminal         │ terminal type (iTerm2 / Terminal.app / ...)  │
+│ Dev Environment  │ installed package managers and runtimes      │
+│ CI/CD            │ CI detection, GitHub Actions metadata        │
+│ OS Details       │ WSL version, Linux distro, kernel version    │
+│ VCS              │ version control system type                  │
+│ Claude Code      │ version, build timestamp                     │
+│ Deployment       │ environment identifier                       │
+└──────────────────┴──────────────────────────────────────────────┘
+</code></pre>
+<p>This fingerprint is rich enough to identify your specific machine configuration — what OS, what terminal, what development tools, whether you're running in CI, and what VCS you use.</p>
+<h3>2.2 Layer 2: Process Health Metrics</h3>
+<pre class="ascii-diagram"><code>// Source: metadata.ts (process metrics section)
+┌─────────────────────────────────────────────────────────────────┐
+│  Process Metrics (8+ indicators)                                │
+├──────────────────┬──────────────────────────────────────────────┤
+│ Timing           │ process uptime                               │
+│ Memory           │ rss, heapTotal, heapUsed, external, arrays  │
+│ CPU              │ usage time, percentage                       │
+└──────────────────┴──────────────────────────────────────────────┘
+</code></pre>
+<h3>2.3 Layer 3: User &#x26; Session Identity</h3>
+<pre class="ascii-diagram"><code>// Source: metadata.ts (user tracking section)
+┌─────────────────────────────────────────────────────────────────┐
+│  User &#x26; Session Tracking                                        │
+├──────────────────┬──────────────────────────────────────────────┤
+│ Model            │ active model name                            │
+│ Session          │ sessionId, parentSessionId                   │
+│ Device           │ deviceId (persistent across sessions)        │
+│ Account          │ accountUUID, organizationUUID                │
+│ Subscription     │ tier (max, pro, enterprise, team)            │
+│ Repository       │ remote URL hash (SHA256, first 16 chars)     │
+│ Agent            │ agent type, team name                        │
+└──────────────────┴──────────────────────────────────────────────┘
+</code></pre>
+<p>The <strong>repository fingerprint</strong> deserves special attention. Rather than sending the raw repository URL (which would expose project names), the system takes the SHA256 hash and truncates to 16 hex characters. This is not anonymization — it is <strong>pseudonymization</strong>. An observer with access to the telemetry backend who knows a target repository's URL can trivially compute the hash and match it. The 16-character truncation provides a 64-bit collision space — effectively unique for realistic repository populations.</p>
+<h3>2.4 Tool Input Logging</h3>
+<p>By default, tool inputs are aggressively truncated:</p>
+<pre class="ascii-diagram"><code>// Source: metadata.ts (truncation thresholds)
+Strings:       512 character hard cap, displayed as 128 + "…"
+JSON objects:  4,096 character limit
+Arrays:        maximum 20 items
+Nested depth:  maximum 2 levels
+</code></pre>
+<p>But there is a <strong>full-capture override</strong>:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: metadata.ts (OTEL tool details)</span>
+<span class="hljs-comment">// When OTEL_LOG_TOOL_DETAILS=1 is set in environment:</span>
+<span class="hljs-comment">// ALL tool inputs are logged WITHOUT truncation</span>
+</code></pre>
+<p>This environment variable, intended for debugging, creates a vector where every file path, every search query, and every code edit command is captured in full fidelity.</p>
+<h3>2.5 Bash Command Extension Tracking</h3>
+<p>A particularly granular collection mechanism targets Bash commands. When you run operations involving any of 17 commands (<code>rm</code>, <code>mv</code>, <code>cp</code>, <code>touch</code>, <code>mkdir</code>, <code>chmod</code>, <code>chown</code>, <code>cat</code>, <code>head</code>, <code>tail</code>, <code>sort</code>, <code>stat</code>, <code>diff</code>, <code>wc</code>, <code>grep</code>, <code>rg</code>, <code>sed</code>), the system extracts and logs the <strong>file extensions</strong> of the arguments. This creates a profile of what file types you work with — <code>.py</code>, <code>.ts</code>, <code>.go</code>, <code>.md</code> — without capturing specific file paths.</p>
+<blockquote>
+<p>→ Cross-reference: <a href="06-bash-engine">Episode 06: Bash Engine</a> for command parsing</p>
+</blockquote>
+<hr>
+<h2>3. The Opt-Out Dilemma</h2>
+<p><strong>Source coordinates</strong>: <code>src/services/analytics/firstPartyEventLogger.ts:141-144</code>, <code>src/services/analytics/config.ts</code></p>
+<h3>3.1 When Analytics Are Disabled</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/analytics/config.ts</span>
+<span class="hljs-comment">// isAnalyticsDisabled() returns true ONLY for:</span>
+<span class="hljs-comment">// 1. Test environments (NODE_ENV !== 'production')</span>
+<span class="hljs-comment">// 2. Third-party cloud providers (Bedrock, Vertex)</span>
+<span class="hljs-comment">// 3. Global telemetry opt-out flag</span>
+</code></pre>
+<p>The first-party logging function checks this gate:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/analytics/firstPartyEventLogger.ts:141-144</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">is1PEventLoggingEnabled</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-keyword">return</span> !<span class="hljs-title function_">isAnalyticsDisabled</span>()
+}
+</code></pre>
+<p>For direct Anthropic API users (the vast majority), <code>isAnalyticsDisabled()</code> returns <code>false</code>. There is <strong>no settings panel, no CLI flag, and no environment variable</strong> that a regular user can set to disable first-party event logging while maintaining full product functionality.</p>
+<h3>3.2 The Datadog Gate</h3>
+<p>The Datadog channel adds one more restriction:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/analytics/datadog.ts:168-171</span>
+<span class="hljs-comment">// Don't send events for 3P providers (Bedrock, Vertex, Foundry)</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-title function_">getAPIProvider</span>() !== <span class="hljs-string">'firstParty'</span>) <span class="hljs-keyword">return</span>
+</code></pre>
+<p>Third-party API providers (AWS Bedrock, Google Vertex, Foundry) are exempt from Datadog logging — because their billing and analytics flow through separate systems. But first-party users cannot escape.</p>
+<h3>3.3 The Sink Killswitch (Remote Off-Switch)</h3>
+<p>Ironically, Anthropic <em>can</em> remotely disable analytics — but only for themselves:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/analytics/sinkKillswitch.ts</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SINK_KILLSWITCH_CONFIG_NAME</span> = <span class="hljs-string">'tengu_frond_boric'</span>
+<span class="hljs-comment">// GrowthBook flag that can disable analytics sinks remotely</span>
+</code></pre>
+<p>This GrowthBook flag allows Anthropic to globally or selectively silence the analytics pipeline. Individual users have no equivalent capability.</p>
+<h3>3.4 Regulatory Implications</h3>
+<p>The combination of: (1) no user-facing opt-out, (2) persistent device and session tracking, (3) repository fingerprinting, and (4) organization-level identification creates a dataset that falls squarely within the scope of GDPR Article 6 (lawful basis for processing) and CCPA Section 1798.100 (right to know). While the truncation and hashing measures reduce sensitivity, the persistent <code>deviceId</code> and <code>accountUUID</code> constitute identifiable data under most privacy frameworks.</p>
+<blockquote>
+<p>→ Design pattern: The <strong>stale-while-error</strong> strategy on failed telemetry exports (disk-persist + retry) prioritizes delivery completeness over user control. This is a deliberate product decision that trades privacy transparency for operational observability.</p>
+</blockquote>
+<hr>
+<h2>4. Model Codename System</h2>
+<p><strong>Source coordinates</strong>: <code>src/utils/undercover.ts:48-49</code>, <code>src/constants/prompts.ts</code>, <code>src/migrations/migrateFennecToOpus.ts</code>, <code>src/buddy/types.ts</code></p>
+<p>Anthropic assigns <strong>animal codenames</strong> to internal model versions — a practice common in tech companies, but Claude Code's source reveals the specific codenames, their evolutionary lineage, and the elaborate machinery built to prevent them from leaking.</p>
+<h3>4.1 The Four Known Codenames</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Codename</th><th>Animal</th><th>Role</th><th>Evidence</th></tr></thead><tbody><tr><td><strong>Capybara</strong></td><td>水豚</td><td>Sonnet-series model, currently v8</td><td><code>capybara-v2-fast[1m]</code> in model strings; dedicated prompt patches</td></tr><tr><td><strong>Tengu</strong></td><td>天狗</td><td>Product/telemetry prefix</td><td>All 250+ analytics events and feature flags use <code>tengu_*</code> prefix</td></tr><tr><td><strong>Fennec</strong></td><td>耳廓狐</td><td>Predecessor to Opus 4.6</td><td>Migration script: <code>fennec-latest → opus</code></td></tr><tr><td><strong>Numbat</strong></td><td>袋食蚁兽</td><td>Next unreleased model</td><td>Comment: <code>"Remove this section when we launch numbat"</code></td></tr></tbody></table>
+<h3>4.2 The Evolution Chain</h3>
+<pre class="ascii-diagram"><code>Fennec (耳廓狐)  ──migration──→  Opus 4.6  ──→  [Numbat?]
+Capybara (水豚)  ──────────────→  Sonnet v8 ──→  [?]
+Tengu (天狗)     ──────────────→  Product/telemetry prefix (not a model)
+</code></pre>
+<p>The Fennec-to-Opus migration is a concrete code artifact:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/migrations/migrateFennecToOpus.ts:7-11</span>
+<span class="hljs-comment">// fennec-latest      → opus</span>
+<span class="hljs-comment">// fennec-latest[1m]  → opus[1m]</span>
+<span class="hljs-comment">// fennec-fast-latest → opus[1m] + fast mode enabled</span>
+</code></pre>
+<h3>4.3 Codename Protection Mechanisms</h3>
+<p>Two layers prevent codenames from leaking into external builds:</p>
+<p><strong>Layer 1: Build-time scanner</strong> — <code>scripts/excluded-strings.txt</code> contains patterns that the CI pipeline scans for in build output. Any match fails the build.</p>
+<p><strong>Layer 2: Runtime obfuscation</strong> — When a codename might appear in user-visible strings, it is actively masked:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/utils/model/model.ts:386-392</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">maskModelCodename</span>(<span class="hljs-params"><span class="hljs-attr">baseName</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">string</span> {
+  <span class="hljs-comment">// e.g. capybara-v2-fast → cap*****-v2-fast</span>
+  <span class="hljs-keyword">const</span> [codename = <span class="hljs-string">''</span>, ...rest] = baseName.<span class="hljs-title function_">split</span>(<span class="hljs-string">'-'</span>)
+  <span class="hljs-keyword">const</span> masked = codename.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>) + <span class="hljs-string">'*'</span>.<span class="hljs-title function_">repeat</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">max</span>(<span class="hljs-number">0</span>, codename.<span class="hljs-property">length</span> - <span class="hljs-number">3</span>))
+  <span class="hljs-keyword">return</span> [masked, ...rest].<span class="hljs-title function_">join</span>(<span class="hljs-string">'-'</span>)
+}
+</code></pre>
+<p><strong>Layer 3: Source-level collision avoidance</strong> — The Buddy virtual pet system includes "capybara" as a pet species, which collides with the model codename scanner. The solution is encoding the species name character-by-character at runtime to keep the literal out of the source bundle:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/buddy/types.ts:10-13</span>
+<span class="hljs-comment">// One species name collides with a model-codename canary in excluded-strings.txt.</span>
+<span class="hljs-comment">// The check greps build output (not source), so runtime-constructing the value</span>
+<span class="hljs-comment">// keeps the literal out of the bundle while the check stays armed for the actual codename.</span>
+</code></pre>
+<h3>4.4 Capybara v8: Five Documented Behavioral Defects</h3>
+<p>The source code contains specific, annotated workarounds for Capybara v8 issues — a rare window into model-level debugging:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>Defect</th><th>Impact</th><th>Source Location</th></tr></thead><tbody><tr><td>1</td><td><strong>Stop sequence false trigger</strong></td><td>~10% rate when <code>&#x3C;functions></code> appears at prompt tail</td><td><code>prompts.ts</code> / <code>messages.ts:2141</code></td></tr><tr><td>2</td><td><strong>Empty tool_result zero output</strong></td><td>Model generates nothing when receiving blank tool results</td><td><code>toolResultStorage.ts:281</code></td></tr><tr><td>3</td><td><strong>Over-commenting</strong></td><td>Requires dedicated anti-commenting prompt patches</td><td><code>prompts.ts:204</code></td></tr><tr><td>4</td><td><strong>High false-claims rate</strong></td><td>29-30% FC rate vs. Capybara v4's 16.7%</td><td><code>prompts.ts:237</code></td></tr><tr><td>5</td><td><strong>Insufficient verification</strong></td><td>Requires "thoroughness counterweight" prompt injection</td><td><code>prompts.ts:210</code></td></tr></tbody></table>
+<p>Each defect has a <code>@[MODEL LAUNCH]</code> annotation tied to it, indicating these are temporary patches expected to be removed or revised when the next model (Numbat) launches. The codebase contains <strong>8+ <code>@[MODEL LAUNCH]</code> markers</strong> covering: default model names, family IDs, knowledge cutoff dates, pricing tables, context window configurations, thinking mode support, display name mappings, and migration scripts.</p>
+<blockquote>
+<p>→ Cross-reference: <a href="01-query-engine">Episode 01: QueryEngine</a> for how prompt patches affect the query loop</p>
+</blockquote>
+<hr>
+<h2>5. Feature Flag Obfuscation</h2>
+<p><strong>Source coordinates</strong>: <code>src/services/analytics/growthbook.ts</code> (41KB), <code>src/services/analytics/sinkKillswitch.ts</code>, various <code>utils/*.ts</code></p>
+<h3>5.1 The Tengu Naming Convention</h3>
+<p>Every feature flag and analytics event follows a deliberate naming pattern designed to obscure its purpose from external observers:</p>
+<pre class="ascii-diagram"><code>tengu_&#x3C;word1>_&#x3C;word2>
+</code></pre>
+<p>The word pairs are selected from a constrained vocabulary — adjective/material words paired with nature/object words — creating names that are memorable to insiders but opaque to outsiders. Examples from the actual codebase:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Flag Name</th><th>Decoded Purpose</th><th>Category</th></tr></thead><tbody><tr><td><code>tengu_frond_boric</code></td><td>Analytics sink killswitch</td><td>Killswitch</td></tr><tr><td><code>tengu_amber_quartz_disabled</code></td><td>Voice mode emergency off</td><td>Killswitch</td></tr><tr><td><code>tengu_amber_flint</code></td><td>Agent teams gate</td><td>Feature gate</td></tr><tr><td><code>tengu_hive_evidence</code></td><td>Verification agent gate</td><td>Feature gate</td></tr><tr><td><code>tengu_onyx_plover</code></td><td>Auto-Dream (background memory)</td><td>Feature gate</td></tr><tr><td><code>tengu_coral_fern</code></td><td>Memdir feature</td><td>Feature gate</td></tr><tr><td><code>tengu_moth_copse</code></td><td>Memdir switch (secondary)</td><td>Feature gate</td></tr><tr><td><code>tengu_herring_clock</code></td><td>Team memory</td><td>Feature gate</td></tr><tr><td><code>tengu_passport_quail</code></td><td>Path feature</td><td>Feature gate</td></tr><tr><td><code>tengu_slate_thimble</code></td><td>Memdir switch (tertiary)</td><td>Feature gate</td></tr><tr><td><code>tengu_sedge_lantern</code></td><td>Away summary</td><td>Feature gate</td></tr><tr><td><code>tengu_marble_sandcastle</code></td><td>Fast mode (Penguin) gate</td><td>Feature gate</td></tr><tr><td><code>tengu_penguins_off</code></td><td>Fast mode disable</td><td>Killswitch</td></tr><tr><td><code>tengu_turtle_carbon</code></td><td>Ultrathink gate</td><td>Feature gate</td></tr><tr><td><code>tengu_log_datadog_events</code></td><td>Datadog event gate</td><td>Analytics</td></tr><tr><td><code>tengu_event_sampling_config</code></td><td>Per-event sampling rates</td><td>Config</td></tr><tr><td><code>tengu_1p_event_batch_config</code></td><td>1P batch processor config</td><td>Config</td></tr><tr><td><code>tengu_ant_model_override</code></td><td>Internal model override</td><td>Internal</td></tr><tr><td><code>tengu_max_version_config</code></td><td>Version enforcement</td><td>Config</td></tr></tbody></table>
+<h3>5.2 The Three-Tier Flag Resolution</h3>
+<p>Feature behavior in Claude Code is controlled through three distinct mechanisms, each operating at a different level:</p>
+<pre class="ascii-diagram"><code>┌─────────────────────────────────────────────────────────────────┐
+│  Tier 1: Compile-Time DCE (Dead Code Elimination)               │
+│  mechanism: feature('FLAG_NAME') from bun:bundle                │
+│  scope:     entire code branches removed at build time          │
+│  examples:  VOICE_MODE, DAEMON, KAIROS, COORDINATOR_MODE        │
+│  effect:    code doesn't exist in published bundle at all       │
+├─────────────────────────────────────────────────────────────────┤
+│  Tier 2: Runtime Environment Check                              │
+│  mechanism: process.env.USER_TYPE === 'ant'                     │
+│  scope:     code exists but is bypassed for external users      │
+│  examples:  REPLTool, TungstenTool, debug logging               │
+│  effect:    constant-folded by V8 JIT after first check         │
+├─────────────────────────────────────────────────────────────────┤
+│  Tier 3: Runtime GrowthBook Flag                                │
+│  mechanism: getFeatureValue('tengu_*') via GrowthBook SDK       │
+│  scope:     can change per-user, per-session, per-experiment    │
+│  examples:  all tengu_* flags listed above                      │
+│  effect:    cached locally, refreshed periodically              │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre>
+<p>Some features use <strong>double-gating</strong> — a Tier 1 compile-time gate combined with a Tier 3 runtime flag:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/utils/thinking.ts</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">isUltrathinkEnabled</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-keyword">if</span> (!<span class="hljs-title function_">feature</span>(<span class="hljs-string">'ULTRATHINK'</span>)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>      <span class="hljs-comment">// Tier 1: DCE in external builds</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">getFeatureValue_CACHED_MAY_BE_STALE</span>(   <span class="hljs-comment">// Tier 3: runtime toggle</span>
+    <span class="hljs-string">'tengu_turtle_carbon'</span>, <span class="hljs-literal">true</span>
+  )
+}
+</code></pre>
+<p>In external builds, <code>feature('ULTRATHINK')</code> is <code>false</code>, so the entire function body — including the GrowthBook call — is dead-code-eliminated. In internal builds, the runtime flag provides dynamic control. This two-tier approach means Anthropic can both restrict features to internal builds AND dynamically control them within those builds.</p>
+<h3>5.3 The Sink Killswitch Architecture</h3>
+<p>The analytics killswitch (<code>tengu_frond_boric</code>) deserves special attention for its engineering subtlety:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/analytics/sinkKillswitch.ts</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">isSinkKilled</span>(<span class="hljs-params"><span class="hljs-attr">sink</span>: <span class="hljs-title class_">SinkName</span></span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-keyword">const</span> config = getDynamicConfig_CACHED_MAY_BE_STALE&#x3C;
+    <span class="hljs-title class_">Partial</span>&#x3C;<span class="hljs-title class_">Record</span>&#x3C;<span class="hljs-title class_">SinkName</span>, <span class="hljs-built_in">boolean</span>>>
+  >(<span class="hljs-variable constant_">SINK_KILLSWITCH_CONFIG_NAME</span>, {})
+  <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> Must NOT be called from is1PEventLoggingEnabled() —</span>
+  <span class="hljs-comment">// growthbook.ts:isGrowthBookEnabled() calls that, creating a cycle</span>
+  <span class="hljs-keyword">return</span> config?.[sink] === <span class="hljs-literal">true</span>
+}
+</code></pre>
+<p>The comment reveals a <strong>circular dependency hazard</strong>: GrowthBook initialization calls <code>is1PEventLoggingEnabled()</code>, which would call <code>isSinkKilled()</code>, which calls GrowthBook — infinite recursion. The solution: the killswitch is checked at <strong>each event dispatch site</strong>, not at the global enable check. This is a textbook example of breaking circular dependencies through architectural placement rather than lazy loading.</p>
+<blockquote>
+<p>→ Cross-reference: <a href="16-infrastructure-config">Episode 16: Infrastructure</a> §1.3 for the latching pattern used in analytics beta headers</p>
+</blockquote>
+<hr>
+<h2>6. Undercover Mode: Concealing AI Authorship</h2>
+<p><strong>Source coordinates</strong>: <code>src/utils/undercover.ts</code> (90 lines), <code>src/utils/attribution.ts</code> (394 lines), <code>src/utils/commitAttribution.ts</code> (30KB)</p>
+<p>When Anthropic employees use Claude Code to contribute to open-source repositories, a specialized system activates to hide all traces of AI involvement. This is "Undercover Mode" — a built-in mechanism for concealing the AI's identity in commits, pull requests, and code contributions.</p>
+<h3>6.1 Activation Logic</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/utils/undercover.ts:28-37</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">isUndercover</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-keyword">if</span> (process.<span class="hljs-property">env</span>.<span class="hljs-property">USER_TYPE</span> === <span class="hljs-string">'ant'</span>) {          <span class="hljs-comment">// Only for Anthropic employees</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEnvTruthy</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">CLAUDE_CODE_UNDERCOVER</span>)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>  <span class="hljs-comment">// Force ON</span>
+    <span class="hljs-comment">// Auto-detect: active UNLESS we've confirmed internal repo</span>
+    <span class="hljs-comment">// 'external', 'none', null → all resolve to ON</span>
+    <span class="hljs-comment">// Only 'internal' → OFF</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">getRepoClassCached</span>() !== <span class="hljs-string">'internal'</span>
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>  <span class="hljs-comment">// External users: always off (dead-code-eliminated in prod)</span>
+}
+</code></pre>
+<p>The activation decision tree:</p>
+<pre class="ascii-diagram"><code>Is USER_TYPE === 'ant'?
+├─ NO  → return false (entire function DCE'd in external builds)
+└─ YES → Is CLAUDE_CODE_UNDERCOVER env var set?
+         ├─ YES → Force ON (even in internal repos)
+         └─ NO  → Is repo in INTERNAL_MODEL_REPOS allowlist?
+                   ├─ YES ('internal') → OFF
+                   └─ NO/Unknown/None  → ON (safe default)
+</code></pre>
+<p>The critical design decision: <strong>there is no force-OFF</strong>. If the system cannot confirm the current repository is on Anthropic's internal allowlist, undercover mode activates. This fail-safe ensures that even when working in <code>/tmp</code> or any non-git directory, AI traces never leak.</p>
+<h3>6.2 The Undercover Prompt</h3>
+<p>When active, the model receives explicit concealment instructions:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/utils/undercover.ts:41-69 (full prompt text)</span>
+<span class="hljs-string">`## UNDERCOVER MODE — CRITICAL
+
+You are operating UNDERCOVER in a PUBLIC/OPEN-SOURCE repository.
+Your commit messages, PR titles, and PR bodies MUST NOT contain
+ANY Anthropic-internal information. Do not blow your cover.
+
+NEVER include in commit messages or PR descriptions:
+- Internal model codenames (animal names like Capybara, Tengu, etc.)
+- Unreleased model version numbers (e.g., opus-4-7, sonnet-4-8)
+- Internal repo or project names (e.g., claude-cli-internal)
+- Internal tooling, Slack channels, or short links (e.g., go/cc)
+- The phrase "Claude Code" or any mention that you are an AI
+- Any hint of what model or version you are
+- Co-Authored-By lines or any other attribution`</span>
+</code></pre>
+<p>Seven explicit prohibitions ensure no artifact of AI authorship survives.</p>
+<h3>6.3 Attribution Stripping</h3>
+<p>The attribution system (<code>attribution.ts</code>) actively removes AI traces when undercover:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/utils/attribution.ts:52-55</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getAttributionTexts</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">AttributionTexts</span> {
+  <span class="hljs-keyword">if</span> (process.<span class="hljs-property">env</span>.<span class="hljs-property">USER_TYPE</span> === <span class="hljs-string">'ant'</span> &#x26;&#x26; <span class="hljs-title function_">isUndercover</span>()) {
+    <span class="hljs-keyword">return</span> { <span class="hljs-attr">commit</span>: <span class="hljs-string">''</span>, <span class="hljs-attr">pr</span>: <span class="hljs-string">''</span> }  <span class="hljs-comment">// Empty strings = no attribution</span>
+  }
+  <span class="hljs-comment">// ... normal attribution logic</span>
+}
+</code></pre>
+<p>In normal mode, commits get <code>Co-Authored-By: Claude Opus 4.6 &#x3C;noreply@anthropic.com></code> and PRs get <code>🤖 Generated with Claude Code</code>. In undercover mode, both return empty strings.</p>
+<p><strong>For unknown models, there is a hardcoded fallback:</strong></p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/utils/attribution.ts:70-78</span>
+<span class="hljs-comment">// @[MODEL LAUNCH]: Update the hardcoded fallback model name below</span>
+<span class="hljs-comment">// For external repos, fall back to "Claude Opus 4.6" for</span>
+<span class="hljs-comment">// unrecognized models to avoid leaking codenames.</span>
+<span class="hljs-keyword">const</span> modelName = <span class="hljs-title function_">isInternalModelRepoCached</span>() || isKnownPublicModel
+  ? <span class="hljs-title function_">getPublicModelName</span>(model)
+  : <span class="hljs-string">'Claude Opus 4.6'</span>
+</code></pre>
+<p>This ensures even in non-undercover mode, unknown model names never appear in user-visible attribution.</p>
+<h3>6.4 Enhanced PR Attribution (Non-Undercover)</h3>
+<p>When not undercover, the attribution system generates rich statistics:</p>
+<pre class="ascii-diagram"><code>🤖 Generated with Claude Code (93% 3-shotted by claude-opus-4-5, 2 memories recalled)
+</code></pre>
+<p>This includes: Claude's code contribution percentage (from <code>commitAttribution.ts</code> 30KB worth of git attribution analysis), prompt count (N-shotted), model name, and memory file access count.</p>
+<h3>6.5 Ethical Implications</h3>
+<p>Undercover mode raises fundamental questions about AI transparency in open-source:</p>
+<ol>
+<li><strong>Contributor authenticity</strong>: Other maintainers cannot distinguish human-written from AI-generated contributions</li>
+<li><strong>License compliance</strong>: Some open-source licenses require disclosure of AI-generated content</li>
+<li><strong>Community trust</strong>: The absence of a force-OFF switch means the system is engineered to make concealment the default</li>
+<li><strong>Regulatory divergence</strong>: EU AI Act Article 50 may require disclosure of AI-generated content in certain contexts</li>
+</ol>
+<p>This is not a bug — it is a deliberate product decision that prioritizes Anthropic's competitive positioning (employees using Claude Code effectively in public) over contributor transparency.</p>
+<blockquote>
+<p>→ Design pattern: <strong>Fail-safe default</strong> — when in doubt, conceal. This inverts the typical transparency principle: instead of requiring explicit opt-in to hide AI involvement, it requires explicit allowlisting to reveal it.</p>
+</blockquote>
+<hr>
+<h2>7. Remote Control &#x26; Emergency Switches</h2>
+<p><strong>Source coordinates</strong>: <code>src/services/remoteManagedSettings/</code> (5 files, ~43KB), <code>src/utils/fastMode.ts</code> (18KB), <code>src/utils/permissions/bypassPermissionsKillswitch.ts</code></p>
+<p>Claude Code is not just a local tool — it maintains a persistent connection to Anthropic's servers for configuration, and Anthropic can remotely alter its behavior, enforce policies, or shut down features.</p>
+<h3>7.1 Remote Managed Settings</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/remoteManagedSettings/index.ts:52-54</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SETTINGS_TIMEOUT_MS</span> = <span class="hljs-number">10000</span>     <span class="hljs-comment">// 10s fetch timeout</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DEFAULT_MAX_RETRIES</span> = <span class="hljs-number">5</span>         <span class="hljs-comment">// Up to 5 retries per fetch</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">POLLING_INTERVAL_MS</span> = <span class="hljs-number">3600000</span>   <span class="hljs-comment">// 1-hour background polling</span>
+</code></pre>
+<p>Settings are fetched from:</p>
+<pre class="ascii-diagram"><code>GET https://api.anthropic.com/api/claude_code/settings
+</code></pre>
+<p>The fetch lifecycle implements <strong>stale-while-revalidate</strong> semantics:</p>
+<ol>
+<li><strong>Cache-first on startup</strong>: If disk-cached settings exist, apply them immediately and unblock dependents</li>
+<li><strong>Fetch in background</strong>: New settings are fetched with 5-retry exponential backoff</li>
+<li><strong>ETag-based caching</strong>: SHA256 checksums enable HTTP 304 Not Modified responses</li>
+<li><strong>Hourly polling</strong>: Background interval checks for settings changes mid-session</li>
+<li><strong>Fail-open</strong>: If all fetches fail, continue with stale cache or no remote settings</li>
+</ol>
+<h3>7.2 The Accept-or-Die Dialog</h3>
+<p>When remote settings contain "dangerous" changes (e.g., new permission overrides, custom tool allowlists), a <strong>blocking security dialog</strong> appears:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/remoteManagedSettings/securityCheck.tsx:67-73</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">handleSecurityCheckResult</span>(<span class="hljs-params"><span class="hljs-attr">result</span>: <span class="hljs-title class_">SecurityCheckResult</span></span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-keyword">if</span> (result === <span class="hljs-string">'rejected'</span>) {
+    <span class="hljs-title function_">gracefulShutdownSync</span>(<span class="hljs-number">1</span>)   <span class="hljs-comment">// Exit code 1 — process terminates</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+</code></pre>
+<p>This is the "Accept-or-Die" pattern: the user can either accept the new settings or the process terminates with exit code 1. There is no "dismiss" or "ask later" option. The dialog is rendered via Ink (React for terminals) and blocks the entire CLI until the user responds.</p>
+<p><strong>Non-interactive mode bypass</strong>: In CI/CD environments (<code>!getIsInteractive()</code>), the security check is skipped entirely — dangerous settings are applied silently.</p>
+<h3>7.3 The Six Emergency Switches</h3>
+<p>Six remote killswitches discovered in the source, each controlling a critical behavior:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>Switch</th><th>Mechanism</th><th>Effect When Triggered</th></tr></thead><tbody><tr><td>1</td><td><strong>Permissions Bypass</strong></td><td><code>bypassPermissionsKillswitch.ts</code></td><td>Disables the entire permission system — all tools auto-approved</td></tr><tr><td>2</td><td><strong>Auto Mode Breaker</strong></td><td><code>autoModeDenials.ts</code></td><td>Emergency circuit breaker for autonomous execution</td></tr><tr><td>3</td><td><strong>Fast Mode (Penguin)</strong></td><td><code>tengu_marble_sandcastle</code> + <code>/api/claude_code_penguin_mode</code></td><td>Switches to cheaper/faster model for cost reduction</td></tr><tr><td>4</td><td><strong>Analytics Sink</strong></td><td><code>tengu_frond_boric</code></td><td>Disables Datadog and/or 1P event logging</td></tr><tr><td>5</td><td><strong>Agent Teams</strong></td><td><code>tengu_amber_flint</code></td><td>Gates multi-agent collaboration feature</td></tr><tr><td>6</td><td><strong>Voice Mode</strong></td><td><code>tengu_amber_quartz_disabled</code></td><td>Emergency disable for voice input</td></tr></tbody></table>
+<h3>7.4 Penguin Mode (Fast Mode Remote Control)</h3>
+<p>"Penguin Mode" is a particularly interesting remote control mechanism. It allows Anthropic to remotely switch users from expensive Opus/Sonnet models to cheaper alternatives:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/utils/fastMode.ts (conceptual summary)</span>
+<span class="hljs-comment">// 1. Local fast mode: user opts in via /fast command</span>
+<span class="hljs-comment">// 2. Remote fast mode: Anthropic enables via API endpoint</span>
+<span class="hljs-comment">//    GET /api/claude_code_penguin_mode → { enabled: boolean, model: string }</span>
+<span class="hljs-comment">// 3. When active: model is silently replaced, thinking mode may be disabled</span>
+<span class="hljs-comment">// 4. User is NOT explicitly notified of model change (though UI hints exist)</span>
+</code></pre>
+<p>The combination of:</p>
+<ul>
+<li>Remote model switching without explicit user consent</li>
+<li>GrowthBook-based A/B assignment (<code>tengu_marble_sandcastle</code>)</li>
+<li>Separate killswitch (<code>tengu_penguins_off</code>) for emergency disable</li>
+</ul>
+<p>...creates a system where the model serving your requests can change mid-session based on Anthropic's operational decisions.</p>
+<h3>7.5 Model Override System (Internal Only)</h3>
+<p>For Anthropic employees, the model override is even more granular:</p>
+<pre class="ascii-diagram"><code>// Source: growthbook.ts (tengu_ant_model_override config)
+// GrowthBook config that can override:
+// - Default model (e.g., force all ant users to numbat-latest)
+// - Thinking effort level
+// - Additional prompt appendages
+// - Model-specific behavior flags
+</code></pre>
+<p>This enables internal A/B testing of unreleased models (like Numbat) across the entire Anthropic engineering team.</p>
+<blockquote>
+<p>→ Cross-reference: <a href="16-infrastructure-config">Episode 16: Infrastructure</a> for the five-layer settings merge system</p>
+</blockquote>
+<hr>
+<h2>8. The Two-Tier User Experience</h2>
+<p><strong>Source coordinates</strong>: <code>src/constants/prompts.ts</code>, <code>src/tools/</code>, <code>src/commands.ts</code></p>
+<p>Anthropic employees and external users experience fundamentally different versions of Claude Code. This divergence spans prompts, tools, commands, and model behavior.</p>
+<h3>8.1 Prompt Divergence: Six Dimensions</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Dimension</th><th>External Users</th><th>Anthropic Employees (<code>ant</code>)</th></tr></thead><tbody><tr><td><strong>Output style</strong></td><td>Standard formatting</td><td><code>tengu_output_style_prompt</code> override via GrowthBook</td></tr><tr><td><strong>False-claims mitigation</strong></td><td>Capybara v8 29-30% FC rate mitigated via prompt patch</td><td>Same patch + additional numerical anchoring prompts</td></tr><tr><td><strong>Verification</strong></td><td>Standard verification</td><td><code>tengu_hive_evidence</code> verification agent + thoroughness counterweight</td></tr><tr><td><strong>Comment control</strong></td><td>Standard commenting guidance</td><td>Dedicated anti-over-commenting prompt (Capybara v8 fix)</td></tr><tr><td><strong>Proactive correction</strong></td><td>Standard behavior</td><td>Enhanced "assertiveness counterweight" (PR #24302)</td></tr><tr><td><strong>Model awareness</strong></td><td>Cannot see model codename</td><td>Sees internal model name, can use debugging tools</td></tr></tbody></table>
+<h3>8.2 Internal-Only Tools</h3>
+<p>Five tools are gated behind <code>USER_TYPE === 'ant'</code>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>Purpose</th><th>Gate</th></tr></thead><tbody><tr><td><strong>REPLTool</strong></td><td>Inline code execution in REPL sessions</td><td>Tier 2 (env check)</td></tr><tr><td><strong>TungstenTool</strong></td><td>Internal debugging and diagnostics</td><td>Tier 2 (env check)</td></tr><tr><td><strong>VerifyPlanTool</strong></td><td>Verification agent for plan validation</td><td>Tier 3 (<code>tengu_hive_evidence</code>)</td></tr><tr><td><strong>SuggestBackgroundPR</strong></td><td>Suggest follow-up PRs from background analysis</td><td>Tier 1 (<code>feature()</code>)</td></tr><tr><td><strong>Nested Agent</strong></td><td>In-process sub-agent spawning</td><td>Tier 2 (env check)</td></tr></tbody></table>
+<h3>8.3 Hidden Commands</h3>
+<p>Several slash commands exist but are not documented in public help:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Purpose</th><th>Access</th></tr></thead><tbody><tr><td><code>/btw</code></td><td>Side-comment injection into conversation</td><td>Internal only</td></tr><tr><td><code>/stickers</code></td><td>Terminal sticker/art display</td><td>Unlockable</td></tr><tr><td><code>/thinkback</code></td><td>Replay last thinking trace</td><td>Debug mode</td></tr><tr><td><code>/effort</code></td><td>Adjust model thinking effort level</td><td>Internal only</td></tr><tr><td><code>/buddy</code></td><td>Summon virtual companion (see §9)</td><td>Behind <code>feature()</code></td></tr><tr><td><code>/good-claude</code></td><td>Positive reinforcement (may affect heuristics)</td><td>Internal only</td></tr><tr><td><code>/bughunter</code></td><td>Activate bug-hunting mode</td><td>Internal only</td></tr></tbody></table>
+<blockquote>
+<p>→ Cross-reference: <a href="08-agent-swarms">Episode 08: Agent Swarms</a> for nested agent behavior</p>
+</blockquote>
+<hr>
+<h2>9. Future Roadmap: Evidence from Source</h2>
+<p><strong>Source coordinates</strong>: <code>src/tasks/DreamTask/</code>, <code>src/buddy/</code>, <code>src/voice/</code>, <code>src/coordinator/</code>, <code>src/moreright/</code></p>
+<p>The source code contains substantial implementations of features that are compile-time gated but architecturally complete. These are not speculative — they have real code behind them.</p>
+<h3>9.1 Numbat: The Next Model Generation</h3>
+<p>Evidence from <code>prompts.ts</code>:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/constants/prompts.ts:402</span>
+<span class="hljs-comment">// @[MODEL LAUNCH]: Remove this section when we launch numbat.</span>
+</code></pre>
+<p>Additional <code>@[MODEL LAUNCH]</code> markers reference model IDs like <code>opus-4-7</code> and <code>sonnet-4-8</code>, strongly suggesting Numbat is the codename for the next major model family.</p>
+<h3>9.2 KAIROS: Autonomous Agent Mode</h3>
+<p>A fully architected autonomous execution mode exists behind <code>feature('KAIROS')</code>:</p>
+<ul>
+<li><strong>Tick-based heartbeat</strong>: Unlike the interactive request-response loop, KAIROS agents operate on periodic "ticks" — autonomous execution cycles that continue without user input</li>
+<li><strong>Focus awareness</strong>: The system tracks whether the terminal is focused or unfocused, adjusting behavior accordingly (e.g., batching operations when unfocused)</li>
+<li><strong>Push notifications</strong>: Integration with OS-level notification systems (<code>PushNotificationTool</code>) to alert users of autonomous progress</li>
+<li><strong>PR subscription</strong>: <code>SubscribePRTool</code> enables agents to monitor GitHub PRs and react to CI status changes</li>
+<li><strong>Sleep/wake</strong>: <code>SleepTool</code> allows agents to pause and resume at scheduled intervals</li>
+</ul>
+<blockquote>
+<p>→ Cross-reference: <a href="08-agent-swarms">Episode 08: Agent Swarms</a> §4 for initial KAIROS discussion</p>
+</blockquote>
+<h3>9.3 Voice Mode</h3>
+<p>Behind <code>feature('VOICE_MODE')</code>:</p>
+<ul>
+<li><strong>Push-to-talk</strong>: Keyboard-activated voice recording</li>
+<li><strong>WebSocket streaming</strong>: Real-time speech-to-text via WebSocket connection (21KB in <code>voiceStreamSTT.ts</code>)</li>
+<li><strong>mTLS authentication</strong>: Mutual TLS for secure voice data transmission</li>
+<li><strong>OAuth-restricted</strong>: Voice requires OAuth login (not API key) for authentication</li>
+<li><strong>Keyterm vocabulary</strong>: Custom vocabulary file (<code>voiceKeyterms.ts</code>, 3.5KB) of technical terms for improved recognition</li>
+</ul>
+<h3>9.4 Buddy: Virtual Companion System</h3>
+<p>The most whimsical feature — a complete virtual pet system (6 files, ~76KB):</p>
+<p><strong>18 Species</strong> (all encoded via <code>String.fromCharCode</code> to avoid codename scanner):</p>
+<pre class="ascii-diagram"><code>duck, goose, blob, cat, dragon, octopus, owl, penguin,
+turtle, snail, ghost, axolotl, capybara, cactus, robot,
+rabbit, mushroom, chonk
+</code></pre>
+<p><strong>5 Rarity Tiers</strong> with weighted distribution:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Rarity</th><th align="center">Weight</th><th align="center">Stars</th><th align="center">Probability</th></tr></thead><tbody><tr><td>Common</td><td align="center">60</td><td align="center">★</td><td align="center">60%</td></tr><tr><td>Uncommon</td><td align="center">25</td><td align="center">★★</td><td align="center">25%</td></tr><tr><td>Rare</td><td align="center">10</td><td align="center">★★★</td><td align="center">10%</td></tr><tr><td>Epic</td><td align="center">4</td><td align="center">★★★★</td><td align="center">4%</td></tr><tr><td>Legendary</td><td align="center">1</td><td align="center">★★★★★</td><td align="center">1%</td></tr></tbody></table>
+<p><strong>8 Hats</strong>: none, crown, tophat, propeller, halo, wizard, beanie, tinyduck</p>
+<p><strong>6 Eye Styles</strong>: <code>·</code>, <code>✦</code>, <code>×</code>, <code>◉</code>, <code>@</code>, <code>°</code></p>
+<p><strong>5 Stats</strong>: DEBUGGING, PATIENCE, CHAOS, WISDOM, SNARK</p>
+<p><strong>Shiny variant</strong>: ~1% chance — deterministic from <code>hash(userId)</code>, preventing users from "rerolling" their companion.</p>
+<p>Each companion has a <strong>soul</strong> (model-generated name and personality) stored in config, while <strong>bones</strong> (species, rarity, stats) are regenerated from <code>hash(userId)</code> on every read — ensuring users cannot edit their config file to upgrade to a legendary.</p>
+<h3>9.5 Unreleased Tools (11 Identified)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Tool</th><th>Purpose</th><th>Gate</th></tr></thead><tbody><tr><td>SleepTool</td><td>Scheduled agent pause/resume</td><td><code>feature('KAIROS')</code></td></tr><tr><td>PushNotificationTool</td><td>OS notification dispatch</td><td><code>feature('KAIROS')</code></td></tr><tr><td>SubscribePRTool</td><td>GitHub PR subscription</td><td><code>feature('KAIROS')</code></td></tr><tr><td>DaemonTool</td><td>Background process management</td><td><code>feature('DAEMON')</code></td></tr><tr><td>CoordinatorTool</td><td>Multi-agent coordination</td><td><code>feature('COORDINATOR_MODE')</code></td></tr><tr><td>MorerightTool</td><td>Context-window extension</td><td><code>feature('MORERIGHT')</code></td></tr><tr><td>DreamConsolidationTool</td><td>Background memory consolidation</td><td><code>feature('AUTO_DREAM')</code></td></tr><tr><td>DxtTool</td><td>DXT plugin packaging</td><td><code>feature('DXT')</code></td></tr><tr><td>UltraplanTool</td><td>Advanced multi-step planning</td><td><code>feature('ULTRAPLAN')</code></td></tr><tr><td>VoiceInputTool</td><td>Voice-to-text input</td><td><code>feature('VOICE_MODE')</code></td></tr><tr><td>BuddyTool</td><td>Virtual companion summon</td><td><code>feature('BUDDY')</code></td></tr></tbody></table>
+<h3>9.6 Three Strategic Directions</h3>
+<p>The unreleased features cluster into three clear strategic directions:</p>
+<ol>
+<li><strong>Autonomous Agents</strong> (KAIROS + Dream + Coordinator): Moving from reactive tool to proactive agent that operates independently</li>
+<li><strong>Multi-modal Input</strong> (Voice + Computer Use enhancements): Expanding beyond text-only interaction</li>
+<li><strong>Social/Emotional</strong> (Buddy + Stickers + Team Memory): Creating engagement loops and team collaboration features</li>
+</ol>
+<p>These directions suggest Claude Code's long-term vision is not "better code completion" but rather "autonomous software engineering agent with social features."</p>
+<hr>
+<h2>Source Coordinates Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Component</th><th>Key Files</th><th align="center">Size</th></tr></thead><tbody><tr><td>Analytics pipeline</td><td><code>services/analytics/</code> (9 files)</td><td align="center">148KB</td></tr><tr><td>Undercover mode</td><td><code>utils/undercover.ts</code></td><td align="center">3.7KB</td></tr><tr><td>Attribution system</td><td><code>utils/attribution.ts</code> + <code>commitAttribution.ts</code></td><td align="center">44KB</td></tr><tr><td>Remote settings</td><td><code>services/remoteManagedSettings/</code> (5 files)</td><td align="center">43KB</td></tr><tr><td>Fast mode</td><td><code>utils/fastMode.ts</code></td><td align="center">18KB</td></tr><tr><td>GrowthBook</td><td><code>services/analytics/growthbook.ts</code></td><td align="center">41KB</td></tr><tr><td>Buddy system</td><td><code>buddy/</code> (6 files)</td><td align="center">76KB</td></tr><tr><td>Voice system</td><td><code>voice/</code> + <code>services/voice*.ts</code></td><td align="center">45KB</td></tr></tbody></table>
+<hr>
+<h2>Transferable Design Patterns</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Pattern</th><th>Where Used</th><th>Takeaway</th></tr></thead><tbody><tr><td><strong>Dual-channel analytics</strong></td><td>1P + Datadog</td><td>Separate internal/external analytics with different retention policies</td></tr><tr><td><strong>Cardinality reduction</strong></td><td>User bucketing, MCP normalization</td><td>Hash-based bucketing (mod N) enables approximate unique-user counts without cardinality explosion</td></tr><tr><td><strong>Hot-swap reconfiguration</strong></td><td>1P logger reinit</td><td>Null-guard → flush → swap → background shutdown for zero-downtime config changes</td></tr><tr><td><strong>Fail-safe concealment</strong></td><td>Undercover mode</td><td>Default to maximum concealment; require explicit allowlisting to reveal</td></tr><tr><td><strong>Accept-or-Die</strong></td><td>Security dialog</td><td>Binary choice with no dismiss option prevents indefinite deferral of security decisions</td></tr><tr><td><strong>Three-tier feature gating</strong></td><td>DCE + env + GrowthBook</td><td>Compile-time, build-time, and runtime gates provide defense in depth</td></tr><tr><td><strong>Codename collision avoidance</strong></td><td>Buddy species encoding</td><td><code>String.fromCharCode</code> prevents static string scanners from triggering on false positives</td></tr><tr><td><strong>Stale-while-revalidate</strong></td><td>Remote settings</td><td>Cache-first startup with background refresh minimizes user-visible latency</td></tr></tbody></table>
+<hr>
+<blockquote>
+<p><strong>Next</strong>: <a href="00-overview">Episode 00: Overview — The 30,000-Foot View</a></p>
+<p><strong>Previous</strong>: <a href="16-infrastructure-config">Episode 16: Infrastructure &#x26; Configuration</a></p>
+</blockquote></div></article><nav class="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800"><a class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/ja/advanced/16-infrastructure-config/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left transition-transform group-hover:-translate-x-1" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg><span>EP<!-- -->16<!-- --> <!-- -->Infrastructure &amp; Config</span></a><div></div></nav></div><!--$--><!--/$--></div></div></main><script src="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n3:I[37457,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n5:I[95914,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\"],\"Sidebar\"]\n7:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"OutletBoundary\"]\n8:\"$Sreact.suspense\"\na:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"MetadataBoundary\"]\ne:I[68027,[],\"default\"]\n:HL[\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"kOMToiePwU79Kzn0fZt4S\",\"c\":[\"\",\"ja\",\"advanced\",\"17-telemetry-privacy-operations\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[[\"locale\",\"ja\",\"d\"],{\"children\":[\"(learn)\",{\"children\":[\"advanced\",{\"children\":[[\"chapter\",\"17-telemetry-privacy-operations\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true]}],[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"div\",null,{\"className\":\"flex gap-8\",\"children\":[[\"$\",\"$L5\",null,{}],[\"$\",\"div\",null,{\"className\":\"min-w-0 flex-1\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@9\"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[33499,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"I18nProvider\"]\n10:I[45872,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"Header\"]\n11:I[22016,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"\"]\n4:[\"$\",\"html\",null,{\"lang\":\"ja\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n          (function() {\\n            var theme = localStorage.getItem('theme');\\n            if (theme === 'dark' || (!theme \u0026\u0026 window.matchMedia('(prefers-color-scheme: dark)').matches)) {\\n              document.documentElement.classList.add('dark');\\n            }\\n          })();\\n        \"}}]}],[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased\",\"children\":[\"$\",\"$Lf\",null,{\"locale\":\"ja\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-4xl space-y-8 py-4\",\"children\":[[\"$\",\"header\",null,{\"className\":\"rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/ja/curriculum\",\"className\":\"inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Course map\"]}],[\"$\",\"div\",null,{\"className\":\"mt-4 flex flex-wrap items-center gap-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800\",\"children\":[\"EP\",\"17\"]}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold text-zinc-950 dark:text-zinc-50\",\"children\":\"Telemetry \u0026 Operations\"}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Privacy, operational control, model routing, and observability\"}]]}],[\"$\",\"section\",null,{\"className\":\"rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-start justify-between gap-3\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300\",\"children\":\"Prompt reference\"}],[\"$\",\"h2\",null,{\"className\":\"mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50\",\"children\":\"Operations, telemetry, budgets, and autonomous monitors\"}],[\"$\",\"p\",null,{\"className\":\"mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200\",\"children\":\"These prompts support the operational layer: what is monitored, summarized, budgeted, and blocked.\"}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":14,\"height\":14,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}],\"Source repo\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70\",\"children\":\"Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.\"}],[\"$\",\"div\",null,{\"className\":\"mt-4 grid gap-3 md:grid-cols-2\",\"children\":[[\"$\",\"a\",\"system-reminder-token-usage.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-reminder-token-usage.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[\"$L12\",\"$L13\",\"$L14\",\"$L15\",\"$L16\",\"$undefined\"]}],\"$L17\"]}],\"$L18\",\"$L19\"]}],\"$L1a\",\"$L1b\",\"$L1c\",\"$L1d\"]}]]}],\"$L1e\",\"$L1f\"]}]\n"])</script><script>self.__next_f.push([1,"20:I[19004,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"AdvancedDocRenderer\"]\n12:[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}]\n13:[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}]\n14:[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}]\n15:[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}]\n16:[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}]\n17:[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Token usage reminder\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-reminder-token-usage.md\"}]]}]\n18:[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Usage telemetry\"}]\n19:[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"A visible hook for token accounting.\"}]\n"])</script><script>self.__next_f.push([1,"1a:[\"$\",\"a\",\"system-reminder-usd-budget.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-reminder-usd-budget.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"USD budget reminder\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-reminder-usd-budget.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Budget control\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Shows cost as a prompt-visible operational constraint.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1b:[\"$\",\"a\",\"agent-prompt-background-agent-state-classifier.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-background-agent-state-classifier.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Background agent state classifier\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"agent-prompt-background-agent-state-classifier.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Operational state\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Classifies long-running background sessions as working, blocked, done, or failed.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1c:[\"$\",\"a\",\"agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Security monitor, first part\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Operational safety\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Useful for privacy and operational-control discussions.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1d:[\"$\",\"a\",\"system-prompt-insights-at-a-glance-summary.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-insights-at-a-glance-summary.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Insights at a glance\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-insights-at-a-glance-summary.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Usage insight\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Connects telemetry-like usage data to user-facing summaries.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1e:[\"$\",\"$L20\",null,{\"chapter\":\"17\"}]\n1f:[\"$\",\"nav\",null,{\"className\":\"flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/ja/advanced/16-infrastructure-config\",\"className\":\"group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left transition-transform group-hover:-translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],[\"$\",\"span\",null,{\"children\":[\"EP\",\"16\",\" \",\"Infrastructure \u0026 Config\"]}]]}],[\"$\",\"div\",null,{}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"21:I[27201,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"IconMark\"]\n9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Agent Coding Lesson\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"0 から 1 へ nano Claude Code-like agent を構築し、毎回 1 つの仕組みを追加\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L21\",\"3\",{}]]\n"])</script></body></html>

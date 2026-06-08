@@ -1,0 +1,930 @@
+<!DOCTYPE html><!--kOMToiePwU79Kzn0fZt4S--><html lang="zh"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js"/><script src="/agent-coding-lesson/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/76fed9c17f51393e.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/7de9141b1af425c3.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/turbopack-8800d0fd815877b2.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/076aae518584b842.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js" async=""></script><title>Agent Coding Lesson</title><meta name="description" content="从 0 到 1 构建一个 nano Claude Code-like agent，每次只增加一个机制"/><link rel="icon" href="/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico" sizes="256x256" type="image/x-icon"/><script>
+          (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script><script src="/agent-coding-lesson/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm"><div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a class="text-lg font-bold" href="/agent-coding-lesson/zh/">Agent Coding Lesson</a><nav class="hidden items-center gap-6 md:flex"><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/curriculum/">课程地图</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/timeline/">学习路径</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/compare/">版本对比</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/layers/">架构层</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/slides/s01/">幻灯片</a><div class="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5"><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">EN</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">中文</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">日本語</button></div><button class="rounded-md p-1.5 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Switch to dark mode"><span class="inline-block h-4 w-4"></span></button><a href="https://github.com/atom32/agent-coding-lesson" target="_blank" rel="noopener" class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Open project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a></nav><button class="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"><div class="flex gap-8"><nav class="hidden w-64 shrink-0 md:block"><div class="sticky top-[calc(3.5rem+2rem)] max-h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/curriculum/">课程地图</a><div class="space-y-1"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/summary/">中间摘要</a><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/glossary/">术语表</a></div><section class="space-y-5"><div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">实验室课程</div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">工具与执行</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s01/"><span class="font-mono text-xs">s01</span><span class="ml-1.5">Agent 循环</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s02/"><span class="font-mono text-xs">s02</span><span class="ml-1.5">工具使用</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">规划与协调</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s03/"><span class="font-mono text-xs">s03</span><span class="ml-1.5">TodoWrite</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s04/"><span class="font-mono text-xs">s04</span><span class="ml-1.5">子 Agent</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s05/"><span class="font-mono text-xs">s05</span><span class="ml-1.5">技能</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s07/"><span class="font-mono text-xs">s07</span><span class="ml-1.5">任务系统</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-purple-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">记忆管理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s06/"><span class="font-mono text-xs">s06</span><span class="ml-1.5">上下文压缩</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">并发</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s08/"><span class="font-mono text-xs">s08</span><span class="ml-1.5">后台任务</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-red-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">协作</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s09/"><span class="font-mono text-xs">s09</span><span class="ml-1.5">Agent 团队</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s10/"><span class="font-mono text-xs">s10</span><span class="ml-1.5">团队协议</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s11/"><span class="font-mono text-xs">s11</span><span class="ml-1.5">自主 Agent</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s12/"><span class="font-mono text-xs">s12</span><span class="ml-1.5">Worktree + 任务隔离</span></a></li></ul></div></section><section><div class="mb-2 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">真实系统解剖</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/00-overview/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->00</span><span class="ml-1.5">架构总览</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/01-query-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->01</span><span class="ml-1.5">查询引擎</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/02-tool-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->02</span><span class="ml-1.5">工具系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/03-coordinator/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->03</span><span class="ml-1.5">协调器</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/04-plugin-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->04</span><span class="ml-1.5">插件系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/05-hook-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->05</span><span class="ml-1.5">Hook 系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/06-bash-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->06</span><span class="ml-1.5">Bash 引擎</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/07-permission-pipeline/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->07</span><span class="ml-1.5">权限流水线</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/08-agent-swarms/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->08</span><span class="ml-1.5">Agent Swarm</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/09-session-persistence/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->09</span><span class="ml-1.5">会话持久化</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/10-context-assembly/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->10</span><span class="ml-1.5">上下文装配</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/11-compact-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->11</span><span class="ml-1.5">压缩系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/12-startup-bootstrap/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->12</span><span class="ml-1.5">启动与引导</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/13-bridge-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->13</span><span class="ml-1.5">桥接系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white" href="/agent-coding-lesson/zh/advanced/14-ui-state-management/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->14</span><span class="ml-1.5">UI 状态与渲染</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/15-services-api-layer/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->15</span><span class="ml-1.5">服务与 API 层</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/16-infrastructure-config/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->16</span><span class="ml-1.5">基础设施与配置</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/17-telemetry-privacy-operations/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->17</span><span class="ml-1.5">遥测与运营</span></a></li></ul></section></div></nav><div class="min-w-0 flex-1"><div class="mx-auto max-w-4xl space-y-8 py-4"><header class="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" href="/agent-coding-lesson/zh/curriculum/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>课程地图</a><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800">EP<!-- -->14</span><h1 class="text-2xl font-bold text-zinc-950 dark:text-zinc-50">UI 状态与渲染</h1></div><p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">终端 UI、React/Ink 状态、输入模式和渲染</p></header><section class="rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300">Prompt 补充材料</p><h2 class="mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50">UI copy, status, and rendering constraints</h2><p class="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">These prompts show how text output, status lines, and option previews become part of the UI contract.</p></div><a href="https://github.com/Piebald-AI/claude-code-system-prompts" target="_blank" rel="noopener" class="inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>来源仓库</a></div><p class="mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70">这些条目是从 Claude Code npm 包抽取出的第三方 prompt reference，适合课堂对照阅读，不当作官方文档。</p><div class="mt-4 grid gap-3 md:grid-cols-2"><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-communication-style.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Communication style</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-communication-style.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Progress UI</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Defines when and how the agent sends user-facing updates.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-tone-and-style-code-references.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Code references</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-tone-and-style-code-references.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Clickable UI affordance</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Connects rendered output to clickable file references.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-status-line-setup.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Status line setup</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">agent-prompt-status-line-setup.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Terminal UI</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Useful for terminal status-line customization and shell integration.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-option-previewer.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Option previewer</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-option-previewer.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Choice UI</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Shows prompt support for previewing user-facing options.</p></a></div></section><article class="py-4"><div class="prose-custom"><h1>第 14 集：UI 与状态管理 —— 终端里的浏览器</h1>
+<blockquote class="hero-callout">
+</blockquote>
+<blockquote>
+<p><strong>源码文件</strong>：<code>ink/</code> 目录 — 48 个文件，约 620KB。核心：<code>ink.tsx</code> (252KB)、<code>reconciler.ts</code> (14.6KB)、<code>renderer.ts</code> (7.7KB)、<code>dom.ts</code> (15.1KB)、<code>screen.ts</code> (49.3KB)、<code>events/dispatcher.ts</code> (6KB)、<code>focus.ts</code> (5.1KB)。状态管理：<code>state/store.ts</code> (836 字节)、<code>state/AppStateStore.ts</code> (21.8KB)、<code>state/AppState.tsx</code> (23.5KB)、<code>state/onChangeAppState.ts</code> (6.2KB)。屏幕：<code>screens/REPL.tsx</code> (874KB)、<code>screens/Doctor.tsx</code> (71KB)</p>
+<p><strong>一句话概括</strong>：Claude Code 运行着一个完全 Fork 的 Ink 渲染引擎 —— React 19 + ConcurrentRoot、W3C 风格的捕获/冒泡事件系统、Yoga Flexbox 布局、以打包 Int32Array 实现的双缓冲屏幕、和一个仅 35 行的 Zustand 替代品 —— 全部运行在你的终端里。</p>
+</blockquote>
+<hr>
+<h2>1. 终端 UI 技术栈</h2>
+<p>大多数 CLI 工具逐行打印文本。Claude Code 在终端中构建了一整套基于组件的 UI 框架 —— 其技术栈深度令人惊讶：</p>
+<pre class="ascii-diagram"><code>┌─────────────────────────────────────────────────────────────┐
+│  React 19 (通过 react-reconciler 实现 ConcurrentRoot)       │
+│    └─ 自定义 Ink Reconciler (reconciler.ts, 513 行)         │
+│        └─ 虚拟 DOM (dom.ts — ink-root/box/text/link/...)    │
+│            └─ Yoga 布局引擎 (终端中的 Flexbox)              │
+│                └─ 屏幕缓冲 (screen.ts — 打包 Int32 数组)    │
+│                    └─ ANSI Diff (log-update.ts → stdout)    │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3>核心文件索引</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>层级</th><th>文件</th><th>大小</th><th>职责</th></tr></thead><tbody><tr><td>入口</td><td><code>ink/root.ts</code></td><td>4.6KB</td><td>创建 Ink 实例，挂载 React 树</td></tr><tr><td>协调器</td><td><code>ink/reconciler.ts</code></td><td>14.6KB</td><td>React 19 宿主配置，提交钩子</td></tr><tr><td>渲染器</td><td><code>ink/renderer.ts</code></td><td>7.7KB</td><td>Yoga 布局 → 屏幕缓冲</td></tr><tr><td>DOM</td><td><code>ink/dom.ts</code></td><td>15.1KB</td><td>虚拟 DOM 节点，脏标记</td></tr><tr><td>屏幕</td><td><code>ink/screen.ts</code></td><td>49.3KB</td><td>打包 Int32Array 单元格缓冲</td></tr><tr><td>核心</td><td><code>ink/ink.tsx</code></td><td>252KB</td><td>帧调度，输入处理，选区</td></tr><tr><td>事件</td><td><code>ink/events/dispatcher.ts</code></td><td>6KB</td><td>W3C 捕获/冒泡派发</td></tr><tr><td>焦点</td><td><code>ink/focus.ts</code></td><td>5.1KB</td><td>FocusManager + 栈式恢复</td></tr><tr><td>输出</td><td><code>ink/log-update.ts</code></td><td>27.2KB</td><td>ANSI 差分，光标管理</td></tr></tbody></table>
+<h3>完整渲染管线</h3>
+<pre class="ascii-diagram"><code>stdin 原始字节
+  → parse-keypress.ts：解码为 ParsedKey（xterm/VT 序列）
+  → 创建 InputEvent
+  → Dispatcher.dispatchDiscrete()：W3C 捕获 → 目标 → 冒泡
+  → React 状态更新 → Reconciler 提交阶段
+  → resetAfterCommit() → rootNode.onComputeLayout() [Yoga]
+  → rootNode.onRender() → renderer.ts 生成 Screen 缓冲
+  → log-update.ts：对比前后 Screen → ANSI 转义序列
+  → process.stdout.write()
+</code></pre>
+<p>每次按键都走完这条完整管线。在 16ms 帧节流下，Claude Code 在终端中维持 60fps 等效渲染。</p>
+<hr>
+<h2>2. 为什么要 Fork Ink</h2>
+<p>Claude Code 并不使用 npm 上的 <code>ink</code> 包，而是维护了一个完整的 Fork 版本，至少包含七项重大修改。理解其原因，就能看到这个项目的工程野心。</p>
+<h3>修改清单</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>变更</th><th>原版 Ink</th><th>Fork 版 Ink</th><th>原因</th></tr></thead><tbody><tr><td>React 版本</td><td>LegacyRoot</td><td><strong>ConcurrentRoot (React 19)</strong></td><td>并发特性、<code>useSyncExternalStore</code>、过渡</td></tr><tr><td>事件系统</td><td>基础 <code>useInput</code></td><td><strong>W3C 捕获/冒泡派发器</strong></td><td>复杂的重叠焦点上下文</td></tr><tr><td>屏幕模式</td><td>普通滚动缓冲</td><td><strong>备用屏幕 + 鼠标追踪</strong></td><td>全屏 TUI，不污染滚动历史</td></tr><tr><td>渲染</td><td>单缓冲</td><td><strong>双缓冲 + 打包 Int32 屏幕</strong></td><td>零闪烁渲染，CJK/emoji 支持</td></tr><tr><td>文本选择</td><td>无</td><td><strong>鼠标拖拽选择 + 剪贴板</strong></td><td>从终端输出中复制代码</td></tr><tr><td>滚动</td><td>全量重渲染</td><td><strong>虚拟滚动 + 高度缓存</strong></td><td>1000+ 条消息无性能悬崖</td></tr><tr><td>搜索</td><td>无</td><td><strong>全屏搜索 + 逐单元格高亮</strong></td><td>在整个对话中查找文本</td></tr></tbody></table>
+<h3>React 19 Reconciler：React 与终端之间的桥梁</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：ink/reconciler.ts:224-506</span>
+<span class="hljs-keyword">const</span> reconciler = createReconciler&#x3C;
+  <span class="hljs-title class_">ElementNames</span>,  <span class="hljs-comment">// 'ink-root' | 'ink-box' | 'ink-text' | ...</span>
+  <span class="hljs-title class_">Props</span>,
+  <span class="hljs-title class_">DOMElement</span>,    <span class="hljs-comment">// 虚拟 DOM 节点</span>
+  <span class="hljs-title class_">DOMElement</span>,    <span class="hljs-comment">// 容器类型</span>
+  <span class="hljs-title class_">TextNode</span>,      <span class="hljs-comment">// 文本节点类型</span>
+  <span class="hljs-title class_">DOMElement</span>,    <span class="hljs-comment">// Suspense 边界</span>
+  <span class="hljs-built_in">unknown</span>, <span class="hljs-built_in">unknown</span>, <span class="hljs-title class_">DOMElement</span>,
+  <span class="hljs-title class_">HostContext</span>,
+  <span class="hljs-literal">null</span>,          <span class="hljs-comment">// UpdatePayload — React 19 中不再使用</span>
+  <span class="hljs-title class_">NodeJS</span>.<span class="hljs-property">Timeout</span>,
+  -<span class="hljs-number">1</span>, <span class="hljs-literal">null</span>
+>({
+  <span class="hljs-comment">// React 19 commitUpdate — 直接接收新旧 props</span>
+  <span class="hljs-comment">//（React 18 使用 updatePayload）</span>
+  <span class="hljs-title function_">commitUpdate</span>(<span class="hljs-params">node, _type, oldProps, newProps</span>) {
+    <span class="hljs-keyword">const</span> props = <span class="hljs-title function_">diff</span>(oldProps, newProps)
+    <span class="hljs-keyword">const</span> style = <span class="hljs-title function_">diff</span>(oldProps[<span class="hljs-string">'style'</span>], newProps[<span class="hljs-string">'style'</span>])
+    <span class="hljs-comment">// 增量更新：只处理变更的属性和样式</span>
+  },
+
+  <span class="hljs-comment">// 关键钩子：每次 React 提交后，重新计算布局 + 渲染</span>
+  <span class="hljs-title function_">resetAfterCommit</span>(<span class="hljs-params">rootNode</span>) {
+    rootNode.<span class="hljs-property">onComputeLayout</span>?.()  <span class="hljs-comment">// Yoga flexbox 计算</span>
+    rootNode.<span class="hljs-property">onRender</span>?.()         <span class="hljs-comment">// 绘制到屏幕缓冲 → stdout</span>
+  },
+})
+</code></pre>
+<p><code>UpdatePayload</code> 泛型为 <code>null</code> —— 这是 React 19 的标志。React 18 中协调器在 <code>prepareUpdate()</code> 中预计算差分载荷，然后传给 <code>commitUpdate()</code>。React 19 消除了这个中间步骤，直接传递新旧 props。这是 Claude Code 构建在前沿 React 内部实现之上的最明确信号之一。</p>
+<hr>
+<h2>3. 渲染管线深度剖析</h2>
+<h3>DOM 节点结构</h3>
+<p>每个 UI 元素都会成为虚拟树中的 <code>DOMElement</code> 节点：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：ink/dom.ts:31-91</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">DOMElement</span> = {
+  <span class="hljs-attr">nodeName</span>: <span class="hljs-title class_">ElementNames</span>           <span class="hljs-comment">// 'ink-root' | 'ink-box' | 'ink-text' | ...</span>
+  <span class="hljs-attr">attributes</span>: <span class="hljs-title class_">Record</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">DOMNodeAttribute</span>>
+  <span class="hljs-attr">childNodes</span>: <span class="hljs-title class_">DOMNode</span>[]
+  <span class="hljs-attr">parentNode</span>: <span class="hljs-title class_">DOMElement</span> | <span class="hljs-literal">undefined</span>
+  <span class="hljs-attr">yogaNode</span>?: <span class="hljs-title class_">LayoutNode</span>            <span class="hljs-comment">// Yoga flexbox 布局节点</span>
+  <span class="hljs-attr">style</span>: <span class="hljs-title class_">Styles</span>                    <span class="hljs-comment">// Flexbox 属性</span>
+  <span class="hljs-attr">dirty</span>: <span class="hljs-built_in">boolean</span>                   <span class="hljs-comment">// 需要重渲染</span>
+
+  <span class="hljs-comment">// 事件处理器 —— 与属性分开存储，</span>
+  <span class="hljs-comment">// 使处理器引用变化不会标记脏，避免破坏 blit 优化</span>
+  <span class="hljs-attr">_eventHandlers</span>?: <span class="hljs-title class_">Record</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">unknown</span>>
+
+  <span class="hljs-comment">// overflow: 'scroll' 容器的滚动状态</span>
+  <span class="hljs-attr">scrollTop</span>?: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">pendingScrollDelta</span>?: <span class="hljs-built_in">number</span>      <span class="hljs-comment">// 累积增量，逐帧消耗</span>
+  <span class="hljs-attr">scrollClampMin</span>?: <span class="hljs-built_in">number</span>          <span class="hljs-comment">// 虚拟滚动钳制边界</span>
+  <span class="hljs-attr">scrollClampMax</span>?: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">stickyScroll</span>?: <span class="hljs-built_in">boolean</span>           <span class="hljs-comment">// 自动钉底</span>
+  <span class="hljs-attr">scrollAnchor</span>?: { <span class="hljs-attr">el</span>: <span class="hljs-title class_">DOMElement</span>; <span class="hljs-attr">offset</span>: <span class="hljs-built_in">number</span> }  <span class="hljs-comment">// 延迟位置读取</span>
+  <span class="hljs-attr">focusManager</span>?: <span class="hljs-title class_">FocusManager</span>      <span class="hljs-comment">// 焦点管理（仅根节点）</span>
+}
+</code></pre>
+<p>七种元素类型映射了终端 UI 词汇：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>类型</th><th>用途</th><th>有 Yoga 节点？</th></tr></thead><tbody><tr><td><code>ink-root</code></td><td>树根</td><td>✅</td></tr><tr><td><code>ink-box</code></td><td>Flexbox 容器 (<code>&#x3C;Box></code>)</td><td>✅</td></tr><tr><td><code>ink-text</code></td><td>文本内容 (<code>&#x3C;Text></code>)</td><td>✅（带测量函数）</td></tr><tr><td><code>ink-virtual-text</code></td><td><code>&#x3C;Text></code> 内嵌套文本</td><td>❌</td></tr><tr><td><code>ink-link</code></td><td>终端超链接 (OSC 8)</td><td>❌</td></tr><tr><td><code>ink-progress</code></td><td>进度条</td><td>❌</td></tr><tr><td><code>ink-raw-ansi</code></td><td>预渲染 ANSI 透传</td><td>✅（固定尺寸）</td></tr></tbody></table>
+<h3>屏幕缓冲：打包 Int32Array</h3>
+<p>这里是 Claude Code 在性能方面<em>真正认真</em>的地方。与其为每个单元格分配对象（200×120 屏幕意味着 24,000 个对象），屏幕将单元格存储为打包整数：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：ink/screen.ts:332-348</span>
+<span class="hljs-comment">// 每个单元格 = 2 个连续 Int32 元素：</span>
+<span class="hljs-comment">//   word0 (cells[ci]):     charId（完整 32 位，CharPool 的索引）</span>
+<span class="hljs-comment">//   word1 (cells[ci + 1]): styleId[31:17] | hyperlinkId[16:2] | width[1:0]</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">STYLE_SHIFT</span> = <span class="hljs-number">17</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">HYPERLINK_SHIFT</span> = <span class="hljs-number">2</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">WIDTH_MASK</span> = <span class="hljs-number">3</span>           <span class="hljs-comment">// 2 位（窄/宽/SpacerTail/SpacerHead）</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">packWord1</span>(<span class="hljs-params"><span class="hljs-attr">styleId</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">hyperlinkId</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span> {
+  <span class="hljs-keyword">return</span> (styleId &#x3C;&#x3C; <span class="hljs-variable constant_">STYLE_SHIFT</span>) | (hyperlinkId &#x3C;&#x3C; <span class="hljs-variable constant_">HYPERLINK_SHIFT</span>) | width
+}
+</code></pre>
+<p>同一 ArrayBuffer 上的 <code>cells64</code> BigInt64Array 视图支持 8 字节批量填充 <code>cells64.fill(0n)</code> —— 一次操作清空整个屏幕，而非逐单元格迭代。</p>
+<p><strong>字符串驻留</strong>进一步降低内存压力：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：ink/screen.ts:21-53</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CharPool</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">ascii</span>: <span class="hljs-title class_">Int32Array</span> = <span class="hljs-title function_">initCharAscii</span>()  <span class="hljs-comment">// ASCII 快速路径</span>
+
+  <span class="hljs-title function_">intern</span>(<span class="hljs-attr">char</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">number</span> {
+    <span class="hljs-keyword">if</span> (char.<span class="hljs-property">length</span> === <span class="hljs-number">1</span>) {
+      <span class="hljs-keyword">const</span> code = char.<span class="hljs-title function_">charCodeAt</span>(<span class="hljs-number">0</span>)
+      <span class="hljs-keyword">if</span> (code &#x3C; <span class="hljs-number">128</span>) {
+        <span class="hljs-keyword">const</span> cached = <span class="hljs-variable language_">this</span>.<span class="hljs-property">ascii</span>[code]!
+        <span class="hljs-keyword">if</span> (cached !== -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> cached  <span class="hljs-comment">// 直接数组查找，无 Map.get</span>
+      }
+    }
+    <span class="hljs-comment">// 非 ASCII（CJK、emoji）回退到 Map</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">stringMap</span>.<span class="hljs-title function_">get</span>(char) ?? <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">addNew</span>(char)
+  }
+}
+</code></pre>
+<h3>双缓冲</h3>
+<p>渲染器维护两个 <code>Frame</code> 对象 —— <code>frontFrame</code> 和 <code>backFrame</code>。每次渲染：</p>
+<ol>
+<li>重置<strong>后台缓冲</strong>（通过 <code>resetScreen()</code> —— 一次 <code>cells64.fill(0n)</code> 调用）</li>
+<li>将 DOM 树渲染到后台缓冲</li>
+<li>与<strong>前台缓冲</strong>对比生成最小 ANSI 输出</li>
+<li>交换：后台变前台供下帧使用</li>
+</ol>
+<p><code>prevFrameContaminated</code> 标志追踪前台缓冲在渲染后被修改的情况（如选区叠加）。被污染时，渲染器跳过 blit 优化执行全量重绘 —— 但只限那一帧。</p>
+<hr>
+<h2>4. 事件系统：终端中的 W3C</h2>
+<p>也许是最令人意外的工程决策：Claude Code 在终端事件上实现了完整的 W3C 风格事件派发系统。这不是学术洁癖 —— 当你有重叠对话框、嵌套滚动容器、以及需要在不同树深度拦截按键的 Vim 模式时，这是实际需求。</p>
+<h3>事件派发阶段</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：ink/events/dispatcher.ts:46-78</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">collectListeners</span>(<span class="hljs-params">target, event</span>): <span class="hljs-title class_">DispatchListener</span>[] {
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">listeners</span>: <span class="hljs-title class_">DispatchListener</span>[] = []
+  <span class="hljs-keyword">let</span> node = target
+  <span class="hljs-keyword">while</span> (node) {
+    <span class="hljs-keyword">const</span> isTarget = node === target
+    <span class="hljs-comment">// 捕获处理器：unshift → 根优先顺序</span>
+    <span class="hljs-keyword">const</span> captureHandler = <span class="hljs-title function_">getHandler</span>(node, event.<span class="hljs-property">type</span>, <span class="hljs-literal">true</span>)
+    <span class="hljs-keyword">if</span> (captureHandler) {
+      listeners.<span class="hljs-title function_">unshift</span>({ node, <span class="hljs-attr">handler</span>: captureHandler,
+        <span class="hljs-attr">phase</span>: isTarget ? <span class="hljs-string">'at_target'</span> : <span class="hljs-string">'capturing'</span> })
+    }
+    <span class="hljs-comment">// 冒泡处理器：push → 目标优先顺序</span>
+    <span class="hljs-keyword">const</span> bubbleHandler = <span class="hljs-title function_">getHandler</span>(node, event.<span class="hljs-property">type</span>, <span class="hljs-literal">false</span>)
+    <span class="hljs-keyword">if</span> (bubbleHandler &#x26;&#x26; (event.<span class="hljs-property">bubbles</span> || isTarget)) {
+      listeners.<span class="hljs-title function_">push</span>({ node, <span class="hljs-attr">handler</span>: bubbleHandler,
+        <span class="hljs-attr">phase</span>: isTarget ? <span class="hljs-string">'at_target'</span> : <span class="hljs-string">'bubbling'</span> })
+    }
+    node = node.<span class="hljs-property">parentNode</span>
+  }
+  <span class="hljs-keyword">return</span> listeners
+  <span class="hljs-comment">// 结果：[根捕获, ..., 父捕获, 目标捕获, 目标冒泡, 父冒泡, ..., 根冒泡]</span>
+}
+</code></pre>
+<h3>事件优先级：镜像 react-dom</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：ink/events/dispatcher.ts:122-138</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getEventPriority</span>(<span class="hljs-params"><span class="hljs-attr">eventType</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">number</span> {
+  <span class="hljs-keyword">switch</span> (eventType) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'keydown'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'keyup'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'click'</span>:
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'focus'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'blur'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'paste'</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">DiscreteEventPriority</span>     <span class="hljs-comment">// 同步刷新</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'resize'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'scroll'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'mousemove'</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">ContinuousEventPriority</span>   <span class="hljs-comment">// 可批处理</span>
+    <span class="hljs-attr">default</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">DefaultEventPriority</span>
+  }
+}
+</code></pre>
+<p>这直接映射到 React 的调度器优先级。按键触发同步 React 更新（离散优先级），而滚动事件会被批处理（连续优先级）。</p>
+<h3>焦点管理：栈式恢复</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：ink/focus.ts:15-82</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">FocusManager</span> {
+  <span class="hljs-attr">activeElement</span>: <span class="hljs-title class_">DOMElement</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">focusStack</span>: <span class="hljs-title class_">DOMElement</span>[] = []  <span class="hljs-comment">// 最多 32 条目</span>
+
+  <span class="hljs-title function_">focus</span>(<span class="hljs-params">node</span>) {
+    <span class="hljs-keyword">if</span> (node === <span class="hljs-variable language_">this</span>.<span class="hljs-property">activeElement</span>) <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">const</span> previous = <span class="hljs-variable language_">this</span>.<span class="hljs-property">activeElement</span>
+    <span class="hljs-keyword">if</span> (previous) {
+      <span class="hljs-comment">// 推入前去重（防止 Tab 循环导致无界增长）</span>
+      <span class="hljs-keyword">const</span> idx = <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">indexOf</span>(previous)
+      <span class="hljs-keyword">if</span> (idx !== -<span class="hljs-number">1</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">splice</span>(idx, <span class="hljs-number">1</span>)
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">push</span>(previous)
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-property">length</span> > <span class="hljs-variable constant_">MAX_FOCUS_STACK</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">shift</span>()
+    }
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">activeElement</span> = node
+  }
+
+  <span class="hljs-comment">// 对话框关闭时，焦点自动返回前一个元素</span>
+  <span class="hljs-title function_">handleNodeRemoved</span>(<span class="hljs-params">node, root</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">n</span> =></span> n !== node &#x26;&#x26; <span class="hljs-title function_">isInTree</span>(n, root))
+    <span class="hljs-comment">// 从栈中恢复最近一个仍挂载的元素</span>
+    <span class="hljs-keyword">while</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-property">length</span> > <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">const</span> candidate = <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">pop</span>()!
+      <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isInTree</span>(candidate, root)) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">activeElement</span> = candidate
+        <span class="hljs-keyword">return</span>
+      }
+    }
+  }
+}
+</code></pre>
+<p>焦点栈硬限制 32 条目（<code>MAX_FOCUS_STACK</code>）。Tab 循环在推入前去重，防止栈随反复导航而增长。当对话框从树中移除时，协调器调用 <code>handleNodeRemoved()</code>，反向遍历栈找到最近仍挂载的元素 —— 无需显式销毁逻辑即实现焦点自动恢复。</p>
+<hr>
+<h2>5. 35 行 Store（替代 Redux/Zustand）</h2>
+<p>这是那种让你停下来思考的工程决策。Claude Code 并未引入状态管理库，而是仅用 35 行代码实现了整个应用状态管理：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：state/store.ts —— 完整文件（35 行）</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> createStore&#x3C;T>(
+  <span class="hljs-attr">initialState</span>: T,
+  <span class="hljs-attr">onChange</span>?: <span class="hljs-title class_">OnChange</span>&#x3C;T>,
+): <span class="hljs-title class_">Store</span>&#x3C;T> {
+  <span class="hljs-keyword">let</span> state = initialState
+  <span class="hljs-keyword">const</span> listeners = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>&#x3C;<span class="hljs-title class_">Listener</span>>()
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">getState</span>: <span class="hljs-function">() =></span> state,
+    <span class="hljs-attr">setState</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">updater</span>: (prev: T) => T</span>) =></span> {
+      <span class="hljs-keyword">const</span> prev = state
+      <span class="hljs-keyword">const</span> next = <span class="hljs-title function_">updater</span>(prev)
+      <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">is</span>(next, prev)) <span class="hljs-keyword">return</span>   <span class="hljs-comment">// 引用相等跳过</span>
+      state = next
+      onChange?.({ <span class="hljs-attr">newState</span>: next, <span class="hljs-attr">oldState</span>: prev })  <span class="hljs-comment">// 副作用钩子</span>
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> listener <span class="hljs-keyword">of</span> listeners) <span class="hljs-title function_">listener</span>()    <span class="hljs-comment">// 通知订阅者</span>
+    },
+    <span class="hljs-attr">subscribe</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">listener</span>: <span class="hljs-title class_">Listener</span></span>) =></span> {
+      listeners.<span class="hljs-title function_">add</span>(listener)
+      <span class="hljs-keyword">return</span> <span class="hljs-function">() =></span> listeners.<span class="hljs-title function_">delete</span>(listener)
+    },
+  }
+}
+</code></pre>
+<p>没有中间件链、没有 devtools 集成、没有 action 类型、没有 reducer。就是 <code>getState</code>、<code>setState</code>（带更新函数）和 <code>subscribe</code>。<code>Object.is</code> 检查防止无效重渲染。<code>onChange</code> 回调集中管理副作用。</p>
+<h3>通过 useSyncExternalStore 集成 React</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：state/AppState.tsx:142-163</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> useAppState&#x3C;T>(<span class="hljs-attr">selector</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">state</span>: <span class="hljs-title class_">AppState</span></span>) =></span> T): T {
+  <span class="hljs-keyword">const</span> store = <span class="hljs-title function_">useAppStore</span>()
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">get</span> = (<span class="hljs-params"></span>) => <span class="hljs-title function_">selector</span>(store.<span class="hljs-title function_">getState</span>())
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">useSyncExternalStore</span>(store.<span class="hljs-property">subscribe</span>, get, get)
+}
+
+<span class="hljs-comment">// 在组件中使用：</span>
+<span class="hljs-keyword">const</span> verbose = <span class="hljs-title function_">useAppState</span>(<span class="hljs-function"><span class="hljs-params">s</span> =></span> s.<span class="hljs-property">verbose</span>)
+<span class="hljs-keyword">const</span> model = <span class="hljs-title function_">useAppState</span>(<span class="hljs-function"><span class="hljs-params">s</span> =></span> s.<span class="hljs-property">mainLoopModel</span>)
+</code></pre>
+<p><code>useSyncExternalStore</code> 钩子（React 18+）保证在并发渲染期间的撕裂安全读取 —— 与 Zustand 内部使用的基元完全相同。Claude Code 只是不需要 Zustand 的包装层。</p>
+<h3>AppState：完整应用状态类型</h3>
+<p><code>AppStateStore.ts</code> 定义了 <code>AppState</code> 类型 —— <strong>570 行</strong>的类型定义覆盖应用各个方面：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：state/AppStateStore.ts:89-452（精简版）</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">AppState</span> = <span class="hljs-title class_">DeepImmutable</span>&#x3C;{
+  <span class="hljs-attr">settings</span>: <span class="hljs-title class_">SettingsJson</span>           <span class="hljs-comment">// 会话设置</span>
+  <span class="hljs-attr">mainLoopModel</span>: <span class="hljs-title class_">ModelSetting</span>      <span class="hljs-comment">// 主循环模型</span>
+  <span class="hljs-attr">expandedView</span>: <span class="hljs-string">'none'</span> | <span class="hljs-string">'tasks'</span> | <span class="hljs-string">'teammates'</span>  <span class="hljs-comment">// UI 显示状态</span>
+  <span class="hljs-attr">toolPermissionContext</span>: <span class="hljs-title class_">ToolPermissionContext</span>    <span class="hljs-comment">// 权限系统</span>
+  <span class="hljs-attr">remoteConnectionStatus</span>: <span class="hljs-string">'...'</span>    <span class="hljs-comment">// 远程/Bridge</span>
+  <span class="hljs-attr">speculation</span>: <span class="hljs-title class_">SpeculationState</span>    <span class="hljs-comment">// 推测执行</span>
+}> &#x26; {
+  <span class="hljs-attr">tasks</span>: { [<span class="hljs-attr">taskId</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-title class_">TaskState</span> }         <span class="hljs-comment">// 可变状态</span>
+  <span class="hljs-attr">mcp</span>: { clients, tools, commands, resources }   <span class="hljs-comment">// MCP</span>
+  <span class="hljs-attr">plugins</span>: { enabled, disabled, commands }       <span class="hljs-comment">// 插件</span>
+  <span class="hljs-attr">teamContext</span>?: { teamName, teammates, ... }     <span class="hljs-comment">// 团队</span>
+  <span class="hljs-attr">computerUseMcpState</span>?: { ... }                  <span class="hljs-comment">// Computer Use</span>
+}
+</code></pre>
+<p><code>DeepImmutable&#x3C;></code> 包装器防止大多数字段的意外修改。包含 <code>Map</code>、<code>Set</code>、函数类型或任务状态的字段通过交叉类型 (<code>&#x26;</code>) 排除在包装器之外 —— 类型安全与表达力之间的务实折衷。</p>
+<h3>副作用集中化</h3>
+<p>所有状态变更副作用通过单一 <code>onChangeAppState</code> 回调汇聚：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：state/onChangeAppState.ts:43-171</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onChangeAppState</span>(<span class="hljs-params">{ newState, oldState }</span>) {
+  <span class="hljs-comment">// 权限模式 → 同步到 CCR/SDK</span>
+  <span class="hljs-keyword">if</span> (prevMode !== newMode) {
+    <span class="hljs-title function_">notifySessionMetadataChanged</span>({ <span class="hljs-attr">permission_mode</span>: newExternal })
+  }
+  <span class="hljs-comment">// 模型变更 → 持久化到设置文件</span>
+  <span class="hljs-keyword">if</span> (newState.<span class="hljs-property">mainLoopModel</span> !== oldState.<span class="hljs-property">mainLoopModel</span>) {
+    <span class="hljs-title function_">updateSettingsForSource</span>(<span class="hljs-string">'userSettings'</span>, { <span class="hljs-attr">model</span>: newState.<span class="hljs-property">mainLoopModel</span> })
+  }
+  <span class="hljs-comment">// 设置变更 → 清除认证缓存 + 重新应用环境变量</span>
+  <span class="hljs-keyword">if</span> (newState.<span class="hljs-property">settings</span> !== oldState.<span class="hljs-property">settings</span>) {
+    <span class="hljs-title function_">clearApiKeyHelperCache</span>()
+  }
+}
+</code></pre>
+<p>这就是"单一咽喉"模式 —— 八条不同代码路径都可以更改权限模式，但全部流经这一个差分。在此集中化之前，每条路径都需要手动通知 CCR，有几条没有做到 —— 导致 Web UI 与 CLI 状态不同步。</p>
+<hr>
+<h2>6. REPL 屏幕架构</h2>
+<p><code>screens/REPL.tsx</code> (874KB) 是应用的主界面 —— 一个编排所有用户功能的 React 函数组件。编译输出约 12,000 行，是代码库中最大的单一组件。</p>
+<h3>组件层次</h3>
+<pre class="ascii-diagram"><code>&#x3C;REPL>
+  &#x3C;KeybindingSetup>                // 初始化键绑定系统
+    &#x3C;AlternateScreen>              // 进入终端备用屏幕模式
+      &#x3C;FullscreenLayout>           // 全屏布局
+        &#x3C;ScrollBox stickyScroll>   // 可滚动主内容区
+          &#x3C;VirtualMessageList>     // 虚拟滚动
+            &#x3C;Messages>             // 消息渲染（递归）
+          &#x3C;/VirtualMessageList>
+        &#x3C;/ScrollBox>
+        &#x3C;StatusLine>               // 模型 │ 权限 │ 工作目录 │ token │ 费用
+        &#x3C;PromptInput>              // 用户输入 + 自动补全 + 底栏按钮
+      &#x3C;/FullscreenLayout>
+    &#x3C;/AlternateScreen>
+
+    // 覆盖层对话框
+    &#x3C;PermissionRequest>            // 工具权限确认
+    &#x3C;ModelPicker>                  // 模型选择 (Meta+P)
+    &#x3C;GlobalSearchDialog>           // 全文搜索 (Ctrl+F)
+    // ... 15+ 种覆盖层对话框
+  &#x3C;/KeybindingSetup>
+&#x3C;/REPL>
+</code></pre>
+<h3>三个屏幕组件</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>屏幕</th><th>文件</th><th>大小</th><th>用途</th></tr></thead><tbody><tr><td>REPL</td><td><code>screens/REPL.tsx</code></td><td>874KB</td><td>主交互循环</td></tr><tr><td>Doctor</td><td><code>screens/Doctor.tsx</code></td><td>71KB</td><td>环境诊断 (<code>/doctor</code>)</td></tr><tr><td>ResumeConversation</td><td><code>screens/ResumeConversation.tsx</code></td><td>58KB</td><td>会话恢复 (<code>--resume</code>)</td></tr></tbody></table>
+<h3>查询循环流程</h3>
+<pre class="ascii-diagram"><code>用户输入 → handleSubmit()
+  → 创建 UserMessage → addToHistory()
+  → query({ messages, tools, onMessage, ... })
+    → 流式回调：handleMessageFromStream()
+      → setMessages(prev => [...prev, newMessage])
+      → 工具调用 → useCanUseTool → 权限检查
+        → 允许 → 执行工具 → 追加结果
+        → 拒绝 → 追加拒绝消息
+    → 完成 → 记录分析 → 保存会话
+</code></pre>
+<hr>
+<h2>7. 虚拟滚动与高度缓存</h2>
+<p>当对话增长到数百条消息时，每帧渲染每条消息会摧毁性能。Claude Code 实现了终端虚拟滚动 —— 一种借鉴自浏览器虚拟列表库（如 <code>react-window</code>）的技术。</p>
+<h3>核心策略</h3>
+<pre class="ascii-diagram"><code>┌────────────────────────────────┐
+│  Spacer（估计高度）            │  ← 不渲染，固定高度 Box
+├────────────────────────────────┤
+│  缓冲区（上方 1 屏高度）       │  ← 已渲染但不可见
+├────────────────────────────────┤
+│  ████████████████████████████  │
+│  ████ 可见视口 ██████████████  │  ← 用户实际可见
+│  ████████████████████████████  │
+├────────────────────────────────┤
+│  缓冲区（下方 1 屏高度）       │  ← 已渲染但不可见
+├────────────────────────────────┤
+│  Spacer（估计高度）            │  ← 不渲染，固定高度 Box
+└────────────────────────────────┘
+</code></pre>
+<h3>关键设计决策</h3>
+<ul>
+<li>
+<p><strong>WeakMap 高度缓存</strong>：每条消息的渲染高度通过 WeakMap 缓存，键为消息对象引用。消息引用不变时直接复用高度无需重新测量。</p>
+</li>
+<li>
+<p><strong>窗口 = 视口 + 1 屏缓冲</strong>：仅渲染可见视口加上下各一屏高度内的消息。其余全部替换为 <code>&#x3C;Box height={N}></code> 占位符。</p>
+</li>
+<li>
+<p><strong>滚动钳制边界</strong>：DOM 元素上的 <code>scrollClampMin</code>/<code>scrollClampMax</code> 防止滚动位置进入未渲染区域。用户滚动快于 React 重渲染时，渲染器停在已挂载内容边缘而非显示空白。</p>
+</li>
+<li>
+<p><strong>粘性底部滚动</strong>：新消息通过 <code>stickyScroll</code> 自动滚动到底部。仅用户显式上滚时取消钉底。</p>
+</li>
+<li>
+<p><strong>搜索索引</strong>：全文搜索构建所有消息的缓存纯文本索引。搜索高亮在屏幕缓冲层面应用（逐单元格样式叠加），而非通过 React 重渲染。</p>
+</li>
+</ul>
+<h3>ScrollBox：滚动容器</h3>
+<p><code>pendingScrollDelta</code> 累积器每帧消耗 <code>SCROLL_MAX_PER_FRAME</code> 行 —— 快速滑动显示中间帧而非一次大跳。方向反转自然抵消（纯累积器，无目标跟踪）。</p>
+<hr>
+<h2>8. Vim 模式状态机</h2>
+<p>Claude Code 为输入框内建了完整的 Vim 编辑模式 —— 不是子集，而是包含运算符、动作、文本对象、寄存器和点重复的完整实现。</p>
+<h3>状态机架构</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：vim/ 目录</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">VimState</span> =
+  | { <span class="hljs-attr">mode</span>: <span class="hljs-string">'INSERT'</span>; <span class="hljs-attr">insertedText</span>: <span class="hljs-built_in">string</span> }
+  | { <span class="hljs-attr">mode</span>: <span class="hljs-string">'NORMAL'</span>; <span class="hljs-attr">command</span>: <span class="hljs-title class_">CommandState</span> }
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">CommandState</span> =
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'idle'</span> }                                  <span class="hljs-comment">// 等待输入</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'count'</span>; <span class="hljs-attr">digits</span>: <span class="hljs-built_in">string</span> }                 <span class="hljs-comment">// 前缀计数 (3dw)</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'operator'</span>; <span class="hljs-attr">op</span>: <span class="hljs-title class_">Operator</span>; count }         <span class="hljs-comment">// 等待动作 (d_)</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'operatorCount'</span>; op, count, digits }      <span class="hljs-comment">// 运算符 + 计数 (d3w)</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'operatorFind'</span>; op, count, find }         <span class="hljs-comment">// 运算符 + 查找 (df_)</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'operatorTextObj'</span>; op, count, scope }     <span class="hljs-comment">// 运算符 + 文本对象 (diw)</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'find'</span>; <span class="hljs-attr">find</span>: <span class="hljs-title class_">FindType</span>; count }           <span class="hljs-comment">// f/F/t/T 等待字符</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'g'</span>; count }                              <span class="hljs-comment">// g 前缀命令</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'replace'</span>; count }                        <span class="hljs-comment">// r 等待替换字符</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'indent'</span>; <span class="hljs-attr">dir</span>: <span class="hljs-string">'>'</span> | <span class="hljs-string">'&#x3C;'</span>; count }         <span class="hljs-comment">// >> / &#x3C;&#x3C; 缩进</span>
+</code></pre>
+<h3>状态转换图</h3>
+<pre class="ascii-diagram"><code>  idle ──┬─[d/c/y]──► operator ──┬─[motion]──► execute
+         ├─[1-9]────► count      ├─[0-9]────► operatorCount
+         ├─[fFtT]───► find       ├─[ia]─────► operatorTextObj
+         ├─[g]──────► g          └─[fFtT]───► operatorFind
+         ├─[r]──────► replace
+         └─[>&#x3C;]─────► indent
+</code></pre>
+<h3>纯函数转换</h3>
+<p>转换函数是纯函数 —— 无副作用，确定性输出：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">transition</span>(<span class="hljs-params">state, input, ctx</span>): <span class="hljs-title class_">TransitionResult</span> {
+  <span class="hljs-keyword">switch</span> (state.<span class="hljs-property">type</span>) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'idle'</span>:     <span class="hljs-keyword">return</span> <span class="hljs-title function_">fromIdle</span>(input, ctx)
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'count'</span>:    <span class="hljs-keyword">return</span> <span class="hljs-title function_">fromCount</span>(state, input, ctx)
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'operator'</span>: <span class="hljs-keyword">return</span> <span class="hljs-title function_">fromOperator</span>(state, input, ctx)
+    <span class="hljs-comment">// ... TypeScript 保证穷举</span>
+  }
+}
+<span class="hljs-comment">// 返回：{ next?: CommandState; execute?: () => void }</span>
+</code></pre>
+<h3>持久状态（跨命令记忆）</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PersistentState</span> = {
+  <span class="hljs-attr">lastChange</span>: <span class="hljs-title class_">RecordedChange</span> | <span class="hljs-literal">null</span>  <span class="hljs-comment">// 点重复 (.)</span>
+  <span class="hljs-attr">lastFind</span>: { <span class="hljs-keyword">type</span>, char } | <span class="hljs-literal">null</span>   <span class="hljs-comment">// 重复查找 (;/,)</span>
+  <span class="hljs-attr">register</span>: <span class="hljs-built_in">string</span>                   <span class="hljs-comment">// yank 寄存器内容</span>
+  <span class="hljs-attr">registerIsLinewise</span>: <span class="hljs-built_in">boolean</span>        <span class="hljs-comment">// 上次 yank 是否行级？</span>
+}
+</code></pre>
+<h3>支持的操作</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>类别</th><th>命令</th></tr></thead><tbody><tr><td><strong>移动</strong></td><td><code>h/l/j/k</code>, <code>w/b/e/W/B/E</code>, <code>0/^/$</code>, <code>gg/G</code>, <code>gj/gk</code></td></tr><tr><td><strong>运算符</strong></td><td><code>d</code> (删除), <code>c</code> (修改), <code>y</code> (复制), <code>>/&#x3C;</code> (缩进)</td></tr><tr><td><strong>查找</strong></td><td><code>f/F/t/T</code> + 字符, <code>;/,</code> 重复</td></tr><tr><td><strong>文本对象</strong></td><td><code>iw/aw</code>, <code>i"/a"</code>, <code>i(/a(</code>, <code>i{/a{</code>, <code>i[/a[</code>, <code>i&#x3C;/a&#x3C;</code></td></tr><tr><td><strong>命令</strong></td><td><code>x</code>, <code>~</code>, <code>r</code>, <code>J</code>, <code>p/P</code>, <code>D/C/Y</code>, <code>o/O</code>, <code>u</code> (撤销), <code>.</code> (重复)</td></tr><tr><td><strong>点重复</strong></td><td>记录插入文本、运算符、替换、大小写切换、缩进</td></tr></tbody></table>
+<p><code>VimTextInput.tsx</code> (16KB) 组件将该状态机与输入框集成：Normal 模式拦截按键并路由到 <code>transition()</code>，Insert 模式直接透传到正常文本编辑。</p>
+<hr>
+<h2>9. 键绑定系统</h2>
+<p>Claude Code 的键绑定系统支持多上下文、Emacs 风格的和弦序列、用户自定义以及保留快捷键 —— 建立在事件系统之上的完整键盘层。</p>
+<h3>上下文绑定解析</h3>
+<p>每个绑定属于一个<strong>上下文</strong>，决定其何时激活：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：keybindings/defaultBindings.ts（精简版）</span>
+<span class="hljs-keyword">const</span> <span class="hljs-attr">DEFAULT_BINDINGS</span>: <span class="hljs-title class_">KeybindingBlock</span>[] = [
+  {
+    <span class="hljs-attr">context</span>: <span class="hljs-string">'Global'</span>,              <span class="hljs-comment">// 始终活跃</span>
+    <span class="hljs-attr">bindings</span>: {
+      <span class="hljs-string">'ctrl+c'</span>: <span class="hljs-string">'app:interrupt'</span>,
+      <span class="hljs-string">'ctrl+d'</span>: <span class="hljs-string">'app:exit'</span>,
+      <span class="hljs-string">'ctrl+l'</span>: <span class="hljs-string">'app:redraw'</span>,
+      <span class="hljs-string">'ctrl+t'</span>: <span class="hljs-string">'app:toggleTodos'</span>,
+      <span class="hljs-string">'ctrl+r'</span>: <span class="hljs-string">'history:search'</span>,
+    }
+  },
+  {
+    <span class="hljs-attr">context</span>: <span class="hljs-string">'Chat'</span>,                <span class="hljs-comment">// 输入框获得焦点时</span>
+    <span class="hljs-attr">bindings</span>: {
+      <span class="hljs-string">'escape'</span>: <span class="hljs-string">'chat:cancel'</span>,
+      <span class="hljs-string">'shift+tab'</span>: <span class="hljs-string">'chat:cycleMode'</span>,
+      <span class="hljs-string">'meta+p'</span>: <span class="hljs-string">'chat:modelPicker'</span>,
+      <span class="hljs-string">'enter'</span>: <span class="hljs-string">'chat:submit'</span>,
+      <span class="hljs-string">'ctrl+x ctrl+e'</span>: <span class="hljs-string">'chat:externalEditor'</span>,  <span class="hljs-comment">// 和弦！</span>
+      <span class="hljs-string">'ctrl+x ctrl+k'</span>: <span class="hljs-string">'chat:killAgents'</span>,      <span class="hljs-comment">// 和弦！</span>
+    }
+  },
+  {
+    <span class="hljs-attr">context</span>: <span class="hljs-string">'Scroll'</span>,              <span class="hljs-comment">// 滚动离开底部时</span>
+    <span class="hljs-attr">bindings</span>: {
+      <span class="hljs-string">'pageup'</span>: <span class="hljs-string">'scroll:pageUp'</span>,
+      <span class="hljs-string">'ctrl+shift+c'</span>: <span class="hljs-string">'selection:copy'</span>,
+    }
+  },
+]
+</code></pre>
+<h3>和弦支持（Emacs 风格多键序列）</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 用户按 ctrl+x → 进入"和弦等待"状态</span>
+<span class="hljs-comment">// 显示 "ctrl+x ..." 提示</span>
+<span class="hljs-comment">// 用户按 ctrl+e → 匹配 'ctrl+x ctrl+e' → 'chat:externalEditor'</span>
+<span class="hljs-comment">// 用户按其他键 → 和弦取消，按键正常处理</span>
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">ChordResolveResult</span> =
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'match'</span>; <span class="hljs-attr">action</span>: <span class="hljs-built_in">string</span> }         <span class="hljs-comment">// 完整匹配</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'chord_started'</span>; <span class="hljs-attr">pending</span>: ... }   <span class="hljs-comment">// 和弦进行中</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'chord_cancelled'</span> }               <span class="hljs-comment">// 第二键不匹配</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'unbound'</span> }                       <span class="hljs-comment">// 显式解绑</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'none'</span> }                          <span class="hljs-comment">// 无绑定</span>
+</code></pre>
+<h3>在组件中使用键绑定</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 单一绑定</span>
+<span class="hljs-title function_">useKeybinding</span>(<span class="hljs-string">'app:toggleTodos'</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">setShowTodos</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =></span> !prev)
+}, { <span class="hljs-attr">context</span>: <span class="hljs-string">'Global'</span> })
+
+<span class="hljs-comment">// 多重绑定</span>
+<span class="hljs-title function_">useKeybindings</span>({
+  <span class="hljs-string">'chat:submit'</span>: <span class="hljs-function">() =></span> <span class="hljs-title function_">handleSubmit</span>(),
+  <span class="hljs-string">'chat:cancel'</span>: <span class="hljs-function">() =></span> <span class="hljs-title function_">handleCancel</span>(),
+}, { <span class="hljs-attr">context</span>: <span class="hljs-string">'Chat'</span> })
+</code></pre>
+<h3>用户自定义</h3>
+<p>用户可通过 <code>~/.claude/keybindings.json</code> 重写任何非保留绑定。文件通过 Zod schema 验证，无效条目产生警告但不会破坏应用。</p>
+<hr>
+<h2>10. Computer Use 集成</h2>
+<p>Claude Code 集成了 Anthropic 的 Computer Use 能力 —— 让模型能看到屏幕、移动鼠标、操作键盘并控制应用。这是一种完全不同的工具：不是文本输入/输出，而是基于像素和输入事件的操作。</p>
+<h3>与常规工具的对比</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>方面</th><th>常规工具</th><th>Computer Use 工具</th></tr></thead><tbody><tr><td>API 块类型</td><td><code>tool_use</code></td><td><code>server_tool_use</code></td></tr><tr><td>执行</td><td>CLI 端</td><td>CLI 端（截图）+ 服务器反馈</td></tr><tr><td>输入</td><td>结构化 JSON</td><td><code>{ action, coordinate?, text? }</code></td></tr><tr><td>输出</td><td>文本结果</td><td>JPEG 截图（base64）</td></tr><tr><td>平台</td><td>跨平台</td><td><strong>仅 macOS</strong>（需要 Swift + Rust 原生模块）</td></tr></tbody></table>
+<h3>Executor 模式</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码：utils/computerUse/executor.ts:259-644</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createCliExecutor</span>(<span class="hljs-params">opts</span>): <span class="hljs-title class_">ComputerExecutor</span> {
+  <span class="hljs-comment">// 两个原生模块：</span>
+  <span class="hljs-comment">//   @ant/computer-use-swift  — 截图、应用管理、TCC</span>
+  <span class="hljs-comment">//   @ant/computer-use-input  — 鼠标、键盘（Rust/enigo）</span>
+
+  <span class="hljs-keyword">const</span> cu = <span class="hljs-title function_">requireComputerUseSwift</span>()  <span class="hljs-comment">// 工厂时加载一次</span>
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">screenshot</span>(<span class="hljs-params">opts</span>) {
+      <span class="hljs-comment">// 预调整至 targetImageSize，使 API 转码器早返回</span>
+      <span class="hljs-comment">// 无服务器端缩放 → scaleCoord 保持一致</span>
+      <span class="hljs-keyword">const</span> d = cu.<span class="hljs-property">display</span>.<span class="hljs-title function_">getSize</span>(opts.<span class="hljs-property">displayId</span>)
+      <span class="hljs-keyword">const</span> [targetW, targetH] = <span class="hljs-title function_">computeTargetDims</span>(d.<span class="hljs-property">width</span>, d.<span class="hljs-property">height</span>, d.<span class="hljs-property">scaleFactor</span>)
+      <span class="hljs-keyword">return</span> <span class="hljs-title function_">drainRunLoop</span>(<span class="hljs-function">() =></span>
+        cu.<span class="hljs-property">screenshot</span>.<span class="hljs-title function_">captureExcluding</span>(<span class="hljs-title function_">withoutTerminal</span>(opts.<span class="hljs-property">allowedBundleIds</span>), ...)
+      )
+    },
+
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">click</span>(<span class="hljs-params">x, y, button, count, modifiers?</span>) {
+      <span class="hljs-keyword">const</span> input = <span class="hljs-title function_">requireComputerUseInput</span>()  <span class="hljs-comment">// 惰性加载</span>
+      <span class="hljs-keyword">await</span> <span class="hljs-title function_">moveAndSettle</span>(input, x, y)         <span class="hljs-comment">// 瞬移 + 50ms 沉降</span>
+      <span class="hljs-comment">// ... 修饰键包装</span>
+    },
+
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">key</span>(<span class="hljs-params">keySequence, repeat?</span>) {
+      <span class="hljs-comment">// xdotool 风格："ctrl+shift+a" → 按 '+' 分割 → keys()</span>
+      <span class="hljs-comment">// 裸 Escape：通知 CGEventTap 不要中止</span>
+      <span class="hljs-keyword">const</span> parts = keySequence.<span class="hljs-title function_">split</span>(<span class="hljs-string">'+'</span>)
+      <span class="hljs-keyword">await</span> <span class="hljs-title function_">drainRunLoop</span>(<span class="hljs-title function_">async</span> () => {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &#x3C; n; i++) {
+          <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isBareEscape</span>(parts)) <span class="hljs-title function_">notifyExpectedEscape</span>()
+          <span class="hljs-keyword">await</span> input.<span class="hljs-title function_">keys</span>(parts)
+        }
+      })
+    },
+  }
+}
+</code></pre>
+<h3>CFRunLoop 挑战</h3>
+<p>最独特的工程细节：<code>drainRunLoop()</code>。在 macOS 上，原生 GUI 操作派发到主线程的 CFRunLoop。在终端应用中（无 NSRunLoop），这些事件会排队但永远不会被处理。解决方案是手动泵送：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// drainRunLoop 包装派发到主队列的异步操作。</span>
+<span class="hljs-comment">// 没有泵送，来自 Rust/Swift 原生模块的鼠标/键盘调用</span>
+<span class="hljs-comment">// 在终端上下文中会永远挂起。</span>
+<span class="hljs-keyword">await</span> <span class="hljs-title function_">drainRunLoop</span>(<span class="hljs-title function_">async</span> () => {
+  <span class="hljs-keyword">await</span> cu.<span class="hljs-property">screenshot</span>.<span class="hljs-title function_">captureExcluding</span>(...)
+})
+</code></pre>
+<p>这就是 Computer Use 仅限 macOS 的原因：与 AppKit、CGEvent 和 SCContentFilter 的紧密集成需要仅在 Apple 事件模型内工作的原生 Swift 和 Rust 模块。</p>
+<h3>AppState 中的状态</h3>
+<p>Computer Use 状态存储在 <code>AppState.computerUseMcpState</code> 中：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-attr">computerUseMcpState</span>?: {
+  <span class="hljs-attr">allowedApps</span>?: <span class="hljs-keyword">readonly</span> { bundleId, displayName, grantedAt }[]
+  <span class="hljs-attr">grantFlags</span>?: { clipboardRead, clipboardWrite, systemKeyCombos }
+  <span class="hljs-attr">lastScreenshotDims</span>?: { width, height, displayWidth, displayHeight, ... }
+  <span class="hljs-attr">hiddenDuringTurn</span>?: <span class="hljs-title class_">ReadonlySet</span>&#x3C;<span class="hljs-built_in">string</span>>
+  <span class="hljs-attr">selectedDisplayId</span>?: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">displayPinnedByModel</span>?: <span class="hljs-built_in">boolean</span>
+}
+</code></pre>
+<p>此状态为<strong>会话范围</strong>（不跨恢复持久化），追踪应用允许列表、截图尺寸（用于坐标映射）以及当前回合被隐藏的应用（回合结束时通过 <code>cleanup.ts</code> 取消隐藏）。</p>
+<hr>
+<h2>可迁移设计模式</h2>
+<blockquote>
+<p>以下模式可直接应用于其他智能体系统或 CLI 工具。</p>
+</blockquote>
+<h3>模式 1："35 行替代一个库"</h3>
+<p><strong>场景</strong>：你需要 React 应用中的全局状态管理。</p>
+<p><strong>实践</strong>：在引入 Redux/Zustand/Jotai 之前先问：你真的需要中间件、devtools 或计算选择器吗？如果答案是否定的，一个带 <code>getState</code>/<code>setState</code>/<code>subscribe</code> 的 <code>createStore</code> 函数 —— 通过 <code>useSyncExternalStore</code> 集成 —— 能在 40 行内提供相同的并发安全渲染保证。</p>
+<h3>模式 2：浏览器事件模型用于非浏览器环境</h3>
+<p><strong>场景</strong>：你的终端/嵌入式 UI 有重叠的交互区域（模态框、嵌套滚动器、焦点上下文）。</p>
+<p><strong>实践</strong>：实现 W3C 捕获/冒泡派发模型。三阶段模型（捕获 → 目标 → 冒泡）配合 <code>stopPropagation()</code> 和优先级层级，能解决临时方案难以应付的事件路由问题。</p>
+<h3>模式 3：非浏览器环境中的虚拟滚动</h3>
+<p><strong>场景</strong>：你需要在固定高度视口中显示数千条项目。</p>
+<p><strong>实践</strong>：仅渲染视口 + 缓冲区内的项目。使用高度估算配合测量缓存。实现滚动钳制以防止快速滚动时出现空白屏幕。</p>
+<h3>模式 4：打包类型化数组实现无 GC 渲染</h3>
+<p><strong>场景</strong>：你在做逐帧的网格/单元格操作，其中对象分配导致 GC 暂停。</p>
+<p><strong>实践</strong>：使用位移将多个字段打包到类型化数组中。在同一 <code>ArrayBuffer</code> 上使用双视图，用于逐元素访问（Int32Array）和批量操作（BigInt64Array）。将字符串驻留为整数池。</p>
+<h3>模式 5：纯函数状态机用于编辑器模式</h3>
+<p><strong>场景</strong>：你需要一个带可组合命令的多模式文本编辑器。</p>
+<p><strong>实践</strong>：将每种模式建模为状态类型的可区分联合体成员。转换函数是纯函数：<code>(state, input, ctx) → { next?, execute? }</code>。持久状态（寄存器、上次命令）存在于瞬态命令状态之外。</p>
+<hr>
+<h2>组件总览</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>组件</th><th>关键文件</th><th>大小</th><th>职责</th></tr></thead><tbody><tr><td>Ink Fork</td><td><code>ink/</code> (48 文件)</td><td>~620KB</td><td>自定义终端渲染引擎</td></tr><tr><td>协调器</td><td><code>ink/reconciler.ts</code></td><td>14.6KB</td><td>React 19 ↔ 终端桥梁</td></tr><tr><td>屏幕缓冲</td><td><code>ink/screen.ts</code></td><td>49.3KB</td><td>打包 Int32Array 双缓冲单元格</td></tr><tr><td>事件系统</td><td><code>ink/events/</code></td><td>~15KB</td><td>W3C 捕获/冒泡 + 优先级派发</td></tr><tr><td>Store</td><td><code>state/store.ts</code></td><td>836B</td><td>35 行全局状态管理</td></tr><tr><td>AppState</td><td><code>state/AppStateStore.ts</code></td><td>21.8KB</td><td>570 行应用状态类型</td></tr><tr><td>REPL 屏幕</td><td><code>screens/REPL.tsx</code></td><td>874KB</td><td>主交互界面</td></tr><tr><td>虚拟滚动</td><td><code>VirtualMessageList.tsx</code></td><td>148KB</td><td>高度缓存虚拟滚动</td></tr><tr><td>Vim 模式</td><td><code>vim/</code> 目录</td><td>~50KB</td><td>完整 Vim 状态机</td></tr><tr><td>键绑定</td><td><code>keybindings/</code></td><td>~40KB</td><td>多上下文和弦键绑定</td></tr><tr><td>Computer Use</td><td><code>utils/computerUse/</code></td><td>~125KB</td><td>macOS 原生屏幕/输入控制</td></tr></tbody></table>
+<p><strong>UI 与状态管理总面积：约 2MB 的渲染、交互和状态基础设施。</strong></p>
+<hr>
+<p><em>下一集：第 15 集 — 服务与 API 层</em></p>
+<p><a href="13-bridge-system">← 第 13 集 — Bridge 系统</a> · <a href="15-services-api-layer">第 15 集 — 服务与 API 层 →</a></p></div></article><nav class="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800"><a class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/zh/advanced/13-bridge-system/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left transition-transform group-hover:-translate-x-1" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg><span>EP<!-- -->13<!-- --> <!-- -->桥接系统</span></a><a class="group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/zh/advanced/15-services-api-layer/"><span>EP<!-- -->15<!-- --> <!-- -->服务与 API 层</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></nav></div><!--$--><!--/$--></div></div></main><script src="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n3:I[37457,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n5:I[95914,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\"],\"Sidebar\"]\n7:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"OutletBoundary\"]\n8:\"$Sreact.suspense\"\na:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"MetadataBoundary\"]\ne:I[68027,[],\"default\"]\n:HL[\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"kOMToiePwU79Kzn0fZt4S\",\"c\":[\"\",\"zh\",\"advanced\",\"14-ui-state-management\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[[\"locale\",\"zh\",\"d\"],{\"children\":[\"(learn)\",{\"children\":[\"advanced\",{\"children\":[[\"chapter\",\"14-ui-state-management\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true]}],[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"div\",null,{\"className\":\"flex gap-8\",\"children\":[[\"$\",\"$L5\",null,{}],[\"$\",\"div\",null,{\"className\":\"min-w-0 flex-1\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@9\"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[33499,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"I18nProvider\"]\n10:I[45872,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"Header\"]\n11:I[22016,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"\"]\n4:[\"$\",\"html\",null,{\"lang\":\"zh\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n          (function() {\\n            var theme = localStorage.getItem('theme');\\n            if (theme === 'dark' || (!theme \u0026\u0026 window.matchMedia('(prefers-color-scheme: dark)').matches)) {\\n              document.documentElement.classList.add('dark');\\n            }\\n          })();\\n        \"}}]}],[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased\",\"children\":[\"$\",\"$Lf\",null,{\"locale\":\"zh\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-4xl space-y-8 py-4\",\"children\":[[\"$\",\"header\",null,{\"className\":\"rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/zh/curriculum\",\"className\":\"inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"课程地图\"]}],[\"$\",\"div\",null,{\"className\":\"mt-4 flex flex-wrap items-center gap-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800\",\"children\":[\"EP\",\"14\"]}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold text-zinc-950 dark:text-zinc-50\",\"children\":\"UI 状态与渲染\"}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"终端 UI、React/Ink 状态、输入模式和渲染\"}]]}],[\"$\",\"section\",null,{\"className\":\"rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-start justify-between gap-3\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300\",\"children\":\"Prompt 补充材料\"}],[\"$\",\"h2\",null,{\"className\":\"mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50\",\"children\":\"UI copy, status, and rendering constraints\"}],[\"$\",\"p\",null,{\"className\":\"mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200\",\"children\":\"These prompts show how text output, status lines, and option previews become part of the UI contract.\"}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":14,\"height\":14,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}],\"来源仓库\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70\",\"children\":\"这些条目是从 Claude Code npm 包抽取出的第三方 prompt reference，适合课堂对照阅读，不当作官方文档。\"}],[\"$\",\"div\",null,{\"className\":\"mt-4 grid gap-3 md:grid-cols-2\",\"children\":[[\"$\",\"a\",\"system-prompt-communication-style.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-communication-style.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[\"$L12\",\"$L13\",\"$L14\",\"$L15\",\"$L16\",\"$undefined\"]}],\"$L17\"]}],\"$L18\",\"$L19\"]}],\"$L1a\",\"$L1b\",\"$L1c\"]}]]}],\"$L1d\",\"$L1e\"]}]\n"])</script><script>self.__next_f.push([1,"1f:I[19004,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"AdvancedDocRenderer\"]\n12:[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}]\n13:[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}]\n14:[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}]\n15:[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}]\n16:[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}]\n17:[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Communication style\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-communication-style.md\"}]]}]\n18:[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Progress UI\"}]\n19:[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Defines when and how the agent sends user-facing updates.\"}]\n"])</script><script>self.__next_f.push([1,"1a:[\"$\",\"a\",\"system-prompt-tone-and-style-code-references.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-tone-and-style-code-references.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Code references\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-tone-and-style-code-references.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Clickable UI affordance\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Connects rendered output to clickable file references.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1b:[\"$\",\"a\",\"agent-prompt-status-line-setup.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-status-line-setup.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Status line setup\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"agent-prompt-status-line-setup.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Terminal UI\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Useful for terminal status-line customization and shell integration.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1c:[\"$\",\"a\",\"system-prompt-option-previewer.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-option-previewer.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Option previewer\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-option-previewer.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Choice UI\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Shows prompt support for previewing user-facing options.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1d:[\"$\",\"$L1f\",null,{\"chapter\":\"14\"}]\n"])</script><script>self.__next_f.push([1,"1e:[\"$\",\"nav\",null,{\"className\":\"flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/zh/advanced/13-bridge-system\",\"className\":\"group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left transition-transform group-hover:-translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],[\"$\",\"span\",null,{\"children\":[\"EP\",\"13\",\" \",\"桥接系统\"]}]]}],[\"$\",\"$L11\",null,{\"href\":\"/zh/advanced/15-services-api-layer\",\"className\":\"group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"span\",null,{\"children\":[\"EP\",\"15\",\" \",\"服务与 API 层\"]}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-right transition-transform group-hover:translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1ays0h\",{\"d\":\"M5 12h14\"}],[\"$\",\"path\",\"xquz4c\",{\"d\":\"m12 5 7 7-7 7\"}],\"$undefined\"]}]]}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"20:I[27201,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"IconMark\"]\n9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Agent Coding Lesson\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"从 0 到 1 构建一个 nano Claude Code-like agent，每次只增加一个机制\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L20\",\"3\",{}]]\n"])</script></body></html>

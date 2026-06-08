@@ -1,0 +1,778 @@
+<!DOCTYPE html><!--kOMToiePwU79Kzn0fZt4S--><html lang="zh"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js"/><script src="/agent-coding-lesson/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/76fed9c17f51393e.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/7de9141b1af425c3.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/turbopack-8800d0fd815877b2.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/076aae518584b842.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js" async=""></script><title>Agent Coding Lesson</title><meta name="description" content="从 0 到 1 构建一个 nano Claude Code-like agent，每次只增加一个机制"/><link rel="icon" href="/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico" sizes="256x256" type="image/x-icon"/><script>
+          (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script><script src="/agent-coding-lesson/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm"><div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a class="text-lg font-bold" href="/agent-coding-lesson/zh/">Agent Coding Lesson</a><nav class="hidden items-center gap-6 md:flex"><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/curriculum/">课程地图</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/timeline/">学习路径</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/compare/">版本对比</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/layers/">架构层</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/zh/slides/s01/">幻灯片</a><div class="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5"><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">EN</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">中文</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">日本語</button></div><button class="rounded-md p-1.5 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Switch to dark mode"><span class="inline-block h-4 w-4"></span></button><a href="https://github.com/atom32/agent-coding-lesson" target="_blank" rel="noopener" class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Open project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a></nav><button class="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"><div class="flex gap-8"><nav class="hidden w-64 shrink-0 md:block"><div class="sticky top-[calc(3.5rem+2rem)] max-h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/curriculum/">课程地图</a><div class="space-y-1"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/summary/">中间摘要</a><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/glossary/">术语表</a></div><section class="space-y-5"><div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">实验室课程</div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">工具与执行</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s01/"><span class="font-mono text-xs">s01</span><span class="ml-1.5">Agent 循环</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s02/"><span class="font-mono text-xs">s02</span><span class="ml-1.5">工具使用</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">规划与协调</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s03/"><span class="font-mono text-xs">s03</span><span class="ml-1.5">TodoWrite</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s04/"><span class="font-mono text-xs">s04</span><span class="ml-1.5">子 Agent</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s05/"><span class="font-mono text-xs">s05</span><span class="ml-1.5">技能</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s07/"><span class="font-mono text-xs">s07</span><span class="ml-1.5">任务系统</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-purple-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">记忆管理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s06/"><span class="font-mono text-xs">s06</span><span class="ml-1.5">上下文压缩</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">并发</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s08/"><span class="font-mono text-xs">s08</span><span class="ml-1.5">后台任务</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-red-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">协作</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s09/"><span class="font-mono text-xs">s09</span><span class="ml-1.5">Agent 团队</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s10/"><span class="font-mono text-xs">s10</span><span class="ml-1.5">团队协议</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s11/"><span class="font-mono text-xs">s11</span><span class="ml-1.5">自主 Agent</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/s12/"><span class="font-mono text-xs">s12</span><span class="ml-1.5">Worktree + 任务隔离</span></a></li></ul></div></section><section><div class="mb-2 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">真实系统解剖</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/00-overview/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->00</span><span class="ml-1.5">架构总览</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/01-query-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->01</span><span class="ml-1.5">查询引擎</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/02-tool-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->02</span><span class="ml-1.5">工具系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/03-coordinator/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->03</span><span class="ml-1.5">协调器</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/04-plugin-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->04</span><span class="ml-1.5">插件系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/05-hook-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->05</span><span class="ml-1.5">Hook 系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/06-bash-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->06</span><span class="ml-1.5">Bash 引擎</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/07-permission-pipeline/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->07</span><span class="ml-1.5">权限流水线</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/08-agent-swarms/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->08</span><span class="ml-1.5">Agent Swarm</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/09-session-persistence/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->09</span><span class="ml-1.5">会话持久化</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/10-context-assembly/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->10</span><span class="ml-1.5">上下文装配</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/11-compact-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->11</span><span class="ml-1.5">压缩系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/12-startup-bootstrap/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->12</span><span class="ml-1.5">启动与引导</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/13-bridge-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->13</span><span class="ml-1.5">桥接系统</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/14-ui-state-management/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->14</span><span class="ml-1.5">UI 状态与渲染</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/15-services-api-layer/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->15</span><span class="ml-1.5">服务与 API 层</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/zh/advanced/16-infrastructure-config/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->16</span><span class="ml-1.5">基础设施与配置</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white" href="/agent-coding-lesson/zh/advanced/17-telemetry-privacy-operations/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->17</span><span class="ml-1.5">遥测与运营</span></a></li></ul></section></div></nav><div class="min-w-0 flex-1"><div class="mx-auto max-w-4xl space-y-8 py-4"><header class="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" href="/agent-coding-lesson/zh/curriculum/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>课程地图</a><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800">EP<!-- -->17</span><h1 class="text-2xl font-bold text-zinc-950 dark:text-zinc-50">遥测与运营</h1></div><p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">隐私、运营控制、模型路由和可观测性</p></header><section class="rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300">Prompt 补充材料</p><h2 class="mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Operations, telemetry, budgets, and autonomous monitors</h2><p class="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">These prompts support the operational layer: what is monitored, summarized, budgeted, and blocked.</p></div><a href="https://github.com/Piebald-AI/claude-code-system-prompts" target="_blank" rel="noopener" class="inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>来源仓库</a></div><p class="mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70">这些条目是从 Claude Code npm 包抽取出的第三方 prompt reference，适合课堂对照阅读，不当作官方文档。</p><div class="mt-4 grid gap-3 md:grid-cols-2"><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-reminder-token-usage.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Token usage reminder</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-reminder-token-usage.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Usage telemetry</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">A visible hook for token accounting.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-reminder-usd-budget.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">USD budget reminder</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-reminder-usd-budget.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Budget control</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Shows cost as a prompt-visible operational constraint.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-background-agent-state-classifier.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Background agent state classifier</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">agent-prompt-background-agent-state-classifier.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Operational state</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Classifies long-running background sessions as working, blocked, done, or failed.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Security monitor, first part</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Operational safety</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Useful for privacy and operational-control discussions.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-insights-at-a-glance-summary.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Insights at a glance</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-insights-at-a-glance-summary.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Usage insight</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Connects telemetry-like usage data to user-facing summaries.</p></a></div></section><article class="py-4"><div class="prose-custom"><h1>17 — 遥测、隐私与运营控制：生产环境的暗面</h1>
+<blockquote class="hero-callout">
+</blockquote>
+<blockquote>
+<p><strong>范围</strong>: <code>services/analytics/</code>（9 个模块，~148KB）、<code>utils/undercover.ts</code>、<code>utils/attribution.ts</code>、<code>utils/commitAttribution.ts</code>、<code>utils/fastMode.ts</code>、<code>services/remoteManagedSettings/</code>、<code>constants/prompts.ts</code>、<code>buddy/</code>、<code>voice/</code>、<code>tasks/DreamTask/</code></p>
+<p><strong>一句话</strong>: 你看不见的生产基础设施——双通道遥测管道、模型代号隐匿、远程紧急开关，以及隐藏在编译时门控背后的未来功能。</p>
+</blockquote>
+<hr>
+<h2>目录</h2>
+<ol>
+<li><a href="#1-%E5%8F%8C%E9%80%9A%E9%81%93%E9%81%A5%E6%B5%8B%E7%AE%A1%E9%81%93">双通道遥测管道</a></li>
+<li><a href="#2-%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E5%85%A8%E6%99%AF%E7%A9%B6%E7%AB%9F%E6%94%B6%E9%9B%86%E4%BA%86%E4%BB%80%E4%B9%88">数据采集全景：究竟收集了什么</a></li>
+<li><a href="#3-%E9%80%80%E5%87%BA%E5%9B%B0%E5%A2%83%E7%94%A8%E6%88%B7%E8%83%BD%E5%90%A6%E5%85%B3%E9%97%AD%E9%81%A5%E6%B5%8B">退出困境：用户能否关闭遥测</a></li>
+<li><a href="#4-%E6%A8%A1%E5%9E%8B%E4%BB%A3%E5%8F%B7%E4%BD%93%E7%B3%BB">模型代号体系</a></li>
+<li><a href="#5-feature-flag-%E6%B7%B7%E6%B7%86%E5%91%BD%E5%90%8D">Feature Flag 混淆命名</a></li>
+<li><a href="#6-%E5%8D%A7%E5%BA%95%E6%A8%A1%E5%BC%8F%E9%9A%90%E5%8C%BF-ai-%E7%BD%B2%E5%90%8D">卧底模式：隐匿 AI 署名</a></li>
+<li><a href="#7-%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6%E4%B8%8E%E7%B4%A7%E6%80%A5%E5%BC%80%E5%85%B3">远程控制与紧急开关</a></li>
+<li><a href="#8-%E5%86%85%E5%A4%96%E6%9C%89%E5%88%AB%E7%9A%84%E5%8F%8C%E5%B1%82%E4%BD%93%E9%AA%8C">内外有别的双层体验</a></li>
+<li><a href="#9-%E6%9C%AA%E6%9D%A5%E8%B7%AF%E7%BA%BF%E5%9B%BE%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84%E8%AF%81%E6%8D%AE">未来路线图：源码中的证据</a></li>
+</ol>
+<hr>
+<h2>1. 双通道遥测管道</h2>
+<p><strong>源码坐标</strong>: <code>src/services/analytics/</code>（9 个文件，合计 ~148KB）</p>
+<p>每一次工具调用、每一次 API 请求、每一次会话启动——都会产生遥测事件，流经<strong>双通道管道</strong>。一条通道直连 Anthropic 自有后端；另一条通向第三方可观测性平台。两者共同构成了 CLI 工具领域最全面的分析系统之一。</p>
+<h3>1.1 通道 A：第一方直连（Anthropic 自有）</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码: src/services/analytics/firstPartyEventLogger.ts:300-302</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DEFAULT_LOGS_EXPORT_INTERVAL_MS</span> = <span class="hljs-number">10000</span>    <span class="hljs-comment">// 10 秒批量刷新</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DEFAULT_MAX_EXPORT_BATCH_SIZE</span> = <span class="hljs-number">200</span>         <span class="hljs-comment">// 每批最多 200 事件</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DEFAULT_MAX_QUEUE_SIZE</span> = <span class="hljs-number">8192</span>               <span class="hljs-comment">// 内存队列上限 8K</span>
+</code></pre>
+<p>第一方管道使用 <strong>OpenTelemetry 的 <code>LoggerProvider</code></strong>——不是全局实例（那个服务于客户的 OTLP 遥测），而是一个专用的内部 Provider。事件被序列化为 Protocol Buffers，发往：</p>
+<pre class="ascii-diagram"><code>POST https://api.anthropic.com/api/event_logging/batch
+</code></pre>
+<p><strong>容错机制极为激进</strong>。导出器（<code>FirstPartyEventLoggingExporter</code>，27KB）实现了：</p>
+<ul>
+<li>二次退避重试，可配置最大重试次数</li>
+<li><strong>磁盘持久化</strong>——失败的批次写入 <code>~/.claude/telemetry/</code>，进程崩溃后下次启动时自动重试</li>
+<li>批次配置可通过 GrowthBook（<code>tengu_1p_event_batch_config</code>）远程调整，即 Anthropic 无需发版即可修改刷新间隔、批次大小甚至目标端点</li>
+</ul>
+<p><strong>热插拔安全性</strong>值得关注：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码: src/services/analytics/firstPartyEventLogger.ts:396-449</span>
+<span class="hljs-comment">// 当 GrowthBook 在会话中途更新批次配置时：</span>
+<span class="hljs-comment">// 1. 先将 logger 置空——并发调用在守卫处 bail out</span>
+<span class="hljs-comment">// 2. forceFlush() 排空旧处理器的缓冲区</span>
+<span class="hljs-comment">// 3. 切换到新 Provider；旧的在后台关闭</span>
+<span class="hljs-comment">// 4. 磁盘持久化重试文件使用稳定键名(BATCH_UUID + sessionId)</span>
+<span class="hljs-comment">//    新导出器自动接管旧导出器的失败记录</span>
+</code></pre>
+<h3>1.2 通道 B：Datadog（第三方可观测性）</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码: src/services/analytics/datadog.ts:12-17</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DATADOG_LOGS_ENDPOINT</span> = <span class="hljs-string">'https://http-intake.logs.us5.datadoghq.com/api/v2/logs'</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DATADOG_CLIENT_TOKEN</span> = <span class="hljs-string">'pubbbf48e6d78dae54bceaa4acf463299bf'</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DEFAULT_FLUSH_INTERVAL_MS</span> = <span class="hljs-number">15000</span>   <span class="hljs-comment">// 15 秒刷新</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MAX_BATCH_SIZE</span> = <span class="hljs-number">100</span>
+</code></pre>
+<p>Datadog 通道更加严格。只有 <strong>64 种预批准事件类型</strong>能通过白名单过滤。</p>
+<p><strong>三种基数缩减技术</strong>防止 Datadog 成本爆炸：</p>
+<ol>
+<li><strong>MCP 工具名归一化</strong>：以 <code>mcp__</code> 开头的工具统一折叠为 <code>"mcp"</code></li>
+<li><strong>模型名归一化</strong>：未知模型折叠为 <code>"other"</code></li>
+<li><strong>用户分桶</strong>：通过 <code>SHA256(userId) % 30</code> 将用户哈希到 30 个桶中，实现近似唯一用户告警</li>
+</ol>
+<h3>1.3 事件采样：GrowthBook 控制的音量旋钮</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码: src/services/analytics/firstPartyEventLogger.ts:38-85</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">shouldSampleEvent</span>(<span class="hljs-params"><span class="hljs-attr">eventName</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">number</span> | <span class="hljs-literal">null</span> {
+  <span class="hljs-keyword">const</span> config = <span class="hljs-title function_">getEventSamplingConfig</span>()           <span class="hljs-comment">// 来自 GrowthBook</span>
+  <span class="hljs-keyword">const</span> eventConfig = config[eventName]
+  <span class="hljs-keyword">if</span> (!eventConfig) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>                     <span class="hljs-comment">// 无配置 → 100% 采集</span>
+  <span class="hljs-keyword">const</span> sampleRate = eventConfig.<span class="hljs-property">sample_rate</span>
+  <span class="hljs-keyword">if</span> (sampleRate >= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>                  <span class="hljs-comment">// 1.0 → 全量采集</span>
+  <span class="hljs-keyword">if</span> (sampleRate &#x3C;= <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>                     <span class="hljs-comment">// 0.0 → 全量丢弃</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() &#x3C; sampleRate ? sampleRate : <span class="hljs-number">0</span>  <span class="hljs-comment">// 概率采样</span>
+}
+</code></pre>
+<blockquote>
+<p>→ 交叉引用: <a href="16-infrastructure-config">第 16 集: 基础设施</a> 了解 GrowthBook 集成细节</p>
+</blockquote>
+<hr>
+<h2>2. 数据采集全景：究竟收集了什么</h2>
+<p><strong>源码坐标</strong>: <code>src/services/analytics/metadata.ts</code>（33KB——最大的分析文件）</p>
+<p>每个遥测事件携带三层元数据，由 <code>getEventMetadata()</code> 组装：</p>
+<h3>2.1 第一层：环境指纹</h3>
+<pre class="ascii-diagram"><code>┌─────────────────────────────────────────────────────────────────┐
+│  环境指纹（14+ 字段）                                            │
+├──────────────────┬──────────────────────────────────────────────┤
+│ 运行时            │ platform, arch, nodeVersion                  │
+│ 终端              │ 终端类型 (iTerm2 / Terminal.app / ...)        │
+│ 开发环境          │ 已安装的包管理器和运行时                        │
+│ CI/CD            │ CI 检测, GitHub Actions 元数据                 │
+│ 操作系统          │ WSL 版本, Linux 发行版, 内核版本                │
+│ 版本控制          │ VCS 类型                                      │
+│ Claude Code      │ 版本号, 构建时间戳                              │
+└──────────────────┴──────────────────────────────────────────────┘
+</code></pre>
+<h3>2.2 第二层：进程健康指标</h3>
+<pre class="ascii-diagram"><code>┌─────────────────────────────────────────────────────────────────┐
+│  进程指标（8+ 指标）                                             │
+├──────────────────┬──────────────────────────────────────────────┤
+│ 计时              │ 进程运行时间                                   │
+│ 内存              │ rss, heapTotal, heapUsed, external, arrays    │
+│ CPU              │ 使用时间, 百分比                                │
+└──────────────────┴──────────────────────────────────────────────┘
+</code></pre>
+<h3>2.3 第三层：用户与会话身份</h3>
+<pre class="ascii-diagram"><code>┌─────────────────────────────────────────────────────────────────┐
+│  用户与会话追踪                                                   │
+├──────────────────┬──────────────────────────────────────────────┤
+│ 模型              │ 当前活跃模型名                                 │
+│ 会话              │ sessionId, parentSessionId                    │
+│ 设备              │ deviceId（跨会话持久化）                        │
+│ 账户              │ accountUUID, organizationUUID                 │
+│ 订阅              │ 套餐层级 (max, pro, enterprise, team)          │
+│ 仓库              │ 远端 URL 哈希（SHA256，取前 16 字符）            │
+└──────────────────┴──────────────────────────────────────────────┘
+</code></pre>
+<p><strong>仓库指纹</strong>值得关注——系统对远端 URL 取 SHA256 后截断为 16 位十六进制。这不是匿名化，而是<strong>伪匿名化</strong>。知道目标仓库 URL 的人可以轻松计算哈希并匹配。</p>
+<h3>2.4 Bash 命令扩展名追踪</h3>
+<p>当执行涉及 17 种特定命令（<code>rm</code>、<code>mv</code>、<code>cp</code>、<code>touch</code>、<code>mkdir</code>、<code>chmod</code>、<code>chown</code>、<code>cat</code>、<code>head</code>、<code>tail</code>、<code>sort</code>、<code>stat</code>、<code>diff</code>、<code>wc</code>、<code>grep</code>、<code>rg</code>、<code>sed</code>）的操作时，系统会提取并记录参数中的<strong>文件扩展名</strong>，形成你的工作模式画像。</p>
+<hr>
+<h2>3. 退出困境：用户能否关闭遥测</h2>
+<p><strong>源码坐标</strong>: <code>src/services/analytics/firstPartyEventLogger.ts:141-144</code></p>
+<h3>3.1 分析功能何时禁用</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码: src/services/analytics/config.ts</span>
+<span class="hljs-comment">// isAnalyticsDisabled() 仅在以下情况返回 true：</span>
+<span class="hljs-comment">// 1. 测试环境 (NODE_ENV !== 'production')</span>
+<span class="hljs-comment">// 2. 第三方云供应商 (Bedrock, Vertex)</span>
+<span class="hljs-comment">// 3. 全局遥测退出标志</span>
+</code></pre>
+<p>对于直连 Anthropic API 的用户（绝大多数），<code>isAnalyticsDisabled()</code> 返回 <code>false</code>。<strong>没有设置面板、没有 CLI 参数、没有环境变量</strong>能让普通用户在保持完整产品功能的同时禁用第一方事件记录。</p>
+<h3>3.2 远程关闭开关</h3>
+<p>讽刺的是，Anthropic <strong>自己可以</strong>远程禁用分析——但这个能力不属于用户：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码: src/services/analytics/sinkKillswitch.ts</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SINK_KILLSWITCH_CONFIG_NAME</span> = <span class="hljs-string">'tengu_frond_boric'</span>
+<span class="hljs-comment">// GrowthBook 标志，可远程禁用分析通道</span>
+</code></pre>
+<h3>3.3 合规影响</h3>
+<p>（1）无用户侧退出机制、（2）持久化设备和会话追踪、（3）仓库指纹、（4）组织级识别——这四者组合创建的数据集完全落入 GDPR 第 6 条和 CCPA §1798.100 的管辖范围。</p>
+<blockquote>
+<p>→ 设计模式: <strong>失败时仍投递</strong>（stale-while-error）策略——磁盘持久化 + 重试优先保证投递完整性，而非用户控制权。</p>
+</blockquote>
+<hr>
+<h2>4. 模型代号体系</h2>
+<p><strong>源码坐标</strong>: <code>src/utils/undercover.ts:48-49</code>、<code>src/constants/prompts.ts</code>、<code>src/migrations/migrateFennecToOpus.ts</code>、<code>src/buddy/types.ts</code></p>
+<p>Anthropic 为内部模型版本分配<strong>动物代号</strong>——源码揭示了具体代号、演化谱系，以及为防止泄露而构建的精密机制。</p>
+<h3>4.1 四个已知代号</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>代号</th><th>动物</th><th>角色</th><th>证据</th></tr></thead><tbody><tr><td><strong>Capybara</strong></td><td>水豚</td><td>Sonnet 系列，当前 v8</td><td>模型字符串中的 <code>capybara-v2-fast[1m]</code></td></tr><tr><td><strong>Tengu</strong></td><td>天狗</td><td>产品/遥测前缀</td><td>250+ 分析事件和功能标志均使用 <code>tengu_*</code></td></tr><tr><td><strong>Fennec</strong></td><td>耳廓狐</td><td>Opus 4.6 的前身</td><td>迁移脚本: <code>fennec-latest → opus</code></td></tr><tr><td><strong>Numbat</strong></td><td>袋食蚁兽</td><td>下一代未发布模型</td><td>注释: <code>"Remove this section when we launch numbat"</code></td></tr></tbody></table>
+<h3>4.2 代号保护机制</h3>
+<p>三层防线阻止代号泄露到外部构建中：</p>
+<p><strong>第一层: 构建时扫描器</strong> — <code>scripts/excluded-strings.txt</code> 包含构建输出中会被 CI 扫描的模式，匹配则构建失败。</p>
+<p><strong>第二层: 运行时混淆</strong> — 代号在用户可见字符串中被主动遮蔽（<code>cap***** -v2-fast</code>）。</p>
+<p><strong>第三层: 源码级碰撞规避</strong> — Buddy 宠物系统的"capybara"物种名与模型代号扫描器冲突。解决方案：运行时用 <code>String.fromCharCode</code> 逐字符编码。</p>
+<h3>4.3 Capybara v8：五个已记录的行为缺陷</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>缺陷</th><th>影响</th><th>源码位置</th></tr></thead><tbody><tr><td>1</td><td>停止序列误触发</td><td>当 <code>&#x3C;functions></code> 出现在提示词尾部时约 10% 概率</td><td><code>prompts.ts</code></td></tr><tr><td>2</td><td>空 tool_result 零输出</td><td>收到空白工具结果时模型不生成任何内容</td><td><code>toolResultStorage.ts:281</code></td></tr><tr><td>3</td><td>过度注释</td><td>需要专门的反注释提示词补丁</td><td><code>prompts.ts:204</code></td></tr><tr><td>4</td><td>高错误声称率</td><td>29-30% FC 率 vs Capybara v4 的 16.7%</td><td><code>prompts.ts:237</code></td></tr><tr><td>5</td><td>验证不充分</td><td>需要"彻底性反制"提示词注入</td><td><code>prompts.ts:210</code></td></tr></tbody></table>
+<p>代码库包含 <strong>8+ 个 <code>@[MODEL LAUNCH]</code> 标记</strong>，涵盖：默认模型名、家族 ID、知识截止日期、定价表、上下文窗口配置等。</p>
+<hr>
+<h2>5. Feature Flag 混淆命名</h2>
+<p><strong>源码坐标</strong>: <code>src/services/analytics/growthbook.ts</code>（41KB）</p>
+<h3>5.1 Tengu 命名约定</h3>
+<p>每个功能标志和分析事件遵循 <code>tengu_&#x3C;词1>_&#x3C;词2></code> 的命名模式，词汇对从受限词库中选取——对内部人员可记忆，对外部观察者不透明。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>标志名</th><th>解码后的用途</th><th>类别</th></tr></thead><tbody><tr><td><code>tengu_frond_boric</code></td><td>分析通道紧急关闭</td><td>紧急开关</td></tr><tr><td><code>tengu_amber_quartz_disabled</code></td><td>语音模式紧急关闭</td><td>紧急开关</td></tr><tr><td><code>tengu_turtle_carbon</code></td><td>Ultrathink 门控</td><td>功能门控</td></tr><tr><td><code>tengu_marble_sandcastle</code></td><td>快速模式（Penguin）门控</td><td>功能门控</td></tr><tr><td><code>tengu_onyx_plover</code></td><td>Auto-Dream（后台记忆）</td><td>功能门控</td></tr><tr><td><code>tengu_event_sampling_config</code></td><td>按事件采样率</td><td>配置</td></tr><tr><td><code>tengu_1p_event_batch_config</code></td><td>1P 批处理器配置</td><td>配置</td></tr><tr><td><code>tengu_ant_model_override</code></td><td>内部模型覆盖</td><td>内部</td></tr></tbody></table>
+<h3>5.2 三层标志解析架构</h3>
+<pre class="ascii-diagram"><code>┌─────────────────────────────────────────────────────────────────┐
+│  第 1 层: 编译时死代码消除 (DCE)                                  │
+│  机制: feature('FLAG_NAME') via bun:bundle                      │
+│  效果: 代码分支在构建时被完全移除                                   │
+├─────────────────────────────────────────────────────────────────┤
+│  第 2 层: 运行时环境变量检查                                      │
+│  机制: process.env.USER_TYPE === 'ant'                          │
+│  效果: 代码存在但对外部用户被跳过                                   │
+├─────────────────────────────────────────────────────────────────┤
+│  第 3 层: 运行时 GrowthBook 标志                                  │
+│  机制: getFeatureValue('tengu_*') via GrowthBook SDK            │
+│  效果: 可按用户、按会话、按实验动态变更                              │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre>
+<p>部分功能使用<strong>双重门控</strong>——第 1 层编译时门控 + 第 3 层运行时标志。在外部构建中，<code>feature('ULTRATHINK')</code> 为 <code>false</code>，整个函数体被死代码消除。</p>
+<h3>5.3 通道紧急开关的循环依赖</h3>
+<p><code>tengu_frond_boric</code> 的实现揭示了一个<strong>循环依赖陷阱</strong>：GrowthBook 初始化调用 <code>is1PEventLoggingEnabled()</code>，后者如果调用 <code>isSinkKilled()</code> 又会调用 GrowthBook——无限递归。解决方案：在<strong>每个事件分发点</strong>检查紧急开关，而非在全局启用检查中。</p>
+<blockquote>
+<p>→ 交叉引用: <a href="16-infrastructure-config">第 16 集: 基础设施</a> §1.3</p>
+</blockquote>
+<hr>
+<h2>6. 卧底模式：隐匿 AI 署名</h2>
+<p><strong>源码坐标</strong>: <code>src/utils/undercover.ts</code>（90 行）、<code>src/utils/attribution.ts</code>（394 行）</p>
+<p>当 Anthropic 员工使用 Claude Code 向开源仓库贡献代码时，一套专用系统会自动激活，擦除所有 AI 参与痕迹。</p>
+<h3>6.1 激活逻辑</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码: src/utils/undercover.ts:28-37</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">isUndercover</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-keyword">if</span> (process.<span class="hljs-property">env</span>.<span class="hljs-property">USER_TYPE</span> === <span class="hljs-string">'ant'</span>) {          <span class="hljs-comment">// 仅限 Anthropic 员工</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isEnvTruthy</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">CLAUDE_CODE_UNDERCOVER</span>)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>  <span class="hljs-comment">// 强制开启</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">getRepoClassCached</span>() !== <span class="hljs-string">'internal'</span>    <span class="hljs-comment">// 非内部仓库 → 自动开启</span>
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>  <span class="hljs-comment">// 外部用户: 始终关闭（生产构建中被 DCE）</span>
+}
+</code></pre>
+<p>关键设计决策：<strong>没有强制关闭选项</strong>。如果系统无法确认当前仓库在 Anthropic 内部白名单上，卧底模式自动激活。</p>
+<h3>6.2 卧底提示词</h3>
+<p>激活后，模型收到七条明确的隐匿指令，禁止在 commit 消息和 PR 中出现：</p>
+<ul>
+<li>内部模型代号（Capybara、Tengu 等动物名）</li>
+<li>未发布模型版本号</li>
+<li>内部仓库或项目名称</li>
+<li>内部工具、Slack 频道或短链接</li>
+<li>"Claude Code"或任何 AI 相关表述</li>
+<li>Co-Authored-By 行或任何其他署名</li>
+</ul>
+<h3>6.3 署名擦除</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码: src/utils/attribution.ts:52-55</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getAttributionTexts</span>(<span class="hljs-params"></span>): <span class="hljs-title class_">AttributionTexts</span> {
+  <span class="hljs-keyword">if</span> (process.<span class="hljs-property">env</span>.<span class="hljs-property">USER_TYPE</span> === <span class="hljs-string">'ant'</span> &#x26;&#x26; <span class="hljs-title function_">isUndercover</span>()) {
+    <span class="hljs-keyword">return</span> { <span class="hljs-attr">commit</span>: <span class="hljs-string">''</span>, <span class="hljs-attr">pr</span>: <span class="hljs-string">''</span> }  <span class="hljs-comment">// 空字符串 = 无署名</span>
+  }
+}
+</code></pre>
+<p>正常模式下 commit 附带 <code>Co-Authored-By: Claude Opus 4.6</code>，PR 附带 <code>🤖 Generated with Claude Code</code>。卧底模式下两者均返回空字符串。</p>
+<h3>6.4 增强版 PR 署名（非卧底模式）</h3>
+<p>非卧底状态下，署名系统生成丰富的统计信息：</p>
+<pre class="ascii-diagram"><code>🤖 Generated with Claude Code (93% 3-shotted by claude-opus-4-5, 2 memories recalled)
+</code></pre>
+<p>包含：Claude 代码贡献百分比、提示词轮次（N-shotted）、模型名、记忆文件访问次数。</p>
+<h3>6.5 伦理思考</h3>
+<p>卧底模式引发关于 AI 透明度的根本性问题：贡献者真实性、开源许可证合规性、社区信任、以及与 EU AI Act 第 50 条的潜在冲突。</p>
+<blockquote>
+<p>→ 设计模式: <strong>失败时隐匿</strong>（Fail-safe concealment）——不确定时默认隐藏，需显式白名单才会暴露。</p>
+</blockquote>
+<hr>
+<h2>7. 远程控制与紧急开关</h2>
+<p><strong>源码坐标</strong>: <code>src/services/remoteManagedSettings/</code>（5 个文件，~43KB）</p>
+<p>Claude Code 不仅是本地工具——它维持着与 Anthropic 服务器的持久连接，Anthropic 可以远程改变其行为、执行策略或关闭功能。</p>
+<h3>7.1 远程托管设置</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码: src/services/remoteManagedSettings/index.ts:52-54</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SETTINGS_TIMEOUT_MS</span> = <span class="hljs-number">10000</span>     <span class="hljs-comment">// 10 秒超时</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">DEFAULT_MAX_RETRIES</span> = <span class="hljs-number">5</span>         <span class="hljs-comment">// 最多 5 次重试</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">POLLING_INTERVAL_MS</span> = <span class="hljs-number">3600000</span>   <span class="hljs-comment">// 每小时后台轮询</span>
+</code></pre>
+<p>获取生命周期实现了 <strong>stale-while-revalidate</strong> 语义：</p>
+<ol>
+<li><strong>启动时缓存优先</strong>：有磁盘缓存则立即应用</li>
+<li><strong>后台获取</strong>：5 次指数退避重试</li>
+<li><strong>ETag 缓存</strong>：SHA256 校验和支持 HTTP 304</li>
+<li><strong>每小时轮询</strong>：后台定时检查设置变更</li>
+<li><strong>失败开放</strong>：所有获取失败则继续使用陈旧缓存</li>
+</ol>
+<h3>7.2 "接受或退出"对话框</h3>
+<p>当远程设置包含"危险"变更时，出现<strong>阻塞式安全对话框</strong>：</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 源码: src/services/remoteManagedSettings/securityCheck.tsx:67-73</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">handleSecurityCheckResult</span>(<span class="hljs-params"><span class="hljs-attr">result</span>: <span class="hljs-title class_">SecurityCheckResult</span></span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-keyword">if</span> (result === <span class="hljs-string">'rejected'</span>) {
+    <span class="hljs-title function_">gracefulShutdownSync</span>(<span class="hljs-number">1</span>)   <span class="hljs-comment">// 退出码 1 —— 进程终止</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+}
+</code></pre>
+<p>用户只有两个选择：接受新设置，或进程以退出码 1 终止。没有"稍后再说"选项。在非交互模式（CI/CD）下，安全检查被完全跳过——危险设置静默应用。</p>
+<h3>7.3 六大紧急开关</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>开关</th><th>机制</th><th>触发效果</th></tr></thead><tbody><tr><td>1</td><td><strong>权限体系旁路</strong></td><td><code>bypassPermissionsKillswitch.ts</code></td><td>禁用整个权限系统</td></tr><tr><td>2</td><td><strong>自动模式断路器</strong></td><td><code>autoModeDenials.ts</code></td><td>紧急中断自主执行</td></tr><tr><td>3</td><td><strong>快速模式(Penguin)</strong></td><td><code>tengu_marble_sandcastle</code> + API</td><td>切换到更便宜的模型</td></tr><tr><td>4</td><td><strong>分析通道</strong></td><td><code>tengu_frond_boric</code></td><td>禁用 Datadog/1P 日志</td></tr><tr><td>5</td><td><strong>代理团队</strong></td><td><code>tengu_amber_flint</code></td><td>门控多代理协作</td></tr><tr><td>6</td><td><strong>语音模式</strong></td><td><code>tengu_amber_quartz_disabled</code></td><td>紧急禁用语音输入</td></tr></tbody></table>
+<h3>7.4 Penguin 模式（快速模式远程控制）</h3>
+<p>Anthropic 可远程将用户从昂贵模型切换到更便宜的替代品。结合 GrowthBook A/B 分配和独立紧急开关，用户请求所使用的模型可在会话中途根据 Anthropic 的运营决策而改变。</p>
+<blockquote>
+<p>→ 交叉引用: <a href="16-infrastructure-config">第 16 集: 基础设施</a> 了解五层设置合并系统</p>
+</blockquote>
+<hr>
+<h2>8. 内外有别的双层体验</h2>
+<p><strong>源码坐标</strong>: <code>src/constants/prompts.ts</code>、<code>src/tools/</code>、<code>src/commands.ts</code></p>
+<p>Anthropic 员工与外部用户体验着根本不同版本的 Claude Code。差异横跨提示词、工具、命令和模型行为。</p>
+<h3>8.1 提示词差异：六个维度</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>维度</th><th>外部用户</th><th>Anthropic 员工 (<code>ant</code>)</th></tr></thead><tbody><tr><td><strong>输出风格</strong></td><td>标准格式</td><td>GrowthBook 覆盖</td></tr><tr><td><strong>错误声称缓解</strong></td><td>Capybara v8 补丁</td><td>同上 + 数值锚定提示</td></tr><tr><td><strong>验证机制</strong></td><td>标准验证</td><td>验证代理 + 彻底性反制</td></tr><tr><td><strong>注释控制</strong></td><td>标准指导</td><td>专用反过度注释补丁</td></tr><tr><td><strong>主动纠错</strong></td><td>标准行为</td><td>增强型"果断性反制"(PR #24302)</td></tr><tr><td><strong>模型感知</strong></td><td>无法看到代号</td><td>可见内部模型名 + 调试工具</td></tr></tbody></table>
+<h3>8.2 内部专用工具（5 个）</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>工具</th><th>用途</th><th>门控层级</th></tr></thead><tbody><tr><td><strong>REPLTool</strong></td><td>内联代码执行</td><td>第 2 层（环境变量）</td></tr><tr><td><strong>TungstenTool</strong></td><td>内部调试诊断</td><td>第 2 层</td></tr><tr><td><strong>VerifyPlanTool</strong></td><td>计划验证代理</td><td>第 3 层（<code>tengu_hive_evidence</code>）</td></tr><tr><td><strong>SuggestBackgroundPR</strong></td><td>后台 PR 建议</td><td>第 1 层（<code>feature()</code>）</td></tr><tr><td><strong>Nested Agent</strong></td><td>进程内子代理</td><td>第 2 层</td></tr></tbody></table>
+<h3>8.3 隐藏命令（7 个）</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>用途</th><th>访问权限</th></tr></thead><tbody><tr><td><code>/btw</code></td><td>旁白注入</td><td>仅内部</td></tr><tr><td><code>/stickers</code></td><td>终端贴纸/艺术</td><td>可解锁</td></tr><tr><td><code>/thinkback</code></td><td>回放上次思维链</td><td>调试模式</td></tr><tr><td><code>/effort</code></td><td>调整思维深度</td><td>仅内部</td></tr><tr><td><code>/buddy</code></td><td>召唤虚拟伙伴（见 §9）</td><td><code>feature()</code> 门控</td></tr><tr><td><code>/good-claude</code></td><td>正向强化</td><td>仅内部</td></tr><tr><td><code>/bughunter</code></td><td>激活 Bug 猎手模式</td><td>仅内部</td></tr></tbody></table>
+<hr>
+<h2>9. 未来路线图：源码中的证据</h2>
+<p><strong>源码坐标</strong>: <code>src/tasks/DreamTask/</code>、<code>src/buddy/</code>、<code>src/voice/</code>、<code>src/coordinator/</code></p>
+<p>源码包含大量编译时门控但架构上已完整的功能实现。</p>
+<h3>9.1 Numbat：下一代模型</h3>
+<p><code>prompts.ts</code> 中的 <code>@[MODEL LAUNCH]</code> 标记引用了 <code>opus-4-7</code> 和 <code>sonnet-4-8</code> 等模型 ID，强烈暗示 Numbat 是下一代主要模型家族的代号。</p>
+<h3>9.2 KAIROS：自主代理模式</h3>
+<p><code>feature('KAIROS')</code> 背后存在完整的自主执行模式——基于心跳的 tick 驱动、焦点感知、OS 推送通知、GitHub PR 订阅、定时休眠/唤醒。</p>
+<h3>9.3 语音模式</h3>
+<p><code>feature('VOICE_MODE')</code> 背后：按键说话、WebSocket 实时语音转文字（21KB）、mTLS 认证、OAuth 限制、技术术语自定义词表。</p>
+<h3>9.4 Buddy 虚拟伙伴系统</h3>
+<p>最具趣味性的功能——完整的虚拟宠物系统（6 个文件，~76KB）：</p>
+<p><strong>18 个物种</strong>（全部通过 <code>String.fromCharCode</code> 编码以规避代号扫描器）：</p>
+<pre class="ascii-diagram"><code>duck, goose, blob, cat, dragon, octopus, owl, penguin,
+turtle, snail, ghost, axolotl, capybara, cactus, robot,
+rabbit, mushroom, chonk
+</code></pre>
+<p><strong>5 个稀有度等级</strong>（加权分布）：Common(60%) → Uncommon(25%) → Rare(10%) → Epic(4%) → Legendary(1%)</p>
+<p><strong>闪光变体</strong>：~1% 概率，由 <code>hash(userId)</code> 确定性决定，防止用户"刷号"。</p>
+<p>每个伙伴有<strong>灵魂</strong>（模型生成的名字和性格，存储在配置中）和<strong>骨架</strong>（物种、稀有度、属性，每次读取从 <code>hash(userId)</code> 重新生成）——确保用户无法通过编辑配置文件升级到传说级。</p>
+<h3>9.5 未发布工具（11 个）</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>工具</th><th>用途</th><th>门控</th></tr></thead><tbody><tr><td>SleepTool</td><td>定时暂停/恢复</td><td><code>feature('KAIROS')</code></td></tr><tr><td>PushNotificationTool</td><td>OS 通知推送</td><td><code>feature('KAIROS')</code></td></tr><tr><td>SubscribePRTool</td><td>GitHub PR 订阅</td><td><code>feature('KAIROS')</code></td></tr><tr><td>DaemonTool</td><td>后台进程管理</td><td><code>feature('DAEMON')</code></td></tr><tr><td>CoordinatorTool</td><td>多代理协调</td><td><code>feature('COORDINATOR_MODE')</code></td></tr><tr><td>MorerightTool</td><td>上下文窗口扩展</td><td><code>feature('MORERIGHT')</code></td></tr><tr><td>DreamConsolidationTool</td><td>后台记忆整合</td><td><code>feature('AUTO_DREAM')</code></td></tr><tr><td>DxtTool</td><td>DXT 插件打包</td><td><code>feature('DXT')</code></td></tr><tr><td>UltraplanTool</td><td>高级多步规划</td><td><code>feature('ULTRAPLAN')</code></td></tr><tr><td>VoiceInputTool</td><td>语音转文字输入</td><td><code>feature('VOICE_MODE')</code></td></tr><tr><td>BuddyTool</td><td>虚拟伙伴召唤</td><td><code>feature('BUDDY')</code></td></tr></tbody></table>
+<h3>9.6 三大战略方向</h3>
+<p>未发布功能聚集为三个清晰的战略方向：</p>
+<ol>
+<li><strong>自主代理</strong>（KAIROS + Dream + Coordinator）：从被动工具迈向主动代理</li>
+<li><strong>多模态输入</strong>（Voice + Computer Use 增强）：突破纯文本交互</li>
+<li><strong>社交/情感</strong>（Buddy + Stickers + Team Memory）：创建参与循环和团队协作</li>
+</ol>
+<p>这些方向表明 Claude Code 的长期愿景不是"更好的代码补全"，而是"具备社交功能的自主软件工程代理"。</p>
+<hr>
+<h2>源码坐标汇总</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>组件</th><th>关键文件</th><th align="center">规模</th></tr></thead><tbody><tr><td>分析管道</td><td><code>services/analytics/</code>（9 个文件）</td><td align="center">148KB</td></tr><tr><td>卧底模式</td><td><code>utils/undercover.ts</code></td><td align="center">3.7KB</td></tr><tr><td>署名系统</td><td><code>utils/attribution.ts</code> + <code>commitAttribution.ts</code></td><td align="center">44KB</td></tr><tr><td>远程设置</td><td><code>services/remoteManagedSettings/</code>（5 个文件）</td><td align="center">43KB</td></tr><tr><td>快速模式</td><td><code>utils/fastMode.ts</code></td><td align="center">18KB</td></tr><tr><td>GrowthBook</td><td><code>services/analytics/growthbook.ts</code></td><td align="center">41KB</td></tr><tr><td>Buddy 系统</td><td><code>buddy/</code>（6 个文件）</td><td align="center">76KB</td></tr><tr><td>语音系统</td><td><code>voice/</code> + <code>services/voice*.ts</code></td><td align="center">45KB</td></tr></tbody></table>
+<hr>
+<h2>可复用设计模式</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>模式</th><th>应用场景</th><th>要点</th></tr></thead><tbody><tr><td><strong>双通道分析</strong></td><td>1P + Datadog</td><td>内外分析通道使用不同保留策略</td></tr><tr><td><strong>基数缩减</strong></td><td>用户分桶、MCP 归一化</td><td>哈希分桶 (mod N) 实现近似唯一用户计数</td></tr><tr><td><strong>热插拔重配置</strong></td><td>1P 日志器重建</td><td>置空守卫 → 刷新 → 切换 → 后台关闭</td></tr><tr><td><strong>失败时隐匿</strong></td><td>卧底模式</td><td>默认最大程度隐匿；需显式白名单才暴露</td></tr><tr><td><strong>接受或退出</strong></td><td>安全对话框</td><td>无"稍后再说"防止无限期推迟安全决策</td></tr><tr><td><strong>三层功能门控</strong></td><td>DCE + env + GrowthBook</td><td>编译时、构建时、运行时三层纵深防御</td></tr><tr><td><strong>代号碰撞规避</strong></td><td>Buddy 物种编码</td><td><code>String.fromCharCode</code> 防止静态扫描器误报</td></tr><tr><td><strong>陈旧时仍验证</strong></td><td>远程设置</td><td>缓存优先启动 + 后台刷新最小化用户可感知延迟</td></tr></tbody></table>
+<hr>
+<blockquote>
+<p><strong>下一集</strong>: <a href="00-overview">第 00 集: 总纲 — 三万英尺高空</a></p>
+<p><strong>上一集</strong>: <a href="16-infrastructure-config">第 16 集: 基础设施与配置</a></p>
+</blockquote></div></article><nav class="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800"><a class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/zh/advanced/16-infrastructure-config/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left transition-transform group-hover:-translate-x-1" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg><span>EP<!-- -->16<!-- --> <!-- -->基础设施与配置</span></a><div></div></nav></div><!--$--><!--/$--></div></div></main><script src="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n3:I[37457,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n5:I[95914,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\"],\"Sidebar\"]\n7:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"OutletBoundary\"]\n8:\"$Sreact.suspense\"\na:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"MetadataBoundary\"]\ne:I[68027,[],\"default\"]\n:HL[\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"kOMToiePwU79Kzn0fZt4S\",\"c\":[\"\",\"zh\",\"advanced\",\"17-telemetry-privacy-operations\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[[\"locale\",\"zh\",\"d\"],{\"children\":[\"(learn)\",{\"children\":[\"advanced\",{\"children\":[[\"chapter\",\"17-telemetry-privacy-operations\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true]}],[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"div\",null,{\"className\":\"flex gap-8\",\"children\":[[\"$\",\"$L5\",null,{}],[\"$\",\"div\",null,{\"className\":\"min-w-0 flex-1\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@9\"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[33499,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"I18nProvider\"]\n10:I[45872,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"Header\"]\n11:I[22016,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"\"]\n4:[\"$\",\"html\",null,{\"lang\":\"zh\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n          (function() {\\n            var theme = localStorage.getItem('theme');\\n            if (theme === 'dark' || (!theme \u0026\u0026 window.matchMedia('(prefers-color-scheme: dark)').matches)) {\\n              document.documentElement.classList.add('dark');\\n            }\\n          })();\\n        \"}}]}],[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased\",\"children\":[\"$\",\"$Lf\",null,{\"locale\":\"zh\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-4xl space-y-8 py-4\",\"children\":[[\"$\",\"header\",null,{\"className\":\"rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/zh/curriculum\",\"className\":\"inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"课程地图\"]}],[\"$\",\"div\",null,{\"className\":\"mt-4 flex flex-wrap items-center gap-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800\",\"children\":[\"EP\",\"17\"]}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold text-zinc-950 dark:text-zinc-50\",\"children\":\"遥测与运营\"}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"隐私、运营控制、模型路由和可观测性\"}]]}],[\"$\",\"section\",null,{\"className\":\"rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-start justify-between gap-3\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300\",\"children\":\"Prompt 补充材料\"}],[\"$\",\"h2\",null,{\"className\":\"mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50\",\"children\":\"Operations, telemetry, budgets, and autonomous monitors\"}],[\"$\",\"p\",null,{\"className\":\"mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200\",\"children\":\"These prompts support the operational layer: what is monitored, summarized, budgeted, and blocked.\"}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":14,\"height\":14,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}],\"来源仓库\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70\",\"children\":\"这些条目是从 Claude Code npm 包抽取出的第三方 prompt reference，适合课堂对照阅读，不当作官方文档。\"}],[\"$\",\"div\",null,{\"className\":\"mt-4 grid gap-3 md:grid-cols-2\",\"children\":[[\"$\",\"a\",\"system-reminder-token-usage.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-reminder-token-usage.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[\"$L12\",\"$L13\",\"$L14\",\"$L15\",\"$L16\",\"$undefined\"]}],\"$L17\"]}],\"$L18\",\"$L19\"]}],\"$L1a\",\"$L1b\",\"$L1c\",\"$L1d\"]}]]}],\"$L1e\",\"$L1f\"]}]\n"])</script><script>self.__next_f.push([1,"20:I[19004,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"AdvancedDocRenderer\"]\n12:[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}]\n13:[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}]\n14:[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}]\n15:[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}]\n16:[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}]\n17:[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Token usage reminder\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-reminder-token-usage.md\"}]]}]\n18:[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Usage telemetry\"}]\n19:[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"A visible hook for token accounting.\"}]\n"])</script><script>self.__next_f.push([1,"1a:[\"$\",\"a\",\"system-reminder-usd-budget.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-reminder-usd-budget.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"USD budget reminder\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-reminder-usd-budget.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Budget control\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Shows cost as a prompt-visible operational constraint.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1b:[\"$\",\"a\",\"agent-prompt-background-agent-state-classifier.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-background-agent-state-classifier.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Background agent state classifier\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"agent-prompt-background-agent-state-classifier.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Operational state\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Classifies long-running background sessions as working, blocked, done, or failed.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1c:[\"$\",\"a\",\"agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Security monitor, first part\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"agent-prompt-security-monitor-for-autonomous-agent-actions-first-part.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Operational safety\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Useful for privacy and operational-control discussions.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1d:[\"$\",\"a\",\"system-prompt-insights-at-a-glance-summary.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-insights-at-a-glance-summary.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Insights at a glance\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-insights-at-a-glance-summary.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Usage insight\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Connects telemetry-like usage data to user-facing summaries.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1e:[\"$\",\"$L20\",null,{\"chapter\":\"17\"}]\n1f:[\"$\",\"nav\",null,{\"className\":\"flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/zh/advanced/16-infrastructure-config\",\"className\":\"group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left transition-transform group-hover:-translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],[\"$\",\"span\",null,{\"children\":[\"EP\",\"16\",\" \",\"基础设施与配置\"]}]]}],[\"$\",\"div\",null,{}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"21:I[27201,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"IconMark\"]\n9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Agent Coding Lesson\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"从 0 到 1 构建一个 nano Claude Code-like agent，每次只增加一个机制\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L21\",\"3\",{}]]\n"])</script></body></html>

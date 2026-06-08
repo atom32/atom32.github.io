@@ -1,0 +1,1435 @@
+<!DOCTYPE html><!--kOMToiePwU79Kzn0fZt4S--><html lang="en"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js"/><script src="/agent-coding-lesson/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/76fed9c17f51393e.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/7de9141b1af425c3.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/turbopack-8800d0fd815877b2.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/076aae518584b842.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js" async=""></script><title>Agent Coding Lesson</title><meta name="description" content="Build a nano Claude Code-like agent from 0 to 1, one mechanism at a time"/><link rel="icon" href="/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico" sizes="256x256" type="image/x-icon"/><script>
+          (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script><script src="/agent-coding-lesson/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm"><div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a class="text-lg font-bold" href="/agent-coding-lesson/en/">Agent Coding Lesson</a><nav class="hidden items-center gap-6 md:flex"><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/en/curriculum/">Curriculum</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/en/timeline/">Timeline</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/en/compare/">Compare</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/en/layers/">Layers</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/en/slides/s01/">Slides</a><div class="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5"><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">EN</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">中文</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">日本語</button></div><button class="rounded-md p-1.5 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Switch to dark mode"><span class="inline-block h-4 w-4"></span></button><a href="https://github.com/atom32/agent-coding-lesson" target="_blank" rel="noopener" class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Open project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a></nav><button class="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"><div class="flex gap-8"><nav class="hidden w-64 shrink-0 md:block"><div class="sticky top-[calc(3.5rem+2rem)] max-h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/curriculum/">Curriculum</a><div class="space-y-1"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/summary/">Summary</a><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/glossary/">Glossary</a></div><section class="space-y-5"><div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Lab lessons</div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Tools &amp; Execution</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s01/"><span class="font-mono text-xs">s01</span><span class="ml-1.5">The Agent Loop</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s02/"><span class="font-mono text-xs">s02</span><span class="ml-1.5">Tools</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Planning &amp; Coordination</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s03/"><span class="font-mono text-xs">s03</span><span class="ml-1.5">TodoWrite</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s04/"><span class="font-mono text-xs">s04</span><span class="ml-1.5">Subagents</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s05/"><span class="font-mono text-xs">s05</span><span class="ml-1.5">Skills</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s07/"><span class="font-mono text-xs">s07</span><span class="ml-1.5">Tasks</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-purple-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Memory Management</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s06/"><span class="font-mono text-xs">s06</span><span class="ml-1.5">Compact</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Concurrency</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s08/"><span class="font-mono text-xs">s08</span><span class="ml-1.5">Background Tasks</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-red-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Collaboration</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s09/"><span class="font-mono text-xs">s09</span><span class="ml-1.5">Agent Teams</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s10/"><span class="font-mono text-xs">s10</span><span class="ml-1.5">Team Protocols</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s11/"><span class="font-mono text-xs">s11</span><span class="ml-1.5">Autonomous Agents</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/s12/"><span class="font-mono text-xs">s12</span><span class="ml-1.5">Worktree + Task Isolation</span></a></li></ul></div></section><section><div class="mb-2 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">Production anatomy</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white" href="/agent-coding-lesson/en/advanced/00-overview/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->00</span><span class="ml-1.5">Architecture Overview</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/01-query-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->01</span><span class="ml-1.5">QueryEngine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/02-tool-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->02</span><span class="ml-1.5">Tool System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/03-coordinator/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->03</span><span class="ml-1.5">Coordinator</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/04-plugin-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->04</span><span class="ml-1.5">Plugin System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/05-hook-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->05</span><span class="ml-1.5">Hook System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/06-bash-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->06</span><span class="ml-1.5">Bash Engine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/07-permission-pipeline/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->07</span><span class="ml-1.5">Permission Pipeline</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/08-agent-swarms/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->08</span><span class="ml-1.5">Agent Swarms</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/09-session-persistence/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->09</span><span class="ml-1.5">Session Persistence</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/10-context-assembly/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->10</span><span class="ml-1.5">Context Assembly</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/11-compact-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->11</span><span class="ml-1.5">Compact System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/12-startup-bootstrap/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->12</span><span class="ml-1.5">Startup &amp; Bootstrap</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/13-bridge-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->13</span><span class="ml-1.5">Bridge System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/14-ui-state-management/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->14</span><span class="ml-1.5">UI State &amp; Rendering</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/15-services-api-layer/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->15</span><span class="ml-1.5">Services &amp; API Layer</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/16-infrastructure-config/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->16</span><span class="ml-1.5">Infrastructure &amp; Config</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/en/advanced/17-telemetry-privacy-operations/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->17</span><span class="ml-1.5">Telemetry &amp; Operations</span></a></li></ul></section></div></nav><div class="min-w-0 flex-1"><div class="mx-auto max-w-4xl space-y-8 py-4"><header class="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" href="/agent-coding-lesson/en/curriculum/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Course map</a><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800">EP<!-- -->00</span><h1 class="text-2xl font-bold text-zinc-950 dark:text-zinc-50">Architecture Overview</h1></div><p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">Six pillars of Claude Code as a production harness</p></header><section class="rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300">Prompt reference</p><h2 class="mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50">Prompt anatomy overview</h2><p class="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">Use these to show that the agent is assembled from many prompt fragments, not one magic system prompt.</p></div><a href="https://github.com/Piebald-AI/claude-code-system-prompts" target="_blank" rel="noopener" class="inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>Source repo</a></div><p class="mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70">Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.</p><div class="mt-4 grid gap-3 md:grid-cols-2"><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-harness-instructions.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Harness instructions</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-harness-instructions.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Core identity</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Shows the compact contract between markdown output, permissions, reminders, compaction, and tool use.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-doing-tasks-software-engineering-focus.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Software engineering focus</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-doing-tasks-software-engineering-focus.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Task framing</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Explains how generic user requests are interpreted as repository work inside the harness.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-communication-style.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Communication style</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-communication-style.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">User-facing layer</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Useful for discussing progress updates as a product surface, not just model personality.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-agent-usage-notes.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Agent tool usage notes</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">tool-description-agent-usage-notes.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Subagent contract</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Introduces the worker-return boundary and the trust-but-verify rule.</p></a></div></section><article class="py-4"><div class="prose-custom"><h1>00 — The Complete Architecture of Claude Code</h1>
+<blockquote class="hero-callout">
+</blockquote>
+<blockquote>
+<p><strong>What this document is.</strong> This is the capstone chapter of the <em>Claude Code Deep Dive</em> series — a micro-encyclopedia that distills 17 architectural episodes into a single, self-contained reference. Read it as a map before diving into individual chapters, or as a refresher after you've explored them all.</p>
+<p><strong>What this document is not.</strong> It is not a replacement for the deep-dive episodes. Each section below is an <em>elevator pitch</em> — the 60-second version of a subsystem that may span 500–900 lines in its dedicated chapter.</p>
+</blockquote>
+<hr>
+<h2>Table of Contents</h2>
+<p><strong>Part I — Navigation</strong></p>
+<ul>
+<li><a href="#1-global-architecture-map">§1 Global Architecture Map</a></li>
+<li><a href="#2-episode-index-one-line-per-chapter">§2 Episode Index: One Line Per Chapter</a></li>
+<li><a href="#3-reading-order-six-cognitive-paths">§3 Reading Order: Six Cognitive Paths</a></li>
+</ul>
+<p><strong>Part II — Core Architecture at a Glance</strong></p>
+<ul>
+<li><a href="#4-harness-the-body-around-the-brain">§4 Harness: The Body Around the Brain</a></li>
+<li><a href="#5-the-core-loop-a-12-step-state-machine">§5 The Core Loop: A 12-Step State Machine</a></li>
+<li><a href="#6-tool-system-capabilities-as-contracts">§6 Tool System: Capabilities as Contracts</a></li>
+<li><a href="#7-context-management-the-scarcest-resource">§7 Context Management: The Scarcest Resource</a></li>
+<li><a href="#8-permission--security-the-foundation-not-the-ceiling">§8 Permission &#x26; Security: The Foundation, Not the Ceiling</a></li>
+<li><a href="#9-multi-agent-from-soloist-to-orchestra">§9 Multi-Agent: From Soloist to Orchestra</a></li>
+<li><a href="#10-skill--plugin-self-evolving-architecture">§10 Skill &#x26; Plugin: Self-Evolving Architecture</a></li>
+</ul>
+<p><strong>Part III — Engineering Excellence</strong></p>
+<ul>
+<li><a href="#11-seven-engineering-practices-worth-studying">§11 Seven Engineering Practices Worth Studying</a></li>
+</ul>
+<p><strong>Part IV — A Unique Perspective</strong></p>
+<ul>
+<li><a href="#12-first-person-view-how-i-actually-work">§12 First-Person View: How I Actually Work</a></li>
+</ul>
+<p><strong>Part V — Transferable Design Patterns</strong></p>
+<ul>
+<li><a href="#13-design-patterns-you-can-take-home">§13 Design Patterns You Can Take Home</a></li>
+</ul>
+<hr>
+<h1>Part I — Navigation</h1>
+<h2>§1 Global Architecture Map</h2>
+<p>Claude Code's power comes not from a single killer feature, but from <strong>six pillars working in concert</strong> — each one amplifying the others:</p>
+<pre class="ascii-diagram"><code>                        ┌─────────────────────────┐
+                        │     System Prompt        │
+                        │  (Identity + Rules +     │
+                        │   42+ Tool Descriptions) │
+                        └────────────┬────────────┘
+                                     │
+                  ┌──────────────────┼──────────────────┐
+                  │                  │                  │
+         ┌───────▼────────┐ ┌──────▼───────┐ ┌───────▼────────┐
+         │  Tool System   │ │  Query Loop  │ │    Context     │
+         │  (42+ tools,   │ │  (12-step    │ │  Management    │
+         │   30+ methods  │ │   state      │ │  (4-layer      │
+         │   per tool)    │ │   machine)   │ │   compression) │
+         └───────┬────────┘ └──────┬───────┘ └───────┬────────┘
+                  │                  │                  │
+                  └──────────────────┼──────────────────┘
+                                     │
+                  ┌──────────────────┼──────────────────┐
+                  │                  │                  │
+         ┌───────▼────────┐ ┌──────▼───────┐ ┌───────▼────────┐
+         │  Permission &#x26;  │ │  Multi-Agent │ │  Skill &#x26;       │
+         │  Security      │ │  Swarm       │ │  Plugin        │
+         │  (7-layer      │ │  (3 backends,│ │  (6 sources,   │
+         │   defense)     │ │   7 tasks)   │ │   MCP proto)   │
+         └────────────────┘ └──────────────┘ └────────────────┘
+</code></pre>
+<blockquote>
+<p>💡 <strong>Supplementary reading</strong>: <a href="/advanced-assets/claude-code-architecture.html">Detailed Architecture Diagram (Interactive HTML)</a> — Complete visualization with module boundaries, data flow, tech stack, and security boundaries</p>
+</blockquote>
+<p><strong>The data flow in one sentence:</strong></p>
+<pre class="ascii-diagram"><code>User Input → CLI (cli.tsx) → QueryEngine.query() → System Prompt Assembly
+  → Stream API Call → Tool Extraction → Permission Check → Tool Execution
+  → Result Injection → Continue/End Decision → Next Iteration or Response
+</code></pre>
+<p><strong>The six design philosophies that bind these pillars together:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>Philosophy</th><th>One-liner</th></tr></thead><tbody><tr><td>1</td><td><strong>LLM = Brain, Harness = Body</strong></td><td>The LLM reasons; the harness perceives, acts, remembers, and constrains</td></tr><tr><td>2</td><td><strong>Tools = Capability Boundary</strong></td><td>Claude can only do what its registered tools allow</td></tr><tr><td>3</td><td><strong>Context is the Scarcest Resource</strong></td><td>200K tokens sounds generous until a medium project fills it</td></tr><tr><td>4</td><td><strong>Zero-Trust Security</strong></td><td>Every tool call passes through multi-layer permission checks</td></tr><tr><td>5</td><td><strong>Loop Until Done</strong></td><td>Not request-response — <code>call → tools → results → repeat</code></td></tr><tr><td>6</td><td><strong>Extensibility Determines the Ceiling</strong></td><td>Skills, Plugins, MCP let capability grow without core changes</td></tr></tbody></table>
+<hr>
+<h2>§2 Episode Index: One Line Per Chapter</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>EP</th><th>Title</th><th>Elevator Pitch</th><th>Lines</th></tr></thead><tbody><tr><td>01</td><td><a href="01-query-engine">QueryEngine: The Brain</a></td><td>The <code>while(true)</code> loop that turns an LLM into an agent — 12-step pipeline, AsyncGenerator streaming, error recovery</td><td>711</td></tr><tr><td>02</td><td><a href="02-tool-system">Tool System: 42 Modules, One Interface</a></td><td>30+ method contract per tool, Schema-driven registration, three-layer filtering, streaming parallel execution</td><td>665</td></tr><tr><td>03</td><td><a href="03-coordinator">Multi-Agent Coordinator</a></td><td>tmux/iTerm2/in-process backends, AsyncLocalStorage isolation, automatic environment detection</td><td>342</td></tr><tr><td>04</td><td><a href="04-plugin-system">Plugin System: Full Lifecycle</a></td><td>Plugin = Skills + Hooks + MCP Servers; 6 skill sources, background install reconciliation</td><td>548</td></tr><tr><td>05</td><td><a href="05-hook-system">Hook System: 20 Event Types</a></td><td>PreToolUse / PostToolUse / Notification hooks, MCP transport, veto &#x26; mutation semantics</td><td>299</td></tr><tr><td>06</td><td><a href="06-bash-engine">Bash Engine: Sandboxes &#x26; Pipelines</a></td><td>6-layer defense-in-depth, tree-sitter AST parsing, macOS Seatbelt sandbox</td><td>458</td></tr><tr><td>07</td><td><a href="07-permission-pipeline">Permission Pipeline: Rules to Kernel</a></td><td>7 rule sources, Bash AST security, speculative YOLO classifier, OAuth 2.0 PKCE</td><td>619</td></tr><tr><td>08</td><td><a href="08-agent-swarms">Agent Swarms: Team Coordination</a></td><td>7 TaskState variants, SendMessage protocol, DreamTask memory consolidation, UltraPlan</td><td>503</td></tr><tr><td>09</td><td><a href="09-session-persistence">Session Persistence</a></td><td>JSONL append-only storage, resume/fork/search, cross-session memory</td><td>411</td></tr><tr><td>10</td><td><a href="10-context-assembly">Context Assembly</a></td><td>System prompt layering, token budget allocation, dynamic attachments, slash commands</td><td>473</td></tr><tr><td>11</td><td><a href="11-compact-system">Compact System</a></td><td>4-layer compression (micro → snip → auto → reactive), circuit breakers, prompt-cache sharing</td><td>372</td></tr><tr><td>12</td><td><a href="12-startup-bootstrap">Startup &#x26; Bootstrap</a></td><td>Import-gap parallelism, fast-path dispatch, memoized init, <code>state.ts</code> leaf-module pattern</td><td>393</td></tr><tr><td>13</td><td><a href="13-bridge-system">Bridge System</a></td><td>CLI ↔ IDE WebSocket bridge, 3 spawn modes, Chrome extension integration</td><td>346</td></tr><tr><td>14</td><td><a href="14-ui-state-management">UI &#x26; State Management</a></td><td>Forked Ink + React 19, W3C event model in terminal, 35-line store, Vim mode FSM</td><td>980</td></tr><tr><td>15</td><td><a href="15-services-api-layer">Services &#x26; API Layer</a></td><td>queryModel() 700-line core, multi-provider factory, SSE stream pipeline, retry engine</td><td>691</td></tr><tr><td>16</td><td><a href="16-infrastructure-config">Infrastructure &#x26; Config</a></td><td>Bootstrap singleton, 5-layer settings merge, secure storage, CLAUDE.md memory system</td><td>876</td></tr></tbody></table>
+<blockquote>
+<p><strong>Total</strong>: ~8,687 lines of architectural analysis across 16 deep-dive episodes + this overview.</p>
+</blockquote>
+<hr>
+<h2>§3 Reading Order: Six Cognitive Paths</h2>
+<p>Not everyone should read these episodes in numerical order. Here are six paths optimized for different goals:</p>
+<p><img src="/advanced-assets/00-overview.svg" alt="00 overview"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Path</th><th>Name</th><th>Best For</th><th>Episodes</th></tr></thead><tbody><tr><td>🟢 A</td><td><strong>Core Loop</strong></td><td>First-time readers</td><td>00 → 12 → 01 → 02</td></tr><tr><td>🔵 B</td><td><strong>Security &#x26; Resources</strong></td><td>Security engineers, cost optimizers</td><td>→ 06 → 07 → 10 → 11</td></tr><tr><td>🟣 C</td><td><strong>Collaboration &#x26; Extension</strong></td><td>Plugin developers, multi-agent builders</td><td>→ 03 → 08 → 04 → 05</td></tr><tr><td>🟠 D</td><td><strong>Infrastructure</strong></td><td>Backend engineers, platform teams</td><td>→ 15 → 16 → 09</td></tr><tr><td>🔴 E</td><td><strong>Experience Layer</strong></td><td>UI developers, IDE integrators</td><td>→ 13 → 14</td></tr><tr><td>🟡 F</td><td><strong>The Dark Side</strong></td><td>Privacy researchers, ops engineers</td><td>→ 17</td></tr></tbody></table>
+<blockquote>
+<p><strong>Minimum viable reading</strong>: Path A alone (4 episodes, ~2,100 lines) gives you 60% of the architectural understanding. Add Path B for 85%. Path F is a standalone capstone — readable after any path to understand the production telemetry, model codename concealment, and remote operational control systems.</p>
+</blockquote>
+<hr>
+<h1>Part II — Core Architecture at a Glance</h1>
+<blockquote>
+<p>Each section below is an <em>elevator pitch</em> — the essential insight of a subsystem in under 80 lines. Follow the "→ Deep dive" link at the end for the full episode.</p>
+</blockquote>
+<h2>§4 Harness: The Body Around the Brain</h2>
+<p>The LLM is the brain. The <em>harness</em> is everything else — the runtime infrastructure that gives the brain perception, action, memory, and safety:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Capability</th><th>Implementation</th><th>Brain's View</th></tr></thead><tbody><tr><td><strong>Perceive files</strong></td><td>FileReadTool, GlobTool, GrepTool</td><td>"I can see the codebase"</td></tr><tr><td><strong>Modify code</strong></td><td>FileEditTool, FileWriteTool</td><td>"I can change things"</td></tr><tr><td><strong>Execute commands</strong></td><td>BashTool (sandboxed)</td><td>"I can run and test"</td></tr><tr><td><strong>Search the web</strong></td><td>WebSearchTool, WebFetchTool</td><td>"I can look things up"</td></tr><tr><td><strong>Interact with user</strong></td><td>AskUserQuestionTool, permission dialogs</td><td>"I can ask questions"</td></tr><tr><td><strong>Dispatch work</strong></td><td>AgentTool, TeamCreate, SendMessage</td><td>"I can delegate"</td></tr><tr><td><strong>Remember</strong></td><td>CLAUDE.md, memdir, auto-memory</td><td>"I have long-term memory"</td></tr><tr><td><strong>Extend ability</strong></td><td>MCPTool, SkillTool, Plugin system</td><td>"I can learn new tricks"</td></tr></tbody></table>
+<p><strong>The System Prompt</strong> is the harness's most critical artifact — not a simple "you are an AI", but a layered construction:</p>
+<pre class="ascii-diagram"><code>System Prompt Construction (by token priority):
+  1. Core identity &#x26; rules            ← Who I am, what I can/cannot do
+  2. Tool descriptions (42+ tools)    ← ~10K+ tokens of capability definitions
+  3. Git status &#x26; project context     ← Current branch, recent commits
+  4. CLAUDE.md content                ← Project-specific instructions
+  5. User/enterprise rules            ← Preferences, org policies
+  6. Dynamic attachments              ← Skill discovery, memory injection, MCP resources
+</code></pre>
+<p><strong>Startup optimization</strong> is a millisecond-level battle. The <code>main.tsx</code> entry point exploits ES module evaluation order to run I/O operations <em>during</em> import resolution — a technique called <strong>import-gap parallelism</strong>:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/main.tsx (conceptual)</span>
+<span class="hljs-keyword">import</span> { profileCheckpoint } <span class="hljs-keyword">from</span> <span class="hljs-string">'./utils/startupProfiler.js'</span>
+<span class="hljs-title function_">profileCheckpoint</span>(<span class="hljs-string">'main_tsx_entry'</span>)
+
+<span class="hljs-keyword">import</span> { startMdmRawRead } <span class="hljs-keyword">from</span> <span class="hljs-string">'./utils/settings/mdm/rawRead.js'</span>
+<span class="hljs-title function_">startMdmRawRead</span>()                    <span class="hljs-comment">// ← MDM subprocess starts NOW</span>
+
+<span class="hljs-keyword">import</span> { startKeychainPrefetch } <span class="hljs-keyword">from</span> <span class="hljs-string">'./utils/secureStorage/keychainPrefetch.js'</span>
+<span class="hljs-title function_">startKeychainPrefetch</span>()              <span class="hljs-comment">// ← Keychain read starts NOW</span>
+
+<span class="hljs-comment">// Next ~135ms of import evaluation = FREE parallel window</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">Command</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">'@commander-js/extra-typings'</span>
+<span class="hljs-comment">// ... more imports while I/O completes in background</span>
+</code></pre>
+<blockquote>
+<p>→ Deep dive: <a href="12-startup-bootstrap">Episode 12: Startup &#x26; Bootstrap</a> | <a href="16-infrastructure-config">Episode 16: Infrastructure</a></p>
+</blockquote>
+<hr>
+<h2>§5 The Core Loop: A 12-Step State Machine</h2>
+<p>Claude Code is not "send a prompt, get a response." It is a <strong>while(true) loop</strong> — the core amplifier that turns a single-shot LLM into an iterative agent:</p>
+<pre class="ascii-diagram"><code>User: "Fix the bug in login.tsx"
+  │
+  ▼
+QueryEngine.submitMessage()
+  │
+  ▼
+query() while(true) {
+  ├─→ Context compression checks (steps 1-6)
+  ├─→ callModel() — streaming API call (step 7)
+  ├─→ StreamingToolExecutor — parallel tool execution (step 8, concurrent with 7!)
+  ├─→ Permission check → execute tool → collect result
+  ├─→ Inject tool results into message history
+  ├─→ Check termination (end_turn? budget exceeded?)
+  └─→ continue with enriched context
+}
+</code></pre>
+<p><strong>The 12 steps in detail:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Step</th><th>Name</th><th>Purpose</th></tr></thead><tbody><tr><td>1</td><td><code>applyToolResultBudget</code></td><td>Trim oversized tool results</td></tr><tr><td>2</td><td><code>snipCompact</code></td><td>Truncate oldest conversation turns</td></tr><tr><td>3</td><td><code>microcompact</code></td><td>Clear stale tool outputs (time-decay)</td></tr><tr><td>4</td><td><code>contextCollapse</code></td><td>Fold redundant context</td></tr><tr><td>5</td><td><code>autocompact</code></td><td>AI-generated conversation summary</td></tr><tr><td>6</td><td><code>tokenWarningState</code></td><td>Budget check &#x26; user warning</td></tr><tr><td>7</td><td><code>callModel</code></td><td>Streaming API call</td></tr><tr><td>8</td><td><code>StreamingToolExecutor</code></td><td>Execute tools <em>as they stream in</em></td></tr><tr><td>9</td><td><code>stopHooks</code></td><td>Evaluate stop conditions</td></tr><tr><td>10</td><td><code>tokenBudget check</code></td><td>Hard budget enforcement</td></tr><tr><td>11</td><td><code>getAttachmentMessages</code></td><td>Inject memory, skill discovery</td></tr><tr><td>12</td><td><code>state transition</code></td><td>Update state, continue loop</td></tr></tbody></table>
+<p><strong>Why AsyncGenerator?</strong> The entire loop uses <code>async *query()</code> — providing natural backpressure (the UI controls the pace), lazy evaluation, composability (generators wrap generators), and cancellation (<code>return()</code> kills the chain).</p>
+<p><strong>Error recovery is not optional:</strong></p>
+<pre class="ascii-diagram"><code>429 (rate limit)      → exponential backoff, 3 retries
+529 (overloaded)      → fallback to Sonnet model
+prompt-too-long       → reactive compact (emergency compression)
+max_output_tokens hit → auto-escalate: 8K → 16K → 32K → 64K
+stream disconnect     → disable keep-alive, 90s watchdog abort
+</code></pre>
+<blockquote>
+<p>→ Deep dive: <a href="01-query-engine">Episode 01: QueryEngine</a></p>
+</blockquote>
+<hr>
+<h2>§6 Tool System: Capabilities as Contracts</h2>
+<p>Every tool implements a <strong>30+ method contract</strong> — not just <code>execute(input)</code>, but a comprehensive interface covering identity, execution, security, concurrency, and UI rendering:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/Tool.ts (simplified)</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Tool</span> = {
+  <span class="hljs-comment">// Identity</span>
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>
+  <span class="hljs-attr">inputSchema</span>: <span class="hljs-title class_">ZodSchema</span>          <span class="hljs-comment">// Zod → JSON Schema → API tool definition</span>
+  <span class="hljs-title function_">description</span>(input): <span class="hljs-built_in">string</span>      <span class="hljs-comment">// Dynamic (can vary by input)</span>
+
+  <span class="hljs-comment">// Execution</span>
+  <span class="hljs-title function_">call</span>(args, context): <span class="hljs-title class_">ToolResult</span>
+
+  <span class="hljs-comment">// Security (every tool must declare its nature)</span>
+  <span class="hljs-title function_">checkPermissions</span>(input): <span class="hljs-title class_">PermissionResult</span>
+  <span class="hljs-title function_">validateInput</span>(input): <span class="hljs-title class_">ValidationResult</span>
+  <span class="hljs-title function_">isReadOnly</span>(input): <span class="hljs-built_in">boolean</span>       <span class="hljs-comment">// default: false (fail-closed)</span>
+  <span class="hljs-title function_">isDestructive</span>(input): <span class="hljs-built_in">boolean</span>
+
+  <span class="hljs-comment">// Concurrency</span>
+  <span class="hljs-title function_">isConcurrencySafe</span>(input): <span class="hljs-built_in">boolean</span>  <span class="hljs-comment">// default: false (conservative)</span>
+
+  <span class="hljs-comment">// UI rendering</span>
+  <span class="hljs-title function_">renderToolUseMessage</span>(input): <span class="hljs-title class_">ReactNode</span>
+  <span class="hljs-title function_">renderToolResultMessage</span>(result): <span class="hljs-title class_">ReactNode</span>
+
+  <span class="hljs-comment">// Deferred loading</span>
+  <span class="hljs-attr">shouldDefer</span>?: <span class="hljs-built_in">boolean</span>            <span class="hljs-comment">// Loaded on-demand via ToolSearchTool</span>
+  <span class="hljs-attr">searchHint</span>?: <span class="hljs-built_in">string</span>
+}
+</code></pre>
+<p><strong>Three-layer tool filtering</strong> ensures the model only sees tools appropriate for the current context:</p>
+<pre class="ascii-diagram"><code>getAllBaseTools()
+  ├── Feature gate: feature('AGENT_TRIGGERS') ? cronTools : []
+  ├── Environment gate: process.env.USER_TYPE === 'ant' ? [ConfigTool] : []
+  └── Capability gate: isTodoV2Enabled() ? [TaskTools] : []
+       │
+       ▼
+filterToolsByDenyRules()         ← Enterprise policy can block specific tools
+       │
+       ▼
+isEnabled() per-tool filter      ← Tool's own enable condition
+       │
+       ▼
+assembleToolPool()               ← Merge MCP tools, deduplicate (built-in wins)
+       │                         ← STABLE SORT for prompt cache key stability
+       ▼
+Model-visible tool list
+</code></pre>
+<p><strong>The BashTool</strong> is the most complex tool (~156K of code) because it wields the most dangerous capability — arbitrary shell execution. It employs 6 layers of defense-in-depth, from safe-wrapper stripping through tree-sitter AST parsing to macOS Seatbelt OS-level sandboxing.</p>
+<blockquote>
+<p>→ Deep dive: <a href="02-tool-system">Episode 02: Tool System</a> | <a href="06-bash-engine">Episode 06: Bash Engine</a></p>
+</blockquote>
+<hr>
+<h2>§7 Context Management: The Scarcest Resource</h2>
+<p>A typical Claude Code session consumes context like this:</p>
+<pre class="ascii-diagram"><code>200K token context window
+  - System Prompt:           ~5-15K tokens (tool descriptions dominate)
+  - CLAUDE.md + project ctx: ~2-5K tokens
+  - Conversation history:    ~50-150K tokens (grows with each turn)
+  - Tool results:            ~20-100K tokens (one large file = 10K+)
+  - Reserved for output:     ~8-64K tokens
+  ─────────────────────────
+  = Almost always running near capacity
+</code></pre>
+<p><strong>Four-layer compression keeps the system alive:</strong></p>
+<pre class="ascii-diagram"><code>┌────────────────────────────────────────────────────────────┐
+│ Layer 0: API-side context_management                       │
+│   Server auto-clears old tool results and thinking blocks  │
+│   Zero client overhead — fires first                       │
+├────────────────────────────────────────────────────────────┤
+│ Layer 1: microcompact                                      │
+│   Time-decay: old tool results → "[content cleared]"       │
+│   Preserves most recent 40K token window                   │
+├────────────────────────────────────────────────────────────┤
+│ Layer 2: snipCompact                                       │
+│   Truncate oldest conversation turns entirely              │
+│   Fastest, but loses the most context                      │
+├────────────────────────────────────────────────────────────┤
+│ Layer 3: autocompact                                       │
+│   Fork a sub-agent to generate conversation summary        │
+│   Shares prompt cache with main session (cost efficient)   │
+│   Circuit breaker: 3 consecutive failures → stop trying    │
+├────────────────────────────────────────────────────────────┤
+│ Layer 4: reactiveCompact                                   │
+│   Triggered ONLY when API returns prompt-too-long          │
+│   Last resort — emergency compression                      │
+└────────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Token estimation uses three precision levels</strong> — rough (<code>bytes/4</code>, zero-cost), proxy (Haiku model <code>usage.input_tokens</code>, cheap), and exact (<code>countTokens</code> API, precise but slow). The system escalates only when needed.</p>
+<p><strong>Prompt cache is the invisible performance multiplier.</strong> In a 100-turn conversation, the system prompt is sent 100 times. Three-tier caching (ephemeral 5min / 1h TTL / global scope) with <strong>beta-header latching</strong> (once activated, never deactivated mid-session) keeps cache-key stability and avoids the 12× cost penalty of a cache miss.</p>
+<blockquote>
+<p>→ Deep dive: <a href="10-context-assembly">Episode 10: Context Assembly</a> | <a href="11-compact-system">Episode 11: Compact System</a></p>
+</blockquote>
+<hr>
+<h2>§8 Permission &#x26; Security: The Foundation, Not the Ceiling</h2>
+<p>Security in Claude Code is <strong>defense-in-depth</strong> — every layer assumes the previous one was bypassed:</p>
+<pre class="ascii-diagram"><code>User/LLM produces a tool call
+  │
+  ▼
+┌─ Layer 1: Tool-level validation ──────────────────────┐
+│  Zod schema validation + validateInput()              │
+│  isReadOnly() / isDestructive() declarations          │
+├─ Layer 2: Permission rule matching ───────────────────┤
+│  7 sources merged by priority:                        │
+│    policySettings (enterprise, unoverridable)         │
+│    → localSettings → userSettings → projectSettings   │
+│    → session → cliArg → command                       │
+│  Result: allow / deny / ask                           │
+├─ Layer 3: Bash-specific security ─────────────────────┤
+│  stripSafeWrappers() — unwrap timeout/nohup/nice      │
+│  23 injection checks ($(), ${}, Unicode whitespace)   │
+│  tree-sitter AST parsing (fail-closed on parse error) │
+│  Read-only command whitelist (flag-level granularity)  │
+│  Path boundary validation                             │
+├─ Layer 4: Speculative YOLO classifier ────────────────┤
+│  AI side-query: "is this command safe?"               │
+│  Starts speculatively, 2s timeout → default path      │
+│  3 consecutive rejections → downgrade to interactive   │
+├─ Layer 5: User confirmation dialog ───────────────────┤
+│  Interactive permission prompt (when mode = ask)       │
+├─ Layer 6: OS-level sandbox ───────────────────────────┤
+│  macOS Seatbelt: filesystem &#x26; network isolation        │
+│  Final firewall — even if all above layers fail        │
+└───────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>The design principle:</strong> Security-related checks <strong>fail-closed</strong> (unknown → deny). Availability-related checks <strong>fail-open</strong> (policy server down → allow all, use local cache).</p>
+<blockquote>
+<p>→ Deep dive: <a href="07-permission-pipeline">Episode 07: Permission Pipeline</a> | <a href="06-bash-engine">Episode 06: Bash Engine</a></p>
+</blockquote>
+<hr>
+<h2>§9 Multi-Agent: From Soloist to Orchestra</h2>
+<p>When a task exceeds a single context window, Claude Code doesn't compress harder — it <strong>divides and conquers</strong> with sub-agents:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/tools/AgentTool (conceptual)</span>
+<span class="hljs-title class_">AgentTool</span>.<span class="hljs-title function_">call</span>({
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"researcher"</span>,
+  <span class="hljs-attr">prompt</span>: <span class="hljs-string">"Investigate the root cause of this bug"</span>,
+  <span class="hljs-attr">subagent_type</span>: <span class="hljs-string">"Explore"</span>,     <span class="hljs-comment">// read-only agent</span>
+  <span class="hljs-attr">model</span>: <span class="hljs-string">"opus"</span>,
+  <span class="hljs-attr">run_in_background</span>: <span class="hljs-literal">true</span>,      <span class="hljs-comment">// non-blocking</span>
+})
+</code></pre>
+<p><strong>Three execution backends, auto-detected:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Backend</th><th>Detection</th><th>Isolation</th><th>Visual</th></tr></thead><tbody><tr><td>iTerm2</td><td><code>it2</code> CLI available</td><td>Separate tabs</td><td>Each agent = 1 tab</td></tr><tr><td>tmux</td><td><code>tmux</code> binary available</td><td>Separate panes</td><td>Split-screen view</td></tr><tr><td>In-process</td><td>Fallback</td><td>AsyncLocalStorage</td><td>Shared terminal</td></tr></tbody></table>
+<p><strong>Seven task types</strong> model every kind of background work:</p>
+<pre class="ascii-diagram"><code>LocalShell        — Shell process for command execution
+LocalAgent        — Full agent with own context window
+RemoteAgent       — Agent on remote infrastructure
+InProcessTeammate — In-process co-worker (AsyncLocalStorage isolated)
+LocalWorkflow     — Deterministic workflow execution
+MonitorMcp        — MCP server health monitoring
+DreamTask         — Automatic memory consolidation (background)
+</code></pre>
+<p><strong>Team coordination</strong> uses TaskList as shared state, SendMessage for async communication, and structured message types (<code>shutdown_request</code>, <code>plan_approval_response</code>) for protocol-level coordination. UltraPlan mode enables hierarchical planning with <code>ultraplanPhase: 'needs_input' | 'plan_ready'</code>.</p>
+<blockquote>
+<p>→ Deep dive: <a href="03-coordinator">Episode 03: Coordinator</a> | <a href="08-agent-swarms">Episode 08: Agent Swarms</a> | <a href="13-bridge-system">Episode 13: Bridge</a></p>
+</blockquote>
+<hr>
+<h2>§10 Skill &#x26; Plugin: Self-Evolving Architecture</h2>
+<p><strong>Skills are reusable prompt workflows</strong> — defined in YAML frontmatter + markdown, they are "prompt as code":</p>
+<pre class="code-block" data-language="yaml"><code class="hljs language-yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">name:</span> <span class="hljs-string">commit</span>
+<span class="hljs-attr">description:</span> <span class="hljs-string">Create</span> <span class="hljs-string">a</span> <span class="hljs-string">git</span> <span class="hljs-string">commit</span> <span class="hljs-string">with</span> <span class="hljs-string">AI-generated</span> <span class="hljs-string">message</span>
+<span class="hljs-attr">type:</span> <span class="hljs-string">prompt</span>
+<span class="hljs-attr">allowedTools:</span> [<span class="hljs-string">Bash</span>, <span class="hljs-string">Read</span>, <span class="hljs-string">Glob</span>, <span class="hljs-string">Grep</span>]
+<span class="hljs-attr">context:</span> <span class="hljs-string">inline</span>    <span class="hljs-comment"># inline = run in current context</span>
+                   <span class="hljs-comment"># fork = run in sub-agent</span>
+<span class="hljs-meta">---</span>
+<span class="hljs-string">Analyze</span> <span class="hljs-string">all</span> <span class="hljs-string">staged</span> <span class="hljs-string">changes</span> <span class="hljs-string">and</span> <span class="hljs-string">generate</span> <span class="hljs-string">a</span> <span class="hljs-string">conventional</span> <span class="hljs-string">commit</span> <span class="hljs-string">message...</span>
+</code></pre>
+<p><strong>Six skill sources, hierarchically merged:</strong></p>
+<pre class="ascii-diagram"><code>1. bundled/           ← Built-in skills (batch, loop, claudeApi, updateConfig)
+2. ~/.claude/skills/  ← User-defined skills
+3. plugin skills      ← Plugin-provided
+4. managed skills     ← Enterprise-managed
+5. MCP skills         ← MCP server-provided
+6. command skills     ← Legacy command conversions (deprecated)
+</code></pre>
+<p><strong>Plugins are the composition unit</strong> — a plugin bundles skills + hooks + MCP servers:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-title class_">Plugin</span> = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"my-plugin@builtin"</span>,
+  <span class="hljs-attr">skills</span>: <span class="hljs-title class_">SkillDefinition</span>[],        <span class="hljs-comment">// Prompt workflows</span>
+  <span class="hljs-attr">hooks</span>: <span class="hljs-title class_">HookDefinition</span>[],          <span class="hljs-comment">// Lifecycle interceptors</span>
+  <span class="hljs-attr">mcpServers</span>: <span class="hljs-title class_">McpServerConfig</span>[],    <span class="hljs-comment">// External tool servers</span>
+  <span class="hljs-attr">defaultEnabled</span>: <span class="hljs-built_in">boolean</span>,          <span class="hljs-comment">// User can toggle</span>
+}
+</code></pre>
+<p><strong>MCP (Model Context Protocol)</strong> is the universal extension pipe — 6 transport types (stdio / sse / http / ws / sdk / sse-ide), tool discovery via <code>ListTools</code>, and OAuth/XAA authentication. Any MCP server's tools appear alongside built-in tools with zero distinction from the model's perspective.</p>
+<p><strong>Hook system</strong> provides 20 event types for full lifecycle interception — from <code>PreToolUse</code> (veto or mutate a tool call before execution) to <code>Notification</code> (observe without blocking). Hooks can be configured per-tool, per-event, with both MCP and local execution modes.</p>
+<blockquote>
+<p>→ Deep dive: <a href="04-plugin-system">Episode 04: Plugin System</a> | <a href="05-hook-system">Episode 05: Hook System</a></p>
+</blockquote>
+<hr>
+<h1>Part III — Engineering Excellence</h1>
+<h2>§11 Seven Engineering Practices Worth Studying</h2>
+<p>Beyond architecture, Claude Code demonstrates engineering craftsmanship that deserves independent study. Each practice below includes the <strong>why</strong>, the <strong>how</strong>, and a code example.</p>
+<h3>11.1 Dead Code Elimination via Compile-Time Feature Flags</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: various modules (conceptual)</span>
+<span class="hljs-keyword">import</span> { feature } <span class="hljs-keyword">from</span> <span class="hljs-string">'bun:bundle'</span>
+
+<span class="hljs-comment">// At compile time, feature('VOICE_MODE') becomes true or false.</span>
+<span class="hljs-comment">// The false branch is COMPLETELY REMOVED by Bun's bundler — no runtime cost.</span>
+<span class="hljs-keyword">const</span> voiceCommand = <span class="hljs-title function_">feature</span>(<span class="hljs-string">'VOICE_MODE'</span>)
+  ? <span class="hljs-built_in">require</span>(<span class="hljs-string">'./commands/voice/index.js'</span>).<span class="hljs-property">default</span>
+  : <span class="hljs-literal">null</span>
+</code></pre>
+<p><strong>Three conditional-loading tiers</strong> coexist: compile-time DCE (<code>feature()</code>), runtime environment checks (<code>process.env.USER_TYPE</code>), and runtime capability detection (<code>isTodoV2Enabled()</code>). The harshest elimination happens first, so the final bundle only contains code the user can actually reach.</p>
+<h3>11.2 Circular Dependency Elimination: The Leaf Module Pattern</h3>
+<p>The biggest circular dependency risk in Claude Code is <code>bootstrap/state.ts</code> — a ~55KB global state singleton imported by virtually every module. The solution is architectural:</p>
+<pre class="ascii-diagram"><code>        ┌──── Any src/ module ────┐
+        │                         │
+        ▼                         ▼
+  bootstrap/state.ts        bootstrap/state.ts
+  (LEAF node: imports       (LEAF node: imports
+   NOTHING from src/)        NOTHING from src/)
+</code></pre>
+<p><strong>This is not a suggestion — it's enforced.</strong> A custom ESLint rule (<code>custom-rules/bootstrap-isolation</code>) statically verifies that <code>state.ts</code> never imports from <code>src/</code>. Only external packages and type-only imports are allowed.</p>
+<p>For dynamic dependencies (e.g., <code>tools.ts → TeamCreateTool → ... → tools.ts</code>), lazy <code>require()</code> calls break the cycle at the consumer site.</p>
+<h3>11.3 The 35-Line Store That Replaced Redux</h3>
+<p>Instead of pulling in Redux, Zustand, or MobX, Claude Code uses a <strong>35-line <code>createStore</code></strong> function:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/state/store.ts (simplified)</span>
+<span class="hljs-keyword">function</span> createStore&#x3C;T>(<span class="hljs-attr">initialState</span>: T, onChange?) {
+  <span class="hljs-keyword">let</span> state = initialState
+  <span class="hljs-keyword">const</span> listeners = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>&#x3C;<span class="hljs-function">() =></span> <span class="hljs-built_in">void</span>>()
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">getState</span>: <span class="hljs-function">() =></span> state,
+    <span class="hljs-attr">setState</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">updater</span>: (prev: T) => T</span>) =></span> {
+      <span class="hljs-keyword">const</span> prev = state
+      <span class="hljs-keyword">const</span> next = <span class="hljs-title function_">updater</span>(prev)
+      <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">is</span>(next, prev)) <span class="hljs-keyword">return</span>  <span class="hljs-comment">// Reference equality skip</span>
+      state = next
+      onChange?.({ <span class="hljs-attr">newState</span>: next, <span class="hljs-attr">oldState</span>: prev })
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> listener <span class="hljs-keyword">of</span> listeners) <span class="hljs-title function_">listener</span>()
+    },
+    <span class="hljs-attr">subscribe</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">listener</span>: () => <span class="hljs-built_in">void</span></span>) =></span> {
+      listeners.<span class="hljs-title function_">add</span>(listener)
+      <span class="hljs-keyword">return</span> <span class="hljs-function">() =></span> listeners.<span class="hljs-title function_">delete</span>(listener)
+    }
+  }
+}
+</code></pre>
+<p><strong>Why this works:</strong> React 19's <code>useSyncExternalStore</code> hook handles the subscription glue. The store only needs to be a state container with <code>getState</code>/<code>subscribe</code> — exactly what these 35 lines provide. The <code>Object.is</code> check prevents unnecessary re-renders, and the <code>onChange</code> callback centralizes side-effect handling in <code>onChangeAppState()</code>.</p>
+<h3>11.4 Forked Ink: Building a Browser in the Terminal</h3>
+<p>Claude Code doesn't use Ink as-is — it <strong>forks and deeply transforms</strong> the terminal UI framework:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>Stock Ink</th><th>Claude Code Fork</th></tr></thead><tbody><tr><td>React mode</td><td><code>LegacyRoot</code></td><td><code>ConcurrentRoot</code> (React 19)</td></tr><tr><td>Event system</td><td>None</td><td>W3C capture/bubble model</td></tr><tr><td>Screen mode</td><td>Inline</td><td>Full alt-screen + mouse tracking</td></tr><tr><td>Buffering</td><td>Single buffer</td><td>Double-buffer + ANSI diff</td></tr><tr><td>Selection</td><td>None</td><td>Mouse drag-select + clipboard</td></tr><tr><td>Scrolling</td><td>None</td><td>VirtualMessageList + height cache</td></tr><tr><td>Layout</td><td>Basic Yoga</td><td>Extended Yoga + <code>&#x3C;Spacer></code></td></tr></tbody></table>
+<p>The rendering pipeline is a full graphics pipeline crammed into a terminal:</p>
+<pre class="ascii-diagram"><code>stdin → keypress parse → DOM event dispatch → React update
+  → Yoga layout → Screen buffer → ANSI diff → stdout
+  (16ms throttle, double-buffer swap)
+</code></pre>
+<h3>11.5 Vim Mode: A Textbook Finite State Machine</h3>
+<p>The input editor implements Vim keybindings as a <strong>clean FSM</strong> with four states:</p>
+<pre class="ascii-diagram"><code>                 ┌───────────────────┐
+   ESC / Ctrl-[  │                   │  i / a / o / A / I / O
+        ┌───────→│   NORMAL MODE     │←───────┐
+        │        │                   │         │
+        │        └───┬───────────┬───┘         │
+        │            │           │              │
+        │       d/c/y│      f/t/F│              │
+        │            ▼           ▼              │
+        │    ┌───────────┐ ┌──────────┐        │
+        │    │ OPERATOR   │ │ FIND     │        │
+        │    │ PENDING    │ │ PENDING  │        │
+        │    └───────────┘ └──────────┘        │
+        │                                       │
+        │        ┌───────────────────┐         │
+        └────────│   INSERT MODE     │─────────┘
+                 └───────────────────┘
+</code></pre>
+<p>Each state has explicit entry/exit actions and a bounded set of transitions — making the behavior predictable, testable, and extensible.</p>
+<h3>11.6 Import-Gap Parallelism: Free Concurrency</h3>
+<p>The startup sequence exploits a subtle property of ES module evaluation: the gap between <code>import</code> statements is <em>synchronous dead time</em> where previously launched async operations run for free:</p>
+<pre class="ascii-diagram"><code>Timeline:
+  0ms   startMdmRawRead()        ← Launch MDM subprocess
+  1ms   startKeychainPrefetch()  ← Launch keychain read
+  2ms   [importing commander]    ← 40ms of synchronous import evaluation
+ 42ms   [importing chalk]        ← 30ms more
+ 72ms   [importing React]        ← 60ms more
+135ms   [all imports done]       ← MDM and keychain have been running for 135ms!
+</code></pre>
+<p>No <code>Promise.all</code>, no explicit parallelism — just strategic placement of async launches between import statements.</p>
+<h3>11.7 Fail-Open vs Fail-Closed: The Engineering Judgment Call</h3>
+<p>Claude Code makes a <strong>deliberate, documented choice</strong> for every failure mode:</p>
+<pre class="ascii-diagram"><code>FAIL-CLOSED (security priority):
+  ✗ Bash command parse error    → refuse execution (PARSE_ABORTED)
+  ✗ Permission check timeout    → default deny
+  ✗ Unknown command category    → require user confirmation
+
+FAIL-OPEN (availability priority):
+  ✓ policyLimits load failure   → allow all operations
+  ✓ remoteManagedSettings timeout → use local cache (stale-while-error)
+  ✓ GrowthBook unavailable      → use default feature flags
+  ✓ MCP server disconnected     → continue with remaining tools
+</code></pre>
+<p><strong>The boundary is clear:</strong> anything touching user data or system access fails closed. Anything touching configuration or external services fails open. This distinction is not accidental — it's an explicit engineering policy.</p>
+<blockquote>
+<p>→ Deep dive: <a href="12-startup-bootstrap">Episode 12: Startup</a> | <a href="14-ui-state-management">Episode 14: UI &#x26; State</a> | <a href="16-infrastructure-config">Episode 16: Infrastructure</a></p>
+</blockquote>
+<hr>
+<h1>Part IV — A Unique Perspective</h1>
+<h2>§12 First-Person View: How I Actually Work</h2>
+<blockquote>
+<p><em>The following sections describe Claude Code's operation from a first-person perspective. This is not anthropomorphization — it's a precise mapping of system behavior to cognitive metaphors, designed to make the architecture intuitive.</em></p>
+</blockquote>
+<h3>12.1 My Thinking Loop</h3>
+<p>When you give me a task, here's what actually happens at the system level:</p>
+<pre class="ascii-diagram"><code>You say: "Fix the bug in login.tsx"
+  │
+  ▼                                           API call #1
+My thinking: "I need to understand the bug first."
+My action:   tool_use → Read("login.tsx")
+  │
+  ▼  Harness: permission ✓ → read file → inject result
+                                          API call #2
+My thinking: "Found it — missing useEffect dependency."
+My action:   tool_use → Grep("userId", "src/")
+  │
+  ▼  Harness: permission ✓ → search → inject result
+                                          API call #3
+My thinking: "Confirmed. Let me fix it."
+My action:   tool_use → Edit("login.tsx", ...)
+  │
+  ▼  Harness: permission check → user confirms → edit
+                                          API call #4
+My thinking: "Let me verify the fix."
+My action:   tool_use → Bash("npm test -- --grep login")
+  │
+  ▼  Harness: sandbox exec → tests pass
+                                          API call #5
+My output:   "Fixed the bug by adding userId to deps array."
+             → end_turn → loop ends
+</code></pre>
+<p><strong>Each tool call is a full API roundtrip.</strong> What feels like "thinking → acting → observing" is actually: <code>API response (tool_use) → harness executes → result injected → next API call</code>.</p>
+<h3>12.2 My Parallel Hands</h3>
+<p>I can use multiple tools in a single API response:</p>
+<pre class="ascii-diagram"><code>// One API response, three tool calls:
+tool_use: Read("src/auth.ts")          ← isConcurrencySafe: true
+tool_use: Read("src/login.tsx")        ← isConcurrencySafe: true
+tool_use: Grep("handleLogin", "src/")  ← isConcurrencySafe: true
+
+// Harness executes ALL THREE in parallel via StreamingToolExecutor
+// Results injected together → next API call
+</code></pre>
+<p>The <code>isConcurrencySafe</code> flag is my harness deciding whether my "hands" can work simultaneously. Reads are parallel; writes are serialized.</p>
+<h3>12.3 My Context Awareness</h3>
+<p>I perceive the world through six channels, each injected at a different layer:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Channel</th><th>Metaphor</th><th>Source</th></tr></thead><tbody><tr><td>System Prompt</td><td>My "DNA" — identity, rules, tool list</td><td>Built at startup</td></tr><tr><td>CLAUDE.md</td><td>My "project memory" — build commands, conventions</td><td>Loaded from repo</td></tr><tr><td>Conversation</td><td>My "short-term memory" — recent exchanges</td><td>Growing each turn</td></tr><tr><td>Tool results</td><td>My "senses" — file contents, search results</td><td>Each tool execution</td></tr><tr><td>Memory (memdir)</td><td>My "long-term memory" — persists across sessions</td><td>~/.claude/memory/</td></tr><tr><td>Attachments</td><td>My "external knowledge" — skills, MCP resources</td><td>Dynamic injection</td></tr></tbody></table>
+<h3>12.4 My Limitations (and How the Harness Compensates)</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>My Limitation</th><th>Harness Compensation</th></tr></thead><tbody><tr><td>Finite context window</td><td>4-layer compression auto-manages capacity</td></tr><tr><td>Cannot execute code directly</td><td>BashTool runs commands on my behalf</td></tr><tr><td>May produce unsafe commands</td><td>6-layer security pipeline intercepts</td></tr><tr><td>Single-response token limit</td><td><code>max_output_tokens</code> auto-escalates (8K→64K)</td></tr><tr><td>May hallucinate</td><td>Tool results ground me in reality</td></tr><tr><td>API can be unstable</td><td>Retry + fallback + error recovery</td></tr><tr><td>One context window isn't enough</td><td>Multi-agent divide-and-conquer</td></tr></tbody></table>
+<h3>12.5 Why I Can Work Efficiently</h3>
+<ol>
+<li><strong>I have enough tools</strong> — 42+ tools cover nearly every software development scenario</li>
+<li><strong>I can iterate</strong> — I don't need to get it right the first time; I read, try, observe, adjust</li>
+<li><strong>I can parallelize</strong> — multiple reads at once, multiple agents working simultaneously</li>
+<li><strong>I remember</strong> — CLAUDE.md and memory system mean I don't start from zero each session</li>
+<li><strong>I'm safely constrained</strong> — the permission system makes users comfortable giving me autonomy</li>
+<li><strong>I self-heal</strong> — error recovery means transient failures don't kill my session</li>
+</ol>
+<h3>12.6 The 13-Layer Progressive Harness</h3>
+<p>The complete Claude Code system can be understood as a <strong>13-layer harness</strong> — each layer progressively constraining, guiding, and amplifying my capabilities. Here is the mapping from harness layer to architectural episode:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="center">Layer</th><th>Harness</th><th>Episode</th><th>What It Does</th></tr></thead><tbody><tr><td align="center">1</td><td><strong>The Loop</strong></td><td><a href="01-query-engine">EP01: Query Engine</a></td><td>Infinite tool-calling cycle with 5 termination conditions</td></tr><tr><td align="center">2</td><td><strong>The Tools</strong></td><td><a href="02-tool-system">EP02: Tool System</a></td><td>42+ tools behind a single 30-method interface</td></tr><tr><td align="center">3</td><td><strong>The Agents</strong></td><td><a href="03-sub-agents">EP03: Sub-Agents</a> / <a href="08-agent-swarms">EP08: Swarms</a></td><td>Divide-and-conquer with cost inheritance and AbortController trees</td></tr><tr><td align="center">4</td><td><strong>The Permissions</strong></td><td><a href="07-permission-pipeline">EP07: Permission Pipeline</a></td><td>6 layers from trust state to classifier circuit breakers</td></tr><tr><td align="center">5</td><td><strong>The Context</strong></td><td><a href="11-context-compression">EP11: Context Compression</a></td><td>4-tier cascading compression (summary → stratified → emergency → fork)</td></tr><tr><td align="center">6</td><td><strong>The Memory</strong></td><td><a href="05-claude-md">EP05: CLAUDE.md</a></td><td>Hierarchical memory with per-directory override resolution</td></tr><tr><td align="center">7</td><td><strong>The Bash</strong></td><td><a href="06-bash-engine">EP06: Bash Engine</a></td><td>PTY multiplexing with 120s timeouts and marker-based output capture</td></tr><tr><td align="center">8</td><td><strong>The Plugins</strong></td><td><a href="04-plugin-system">EP04: MCP</a></td><td>6 transport types with per-transport security policies</td></tr><tr><td align="center">9</td><td><strong>The Session</strong></td><td><a href="09-session-persistence">EP09: Session Persistence</a></td><td>JSONL append-only transcripts with compact boundaries</td></tr><tr><td align="center">10</td><td><strong>The Costs</strong></td><td><a href="10-token-economy">EP10: Token Economy</a></td><td>Hybrid token counting (API-reported + local tiktoken estimation)</td></tr><tr><td align="center">11</td><td><strong>The UI</strong></td><td><a href="14-ui-state-management">EP14: UI &#x26; State</a></td><td>Forked Ink engine with 35-line reactive store</td></tr><tr><td align="center">12</td><td><strong>The Infrastructure</strong></td><td><a href="15-services-api-layer">EP15</a> / <a href="16-infrastructure-config">EP16</a></td><td>API client, MCP server, 5-layer config merge</td></tr><tr><td align="center">13</td><td><strong>The Dark Side</strong></td><td><a href="17-telemetry-privacy-operations">EP17: Telemetry &#x26; Ops</a></td><td>Dual analytics, undercover mode, 6 remote killswitches</td></tr></tbody></table>
+<p>Each layer builds on the ones below it. Remove any single layer and the system degrades — but in most cases, <strong>fails open</strong> rather than crashes. This is deliberate: availability trumps correctness for a developer tool.</p>
+<h3>12.7 The Missing 108 Modules</h3>
+<p>The published npm package is missing approximately 108 modules that exist in Anthropic's internal repo but are stripped during the build:</p>
+<pre class="ascii-diagram"><code>Compile-Time Dead Code Elimination (DCE):
+┌──────────────────────┐     ┌──────────────────────┐
+│  Internal Build (Bun) │     │  Published Build     │
+│  feature('X') → true  │ ──→ │  feature('X') → false │
+│  Code branch included │     │  Code branch removed  │
+└──────────────────────┘     └──────────────────────┘
+</code></pre>
+<p>These missing modules fall into three categories:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Category</th><th align="center">Count</th><th>Examples</th></tr></thead><tbody><tr><td><strong>Internal tools</strong></td><td align="center">~20</td><td>REPLTool, TungstenTool, DaemonTool, DxtTool</td></tr><tr><td><strong>Unreleased features</strong></td><td align="center">~70</td><td>KAIROS tasks, Voice mode, Coordinator, Dream consolidation, Buddy</td></tr><tr><td><strong>Internal prompts/configs</strong></td><td align="center">~18</td><td>Internal model prompts, debug configs, migration scripts</td></tr></tbody></table>
+<p>The 108-module gap does not affect external users — every missing module is behind a compile-time gate that evaluates to <code>false</code> in published builds. The remaining ~1,776 modules form a complete, functional system.</p>
+<blockquote>
+<p>→ For detailed analysis of what these modules contain, see <a href="17-telemetry-privacy-operations">Episode 17: Telemetry &#x26; Ops</a> §9.</p>
+</blockquote>
+<hr>
+<h1>Part V — Transferable Design Patterns</h1>
+<h2>§13 Design Patterns You Can Take Home</h2>
+<blockquote>
+<p>The following patterns are distilled from 17 episodes of architectural analysis. Each follows a closed-loop structure: <strong>Scenario → Problem → Solution → Code → Effect</strong>. They are directly applicable to any agentic system, CLI tool, or complex TypeScript application.</p>
+</blockquote>
+<h3>Pattern 1: Import-Gap Parallelism</h3>
+<p><strong>Scenario:</strong> CLI startup requires I/O (subprocess, keychain, network).
+<strong>Problem:</strong> Sequential init wastes hundreds of milliseconds.
+<strong>Solution:</strong> Launch async operations <em>between</em> <code>import</code> statements, exploiting ES module evaluation as a free parallel window.</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">import</span> { startPrefetch } <span class="hljs-keyword">from</span> <span class="hljs-string">'./prefetch.js'</span>
+<span class="hljs-title function_">startPrefetch</span>()  <span class="hljs-comment">// ← Async starts immediately</span>
+<span class="hljs-comment">// Next 100ms+ of import evaluation = free concurrency</span>
+<span class="hljs-keyword">import</span> { heavyLib } <span class="hljs-keyword">from</span> <span class="hljs-string">'heavy-lib'</span>  <span class="hljs-comment">// ← Sync, blocking</span>
+</code></pre>
+<p><strong>Effect:</strong> ~135ms of I/O completed "for free" during import-time dead wait. No <code>Promise.all</code> needed.</p>
+<h3>Pattern 2: AsyncGenerator State Machine</h3>
+<p><strong>Scenario:</strong> A core loop that streams results, supports cancellation, and needs backpressure.
+<strong>Problem:</strong> Promises lose backpressure; callbacks create inversion-of-control hell.
+<strong>Solution:</strong> <code>async *generator()</code> with <code>yield</code> for natural flow control.</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">async</span> *<span class="hljs-title function_">query</span>(config): <span class="hljs-title class_">AsyncGenerator</span>&#x3C;<span class="hljs-title class_">Message</span>> {
+  <span class="hljs-keyword">while</span> (!done) {
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">yield</span>* <span class="hljs-title function_">callModel</span>(messages)  <span class="hljs-comment">// Backpressure: consumer controls pace</span>
+    <span class="hljs-keyword">const</span> toolResults = <span class="hljs-keyword">await</span> <span class="hljs-title function_">executeTools</span>(response)
+    messages.<span class="hljs-title function_">push</span>(...toolResults)
+  }
+}
+</code></pre>
+<p><strong>Effect:</strong> Cancellation via <code>return()</code>, composability (generators wrap generators), and the UI naturally throttles the producer.</p>
+<h3>Pattern 3: Multi-Layer Compression Pipeline</h3>
+<p><strong>Scenario:</strong> A context window that grows unboundedly with conversation and tool results.
+<strong>Problem:</strong> Compression too early wastes information; too late causes API rejection.
+<strong>Solution:</strong> Escalating compression: cheap/lossy → expensive/smart, each with independent triggers and circuit breakers.</p>
+<pre class="ascii-diagram"><code>micro (clear old outputs) → snip (truncate history) → auto (AI summary)
+  → reactive (emergency, only on API error)
+Each layer: independent trigger threshold + circuit breaker (3 failures → stop)
+</code></pre>
+<p><strong>Effect:</strong> Infinite-length conversations without manual intervention. The 200K window feels unlimited.</p>
+<h3>Pattern 4: Defense-in-Depth Security</h3>
+<p><strong>Scenario:</strong> An LLM that can execute arbitrary shell commands.
+<strong>Problem:</strong> A single security check can always be bypassed.
+<strong>Solution:</strong> 6+ layers, each assuming the previous was compromised. Different analysis methods at each layer.</p>
+<pre class="ascii-diagram"><code>Wrapper stripping → Injection detection → AST parsing
+  → Permission rules → AI classifier → OS sandbox
+Security: fail-closed. Availability: fail-open.
+</code></pre>
+<p><strong>Effect:</strong> Users trust the system enough to grant broad permissions, which paradoxically makes the agent <em>more</em> capable.</p>
+<h3>Pattern 5: Fail-Closed Defaults + Fail-Open Services</h3>
+<p><strong>Scenario:</strong> A system with both security-critical and availability-critical components.
+<strong>Problem:</strong> Uniform failure policy is either too restrictive (everything breaks) or too permissive (security holes).
+<strong>Solution:</strong> Explicitly categorize each failure mode. Security → deny by default. Services → degrade gracefully.</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Security: fail-closed</span>
+<span class="hljs-title function_">buildTool</span>({ <span class="hljs-attr">isConcurrencySafe</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">isReadOnly</span>: <span class="hljs-literal">false</span> })  <span class="hljs-comment">// Conservative defaults</span>
+
+<span class="hljs-comment">// Services: fail-open</span>
+<span class="hljs-keyword">const</span> settings = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetchRemoteSettings</span>()
+  .<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =></span> localCache.<span class="hljs-title function_">get</span>(<span class="hljs-string">'settings'</span>))  <span class="hljs-comment">// Stale-while-error</span>
+</code></pre>
+<p><strong>Effect:</strong> The system never compromises security, yet remains available when external dependencies fail.</p>
+<h3>Pattern 6: Schema-Driven Tool Registration</h3>
+<p><strong>Scenario:</strong> 42+ tools need input validation, API definition, permission matching, and UI rendering.
+<strong>Problem:</strong> Maintaining four separate definitions per tool is unsustainable.
+<strong>Solution:</strong> One Zod schema serves all four purposes simultaneously.</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">const</span> inputSchema = z.<span class="hljs-title function_">object</span>({
+  <span class="hljs-attr">command</span>: z.<span class="hljs-title function_">string</span>(),
+  <span class="hljs-attr">timeout</span>: z.<span class="hljs-title function_">number</span>().<span class="hljs-title function_">optional</span>()
+})
+<span class="hljs-comment">// Same schema → (1) runtime validation, (2) JSON Schema for API,</span>
+<span class="hljs-comment">//                (3) permission pattern matching, (4) UI dialog generation</span>
+</code></pre>
+<p><strong>Effect:</strong> Add a tool field once → it appears in validation, API, permissions, and UI automatically.</p>
+<h3>Pattern 7: Speculative Execution + Graceful Escalation</h3>
+<p><strong>Scenario:</strong> An expensive check (AI classifer) that <em>might</em> be needed for permission decisions.
+<strong>Problem:</strong> Always running it wastes time; never running it risks wrong decisions.
+<strong>Solution:</strong> Start speculatively before knowing if needed. Timeout to default path if slow. Escalate precision only when cheap checks are insufficient.</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Start speculative classifier BEFORE permission check begins</span>
+<span class="hljs-keyword">const</span> speculative = <span class="hljs-title function_">startClassifier</span>(command, signal)
+<span class="hljs-comment">// ... run cheap checks first ...</span>
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">race</span>([speculative, <span class="hljs-title function_">timeout</span>(<span class="hljs-number">2000</span>)])
+</code></pre>
+<p><strong>Effect:</strong> Expensive checks complete "for free" during cheap-check time. 2s timeout ensures they never block.</p>
+<h3>Pattern 8: Leaf Module Isolation</h3>
+<p><strong>Scenario:</strong> A global state module (<code>bootstrap/state.ts</code>) imported by hundreds of files.
+<strong>Problem:</strong> It becomes a circular dependency magnet if it imports anything from the application.
+<strong>Solution:</strong> Enforce that the module is a <strong>dependency graph leaf</strong> — it imports nothing from <code>src/</code>. Enforce with ESLint rules, not conventions.</p>
+<pre class="ascii-diagram"><code>Rule: bootstrap/state.ts may only import:
+  ✓ External npm packages
+  ✓ Type-only imports (import type { ... })
+  ✗ ANY module from src/ (ESLint error: custom-rules/bootstrap-isolation)
+</code></pre>
+<p><strong>Effect:</strong> The most-depended-on module can never create a cycle. ~100 global fields, zero circular dependency risk.</p>
+<h3>Pattern 9: Latch Pattern for Cache Key Stability</h3>
+<p><strong>Scenario:</strong> API beta headers and feature flags affect prompt cache keys.
+<strong>Problem:</strong> Toggling a header mid-session changes the cache key, invalidating all cached prompts (up to 12× cost increase).
+<strong>Solution:</strong> Once a flag is activated, <strong>never deactivate it</strong> for the session's lifetime (latch = one-way switch).</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/api/claude.ts (conceptual)</span>
+<span class="hljs-comment">// Three-state latch: null (unknown) → true (latched on) → stays true forever</span>
+<span class="hljs-keyword">let</span> <span class="hljs-attr">promptCacheEnabled</span>: <span class="hljs-built_in">boolean</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">shouldUsePromptCache</span>(<span class="hljs-params"></span>): <span class="hljs-built_in">boolean</span> {
+  <span class="hljs-keyword">if</span> (promptCacheEnabled === <span class="hljs-literal">true</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>  <span class="hljs-comment">// Latched — never turns off</span>
+  <span class="hljs-keyword">if</span> (<span class="hljs-title function_">detectPromptCacheSupport</span>()) {
+    promptCacheEnabled = <span class="hljs-literal">true</span>  <span class="hljs-comment">// Latch on</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+}
+</code></pre>
+<p><strong>Effect:</strong> Cache keys remain stable for the entire session. One decision, no flipflopping, no surprise cost spikes.</p>
+<h3>Pattern 10: Agent Divide-and-Conquer</h3>
+<p><strong>Scenario:</strong> A task that requires understanding more code than fits in 200K tokens.
+<strong>Problem:</strong> Compression loses critical details; the model "forgets" earlier work.
+<strong>Solution:</strong> Spawn sub-agents with independent context windows. Each handles a subtask. Coordinate via shared TaskList.</p>
+<pre class="ascii-diagram"><code>Main Agent (200K window) — coordinates only
+  ├── Sub-Agent A (200K) — "Explore auth system"
+  ├── Sub-Agent B (200K) — "Explore payment system"
+  └── Sub-Agent C (200K) — "Write integration tests"
+Effective context: 800K tokens across 4 agents
+</code></pre>
+<p><strong>Effect:</strong> Effective context multiplied by agent count. The main agent stays focused on coordination while workers handle detail.</p>
+<h3>Pattern 11: 35 Lines Replace an Entire Library</h3>
+<p><strong>Scenario:</strong> State management for a React-based terminal UI.
+<strong>Problem:</strong> Redux (4,200 lines), Zustand (800 lines), MobX (6,000 lines) — all overkill for this use case.
+<strong>Solution:</strong> Write exactly the API surface you need. If it fits in 35 lines, ship it as inline code.</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// 35 lines: createStore() with getState/setState/subscribe</span>
+<span class="hljs-comment">// + React integration via useSyncExternalStore (built-in)</span>
+<span class="hljs-comment">// + Object.is skip for referential equality</span>
+<span class="hljs-comment">// Total dependency cost: 0 bytes. Maintenance cost: reading 35 lines.</span>
+</code></pre>
+<p><strong>Effect:</strong> Zero external dependencies for state management. Complete control over behavior. New engineers understand it in minutes, not hours.</p>
+<h3>Pattern 12: Error Recovery as a First-Class Citizen</h3>
+<p><strong>Scenario:</strong> An agentic system making dozens of API calls per session.
+<strong>Problem:</strong> Any single call can fail (rate limit, overload, network, token limit).
+<strong>Solution:</strong> Map every error code to a specific recovery strategy. Never let a recoverable error terminate a session.</p>
+<pre class="ascii-diagram"><code>Error Map:
+  429 (rate limit)     → exponential backoff, max 3 retries
+  529 (overloaded)     → switch to fallback model (Sonnet)
+  prompt-too-long      → trigger reactive compression
+  max_output_tokens    → escalate: 8K → 16K → 32K → 64K
+  ECONNRESET           → disable keep-alive, reconnect
+  401 (auth expired)   → refresh OAuth token, retry once
+</code></pre>
+<p><strong>Effect:</strong> Sessions survive transient failures that would kill simpler systems. Users experience reliability, not error messages.</p>
+<h3>Pattern 13: Stale-While-Error Cache Strategy <em>(unique to our analysis)</em></h3>
+<p><strong>Scenario:</strong> Secure storage (macOS Keychain) that occasionally fails to read.
+<strong>Problem:</strong> Failing hard on keychain errors blocks the entire application startup.
+<strong>Solution:</strong> Return the last known good value on error ("stale-while-error"), log the failure, and retry on the next cycle.</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getSecureValue</span>(<span class="hljs-params"><span class="hljs-attr">key</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-built_in">string</span> | <span class="hljs-literal">null</span>> {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> value = <span class="hljs-keyword">await</span> keychain.<span class="hljs-title function_">read</span>(key)
+    cache.<span class="hljs-title function_">set</span>(key, value)  <span class="hljs-comment">// Update cache on success</span>
+    <span class="hljs-keyword">return</span> value
+  } <span class="hljs-keyword">catch</span> (err) {
+    log.<span class="hljs-title function_">warn</span>(<span class="hljs-string">'Keychain read failed, using cached value'</span>, { key, err })
+    <span class="hljs-keyword">return</span> cache.<span class="hljs-title function_">get</span>(key) ?? <span class="hljs-literal">null</span>  <span class="hljs-comment">// Stale but usable</span>
+  }
+}
+</code></pre>
+<p><strong>Effect:</strong> The system degrades gracefully instead of crashing. Users never notice transient Keychain hiccups.</p>
+<h3>Pattern 14: Closure Factory Replaces Class <em>(unique to our analysis)</em></h3>
+<p><strong>Scenario:</strong> A service (LSP server manager) that needs private state + public interface.
+<strong>Problem:</strong> Classes create inheritance temptation and <code>this</code> binding issues in async code.
+<strong>Solution:</strong> A factory function returning a closure object. Private state lives in the closure scope. No <code>class</code>, no <code>this</code>, no <code>new</code>.</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: src/services/lsp/LSPServerManager.ts (conceptual)</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">createLSPServerManager</span>(<span class="hljs-params"><span class="hljs-attr">config</span>: <span class="hljs-title class_">Config</span></span>) {
+  <span class="hljs-comment">// Private state — invisible outside this closure</span>
+  <span class="hljs-keyword">let</span> generationCounter = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">const</span> servers = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">LSPServer</span>>()
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-title function_">getServer</span>(<span class="hljs-params"><span class="hljs-attr">filePath</span>: <span class="hljs-built_in">string</span></span>) {
+      <span class="hljs-keyword">const</span> lang = <span class="hljs-title function_">detectLanguage</span>(filePath)
+      <span class="hljs-keyword">return</span> servers.<span class="hljs-title function_">get</span>(lang) ?? <span class="hljs-literal">null</span>
+    },
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">initialize</span>(<span class="hljs-params"><span class="hljs-attr">lang</span>: <span class="hljs-built_in">string</span></span>) {
+      <span class="hljs-keyword">const</span> gen = ++generationCounter  <span class="hljs-comment">// Stale-init guard</span>
+      <span class="hljs-keyword">const</span> server = <span class="hljs-keyword">await</span> <span class="hljs-title function_">startServer</span>(lang)
+      <span class="hljs-keyword">if</span> (gen !== generationCounter) <span class="hljs-keyword">return</span>  <span class="hljs-comment">// Race condition: obsolete init</span>
+      servers.<span class="hljs-title function_">set</span>(lang, server)
+    }
+  }
+}
+</code></pre>
+<p><strong>Effect:</strong> Cleaner API than methods-on-a-class. No <code>this</code> confusion. The generation counter pattern prevents stale async operations — a technique also used in React's <code>useEffect</code> cleanup pattern.</p>
+<hr>
+<h3>Pattern Summary</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>Pattern</th><th>Key Insight</th><th>Source Episodes</th></tr></thead><tbody><tr><td>1</td><td>Import-Gap Parallelism</td><td>Free concurrency during module evaluation</td><td>EP12</td></tr><tr><td>2</td><td>AsyncGenerator State Machine</td><td><code>yield</code> = natural backpressure + cancellation</td><td>EP01</td></tr><tr><td>3</td><td>Multi-Layer Compression</td><td>Escalate cost: cheap → expensive, circuit-break each</td><td>EP10, EP11</td></tr><tr><td>4</td><td>Defense-in-Depth Security</td><td>Every layer assumes the previous one was bypassed</td><td>EP06, EP07</td></tr><tr><td>5</td><td>Fail-Closed + Fail-Open</td><td>Security denies by default; services degrade gracefully</td><td>EP07, EP16</td></tr><tr><td>6</td><td>Schema-Driven Registration</td><td>One schema → validation + API + permissions + UI</td><td>EP02</td></tr><tr><td>7</td><td>Speculative Execution</td><td>Start expensive work before knowing if needed</td><td>EP07</td></tr><tr><td>8</td><td>Leaf Module Isolation</td><td>Most-imported module imports nothing; ESLint-enforced</td><td>EP12, EP16</td></tr><tr><td>9</td><td>Latch Pattern</td><td>One-way switch prevents cache key instability</td><td>EP15</td></tr><tr><td>10</td><td>Agent Divide-and-Conquer</td><td>Multiply effective context via independent agents</td><td>EP03, EP08</td></tr><tr><td>11</td><td>35-Line Library Replacement</td><td>Write only the API surface you need</td><td>EP14</td></tr><tr><td>12</td><td>Error Recovery First-Class</td><td>Every error code → specific recovery strategy</td><td>EP01, EP15</td></tr><tr><td>13</td><td>Stale-While-Error</td><td>Return last known good value on read failure</td><td>EP16</td></tr><tr><td>14</td><td>Closure Factory</td><td>Function returning object, not class instance</td><td>EP15, EP16</td></tr></tbody></table>
+<hr>
+<h2>Closing</h2>
+<p>Claude Code's strength is not a single breakthrough — it's the <strong>compound effect of hundreds of correct engineering decisions</strong>:</p>
+<ul>
+<li>Every millisecond saved at startup</li>
+<li>Every dangerous command intercepted by defense-in-depth</li>
+<li>Every token preserved by multi-layer compression</li>
+<li>Every cache hit enabled by key stability disciplines</li>
+<li>Every session saved by error recovery</li>
+<li>Every context window multiplied by agent orchestration</li>
+</ul>
+<p>The common thread: <strong>respect every resource</strong> — time, tokens, security, user trust.</p>
+<pre class="ascii-diagram"><code>                    ╭─────────────────────────╮
+                    │                         │
+                    │   Respect every         │
+                    │   resource.             │
+                    │                         │
+                    │   Recover from          │
+                    │   every failure.        │
+                    │                         │
+                    │   Iterate until          │
+                    │   done.                 │
+                    │                         │
+                    ╰─────────────────────────╯
+</code></pre>
+<blockquote>
+<p><strong>Next step:</strong> Pick a <a href="#3-reading-order-five-cognitive-paths">reading path</a> and dive into the episodes. Each one takes 15–30 minutes and will change how you think about agentic system design.</p>
+</blockquote>
+<hr>
+<p><em>This document is part of the <a href="../README_EN.md">Claude Code Deep Dive</a> series — 17 episodes of architectural analysis covering 8,600+ lines of technical content, available in English and Chinese.</em></p>
+<hr>
+<p><strong>Next</strong>: <a href="01-query-engine">→ 01 — Query Engine</a></p></div></article><nav class="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800"><div></div><a class="group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/en/advanced/01-query-engine/"><span>EP<!-- -->01<!-- --> <!-- -->QueryEngine</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></nav></div><!--$--><!--/$--></div></div></main><script src="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n3:I[37457,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n5:I[95914,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\"],\"Sidebar\"]\n7:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"OutletBoundary\"]\n8:\"$Sreact.suspense\"\na:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"MetadataBoundary\"]\ne:I[68027,[],\"default\"]\n:HL[\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"kOMToiePwU79Kzn0fZt4S\",\"c\":[\"\",\"en\",\"advanced\",\"00-overview\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[[\"locale\",\"en\",\"d\"],{\"children\":[\"(learn)\",{\"children\":[\"advanced\",{\"children\":[[\"chapter\",\"00-overview\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true]}],[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"div\",null,{\"className\":\"flex gap-8\",\"children\":[[\"$\",\"$L5\",null,{}],[\"$\",\"div\",null,{\"className\":\"min-w-0 flex-1\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@9\"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[33499,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"I18nProvider\"]\n10:I[45872,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"Header\"]\n11:I[22016,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"\"]\n4:[\"$\",\"html\",null,{\"lang\":\"en\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n          (function() {\\n            var theme = localStorage.getItem('theme');\\n            if (theme === 'dark' || (!theme \u0026\u0026 window.matchMedia('(prefers-color-scheme: dark)').matches)) {\\n              document.documentElement.classList.add('dark');\\n            }\\n          })();\\n        \"}}]}],[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased\",\"children\":[\"$\",\"$Lf\",null,{\"locale\":\"en\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-4xl space-y-8 py-4\",\"children\":[[\"$\",\"header\",null,{\"className\":\"rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/en/curriculum\",\"className\":\"inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Course map\"]}],[\"$\",\"div\",null,{\"className\":\"mt-4 flex flex-wrap items-center gap-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800\",\"children\":[\"EP\",\"00\"]}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold text-zinc-950 dark:text-zinc-50\",\"children\":\"Architecture Overview\"}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Six pillars of Claude Code as a production harness\"}]]}],[\"$\",\"section\",null,{\"className\":\"rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-start justify-between gap-3\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300\",\"children\":\"Prompt reference\"}],[\"$\",\"h2\",null,{\"className\":\"mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50\",\"children\":\"Prompt anatomy overview\"}],[\"$\",\"p\",null,{\"className\":\"mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200\",\"children\":\"Use these to show that the agent is assembled from many prompt fragments, not one magic system prompt.\"}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":14,\"height\":14,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}],\"Source repo\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70\",\"children\":\"Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.\"}],[\"$\",\"div\",null,{\"className\":\"mt-4 grid gap-3 md:grid-cols-2\",\"children\":[[\"$\",\"a\",\"system-prompt-harness-instructions.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-harness-instructions.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[\"$L12\",\"$L13\",\"$L14\",\"$L15\",\"$L16\",\"$undefined\"]}],\"$L17\"]}],\"$L18\",\"$L19\"]}],\"$L1a\",\"$L1b\",\"$L1c\"]}]]}],\"$L1d\",\"$L1e\"]}]\n"])</script><script>self.__next_f.push([1,"1f:I[19004,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"AdvancedDocRenderer\"]\n12:[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}]\n13:[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}]\n14:[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}]\n15:[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}]\n16:[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}]\n17:[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Harness instructions\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-harness-instructions.md\"}]]}]\n18:[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Core identity\"}]\n19:[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Shows the compact contract between markdown output, permissions, reminders, compaction, and tool use.\"}]\n"])</script><script>self.__next_f.push([1,"1a:[\"$\",\"a\",\"system-prompt-doing-tasks-software-engineering-focus.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-doing-tasks-software-engineering-focus.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Software engineering focus\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-doing-tasks-software-engineering-focus.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Task framing\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Explains how generic user requests are interpreted as repository work inside the harness.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1b:[\"$\",\"a\",\"system-prompt-communication-style.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-communication-style.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Communication style\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-communication-style.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"User-facing layer\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Useful for discussing progress updates as a product surface, not just model personality.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1c:[\"$\",\"a\",\"tool-description-agent-usage-notes.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/tool-description-agent-usage-notes.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Agent tool usage notes\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"tool-description-agent-usage-notes.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Subagent contract\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Introduces the worker-return boundary and the trust-but-verify rule.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1d:[\"$\",\"$L1f\",null,{\"chapter\":\"00\"}]\n1e:[\"$\",\"nav\",null,{\"className\":\"flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800\",\"children\":[[\"$\",\"div\",null,{}],[\"$\",\"$L11\",null,{\"href\":\"/en/advanced/01-query-engine\",\"className\":\"group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"span\",null,{\"children\":[\"EP\",\"01\",\" \",\"QueryEngine\"]}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-right transition-transform group-hover:translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1ays0h\",{\"d\":\"M5 12h14\"}],[\"$\",\"path\",\"xquz4c\",{\"d\":\"m12 5 7 7-7 7\"}],\"$undefined\"]}]]}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"20:I[27201,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"IconMark\"]\n9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Agent Coding Lesson\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Build a nano Claude Code-like agent from 0 to 1, one mechanism at a time\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L20\",\"3\",{}]]\n"])</script></body></html>

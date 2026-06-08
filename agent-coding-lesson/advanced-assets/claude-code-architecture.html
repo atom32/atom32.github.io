@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code — Agent Runtime Architecture</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-deep: #f3f4f6;
+    --bg-box: #ffffff;
+    --bg-source: #f0fdfa;
+    --bg-dashed: #f8fafb;
+    --border: #d1d5db;
+    --border-source: #5eead4;
+    --border-accent: #14b8a6;
+    --text: #1e293b;
+    --text-dim: #64748b;
+    --text-muted: #94a3b8;
+    --text-tech: #94a3b8;
+    --text-metric: #0d9488;
+    --arrow: #94a3b8;
+    --arrow-signal: #0d9488;
+    --arrow-state: #059669;
+    --link-color: #0ea5e9;
+    --link-hover: #0284c7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg-deep); display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 24px; }
+
+  .wrapper { width: 100%; max-width: 1480px; }
+  .canvas {
+    width: 1440px; height: 1100px; position: relative; overflow: hidden;
+    background: var(--bg); border-radius: 12px; border: 1px solid var(--border);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    transform-origin: top left;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  }
+
+  .box {
+    position: absolute; border: 1.5px solid var(--border); border-radius: 9px;
+    background: var(--bg-box); color: var(--text);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; text-align: center; line-height: 1.35; padding: 4px 14px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .box.source { background: var(--bg-source); border-color: var(--border-source); }
+  .box.dashed { border-style: dashed; border-color: #cbd5e1; background: var(--bg-dashed); font-weight: 500; box-shadow: none; }
+  .box.flagged { border-color: #f59e0b; background: #fffbeb; }
+  .box.loop-accent { border-color: #fb7185; background: #fff1f2; }
+
+  .sub { font-size: 10px; color: var(--text-dim); font-weight: 400; margin-top: 2px; }
+  .tech { font-size: 9.5px; color: var(--text-tech); font-weight: 400; margin-top: 2px; }
+  .metric { font-size: 9.5px; color: var(--text-metric); font-weight: 600; margin-top: 3px; }
+
+  .flag-badge {
+    position: absolute; top: -7px; right: 10px;
+    font-size: 7px; font-weight: 700; padding: 1px 6px; border-radius: 6px;
+    letter-spacing: 0.8px; text-transform: uppercase;
+    color: #d97706; background: #fef3c7; border: 1px solid #fcd34d;
+  }
+
+  .group {
+    position: absolute; border: 1.5px dashed #cbd5e1; border-radius: 14px;
+    background: rgba(248, 250, 252, 0.6);
+  }
+  .group.flagged-group { border-color: #fcd34d; background: rgba(255, 251, 235, 0.4); }
+  .tag {
+    position: absolute; top: -10px; left: 14px;
+    font-size: 9.5px; font-weight: 700; padding: 2px 10px; border-radius: 10px;
+    letter-spacing: 0.6px; text-transform: uppercase; color: #ffffff;
+  }
+  .tag.teal { background: #0d9488; }
+  .tag.red { background: #e11d48; }
+  .tag.green { background: #059669; }
+  .tag.orange { background: #d97706; }
+  .tag.blue { background: #2563eb; }
+  .tag.yellow { background: #ca8a04; }
+  .tag.violet { background: #7c3aed; }
+  .tag.slate { background: #64748b; }
+  .tag.rose { background: #e11d48; }
+  .tag.pink { background: #db2777; }
+
+  .enclosure {
+    position: absolute; border: 1px solid #e2e8f0; border-radius: 18px;
+    background: rgba(248, 250, 252, 0.5);
+  }
+  .enclosure-label {
+    position: absolute; color: #94a3b8; font-size: 9px; font-weight: 500;
+    letter-spacing: 0.4px; font-family: 'SF Mono', 'Menlo', monospace;
+  }
+
+  .spectrum-seg {
+    flex: 1; text-align: center; color: #64748b; font-size: 10.5px;
+    letter-spacing: 0.3px; padding-top: 8px; border-top: 1px solid #e2e8f0;
+    position: relative;
+  }
+  .spectrum-seg::before, .spectrum-seg::after {
+    content: ''; position: absolute; top: -1px; width: 1px; height: 7px; background: #e2e8f0;
+  }
+  .spectrum-seg::before { left: 0; }
+  .spectrum-seg::after { right: 0; }
+  .spectrum-label { font-size: 8.5px; color: #94a3b8; margin-top: 2px; }
+
+  .legend { position: absolute; display: flex; gap: 20px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; color: #94a3b8; font-size: 10px; }
+  .legend-line { width: 28px; height: 0; }
+
+  .note {
+    position: absolute; font-size: 8.5px; color: #94a3b8;
+    font-family: 'SF Mono', 'Menlo', monospace; letter-spacing: 0.3px;
+  }
+
+  /* Link styles */
+  .ep-link {
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ep-link:hover {
+    color: var(--link-color);
+    text-shadow: 0 0 8px rgba(14, 165, 233, 0.3);
+  }
+  .ep-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--link-color);
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+  }
+  .ep-link:hover::after {
+    transform: scaleX(1);
+  }
+  .box.source .ep-link:hover,
+  .box.loop-accent .ep-link:hover {
+    color: #0891b2;
+  }
+  .ep-badge {
+    display: inline-block;
+    font-size: 7px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 3px;
+    background: var(--link-color);
+    color: white;
+    margin-left: 4px;
+    vertical-align: super;
+  }
+  .ep-link:hover .ep-badge {
+    background: var(--link-hover);
+  }
+</style>
+</head>
+<body>
+<div class="wrapper" style="height: 1100px;">
+  <div class="canvas" id="canvas" style="transform: scale(1);">
+
+    <!-- ===== Title ===== -->
+    <div style="position:absolute; top:22px; left:40px; color:#0f172a; font-size:17px; font-weight:700; letter-spacing:0.3px">
+      Claude Code <span style="color:#94a3b8; font-size:13px; font-weight:400; margin-left:10px">Agent Runtime Architecture · v2.1.88 Sourcemap Reconstruction</span>
+    </div>
+
+    <!-- ===== Spectrum: Query Loop 阶段 ===== -->
+    <div style="position:absolute; top:20px; right:40px; color:#94a3b8; font-size:9px; letter-spacing:0.5px; text-transform:uppercase; font-weight:600">Single Query Loop Iteration</div>
+    <div style="position:absolute; top:52px; left:40px; right:40px; display:flex">
+      <div class="spectrum-seg" style="flex:1">
+        <div><a href="#EP10" class="ep-link" data-chapter="10-context-assembly">System Prompt Assembly<span class="ep-badge">EP10</span></a></div>
+        <div class="spectrum-label">Cache Boundary · Dynamic Context</div>
+      </div>
+      <div class="spectrum-seg" style="flex:1">
+        <div><a href="#EP11" class="ep-link" data-chapter="11-compact-system">Context Governance<span class="ep-badge">EP11</span></a></div>
+        <div class="spectrum-label">5-Layer Compaction · Budget Control</div>
+      </div>
+      <div class="spectrum-seg" style="flex:1">
+        <div><a href="#EP15" class="ep-link" data-chapter="15-services-api-layer">Claude API Streaming<span class="ep-badge">EP15</span></a></div>
+        <div class="spectrum-label">Streaming · Extended Thinking</div>
+      </div>
+      <div class="spectrum-seg" style="flex:1.1">
+        <div><a href="#EP02" class="ep-link" data-chapter="02-tool-system">Tool Dispatch &amp; Execution<span class="ep-badge">EP02</span></a></div>
+        <div class="spectrum-label">Concurrency Groups · Permissions · Hooks</div>
+      </div>
+      <div class="spectrum-seg" style="flex:0.9">
+        <div><a href="#EP01" class="ep-link" data-chapter="01-query-engine">Loop Control<span class="ep-badge">EP01</span></a></div>
+        <div class="spectrum-label">Continue · Terminate · Recover</div>
+      </div>
+    </div>
+
+    <!-- ===== SVG Arrows ===== -->
+    <svg style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none" viewBox="0 0 1440 1100">
+      <defs>
+        <marker id="ah" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+          <polygon points="0 0, 7 2.5, 0 5" fill="#94a3b8"></polygon>
+        </marker>
+        <marker id="ah-signal" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+          <polygon points="0 0, 7 2.5, 0 5" fill="#0d9488"></polygon>
+        </marker>
+        <marker id="ah-state" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+          <polygon points="0 0, 7 2.5, 0 5" fill="#059669"></polygon>
+        </marker>
+        <marker id="ah-red" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+          <polygon points="0 0, 7 2.5, 0 5" fill="#e11d48"></polygon>
+        </marker>
+        <marker id="ah-flag" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+          <polygon points="0 0, 7 2.5, 0 5" fill="#d97706"></polygon>
+        </marker>
+      </defs>
+
+      <!-- Entry Points → Core Runtime -->
+      <line x1="195" y1="195" x2="232" y2="220" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"></line>
+      <line x1="195" y1="255" x2="232" y2="255" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"></line>
+      <line x1="195" y1="315" x2="232" y2="295" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"></line>
+      <line x1="195" y1="375" x2="232" y2="340" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#ah)"></line>
+      <line x1="195" y1="435" x2="232" y2="375" stroke="#94a3b8" stroke-width="1" marker-end="url(#ah)"></line>
+
+      <!-- Core Runtime → Tool Runtime -->
+      <line x1="530" y1="255" x2="568" y2="255" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"></line>
+
+      <!-- Tool Runtime → Anthropic API -->
+      <line x1="810" y1="195" x2="848" y2="195" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"></line>
+      <!-- Tool Runtime → MCP Servers -->
+      <line x1="810" y1="255" x2="848" y2="255" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"></line>
+      <!-- Tool Runtime → Local FS -->
+      <line x1="810" y1="315" x2="848" y2="315" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ah)"></line>
+      <!-- Tool Runtime → Shell -->
+      <line x1="810" y1="375" x2="848" y2="375" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#ah)"></line>
+
+      <!-- Loop arrow: from 循环控制 back to System Prompt 组装 -->
+      <path d="M 280 430 L 280 448 Q 280 458, 264 458 L 226 458 Q 216 458, 216 448 L 216 155 Q 216 145, 226 145 L 242 145 Q 252 145, 252 155 L 252 165" stroke="#e11d48" stroke-width="1.5" stroke-dasharray="6,3" fill="none" marker-end="url(#ah-red)"></path>
+
+      <!-- Core Runtime → Permission (down) -->
+      <path d="M 340 430 L 340 465 Q 340 480, 320 480 L 180 480 Q 155 480, 155 495 L 155 510" stroke="#d97706" stroke-width="1.2" stroke-dasharray="4,3" fill="none" marker-end="url(#ah-flag)"></path>
+
+      <!-- Core Runtime → Context Compaction (down) -->
+      <line x1="435" y1="430" x2="435" y2="510" stroke="#0d9488" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#ah-signal)"></line>
+
+      <!-- Tool Runtime → Extension System (down) -->
+      <line x1="690" y1="430" x2="690" y2="510" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#ah)"></line>
+
+      <!-- Tool Runtime → Agent/Task (down) -->
+      <path d="M 760 430 L 760 465 Q 760 480, 790 480 L 930 480 Q 950 480, 950 495 L 950 510" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="4,3" fill="none" marker-end="url(#ah)"></path>
+
+      <!-- Persistence connections (down to infra) -->
+      <path d="M 155 715 L 155 770" stroke="#059669" stroke-width="1" stroke-dasharray="3,3" fill="none" marker-end="url(#ah-state)"></path>
+      <path d="M 435 715 L 435 740 Q 435 755, 420 755 L 355 755 Q 340 755, 340 770" stroke="#059669" stroke-width="1" stroke-dasharray="3,3" fill="none" marker-end="url(#ah-state)"></path>
+      <path d="M 690 715 L 690 740 Q 690 755, 670 755 L 530 755 Q 510 755, 510 770" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3" fill="none" marker-end="url(#ah)"></path>
+      <path d="M 950 715 L 950 740 Q 950 755, 920 755 L 700 755 Q 680 755, 680 770" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3" fill="none" marker-end="url(#ah)"></path>
+
+      <!-- Feature-flagged connections -->
+      <path d="M 1180 430 L 1180 510" stroke="#d97706" stroke-width="1.2" stroke-dasharray="5,3" fill="none" marker-end="url(#ah-flag)"></path>
+    </svg>
+
+    <!-- ===== Row 1: Entry Points (Source Boxes) ===== -->
+    <div class="box source" style="left:50px; top:171px; width:145px; height:48px">
+      <a href="#EP14" class="ep-link" data-chapter="14-ui-state-management">Interactive REPL<span class="ep-badge">EP14</span></a><span class="tech">React/Ink · Declarative Terminal UI</span>
+    </div>
+    <div class="box source" style="left:50px; top:231px; width:145px; height:48px">
+      Headless / SDK<span class="tech">--print · stream-json</span>
+    </div>
+    <div class="box source" style="left:50px; top:291px; width:145px; height:48px">
+      <a href="#EP13" class="ep-link" data-chapter="13-bridge-system">Remote / CCR<span class="ep-badge">EP13</span></a><span class="tech">WebSocket · Remote Sessions</span>
+    </div>
+    <div class="box source" style="left:50px; top:351px; width:145px; height:48px">
+      <a href="#EP13" class="ep-link" data-chapter="13-bridge-system">Bridge Worker Node<span class="ep-badge">EP13</span></a><span class="tech">Remote Control · Polling</span>
+    </div>
+    <div class="box source" style="left:50px; top:411px; width:145px; height:48px">
+      Server Mode<span class="tech">HTTP API · SDK Embedding</span>
+    </div>
+
+    <!-- ===== Core Runtime Enclosure ===== -->
+    <div class="enclosure" style="left:224px; top:112px; width:584px; height:338px"></div>
+    <div class="enclosure-label" style="left:239px; top:117px">Message-Driven Core — Interactive and Headless share the same query/tool/message infrastructure</div>
+
+    <!-- ===== Core Runtime Group ===== -->
+    <div class="group" style="left:232px; top:140px; width:298px; height:298px">
+      <span class="tag red">Query Loop · Conversation Core</span>
+    </div>
+    <div class="box" style="left:248px; top:168px; width:266px; height:44px; border-color:#fb7185">
+      <a href="#EP01" class="ep-link" data-chapter="01-query-engine">QueryEngine.ts<span class="ep-badge">EP01</span></a><span class="sub">Session object · Message array · File cache · Usage tracking</span>
+    </div>
+    <div class="box loop-accent" style="left:248px; top:220px; width:266px; height:48px">
+      <a href="#EP01" class="ep-link" data-chapter="01-query-engine">query.ts Main Loop<span class="ep-badge">EP01</span></a><span class="metric">API streaming → tool_use detection → tool_result feedback</span>
+    </div>
+    <div class="box dashed" style="left:248px; top:276px; width:266px; height:42px">
+      <a href="#EP10" class="ep-link" data-chapter="10-context-assembly">System Prompt Assembly<span class="ep-badge">EP10</span></a><span class="sub">Static prefix + DYNAMIC_BOUNDARY + Dynamic context</span>
+    </div>
+    <div class="box dashed" style="left:248px; top:326px; width:266px; height:42px">
+      <a href="#EP15" class="ep-link" data-chapter="15-services-api-layer">services/api/claude.ts<span class="ep-badge">EP15</span></a><span class="sub">Request assembly · beta header · tool schema · prompt cache</span>
+    </div>
+    <div class="box dashed" style="left:248px; top:376px; width:266px; height:38px">
+      <a href="#EP01" class="ep-link" data-chapter="01-query-engine">Loop Control<span class="ep-badge">EP01</span></a><span class="sub">max-output recovery · auto-compact · stop hook</span>
+    </div>
+
+    <!-- ===== Tool Runtime Group ===== -->
+    <div class="group" style="left:568px; top:140px; width:242px; height:298px">
+      <span class="tag green">Tool Runtime · 40+ Tools</span>
+    </div>
+    <div class="box" style="left:584px; top:168px; width:210px; height:44px; border-color:#34d399">
+      <a href="#EP02" class="ep-link" data-chapter="02-tool-system">tools.ts Registry<span class="ep-badge">EP02</span></a><span class="sub">feature gate · stable ordering · prompt cache friendly</span>
+    </div>
+    <div class="box dashed" style="left:584px; top:220px; width:210px; height:48px">
+      <a href="#EP02" class="ep-link" data-chapter="02-tool-system">toolOrchestration.ts<span class="ep-badge">EP02</span></a><span class="sub">Concurrency-safe grouping · read/write parallel split</span>
+    </div>
+    <div class="box dashed" style="left:584px; top:276px; width:210px; height:42px">
+      <a href="#EP02" class="ep-link" data-chapter="02-tool-system">toolExecution.ts<span class="ep-badge">EP02</span></a><span class="sub">schema validation · <a href="#EP05" class="ep-link" data-chapter="05-hook-system">hook<span class="ep-badge">EP05</span></a> · permissions · telemetry · OTel</span>
+    </div>
+    <div class="box dashed" style="left:584px; top:326px; width:210px; height:42px">
+      <a href="#EP02" class="ep-link" data-chapter="02-tool-system">Tool.ts Unified Protocol<span class="ep-badge">EP02</span></a><span class="sub">call + checkPermissions + render + isReadOnly</span>
+    </div>
+    <div class="box dashed" style="left:584px; top:376px; width:210px; height:38px">
+      <a href="#EP02" class="ep-link" data-chapter="02-tool-system">StreamingToolExecutor<span class="ep-badge">EP02</span></a><span class="sub">Concurrent execution while streaming · Progress rendering</span>
+    </div>
+
+    <!-- ===== External Services (Source Boxes) ===== -->
+    <div class="box source" style="left:848px; top:171px; width:175px; height:48px">
+      <a href="#EP15" class="ep-link" data-chapter="15-services-api-layer">Anthropic Claude API<span class="ep-badge">EP15</span></a><span class="tech">Opus · Sonnet · Haiku · Streaming</span>
+    </div>
+    <div class="box source" style="left:848px; top:231px; width:175px; height:48px">
+      <a href="#EP04" class="ep-link" data-chapter="04-plugin-system">MCP Server Processes<span class="ep-badge">EP04</span></a><span class="tech">stdio · SSE · HTTP · WS</span>
+    </div>
+    <div class="box source" style="left:848px; top:291px; width:175px; height:48px">
+      Local File System<span class="tech">Read · Edit · Write · Glob</span>
+    </div>
+    <div class="box source" style="left:848px; top:351px; width:175px; height:48px">
+      <a href="#EP06" class="ep-link" data-chapter="06-bash-engine">Shell / Subprocess<span class="ep-badge">EP06</span></a><span class="tech">Bash · PowerShell · sandbox</span>
+    </div>
+
+    <!-- ===== Row 2: Permission System ===== -->
+    <div class="group" style="left:50px; top:510px; width:220px; height:210px">
+      <span class="tag orange">4-Way Permission Race</span>
+    </div>
+    <div class="box" style="left:66px; top:536px; width:188px; height:34px; font-size:11.5px; border-color:#f59e0b">
+      <a href="#EP07" class="ep-link" data-chapter="07-permission-pipeline">PermissionMode<span class="ep-badge">EP07</span></a><span class="sub">default · plan · auto · bypass · bubble</span>
+    </div>
+    <div class="box dashed" style="left:66px; top:575px; width:188px; height:34px; font-size:11.5px">
+      <a href="#EP07" class="ep-link" data-chapter="07-permission-pipeline">4-Way Race Resolution<span class="ep-badge">EP07</span></a><span class="sub">User · Hook · Classifier · Bridge</span>
+    </div>
+    <div class="box dashed" style="left:66px; top:614px; width:188px; height:34px; font-size:11.5px">
+      <a href="#EP06" class="ep-link" data-chapter="06-bash-engine">Bash Classifier<span class="ep-badge">EP06</span></a><span class="sub">LLM auto-judges command safety</span>
+    </div>
+    <div class="box dashed" style="left:66px; top:653px; width:188px; height:34px; font-size:11.5px">
+      <a href="#EP07" class="ep-link" data-chapter="07-permission-pipeline">Rule Engine<span class="ep-badge">EP07</span></a><span class="sub">allow/deny/ask · glob · denial tracking</span>
+    </div>
+    <div class="box dashed" style="left:66px; top:692px; width:188px; height:24px; font-size:10px">
+      ResolveOnce atomic race · first claim wins
+    </div>
+
+    <!-- ===== Row 2: Context Compaction ===== -->
+    <div class="group" style="left:306px; top:510px; width:248px; height:210px">
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system"><span class="tag teal">5-Layer Context Compaction<span class="ep-badge">EP11</span></span></a>
+    </div>
+    <div class="box" style="left:322px; top:536px; width:216px; height:34px; font-size:11.5px; border-color:#14b8a6">
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">① snip compact<span class="ep-badge">EP11</span></a><span class="sub">Old tool_result → [snipped] preserves structure</span>
+    </div>
+    <div class="box dashed" style="left:322px; top:576px; width:216px; height:34px; font-size:11.5px">
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">② microcompact<span class="ep-badge">EP11</span></a><span class="sub">Strip old tool results · Notify cache detector</span>
+    </div>
+    <div class="box dashed" style="left:322px; top:616px; width:216px; height:34px; font-size:11.5px">
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">③ context collapse<span class="ep-badge">EP11</span></a><span class="sub">Collapse completed sub-conversations</span>
+    </div>
+    <div class="box dashed" style="left:322px; top:656px; width:104px; height:34px; font-size:10.5px">
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">④ autoCompact<span class="ep-badge">EP11</span></a><span class="sub">Threshold summary</span>
+    </div>
+    <div class="box dashed" style="left:434px; top:656px; width:104px; height:34px; font-size:10.5px">
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">⑤ reactive<span class="ep-badge">EP11</span></a><span class="sub">PTL error trigger</span>
+    </div>
+    <div class="box dashed" style="left:322px; top:694px; width:216px; height:24px; font-size:10px">
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">compact boundary<span class="ep-badge">EP11</span></a> · Incremental recovery · tool result budget
+    </div>
+
+    <!-- ===== Row 2: Extension System ===== -->
+    <div class="group" style="left:590px; top:510px; width:230px; height:210px">
+      <span class="tag blue">Four-Layer Extension System</span>
+    </div>
+    <div class="box" style="left:606px; top:536px; width:198px; height:38px; font-size:12px; border-color:#3b82f6">
+      <a href="#EP04" class="ep-link" data-chapter="04-plugin-system">Commands 80+<span class="ep-badge">EP04</span></a><span class="sub">built-in · skills · plugins · MCP prompt</span>
+    </div>
+    <div class="box dashed" style="left:606px; top:580px; width:198px; height:38px; font-size:12px">
+      <a href="#EP04" class="ep-link" data-chapter="04-plugin-system">Skills<span class="ep-badge">EP04</span></a><span class="sub">Markdown prompt · Dynamic discovery · Conditional activation</span>
+    </div>
+    <div class="box dashed" style="left:606px; top:624px; width:198px; height:38px; font-size:12px">
+      <a href="#EP04" class="ep-link" data-chapter="04-plugin-system">Plugins<span class="ep-badge">EP04</span></a><span class="sub">Capability bundle: cmd/skill/hook/MCP/agent</span>
+    </div>
+    <div class="box dashed" style="left:606px; top:668px; width:198px; height:38px; font-size:12px">
+      <a href="#EP04" class="ep-link" data-chapter="04-plugin-system">MCP Client<span class="ep-badge">EP04</span></a><span class="sub">stdio/SSE/HTTP/WS/claudeai-proxy</span>
+    </div>
+    <div class="note" style="left:606px; top:712px; width:198px; text-align:center; color:#3b82f6">
+      External capabilities unified as tool/resource/command/skill
+    </div>
+
+    <!-- ===== Row 2: Agent / Task System ===== -->
+    <div class="group" style="left:856px; top:510px; width:220px; height:210px">
+      <span class="tag violet">Agent / Task Subsystem</span>
+    </div>
+    <div class="box" style="left:872px; top:536px; width:188px; height:40px; font-size:12px; border-color:#8b5cf6">
+      <a href="#EP08" class="ep-link" data-chapter="08-agent-swarms">AgentTool<span class="ep-badge">EP08</span></a><span class="sub">Subagent · Independent tool pool/model/workdir</span>
+    </div>
+    <div class="box dashed" style="left:872px; top:582px; width:188px; height:36px; font-size:12px">
+      <a href="#EP03" class="ep-link" data-chapter="03-coordinator">Task Unified Shell<span class="ep-badge">EP03</span></a><span class="sub">local_agent · remote · bash · workflow</span>
+    </div>
+    <div class="box dashed" style="left:872px; top:624px; width:188px; height:36px; font-size:12px">
+      <a href="#EP08" class="ep-link" data-chapter="08-agent-swarms">SendMessageTool<span class="ep-badge">EP08</span></a><span class="sub">Team context · Broadcast · Plan approval</span>
+    </div>
+    <div class="box dashed" style="left:872px; top:666px; width:188px; height:36px; font-size:12px">
+      <a href="#EP03" class="ep-link" data-chapter="03-coordinator">worktree / remote Isolation<span class="ep-badge">EP03</span></a><span class="sub">Git worktree · Remote execution</span>
+    </div>
+
+    <!-- ===== Row 2: Feature-Flagged ===== -->
+    <div class="group flagged-group" style="left:1112px; top:510px; width:278px; height:210px">
+      <span class="tag orange">Feature-Flagged</span>
+      <span class="flag-badge">GrowthBook</span>
+    </div>
+    <div class="box flagged" style="left:1128px; top:536px; width:246px; height:38px; font-size:12px">
+      BUDDY Virtual Pet<span class="sub">Tamagotchi · 18 species · 500ms sprite animation</span>
+    </div>
+    <div class="box flagged" style="left:1128px; top:580px; width:246px; height:38px; font-size:12px">
+      KAIROS Resident Agent<span class="sub">Night Dream · Brief mode · Persistent memory</span>
+    </div>
+    <div class="box flagged" style="left:1128px; top:624px; width:246px; height:38px; font-size:12px">
+      ULTRAPLAN Remote Planning<span class="sub">CCR 30min · Browser approval · teleport</span>
+    </div>
+    <div class="box flagged" style="left:1128px; top:668px; width:246px; height:38px; font-size:12px">
+      <a href="#EP03" class="ep-link" data-chapter="03-coordinator">Coordinator<span class="ep-badge">EP03</span></a><span class="sub">Multi-agent parallel · Push notify · scratch</span>
+    </div>
+
+    <!-- ===== Row 3: Persistence & State Infrastructure ===== -->
+    <div class="enclosure" style="left:50px; top:765px; width:1340px; height:115px; border-color:#a7f3d0; background:rgba(236,253,245,0.3)"></div>
+    <div class="enclosure-label" style="left:65px; top:771px; color:#059669">Persistence &amp; State Layer <span style="color:#94a3b8; margin-left:4px">~/.claude/ · Session lifecycle management</span></div>
+
+    <div class="box" style="left:65px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
+      <a href="#EP12" class="ep-link" data-chapter="12-startup-bootstrap">bootstrap/state.ts<span class="ep-badge">EP12</span></a><span class="sub">Process-level global state</span>
+    </div>
+    <div class="box" style="left:220px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
+      <a href="#EP16" class="ep-link" data-chapter="16-infrastructure-config">AppStateStore<span class="ep-badge">EP16</span></a><span class="sub">Zustand-style runtime state</span>
+    </div>
+    <div class="box" style="left:375px; top:792px; width:150px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
+      <a href="#EP09" class="ep-link" data-chapter="09-session-persistence">sessionStorage.ts<span class="ep-badge">EP09</span></a><span class="sub">transcript JSONL · Recovery core</span>
+    </div>
+    <div class="box" style="left:540px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
+      <a href="#EP09" class="ep-link" data-chapter="09-session-persistence">history.ts<span class="ep-badge">EP09</span></a><span class="sub">Input history · Project-level</span>
+    </div>
+    <div class="box" style="left:695px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
+      <a href="#EP11" class="ep-link" data-chapter="11-compact-system">compact boundary<span class="ep-badge">EP11</span></a><span class="sub">Compaction point · Incremental recovery</span>
+    </div>
+    <div class="box" style="left:850px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
+      <a href="#EP16" class="ep-link" data-chapter="16-infrastructure-config">fileHistory<span class="ep-badge">EP16</span></a><span class="sub">File change snapshots</span>
+    </div>
+    <div class="box" style="left:1005px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
+      <a href="#EP16" class="ep-link" data-chapter="16-infrastructure-config">memdir/<span class="ep-badge">EP16</span></a><span class="sub">Memory directory · MEMORY.md</span>
+    </div>
+    <div class="box" style="left:1160px; top:792px; width:140px; height:48px; font-size:11.5px; border-color:#a7f3d0; background:#f0fdf4">
+      <a href="#EP17" class="ep-link" data-chapter="17-telemetry-privacy-operations">analytics / OTel<span class="ep-badge">EP17</span></a><span class="sub">Datadog · Telemetry</span>
+    </div>
+
+    <!-- ===== Key Design Notes (right side) ===== -->
+    <div style="position:absolute; right:40px; top:135px; width:370px">
+      <div style="border:1px solid #e2e8f0; border-radius:10px; padding:12px 16px; background:rgba(248,250,252,0.8)">
+        <div style="font-size:10px; font-weight:700; color:#1e293b; margin-bottom:6px; letter-spacing:0.3px">Key Architectural Observations</div>
+        <div style="font-size:9.5px; color:#64748b; line-height:1.65">
+          <div style="margin-bottom:4px"><span style="color:#e11d48; font-weight:600">Message-Driven</span> — User input, model output, tool progress, and system events are all Messages; the transcript is the recovery core</div>
+          <div style="margin-bottom:4px"><span style="color:#059669; font-weight:600">Prompt Cache First</span> — Stable tool ordering, DYNAMIC_BOUNDARY split, deferred tools, cache break detection</div>
+          <div style="margin-bottom:4px"><span style="color:#3b82f6; font-weight:600">Four-Layer Extensions</span> — Command + Skill + Plugin + MCP coexist without conflict — this is a platform, not a client</div>
+          <div><span style="color:#8b5cf6; font-weight:600">Agent as First-Class</span> — Independent tool pool / model / permissions / worktree, with SendMessage for team collaboration</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech stack note -->
+    <div style="position:absolute; right:40px; top:375px; width:370px">
+      <div style="border:1px solid #e2e8f0; border-radius:10px; padding:10px 16px; background:rgba(248,250,252,0.8)">
+        <div style="font-size:10px; font-weight:700; color:#1e293b; margin-bottom:4px; letter-spacing:0.3px">Tech Stack</div>
+        <div style="font-size:9px; color:#64748b; font-family:'SF Mono','Menlo',monospace; line-height:1.8">
+          TypeScript + Bun <span style="color:#94a3b8">← Runtime</span><br>
+          React / Ink <span style="color:#94a3b8">← Terminal UI framework</span><br>
+          @anthropic-ai/sdk <span style="color:#94a3b8">← Claude API client</span><br>
+          Zod v4 <span style="color:#94a3b8">← Tool schema validation</span><br>
+          @modelcontextprotocol/sdk <span style="color:#94a3b8">← MCP protocol</span>
+        </div>
+        <div style="font-size:8.5px; color:#94a3b8; margin-top:3px">vendor/: Rust native modules (audio · image · key modifiers · URL handler)</div>
+      </div>
+    </div>
+
+    <!-- Loop annotation -->
+    <div class="note" style="left:216px; top:460px; width:100px; text-align:center; color:#e11d48">
+      ↑ Loop iteration<br>until plain-text return or termination
+    </div>
+
+    <!-- Tool count annotation -->
+    <div style="position:absolute; left:584px; top:420px; width:210px; text-align:center">
+      <div style="font-size:8.5px; color:#059669; font-family:'SF Mono','Menlo',monospace; letter-spacing:0.3px">
+        Bash · Read · Edit · Write · Glob · Grep<br>Agent · Skill · ToolSearch · WebSearch …
+      </div>
+    </div>
+
+    <!-- ===== Security Boundary Bar ===== -->
+    <div style="position:absolute; bottom:68px; left:40px; right:40px; display:flex; align-items:center; gap:0">
+      <div style="color:#94a3b8; font-size:9px; letter-spacing:0.5px; text-transform:uppercase; font-weight:600; margin-right:16px; white-space:nowrap">Security Boundaries</div>
+      <div style="flex:1; display:flex; height:26px">
+        <div style="flex:0.7; text-align:center; font-size:9.5px; color:#64748b; border-top:1px solid #e2e8f0; padding-top:5px; position:relative">
+          <span style="position:absolute; top:-1px; left:0; width:1px; height:5px; background:#e2e8f0"></span>
+          User Input
+        </div>
+        <div style="flex:0.9; text-align:center; font-size:9.5px; color:#d97706; border-top:1px solid #fcd34d; padding-top:5px; position:relative">
+          <span style="position:absolute; top:-1px; left:0; width:1px; height:5px; background:#fcd34d"></span>
+          <a href="#EP07" class="ep-link" data-chapter="07-permission-pipeline">4-Way Permission Race<span class="ep-badge">EP07</span></a>
+          <div style="font-size:7.5px; color:#f59e0b">User · <a href="#EP05" class="ep-link" data-chapter="05-hook-system">Hook<span class="ep-badge">EP05</span></a> · Classifier · Bridge</div>
+          <span style="position:absolute; top:-1px; right:0; width:1px; height:5px; background:#fcd34d"></span>
+        </div>
+        <div style="flex:0.9; text-align:center; font-size:9.5px; color:#64748b; border-top:1px solid #e2e8f0; padding-top:5px; position:relative">
+          <span style="position:absolute; top:-1px; left:0; width:1px; height:5px; background:#e2e8f0"></span>
+          Tool Safety Boundary
+          <div style="font-size:7.5px; color:#94a3b8">isReadOnly · Path checks · Dangerous files</div>
+        </div>
+        <div style="flex:0.9; text-align:center; font-size:9.5px; color:#64748b; border-top:1px solid #e2e8f0; padding-top:5px; position:relative">
+          <span style="position:absolute; top:-1px; left:0; width:1px; height:5px; background:#e2e8f0"></span>
+          Input Sanitization
+          <div style="font-size:7.5px; color:#94a3b8">Unicode anti-injection · SSRF guard</div>
+        </div>
+        <div style="flex:0.8; text-align:center; font-size:9.5px; color:#64748b; border-top:1px solid #e2e8f0; padding-top:5px; position:relative">
+          <span style="position:absolute; top:-1px; left:0; width:1px; height:5px; background:#e2e8f0"></span>
+          <a href="#EP05" class="ep-link" data-chapter="05-hook-system">Hook Interception<span class="ep-badge">EP05</span></a>
+          <div style="font-size:7.5px; color:#94a3b8">PreToolUse · PostToolUse</div>
+        </div>
+        <div style="flex:0.9; text-align:center; font-size:9.5px; color:#d97706; border-top:1px solid #fcd34d; padding-top:5px; position:relative">
+          <span style="position:absolute; top:-1px; left:0; width:1px; height:5px; background:#fcd34d"></span>
+          Feature Gate
+          <div style="font-size:7.5px; color:#f59e0b">feature() · ant-only · GrowthBook</div>
+          <span style="position:absolute; top:-1px; right:0; width:1px; height:5px; background:#fcd34d"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Legend ===== -->
+    <div class="legend" style="bottom:18px; right:40px">
+      <div class="legend-item">
+        <div class="legend-line" style="border-top:1.5px solid #94a3b8"></div>
+        Request Flow
+      </div>
+      <div class="legend-item">
+        <div class="legend-line" style="border-top:1.5px dashed #e11d48"></div>
+        Loop Iteration
+      </div>
+      <div class="legend-item">
+        <div class="legend-line" style="border-top:1.5px dashed #0d9488"></div>
+        Context Signal
+      </div>
+      <div class="legend-item">
+        <div class="legend-line" style="border-top:1.5px dashed #059669"></div>
+        Persistence
+      </div>
+      <div class="legend-item">
+        <div class="legend-line" style="border-top:1.5px dashed #d97706"></div>
+        Feature-Flagged
+      </div>
+      <div class="legend-item">
+        <div style="width:14px; height:14px; border:1.5px solid #fcd34d; background:#fffbeb; border-radius:4px"></div>
+        Experimental
+      </div>
+      <div class="legend-item">
+        <div style="width:14px; height:14px; border:1.5px solid #0ea5e9; background:#e0f2fe; border-radius:4px; font-size:7px; font-weight:700; color:#0284c7; display:flex; align-items:center; justify-content:center">EP</div>
+        Click to Read
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // Detect current locale from URL path
+  function getCurrentLocale() {
+    const path = window.location.pathname;
+    const localeMatch = path.match(/^\/(en|zh|ja)\//);
+    return localeMatch ? localeMatch[1] : 'en'; // Default to English
+  }
+
+  // Update all EP links with correct locale
+  function updateLinks() {
+    const locale = getCurrentLocale();
+    const epLinks = document.querySelectorAll('.ep-link[data-chapter]');
+
+    epLinks.forEach(function(link) {
+      const chapter = link.getAttribute('data-chapter');
+      if (chapter) {
+        link.setAttribute('href', '/' + locale + '/advanced/' + chapter);
+      }
+    });
+  }
+
+  // Initial update
+  updateLinks();
+
+  // Update on SPA navigation (if applicable)
+  let lastPath = window.location.pathname;
+  new MutationObserver(function() {
+    if (window.location.pathname !== lastPath) {
+      lastPath = window.location.pathname;
+      updateLinks();
+    }
+  }).observe(document.documentElement, { childList: true, subtree: true });
+
+  // Resize function
+  function resize() {
+    const wrapper = document.querySelector('.wrapper');
+    const canvas = document.querySelector('.canvas');
+    const scale = Math.min(wrapper.clientWidth / 1440, 1);
+    canvas.style.transform = `scale(${scale})`;
+    wrapper.style.height = (1100 * scale) + 'px';
+  }
+  window.addEventListener('resize', resize);
+  resize();
+})();
+</script>
+
+</body>
+</html>

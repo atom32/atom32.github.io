@@ -1,0 +1,1089 @@
+<!DOCTYPE html><!--kOMToiePwU79Kzn0fZt4S--><html lang="ja"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js"/><script src="/agent-coding-lesson/_next/static/chunks/82abf2d65f5428ae.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/76fed9c17f51393e.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/7de9141b1af425c3.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/turbopack-8800d0fd815877b2.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/076aae518584b842.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js" async=""></script><script src="/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js" async=""></script><title>Agent Coding Lesson</title><meta name="description" content="0 から 1 へ nano Claude Code-like agent を構築し、毎回 1 つの仕組みを追加"/><link rel="icon" href="/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico" sizes="256x256" type="image/x-icon"/><script>
+          (function() {
+            var theme = localStorage.getItem('theme');
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            }
+          })();
+        </script><script src="/agent-coding-lesson/_next/static/chunks/a6dad97d9634a72d.js" noModule=""></script></head><body class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-sm"><div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a class="text-lg font-bold" href="/agent-coding-lesson/ja/">Agent Coding Lesson</a><nav class="hidden items-center gap-6 md:flex"><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/curriculum/">カリキュラム</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/timeline/">学習パス</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/compare/">バージョン比較</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/layers/">アーキテクチャ層</a><a class="text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white text-zinc-500 dark:text-zinc-400" href="/agent-coding-lesson/ja/slides/s01/">スライド</a><div class="flex items-center gap-1 rounded-lg border border-[var(--color-border)] p-0.5"><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">EN</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors text-zinc-500 hover:text-zinc-700 dark:text-zinc-400">中文</button><button class="rounded-md px-2 py-1 text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">日本語</button></div><button class="rounded-md p-1.5 text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Switch to dark mode"><span class="inline-block h-4 w-4"></span></button><a href="https://github.com/atom32/agent-coding-lesson" target="_blank" rel="noopener" class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-white" aria-label="Open project repository on GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a></nav><button class="flex min-h-[44px] min-w-[44px] items-center justify-center md:hidden" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></header><main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8"><div class="flex gap-8"><nav class="hidden w-64 shrink-0 md:block"><div class="sticky top-[calc(3.5rem+2rem)] max-h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/curriculum/">カリキュラム</a><div class="space-y-1"><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/summary/">サマリー</a><a class="block rounded-md border px-2.5 py-2 text-sm transition-colors border-zinc-200 text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:border-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/glossary/">用語集</a></div><section class="space-y-5"><div class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">ラボレッスン</div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-blue-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">ツールと実行</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s01/"><span class="font-mono text-xs">s01</span><span class="ml-1.5">エージェントループ</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s02/"><span class="font-mono text-xs">s02</span><span class="ml-1.5">ツール</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">計画と調整</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s03/"><span class="font-mono text-xs">s03</span><span class="ml-1.5">TodoWrite</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s04/"><span class="font-mono text-xs">s04</span><span class="ml-1.5">サブエージェント</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s05/"><span class="font-mono text-xs">s05</span><span class="ml-1.5">スキル</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s07/"><span class="font-mono text-xs">s07</span><span class="ml-1.5">タスクシステム</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-purple-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">メモリ管理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s06/"><span class="font-mono text-xs">s06</span><span class="ml-1.5">コンテキスト圧縮</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-amber-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">並行処理</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s08/"><span class="font-mono text-xs">s08</span><span class="ml-1.5">バックグラウンドタスク</span></a></li></ul></div><div><div class="flex items-center gap-1.5 pb-1.5"><span class="h-2 w-2 rounded-full bg-red-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">コラボレーション</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s09/"><span class="font-mono text-xs">s09</span><span class="ml-1.5">エージェントチーム</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s10/"><span class="font-mono text-xs">s10</span><span class="ml-1.5">チームプロトコル</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s11/"><span class="font-mono text-xs">s11</span><span class="ml-1.5">自律エージェント</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/s12/"><span class="font-mono text-xs">s12</span><span class="ml-1.5">Worktree + タスク分離</span></a></li></ul></div></section><section><div class="mb-2 flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-emerald-500"></span><span class="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">実システム解剖</span></div><ul class="space-y-0.5"><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/00-overview/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->00</span><span class="ml-1.5">Architecture Overview</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/01-query-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->01</span><span class="ml-1.5">QueryEngine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/02-tool-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->02</span><span class="ml-1.5">Tool System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/03-coordinator/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->03</span><span class="ml-1.5">Coordinator</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/04-plugin-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->04</span><span class="ml-1.5">Plugin System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/05-hook-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->05</span><span class="ml-1.5">Hook System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/06-bash-engine/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->06</span><span class="ml-1.5">Bash Engine</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/07-permission-pipeline/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->07</span><span class="ml-1.5">Permission Pipeline</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/08-agent-swarms/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->08</span><span class="ml-1.5">Agent Swarms</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/09-session-persistence/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->09</span><span class="ml-1.5">Session Persistence</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/10-context-assembly/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->10</span><span class="ml-1.5">Context Assembly</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/11-compact-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->11</span><span class="ml-1.5">Compact System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/12-startup-bootstrap/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->12</span><span class="ml-1.5">Startup &amp; Bootstrap</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/13-bridge-system/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->13</span><span class="ml-1.5">Bridge System</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-white" href="/agent-coding-lesson/ja/advanced/14-ui-state-management/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->14</span><span class="ml-1.5">UI State &amp; Rendering</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/15-services-api-layer/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->15</span><span class="ml-1.5">Services &amp; API Layer</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/16-infrastructure-config/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->16</span><span class="ml-1.5">Infrastructure &amp; Config</span></a></li><li><a class="block rounded-md px-2.5 py-1.5 text-sm transition-colors text-zinc-500 hover:bg-zinc-50 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-300" href="/agent-coding-lesson/ja/advanced/17-telemetry-privacy-operations/"><span class="font-mono text-xs text-zinc-400">EP<!-- -->17</span><span class="ml-1.5">Telemetry &amp; Operations</span></a></li></ul></section></div></nav><div class="min-w-0 flex-1"><div class="mx-auto max-w-4xl space-y-8 py-4"><header class="rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"><a class="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white" href="/agent-coding-lesson/ja/curriculum/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Course map</a><div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800">EP<!-- -->14</span><h1 class="text-2xl font-bold text-zinc-950 dark:text-zinc-50">UI State &amp; Rendering</h1></div><p class="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">Terminal UI, React/Ink state, input modes, and rendering</p></header><section class="rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20"><div class="flex flex-wrap items-start justify-between gap-3"><div><p class="text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300">Prompt reference</p><h2 class="mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50">UI copy, status, and rendering constraints</h2><p class="mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">These prompts show how text output, status lines, and option previews become part of the UI contract.</p></div><a href="https://github.com/Piebald-AI/claude-code-system-prompts" target="_blank" rel="noopener" class="inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg>Source repo</a></div><p class="mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70">Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.</p><div class="mt-4 grid gap-3 md:grid-cols-2"><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-communication-style.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Communication style</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-communication-style.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Progress UI</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Defines when and how the agent sends user-facing updates.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-tone-and-style-code-references.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Code references</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-tone-and-style-code-references.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Clickable UI affordance</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Connects rendered output to clickable file references.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-status-line-setup.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Status line setup</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">agent-prompt-status-line-setup.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Terminal UI</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Useful for terminal status-line customization and shell integration.</p></a><a href="https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-option-previewer.md" target="_blank" rel="noopener" class="group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30"><div class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mt-0.5 shrink-0 text-violet-500" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg><div class="min-w-0"><div class="flex items-center gap-1.5"><h3 class="truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50">Option previewer</h3><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link shrink-0 text-zinc-400" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></div><p class="mt-1 font-mono text-[11px] text-zinc-400">system-prompt-option-previewer.md</p></div></div><p class="mt-2 text-xs font-medium text-violet-700 dark:text-violet-300">Choice UI</p><p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">Shows prompt support for previewing user-facing options.</p></a></div></section><article class="py-4"><div class="prose-custom"><h1>Episode 14: UI &#x26; State Management — A Browser in Your Terminal</h1>
+<blockquote class="hero-callout">
+</blockquote>
+<blockquote>
+<p><strong>Source files</strong>: <code>ink/</code> directory — 48 files, ~620KB total. Core: <code>ink.tsx</code> (252KB), <code>reconciler.ts</code> (14.6KB), <code>renderer.ts</code> (7.7KB), <code>dom.ts</code> (15.1KB), <code>screen.ts</code> (49.3KB), <code>events/dispatcher.ts</code> (6KB), <code>focus.ts</code> (5.1KB). State: <code>state/store.ts</code> (836 bytes), <code>state/AppStateStore.ts</code> (21.8KB), <code>state/AppState.tsx</code> (23.5KB), <code>state/onChangeAppState.ts</code> (6.2KB). Screens: <code>screens/REPL.tsx</code> (874KB), <code>screens/Doctor.tsx</code> (71KB)</p>
+<p><strong>One-liner</strong>: Claude Code runs a fully forked Ink rendering engine — React 19 + ConcurrentRoot, W3C-style capture/bubble events, Yoga Flexbox layout, packed Int32Array double-buffered screens, and a 35-line Zustand replacement — all inside your terminal.</p>
+</blockquote>
+<hr>
+<h2>1. The Terminal UI Tech Stack</h2>
+<p>Most CLI tools paint text line by line. Claude Code builds an entire component-based UI framework in the terminal — and the stack is surprisingly deep:</p>
+<pre class="ascii-diagram"><code>┌─────────────────────────────────────────────────────────────┐
+│  React 19 (ConcurrentRoot via react-reconciler)             │
+│    └─ Custom Ink Reconciler (reconciler.ts, 513 lines)      │
+│        └─ Virtual DOM (dom.ts — ink-root/box/text/link/...) │
+│            └─ Yoga Layout Engine (Flexbox in Terminal)       │
+│                └─ Screen Buffer (screen.ts — packed Int32s)  │
+│                    └─ ANSI Diff (log-update.ts → stdout)    │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3>Key File Index</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Layer</th><th>File</th><th>Size</th><th>Role</th></tr></thead><tbody><tr><td>Entry</td><td><code>ink/root.ts</code></td><td>4.6KB</td><td>Create Ink instance, mount React tree</td></tr><tr><td>Reconciler</td><td><code>ink/reconciler.ts</code></td><td>14.6KB</td><td>React 19 host config, commit hooks</td></tr><tr><td>Renderer</td><td><code>ink/renderer.ts</code></td><td>7.7KB</td><td>Yoga layout → Screen buffer</td></tr><tr><td>DOM</td><td><code>ink/dom.ts</code></td><td>15.1KB</td><td>Virtual DOM nodes, dirty marking</td></tr><tr><td>Screen</td><td><code>ink/screen.ts</code></td><td>49.3KB</td><td>Packed Int32Array cell buffer</td></tr><tr><td>Core</td><td><code>ink/ink.tsx</code></td><td>252KB</td><td>Frame scheduling, input, selection</td></tr><tr><td>Events</td><td><code>ink/events/dispatcher.ts</code></td><td>6KB</td><td>W3C capture/bubble dispatch</td></tr><tr><td>Focus</td><td><code>ink/focus.ts</code></td><td>5.1KB</td><td>FocusManager with stack restore</td></tr><tr><td>Output</td><td><code>ink/log-update.ts</code></td><td>27.2KB</td><td>ANSI diff, cursor management</td></tr></tbody></table>
+<h3>The Complete Rendering Pipeline</h3>
+<pre class="ascii-diagram"><code>stdin raw bytes
+  → parse-keypress.ts: decode to ParsedKey (xterm/VT sequences)
+  → InputEvent creation
+  → Dispatcher.dispatchDiscrete(): W3C capture → target → bubble
+  → React state update → Reconciler commit phase
+  → resetAfterCommit() → rootNode.onComputeLayout() [Yoga]
+  → rootNode.onRender() → renderer.ts generates Screen buffer
+  → log-update.ts: diff prev vs next Screen → ANSI escape sequences
+  → process.stdout.write()
+</code></pre>
+<p>Every keypress walks this entire pipeline. At 16ms frame throttle, Claude Code maintains 60fps-equivalent rendering in the terminal.</p>
+<hr>
+<h2>2. Why Fork Ink</h2>
+<p>Claude Code doesn't use the npm <code>ink</code> package. It maintains a complete fork with at least seven major modifications. Understanding why reveals the engineering ambition behind the project.</p>
+<h3>The Modification Manifest</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Change</th><th>Original Ink</th><th>Forked Ink</th><th>Why</th></tr></thead><tbody><tr><td>React version</td><td>LegacyRoot</td><td><strong>ConcurrentRoot (React 19)</strong></td><td>Concurrent features, <code>useSyncExternalStore</code>, transitions</td></tr><tr><td>Event system</td><td>Basic <code>useInput</code></td><td><strong>W3C capture/bubble dispatcher</strong></td><td>Complex overlapping focus contexts</td></tr><tr><td>Screen mode</td><td>Normal scrollback</td><td><strong>Alt-screen + mouse tracking</strong></td><td>Full-screen TUI with no scrollback pollution</td></tr><tr><td>Rendering</td><td>Single buffer</td><td><strong>Double-buffered + packed Int32 screens</strong></td><td>Zero-flicker rendering, CJK/emoji support</td></tr><tr><td>Text selection</td><td>None</td><td><strong>Mouse drag selection + clipboard</strong></td><td>Copy code from terminal output</td></tr><tr><td>Scrolling</td><td>Full re-render</td><td><strong>Virtual scroll with height cache</strong></td><td>1000+ messages without performance cliff</td></tr><tr><td>Search</td><td>None</td><td><strong>Full-screen search with per-cell highlight</strong></td><td>Find text across entire conversation</td></tr></tbody></table>
+<h3>React 19 Reconciler: The Bridge Between React and Terminal</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: ink/reconciler.ts:224-506</span>
+<span class="hljs-keyword">const</span> reconciler = createReconciler&#x3C;
+  <span class="hljs-title class_">ElementNames</span>,  <span class="hljs-comment">// 'ink-root' | 'ink-box' | 'ink-text' | ...</span>
+  <span class="hljs-title class_">Props</span>,
+  <span class="hljs-title class_">DOMElement</span>,    <span class="hljs-comment">// Virtual DOM node</span>
+  <span class="hljs-title class_">DOMElement</span>,    <span class="hljs-comment">// Container type</span>
+  <span class="hljs-title class_">TextNode</span>,      <span class="hljs-comment">// Text node type</span>
+  <span class="hljs-title class_">DOMElement</span>,    <span class="hljs-comment">// Suspense boundary</span>
+  <span class="hljs-built_in">unknown</span>, <span class="hljs-built_in">unknown</span>, <span class="hljs-title class_">DOMElement</span>,
+  <span class="hljs-title class_">HostContext</span>,
+  <span class="hljs-literal">null</span>,          <span class="hljs-comment">// UpdatePayload — NOT used in React 19</span>
+  <span class="hljs-title class_">NodeJS</span>.<span class="hljs-property">Timeout</span>,
+  -<span class="hljs-number">1</span>, <span class="hljs-literal">null</span>
+>({
+  <span class="hljs-comment">// React 19 commitUpdate — receives old/new props directly</span>
+  <span class="hljs-comment">// (no updatePayload like React 18)</span>
+  <span class="hljs-title function_">commitUpdate</span>(<span class="hljs-params">node, _type, oldProps, newProps</span>) {
+    <span class="hljs-keyword">const</span> props = <span class="hljs-title function_">diff</span>(oldProps, newProps)
+    <span class="hljs-keyword">const</span> style = <span class="hljs-title function_">diff</span>(oldProps[<span class="hljs-string">'style'</span>], newProps[<span class="hljs-string">'style'</span>])
+    <span class="hljs-comment">// Incremental update: only changed attributes + styles</span>
+    <span class="hljs-keyword">if</span> (props) { <span class="hljs-comment">/* apply prop changes */</span> }
+    <span class="hljs-keyword">if</span> (style &#x26;&#x26; node.<span class="hljs-property">yogaNode</span>) { <span class="hljs-title function_">applyStyles</span>(node.<span class="hljs-property">yogaNode</span>, style, ...) }
+  },
+
+  <span class="hljs-comment">// The magic hook: after every React commit, recompute layout + render</span>
+  <span class="hljs-title function_">resetAfterCommit</span>(<span class="hljs-params">rootNode</span>) {
+    rootNode.<span class="hljs-property">onComputeLayout</span>?.()  <span class="hljs-comment">// Yoga flexbox calculation</span>
+    rootNode.<span class="hljs-property">onRender</span>?.()         <span class="hljs-comment">// Paint to screen buffer → stdout</span>
+  },
+})
+</code></pre>
+<p>The <code>UpdatePayload</code> generic is <code>null</code> — a React 19 signature. In React 18, the reconciler pre-computed a diff payload in <code>prepareUpdate()</code> and passed it to <code>commitUpdate()</code>. React 19 eliminated this intermediate step, passing old and new props directly. This is one of the clearest signals that Claude Code is built on cutting-edge React internals.</p>
+<hr>
+<h2>3. The Rendering Pipeline In Depth</h2>
+<h3>DOM Node Structure</h3>
+<p>Every UI element becomes a <code>DOMElement</code> node in the virtual tree:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: ink/dom.ts:31-91</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">DOMElement</span> = {
+  <span class="hljs-attr">nodeName</span>: <span class="hljs-title class_">ElementNames</span>           <span class="hljs-comment">// 'ink-root' | 'ink-box' | 'ink-text' | ...</span>
+  <span class="hljs-attr">attributes</span>: <span class="hljs-title class_">Record</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">DOMNodeAttribute</span>>
+  <span class="hljs-attr">childNodes</span>: <span class="hljs-title class_">DOMNode</span>[]
+  <span class="hljs-attr">parentNode</span>: <span class="hljs-title class_">DOMElement</span> | <span class="hljs-literal">undefined</span>
+  <span class="hljs-attr">yogaNode</span>?: <span class="hljs-title class_">LayoutNode</span>            <span class="hljs-comment">// Yoga flexbox layout node</span>
+  <span class="hljs-attr">style</span>: <span class="hljs-title class_">Styles</span>                    <span class="hljs-comment">// Flexbox properties (width, flex, padding...)</span>
+  <span class="hljs-attr">dirty</span>: <span class="hljs-built_in">boolean</span>                   <span class="hljs-comment">// Needs re-rendering</span>
+
+  <span class="hljs-comment">// Event handlers — stored separately from attributes so handler</span>
+  <span class="hljs-comment">// identity changes don't mark dirty and defeat blit optimization</span>
+  <span class="hljs-attr">_eventHandlers</span>?: <span class="hljs-title class_">Record</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">unknown</span>>
+
+  <span class="hljs-comment">// Scroll state for overflow: 'scroll' boxes</span>
+  <span class="hljs-attr">scrollTop</span>?: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">pendingScrollDelta</span>?: <span class="hljs-built_in">number</span>      <span class="hljs-comment">// Accumulated delta, drained per-frame</span>
+  <span class="hljs-attr">scrollClampMin</span>?: <span class="hljs-built_in">number</span>          <span class="hljs-comment">// Virtual scroll clamp bounds</span>
+  <span class="hljs-attr">scrollClampMax</span>?: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">stickyScroll</span>?: <span class="hljs-built_in">boolean</span>           <span class="hljs-comment">// Auto-pin to bottom</span>
+  <span class="hljs-attr">scrollAnchor</span>?: { <span class="hljs-attr">el</span>: <span class="hljs-title class_">DOMElement</span>; <span class="hljs-attr">offset</span>: <span class="hljs-built_in">number</span> }  <span class="hljs-comment">// Deferred position read</span>
+
+  <span class="hljs-comment">// Focus management (root node only)</span>
+  <span class="hljs-attr">focusManager</span>?: <span class="hljs-title class_">FocusManager</span>
+}
+</code></pre>
+<p>Seven element types map the terminal UI vocabulary:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type</th><th>Purpose</th><th>Has Yoga Node?</th></tr></thead><tbody><tr><td><code>ink-root</code></td><td>Tree root</td><td>✅</td></tr><tr><td><code>ink-box</code></td><td>Flexbox container (<code>&#x3C;Box></code>)</td><td>✅</td></tr><tr><td><code>ink-text</code></td><td>Text content (<code>&#x3C;Text></code>)</td><td>✅ (with measure func)</td></tr><tr><td><code>ink-virtual-text</code></td><td>Nested text inside <code>&#x3C;Text></code></td><td>❌</td></tr><tr><td><code>ink-link</code></td><td>Terminal hyperlink (OSC 8)</td><td>❌</td></tr><tr><td><code>ink-progress</code></td><td>Progress bar</td><td>❌</td></tr><tr><td><code>ink-raw-ansi</code></td><td>Pre-rendered ANSI passthrough</td><td>✅ (fixed dimensions)</td></tr></tbody></table>
+<h3>The Screen Buffer: Packed Int32Array</h3>
+<p>This is where Claude Code gets <em>seriously</em> performance-conscious. Instead of allocating Cell objects (which would mean 24,000 objects for a 200×120 screen), the screen stores cells as packed integers:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: ink/screen.ts:332-348</span>
+<span class="hljs-comment">// Each cell = 2 consecutive Int32 elements:</span>
+<span class="hljs-comment">//   word0 (cells[ci]):     charId (full 32 bits, index into CharPool)</span>
+<span class="hljs-comment">//   word1 (cells[ci + 1]): styleId[31:17] | hyperlinkId[16:2] | width[1:0]</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">STYLE_SHIFT</span> = <span class="hljs-number">17</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">HYPERLINK_SHIFT</span> = <span class="hljs-number">2</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">HYPERLINK_MASK</span> = <span class="hljs-number">0x7fff</span>  <span class="hljs-comment">// 15 bits</span>
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">WIDTH_MASK</span> = <span class="hljs-number">3</span>           <span class="hljs-comment">// 2 bits (Narrow/Wide/SpacerTail/SpacerHead)</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">packWord1</span>(<span class="hljs-params"><span class="hljs-attr">styleId</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">hyperlinkId</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span></span>): <span class="hljs-built_in">number</span> {
+  <span class="hljs-keyword">return</span> (styleId &#x3C;&#x3C; <span class="hljs-variable constant_">STYLE_SHIFT</span>) | (hyperlinkId &#x3C;&#x3C; <span class="hljs-variable constant_">HYPERLINK_SHIFT</span>) | width
+}
+</code></pre>
+<p>The <code>cells64</code> BigInt64Array view over the same ArrayBuffer enables 8-byte bulk fills via <code>cells64.fill(0n)</code> — one operation to clear an entire screen instead of iterating every cell.</p>
+<p><strong>String interning</strong> further reduces memory pressure:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: ink/screen.ts:21-53</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CharPool</span> {
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">ascii</span>: <span class="hljs-title class_">Int32Array</span> = <span class="hljs-title function_">initCharAscii</span>()  <span class="hljs-comment">// Fast path for ASCII</span>
+
+  <span class="hljs-title function_">intern</span>(<span class="hljs-attr">char</span>: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">number</span> {
+    <span class="hljs-keyword">if</span> (char.<span class="hljs-property">length</span> === <span class="hljs-number">1</span>) {
+      <span class="hljs-keyword">const</span> code = char.<span class="hljs-title function_">charCodeAt</span>(<span class="hljs-number">0</span>)
+      <span class="hljs-keyword">if</span> (code &#x3C; <span class="hljs-number">128</span>) {
+        <span class="hljs-keyword">const</span> cached = <span class="hljs-variable language_">this</span>.<span class="hljs-property">ascii</span>[code]!
+        <span class="hljs-keyword">if</span> (cached !== -<span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> cached  <span class="hljs-comment">// Direct array lookup, no Map.get</span>
+        <span class="hljs-comment">// ...</span>
+      }
+    }
+    <span class="hljs-comment">// Fall back to Map for non-ASCII (CJK, emoji)</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">stringMap</span>.<span class="hljs-title function_">get</span>(char) ?? <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">addNew</span>(char)
+  }
+}
+</code></pre>
+<h3>Double Buffering</h3>
+<p>The renderer maintains two <code>Frame</code> objects — <code>frontFrame</code> and <code>backFrame</code>. Each frame holds a <code>Screen</code>. On every render:</p>
+<ol>
+<li>Reset the <strong>back buffer</strong> (via <code>resetScreen()</code> — a single <code>cells64.fill(0n)</code> call)</li>
+<li>Render the DOM tree into the back buffer</li>
+<li>Diff against the <strong>front buffer</strong> to produce minimal ANSI output</li>
+<li>Swap: back becomes front for the next frame</li>
+</ol>
+<p>The <code>prevFrameContaminated</code> flag tracks when the front buffer was mutated post-render (e.g., selection overlay). When contaminated, the renderer skips the blit optimization and does a full repaint — but only for that one frame.</p>
+<h3>Frame Scheduling</h3>
+<pre class="ascii-diagram"><code>// Source: ink/ink.tsx — throttled at 16ms
+onRender → scheduleRender()
+  → setTimeout(doRender, 16)  // ~60fps throttle
+  → batchRender: coalesce multiple state changes into one frame
+</code></pre>
+<hr>
+<h2>4. The Event System: W3C in a Terminal</h2>
+<p>Perhaps the most surprising engineering decision: Claude Code implements a complete W3C-style event dispatch system for terminal events. This isn't academic purity — it's a practical necessity when you have overlapping dialogs, nested scroll boxes, and a Vim mode that needs to intercept keys at different tree depths.</p>
+<h3>Event Dispatch Phases</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: ink/events/dispatcher.ts:46-78</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">collectListeners</span>(<span class="hljs-params">target, event</span>): <span class="hljs-title class_">DispatchListener</span>[] {
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">listeners</span>: <span class="hljs-title class_">DispatchListener</span>[] = []
+  <span class="hljs-keyword">let</span> node = target
+
+  <span class="hljs-keyword">while</span> (node) {
+    <span class="hljs-keyword">const</span> isTarget = node === target
+
+    <span class="hljs-comment">// Capture handlers: unshift → root-first order</span>
+    <span class="hljs-keyword">const</span> captureHandler = <span class="hljs-title function_">getHandler</span>(node, event.<span class="hljs-property">type</span>, <span class="hljs-literal">true</span>)
+    <span class="hljs-keyword">if</span> (captureHandler) {
+      listeners.<span class="hljs-title function_">unshift</span>({
+        node, <span class="hljs-attr">handler</span>: captureHandler,
+        <span class="hljs-attr">phase</span>: isTarget ? <span class="hljs-string">'at_target'</span> : <span class="hljs-string">'capturing'</span>
+      })
+    }
+
+    <span class="hljs-comment">// Bubble handlers: push → target-first order</span>
+    <span class="hljs-keyword">const</span> bubbleHandler = <span class="hljs-title function_">getHandler</span>(node, event.<span class="hljs-property">type</span>, <span class="hljs-literal">false</span>)
+    <span class="hljs-keyword">if</span> (bubbleHandler &#x26;&#x26; (event.<span class="hljs-property">bubbles</span> || isTarget)) {
+      listeners.<span class="hljs-title function_">push</span>({
+        node, <span class="hljs-attr">handler</span>: bubbleHandler,
+        <span class="hljs-attr">phase</span>: isTarget ? <span class="hljs-string">'at_target'</span> : <span class="hljs-string">'bubbling'</span>
+      })
+    }
+
+    node = node.<span class="hljs-property">parentNode</span>
+  }
+  <span class="hljs-keyword">return</span> listeners
+  <span class="hljs-comment">// Result: [root-cap, ..., parent-cap, target-cap, target-bub, parent-bub, ..., root-bub]</span>
+}
+</code></pre>
+<h3>Event Priorities: Mirroring react-dom</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: ink/events/dispatcher.ts:122-138</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getEventPriority</span>(<span class="hljs-params"><span class="hljs-attr">eventType</span>: <span class="hljs-built_in">string</span></span>): <span class="hljs-built_in">number</span> {
+  <span class="hljs-keyword">switch</span> (eventType) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'keydown'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'keyup'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'click'</span>:
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'focus'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'blur'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'paste'</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">DiscreteEventPriority</span>     <span class="hljs-comment">// Synchronous flush</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'resize'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'scroll'</span>: <span class="hljs-keyword">case</span> <span class="hljs-string">'mousemove'</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">ContinuousEventPriority</span>   <span class="hljs-comment">// Batchable</span>
+    <span class="hljs-attr">default</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">DefaultEventPriority</span>
+  }
+}
+</code></pre>
+<p>This maps directly to React's scheduler priorities. A keypress triggers a synchronous React update (discrete priority), while a scroll event gets batched (continuous priority). The <code>Dispatcher</code> class bridges this into the reconciler:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: ink/reconciler.ts:510</span>
+<span class="hljs-comment">// Wire the reconciler's discreteUpdates into the dispatcher.</span>
+<span class="hljs-comment">// This breaks the import cycle: dispatcher.ts doesn't import reconciler.ts.</span>
+dispatcher.<span class="hljs-property">discreteUpdates</span> = reconciler.<span class="hljs-property">discreteUpdates</span>.<span class="hljs-title function_">bind</span>(reconciler)
+</code></pre>
+<h3>Focus Management: Stack-Based Restore</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: ink/focus.ts:15-82</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">FocusManager</span> {
+  <span class="hljs-attr">activeElement</span>: <span class="hljs-title class_">DOMElement</span> | <span class="hljs-literal">null</span> = <span class="hljs-literal">null</span>
+  <span class="hljs-keyword">private</span> <span class="hljs-attr">focusStack</span>: <span class="hljs-title class_">DOMElement</span>[] = []  <span class="hljs-comment">// Max 32 entries</span>
+
+  <span class="hljs-title function_">focus</span>(<span class="hljs-params">node</span>) {
+    <span class="hljs-keyword">if</span> (node === <span class="hljs-variable language_">this</span>.<span class="hljs-property">activeElement</span>) <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">const</span> previous = <span class="hljs-variable language_">this</span>.<span class="hljs-property">activeElement</span>
+    <span class="hljs-keyword">if</span> (previous) {
+      <span class="hljs-comment">// Deduplicate before pushing (prevents unbounded growth from Tab cycling)</span>
+      <span class="hljs-keyword">const</span> idx = <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">indexOf</span>(previous)
+      <span class="hljs-keyword">if</span> (idx !== -<span class="hljs-number">1</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">splice</span>(idx, <span class="hljs-number">1</span>)
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">push</span>(previous)
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-property">length</span> > <span class="hljs-variable constant_">MAX_FOCUS_STACK</span>) <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">shift</span>()
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dispatchFocusEvent</span>(previous, <span class="hljs-keyword">new</span> <span class="hljs-title class_">FocusEvent</span>(<span class="hljs-string">'blur'</span>, node))
+    }
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">activeElement</span> = node
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dispatchFocusEvent</span>(node, <span class="hljs-keyword">new</span> <span class="hljs-title class_">FocusEvent</span>(<span class="hljs-string">'focus'</span>, previous))
+  }
+
+  <span class="hljs-comment">// When a dialog closes, focus automatically returns to the previous element</span>
+  <span class="hljs-title function_">handleNodeRemoved</span>(<span class="hljs-params">node, root</span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">n</span> =></span> n !== node &#x26;&#x26; <span class="hljs-title function_">isInTree</span>(n, root))
+    <span class="hljs-comment">// ... restore focus to most recent still-mounted element</span>
+    <span class="hljs-keyword">while</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-property">length</span> > <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">const</span> candidate = <span class="hljs-variable language_">this</span>.<span class="hljs-property">focusStack</span>.<span class="hljs-title function_">pop</span>()!
+      <span class="hljs-keyword">if</span> (<span class="hljs-title function_">isInTree</span>(candidate, root)) {
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">activeElement</span> = candidate
+        <span class="hljs-keyword">return</span>
+      }
+    }
+  }
+}
+</code></pre>
+<p>The focus stack has a hard cap of 32 entries (<code>MAX_FOCUS_STACK</code>). Tab cycling deduplicates before pushing, preventing the stack from growing with repeated navigation. When a dialog is removed from the tree, the reconciler calls <code>handleNodeRemoved()</code>, which walks the stack backward to find the most recent still-mounted element — giving users automatic focus restoration without explicit teardown logic.</p>
+<hr>
+<h2>5. The 35-Line Store (Replacing Redux/Zustand)</h2>
+<p>This is the kind of engineering decision that makes you pause. Instead of reaching for a state management library, Claude Code implements its entire application state in exactly 35 lines of code:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: state/store.ts — COMPLETE FILE (35 lines)</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">Listener</span> = <span class="hljs-function">() =></span> <span class="hljs-built_in">void</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">OnChange</span>&#x3C;T> = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">args</span>: { newState: T; oldState: T }</span>) =></span> <span class="hljs-built_in">void</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">Store</span>&#x3C;T> = {
+  <span class="hljs-attr">getState</span>: <span class="hljs-function">() =></span> T
+  <span class="hljs-attr">setState</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">updater</span>: (prev: T) => T</span>) =></span> <span class="hljs-built_in">void</span>
+  <span class="hljs-attr">subscribe</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">listener</span>: <span class="hljs-title class_">Listener</span></span>) =></span> <span class="hljs-function">() =></span> <span class="hljs-built_in">void</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> createStore&#x3C;T>(
+  <span class="hljs-attr">initialState</span>: T,
+  <span class="hljs-attr">onChange</span>?: <span class="hljs-title class_">OnChange</span>&#x3C;T>,
+): <span class="hljs-title class_">Store</span>&#x3C;T> {
+  <span class="hljs-keyword">let</span> state = initialState
+  <span class="hljs-keyword">const</span> listeners = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Set</span>&#x3C;<span class="hljs-title class_">Listener</span>>()
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">getState</span>: <span class="hljs-function">() =></span> state,
+
+    <span class="hljs-attr">setState</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">updater</span>: (prev: T) => T</span>) =></span> {
+      <span class="hljs-keyword">const</span> prev = state
+      <span class="hljs-keyword">const</span> next = <span class="hljs-title function_">updater</span>(prev)
+      <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">is</span>(next, prev)) <span class="hljs-keyword">return</span>   <span class="hljs-comment">// Reference equality skip</span>
+      state = next
+      onChange?.({ <span class="hljs-attr">newState</span>: next, <span class="hljs-attr">oldState</span>: prev })  <span class="hljs-comment">// Side-effect hook</span>
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> listener <span class="hljs-keyword">of</span> listeners) <span class="hljs-title function_">listener</span>()    <span class="hljs-comment">// Notify subscribers</span>
+    },
+
+    <span class="hljs-attr">subscribe</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">listener</span>: <span class="hljs-title class_">Listener</span></span>) =></span> {
+      listeners.<span class="hljs-title function_">add</span>(listener)
+      <span class="hljs-keyword">return</span> <span class="hljs-function">() =></span> listeners.<span class="hljs-title function_">delete</span>(listener)
+    },
+  }
+}
+</code></pre>
+<p>That's it. No middleware chains, no devtools integration, no action types, no reducers. Just <code>getState</code>, <code>setState</code> (with an updater function), and <code>subscribe</code>. The <code>Object.is</code> check prevents no-op re-renders. The <code>onChange</code> callback centralizes side effects.</p>
+<h3>React Integration via useSyncExternalStore</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: state/AppState.tsx:142-163</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> useAppState&#x3C;T>(<span class="hljs-attr">selector</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">state</span>: <span class="hljs-title class_">AppState</span></span>) =></span> T): T {
+  <span class="hljs-keyword">const</span> store = <span class="hljs-title function_">useAppStore</span>()
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">get</span> = (<span class="hljs-params"></span>) => <span class="hljs-title function_">selector</span>(store.<span class="hljs-title function_">getState</span>())
+  <span class="hljs-keyword">return</span> <span class="hljs-title function_">useSyncExternalStore</span>(store.<span class="hljs-property">subscribe</span>, get, get)
+}
+
+<span class="hljs-comment">// Usage in components:</span>
+<span class="hljs-keyword">const</span> verbose = <span class="hljs-title function_">useAppState</span>(<span class="hljs-function"><span class="hljs-params">s</span> =></span> s.<span class="hljs-property">verbose</span>)
+<span class="hljs-keyword">const</span> model = <span class="hljs-title function_">useAppState</span>(<span class="hljs-function"><span class="hljs-params">s</span> =></span> s.<span class="hljs-property">mainLoopModel</span>)
+</code></pre>
+<p>The <code>useSyncExternalStore</code> hook (React 18+) guarantees tear-free reads during concurrent rendering — the same primitive Zustand uses internally. Claude Code just doesn't need Zustand's wrapper.</p>
+<h3>AppState: The Full Application State Type</h3>
+<p><code>AppStateStore.ts</code> defines the <code>AppState</code> type — <strong>570 lines</strong> of typed state covering every aspect of the application:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: state/AppStateStore.ts:89-452 (condensed)</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> <span class="hljs-title class_">AppState</span> = <span class="hljs-title class_">DeepImmutable</span>&#x3C;{
+  <span class="hljs-comment">// === Session Settings ===</span>
+  <span class="hljs-attr">settings</span>: <span class="hljs-title class_">SettingsJson</span>
+  <span class="hljs-attr">mainLoopModel</span>: <span class="hljs-title class_">ModelSetting</span>
+  <span class="hljs-attr">verbose</span>: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-attr">thinkingEnabled</span>: <span class="hljs-built_in">boolean</span> | <span class="hljs-literal">undefined</span>
+  <span class="hljs-attr">effortValue</span>?: <span class="hljs-title class_">EffortValue</span>
+
+  <span class="hljs-comment">// === UI Display State ===</span>
+  <span class="hljs-attr">expandedView</span>: <span class="hljs-string">'none'</span> | <span class="hljs-string">'tasks'</span> | <span class="hljs-string">'teammates'</span>
+  <span class="hljs-attr">isBriefOnly</span>: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-attr">footerSelection</span>: <span class="hljs-title class_">FooterItem</span> | <span class="hljs-literal">null</span>
+  <span class="hljs-attr">activeOverlays</span>: <span class="hljs-title class_">ReadonlySet</span>&#x3C;<span class="hljs-built_in">string</span>>
+  <span class="hljs-attr">spinnerTip</span>?: <span class="hljs-built_in">string</span>
+
+  <span class="hljs-comment">// === Permission System ===</span>
+  <span class="hljs-attr">toolPermissionContext</span>: <span class="hljs-title class_">ToolPermissionContext</span>
+
+  <span class="hljs-comment">// === Remote / Bridge ===</span>
+  <span class="hljs-attr">remoteSessionUrl</span>: <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>
+  <span class="hljs-attr">remoteConnectionStatus</span>: <span class="hljs-string">'connecting'</span> | <span class="hljs-string">'connected'</span> | <span class="hljs-string">'reconnecting'</span> | <span class="hljs-string">'disconnected'</span>
+  <span class="hljs-attr">replBridgeEnabled</span>: <span class="hljs-built_in">boolean</span>
+  <span class="hljs-attr">replBridgeConnected</span>: <span class="hljs-built_in">boolean</span>
+
+  <span class="hljs-comment">// === Speculative Execution ===</span>
+  <span class="hljs-attr">speculation</span>: <span class="hljs-title class_">SpeculationState</span>
+  <span class="hljs-attr">promptSuggestion</span>: { text, promptId, shownAt, ... }
+}> &#x26; {
+  <span class="hljs-comment">// === Mutable state (excluded from DeepImmutable) ===</span>
+  <span class="hljs-attr">tasks</span>: { [<span class="hljs-attr">taskId</span>: <span class="hljs-built_in">string</span>]: <span class="hljs-title class_">TaskState</span> }
+  <span class="hljs-attr">agentNameRegistry</span>: <span class="hljs-title class_">Map</span>&#x3C;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">AgentId</span>>
+  <span class="hljs-attr">mcp</span>: { clients, tools, commands, resources }
+  <span class="hljs-attr">plugins</span>: { enabled, disabled, commands, errors }
+  <span class="hljs-attr">teamContext</span>?: { teamName, teammates, ... }
+  <span class="hljs-attr">inbox</span>: { <span class="hljs-attr">messages</span>: <span class="hljs-title class_">Array</span>&#x3C;...> }
+  <span class="hljs-attr">fileHistory</span>: <span class="hljs-title class_">FileHistoryState</span>
+  <span class="hljs-attr">attribution</span>: <span class="hljs-title class_">AttributionState</span>
+  <span class="hljs-comment">// ... Computer Use, REPL context, Tungsten, etc.</span>
+}
+</code></pre>
+<p>The <code>DeepImmutable&#x3C;></code> wrapper prevents accidental mutation for most fields. Fields containing <code>Map</code>, <code>Set</code>, function types, or task state are excluded from the wrapper via the intersection (<code>&#x26;</code>) — a pragmatic compromise between type safety and expressiveness.</p>
+<h3>Side-Effect Centralization</h3>
+<p>All state change side effects funnel through a single <code>onChangeAppState</code> callback:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: state/onChangeAppState.ts:43-171 (condensed)</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">onChangeAppState</span>(<span class="hljs-params">{ newState, oldState }</span>) {
+  <span class="hljs-comment">// Permission mode → sync to CCR/SDK</span>
+  <span class="hljs-keyword">if</span> (prevMode !== newMode) {
+    <span class="hljs-title function_">notifySessionMetadataChanged</span>({ <span class="hljs-attr">permission_mode</span>: newExternal })
+    <span class="hljs-title function_">notifyPermissionModeChanged</span>(newMode)
+  }
+
+  <span class="hljs-comment">// Model change → persist to settings file</span>
+  <span class="hljs-keyword">if</span> (newState.<span class="hljs-property">mainLoopModel</span> !== oldState.<span class="hljs-property">mainLoopModel</span>) {
+    <span class="hljs-title function_">updateSettingsForSource</span>(<span class="hljs-string">'userSettings'</span>, { <span class="hljs-attr">model</span>: newState.<span class="hljs-property">mainLoopModel</span> })
+    <span class="hljs-title function_">setMainLoopModelOverride</span>(newState.<span class="hljs-property">mainLoopModel</span>)
+  }
+
+  <span class="hljs-comment">// Expanded view → persist to globalConfig</span>
+  <span class="hljs-keyword">if</span> (newState.<span class="hljs-property">expandedView</span> !== oldState.<span class="hljs-property">expandedView</span>) {
+    <span class="hljs-title function_">saveGlobalConfig</span>(<span class="hljs-function"><span class="hljs-params">current</span> =></span> ({
+      ...current,
+      <span class="hljs-attr">showExpandedTodos</span>: newState.<span class="hljs-property">expandedView</span> === <span class="hljs-string">'tasks'</span>,
+    }))
+  }
+
+  <span class="hljs-comment">// Settings change → clear auth caches + re-apply env vars</span>
+  <span class="hljs-keyword">if</span> (newState.<span class="hljs-property">settings</span> !== oldState.<span class="hljs-property">settings</span>) {
+    <span class="hljs-title function_">clearApiKeyHelperCache</span>()
+    <span class="hljs-title function_">clearAwsCredentialsCache</span>()
+    <span class="hljs-keyword">if</span> (newState.<span class="hljs-property">settings</span>.<span class="hljs-property">env</span> !== oldState.<span class="hljs-property">settings</span>.<span class="hljs-property">env</span>) {
+      <span class="hljs-title function_">applyConfigEnvironmentVariables</span>()
+    }
+  }
+}
+</code></pre>
+<p>This is the "single choke point" pattern — eight different code paths can change the permission mode (Shift+Tab cycling, plan mode exit, bridge commands, slash commands...), but they all flow through this one diff. Before this was centralized, each path had to manually notify CCR, and several didn't — leaving the web UI out of sync.</p>
+<hr>
+<h2>6. REPL Screen Architecture</h2>
+<p><code>screens/REPL.tsx</code> (874KB) is the application's main interface — a single React function component that orchestrates every user-facing feature. At ~12,000 lines of compiled output, it's the largest single component in the codebase.</p>
+<h3>Component Hierarchy</h3>
+<pre class="ascii-diagram"><code>&#x3C;REPL>
+  &#x3C;KeybindingSetup>                // Initialize keybinding system
+    &#x3C;AlternateScreen>              // Enter terminal alt-screen mode
+      &#x3C;FullscreenLayout>           // Full-screen layout (ScrollBox + bars)
+        &#x3C;ScrollBox stickyScroll>   // Scrollable main content area
+          &#x3C;VirtualMessageList>     // Virtual scroll for 1000+ messages
+            &#x3C;Messages>             // Message rendering (recursive)
+          &#x3C;/VirtualMessageList>
+        &#x3C;/ScrollBox>
+        &#x3C;StatusLine>               // model │ permission │ cwd │ tokens │ cost
+        &#x3C;PromptInput>              // User input + autocomplete + footer pills
+      &#x3C;/FullscreenLayout>
+    &#x3C;/AlternateScreen>
+
+    // Overlay dialogs (rendered outside FullscreenLayout)
+    &#x3C;PermissionRequest>            // Tool permission confirmation
+    &#x3C;ModelPicker>                  // Model selection (Meta+P)
+    &#x3C;ThemePicker>                  // Theme selection
+    &#x3C;GlobalSearchDialog>           // Full-text search (Ctrl+F)
+    &#x3C;MessageSelector>              // Message replay selector
+    &#x3C;ExportDialog>                 // Session export
+    &#x3C;FeedbackSurvey>               // Feedback survey
+    // ... 15+ more overlay dialogs
+  &#x3C;/KeybindingSetup>
+&#x3C;/REPL>
+</code></pre>
+<h3>Three Screen Components</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Screen</th><th>File</th><th>Size</th><th>Purpose</th></tr></thead><tbody><tr><td>REPL</td><td><code>screens/REPL.tsx</code></td><td>874KB</td><td>Main interactive loop</td></tr><tr><td>Doctor</td><td><code>screens/Doctor.tsx</code></td><td>71KB</td><td>Environment diagnostics (<code>/doctor</code>)</td></tr><tr><td>ResumeConversation</td><td><code>screens/ResumeConversation.tsx</code></td><td>58KB</td><td>Session restore (<code>--resume</code>)</td></tr></tbody></table>
+<h3>The Query Loop Flow</h3>
+<pre class="ascii-diagram"><code>User input → handleSubmit()
+  → Create UserMessage → addToHistory()
+  → query({ messages, tools, onMessage, ... })
+    → Streaming callback: handleMessageFromStream()
+      → setMessages(prev => [...prev, newMessage])
+      → Tool call → useCanUseTool → permission check
+        → allow → execute tool → append result
+        → deny → append rejection message
+    → Complete → record analytics → save session
+</code></pre>
+<hr>
+<h2>7. Virtual Scrolling &#x26; Height Cache</h2>
+<p>When a conversation grows to hundreds of messages, rendering every message on every frame would destroy performance. Claude Code implements terminal virtual scrolling — a technique borrowed from browser virtual list libraries like <code>react-window</code>.</p>
+<h3>Core Strategy</h3>
+<pre class="ascii-diagram"><code>┌────────────────────────────────┐
+│  Spacer (estimated height)     │  ← Not rendered, fixed-height Box
+│                                │
+├────────────────────────────────┤
+│  Buffer zone (1 screen above)  │  ← Rendered but off-screen
+├────────────────────────────────┤
+│  ████████████████████████████  │
+│  ████ Visible viewport ██████  │  ← Actually visible to user
+│  ████████████████████████████  │
+├────────────────────────────────┤
+│  Buffer zone (1 screen below)  │  ← Rendered but off-screen
+├────────────────────────────────┤
+│  Spacer (estimated height)     │  ← Not rendered, fixed-height Box
+└────────────────────────────────┘
+</code></pre>
+<h3>VirtualMessageList API</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: components/VirtualMessageList.tsx</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">JumpHandle</span> = {
+  <span class="hljs-attr">jumpToIndex</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">i</span>: <span class="hljs-built_in">number</span></span>) =></span> <span class="hljs-built_in">void</span>       <span class="hljs-comment">// Jump to message by index</span>
+  <span class="hljs-attr">setSearchQuery</span>: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-attr">q</span>: <span class="hljs-built_in">string</span></span>) =></span> <span class="hljs-built_in">void</span>    <span class="hljs-comment">// Set search filter</span>
+  <span class="hljs-attr">nextMatch</span>: <span class="hljs-function">() =></span> <span class="hljs-built_in">void</span>                  <span class="hljs-comment">// Navigate to next match</span>
+  <span class="hljs-attr">prevMatch</span>: <span class="hljs-function">() =></span> <span class="hljs-built_in">void</span>                  <span class="hljs-comment">// Navigate to previous match</span>
+  <span class="hljs-attr">warmSearchIndex</span>: <span class="hljs-function">() =></span> <span class="hljs-title class_">Promise</span>&#x3C;<span class="hljs-built_in">number</span>> <span class="hljs-comment">// Pre-build search index</span>
+  <span class="hljs-attr">disarmSearch</span>: <span class="hljs-function">() =></span> <span class="hljs-built_in">void</span>               <span class="hljs-comment">// Clear search position</span>
+}
+</code></pre>
+<h3>Key Design Decisions</h3>
+<ul>
+<li>
+<p><strong>WeakMap height cache</strong>: Each message's rendered height is cached in a WeakMap keyed by the message object. When the message reference doesn't change, the height is reused without re-measurement.</p>
+</li>
+<li>
+<p><strong>Window = viewport + 1 screen buffer</strong>: Only messages within the visible viewport plus one screen height above and below are actually rendered. Everything else becomes <code>&#x3C;Box height={N}></code> spacers.</p>
+</li>
+<li>
+<p><strong>Scroll clamp bounds</strong>: <code>scrollClampMin</code>/<code>scrollClampMax</code> on the DOM element prevent the scroll position from entering un-rendered territory. If the user scrolls faster than React can re-render, the renderer holds at the edge of mounted content instead of showing blank space.</p>
+</li>
+<li>
+<p><strong>Sticky scroll to bottom</strong>: New messages auto-scroll to bottom via <code>stickyScroll</code>. The scroll pins to bottom unless the user explicitly scrolls up.</p>
+</li>
+<li>
+<p><strong>Search index</strong>: Full-text search builds a cached plain-text index of all messages. The search highlight is applied at the screen buffer level (per-cell style overlay), not via React re-rendering.</p>
+</li>
+</ul>
+<h3>ScrollBox: The Scroll Container</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: ink/components/ScrollBox.tsx</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">ScrollBoxHandle</span> = {
+  <span class="hljs-title function_">scrollTo</span>(<span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span>
+  <span class="hljs-title function_">scrollBy</span>(<span class="hljs-attr">dy</span>: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">void</span>
+  <span class="hljs-title function_">scrollToElement</span>(el, offset?): <span class="hljs-built_in">void</span>  <span class="hljs-comment">// Deferred to render time</span>
+  <span class="hljs-title function_">scrollToBottom</span>(): <span class="hljs-built_in">void</span>
+  <span class="hljs-title function_">isSticky</span>(): <span class="hljs-built_in">boolean</span>                  <span class="hljs-comment">// Following bottom?</span>
+  <span class="hljs-title function_">setClampBounds</span>(min?, max?): <span class="hljs-built_in">void</span>     <span class="hljs-comment">// Virtual scroll limits</span>
+}
+</code></pre>
+<p>The <code>pendingScrollDelta</code> accumulator drains at <code>SCROLL_MAX_PER_FRAME</code> rows per frame — so fast flicks show intermediate frames instead of one jarring jump. Direction reversal naturally cancels (pure accumulator, no target tracking).</p>
+<hr>
+<h2>8. Vim Mode State Machine</h2>
+<p>Claude Code includes a complete Vim editing mode for the input box — not a subset, but a full implementation with operators, motions, text objects, registers, and dot-repeat.</p>
+<h3>State Machine Architecture</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: vim/ directory</span>
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">VimState</span> =
+  | { <span class="hljs-attr">mode</span>: <span class="hljs-string">'INSERT'</span>; <span class="hljs-attr">insertedText</span>: <span class="hljs-built_in">string</span> }
+  | { <span class="hljs-attr">mode</span>: <span class="hljs-string">'NORMAL'</span>; <span class="hljs-attr">command</span>: <span class="hljs-title class_">CommandState</span> }
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">CommandState</span> =
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'idle'</span> }                                  <span class="hljs-comment">// Waiting for input</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'count'</span>; <span class="hljs-attr">digits</span>: <span class="hljs-built_in">string</span> }                 <span class="hljs-comment">// Prefix count (3dw)</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'operator'</span>; <span class="hljs-attr">op</span>: <span class="hljs-title class_">Operator</span>; count }         <span class="hljs-comment">// Waiting for motion (d_)</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'operatorCount'</span>; op, count, digits }      <span class="hljs-comment">// Operator + count (d3w)</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'operatorFind'</span>; op, count, find }         <span class="hljs-comment">// Operator + find (df_)</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'operatorTextObj'</span>; op, count, scope }     <span class="hljs-comment">// Operator + text obj (diw)</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'find'</span>; <span class="hljs-attr">find</span>: <span class="hljs-title class_">FindType</span>; count }           <span class="hljs-comment">// f/F/t/T waiting for char</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'g'</span>; count }                              <span class="hljs-comment">// g prefix commands</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'replace'</span>; count }                        <span class="hljs-comment">// r waiting for replacement</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'indent'</span>; <span class="hljs-attr">dir</span>: <span class="hljs-string">'>'</span> | <span class="hljs-string">'&#x3C;'</span>; count }         <span class="hljs-comment">// >> / &#x3C;&#x3C; indentation</span>
+</code></pre>
+<h3>State Transition Diagram</h3>
+<pre class="ascii-diagram"><code>  idle ──┬─[d/c/y]──► operator ──┬─[motion]──► execute
+         ├─[1-9]────► count      ├─[0-9]────► operatorCount
+         ├─[fFtT]───► find       ├─[ia]─────► operatorTextObj
+         ├─[g]──────► g          └─[fFtT]───► operatorFind
+         ├─[r]──────► replace
+         └─[>&#x3C;]─────► indent
+</code></pre>
+<h3>Pure Function Transitions</h3>
+<p>The transition function is a pure function — no side effects, deterministic output:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">transition</span>(<span class="hljs-params">state, input, ctx</span>): <span class="hljs-title class_">TransitionResult</span> {
+  <span class="hljs-keyword">switch</span> (state.<span class="hljs-property">type</span>) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'idle'</span>:     <span class="hljs-keyword">return</span> <span class="hljs-title function_">fromIdle</span>(input, ctx)
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'count'</span>:    <span class="hljs-keyword">return</span> <span class="hljs-title function_">fromCount</span>(state, input, ctx)
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'operator'</span>: <span class="hljs-keyword">return</span> <span class="hljs-title function_">fromOperator</span>(state, input, ctx)
+    <span class="hljs-comment">// ... exhaustive switch guaranteed by TypeScript</span>
+  }
+}
+<span class="hljs-comment">// Returns: { next?: CommandState; execute?: () => void }</span>
+</code></pre>
+<h3>Persistent State (Cross-Command Memory)</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-keyword">type</span> <span class="hljs-title class_">PersistentState</span> = {
+  <span class="hljs-attr">lastChange</span>: <span class="hljs-title class_">RecordedChange</span> | <span class="hljs-literal">null</span>  <span class="hljs-comment">// Dot-repeat (.)</span>
+  <span class="hljs-attr">lastFind</span>: { <span class="hljs-keyword">type</span>, char } | <span class="hljs-literal">null</span>   <span class="hljs-comment">// Repeat find (;/,)</span>
+  <span class="hljs-attr">register</span>: <span class="hljs-built_in">string</span>                   <span class="hljs-comment">// Yank register content</span>
+  <span class="hljs-attr">registerIsLinewise</span>: <span class="hljs-built_in">boolean</span>        <span class="hljs-comment">// Was last yank line-wise?</span>
+}
+</code></pre>
+<h3>Supported Operations</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Category</th><th>Commands</th></tr></thead><tbody><tr><td><strong>Movement</strong></td><td><code>h/l/j/k</code>, <code>w/b/e/W/B/E</code>, <code>0/^/$</code>, <code>gg/G</code>, <code>gj/gk</code></td></tr><tr><td><strong>Operators</strong></td><td><code>d</code> (delete), <code>c</code> (change), <code>y</code> (yank), <code>>/&#x3C;</code> (indent)</td></tr><tr><td><strong>Find</strong></td><td><code>f/F/t/T</code> + char, <code>;/,</code> repeat</td></tr><tr><td><strong>Text objects</strong></td><td><code>iw/aw</code>, <code>i"/a"</code>, <code>i(/a(</code>, <code>i{/a{</code>, <code>i[/a[</code>, <code>i&#x3C;/a&#x3C;</code></td></tr><tr><td><strong>Commands</strong></td><td><code>x</code>, <code>~</code>, <code>r</code>, <code>J</code>, <code>p/P</code>, <code>D/C/Y</code>, <code>o/O</code>, <code>u</code> (undo), <code>.</code> (repeat)</td></tr><tr><td><strong>Dot repeat</strong></td><td>Records insert text, operators, replacements, toggleCase, indent</td></tr></tbody></table>
+<p>The <code>VimTextInput.tsx</code> (16KB) component integrates this state machine with the input box: Normal mode intercepts keystrokes and routes them through <code>transition()</code>, while Insert mode passes through to normal text editing.</p>
+<hr>
+<h2>9. Keybinding System</h2>
+<p>Claude Code's keybinding system supports multiple contexts, Emacs-style chord sequences, user customization, and reserved shortcuts — a full keyboard layer on top of the event system.</p>
+<h3>Architecture</h3>
+<pre class="ascii-diagram"><code>keybindings/
+├── defaultBindings.ts          # Default key bindings per context
+├── loadUserBindings.ts         # Load from ~/.claude/keybindings.json
+├── schema.ts                   # JSON schema for user bindings
+├── parser.ts                   # "ctrl+shift+k" → structured data
+├── match.ts                    # Match keystroke against bindings
+├── resolver.ts                 # Resolution engine (with chord support)
+├── KeybindingContext.tsx        # React Context provider
+├── KeybindingProviderSetup.tsx  # Init + chord interceptor
+├── useKeybinding.ts            # Consumer hook
+├── validate.ts                 # User binding validation
+├── reservedShortcuts.ts        # Non-rebindable shortcuts
+└── shortcutFormat.ts           # Display formatting
+</code></pre>
+<h3>Context-Based Binding Resolution</h3>
+<p>Each binding belongs to a <strong>context</strong> that determines when it's active:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: keybindings/defaultBindings.ts (condensed)</span>
+<span class="hljs-keyword">const</span> <span class="hljs-attr">DEFAULT_BINDINGS</span>: <span class="hljs-title class_">KeybindingBlock</span>[] = [
+  {
+    <span class="hljs-attr">context</span>: <span class="hljs-string">'Global'</span>,              <span class="hljs-comment">// Always active</span>
+    <span class="hljs-attr">bindings</span>: {
+      <span class="hljs-string">'ctrl+c'</span>: <span class="hljs-string">'app:interrupt'</span>,
+      <span class="hljs-string">'ctrl+d'</span>: <span class="hljs-string">'app:exit'</span>,
+      <span class="hljs-string">'ctrl+l'</span>: <span class="hljs-string">'app:redraw'</span>,
+      <span class="hljs-string">'ctrl+t'</span>: <span class="hljs-string">'app:toggleTodos'</span>,
+      <span class="hljs-string">'ctrl+r'</span>: <span class="hljs-string">'history:search'</span>,
+    }
+  },
+  {
+    <span class="hljs-attr">context</span>: <span class="hljs-string">'Chat'</span>,                <span class="hljs-comment">// When input box is focused</span>
+    <span class="hljs-attr">bindings</span>: {
+      <span class="hljs-string">'escape'</span>: <span class="hljs-string">'chat:cancel'</span>,
+      <span class="hljs-string">'shift+tab'</span>: <span class="hljs-string">'chat:cycleMode'</span>,
+      <span class="hljs-string">'meta+p'</span>: <span class="hljs-string">'chat:modelPicker'</span>,
+      <span class="hljs-string">'enter'</span>: <span class="hljs-string">'chat:submit'</span>,
+      <span class="hljs-string">'ctrl+x ctrl+e'</span>: <span class="hljs-string">'chat:externalEditor'</span>,  <span class="hljs-comment">// Chord!</span>
+      <span class="hljs-string">'ctrl+x ctrl+k'</span>: <span class="hljs-string">'chat:killAgents'</span>,      <span class="hljs-comment">// Chord!</span>
+    }
+  },
+  {
+    <span class="hljs-attr">context</span>: <span class="hljs-string">'Scroll'</span>,              <span class="hljs-comment">// When scrolled from bottom</span>
+    <span class="hljs-attr">bindings</span>: {
+      <span class="hljs-string">'pageup'</span>: <span class="hljs-string">'scroll:pageUp'</span>,
+      <span class="hljs-string">'wheelup'</span>: <span class="hljs-string">'scroll:lineUp'</span>,
+      <span class="hljs-string">'ctrl+shift+c'</span>: <span class="hljs-string">'selection:copy'</span>,
+    }
+  },
+  <span class="hljs-comment">// ... Confirmation, Settings, Transcript, etc.</span>
+]
+</code></pre>
+<h3>Chord Support (Emacs-Style Multi-Key Sequences)</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// User presses ctrl+x → enters "chord pending" state</span>
+<span class="hljs-comment">// Display shows "ctrl+x ..." prompt</span>
+<span class="hljs-comment">// User presses ctrl+e → matches 'ctrl+x ctrl+e' → 'chat:externalEditor'</span>
+<span class="hljs-comment">// User presses other key → chord cancelled, key processed normally</span>
+
+<span class="hljs-keyword">type</span> <span class="hljs-title class_">ChordResolveResult</span> =
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'match'</span>; <span class="hljs-attr">action</span>: <span class="hljs-built_in">string</span> }         <span class="hljs-comment">// Complete match</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'chord_started'</span>; <span class="hljs-attr">pending</span>: ... }   <span class="hljs-comment">// Chord in progress</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'chord_cancelled'</span> }               <span class="hljs-comment">// Wrong second key</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'unbound'</span> }                       <span class="hljs-comment">// Explicitly unbound</span>
+  | { <span class="hljs-attr">type</span>: <span class="hljs-string">'none'</span> }                          <span class="hljs-comment">// No binding found</span>
+</code></pre>
+<h3>Using Keybindings in Components</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Single binding</span>
+<span class="hljs-title function_">useKeybinding</span>(<span class="hljs-string">'app:toggleTodos'</span>, <span class="hljs-function">() =></span> {
+  <span class="hljs-title function_">setShowTodos</span>(<span class="hljs-function"><span class="hljs-params">prev</span> =></span> !prev)
+}, { <span class="hljs-attr">context</span>: <span class="hljs-string">'Global'</span> })
+
+<span class="hljs-comment">// Multiple bindings</span>
+<span class="hljs-title function_">useKeybindings</span>({
+  <span class="hljs-string">'chat:submit'</span>: <span class="hljs-function">() =></span> <span class="hljs-title function_">handleSubmit</span>(),
+  <span class="hljs-string">'chat:cancel'</span>: <span class="hljs-function">() =></span> <span class="hljs-title function_">handleCancel</span>(),
+}, { <span class="hljs-attr">context</span>: <span class="hljs-string">'Chat'</span> })
+</code></pre>
+<h3>User Customization</h3>
+<p>Users can override any non-reserved binding via <code>~/.claude/keybindings.json</code>. The file is validated against a Zod schema, and invalid entries produce warnings without breaking the application.</p>
+<hr>
+<h2>10. Computer Use Integration</h2>
+<p>Claude Code integrates Anthropic's Computer Use capability — the ability for the model to see the screen, move the mouse, type on the keyboard, and control applications. This is a fundamentally different kind of tool: instead of text-in/text-out, it operates on pixels and input events.</p>
+<h3>Architecture Overview</h3>
+<pre class="ascii-diagram"><code>utils/computerUse/
+├── executor.ts       (23.8KB)  # CLI ComputerExecutor implementation
+├── wrapper.tsx       (49.4KB)  # MCP server wrapper + screenshot state
+├── toolRendering.tsx (17.7KB)  # UI components for CU tool results
+├── common.ts         (2.6KB)   # CLI capabilities + terminal detection
+├── gates.ts          (2.6KB)   # Feature gating (Chicago MCP)
+├── setup.ts          (2KB)     # Initialization
+├── hostAdapter.ts    (2.8KB)   # Host abstraction (CLI vs Cowork)
+├── inputLoader.ts    (1.2KB)   # Lazy-load @ant/computer-use-input
+├── swiftLoader.ts    (925B)    # Lazy-load @ant/computer-use-swift
+├── computerUseLock.ts(7.1KB)   # Exclusive lock for CU sessions
+├── escHotkey.ts      (2KB)     # CGEventTap abort via Escape
+├── drainRunLoop.ts   (2.8KB)   # CFRunLoop pump for macOS
+├── cleanup.ts        (3.3KB)   # Turn-end unhide
+├── appNames.ts       (6.6KB)   # Application name resolution
+└── mcpServer.ts      (4.1KB)   # MCP server definition
+</code></pre>
+<h3>How It Differs from Regular Tools</h3>
+<p>Regular tools (<code>BashTool</code>, <code>FileEditTool</code>, etc.) use <code>tool_use</code> blocks in the API response. Computer Use uses <code>server_tool_use</code> — a different protocol where the server handles tool execution feedback natively:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>Regular Tool</th><th>Computer Use Tool</th></tr></thead><tbody><tr><td>API block type</td><td><code>tool_use</code></td><td><code>server_tool_use</code></td></tr><tr><td>Execution</td><td>CLI-side</td><td>CLI-side (screenshots) + server feedback</td></tr><tr><td>Input</td><td>Structured JSON</td><td><code>{ action, coordinate?, text? }</code></td></tr><tr><td>Output</td><td>Text result</td><td>JPEG screenshot (base64)</td></tr><tr><td>Platform</td><td>Cross-platform</td><td><strong>macOS only</strong> (requires Swift + Rust native modules)</td></tr></tbody></table>
+<h3>The Executor Pattern</h3>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// Source: utils/computerUse/executor.ts:259-644</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">createCliExecutor</span>(<span class="hljs-params">opts</span>): <span class="hljs-title class_">ComputerExecutor</span> {
+  <span class="hljs-comment">// Two native modules:</span>
+  <span class="hljs-comment">//   @ant/computer-use-swift  — screenshots, app management, TCC</span>
+  <span class="hljs-comment">//   @ant/computer-use-input  — mouse, keyboard (Rust/enigo)</span>
+
+  <span class="hljs-keyword">const</span> cu = <span class="hljs-title function_">requireComputerUseSwift</span>()  <span class="hljs-comment">// Loaded once at factory time</span>
+
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">capabilities</span>: { ...<span class="hljs-variable constant_">CLI_CU_CAPABILITIES</span>, <span class="hljs-attr">hostBundleId</span>: <span class="hljs-variable constant_">CLI_HOST_BUNDLE_ID</span> },
+
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">screenshot</span>(<span class="hljs-params">opts</span>) {
+      <span class="hljs-comment">// Pre-size to targetImageSize so API transcoder's early-return fires</span>
+      <span class="hljs-comment">// No server-side resize → scaleCoord stays coherent</span>
+      <span class="hljs-keyword">const</span> d = cu.<span class="hljs-property">display</span>.<span class="hljs-title function_">getSize</span>(opts.<span class="hljs-property">displayId</span>)
+      <span class="hljs-keyword">const</span> [targetW, targetH] = <span class="hljs-title function_">computeTargetDims</span>(d.<span class="hljs-property">width</span>, d.<span class="hljs-property">height</span>, d.<span class="hljs-property">scaleFactor</span>)
+      <span class="hljs-keyword">return</span> <span class="hljs-title function_">drainRunLoop</span>(<span class="hljs-function">() =></span>
+        cu.<span class="hljs-property">screenshot</span>.<span class="hljs-title function_">captureExcluding</span>(<span class="hljs-title function_">withoutTerminal</span>(opts.<span class="hljs-property">allowedBundleIds</span>), ...)
+      )
+    },
+
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">click</span>(<span class="hljs-params">x, y, button, count, modifiers?</span>) {
+      <span class="hljs-keyword">const</span> input = <span class="hljs-title function_">requireComputerUseInput</span>()  <span class="hljs-comment">// Lazy-loaded</span>
+      <span class="hljs-keyword">await</span> <span class="hljs-title function_">moveAndSettle</span>(input, x, y)         <span class="hljs-comment">// Instant move + 50ms settle</span>
+      <span class="hljs-keyword">if</span> (modifiers?.<span class="hljs-property">length</span>) {
+        <span class="hljs-keyword">await</span> <span class="hljs-title function_">drainRunLoop</span>(<span class="hljs-function">() =></span>
+          <span class="hljs-title function_">withModifiers</span>(input, modifiers, <span class="hljs-function">() =></span>
+            input.<span class="hljs-title function_">mouseButton</span>(button, <span class="hljs-string">'click'</span>, count)
+          )
+        )
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">await</span> input.<span class="hljs-title function_">mouseButton</span>(button, <span class="hljs-string">'click'</span>, count)
+      }
+    },
+
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">key</span>(<span class="hljs-params">keySequence, repeat?</span>) {
+      <span class="hljs-comment">// xdotool-style: "ctrl+shift+a" → split on '+' → keys()</span>
+      <span class="hljs-comment">// Bare Escape: notify CGEventTap so it doesn't abort</span>
+      <span class="hljs-keyword">const</span> parts = keySequence.<span class="hljs-title function_">split</span>(<span class="hljs-string">'+'</span>)
+      <span class="hljs-keyword">const</span> isEsc = <span class="hljs-title function_">isBareEscape</span>(parts)
+      <span class="hljs-keyword">await</span> <span class="hljs-title function_">drainRunLoop</span>(<span class="hljs-title function_">async</span> () => {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &#x3C; n; i++) {
+          <span class="hljs-keyword">if</span> (isEsc) <span class="hljs-title function_">notifyExpectedEscape</span>()
+          <span class="hljs-keyword">await</span> input.<span class="hljs-title function_">keys</span>(parts)
+        }
+      })
+    },
+
+    <span class="hljs-comment">// ... drag, scroll, type, clipboard, app management</span>
+  }
+}
+</code></pre>
+<h3>The CFRunLoop Challenge</h3>
+<p>The most distinctive engineering detail: <code>drainRunLoop()</code>. On macOS, native GUI operations dispatch to the main thread's CFRunLoop. In a terminal app (no NSRunLoop), these events queue up and never resolve. The solution is a manual pump:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-comment">// drainRunLoop wraps async operations that dispatch to the main queue.</span>
+<span class="hljs-comment">// Without the pump, mouse/keyboard calls from the Rust/Swift native</span>
+<span class="hljs-comment">// modules would hang forever in a terminal context.</span>
+<span class="hljs-keyword">await</span> <span class="hljs-title function_">drainRunLoop</span>(<span class="hljs-title function_">async</span> () => {
+  <span class="hljs-keyword">await</span> cu.<span class="hljs-property">screenshot</span>.<span class="hljs-title function_">captureExcluding</span>(...)
+})
+</code></pre>
+<p>This is why Computer Use is macOS-only: the tight integration with AppKit, CGEvent, and SCContentFilter requires native Swift and Rust modules that only work within Apple's event model.</p>
+<h3>State in AppState</h3>
+<p>Computer Use state lives in <code>AppState.computerUseMcpState</code>:</p>
+<pre class="code-block" data-language="typescript"><code class="hljs language-typescript"><span class="hljs-attr">computerUseMcpState</span>?: {
+  <span class="hljs-attr">allowedApps</span>?: <span class="hljs-keyword">readonly</span> { bundleId, displayName, grantedAt }[]
+  <span class="hljs-attr">grantFlags</span>?: { clipboardRead, clipboardWrite, systemKeyCombos }
+  <span class="hljs-attr">lastScreenshotDims</span>?: { width, height, displayWidth, displayHeight, ... }
+  <span class="hljs-attr">hiddenDuringTurn</span>?: <span class="hljs-title class_">ReadonlySet</span>&#x3C;<span class="hljs-built_in">string</span>>
+  <span class="hljs-attr">selectedDisplayId</span>?: <span class="hljs-built_in">number</span>
+  <span class="hljs-attr">displayPinnedByModel</span>?: <span class="hljs-built_in">boolean</span>
+}
+</code></pre>
+<p>This state is <strong>session-scoped</strong> (not persisted across resume) and tracks the app allowlist, screenshot dimensions for coordinate mapping, and which apps were hidden during the current turn (unhidden at turn end via <code>cleanup.ts</code>).</p>
+<hr>
+<h2>Transferable Design Patterns</h2>
+<blockquote>
+<p>The following patterns can be directly applied to other agentic systems or CLI tools.</p>
+</blockquote>
+<h3>Pattern 1: "35 Lines to Replace a Library"</h3>
+<p><strong>Scenario</strong>: You need application-wide state management in a React app.</p>
+<p><strong>Practice</strong>: Before reaching for Redux/Zustand/Jotai, ask: do you actually need middleware, devtools, or computed selectors? If the answer is no, a <code>createStore</code> function with <code>getState</code>/<code>setState</code>/<code>subscribe</code> — integrated via <code>useSyncExternalStore</code> — gives you the same concurrent-safe rendering guarantees in under 40 lines.</p>
+<p><strong>Claude Code's application</strong>: 570-line <code>AppState</code> type managed by a 35-line store. The <code>onChange</code> callback replaces middleware for side effects. The <code>Object.is</code> check replaces selector memoization for simple cases.</p>
+<h3>Pattern 2: Browser Event Model in Non-Browser Environments</h3>
+<p><strong>Scenario</strong>: Your terminal/embedded UI has overlapping interactive regions (modals, nested scrollers, focus contexts).</p>
+<p><strong>Practice</strong>: Implement the W3C capture/bubble dispatch model. The three-phase model (capture → target → bubble) with <code>stopPropagation()</code> and priority levels solves event routing problems that ad-hoc approaches struggle with.</p>
+<p><strong>Claude Code's application</strong>: A <code>Dispatcher</code> class with <code>dispatchDiscrete()</code> (sync priority for keys) and <code>dispatchContinuous()</code> (batched for scroll/resize), wired into React's scheduler via the reconciler's <code>resolveUpdatePriority</code>.</p>
+<h3>Pattern 3: Virtual Scrolling in Non-Browser Environments</h3>
+<p><strong>Scenario</strong>: You need to display thousands of items in a fixed-height viewport.</p>
+<p><strong>Practice</strong>: Only render items within the viewport + a buffer zone. Use height estimation with measurement caching. Implement scroll clamping to prevent blank screens during fast scrolling.</p>
+<p><strong>Claude Code's application</strong>: <code>VirtualMessageList</code> with WeakMap height cache, <code>scrollClampMin</code>/<code>scrollClampMax</code> for race protection between scroll position and React re-render, and <code>stickyScroll</code> for auto-following new content.</p>
+<h3>Pattern 4: Packed Typed Arrays for GC-Free Rendering</h3>
+<p><strong>Scenario</strong>: You're doing per-frame grid/cell operations where object allocation causes GC pauses.</p>
+<p><strong>Practice</strong>: Pack multiple fields into typed arrays using bit shifts. Use dual views over the same <code>ArrayBuffer</code> for per-element access (Int32Array) and bulk operations (BigInt64Array). Intern strings into integer pools.</p>
+<p><strong>Claude Code's application</strong>: <code>Screen.cells</code> packs char/style/hyperlink/width into 2 Int32s per cell. <code>CharPool</code> interns characters with an ASCII fast path (direct array lookup, no Map). Bulk clear via <code>cells64.fill(0n)</code>.</p>
+<h3>Pattern 5: Pure-Function State Machine for Editor Modes</h3>
+<p><strong>Scenario</strong>: You need a multi-mode text editor with composable commands.</p>
+<p><strong>Practice</strong>: Model each mode as a discriminated union member of the state type. Transition functions are pure: <code>(state, input, ctx) → { next?, execute? }</code>. Persistent state (registers, last command) lives outside the transient command state.</p>
+<p><strong>Claude Code's application</strong>: Vim mode with 10 command states, exhaustive switch in <code>transition()</code>, separate <code>PersistentState</code> for dot-repeat and yank registers. TypeScript's exhaustive pattern matching ensures every state is handled.</p>
+<hr>
+<h2>Component Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Component</th><th>Key Files</th><th>Size</th><th>Role</th></tr></thead><tbody><tr><td>Ink Fork</td><td><code>ink/</code> (48 files)</td><td>~620KB</td><td>Custom terminal rendering engine</td></tr><tr><td>Reconciler</td><td><code>ink/reconciler.ts</code></td><td>14.6KB</td><td>React 19 ↔ Terminal bridge</td></tr><tr><td>Screen Buffer</td><td><code>ink/screen.ts</code></td><td>49.3KB</td><td>Packed Int32Array double-buffered cells</td></tr><tr><td>Event System</td><td><code>ink/events/</code></td><td>~15KB</td><td>W3C capture/bubble + priority dispatch</td></tr><tr><td>Store</td><td><code>state/store.ts</code></td><td>836B</td><td>35-line global state management</td></tr><tr><td>AppState</td><td><code>state/AppStateStore.ts</code></td><td>21.8KB</td><td>570-line application state type</td></tr><tr><td>REPL Screen</td><td><code>screens/REPL.tsx</code></td><td>874KB</td><td>Main interactive interface</td></tr><tr><td>Virtual Scroll</td><td><code>VirtualMessageList.tsx</code></td><td>148KB</td><td>Height-cached virtual scrolling</td></tr><tr><td>Vim Mode</td><td><code>vim/</code> directory</td><td>~50KB</td><td>Full Vim state machine</td></tr><tr><td>Keybindings</td><td><code>keybindings/</code></td><td>~40KB</td><td>Multi-context chord-enabled bindings</td></tr><tr><td>Computer Use</td><td><code>utils/computerUse/</code></td><td>~125KB</td><td>macOS native screen/input control</td></tr></tbody></table>
+<p><strong>Total UI &#x26; State surface: ~2MB of rendering, interaction, and state infrastructure.</strong></p>
+<hr>
+<p><em>Next up: Episode 15 — Services &#x26; API Layer</em></p>
+<p><a href="13-bridge-system">← Episode 13 — Bridge System</a> · <a href="15-services-api-layer">Episode 15 — Services &#x26; API Layer →</a></p></div></article><nav class="flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800"><a class="group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/ja/advanced/13-bridge-system/"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left transition-transform group-hover:-translate-x-1" aria-hidden="true"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg><span>EP<!-- -->13<!-- --> <!-- -->Bridge System</span></a><a class="group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white" href="/agent-coding-lesson/ja/advanced/15-services-api-layer/"><span>EP<!-- -->15<!-- --> <!-- -->Services &amp; API Layer</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right transition-transform group-hover:translate-x-1" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a></nav></div><!--$--><!--/$--></div></div></main><script src="/agent-coding-lesson/_next/static/chunks/36a05b7c4a79a899.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[39756,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n3:I[37457,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"default\"]\n5:I[95914,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\"],\"Sidebar\"]\n7:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"OutletBoundary\"]\n8:\"$Sreact.suspense\"\na:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"ViewportBoundary\"]\nc:I[97367,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"MetadataBoundary\"]\ne:I[68027,[],\"default\"]\n:HL[\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"b\":\"kOMToiePwU79Kzn0fZt4S\",\"c\":[\"\",\"ja\",\"advanced\",\"14-ui-state-management\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[[\"locale\",\"ja\",\"d\"],{\"children\":[\"(learn)\",{\"children\":[\"advanced\",{\"children\":[[\"chapter\",\"14-ui-state-management\",\"d\"],{\"children\":[\"__PAGE__\",{}]}]}]}]},\"$undefined\",\"$undefined\",true]}],[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/agent-coding-lesson/_next/static/chunks/3acbf8c1e40c745e.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"async\":true,\"nonce\":\"$undefined\"}]],\"$L4\"]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"div\",null,{\"className\":\"flex gap-8\",\"children\":[[\"$\",\"$L5\",null,{}],[\"$\",\"div\",null,{\"className\":\"min-w-0 flex-1\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[\"$L6\",[[\"$\",\"script\",\"script-0\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@9\"}]}]]}],{},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false]},null,false,false],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$8\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],null]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[]],\"S\":true}\n"])</script><script>self.__next_f.push([1,"f:I[33499,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"I18nProvider\"]\n10:I[45872,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\"],\"Header\"]\n11:I[22016,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"\"]\n4:[\"$\",\"html\",null,{\"lang\":\"ja\",\"suppressHydrationWarning\":true,\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"\\n          (function() {\\n            var theme = localStorage.getItem('theme');\\n            if (theme === 'dark' || (!theme \u0026\u0026 window.matchMedia('(prefers-color-scheme: dark)').matches)) {\\n              document.documentElement.classList.add('dark');\\n            }\\n          })();\\n        \"}}]}],[\"$\",\"body\",null,{\"className\":\"min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased\",\"children\":[\"$\",\"$Lf\",null,{\"locale\":\"ja\",\"children\":[[\"$\",\"$L10\",null,{}],[\"$\",\"main\",null,{\"className\":\"mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8\",\"children\":[\"$\",\"$L2\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L3\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]]}]}]]}]\n"])</script><script>self.__next_f.push([1,"6:[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-4xl space-y-8 py-4\",\"children\":[[\"$\",\"header\",null,{\"className\":\"rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/ja/curriculum\",\"className\":\"inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],\"Course map\"]}],[\"$\",\"div\",null,{\"className\":\"mt-4 flex flex-wrap items-center gap-3\",\"children\":[[\"$\",\"span\",null,{\"className\":\"rounded-md bg-zinc-100 px-2.5 py-1 font-mono text-sm font-semibold dark:bg-zinc-800\",\"children\":[\"EP\",\"14\"]}],[\"$\",\"h1\",null,{\"className\":\"text-2xl font-bold text-zinc-950 dark:text-zinc-50\",\"children\":\"UI State \u0026 Rendering\"}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Terminal UI, React/Ink state, input modes, and rendering\"}]]}],[\"$\",\"section\",null,{\"className\":\"rounded-lg border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/20\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-start justify-between gap-3\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"text-xs font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-300\",\"children\":\"Prompt reference\"}],[\"$\",\"h2\",null,{\"className\":\"mt-1 text-lg font-semibold text-zinc-950 dark:text-zinc-50\",\"children\":\"UI copy, status, and rendering constraints\"}],[\"$\",\"p\",null,{\"className\":\"mt-2 max-w-3xl text-sm leading-relaxed text-zinc-700 dark:text-zinc-200\",\"children\":\"These prompts show how text output, status lines, and option previews become part of the UI contract.\"}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"inline-flex min-h-[38px] items-center gap-1.5 rounded-md border border-violet-200 bg-white/70 px-3 text-sm font-medium text-violet-700 transition-colors hover:bg-white dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-200 dark:hover:bg-violet-900/40\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":14,\"height\":14,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}],\"Source repo\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-3 text-xs leading-relaxed text-violet-700/80 dark:text-violet-200/70\",\"children\":\"Third-party extracted reference from the Claude Code npm package, useful for study but not official Anthropic documentation.\"}],[\"$\",\"div\",null,{\"className\":\"mt-4 grid gap-3 md:grid-cols-2\",\"children\":[[\"$\",\"a\",\"system-prompt-communication-style.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-communication-style.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[\"$L12\",\"$L13\",\"$L14\",\"$L15\",\"$L16\",\"$undefined\"]}],\"$L17\"]}],\"$L18\",\"$L19\"]}],\"$L1a\",\"$L1b\",\"$L1c\"]}]]}],\"$L1d\",\"$L1e\"]}]\n"])</script><script>self.__next_f.push([1,"1f:I[19004,[\"/agent-coding-lesson/_next/static/chunks/076aae518584b842.js\",\"/agent-coding-lesson/_next/static/chunks/b3f317e4596adb66.js\",\"/agent-coding-lesson/_next/static/chunks/a9ca4a34b63ae231.js\",\"/agent-coding-lesson/_next/static/chunks/b1996cdc9febce46.js\",\"/agent-coding-lesson/_next/static/chunks/3934c7365131ffe6.js\"],\"AdvancedDocRenderer\"]\n12:[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}]\n13:[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}]\n14:[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}]\n15:[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}]\n16:[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}]\n17:[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Communication style\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-communication-style.md\"}]]}]\n18:[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Progress UI\"}]\n19:[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Defines when and how the agent sends user-facing updates.\"}]\n"])</script><script>self.__next_f.push([1,"1a:[\"$\",\"a\",\"system-prompt-tone-and-style-code-references.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-tone-and-style-code-references.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Code references\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-tone-and-style-code-references.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Clickable UI affordance\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Connects rendered output to clickable file references.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1b:[\"$\",\"a\",\"agent-prompt-status-line-setup.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/agent-prompt-status-line-setup.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Status line setup\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"agent-prompt-status-line-setup.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Terminal UI\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Useful for terminal status-line customization and shell integration.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1c:[\"$\",\"a\",\"system-prompt-option-previewer.md\",{\"href\":\"https://github.com/Piebald-AI/claude-code-system-prompts/blob/main/system-prompts/system-prompt-option-previewer.md\",\"target\":\"_blank\",\"rel\":\"noopener\",\"className\":\"group rounded-md border border-violet-200 bg-white p-3 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-violet-900/80 dark:bg-zinc-950/50 dark:hover:border-violet-700 dark:hover:bg-violet-950/30\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-start gap-2\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-file-text mt-0.5 shrink-0 text-violet-500\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1oefj6\",{\"d\":\"M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z\"}],[\"$\",\"path\",\"wfsgrz\",{\"d\":\"M14 2v5a1 1 0 0 0 1 1h5\"}],[\"$\",\"path\",\"b1mrlr\",{\"d\":\"M10 9H8\"}],[\"$\",\"path\",\"t4e002\",{\"d\":\"M16 13H8\"}],[\"$\",\"path\",\"z1uh3a\",{\"d\":\"M16 17H8\"}],\"$undefined\"]}],[\"$\",\"div\",null,{\"className\":\"min-w-0\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex items-center gap-1.5\",\"children\":[[\"$\",\"h3\",null,{\"className\":\"truncate text-sm font-semibold text-zinc-950 group-hover:underline dark:text-zinc-50\",\"children\":\"Option previewer\"}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":12,\"height\":12,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-external-link shrink-0 text-zinc-400\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1q9fwt\",{\"d\":\"M15 3h6v6\"}],[\"$\",\"path\",\"gplh6r\",{\"d\":\"M10 14 21 3\"}],[\"$\",\"path\",\"a6xqqp\",{\"d\":\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"}],\"$undefined\"]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-1 font-mono text-[11px] text-zinc-400\",\"children\":\"system-prompt-option-previewer.md\"}]]}]]}],[\"$\",\"p\",null,{\"className\":\"mt-2 text-xs font-medium text-violet-700 dark:text-violet-300\",\"children\":\"Choice UI\"}],[\"$\",\"p\",null,{\"className\":\"mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300\",\"children\":\"Shows prompt support for previewing user-facing options.\"}]]}]\n"])</script><script>self.__next_f.push([1,"1d:[\"$\",\"$L1f\",null,{\"chapter\":\"14\"}]\n"])</script><script>self.__next_f.push([1,"1e:[\"$\",\"nav\",null,{\"className\":\"flex items-center justify-between border-t border-zinc-200 pt-6 dark:border-zinc-800\",\"children\":[[\"$\",\"$L11\",null,{\"href\":\"/ja/advanced/13-bridge-system\",\"className\":\"group flex items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-left transition-transform group-hover:-translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1l729n\",{\"d\":\"m12 19-7-7 7-7\"}],[\"$\",\"path\",\"x3x0zl\",{\"d\":\"M19 12H5\"}],\"$undefined\"]}],[\"$\",\"span\",null,{\"children\":[\"EP\",\"13\",\" \",\"Bridge System\"]}]]}],[\"$\",\"$L11\",null,{\"href\":\"/ja/advanced/15-services-api-layer\",\"className\":\"group flex items-center gap-2 text-right text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white\",\"children\":[[\"$\",\"span\",null,{\"children\":[\"EP\",\"15\",\" \",\"Services \u0026 API Layer\"]}],[\"$\",\"svg\",null,{\"ref\":\"$undefined\",\"xmlns\":\"http://www.w3.org/2000/svg\",\"width\":15,\"height\":15,\"viewBox\":\"0 0 24 24\",\"fill\":\"none\",\"stroke\":\"currentColor\",\"strokeWidth\":2,\"strokeLinecap\":\"round\",\"strokeLinejoin\":\"round\",\"className\":\"lucide lucide-arrow-right transition-transform group-hover:translate-x-1\",\"aria-hidden\":\"true\",\"children\":[[\"$\",\"path\",\"1ays0h\",{\"d\":\"M5 12h14\"}],[\"$\",\"path\",\"xquz4c\",{\"d\":\"m12 5 7 7-7 7\"}],\"$undefined\"]}]]}]]}]\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"20:I[27201,[\"/agent-coding-lesson/_next/static/chunks/ff1a16fafef87110.js\",\"/agent-coding-lesson/_next/static/chunks/0bd6498bda341889.js\"],\"IconMark\"]\n9:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"Agent Coding Lesson\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"0 から 1 へ nano Claude Code-like agent を構築し、毎回 1 つの仕組みを追加\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/agent-coding-lesson/favicon.ico?favicon.0b3bf435.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L20\",\"3\",{}]]\n"])</script></body></html>
