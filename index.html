@@ -135,6 +135,35 @@
         font-size: 14px;
       }
 
+      .hero {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-bg {
+        position: absolute;
+        inset: -40px;
+        z-index: 0;
+        opacity: 0.5;
+        mask-image: linear-gradient(to bottom, #000 40%, transparent 95%);
+        -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 95%);
+      }
+
+      .hero-bg canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .hero-text {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero:hover .hero-bg {
+        opacity: 0.7;
+      }
+
       section {
         padding-top: 44px;
       }
@@ -280,6 +309,9 @@
           font-size: 28px;
         }
       }
+      .hero:hover .hero-canvas {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
@@ -299,7 +331,10 @@
       </header>
 
       <section class="hero" aria-labelledby="intro-title">
-        <div>
+        <div class="hero-bg" id="hero-canvas-container">
+          <canvas id="hero-canvas"></canvas>
+        </div>
+        <div class="hero-text">
           <p class="eyebrow">Knowledge graphs, AI systems, and interactive software</p>
           <h1 id="intro-title">徐大为 Dawei Xu</h1>
           <p class="intro">
@@ -470,5 +505,92 @@
         <span>© Dawei Xu. Built as a static GitHub Pages site.</span>
       </footer>
     </main>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+      }
+    }
+    </script>
+    <script type="module">
+      import * as THREE from 'three';
+      const canvas = document.getElementById('hero-canvas');
+      const container = document.getElementById('hero-canvas-container');
+      if (canvas && container) {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+        camera.position.set(0, 1, 6);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(1, 1, 1);
+        scene.add(light);
+        scene.add(new THREE.AmbientLight(0x404060));
+        const geos = [
+          new THREE.TetrahedronGeometry(0.5),
+          new THREE.BoxGeometry(0.55, 0.55, 0.55),
+          new THREE.OctahedronGeometry(0.5),
+          new THREE.DodecahedronGeometry(0.45),
+          new THREE.IcosahedronGeometry(0.5),
+        ];
+        const meshes = geos.map((g, i) => {
+          const hue = 145 + i * 28;
+          const mat = new THREE.MeshPhysicalMaterial({
+            color: new THREE.Color(`hsl(${hue}, 50%, ${55 + i * 4}%)`),
+            metalness: 0.1,
+            roughness: 0.3,
+            wireframe: false,
+            transparent: true,
+            opacity: 0.6,
+          });
+          const m = new THREE.Mesh(g, mat);
+          const angle = (i / geos.length) * Math.PI * 2;
+          const r = 1.6 + Math.random() * 0.5;
+          m.position.set(Math.cos(angle) * r, (Math.random() - 0.5) * 1.5, Math.sin(angle) * r * 0.6 - 1);
+          m.rotation.set(Math.random() * 6, Math.random() * 6, Math.random() * 6);
+          m.scale.setScalar(0.7 + Math.random() * 0.3);
+          scene.add(m);
+          const edge = new THREE.EdgesGeometry(g);
+          const line = new THREE.LineSegments(edge, new THREE.LineBasicMaterial({
+            color: new THREE.Color(`hsl(${hue + 20}, 60%, 70%)`),
+            transparent: true,
+            opacity: 0.3,
+          }));
+          m.add(line);
+          return m;
+        });
+        function resize() {
+          const w = container.clientWidth;
+          const h = container.clientHeight;
+          if (w > 0 && h > 0) {
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+            renderer.setSize(w, h);
+          }
+        }
+        window.addEventListener('resize', resize);
+        const clock = new THREE.Clock();
+        function animate() {
+          requestAnimationFrame(animate);
+          const t = clock.getElapsedTime();
+          meshes.forEach((m, i) => {
+            const speed = 0.2 + i * 0.05;
+            m.rotation.x += 0.003 * speed;
+            m.rotation.y += 0.005 * speed;
+            m.position.y += Math.sin(t * 0.4 + i * 1.2) * 0.001;
+          });
+          renderer.render(scene, camera);
+        }
+        animate();
+        resize();
+        document.querySelector('.hero')?.addEventListener('mouseenter', () => {
+          meshes.forEach(m => { m.material.opacity = 0.85; });
+        });
+        document.querySelector('.hero')?.addEventListener('mouseleave', () => {
+          meshes.forEach(m => { m.material.opacity = 0.6; });
+        });
+      }
+    </script>
   </body>
 </html>
