@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 工具链周记 · Dawei Xu</title>
+  <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="mark" aria-hidden="true">A</span>
+        <span>Dawei Xu</span>
+      </a>
+      <nav class="nav">
+        <a href="/">首页</a>
+        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
+      </nav>
+    </header>
+
+    <a class="back-link" href="/blog/">← 返回笔记列表</a>
+    <h1>AI 工具链周记</h1>
+    <p class="post-meta">2026-07-24 · 来自 X 时间线 · #MCP #AI工具链 #提示词 #Codex</p>
+
+    <article class="post-content">
+      <!-- tweet:2080295616736006328 -->
+      <p>这周 X 时间线上 AI 工具链的信息密度很高。几个看似独立的事件，拼在一起其实能看到一个清晰的趋势：基础设施层正在加速成熟。</p>
+
+      <h2>API 路由从手动换 Key 到自动切换</h2>
+      <!-- tweet:2080295616736006328 -->
+      <p><strong>OmniRoute</strong> 是一个开源自托管的本地 API 网关，统一管理 278+ 供应商、500+ 模型。最实用的功能是：当前通道限流或报 429 时，按策略自动切换到备用通道。经常跑长任务的朋友都知道，跑到一半额度耗尽、接口报错，然后手动换 Key 重启——这体验太痛了。OmniRoute 正好解决这个。开源、自托管，兼容 Cursor、Cline、Claude Code 等工具。</p>
+
+      <h2>MCP 把数据层直接嵌进工具链</h2>
+      <!-- tweet:2080292447914229944 -->
+      <p><strong>Topview</strong> 出了一个 MCP server，把 Amazon、TikTok Shop、YouTube、Shopee 的市场数据直接内置。传统做法：凭感觉选题 → AI 加速执行一个可能错误的方向。Topview MCP 的逻辑是反过来——先告诉你什么值得做（数据驱动），再帮你把策略、分镜、素材一起跑通。而且 Seedance 2.0、Kling 3.0、Veo 3.1 都是内置的，不需要自己拼工具链。这才叫 full-stack——不是功能堆砌，而是链路完整。</p>
+
+      <h2>提示词工程走向规模化</h2>
+      <!-- tweet:2080289110506578193 -->
+      <p>看到「小小东」在积累提示词库，目标是 2 万组。这是一个很有意思的信号——当大家还在讨论单个提示词怎么写好的时候，已经有人在用规模化思维做提示词资产库了。提示词不再是随手写的文本，而是可复用、可分类、可迭代的工程资产。这跟软件工程里从写脚本到写库的进化路径一模一样。</p>
+
+      <h2>从 Vibe Coding 到 Codex 橙皮书</h2>
+      <!-- tweet:2080402623510020398 -->
+      <p>Vibe Coding 基础营新一期开营了，每一课都有作业——不再是单纯的看视频，而是动手实践。另一边，社区整理的 <strong>Codex 橙皮书</strong> 从装环境到实战案例全写清楚了，还能下 PDF。这两件事说明 AI 编程正在从「玩一玩」进入「有体系地学习」阶段。工具迭代太快，体系化的学习资料反而成了稀缺品。</p>
+
+      <!-- tweet:2080262589804839241 -->
+      <p>🔗 相关链接：<br>
+      <a href="https://x.com/abskoop/status/2080295616736006328" target="_blank">ahhhhfs — OmniRoute：API 统一管理 + 自动切换</a><br>
+      <a href="https://x.com/yaohui12138/status/2080292447914229944" target="_blank">超级个体｜柿子 — Topview MCP 电商数据内置</a><br>
+      <a href="https://x.com/xiaoxiaodong01/status/2080289110506578193" target="_blank">小小东 — 提示词库积累 1.5 万组</a><br>
+      <a href="https://x.com/Stephen4171127/status/2080402623510020398" target="_blank">熊布朗 — Vibe Coding 基础营新一期</a><br>
+      <a href="https://x.com/knowledgefxg/status/2080262589804839241" target="_blank">知识分享官 — Codex 橙皮书</a></p>
+
+      <blockquote>
+        <strong>行家看门道：</strong>AI 工具链正在从「拼乐高」走向「搭框架」——数据层、路由层、提示词资产化，都在往基础设施方向沉淀。谁能先把这层基础设施搭好，谁就拿到了下一轮的船票。
+      </blockquote>
+    </article>
+
+    <footer>
+      <span>© Dawei Xu. 自动采集 + AI 摘要，个人学习记录。</span>
+    </footer>
+  </main>
+</body>
+</html>
