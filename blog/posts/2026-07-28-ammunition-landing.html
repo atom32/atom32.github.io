@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>开源弹药上膛之后 · Dawei Xu</title>
+  <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="mark" aria-hidden="true">A</span>
+        <span>Dawei Xu</span>
+      </a>
+      <nav class="nav">
+        <a href="/">首页</a>
+        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
+      </nav>
+    </header>
+
+    <a class="back-link" href="/blog/">← 返回笔记列表</a>
+    <h1>开源弹药上膛之后</h1>
+    <p class="post-meta">2026-07-28 · 来自 X 时间线 · #AI工具 #开源 #Agent #短剧</p>
+
+    <article class="post-content">
+
+      <p>开源阵营集结之后，弹药开始落地了。过去几天 X 上冒出来的东西，有一个共同点：不再只是「又一个模型」，而是围绕模型长出来的工具和生态。</p>
+
+      <h2>AI 短剧变成填空题</h2>
+      <p>一个开源项目把制作短剧变成了填空题。剧本丢进去，AI 自动分镜、画角色、生成视频，全程几乎不用人工。本地部署、支持无限画布、三层 Agent 互相配合。前几天还觉得这是 demo，现在已经有人在跑了。成本压到 130 块一部短剧，量变引起质变只是时间问题。</p>
+
+      <h2>Codex 终于不瞎了</h2>
+      <p>有人给 Codex 接了一个 155K Star 的爬虫工具，解决了 AI 联网的最大痛点——碰到 JS 渲染页面就瞎。现在能让 AI 自己去翻文档、盯 GitHub 热榜、找资料。这事有意思的地方在于，它不是 OpenAI 官方做的，是社区自己用开源工具拼出来的。模型的边界由生态决定，不由厂商决定。</p>
+
+      <h2>Agent 工程从玄学变工程</h2>
+      <p>「Build Your Own Pi」从一条真实的运行轨迹拆解 Agent 的工程骨架。15 个 checkpoint 从消息协议到流式模型，把 Agent 从 prompt 玄学变成了可循证的系统设计。同类的还有 video-shotcraft，106 张镜头配方卡、162 个样式，给 Agent 装了一套电影级的镜头语言知识。这些东西在三个月前还只能靠人肉积累，现在正在被结构化成可复用的工程资产。</p>
+
+      <h2>视频生成 skill 爆发</h2>
+      <p>Seedance 2.0、Kling 3.0、Veo 3.1 集中上线之后，MCP 层开始把它们组装成完整链路。Topview 的 MCP server 就是典型的「数据 → 决策 → 执行」闭环：先告诉你什么值得做，再自动出分镜、素材、成片。当工具链不再需要人肉拼接，创作的门槛就降到了「选对方向」这一步。</p>
+
+      <p>开源阵营上周完成了集结，这周开始铺设基础设施。模型层差距在缩小，工具层差距在逆转。接下来谁的工具链跑得更稳，谁就赢了。</p>
+
+      <p>🔗 相关链接：<br>
+      <a href="https://x.com/..." target="_blank">Toonflow — AI 短剧全自动流水线</a><br>
+      <a href="https://x.com/..." target="_blank">Codex + 爬虫 — 社区拼出来的联网方案</a><br>
+      <a href="https://x.com/..." target="_blank">Build Your Own Pi — Agent 工程拆解</a><br>
+      <a href="https://x.com/..." target="_blank">Topview MCP — 电商数据直连工具链</a></p>
+
+    </article>
+
+    <footer>
+      <span>© Dawei Xu. 自动采集 + AI 摘要，个人学习记录。</span>
+    </footer>
+  </main>
+</body>
+</html>
