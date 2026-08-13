@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日资讯早报 | 2026-08-13</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1f2328; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --accent-soft:#eff6ff;
+    --gold:#b45309; --blue:#1d4ed8; --yellow:#a16207;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:32px 20px 64px;}
+  header.hero{
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%);
+    color:#fff; border-radius:16px; padding:36px 32px; margin-bottom:28px;
+  }
+  header.hero h1{font-size:26px; font-weight:700; letter-spacing:.5px;}
+  header.hero .date{font-size:15px; opacity:.85; margin-top:6px;}
+  .stats{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;
+  }
+  .stat-pill{
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; padding:4px 14px; font-size:13px;
+  }
+  .lead{
+    background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:10px; padding:16px 20px; margin-bottom:28px; color:#374151; font-size:15px;
+  }
+  section.block{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 24px 8px; margin-bottom:24px;}
+  section.block h2{
+    font-size:19px; font-weight:700; margin-bottom:4px;
+  }
+  section.block .sub{font-size:13px; color:var(--muted); margin-bottom:16px;}
+  h3.topic{
+    font-size:16px; font-weight:700; margin:20px 0 12px; padding-top:16px;
+    border-top:1px dashed var(--line);
+  }
+  .item{
+    border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin-bottom:12px;
+    background:#fafbfc;
+  }
+  .item .meta{font-size:12.5px; color:var(--muted); margin-bottom:6px;}
+  .item .meta .tag-src{font-weight:600; color:#374151;}
+  .item p{font-size:14.5px; color:#24292f; white-space:pre-line;}
+  .item p + p{margin-top:6px;}
+  .item .link{color:var(--accent); word-break:break-all;}
+  .summary-line{
+    background:var(--accent-soft); border-radius:10px; padding:10px 16px; margin-bottom:12px;
+    font-size:14.5px; color:#1e3a8a;
+  }
+  .perspectives{
+    background:#fafbfc; border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; margin-bottom:12px;
+  }
+  .perspectives .ptitle{font-size:13px; font-weight:700; color:var(--muted); margin-bottom:8px;}
+  .perspectives .psrc{font-size:13px; color:#374151; margin-bottom:6px;}
+  .perspectives .psrc b{color:var(--blue); font-weight:600;}
+  .timeline{font-size:13px; color:#374151; background:#fafbfc; border-radius:8px; padding:8px 14px; margin:10px 0;}
+  .timeline .tl{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .chip{
+    background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:1px 10px; font-size:12px; color:#374151;
+  }
+  .trend{font-size:13px; color:var(--muted); margin:10px 0;}
+  .bars{display:flex; align-items:flex-end; gap:6px; height:34px; margin-top:6px;}
+  .bar{background:linear-gradient(180deg,#60a5fa,#2563eb); border-radius:3px 3px 0 0; min-width:18px;}
+  .bar small{display:block; text-align:center; font-size:10px; color:var(--muted); margin-top:2px;}
+  .note-more{font-size:13px; color:var(--muted); font-style:italic; padding:4px 2px 12px;}
+  .statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:8px;}
+  .statcard{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fafbfc;}
+  .statcard h4{font-size:14px; margin-bottom:8px;}
+  .statcard ul{list-style:none;}
+  .statcard li{font-size:13.5px; color:#374151; padding:2px 0; display:flex; justify-content:space-between; gap:12px;}
+  .statcard li b{color:var(--ink);}
+  footer.foot{
+    text-align:center; color:var(--muted); font-size:13px; margin-top:32px; padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  footer.foot .note{color:#374151; font-size:14px; margin-bottom:4px;}
+  @media (max-width:600px){
+    header.hero{padding:26px 20px;}
+    header.hero h1{font-size:21px;}
+    section.block{padding:18px 14px 6px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🌅 每日资讯早报</h1>
+    <div class="date">2026 年 8 月 13 日 · 星期四</div>
+    <div class="stats">
+      <span class="stat-pill">📊 共 190 条信息</span>
+      <span class="stat-pill">🐦 X：90 条</span>
+      <span class="stat-pill">📰 RSS：100 条</span>
+      <span class="stat-pill">💬 NGA：0 条</span>
+      <span class="stat-pill">💭 S1：0 条</span>
+      <span class="stat-pill">🗂️ 聚类 158 个事件</span>
+      <span class="stat-pill">🔥 跨源热点 1 个</span>
+    </div>
+  </header>
+
+  <div class="lead">
+    今天的热点很集中：欧洲上空的日全食刷屏，DeepSeek V4 Pro 正式上线 API，AI 工具链又冒出几个新面孔。国际方面俄乌、中东还在发酵，国内政策也有动静。下面按话题过一遍。
+  </div>
+
+  <!-- 跨源热点 -->
+  <section class="block">
+    <h2>🔥 跨源热点（多平台同步热议）</h2>
+    <div class="sub">多个信源在同一时间段集中报道的事件</div>
+
+    <h3 class="topic">1. 总结性新闻</h3>
+    <div class="sub">📰 🐦 · 共 5 条</div>
+
+    <div class="summary-line">📝 全球多地迎来首次日全食，美国 NASA 团队观测太阳大气层和地球大气层</div>
+
+    <div class="perspectives">
+      <div class="ptitle">🔍 多源视角对比 · 源报道角度差异概括</div>
+      <div class="psrc"><b>[RenneRSS]</b>　该新闻侧重于欧洲即将发生的日全食的全球影响力，强调了此次日全食的可见范围和全球范围内的人口分布。</div>
+      <div class="psrc"><b>[🐦 X]</b>　该新闻更关注全球范围内的人口分布及其对特定地区的影响，特别提到有超过 1 亿人在欧洲的路径内体验到此次日全食。</div>
+      <div class="psrc"><b>[RT@NASASolarSystem]</b>　该新闻侧重于 NASA 团队在此次日全食期间的研究活动，特别是对太阳大气层和地球大气层的研究。</div>
+    </div>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-12 🟢</div>
+      <p><b>In Europe, the Total Solar Eclipse Is Hours Away</b> — Sky watchers have flocked to places, from Iceland to Spain, where the moon will completely block the…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-12 🔵</div>
+      <p><b>Watch: Solar eclipse seen over UK skies</b> — Millions of people in the UK and Europe have been wowed by a once-in-a-generation solar eclipse.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 UPI.com@UPI</span> · 4 小时前 · 17:13 🟡</div>
+      <p>Some 15.2M people across the world -- mostly in Europe -- live in the path of totality of Wednesday's solar eclipse. The event marks the first total s…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 14:37 🟡</div>
+      <p>RT @NASASolarSystem: Today: a total solar eclipse over Iceland and Spain.<br>NASA teams are studying the Sun's corona and Earth's atmosphere…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 🎬×1 · 14:00 🟡</div>
+      <p>Today: a total solar eclipse over Iceland and Spain.<br>NASA teams are studying the Sun's corona and Earth's atmosphere from inside the path of totality…</p>
+    </div>
+
+    <div class="timeline">📈 <i>近 14 天该事件也曾出现：2026-08-12</i></div>
+  </section>
+
+  <!-- 各平台话题 -->
+  <section class="block">
+    <h2>📌 各平台话题</h2>
+    <div class="sub">按话题聚类后的重点内容</div>
+
+    <!-- AI/大模型 -->
+    <h3 class="topic">🤖 AI/大模型（11 条）</h3>
+    <div class="summary-line">📝 DeepSeek V4 Pro 测试成绩公布</div>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 17:11 🟡</div>
+      <p>为了避免兄弟们看不懂指标含义翻译成人话，DeepSeek V4 Pro 这次不是更会答题，而是更会把一件事干完。</p>
+      <p>DeepSWE：12.8 → 62.7，约 4.9 倍。<br>给 Agent 一个真实代码仓库和原创的长周期工程任务，让它跨文件修改代码并通过验证。测的不是"会不会写一段代码"，而是"能不能像…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 📷×3 · 16:21 🟡</div>
+      <p>正准备休息，DeepSeek 官方群突然更新：</p>
+      <p>V4 Pro 正式版已上线 API，模型名不变，Agent 能力增强，支持 Responses API 和 Codex 接入。</p>
+      <p>官方表里，DeepSWE 得分 62.7，超过 GLM-5.2 和 Opus 4.8。</p>
+      <p>有人又根据公开数据做了柱状图：…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 roman@Nozelcode</span> · 2 小时前 · 🎬×1 · 19:29 🟡</div>
+      <p>GitHub acaba de solucionar el mayor problema del vibe coding.</p>
+      <p>Acaban de lanzar Spec Kit y en poco tiempo ya tiene +126K estrellas.</p>
+      <p>¿La idea?</p>
+      <p>En vez…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Sac@Saccc_c</span> · 4 小时前 · 📷×1 · 17:15 🟡</div>
+      <p>想要尝试最近爆火的 Pi Agent，但不习惯终端 TUI 的使用体验？</p>
+      <p>这个工具可以让你在 Codex 桌面端里随意切换并尝试 Pi 等不同的 Harness，非常丝滑</p>
+      <p>我用 Pi 配合 DeepSeek 测试了一下，完成简单任务的效率直接起飞</p>
+      <p>建议想要学习 Agent Harness 的朋友都可以来尝试使…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Vincent@Vincent_AINo</span> · 📷×1 · 15:28 🟡</div>
+      <p>分享一个 Codex 小技巧：</p>
+      <p>不同 session 之间可以互相通信。</p>
+      <p>可以单独开一个"审查窗口"，专门负责追踪整体进度和验收；再把大任务拆成几个小块，交给多个窗口并行处理。每块做完后，把结果发给审查窗口检查，有问题就退回修改。</p>
+      <p>一个窗口盯全局，几个窗口负责执行。处理复杂任务时，这种方式比单纯…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Gorden Sun@Gorden_Su</span> · 14:05 🟡</div>
+      <p>这篇论文里写的解密 LLM 思维链的方法太巧妙了，把强模型（Opus）加密的思考过程，粘贴给弱模型（Haiku），然后破解弱模型即可获得明文。</p>
+      <p>论文：<a class="link" href="https://t.co/sAUyJ0F4p8">https://t.co/sAUyJ0F4p8</a></p>
+      <p>详细讲解：<br>主流大语言模型提供商会隐藏模型的逐步推理过程（"思维链"），以保护知识产权并防止信息泄露。…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Rion Wu@rionaifantas</span> · 📷×2 · 13:38 🟡</div>
+      <p>我算是彻底明白了🧐。。。绝大多数 AI 早报的问题，不是信息不够多，而是信源不透明。</p>
+      <p>我的 AI 每日简报目前接入了：</p>
+      <p>• OpenAI、DeepMind、Anthropic、Hugging Face<br>• Hacker News、arXiv、GitHub Trending<br>• TechCrunc…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 📷×1 · 13:14 🟡</div>
+      <p>3 块钱、俩小时就能从零训一个大模型？这你敢信？</p>
+      <p>GitHub 上扒到个开源项目，已经 5w star 冲上 Trending。它能让你训出一个只有 25.8M 参数的迷你语言模型，最小版本体积只有 GPT-3 的 1/2700，是真的小。</p>
+      <p>关键是全套都给你开源了：<br>1️⃣ tokenizer 分词器训练<br>2️⃣ P…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 财经天下@Caijingtianxia</span> · 📷×1 · 09:42 🟡</div>
+      <p>如果只有一个周末掌握 Claude，从这里开始：<a class="link" href="https://t.co/m3axKarfe8">https://t.co/m3axKarfe8</a></p>
+      <p>别保存 50 份永远看不完的指南。</p>
+      <p>只有这些才是真正重要的：</p>
+      <p>（部分指南来自老板 Ruben Hassid）</p>
+      <p>→ 第 1 级 — 17 分钟：基础知识</p>
+      <p>Claude 傻瓜指南：<a class="link" href="https://t.co/ijTj…">https://t.co/ijTj…</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 余温@gkxspace</span> · 13 小时前 · 📷×1 · 09:00 🟡</div>
+      <p>让 AI 对回复结果做 "对抗性审查" 是很棒的技巧！</p>
+      <p>我现在都习惯和 AI 对话时，结尾加一句"对结果做一遍对抗性审查"</p>
+      <p>当然，你也可以直接调用 Claude 或者 Codex 内置的 code-review</p>
+      <p>但是很多时候，同一模型的 review 效果确实不太好，那么也可以调用不同的模型做…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-12 🔵</div>
+      <p><b>AI 将减少工作时间？科技业员工称每周工时高达 90 小时</b> — 图像来源，Getty Images · 作者：卡莉·海斯（Kali Hays）· BBC 科技记者 · 发布于 2026 年 8 月 11 日</p>
+    </div>
+
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-02, 2026-08-04, 2026-08-07, 2026-08-11, 2026-08-12</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">2026-07-30 关键进展</span>
+        <span class="chip">2026-07-31 关键进展</span>
+        <span class="chip">2026-08-01 关键进展</span>
+        <span class="chip">2026-08-02 关键进展</span>
+        <span class="chip">2026-08-03 关键进展</span>
+        <span class="chip">2026-08-04 关键进展</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（15 天共 781 条）
+      <div class="bars">
+        <div class="bar" style="height:80%"><small>68</small></div>
+        <div class="bar" style="height:85%"><small>72</small></div>
+        <div class="bar" style="height:39%"><small>33</small></div>
+        <div class="bar" style="height:52%"><small>44</small></div>
+        <div class="bar" style="height:100%"><small>85</small></div>
+        <div class="bar" style="height:96%"><small>82</small></div>
+        <div class="bar" style="height:60%"><small>51</small></div>
+      </div>
+    </div>
+
+    <!-- 开发工具 -->
+    <h3 class="topic">🔧 开发工具（4 条）</h3>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Amto@XAMTO_AI</span> · 5 小时前 · 📷×1 · 16:20 🟡</div>
+      <p>陪读蛙，开源沉浸式翻译插件！</p>
+      <p>跟 DeepSeek-V4-Flash 天生一对。</p>
+      <p>换上陪读蛙之后，之前用的翻译插件直接删了。</p>
+      <p>响应速度够快、译文质量扎实，配上 DeepSeek-V4-Flash 体验直接拉满，关键是开源免费还沉浸感十足。</p>
+      <p>🔗 <a class="link" href="https://t.co/jw1b5pVhPD">https://t.co/jw1b5pVhPD</a> http…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 前端哥Liam@jinglian</span> · 7 小时前 · 🎬×1 · 14:38 🟡</div>
+      <p>劳伦斯大神好久没更文章了，这次他评测的 Ante CLI 真是个狠货</p>
+      <p>Ante 是一个用 Rust 从零写的终端编码 Agent</p>
+      <p>单个 ~15MB 二进制，零运行时依赖<br>自研推理引擎（内置 llama.cpp 路线），指一个 GGUF 文件就能整个 loop 跑在本机。没 API key、…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Dliyang@yiyirats</span> · 11 小时前 · 📷×1 · 11:01 🟡</div>
+      <p>以后做 PPT、Excel、Word 这活儿，可能真轮不到你亲自上手了。</p>
+      <p>给大家扒一个 26k star 的开源项目 OfficeCLI，专门给 AI agent 用的。你让它做文档，它是真能做出来那种能看的东西，不是糊弄。</p>
+      <p>它能把文档渲染成图片，直接调用 AI 的视觉能力，自己看排版、看颜色、看字体，哪儿丑改哪…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitHubDaily@GitHub_D</span> · 📷×1 · 10:00 🟡</div>
+      <p>把一张普通照片变成有手撕纸边、留白和抽象色块的纸刊作品，「拾景zine」这个 Skill 干的就是这件事。</p>
+      <p>它给 Codex 提供了两条创作路径。</p>
+      <p>一条是实景拼贴，保留原照片作为锚点，用抽象形状和高纯度色彩把画面向外延伸。</p>
+      <p>另一条是影像蒸馏，照片不进成品，只从中提取情绪和空间关系，重新创作一…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-05, 2026-08-06, 2026-08-08, 2026-08-11, 2026-08-12</i></div>
+
+    <!-- 俄乌冲突 -->
+    <h3 class="topic">🇷🇺 俄乌冲突（3 条）</h3>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 11:37 🟡</div>
+      <p>Russia's 2026 Exports Of Crabs To China Up 25%<br><a class="link" href="https://t.co/Kk9mNclFfg">https://t.co/Kk9mNclFfg</a><br>Russia exported over 25,000 tonnes of crabs to China in the first half of 2026,…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-12 🟢</div>
+      <p><b>For Trump, Secret Flight Was a Stunning Ruse. For Putin, 'a Regular Tuesday.'</b> — President Trump's Air Force One subterfuge pales in comparison to the secrecy surrounding Russia's p…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-12 🔵</div>
+      <p><b>Major Russian grain export terminals hit in Ukraine Black Sea port attack</b> — Grain exports from both Russia and Ukraine are falling as both countries attack each other's shippin…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-08, 2026-08-09, 2026-08-10, 2026-08-11, 2026-08-12</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">Aug/10 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击？</span>
+        <span class="chip">Aug/27 中国再挥稀土大棒，将 14 家欧盟实体列入出口管控名单</span>
+        <span class="chip">Sep/22 泽连斯基为何在战争关键时刻撤换最高将领｜乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（9 天共 17 条）
+      <div class="bars">
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:100%"><small>4</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+      </div>
+    </div>
+
+    <!-- 中东局势 -->
+    <h3 class="topic">🇮🇱 中东局势（3 条）</h3>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-12 🔵</div>
+      <p><b>Members of Trump's cabinet remained on decoy plane, after president's quiet exit</b> — Trump boarded a different plane in Turkey during a Nato summit for security reasons involving Iran.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-12 🔵</div>
+      <p><b>PM warned of Iran war impact on UK growth next year</b> — The conflict in the Middle East has pushed up oil and fuel prices, and also disrupted supply chains.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-12 🔵</div>
+      <p><b>霍尔木兹海峡：伊朗向特朗普列出通航的六项条件</b> — 图像来源，Getty Images · 发布于 2026 年 8 月 10 日 · 阅读时间 3 分钟。伊朗和阿曼均表示，关于管理霍尔木兹海峡（Strait of Hormuz）交通的新安排的谈判进…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-07, 2026-08-09, 2026-08-10, 2026-08-11, 2026-08-12</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">2026-08-10 此时此刻，世界各地都在干嘛？</span>
+        <span class="chip">2026-07-20 马来西亚总理：将境内以色列人一个不留地全部驱逐出去！</span>
+        <span class="chip">2026-07-24 印度青年抗议：一场莫迪始料未及的政治危机｜美国与沙特签署核协议为中东再引核扩散风险</span>
+        <span class="chip">2026-09-03 特朗普表示同意取消对伊朗的打击，前提是能"迅速"达成协议</span>
+        <span class="chip">2026-09-09 霍尔木兹海峡：阿曼称会谈进展顺利，伊朗则警告协议不会打通海峡</span>
+        <span class="chip">2026-09-10 特朗普表示同意取消对伊朗的打击，前提是能"迅速"达成协议</span>
+        <span class="chip">2026-09-09 中东海湾国家阿曼（Oman）方面称，霍尔木兹海峡会谈进展顺利，而伊朗则警告协议不会打通海峡。</span>
+        <span class="chip">2026-09-02 特朗普虚张声势再多，除了与伊朗谈判别无选择——BBC 编辑鲍文观察</span>
+        <span class="chip">2026-09-23 三位自以为是的领导人和他们的愚蠢战争｜美国与沙特签署核协议为中东再引核扩散风险</span>
+        <span class="chip">2026-09-29 欧洲游客"消失"，东南亚旅游业者陷入困境</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（8 天共 15 条）
+      <div class="bars">
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+      </div>
+    </div>
+
+    <!-- 创业/商业 -->
+    <h3 class="topic">🏢 创业/商业（2 条）</h3>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 姚金刚@yaojingang</span> · 7 小时前 · 📷×4 · 14:40 🟡</div>
+      <p>整理了一份《中国 GEO 生态商业模式全景报告》</p>
+      <p>1、报告把国内 GEO 生态拆成 7 层：入口、信源、数据、技术、执行、交易、治理<br>2、在这个基础上，进一步梳理了 19 种 GEO 商业模式，并用"成熟度 × 商业天花板"做了一次横向比较<br>3、当前，咨询与培训、GEO 运营、内容分发更容易产生现金流<br>4、长期比…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 老白（每日 AI 干货）@laobais</span> · 09:37 🟡</div>
+      <p>30 多、40 多岁，想靠 AI 在十年内做到财富自由</p>
+      <p>我整理了一套打法，只需 13 步</p>
+      <p>我把它整理了一遍，也把里面的坑标出来了 👇</p>
+      <p>1｜先把公司注册了<br>赶紧，就这周。有个主体，后面收款、签约、报税才顺。</p>
+      <p>2｜挑一个已经有人在赚钱的赛道<br>线上教练、营销机构、SaaS、卖课的、做顾问的、B…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-07, 2026-08-08, 2026-08-09, 2026-08-11, 2026-08-12</i></div>
+
+    <!-- 欧洲 -->
+    <h3 class="topic">🇪🇺 欧洲（2 条）</h3>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-06-24 🟢</div>
+      <p><b>Why Is Europe the Fastest-Warming Continent</b> — The burning of fossil fuels is raising temperatures worldwide, but local factors, on land and at sea…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-12 🟢</div>
+      <p><b>Europeans, Braced for 5th Heat Wave of 2026, Have Had Enough</b> — With temperatures set to soar as high as 109 degrees Fahrenheit (43 Celsius) this week, Europeans an…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-02, 2026-08-04, 2026-08-08, 2026-08-09</i></div>
+
+    <!-- 二次元/游戏 -->
+    <h3 class="topic">🎮 二次元/游戏（2 条）</h3>
+    <div class="summary-line">📝 2014 年 P.T. 免费下载游戏预告</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 15:52 🟡</div>
+      <p>RT @Gamingsubs: #OnThisDay August 12, 2014, P.T. launched as a free PlayStation 4 download, secretly revealing itself as a teaser for Silen…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 📷×1 🎬×1 · 12:50 🟡</div>
+      <p>#OnThisDay August 12, 2014, P.T. launched as a free PlayStation 4 download, secretly revealing itself as a teaser for Silent Hills. Created by Hideo K…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-07, 2026-08-08, 2026-08-10, 2026-08-11, 2026-08-12</i></div>
+
+    <!-- 国内政策 -->
+    <h3 class="topic">🏛️ 国内政策（2 条）</h3>
+    <div class="summary-line">📝 东南亚房地产诈骗案揭秘</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-12 🔵</div>
+      <p><b>东南亚房地产"鬼城"如何成为诈骗犯的"屠城木马"</b> — 图像来源，BBC/Gavin Butler。森林城原本设计容纳约 70 万居民，但目前实际人口估计不到原计划的 1%。作者：盖文·巴特勒（Gavin Butler）</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-12 🔵</div>
+      <p><b>东南亚房地产"鬼城"如何成为诈骗犯的"屠城木马"</b> — 图像来源，BBC/Gavin Butler。森林城原本设计容纳约 70 万居民，但目前实际人口估计不到原计划的 1%。作者：盖文·巴特勒（Gavin Butler）</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-05, 2026-08-06, 2026-08-09, 2026-08-11, 2026-08-12</i></div>
+
+    <!-- AI Agent -->
+    <h3 class="topic">💻 AI Agent（1 条）</h3>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 AI超元域@AISuperDomain</span> · 14:36 🟡</div>
+      <p>🚀 这是我最近看到最有野心的开源「AI 工作空间」之一：</p>
+      <p>Macro 想把 Slack + Notion + Linear + Superhuman + CRM + AI Agent，直接合成一个系统。</p>
+      <p>它不是简单把功能堆到一起，而是让邮件、聊天、文档、任务、PR、客户信息都能通过 @链接形成双向…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-05, 2026-08-08, 2026-08-10, 2026-08-11, 2026-08-12</i></div>
+
+    <!-- 芯片/半导体 -->
+    <h3 class="topic">🚀 芯片/半导体（1 条）</h3>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 14:27 🟡</div>
+      <p>Nvidia addresses 'circular financing' AI industry concerns <a class="link" href="https://t.co/2VMQd5gElJ">https://t.co/2VMQd5gElJ</a></p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-07, 2026-08-09, 2026-08-10, 2026-08-11, 2026-08-12</i></div>
+
+    <!-- 台海局势 -->
+    <h3 class="topic">🇹🇼 台海局势（1 条）</h3>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-12 🟢</div>
+      <p><b>Gulf Oil Giants Are Spending Billions to Build Ways Around Strait of Hormuz</b> — Even if a cease-fire materializes, Gulf exporters recognize that relying strictly on the Strait of H…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-05, 2026-08-07, 2026-08-09, 2026-08-11, 2026-08-12</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">04/Au 禁止美日联手干预汇市，日圆跌至 40 年来新低</span>
+        <span class="chip">12/Au 美国以"强迫劳动"为由徵新关税，影响中国、台湾等 60 个贸易伙伴</span>
+        <span class="chip">29/Ju 市场对 AI 支出和中国芯片竞争担忧加剧，全球科技股暴跌</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（9 天共 20 条）
+      <div class="bars">
+        <div class="bar" style="height:20%"><small>1</small></div>
+        <div class="bar" style="height:60%"><small>3</small></div>
+        <div class="bar" style="height:20%"><small>1</small></div>
+        <div class="bar" style="height:20%"><small>1</small></div>
+        <div class="bar" style="height:20%"><small>1</small></div>
+        <div class="bar" style="height:100%"><small>5</small></div>
+        <div class="bar" style="height:40%"><small>2</small></div>
+      </div>
+    </div>
+
+    <!-- 日本/东亚 -->
+    <h3 class="topic">🇯🇵 日本/东亚（1 条）</h3>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-12 🔵</div>
+      <p><b>"台海攸关安保"消失于日本防卫白皮书为什么？</b> — 图像来源，AFP via Getty Images。日本白皮书称，台海和平是"不仅印太地区，整个国际社会"均日益关切的问题。作者：吕嘉鸿 · BBC</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-04, 2026-08-05, 2026-08-08, 2026-08-11, 2026-08-12</i></div>
+
+    <!-- 股市/金融 -->
+    <h3 class="topic">💰 股市/金融（1 条）</h3>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-12 🟢</div>
+      <p><b>Benign Inflation Data Offers Reprieve to Fed as It Weighs Rate Increase</b> — The latest Consumer Price Index report helped to reinforce the patient approach adopted by many offi…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-05, 2026-08-09, 2026-08-10, 2026-08-11, 2026-08-12</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08/04 关键进展</span>
+        <span class="chip">08/09 关键进展</span>
+        <span class="chip">08/22 关键进展</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（14 天共 78 条）
+      <div class="bars">
+        <div class="bar" style="height:73%"><small>8</small></div>
+        <div class="bar" style="height:100%"><small>11</small></div>
+        <div class="bar" style="height:18%"><small>2</small></div>
+        <div class="bar" style="height:36%"><small>4</small></div>
+        <div class="bar" style="height:100%"><small>11</small></div>
+        <div class="bar" style="height:64%"><small>7</small></div>
+        <div class="bar" style="height:18%"><small>2</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 其他零散内容 -->
+  <section class="block">
+    <h2>📌 其他零散内容（142 条）</h2>
+    <div class="sub">未聚类的零散推文，按时间倒序</div>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 0xRobo@tamtamdoto_ar</span> · 📷×1 · 21:14 🟡</div>
+      <p>honest talk ur animations look robotic because ur easing curves do zero work<br>make ur motion butter …</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 奶霜小奈@xiaonai2005</span> · 57 分前 · 21:03 🟡</div>
+      <p>"尝试了一种新的健身课程，挑战自我。"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 20:43 🟡</div>
+      <p>"刚刚看了一场精彩的话剧，演技精湛！🎭"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Google@Google</span> · 1 小时前 · 🎬×1 · 20:41 🟡</div>
+      <p>What's the magic behind the new Pixel 11 family? We asked Shakil Barkat, VP of Devices and Services,…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 20:31 🟡</div>
+      <p>"刚刚完成了一次挑战性的登山，壮观的风景！🏞️"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Kuncoro Adibroto@bas</span> · 20:23 🟡</div>
+      <p>Meet DynamicWalls - Live Wallpaper App for macOS with more than 40000+ Live Wallpapers for your scre…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 2 小时前 · 19:49 🟡</div>
+      <p>Immortality creator Sam Barlow reveals his next game: A sci-fi thriller about visions of the future …</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 📷×1 · 19:12 🟡</div>
+      <p>RT @dsasd751: <a class="link" href="https://t.co/qkdNgfz36R">https://t.co/qkdNgfz36R</a></p>
+    </div>
+    <p class="note-more">*…还有 134 条未显示*</p>
+  </section>
+
+  <!-- 今日统计 -->
+  <section class="block">
+    <h2>📊 今日统计</h2>
+    <div class="statgrid">
+      <div class="statcard">
+        <h4>🐦 X 推文：90 条</h4>
+        <ul>
+          <li><span>General</span><b>81 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📰 RSS 新闻：100 条</h4>
+        <ul>
+          <li><span>NYT</span><b>43 条</b></li>
+          <li><span>BBC</span><b>38 条</b></li>
+          <li><span>BBC中文</span><b>12 条</b></li>
+          <li><span>爱范儿</span><b>4 条</b></li>
+          <li><span>纽约时报中文</span><b>3 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📚 累计数据</h4>
+        <ul>
+          <li><span>X</span><b>12,674 条</b></li>
+          <li><span>NGA</span><b>584 条</b></li>
+          <li><span>S1</span><b>376 条</b></li>
+          <li><span>RSS</span><b>3,587 条</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+    <p>🤖 由 Hermes Agent 自动采集 · 每日 09:00 推送 · 多源合并 + 事件聚类 + 时序分析</p>
+  </footer>
+
+</div>
+</body>
+</html>
