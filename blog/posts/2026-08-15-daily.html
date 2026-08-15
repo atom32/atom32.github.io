@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日资讯早报 | 2026-08-15</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1f2328; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --accent-soft:#eff6ff;
+    --gold:#b45309; --blue:#1d4ed8; --yellow:#a16207;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:32px 20px 64px;}
+  header.hero{
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%);
+    color:#fff; border-radius:16px; padding:36px 32px; margin-bottom:28px;
+  }
+  header.hero h1{font-size:26px; font-weight:700; letter-spacing:.5px;}
+  header.hero .date{font-size:15px; opacity:.85; margin-top:6px;}
+  .stats{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;
+  }
+  .stat-pill{
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; padding:4px 14px; font-size:13px;
+  }
+  .lead{
+    background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:10px; padding:16px 20px; margin-bottom:28px; color:#374151; font-size:15px;
+  }
+  section.block{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 24px 8px; margin-bottom:24px;}
+  section.block h2{
+    font-size:19px; font-weight:700; margin-bottom:4px;
+  }
+  section.block .sub{font-size:13px; color:var(--muted); margin-bottom:16px;}
+  h3.topic{
+    font-size:16px; font-weight:700; margin:20px 0 12px; padding-top:16px;
+    border-top:1px dashed var(--line);
+  }
+  .intro{font-size:14.5px; color:#374151; background:#fafbfc; border-radius:10px; padding:10px 16px; margin-bottom:12px;}
+  .item{
+    border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin-bottom:12px;
+    background:#fafbfc;
+  }
+  .item .meta{font-size:12.5px; color:var(--muted); margin-bottom:6px;}
+  .item .meta .tag-src{font-weight:600; color:#374151;}
+  .item p{font-size:14.5px; color:#24292f; white-space:pre-line;}
+  .item p + p{margin-top:6px;}
+  .item .link{color:var(--accent); word-break:break-all;}
+  .summary-line{
+    background:var(--accent-soft); border-radius:10px; padding:10px 16px; margin-bottom:12px;
+    font-size:14.5px; color:#1e3a8a;
+  }
+  .perspectives{
+    background:#fafbfc; border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; margin-bottom:12px;
+  }
+  .perspectives .ptitle{font-size:13px; font-weight:700; color:var(--muted); margin-bottom:8px;}
+  .perspectives .psrc{font-size:13px; color:#374151; margin-bottom:6px;}
+  .perspectives .psrc b{color:var(--blue); font-weight:600;}
+  .timeline{font-size:13px; color:#374151; background:#fafbfc; border-radius:8px; padding:8px 14px; margin:10px 0;}
+  .timeline .tl{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .chip{
+    background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:1px 10px; font-size:12px; color:#374151;
+  }
+  .trend{font-size:13px; color:var(--muted); margin:10px 0;}
+  .bars{display:flex; align-items:flex-end; gap:6px; height:34px; margin-top:6px;}
+  .bar{background:linear-gradient(180deg,#60a5fa,#2563eb); border-radius:3px 3px 0 0; min-width:18px;}
+  .bar small{display:block; text-align:center; font-size:10px; color:var(--muted); margin-top:2px;}
+  .note-more{font-size:13px; color:var(--muted); font-style:italic; padding:4px 2px 12px;}
+  .statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:8px;}
+  .statcard{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fafbfc;}
+  .statcard h4{font-size:14px; margin-bottom:8px;}
+  .statcard ul{list-style:none;}
+  .statcard li{font-size:13.5px; color:#374151; padding:2px 0; display:flex; justify-content:space-between; gap:12px;}
+  .statcard li b{color:var(--ink);}
+  footer.foot{
+    text-align:center; color:var(--muted); font-size:13px; margin-top:32px; padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  footer.foot .note{color:#374151; font-size:14px; margin-bottom:4px;}
+  @media (max-width:600px){
+    header.hero{padding:26px 20px;}
+    header.hero h1{font-size:21px;}
+    section.block{padding:18px 14px 6px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🌅 每日资讯早报</h1>
+    <div class="date">2026 年 8 月 15 日 · 星期六</div>
+    <div class="stats">
+      <span class="stat-pill">📊 共 283 条信息</span>
+      <span class="stat-pill">🐦 X：156 条</span>
+      <span class="stat-pill">📰 RSS：127 条</span>
+      <span class="stat-pill">💬 NGA：0 条</span>
+      <span class="stat-pill">💭 S1：0 条</span>
+      <span class="stat-pill">🗂️ 聚类 23 个事件</span>
+      <span class="stat-pill">🔥 跨源热点 0 个</span>
+    </div>
+  </header>
+
+  <div class="lead">
+    今天的信息流集中在两件事上：模型扎堆发布（Gemini 3.7 Flash、GLM-5.3），以及怎么给 agent 的上下文和账单做减法——GPT-5.6 指南说同样效果能把成本从 33 美元压到 1.33 美元，Codex 玩家们则在研究「存档」省 token。国际这边，欧洲高温没停，法国宪法法院还拦了一道未成年人社媒禁令。下面按话题过一遍。
+  </div>
+
+
+
+  <section class="block">
+    <h2>📌 各平台话题</h2>
+    <div class="sub">按话题聚类后的重点内容</div>
+    <h3 class="topic">🤖 AI/大模型（15 条）</h3>
+
+    <p class="intro">Gemini 3.7 Flash 昨天刚发布，Google 官方说是「最能干的工作马」，社区讨论已经转到怎么省钱：OpenAI 的 GPT-5.6 构建者指南把账单从 33 美元砍到 1.33 美元，Codex 用户则在养成「存档」习惯。另外两个记忆方案 Claude Brain 和 Zero-Mem 都主打几乎零成本的持久记忆，一个用单文件，一个干脆不调 LLM。DeepSeek Harness 组在杭州招人，从研究员到社区运营都要。</p>
+    <div class="summary-line">📝 无明显内容</div>
+    <div class="summary-line">📝 无明显内容</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 19:21 · 🟡</div>
+      <p>@joshwoodward @GeminiApp Gemini 3.7 Flash 🤝 @GeminiApp</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Google@Google</span> · 4 小时前 · 17:34 · 🎬×1 · 🟡</div>
+      <p>Yesterday we introduced Gemini 3.7 Flash, our most intelligent workhorse model yet for coding and agents.<br><br>Watch @Ammaar, Member of the Technical Staff at @GoogleDeepMind, use 3.7 Flash to turn simple prompts into playable games 👾</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitHubDaily@GitHub_D</span> · 2 小时前 · 13:30 · 📷×1 · 🟡</div>
+      <p>Claude Brain 用一个文件给 Claude Code 加上持久记忆，做过的决定、改过的 Bug、定下的方案，自动存着。<br><br>不用数据库也不用云服务，就一个文件，能 git 提交也能发给队友。<br><br>GitHub：<a class="link" href="https://t.co/t7t394K5au">https://t.co/t7t394K5au</a><br><br>搜索走 Rust 原生引擎，万条记忆毫秒级响应。<br><br>长期用 Claude Code 写项目的朋友，加个记忆还挺实用。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 AI超元域@AISuperDomain</span> · 4 小时前 · 11:25 · 🟡</div>
+      <p>发现一个很有意思的开源项目：Zero-Mem for pi，给 AI Coding Agent 加上“几乎零成本”的长期记忆。<br><br>它最大的特点是：记忆管理过程完全不调用 LLM。<br><br>每次对话会自动保存为 Trace，并构建：<br><br>Entity–Context Graph<br>Temporal Hierarchy<br>BM25 + Dense Embedding 混合检索<br>Personalized PageRank 图检索<br>跨项目 Memory Federation<br><br>新 Prompt 到来时，系统通过纯检索和算法计算找出最相关的历史记忆，再注入最多 3 条到上下文中。<br><br>也就是说，不需要让模型自己决定“记什么、忘什么、总结什么”，这些操作全部 0 LLM Call / 0 Token 完成。<br><br>目前已经做到 v0.14c，还加入了 HNSW、MMR、LoCoMo10 Benchmark、跨项目身份记忆等能力。<br><br>如果你正在折腾 Claude Code / Codex / pi / AI Agent 长期记忆系统，这个项目非常值得研究。<br><br>GitHub：<a class="link" href="https://t.co/0frFGZPBtA">https://t.co/0frFGZPBtA</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:37 · 📷×1 · 🟡</div>
+      <p>如果你人在杭州或周边，想给 DeepSeek Harness 组投简历看机会，请联系我。<br><br>DeepSeek Harness 组招聘深度学习研究员、研发工程师、产品经理、设计师、开发者关系、社区运营、项目经理，都热招中，全职实习都招。 <a class="link" href="https://t.co/c7xZOkp3IW">https://t.co/c7xZOkp3IW</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 15:23 · 📷×1 · 🟡</div>
+      <p>THE ANATOMY OF A SECOND BRAIN THAT WRITES ITSELF<br><br>one Obsidian vault, five folders, and a loop that files every good answer back into a wiki you never touch<br><br>the structure:<br>&gt; CLAUDE.md + AGENTS.md - the constitution, same rules whether Claude or Codex is running the loop<br>&gt; raw/ - inbox, articles, assets - frozen, read-only, you feed it and walk away<br>&gt; wiki/ - index.md, entities/, concepts/, synthesis.md - the agent grows this on its own<br>&gt; log.md - append-only, every move stamped with a timestamp<br><br>47 sources in -&gt; 210 pages out. the agent typed 96% of it. you typed zero<br><br>point Opus 5 at just synthesis.md - the one file that actually needs frontier-level reasoning - everything else runs fine on cheaper models<br><br>this vault organizes itself while you're asleep - the full blueprint is below 👇</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 宝玉@dotey</span> · 7 小时前 · 14:55 · 🟡</div>
+      <p>我不喜欢用 grill-me，可能因为我不擅长空想，也不喜欢被拷问。我需要那种看得见摸得着的东西才能进一步得出结论。<br><br>我更喜欢用 Claude Design 这种快速出一版原型，做出来一个真实的东西，才能感觉出来哪不对；或者 AI 写一份文档来理解方案，或者干脆 AI 实现一个 PoC 版本出来。<br><br>这在以前是很成本很高的事情，现在 AI 生成真的太容易了，所以对我来说不依赖 grill me 也还好。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 13:52 · 🟡</div>
+      <p>智谱、DeepSeek、MiniMax、千问、火山 提供 Codex 配置文件修改接入方案<br>Kimi 提供 CC Switch 使用 Codex 方案有图文说明，但是 Claude Code 接入说明就只提了一嘴 CC Switch<br>火山引擎对于 Claude Code 接入方案，额外提了 CC Switch<br><br>半年前提供 response api 的，国内就千问和火山，现在大家都开始提供，都积极提供接入 Codex 的帮助说明。 CC Switch 覆盖的足够高，但还有上升的大空间  <br><br>@Jason_Young1231</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitTrend@GitTrend0x</span> · 2 小时前 · 13:38 · 🟡</div>
+      <p>今天 GitHub 被 Agent 基建彻底点燃了！<br><br>5 个真正在飙的狠货，专业拆解，全部实测可直达：<br><br>1.  PrimeIntellect-ai/prime-agent 长时程自主编程 Agent，守护进程架构，终端断了任务照跑，专治复杂多步工程。<br> 🔗 直达：<a class="link" href="https://t.co/RLW7LANBJb">https://t.co/RLW7LANBJb</a><br> 以前 Claude Code 还得你守着，现在它自己在后台熬夜写到天亮。生产力直接换代！<br><br>2.  Graphify-Labs/graphify<br> 把整个代码库 + 文档 + PDF + Schema 一键变成可查询知识图谱，本地 AST 解析，零向量库，71x 降 token。<br> 🔗 直达：<a class="link" href="https://t.co/Rh7TDNkZrm">https://t.co/Rh7TDNkZrm</a><br> Agent 再也不用 grep 瞎翻了，直接问图谱。代码理解质变！<br><br>3.  semantica-agi/semantica<br> “AI Agent 的开源 Palantir”——多源数据摄入 → 知识图谱 → 因果推理 + 决策溯源。<br> 🔗 直达：<a class="link" href="https://t.co/dmRtPuSPiw">https://t.co/dmRtPuSPiw</a><br> 企业级 Agent 记忆与决策底座，终于有人认真做了。<br><br>4.  addyosmani/agent-skills Google 工程大佬出品的高质量 Agent 技能集合，覆盖真实工程工作流。 🔗 直达：<a class="link" href="https://t.co/fPnWiwLQEG">https://t.co/fPnWiwLQEG</a><br> 不是玩具 skill 堆，是真正能落地的工程级能力包。<br><br>5.  msitarzewski/agency-agents 完整 AI 机构在你指尖——从前端巫师到 Reddit 社区忍者，角色齐全的多 Agent 协作套件。<br> 🔗 直达：<a class="link" href="https://t.co/qbrrgZ30lK">https://t.co/qbrrgZ30lK</a><br> 一个人瞬间拥有一支全栈 Agent 团队，协作范式彻底打开。<br><br>//<br><br>总结：<br><br>2026 年中的风口已经从“会聊天的 Agent”变成“会长期思考、会建图、会协作、会自进化的 Agent 基础设施”。谁先把这批玩透，谁就站在下一波生产力革命的 C 位。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 小互@xiaohu</span> · 4 小时前 · 11:27 · 📷×1 · 🟡</div>
+      <p>OpenAI 发布 GPT-5.6 构建者指南：<br><br>同样的效果，账单从 33 美元降到 1.33 美元<br><br>OpenAI 发布了一份给开发者的 GPT-5.6 构建者指南，主题是怎么把 Agent 的账单砍下来：<br><br>型号选哪个、推理档位开多大、三个新的 API 开关怎么用，全是能直接照着改的配置<br><br>主要思想就是：不再需要“无脑上最贵的顶配模型”，通过更聪明的模型搭配、架构优化和 API 新特性，可以用骨折级的价格做出更强、更快的应用。<br><br>6家已经把 Agent 跑在线上的创业公司，各交了一条实测数字。<br><br>它推翻的是过去搭 Agent 的默认姿势，上最贵的旗舰模型，把推理拉满。<br><br>到了 5.6 这一代，中小型号多想一会儿就能顶到上一代旗舰的水平，价钱只是零头。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 歸藏(guizang.ai)@op741</span> · 21 分钟前 · 09:40 · 🎬×1 · 🟡</div>
+      <p>15 张数据图帮你了解 DeepSeek Harness<br><br>昨天 DeepSeek Harness 发布，于是就想着让 Codex 分析一下，找到了一个很好的角度，就是从一些数据上向大家介绍这个产品。<br><br>确实也发现了一些很有意思的东西：<br><br>插件系统与 Koishi 高度相似： 他们主打的插件系统与 Koishi 的插件平台相似度高达 75%。大概率是整个平台都挪过来了，不知道是不是他们的核心开发者入职了。<br><br>大量使用 AI 开发： Codex 命名的主干 PR 达到了 21.2%，分支信息中提到 Codex 的比例有 28.2%。 猜测他们肯定用了 Claude Code 开发，只是删掉了一些 Claude 的痕迹。<br><br>参考了大量外部 Agent 项目： 提到最多的外部项目是 Pi，第二多的是 Codex，之后是 Claude Code。甚至直接引用了一些 Pi 的 TypeScript 文件。<br><br>高效的代码产出： 整个产品在 GitHub 上有记录的是 65 天，总共的代码产出量是 84 万行，有一万多个 commit，非常高效。<br><br>交互入口的演变： 他们曾经押注 TUI，后来改成 Web UI 和 TUI 的双入口，再之后整个删除了所有的 TUI，只留下了 Web UI。<br><br>开发与工程规范： 整个项目的测试代码比生产代码多很多，基本上达到了 1:1。 全仓库的 Markdown 文档也非常多，说明他们是基于文档去控制 Harness 开发的。他们有完整的工具和科学模型 schema 共 52 个，但最后只留下了一个，目的是为了减少上下文占用。<br><br>社区热度与生态：从昨天发布到现在 20 小时，GitHub 已经涨到了 8 万多的 star，非常快。插件体系标签（DSH plugin）已经有 1425 个项目，但有很多并不是真正的插件，看来有不少蹭热度的。 精选清单收录了 211 个仓库，主要补充的是工具、UI 和运行的一些基础设施，甚至一上来就出现了插件市场和插件管理的插件。<br><br>学术论文： 他们顺便发了一篇 88 页的论文，其中 57% 都在做一些形式化的理论推导和展示。论文主要讨论的是插件的热插拔和系统稳定性问题。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 govin.eth | G哥@goan9</span> · 43 分钟前 · 09:16 · 🎬×1 · 🟡</div>
+      <p>Codex 5.6 必须养成的习惯：记得给 AI “存档”！节省80%的token<br><br>长期vibe coding最怕上下文越来越长，需求、方案、Bug、废弃思路全堆在对话里，AI 不断重复读取和分析历史记录。<br><br>大量 Token 都浪费在“回忆过去”，而不是“解决现在”的问题。<br><br>正确的做法，直接让 Codex 做一次项目状态压缩，prompt如下，直接拿去用：<br><br>「根据当前项目实际状态，检查代码、Git diff、现有 DEV_STATE.md 和测试结果，创建或更新项目根目录下的 DEV_STATE.md。仅记录已确认的信息，不猜测或虚构；用一段简洁、连贯的文字概括当前目标、已完成内容、关键决策、核心文件、测试结果、已知问题、失败方案和下一步任务，删除无效讨论、重复信息和过时内容，不粘贴代码，不记录密码、Token、API Key、私钥、Cookie 等敏感信息，重点让下一次开发能够快速了解“当前做到哪里、为什么这样做、哪些已验证、哪些未完成以及下一步做什么。」<br><br>当下一次继续开发时，只需要说这样一句提示词即可：<br><br>「读取 DEV_STATE.md文档，继续按照文档中的项目进度进行开发」<br><br>这相当于给 Codex 建了一份项目记忆快照。长项目、多人协作、Vibe Coding，必须养成这个习惯。<br><br>把上下文压缩成状态文件，省的是 Token，提升的是整个开发循环的速度。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 東大ClaudeCode研究所@Clau</span> · 7 小时前 · 09:00 · 📷×1 · 🟡</div>
+      <p>【保存版】<br>Claude Codeはセッションが長くなるとcompactで自動要約するけど、そのとき消えるものと残るものがあるのはあまり知られていない😳<br><br>CLAUDE.mdとauto memoryはディスクから読み直されて復活するけど、サブフォルダのCLAUDE.mdやpath限定ルールは、該当ファイルをもう一度読むまで消えたまま👇<br><br><a class="link" href="https://t.co/1kXw1R1oQd">https://t.co/1kXw1R1oQd</a><br><br>つまり指示の置き場所ひとつで、圧縮を跨いで生き残るかが決まる<br><br>長時間セッションで急に指示が効かなくなったら、プロジェクト直下のCLAUDE.mdに書き直すか、pathsのfrontmatterを外すかを疑うところから</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-14 · 🔵</div>
+      <p><b>Google Turns On Gemini A.I. for Students Using Its Classroom App</b></p>
+      <p>Google enabled A.I. features for K-12 schools that have allowed student access to Gemini. Until this week, Google automatically enabled Gemini in Classroom only for students 18 or older.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 2026-08-14 · 🟢</div>
+      <p><b>实测GLM-5.3: 在神仙打架的一周杀回国模顶流，还按下了重置键</b></p>
+      <p>神仙打架，这周的大模型圈，已经卷到了几乎一天一个新旗舰。<br>有 Cursor 数据加持的 Grok 4.6 突飞猛进，马斯克还说 4.7 马上就要来；DeepSeek V4 Pro 正式版虚晃一枪后正式发布，多项 benchmark 直指 Fable 5；还有一个不能算旗舰的 Gemini Flash。<br>然后今天，智谱也把 GLM-5.3 端了上来。<br>这个在 5.2 期间，一直被调侃「我知道很好用，但不给我开会员用」的顶尖国产编程模型，终于迎来了更新。<br>新的模型继续在编程方面发力，评测榜单的结果显示，G</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-04、2026-08-07、2026-08-11、2026-08-12、2026-08-14。</i></div>
+<div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08/02 AI 投研系统升级，GitHub 星标暴增</span>
+        <span class="chip">08/03 AI 教育产品发布，源码公开</span>
+        <span class="chip">08/04 AI 音频模仿开源，学习效率提升</span>
+      </div>
+    </div>
+<div class="trend">📊 趋势（15天共985条）
+      <div class="bars">
+        <div class="bar" style="height:31%"><small>34</small></div>
+        <div class="bar" style="height:43%"><small>46</small></div>
+        <div class="bar" style="height:81%"><small>88</small></div>
+        <div class="bar" style="height:77%"><small>83</small></div>
+        <div class="bar" style="height:82%"><small>89</small></div>
+        <div class="bar" style="height:100%"><small>108</small></div>
+        <div class="bar" style="height:56%"><small>60</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🔧 开发工具（5 条）</h3>
+
+    <p class="intro">GLM-5.3 基座没换，提升全靠后训练，编程能力自称比 5.2 涨了 50%。AI 短剧工具链今天收官：分镜 skill 开源，角色、大纲、场景、剧本、分镜五件套齐了。RAG from Scratch 把检索链路拆成十来个小实验，全程本地模型，不藏黑盒。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 小互@xiaohu</span> · 8 小时前 · 13:41 · 🟡</div>
+      <p>智谱发布 GLM-5.3 模型：<br><br>只通过后训练大幅提升了前沿编程能力与网络安全能力<br><br>GLM-5.3基座模型一点没换，跟上一版 GLM-5.2 用的是同一个底子，所有提升全部来自后训练。<br><br>编程能力，提升幅度最大<br>自家内部体感评测比 GLM-5.2 提升 50%<br><br>络安全能力<br>「表现持平 Mythos 5」<br><br>模型已经在 269 个开源项目里挖出了 2436 个真实漏洞<br><br><a class="link" href="https://t.co/aWVKNBOIIb">https://t.co/aWVKNBOIIb</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 烁皓@eternityspring</span> · 2 小时前 · 13:10 · 📷×1 · 🟡</div>
+      <p>之前预告的分镜 skill，novel-storyboard 开源了。<br><br>至此 AI 短剧五件套收官：角色、大纲、场景、剧本、分镜。<br>一本小说，一路拆到能直接喂给视频模型的关键帧 + 提示词，全链路开源。<br><br>分镜 skill 主要处理：<br>- 把剧本节拍切成「段 → 分镜」：一段就是一次视频生成（≤15 秒），段内 3–5 刀、每刀 2–5 秒<br>- 两人对话的正反打在一段里一次生成：全景 / A 近景 / B 近景各一刀，一次出齐、构图不飘<br>- 每段单独打包成一个文件夹（关键帧图 + 提示词），拎出来就能批量喂给视频模型<br><br><a class="link" href="https://t.co/AwV9LsQBSH">https://t.co/AwV9LsQBSH</a><br><br>分镜是整条链路里最难、也最重要的一环——它直接决定生成出来的视频能不能用。<br>而每跑一条视频都在烧时间和算力，分镜没卡对，钱就白烧。<br><br>下一步想做个工具，把这一系列 skill 产出的数据（分镜也在内）都能拎出来手动微调——生成交给模型，拍板还得是人。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Guillermo Casaus@_gu</span> · 4 小时前 · 11:41 · 📷×1 · 🟡</div>
+      <p>Un estudiante ha roto una de las mayores limitaciones de los AirPods.<br><br>Ha creado LibrePods, una herramienta que desbloquea varias funciones exclusivas de Apple para poder utilizarlas también en Android y Linux.<br><br>Ya supera las 29k stars en GitHub y es completamente gratuita.<br><br>Aquí te explico cómo funciona 👇</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitHubDaily@GitHub_D</span> · 10:00 · 📷×1 · 🟡</div>
+      <p>想搞懂 RAG 到底怎么回事，网上的教程不是跳步骤就是直接调云端 API，中间过程看不见。<br><br>RAG from Scratch 把整条链路拆成十来个小实验，每一步都用本地模型跑，没有黑盒。<br><br>从文本分块、向量化、检索到最终生成，代码都摆在面前，函数级别带解释。<br><br>GitHub：<a class="link" href="https://t.co/NcttYcLWgC">https://t.co/NcttYcLWgC</a><br><br>还覆盖了混合检索、多查询检索、查询重写这些进阶策略，想深入的接着往后看就行。<br><br>想从底层搞清楚 RAG 怎么跑的，跟着这个项目走一遍会有收获。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 智见AI-大鹏@zjp1997720</span> · 6 小时前 · 09:52 · 🟡</div>
+      <p>想在Codex里面稳定使用Grok 4.6，最佳的方案还是这个Codex Router<br><br>其他的方案，比如说CLIproxyAPI以及opencodex这两个开源项目整体优化的都不是很好，使用起来会存在很多问题<br><br>我也是折腾了一天，最终选择了Codex Router。<br><br><a class="link" href="https://t.co/DmwNKwekIw">https://t.co/DmwNKwekIw</a></p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-05、2026-08-08、2026-08-12、2026-08-13、2026-08-14。</i></div>
+    <h3 class="topic">🇪🇺 欧洲（7 条）</h3>
+
+    <p class="intro">极端高温把欧洲的铁路和公路逼到极限，专家直言这些设施「是为一个已不存在的天气设计的」。法国那边，宪法法院否决了 15 岁以下未成年人社媒禁令，理由是侵犯表达自由，马克龙不打算认。圣母院修好了，但六扇塔楼窗户的争议还在。</p>
+    <div class="summary-line">📝 极端高温成常态，欧洲交通系统面临挑战。</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-14 · 🔵</div>
+      <p><b>Heat Is Hammering Europe, Again. Here’s What That Looks Like.</b></p>
+      <p>Extreme temperatures and repeated wildfires are pushing infrastructure to the limit and testing the continent’s resolve.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-14 · 🔵</div>
+      <p><b>Why Europe Keeps Being Pummeled by Heat Waves</b></p>
+      <p>The whole planet is warming, but changes in weather patterns could help explain why the continent is suffering so many bouts of severe heat.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-14 · 🔵</div>
+      <p><b>As Europe Gets Hotter, Its Transportation Systems Struggle to Cope</b></p>
+      <p>The continent’s railways and roads “were engineered for a climate that no longer exists,” one expert said.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-14 · 🔵</div>
+      <p><b>Extreme Heat Is the New Normal</b></p>
+      <p>Firefighters in Phoenix race to save lives in a city that’s only getting hotter.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-14 · 🔵</div>
+      <p><b>France's top court blocks social media ban for under-15s</b></p>
+      <p>The Constitutional Council says it infringes upon freedom of expression - but President Macron vows to prepare a new draft.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-14 · 🔵</div>
+      <p><b>After Notre-Dame Fire, France Restored the Cathedral — but Not These Windows</b></p>
+      <p>France has faithfully renovated most of what burned at Notre-Dame in 2019. Contentiously, six towering windows will soon be replaced by a new design.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-02、2026-08-04、2026-08-08、2026-08-09。</i></div>
+    <h3 class="topic">🇮🇱 中东局势（2 条）</h3>
+
+    <p class="intro">霍尔木兹海峡遇袭船只的油污冲上了伊朗海岸，BBC Verify 在追踪污染扩散范围。战争进入第八个月，伊朗经济压力很大，但决策层看起来还没打算收手。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-14 · 🔵</div>
+      <p><b>Major oil slick washes up on Iran coast after Hormuz ship strike</b></p>
+      <p>Experts tell BBC Verify pollution has spread from a ship attacked on 3 August and threatens vulnerable wildlife.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-14 · 🔵</div>
+      <p><b>伊朗跟美國、以色列打仗 還能撐多久？</b></p>
+      <p>伊朗戰爭爆發七個月後，儘管該國經濟和基礎設施承受巨大壓力，其決策者看來仍不急於結束戰事。但這場戰爭還能持續多久？</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-09、2026-08-11、2026-08-12、2026-08-13、2026-08-14。</i></div>
+<div class="trend">📊 趋势（10天共19条）
+      <div class="bars">
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:100%"><small>4</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇨🇳 中美关系（3 条）</h3>
+
+    <p class="intro">美国一份新报告称，中国借道低关税国家转运货物、规避对华关税，BBC 中文连发几条跟进。关税战打到第七年，绕道手段也在跟着升级。</p>
+    <div class="summary-line">📝 无明显内容</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-14 · 🔵</div>
+      <p><b>特朗普关税：美国称数十国助中国避税</b></p>
+      <p>图像来源，AFP via Getty ImagesArticle InformationAuthor, 谢全恩（Osmond Chia）Role,  BBC商业记者Published 3 小时前阅读时间: 3 分钟白宫在一份报告中称，超过40个国家透过将出口商品绕道经由面临较低美国进口关税的国家，协助中国规避美国关税。星期四（8月13日）发表的报告点名的国家包括加拿大、印度、墨西哥、日本和南韩。白宫表示，这些国家协助中国规避价值数百亿美元的关税。白宫贸易顾问彼得·纳瓦罗（Peter Navarro）表示，这已造成“美国就业机会流失及数十亿美元收入损失”。中国驻美国大使馆发言人回应BBC查询时表</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-14 · 🔵</div>
+      <p><b>特朗普关税：美国称数十国助中国避税</b></p>
+      <p>图像来源，AFP via Getty ImagesArticle InformationAuthor, 谢全恩（Osmond Chia）Role,  BBC商业记者Published 3 小时前阅读时间: 3 分钟白宫在一份报告中称，超过40个国家透过将出口商品绕道经由面临较低美国进口关税的国家，协助中国规避美国关税。星期四（8月13日）发表的报告点名的国家包括加拿大、印度、墨西哥、日本和南韩。白宫表示，这些国家协助中国规避价值数百亿美元的关税。白宫贸易顾问彼得·纳瓦罗（Peter Navarro）表示，这已造成“美国就业机会流失及数十亿美元收入损失”。中国驻美国大使馆发言人回应BBC查询时表</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-14 · 🔵</div>
+      <p><b>美國稱數十國助中國避特朗普關稅</b></p>
+      <p>美國一份新報告稱，中國透過關稅較低的國家轉運貨物，以規避較高關稅。</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-06、2026-08-09、2026-08-12、2026-08-13、2026-08-14。</i></div>
+<div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">Mon/02 欧洲奋力追赶中美，争夺数字自主权 | 月之暗面Kimi K3问世，美中AI差距进一步缩小 | 美国建国 250 周年：五个中美交往的历史细节</span>
+        <span class="chip">Sat/06 中美俄的太空攻防战：卫星如何成为现代战争的第一击？</span>
+      </div>
+    </div>
+<div class="trend">📊 趋势（14天共114条）
+      <div class="bars">
+        <div class="bar" style="height:25%"><small>3</small></div>
+        <div class="bar" style="height:83%"><small>10</small></div>
+        <div class="bar" style="height:67%"><small>8</small></div>
+        <div class="bar" style="height:67%"><small>8</small></div>
+        <div class="bar" style="height:50%"><small>6</small></div>
+        <div class="bar" style="height:100%"><small>12</small></div>
+        <div class="bar" style="height:50%"><small>6</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇰🇵 朝鲜半岛（2 条）</h3>
+
+    <p class="intro">韩国股市这一轮调整把散户打得不轻。BBC 中文采访的一对准夫妻，一个月亏掉一万四千美元，买婚房的计划直接泡汤。</p>
+    <div class="summary-line">📝 韩国股市动荡，一个月亏一万四美元。</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-14 · 🔵</div>
+      <p><b>韩国股市震荡：“我一个月便亏了一万四美元”——那些遭遇“大屠杀”的散户们</b></p>
+      <p>图像来源，Kim Yongjoon金容俊（音译，右）与伴侣李佳恩（音译，左）本来打算透过投资股票来换取资金购买婚房。Article InformationAuthor, 谢全恩（Osmond Chia）Role,  BBC商业记者Published 13 分钟前阅读时间: 4 分钟银行职员金容俊（Yongjoon Kim；音译）上月在韩国（南韩）股市损失了2000万韩元（1.4万美元；8.74万元人民币；45.3万元新台币）。金容俊将于今年稍后结婚，原本打算用这笔钱来买房。然而，他持有的科技股投资在7月下跌约25%。金容俊说：“这令人心痛，而我将不得不非常努力工作来弥补损失。但对于那些承担了更</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-14 · 🔵</div>
+      <p><b>「我一個月便虧了一萬四」——遭遇韓國股市暴跌的散戶們</b></p>
+      <p>韓國股市近日猛烈調整，好些散戶遭受重創，遍體鱗傷。</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-05、2026-08-06、2026-08-08、2026-08-10。</i></div>
+    <h3 class="topic">🎮 二次元/游戏（1 条）</h3>
+
+    <p class="intro">DeepSeek v4、小米 MiMo v2.5、LongCat-2.0、MiniMax-M3、腾讯 hy3、Qwen3 这些国产开源模型都开始支持原生 Response 格式，配置进 Codex 就能直接用。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Jason Young@Jason_Yo</span> · 7 小时前 · 14:25 · 🟡</div>
+      <p>在不知不觉间，国产开源模型里的DeepSeek v4系列、Xiaomi MiMo v2.5系列、 LongCat-2.0、MiniMax-M3、 Tencent hy3、 Qwen3系列都已经支持原生 Response 格式，可以直接配置到 Codex 中使用，而通过 CC Switch 配置可以全自动生成 Model Catalog，优先使用官方能力声明，免去手动配置的烦恼</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-08、2026-08-10、2026-08-11、2026-08-12、2026-08-13。</i></div>
+    <h3 class="topic">💰 股市/金融（1 条）</h3>
+
+    <p class="intro">存款利率跌破 1%，人民币兑美元却一路升到 6.8 以内、创三年新高。按教科书逻辑利率低该货币弱，现在偏偏反过来，这条线值得盯。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Summer 在交易@Summer_tr</span> · 7 小时前 · 14:08 · 🟡</div>
+      <p>两件反常的事正在中国发生<br><br>一边是银行存款利率已经跌破了1%，钱放进银行收益越来越低。<br><br>另一边是人民币兑美元却一路升到6.8以内，创下近三年的新高。<br><br>按经济学最基本的常识，一个国家利率越低，本币应该越没人要，汇率越该往下走才对。<br><br>可现在偏偏反过来，利率往地板上走，汇率往天花板上顶。更奇巧的是，刚刚过去的2025年，中国挣回了1.2万亿美元的贸易顺差，外汇储备三万多亿，是全世界最不缺外汇的国家之一。<br><br>可就在同一时间，监管关闭了富途、老虎等一众海外投资平台。钱明明多的花不完，为什么反而要看的更紧？这两件看似矛盾的事，其实是同一只手在背后操作，它有个专门的名字叫金融意志。<br><br>现在往境外汇钱，单笔超过5000块人民币或者$1000，银行就要核实你的身份，想拆成小额多走几次，绕开额度，会被列入关注名单。<br><br>这些动作针对的根本不是外汇不够，而是钱想往外跑。<br><br>那钱为什么想往外跑？因为国内利率被压到了1%以下，而同期美元资产的利率明显更高，一边几乎没利息，一边回报更高。<br><br>这么大的利差摆在那，资金天生就有外流的冲动。问题就出在这，假如真放开让资金自由流出去会发生什么？<br><br>第一步，大量资金换成美元出境，人民币需求下降，利率开始承压。<br><br>第二步，钱抽离境内，国内流动性被抽干，利率被重新顶上去。<br><br>第三步，才真正要命。利率一旦反弹，那套靠借新还旧、靠把高息债换成低息债维系的链条会当场断裂。<br><br>所以把钱往外汇管住，本质不是为了省外汇，而是为了把利率死死焊在低位，不让它弹起来。<br><br>这就是金融抑制的两只手：一只手压价格，把利率按到地板；另一只手控数量，把资本拦在境内。<br><br>两只手得同时用，松开任何一只，另一只就白费。<br><br>那为什么非要把利率压这么低？答案藏在一个更大的数字里，债务。<br><br>这些年地方上借的钱，光显性的国债加地方债，到去年底就已经接近百万亿的量级，再算上各类融资平台借的隐性债，体量更大。<br><br>这么大的盘子怎么处理？现实里基本不靠还，靠两个字：一个是拖：把到期的债展期置换成期限更长的；一个是降：把过去利率高达7%、8%的债，换成三个点出头的低息债，光这轮置换，利息成本就降了2.5个百分点以上。<br><br>而降能成立的前提是，整个社会的利率得跟着一起往下走，债务人才换得动。<br><br>所以利率下行不是顺其自然的结果，是被需要的。<br><br>谁因此受益？是背着债的地方政府、企业，还有几千万背房贷的人，利息负担实实在在轻了。<br><br>谁买单？是把钱老老实实存在银行里的储户，你拿着1%的利息，相当于在用自己的购买力，悄悄补贴那笔正在被慢慢化解的债务。<br><br>这才是金融意志最不动声色的地方：它不抢你的钱，只是让你的钱不值钱。<br><br>讲到这，再回头看人民币升值，你会发现它也没那么简单，很大程度上不是人民币自己变强了，是美元变弱了。<br><br>刚过去的一年里，美元指数跌了将近百分之十，所有非美货币都跟着对美元抬了头。一个能说明问题的细节是：人民币对美元是涨了，但对欧元、对一篮子货币反而是贬的，衡量综合汇率的那个指数全年都在往下走。<br><br>说白了是对美元强，对一篮子弱。甚至连央行自己都不希望它升太快，一直在用偏低的中间价、用国有大行出手买美元的方式，给升值踩刹车。<br><br>一个国家一边把利率压到地板，一边还要亲自下场防止本币升值，这件事本身就说明：这盘棋的核心从来不是汇率，是利率。<br><br>这条路30年前，有个国家已经完整的走过一遍，就是日本。90年代泡沫破裂后，日本央行从1991年开始连续降息，1999年直接进了零利率，后面更是搞了20多年超宽松，一度负利率。<br><br>那么大的政府债务谁来扛？<br><br>靠的是国民的储蓄，居民和企业的钱通过银行、保险、养老金源源不断买进日本国债，等于全体国民在给政府的债务输血。<br><br>但最值得琢磨的是日元的走势，按常理，零利率20年日元早该一泻千里了吧？现实恰恰相反，在前面差不多20年里，日元不但没怎么贬，反而因为日本长期通缩、又有避险属性，成了全球公认的避险货币，一度升到75对亿美元的高位。<br><br>真正的大幅贬值是最近十来年才发生的事。当美国开始大幅加息，美元之间的利差被彻底拉开之后，日元才从75一路贬到160附近，几乎腰斩。<br><br>日本这30年告诉我们的，不是低利率就一定让货币崩盘，而是另一句更冷静的话：低利率能撑多久？本币会不会贬？取决于你的产业还顶不顶得住，利差的口子会不会失控。<br><br>说回我们自己：存款破1%，不是银行变抠；人民币创新高，也不是经济突然变强。<br><br>这一次你的钱没有变少，它只是被放进了一个利息极低、又不太搬得出去的房间，替一笔更大的债，慢慢付着时间的利息。</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-05、2026-08-09、2026-08-10、2026-08-12、2026-08-14。</i></div>
+<div class="trend">📊 趋势（15天共99条）
+      <div class="bars">
+        <div class="bar" style="height:17%"><small>2</small></div>
+        <div class="bar" style="height:33%"><small>4</small></div>
+        <div class="bar" style="height:92%"><small>11</small></div>
+        <div class="bar" style="height:58%"><small>7</small></div>
+        <div class="bar" style="height:42%"><small>5</small></div>
+        <div class="bar" style="height:67%"><small>8</small></div>
+        <div class="bar" style="height:100%"><small>12</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🏢 创业/商业（1 条）</h3>
+
+    <p class="intro">魏牌 V8X 上市，23.98 万起，一共 5 款插混车型。官方强调它不是 V9X 的减配版，是单独的一条产品线。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 2026-08-14 · 🟢</div>
+      <p><b>23.98 万元起，大五座魏牌 V8X 上市，并非 V9X 的减法</b></p>
+      <p>8 月 14 日晚，魏牌 V8X 正式上市，此次共推出 5 款插混车型，权益前的统一零售价如下：<br><br>豪华家庭版 Max：25.98 万元<br>豪华家庭版 Ultra：27.98 万元<br>豪华家庭版 Ultra+：31.58 万元<br>运动版 Max：23.98 万元<br>运动版 Ultra：27.98 万元<br><br><br>在上述售价之外，长城还给出了一系列上市权益，包括 5000 元订金抵扣 8000 元购车尾款、1 万元增换购补贴或 3 年 0 息金融方案二选一。<br>豪华家庭版 Ultra 可以限时支付 5000 元升级后轮</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-08、2026-08-09、2026-08-12、2026-08-13、2026-08-14。</i></div>
+    <h3 class="topic">🇷🇺 俄乌冲突（1 条）</h3>
+
+    <p class="intro">NYT 爆料俄罗斯在摩尔多瓦的渗透操作：给东正教神职人员发钱、买选票、办训练营，目标是拖垮亲西方政府。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-14 · 🔵</div>
+      <p><b>Russia Campaigned to Derail Moldova’s Pro-Western Government</b></p>
+      <p>In Moldova, Moscow paid Orthodox priests, conducted a vote-buying scheme and set up training camps on election interference — all in an effort to derail the Western-leaning government.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-04、2026-08-08、2026-08-11、2026-08-12、2026-08-13。</i></div>
+<div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">Aug/10 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击？</span>
+        <span class="chip">Aug/27 中国再挥稀土大棒，将14家欧盟实体列入出口管控名单</span>
+        <span class="chip">Sep/22 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</span>
+      </div>
+    </div>
+<div class="trend">📊 趋势（10天共20条）
+      <div class="bars">
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:100%"><small>4</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇯🇵 日本/东亚（1 条）</h3>
+
+    <p class="intro">日本遭遇「前所未有」的暴雨，6 人遇难，成田机场 7000 人滞留，两万多户停电。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-14 · 🔵</div>
+      <p><b>'Unprecedented' rain in Japan kills six people</b></p>
+      <p>The storm cut power to more than 20,000 households and left 7,000 people stranded at Tokyo's Narita airport.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-08、2026-08-11、2026-08-12、2026-08-13、2026-08-14。</i></div>
+    <h3 class="topic">🏛️ 国内政策（1 条）</h3>
+
+    <p class="intro">BBC 中文这篇讲东南亚「鬼城」楼盘如何变成诈骗基地：森林城设计容纳 70 万人，实际入住率不到 1%，荒废楼宇被诈骗集团整栋征用。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-14 · 🔵</div>
+      <p><b>东南亚房地产“鬼城”如何成为诈骗犯的“屠城木马”</b></p>
+      <p>图像来源，BBC/ Gavin Butler森林城原本设计容纳约70万居民，但目前实际人口估计不到原计划的1%。Article InformationAuthor, 盖文·巴特勒（Gavin Butler）Reporting from,  马来西亚柔佛州森林城市报导Published 2026年8月12日阅读时间: 4 分钟从远处看，马来西亚的森林城市（Forest City）就像是3D列印出来的：一簇簇相同的白色方块聚集在原本毫不起眼的海岸线上。2016年，中国开发商公布了这项耗资1000亿美元（6,744亿元人民币；3.22兆元新台币）的超级项目，并将其宣传为“全人类的梦想天堂”：一个可容</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-06、2026-08-09、2026-08-11、2026-08-12、2026-08-13。</i></div>
+  </section>
+
+  <section class="block">
+    <h2>📌 其他零散内容（214 条）</h2>
+    <div class="sub">未聚类的零散推文，按时间倒序</div>
+    <p class="intro">没进话题聚类的零散消息，按时间倒序：天气速报、游戏新闻、日常闲聊都在里面，不保证每一条都值得点开。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 針金紳士@土曜日東１エ-65b 単行本発売中@hariganeshinsh1</span> · 7 分钟前 · 21:52 · 🟡</div>
+      <p>午後はむしろありがてぇ(╹◡╹)</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 サテー@聖牌/OAF【C108土曜東3ア74ab】@syatey_12</span> · 8 分钟前 · 21:52 · 📷×1 · 🟡</div>
+      <p>本日のおしながきになります<br>ここに既刊の1巻と、ノベルティのみセット(500)を予定しています。よろしくおねがいします～！ <a class="link" href="https://t.co/yUu45VYbgW">https://t.co/yUu45VYbgW</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 21:50 · 🎬×1 · 🟡</div>
+      <p><a class="link" href="https://t.co/Zo5bPKoHZb">https://t.co/Zo5bPKoHZb</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 tenki.jp@tenkijp</span> · 20 分钟前 · 21:40 · 🟡</div>
+      <p>【今日15日も関東甲信含む九州～東北の広い範囲でゲリラ雷雨の可能性　土砂災害等警戒】 <a class="link" href="https://t.co/s8bhLUcAyy">https://t.co/s8bhLUcAyy</a> 今日15日(土)も、大気の状態が不安定になるでしょう。九州から東北の広い範囲で雷雨や激しい雨が降る所がありそうです。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 六作＠土曜日 西1 め52ab@6sakuu</span> · 29 分钟前 · 21:31 · 🟡</div>
+      <p>本日『ろっさく工房』に来る方へ<br><br>•シャッター前になります。列が外に並びます！猛暑なので水分補給などしっかり<br><br>•限数特になし<br><br>•撮影はお控え下さい<br><br>•六作は基本裏にいます、差し入れ挨拶など気軽に呼んでください<br><br>•ポスター頒布は15時ごろに支援者向けに行います、今回色紙ないですごめん</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 38 分钟前 · 21:22 · 🟡</div>
+      <p>Thimbleweed Park 2 is happening because Ron Gilbert's friend knows a rich guy who loves the original <a class="link" href="https://t.co/yaFvDoyEPD">https://t.co/yaFvDoyEPD</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 40 分钟前 · 21:20 · 🟡</div>
+      <p>WoW's haunted: Characters are starting to play on their own after their players disconnect <a class="link" href="https://t.co/HnS31RydUr">https://t.co/HnS31RydUr</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 rak_fork@rakfork</span> · 41 分钟前 · 21:19 · 📷×2 · 🟡</div>
+      <p>Pyra <a class="link" href="https://t.co/C6DCaxXz8a">https://t.co/C6DCaxXz8a</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 horosuke@horosuke_</span> · 44 分钟前 · 21:16 · 🎬×1 · 🟡</div>
+      <p>こういうシチュ描きたいなぁっていう案 <a class="link" href="https://t.co/nGcqBiO2eA">https://t.co/nGcqBiO2eA</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 熊布朗@Stephen4171127</span> · 46 分钟前 · 21:13 · 🟡</div>
+      <p>小红书也紧跟着开源了 TTS 有意思！voxCPM2 刚开没几天呢</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 ReDrop/おつまみ@otmm</span> · 48 分钟前 · 21:12 · 📷×3 · 🟡</div>
+      <p>おはようございます～本日はよろしくお願いいたします🙇‍♀️</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 雨あられC108 2日目東オ09a@eraraema</span> · 50 分钟前 · 21:09 · 🟡</div>
+      <p>ドカ寝してもうてた‼️コミケの準備して東京いこ…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 お久しぶり@imlllsn</span> · 55 分钟前 · 21:04 · 🟡</div>
+      <p>早起き</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 奶霜小奈@xiaonai2005</span> · 56 分钟前 · 21:04 · 🟡</div>
+      <p>"和好友们聚会，笑声不断！😄"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 20:57 · 📷×1 · 🟡</div>
+      <p><a class="link" href="https://t.co/tPwgnSfLtf">https://t.co/tPwgnSfLtf</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 1 小时前 · 20:55 · 🟡</div>
+      <p>Old School RuneScape is bigger than ever <a class="link" href="https://t.co/wyEFslAWbm">https://t.co/wyEFslAWbm</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 あかつき茜@C108 1日目 西 そ05b@Akatsuki_2013</span> · 1 小时前 · 20:41 · 🟡</div>
+      <p>おはようございます〜<br>まずは寝坊せずにコミケスタートっ</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Evilaudio@Evilaudio1</span> · 1 小时前 · 20:13 · 🎬×1 · 🟡</div>
+      <p>🧡💛<br><br>🎞️Animation - @Srasoni01 <br>🎼Audio - @Evilaudio1 <br>🎙️Voice - @NyaghtyNya <br><br>⭐️Support me so I can continue. READ THE BIO⭐️ <a class="link" href="https://t.co/fFDoRtwTZN">https://t.co/fFDoRtwTZN</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 1 小时前 · 20:10 · 🟡</div>
+      <p>Pocketpair 'not planning to spend a year making a massive update' for Palworld 1.1 <a class="link" href="https://t.co/XTFj3VlLA2">https://t.co/XTFj3VlLA2</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 おりん@お盆なのでリプ返します@_6m_oO</span> · 1 小时前 · 20:08 · 📷×1 · 🟡</div>
+      <p>嬉しい！！💗💗💗<br>ありがとう～(^з^)-♡</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 1 小时前 · 20:01 · 🟡</div>
+      <p>"今天完成了一个旅行计划，收获满满的一天。"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 NASA@NASA</span> · 1 小时前 · 20:00 · 🎬×1 · 🟡</div>
+      <p>America’s newest and most exciting aerospace technology expo and air show is landing @NASAKennedy in Florida on Nov. 7-8. Make plans to join us for MAX POWER!<br><br>Get the details: <a class="link" href="https://t.co/1DVwblNmua">https://t.co/1DVwblNmua</a> <a class="link" href="https://t.co/aDKnoh5ZbE">https://t.co/aDKnoh5ZbE</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Fascinating@fasc1nate</span> · 2 小时前 · 20:00 · 📷×1 · 🟡</div>
+      <p>For centuries in China, criminals were punished and publicly humiliated by being placed in a cangue, a large wooden device locked around the neck and body. <br><br>Often left exposed to the elements with little or no food or water, offenders were publicly displayed as a warning to others. <br><br>The creepiest photos ever taken: <a class="link" href="https://t.co/0WklG7bVfh">https://t.co/0WklG7bVfh</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 2 小时前 · 19:54 · 🟡</div>
+      <p>@chayma65589 赞一个！</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 荒木哲郎@c108_ 2日目 東7ホールA-40b@ttr1976</span> · 2 小时前 · 19:45 · 📷×1 · 🟡</div>
+      <p>カバネリオンラインくじ、E賞すぎて凹むよ！😭もう寝ます！</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 2 小时前 · 19:35 · 🟡</div>
+      <p>"和朋友们一起去了一次游乐园，童心未泯！🎡"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 19:30 · 📷×1 · 🟡</div>
+      <p>おりんちゃん描いた！<br>初めて描いた系統だからうれしい <a class="link" href="https://t.co/YuIhe9Hum6">https://t.co/YuIhe9Hum6</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 19:19 · 📷×1 · 🟡</div>
+      <p>3.7 Flash is in the @GeminiApp <a class="link" href="https://t.co/txm3fI0wZo">https://t.co/txm3fI0wZo</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Fascinating@fasc1nate</span> · 2 小时前 · 19:15 · 📷×1 · 🟡</div>
+      <p>Legendary Illinois corn farmer Herman Warsaw poses in a field with some of his record-breaking crop, circa 1985. He achieved a world record of 370 bushels per acre.<br><br>What makes his story even more incredible is that when he and his family bought the farm in 1941, the damaged soil was yielding only about 38 bushels per acre. <br><br>Through soil restoration and highly creative techniques, he completely transformed the fields over the years and made history. <br><br>More rare photos: <a class="link" href="https://t.co/dQjceOPkrz">https://t.co/dQjceOPkrz</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 2 小时前 · 19:12 · 🟡</div>
+      <p>"和朋友们一起观赏了一场精彩的演出，感受艺术的魅力！🎭"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 やなぎばころん@koronsui</span> · 2 小时前 · 19:11 · 📷×2 · 🟡</div>
+      <p>#C108 #コミケ108 #コミケお品書き<br><br>既刊一覧ちゃんと作ったよん！ <a class="link" href="https://t.co/GwQtQpdWxc">https://t.co/GwQtQpdWxc</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 God@TheTweetOfGod</span> · 2 小时前 · 19:10 · 🟡</div>
+      <p>With great power comes zero responsibility.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 2 小时前 · 19:10 · 🟡</div>
+      <p>US Senate launches investigation into Roblox: 'Children on your platform are hurting' <a class="link" href="https://t.co/5Z2DN0SwmZ">https://t.co/5Z2DN0SwmZ</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 BO@bo2337285</span> · 2 小时前 · 19:06 · 📷×4 · 🟡</div>
+      <p>ちなみにこのタグを最初に使ったのは多分このポスト↓<br>※そもそもこのタグって日本語としておかしくない？😅<br><a class="link" href="https://t.co/cRdgyqydyG">https://t.co/cRdgyqydyG</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 BO@bo2337285</span> · 2 小时前 · 19:02 · 📷×1 · 🟡</div>
+      <p>#同じキャラですが異なる装備の姿を晒す見た人もやる <a class="link" href="https://t.co/zFImHFe8S7">https://t.co/zFImHFe8S7</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 双龍@Souryu_std</span> · 3 小时前 · 18:41 · 🟡</div>
+      <p>おはようございます!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 ふちどり@C108_日曜日_南地区_南２_f-23b@Futidori_came</span> · 3 小时前 · 18:40 · 🟡</div>
+      <p>@nawo019_2 ビッグサイト近所の営業所留めで送ってそこからタクシーor電車移動という手もあります！</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 NASA@NASA</span> · 3 小时前 · 18:34 · 🎬×1 · 🟡</div>
+      <p>LIVE: Tune in for a preview of a new event to be held at @NASAKennedy later this year. <a class="link" href="https://t.co/HGeIxn1gb5">https://t.co/HGeIxn1gb5</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 双龍@Souryu_std</span> · 3 小时前 · 18:30 · 🟡</div>
+      <p>定期</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Roland.W@rwayne</span> · 3 小时前 · 18:19 · 📷×2 · 🟡</div>
+      <p>张柏芝，很佩服当年的她 <br><br>走到哪都得带着孩子，而且一直都是精神饱满，用不完的劲儿。 <a class="link" href="https://t.co/BuJLEcaLPF">https://t.co/BuJLEcaLPF</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 煌野一人@maturepicbot</span> · 3 小时前 · 18:17 · 🟡</div>
+      <p>こみけいくひとがんばえ〜！</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 琴義弓介@kotoyoshi_y</span> · 3 小时前 · 18:13 · 🟡</div>
+      <p>DMもリプも通知が来ない<br>そう❌ならね</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 きちはち@monokichi8</span> · 3 小时前 · 18:09 · 🟡</div>
+      <p>寝よ<br>お疲れさん</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 双龍@Souryu_std</span> · 4 小时前 · 17:51 · 🟡</div>
+      <p>ありがたい指摘は端的にその部分だけを言ってくれるもので、謎の修正案を出されるとはちょっと……ウザイですね。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 トゲ@toge_painter</span> · 4 小时前 · 17:39 · 🟡</div>
+      <p>死ねって言ってるミクさんかわいい😊</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Keiろり@Kei_Lori</span> · 4 小时前 · 17:30 · 🟡</div>
+      <p>ロビンの新曲すげーアゲアゲな感じで好き<br>早くフル聴きてー</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 VlizzFULL SLOTS COMISSIONS (5/5)@VlizzyVlizz117</span> · 4 小时前 · 17:25 · 📷×1 · 🟡</div>
+      <p>Oh hermano mi vida es una mierda... 😭<br>Iré a sacarme las muelas del juicio hoy...💀💀<br>Deséenme suerte amigos🙏 <a class="link" href="https://t.co/TacEpVpWSW">https://t.co/TacEpVpWSW</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Roland.W@rwayne</span> · 4 小时前 · 17:19 · 📷×2 · 🟡</div>
+      <p>章若楠姐弟四人的名字是不是有特殊意义？ <a class="link" href="https://t.co/4LR6NYo7N4">https://t.co/4LR6NYo7N4</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 4 小时前 · 17:15 · 🎬×1 · 🟡</div>
+      <p>Beast of Reincarnation director apologises for it not being 'sufficiently enjoyable' 🙇<br>#beastofreincarnation #rpg #news #pcgaming #pcgamer <a class="link" href="https://t.co/CcGDc4qXRo">https://t.co/CcGDc4qXRo</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 4 小时前 · 17:10 · 🟡</div>
+      <p>A dev tried to warn WB Games not to launch Lord of the Rings: War in the North 10 days before Skyrim <a class="link" href="https://t.co/ngwoDp6No8">https://t.co/ngwoDp6No8</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 りゅうおう 大和改造開始@RYUOU12098</span> · 4 小时前 · 17:05 · 📷×1 · 🟡</div>
+      <p>一応プログラミングできるように半田付けました <a class="link" href="https://t.co/XLFLwvzqnW">https://t.co/XLFLwvzqnW</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Wei Penn@penn040458</span> · 4 小时前 · 17:01 · 📷×1 · 🟡</div>
+      <p>漫长的夏季～仿佛已经过了大半了～没有了暑假～只有生活的奔波，好在没觉得很热，或许是很热，但已被科技磨平了感官。<br>👩@zhishi88888 <a class="link" href="https://t.co/mKXRyCvfMD">https://t.co/mKXRyCvfMD</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 horosuke@horosuke_</span> · 5 小时前 · 16:54 · 🟡</div>
+      <p>デザインドールで解決しましたわ<br>サンクス<br>#マシュマロを投げ合おう<br><a class="link" href="https://t.co/kfxMFEH4ct">https://t.co/kfxMFEH4ct</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 おりん@お盆なのでリプ返します@_6m_oO</span> · 5 小时前 · 16:39 · 🟡</div>
+      <p>開示請求、時間もお金かかるから本当に本当に本当にめんどくさい。もう直近でコイツやなって分かる人のことは警察行くょ、仲良かった時間や好きだったとこは忘れないけれど そういうやり方するならコッチも陰湿にやるよ。ごめんね</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Roland.W@rwayne</span> · 5 小时前 · 16:39 · 📷×4 · 🟡</div>
+      <p>震撼！晋江作品发出规定后补充<br><br>严禁脖子以下亲密描写针对全站所有作品，且不限字数，一经发现，全部锁定处理。 <a class="link" href="https://t.co/oITEC4Ulkf">https://t.co/oITEC4Ulkf</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 とろろﾁｬﾝ@tororo_Cam</span> · 5 小时前 · 16:36 · 🟡</div>
+      <p>そもそも挨拶しに来てくれるのが嬉しい相手には、本の交換なりタダであげる用のもの用意してる</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Keiろり@Kei_Lori</span> · 5 小时前 · 16:36 · 🟡</div>
+      <p>スタレのジェイドって基本圧倒的上位からふふって笑いながら場を支配するタイプだけど<br>今回の予告番組最後のジェイドはガチで緊急事態の低いトーンでマジで好き</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:34 · 📷×1 · 🟡</div>
+      <p>RT @malya1006: 【Skeb】支度中👙💦 <a class="link" href="https://t.co/3mDInI4g4k">https://t.co/3mDInI4g4k</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 5 小时前 · 16:32 · 🟡</div>
+      <p>Fields of Mistria review <a class="link" href="https://t.co/40MvsAuhcG">https://t.co/40MvsAuhcG</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:30 · 📷×1 · 🟡</div>
+      <p>滅茶苦茶疲れたので鹿島にいやら癒されたいです <a class="link" href="https://t.co/ucKnzXvRuo">https://t.co/ucKnzXvRuo</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 5 小时前 · 16:30 · 🟡</div>
+      <p>We've been tracking graphics card prices for exactly one year and it's never been worse than this <a class="link" href="https://t.co/fU1PCmlaeB">https://t.co/fU1PCmlaeB</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 angel@angeldot_</span> · 6 小时前 · 15:56 · 🎬×1 · 🟡</div>
+      <p>GOOGLE HA LIBERADO EN SILENCIO UNA IA QUE PREDICE PATRONES<br><br>Ventas. Precios de mercado. Tráfico web.<br>Demanda energética. Volatilidad cripto.<br><br>Se llama TimesFM:<br><br>→ Entrenada con 100B de datos reales<br>→ Forecasting zero-shot, sin fine-tuning<br>→ Corre en local.<br><br>100% Gratis y Open Source.<br><br>Enlace abajo👇</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 15:48 · 🟡</div>
+      <p><a class="link" href="https://t.co/Vd9jQwMEkc">https://t.co/Vd9jQwMEkc</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 28 分钟前 · 15:32 · 🟡</div>
+      <p>"做了一顿家常菜，味道不输餐厅！🍛"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 蟹黄饼宝@xiehuangbb</span> · 30 分钟前 · 15:30 · 🟡</div>
+      <p>"家里装饰了一下，更温馨了！🖼️"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Gorden Sun@Gorden_Sun</span> · 41 分钟前 · 15:19 · 📷×1 · 🟡</div>
+      <p>Qwen3.8-27B现已开源，本地运行的最佳小模型！评分相比Qwen3.6-27B大幅度提升！<br><br>模型：<a class="link" href="https://t.co/IhxCzTFYoc">https://t.co/IhxCzTFYoc</a> <a class="link" href="https://t.co/eVIFF0L0y4">https://t.co/eVIFF0L0y4</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 1 小时前 · 15:00 · 🟡</div>
+      <p>Arc Raiders' next major update will 'challenge the ways you've learned to move' <a class="link" href="https://t.co/Rb6mcD3hsi">https://t.co/Rb6mcD3hsi</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 1 小时前 · 14:50 · 🟡</div>
+      <p>Indiana Jones would not approve of Razer's first artisan keycap, as it's a neon green coil of slippery s-s-snakes <a class="link" href="https://t.co/5wza5QVM1W">https://t.co/5wza5QVM1W</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 サク＠C108日曜日【南2J38ab】@saku93</span> · 1 小时前 · 14:49 · 🟡</div>
+      <p>前はRPしたら引用RP出来なかったけど<br>いまって両方できるようになったんですか！？<br><br>出来心で、ためしたら出来たんですよ<br><br>みんな両方してくれていいんだよ✨<br>いつもありがと🫶いっぱいちゅき<br><br>ぼろん</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 14:45 · 🟡</div>
+      <p>小红书开源 FireRedTTS3 模型，论文还未放出，从权重参数来看模型结构和 VoxCPM2 一致，支持克隆、声音设计和语音编辑<br><br><a class="link" href="https://t.co/Ujplz5G2b1">https://t.co/Ujplz5G2b1</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 サク＠C108日曜日【南2J38ab】@saku93</span> · 1 小时前 · 14:43 · 📷×1 · 🟡</div>
+      <p>わかりますか！？！？！？<br>心の目で見てください<br><br>葉っぱ透けてますからね！！！！<br><br>もちろん写真集はスタンプなしです<br>🫶<br>どちらも違う写真が収録されてるよん😉両方ゲットだぜ</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 1 小时前 · 14:40 · 🟡</div>
+      <p>Dev says the Epic Games Launcher will be getting a Linux version 'soon' <a class="link" href="https://t.co/Cvq9DsKPzU">https://t.co/Cvq9DsKPzU</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 14:37 · 📷×1 · 🟡</div>
+      <p>C108新刊🧝‍♀️③<br>エルフ村沐浴写真集は…なんと……<br>大好きなサク様と双子本なのです！！！<br><br>特別なツーショット写真あります♡📸<br>スタンプしたら何も見えないけど本編当たり前にスタンプなしですwww <a class="link" href="https://t.co/lB2PFKug5l">https://t.co/lB2PFKug5l</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 14:37 · 📷×1 · 🟡</div>
+      <p>RT @idohori_people: <a class="link" href="https://t.co/WqlIgmJvWe">https://t.co/WqlIgmJvWe</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 もりそば@跡地@AIHobbyist65536</span> · 7 小时前 · 14:25 · 🟡</div>
+      <p><a class="link" href="https://t.co/fZL1MMbu75">https://t.co/fZL1MMbu75</a><br>MiniMax-H3で静止画を作ったり編集するためのノード<br>編集性能がすごく高いので編集モデルとしてはかなり優秀かもしれない</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 14:10 · 📷×1 · 🟡</div>
+      <p>This and it isn't even close <a class="link" href="https://t.co/ylyNKcyYGP">https://t.co/ylyNKcyYGP</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 شيماء@chayma65589</span> · 7 小时前 · 14:07 · 📷×1 · 🟡</div>
+      <p>I❤️<br>محمد ﷺ <br>MUHAMMAD<br><br>I❤️<br>محمد ﷺ <br>MUHAMMAD<br><br>I❤️<br>محمد ﷺ <br>MUHAMMAD<br><br>I❤️<br>محمد ﷺ <br>MUHAMMAD<br><br>I❤️<br>محمد ﷺ <br>MUHAMMAD<br><br>I❤️<br>محمد ﷺ <br>MUHAMMAD<br><br>I❤️<br>محمد ﷺ <br>MUHAMMAD<br><br>I❤️<br>محمد ﷺ <br>MUHAMMAD<br><br>I❤️<br>محمد ﷺ <br>MUHAMMAD<br><br>I❤️<br>محمد ﷺ <br>MUHAMMAD<br><br>I❤️<br>محمد ﷺ <br>MUHAMMAD<br><br>I❤️<br>محمد ﷺ <br>MUHAMMAD <a class="link" href="https://t.co/4nvIZeRvBt">https://t.co/4nvIZeRvBt</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 matobaエデンの塔8/12新連載です@___mfm_u</span> · 7 小时前 · 14:06 · 📷×1 · 🟡</div>
+      <p>人類が滅亡したあと、勇者の娘と魔族の女の子が迷宮で出会う話<br>1/7<br><br>#漫画が読めるハッシュタグ <a class="link" href="https://t.co/zL300jJ0Kt">https://t.co/zL300jJ0Kt</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 なを。のさぶ垢@nawo019_2</span> · 8 小时前 · 13:55 · 🟡</div>
+      <p>冬コミの目標(はやい)<br>レンタカー借りて前日搬入を果たしたい<br><br>でもできるのか俺に…いきなり首都高運転が…？？？？</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 13:30 · 📷×2 · 🟡</div>
+      <p>#イラスト上達<br>最近ずっと作ってたイラスト支援ツールが形になったので機能紹介をしたいと思います<br><br>【全身比率分析】<br>全身の主要部位の頭身比率がクリックするだけでお手軽に分かります<br>股下の方が長かったり中間だったりが一目で分かるので、二次創作やファンアート等のアタリを取るのに便利です <a class="link" href="https://t.co/z1S3s8Ciny">https://t.co/z1S3s8Ciny</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Ding@dingyi</span> · 2 小时前 · 13:14 · 🟡</div>
+      <p>发现这个有点牛逼：<a class="link" href="https://t.co/cfsvcNbA53">https://t.co/cfsvcNbA53</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 紋次郎@md20141112</span> · 12:28 · 🎬×1 · 🟡</div>
+      <p>今年も鬼滅連見て来た <a class="link" href="https://t.co/sdZ8knschs">https://t.co/sdZ8knschs</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 娜美知识库@fhwofjow51260</span> · 9 小时前 · 12:28 · 📷×2 · 🟡</div>
+      <p>信息差就是印钞机，英语学习虚拟产品日入1000+  <br><br>拼多多、小红书最适合学英语的少儿英语启蒙合集，精选全球分级动画神作，覆盖零基础到高阶！英语名师力荐科学进阶体系，解决"孩子抵触英语"难题。<br><br>你只需要3步：<br>1、立即保存资料👇<br>2、上架小红书、拼多多<br>3、收钱<br><br>🔗：<a class="link" href="https://t.co/SbODyMADWN">https://t.co/SbODyMADWN</a> <a class="link" href="https://t.co/eQQnq5I9WE">https://t.co/eQQnq5I9WE</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Tiny | AI 创业版@tinyray1314</span> · 3 小时前 · 12:26 · 🎬×1 · 🟡</div>
+      <p>陆续搞了两三天，终于把个人网站改造完了：<a class="link" href="https://t.co/wxzFdABSDX">https://t.co/wxzFdABSDX</a><br><br>原来的版本是 24 年套模板做的，有点老气。尤其看了 伊恩@ianneo_ai、Vivi @MengjieXvivi、欧呦 @I_am_oil_oil、 六六 @xl_lottie、不二 @SjwEsther、西门 @xmmxovo 他们的个人网站之后，被他们的记录、设计风格彻底打动，就决定必须找时间好好重做一次。<br><br><a class="link" href="https://t.co/gwwC3WxXES">https://t.co/gwwC3WxXES</a> 长期收集了过往所有影响过我的人，感恩！💗<br><br>这次花了不少心思，也终于找准了自己真正喜欢的风格。<br><br>这一周在推上互动，感受到了超级大的能量，想继续和大家多认识、多交流。后续内容会更多回归 AI、增长相关，欢迎大家来找我聊天～</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 卫斯理@imwsl90</span> · 10 小时前 · 11:55 · 🟡</div>
+      <p>晚上回到家，我把我老婆的饭盒摔碎了，我老婆和我妈干架……🤣🤣<br><br>刚到家我妈一直在说一些小事情，我已经累的完全没法回应了<br><br>我就和我妈说：妈我知道了，不用再说了<br><br>没想到我妈一直说个不停<br><br>一旁我老婆终于忍不住了，直接就说：妈你不要再说了，老卫带了一天小孩子，已经够累了，不要再说了<br><br>我妈说：我就不能开口？<br><br>于是你一言我一语的开始怼<br><br>最后我叫她们不要再吵了才平息</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 周览资源@grgerwcwetwet</span> · 4 小时前 · 11:31 · 📷×1 · 🟡</div>
+      <p>《how to如何不切实际地解决实际问题》<br>一本科学家写的“脑洞工具书”。<br><br>作者用极其严谨的科学方法，去回答一些荒谬到离谱的问题<br><br>看似胡闹，其实全是硬核科学推演。你会笑到肚子疼，也会被作者的逻辑和想象力震撼。<br><br>阅读👉：<a class="link" href="https://t.co/EU9wZqB75h">https://t.co/EU9wZqB75h</a> <a class="link" href="https://t.co/RlRJev7MCe">https://t.co/RlRJev7MCe</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 周览资源@grgerwcwetwet</span> · 4 小时前 · 11:30 · 📷×1 · 🟡</div>
+      <p>WPS Office 2026终身高级会员【全平台通用】安卓/Win/Mac/iOS都能用，永久激活，永久免费使用！<br><br>🔗：<a class="link" href="https://t.co/QECobL0Eb9">https://t.co/QECobL0Eb9</a> <a class="link" href="https://t.co/xvOSaJezpH">https://t.co/xvOSaJezpH</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 DL@DL_6ix</span> · 10 小时前 · 11:29 · 📷×1 · 🟡</div>
+      <p>似た者同士 <a class="link" href="https://t.co/oXt4WBFYQ3">https://t.co/oXt4WBFYQ3</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 聚盟云VPN看板娘@jumengyunvpn</span> · 11:25 · 📷×1 · 🎬×1 · 🟡</div>
+      <p>聚盟云vpn <a class="link" href="https://t.co/VbuEw9YB9v">https://t.co/VbuEw9YB9v</a><br><br>10Gbps IEPL专线骨干<br><br>YouTube 4K视频播放实测录屏<br><br>吊打你的VPN🤡 <a class="link" href="https://t.co/J445FQ7zOS">https://t.co/J445FQ7zOS</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:37 · 🟡</div>
+      <p><a class="link" href="https://t.co/9Y7bIvfEYV">https://t.co/9Y7bIvfEYV</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 【公式】ダイブロス・コア@DaiblosCore_JP</span> · 11 小时前 · 10:10 · 📷×3 · 🟡</div>
+      <p>✨🎁壁紙プレゼント🎁✨<br>#ダイブロ #ダイブロス・コア #DaiblosCore<br>スマホ・PC用壁紙を特別配布📱🖥️💚<br>対象隊員：#ブルーバック<br>ぜひご活用くださいませ！🎉<br><br>スキンは 8/27 02:59まで販売中！<br>動く姿は公式Discord【制限区域ログ】でチェック💃👀 <a class="link" href="https://t.co/j0GirYxWgZ">https://t.co/j0GirYxWgZ</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:10 · 🟡</div>
+      <p><a class="link" href="https://t.co/X8BY8m66tq">https://t.co/X8BY8m66tq</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:00 · 🟡</div>
+      <p>花火本いいかんじに刷れてた<br>ちゃんと形にできてほんとよかった</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 夏林果的出海日记@momo_peggy</span> · 6 小时前 · 09:52 · 🟡</div>
+      <p>我愿称WorkBuddy、千问办公、TraeWork为电梯广告三巨头，用账号拆解、写稿、搭建选题库三套实战任务，看清谁是花瓶，谁真正能干活 <a class="link" href="https://t.co/EKlT3LyKb6">https://t.co/EKlT3LyKb6</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 津留崎 優１日目ア65ab@hatori_niwatori</span> · 9 分钟前 · 09:51 · 🟡</div>
+      <p>ぷたとぷろてあに　石800個吸われ　出ませんでした</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:32 · 🟡</div>
+      <p>@chayma65589 支持！</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 树@26nian5yue25hao</span> · 32 分钟前 · 09:29 · 🟡</div>
+      <p>"分享一下最近看到的一段有趣的视频！📹"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:26 · 🟡</div>
+      <p>サンプルと通販・電書のリンク出さねば…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 トミオカセナ@tomiokasena</span> · 40 分钟前 · 09:21 · 🟡</div>
+      <p>餅は餅屋<br><br>お前はスケベや</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 かるべぐり７/14新作配信@karube_G</span> · 42 分钟前 · 09:18 · 🟡</div>
+      <p>数日ぶりにブラウザでX見たらいまこれ……<br>え、ずっとこのままなの？？</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 48 分钟前 · 09:11 · 🟡</div>
+      <p>"刚刚完成了一项个人目标，感觉很有成就感。"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 多肉 | AI 内容增长@leo_xiaolei</span> · 50 分钟前 · 09:10 · 📷×4 · 🟡</div>
+      <p>二维水彩风格真是百搭呀~<br><br>随随便便都出片<br><br>这个风格几乎是任意题材故事的万金油<br><br>屡试不爽<br><br><a class="link" href="https://t.co/A3Xc3mTukh">https://t.co/A3Xc3mTukh</a> <a class="link" href="https://t.co/uApw0T6ukP">https://t.co/uApw0T6ukP</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Gorden Sun@Gorden_Sun</span> · 52 分钟前 · 09:08 · 📷×1 · 🎬×1 · 🟡</div>
+      <p>ChatGPT上线操作历史功能<br>打开后，ChatGPT能自动记录你的操作行为，并转化为记忆。可以用于：<br>· 接续工作：在休息后快速唤回上次的工作上下文与未完成事项。<br>· 查找近期内容：根据模糊记忆快速定位最近看过的文档、任务或沟通记录。<br>· 复用工作流：识别重复性操作，并自动建议将其转化为可复用的技能（Skills）或自动化流程。<br><br>目前仅Pro订阅和企业用户可用，官方介绍：<a class="link" href="https://t.co/w2xgLZxccn">https://t.co/w2xgLZxccn</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:08 · 🟡</div>
+      <p>夕方からまた土砂降りになる予報出てたから家の中にいたのに、ぜんっっぜん晴れとりまんがな</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:06 · 📷×1 · 🟡</div>
+      <p><a class="link" href="https://t.co/DwJGOoMs9w">https://t.co/DwJGOoMs9w</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:05 · 🟡</div>
+      <p><a class="link" href="https://t.co/PGWEahQSFL">https://t.co/PGWEahQSFL</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:02 · 🟡</div>
+      <p>声全然治らないので今日のFC限定配信はお休みします、また改めてリスケ日お知らせします🙇‍♀️💦</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:00 · 📷×1 · 🟡</div>
+      <p>レミエールを描きました！ <br>【PR】 <br>#ゼンゼ口 #レミエール <a class="link" href="https://t.co/PzMz9IeG5G">https://t.co/PzMz9IeG5G</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Hodgkinson beaten to European gold by rival Werro</b></p>
+      <p>Keely Hodgkinson is forced to settle for European silver as Switzerland's Audrey Werro denies the Briton a third consecutive title in a thrilling 800m final.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Jason Arday, ex-Cambridge professor at centre of plagiarism row, found dead</b></p>
+      <p>His family said it was "in shock to have lost this amazing father, partner, brother, uncle and son" after the academic was found dead in London on Friday.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Alaska Democrat Mary Peltola Pushes Back Against Endorsement From Kamala Harris</b></p>
+      <p>The campaign of Mary Peltola said it was focused on issues important to Alaska and did not approve a message of support from Ms. Harris.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Luigi Mangione Pleads Guilty</b></p>
+      <p>Also, an Alaska Democrat says no thanks to Kamala Harris’s support. Here’s the latest at the end of Friday.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Jason Arday, Cambridge Professor Accused of Plagiarism, Is Found Dead</b></p>
+      <p>Mr. Arday resigned last week after the university announced an investigation into allegations of plagiarism and fabrication.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>As Army Fails to Protect Palestinians, Israeli Leaders Sympathize With Settlers</b></p>
+      <p>Defense Minister Katz called for the military to turn over to the police the responsibility for protecting Palestinians after two West Bank families were besieged by violent settlers.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Fires prompt national alert as 19 homes destroyed</b></p>
+      <p>The prime minister said 37 fires were currently burning across England and Wales</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>The 5 Congress Members Whose Families Trade the Most Stocks</b></p>
+      <p>Some lawmakers and their families have traded millions of dollars worth of stocks since the start of this term.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>The Warring Visions of American Power</b></p>
+      <p>American foreign policy is at a crossroads. Could international law provide a framework for a foreign policy after President Trump?</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Stock Trading in Congress Becomes an Attack Line in Midterm Campaigns</b></p>
+      <p>Republican and Democratic challengers are both using the issue to attack members of Congress as unethical, seizing on a common practice that enrages voters.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Is It Safe to Eat Lettuce and Other Fresh Produce as Cyclospora Outbreak Wanes?</b></p>
+      <p>As the largest cyclospora outbreak in U.S. history wanes, experts weigh in on whether iceberg and other fresh produce are still a risk.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Derailed Essex to London train leads to travel chaos</b></p>
+      <p>More than 60 patients were checked over by ambulance crews but all were discharged at the scene.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Britain's Finlay Tarling dies in Volta a Portugal accident</b></p>
+      <p>British cyclist Finlay Tarling dies at the age of 19 in a serious accident during the eighth stage of the Volta a Portugal.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>How The New York Times Reported on Trump’s Air Force One Ruse in Turkey</b></p>
+      <p>President Trump’s Air Force One subterfuge duped potential adversaries — and the press. Here’s what happened.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Mangione admits killing healthcare CEO and pleads guilty to federal charges</b></p>
+      <p>"I shot Mr Thompson in Manhattan and he died," the 28-year-old said after pleading guilty to charges of stalking resulting in death.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>DOJ Charges Kentucky Woman in World War II Memorial Vandalism Case</b></p>
+      <p>Two felony charges have been filed against a Kentucky woman after spray paint was seen on the memorial in the capital.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>'I shot Mr Thompson'- What it was like inside court as Mangione pleaded guilty</b></p>
+      <p>It marked the first time a court had heard Mangione describe how he committed a crime that garnered worldwide attention.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Afghan women tell the BBC their lives are unrecognisable after five years of Taliban rule</b></p>
+      <p>Women across the country speak of public floggings, losing their jobs, and barriers to healthcare that endanger lives.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Two dead after light aircraft crash</b></p>
+      <p>A plane travelling from England on Friday did not arrive at Caernarfon Airport as scheduled.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Stephen Bear jailed over sex offender breaches</b></p>
+      <p>The TV personality posted in Brazil "the police will not be able to catch" him, a court hears.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Trump Administration Asks Supreme Court to Greenlight White House Ballroom</b></p>
+      <p>The planned 90,000-square-foot ballroom is estimated to cost $400 million and is part of the president’s broader effort to remake Washington in his own style.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Activists try to deliver aid to Palestinians in homes besieged by Israeli settlers</b></p>
+      <p>Two families have been trapped in their homes in the occupied West Bank for several days.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>UK diplomats no longer get hardship bonus for being posted to Buenos Aires</b></p>
+      <p>Civil servants are entitled to extra money for working in difficult or dangerous cities around the world.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>What Next For Nigel Farage After The Clacton By-Election?</b></p>
+      <p>The parliamentary standards investigation into Farage's £5m gift has reopened.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Chelsea expect Fernandez to stay as deadline passes</b></p>
+      <p>Chelsea's deadline for clubs to bid £120m for midfielder Enzo Fernandez has passed - and they now expect the Argentine to stay at the club this season.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>The Taliban Kicked the U.S. Out of Afghanistan. Now They Want It Back.</b></p>
+      <p>In an interview, Afghanistan’s foreign minister called on the U.S. to reopen its embassy and invest in the country — a near-impossible sell for now, analysts and former diplomats say.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Glastonbury festival organiser dismisses rumours that Madonna will headline in 2027</b></p>
+      <p>Emily Eavis says the festival has booked its headliners, but the Queen of Pop is "definitely not" among them.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Bezos-backed consortium buys a third of Liverpool FC</b></p>
+      <p>Liverpool's owners agree to sell around a third of the club to a consortium including billionaire Amazon founder Jeff Bezos - in a deal that values the Reds at more than £5bn.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Electric vehicle sales targets could be cut after pressure from car makers</b></p>
+      <p>The government says it is considering cutting the new electric car sales target from 80% to 50% by 2030.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>What we know so far about the West Midlands fires</b></p>
+      <p>Several fires swept across the West Midlands on Thursday destroying homes and forcing residents to flee.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Temporary ban on sale of disposable BBQs over wildfire risk</b></p>
+      <p>Single-use grills pose a "significant risk to the public" in current drought and heatwave conditions, the government warns.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Russell Fry Backs Darline Graham in South Carolina Senate Runoff Amid Trump Pressure</b></p>
+      <p>The president has been focused on the race since the death of Lindsey Graham in July. Ms. Graham, the late senator’s sister, is competing against Representative Ralph Norman in a runoff on Aug. 25.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Stolen Cézanne, Renoir and Matisse Works Are Recovered, Police Say</b></p>
+      <p>The Italian military police said that art collectively valued at more than $10 million had been found five months after being taken in a nighttime heist near Parma.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Trump asks Supreme Court to allow ballroom work to continue</b></p>
+      <p>Forcing the US president to go "hat-in-hand to Congress" for permission would be "dangerous", the administration says.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Watch: Moment €9m worth of art stolen from Italy museum</b></p>
+      <p>Police released the CCTV footage after the art, which was stolen in March, was recovered.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Amazon and Alphabet’s Profits Reveal Circular Nature of A.I. Boom</b></p>
+      <p>Investment gains at Alphabet and Amazon reveal a new way in which technology companies’ fortunes are increasingly linked.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Chris Mason: Where does this unorthodox by-election victory leave Nigel Farage?</b></p>
+      <p>As expected, the Reform UK leader easily won the Clacton by-election but was nowhere to be seen after the result.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Mamdani’s ‘Bro’ Culture in City Hall: Sports, Memes, Nicknames for All</b></p>
+      <p>As much as Zohran Mamdani’s team runs on leftist idealism and social media hits, its style of governing also relies on humor, sports references and pop culture.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Ian Frazier Wrote ‘Coyote v. Acme’ in 1990. Now It’s a Movie.</b></p>
+      <p>With “Coyote vs. Acme,” Ian Frazier, a soft-spoken reporter and humorist, has finally gone Hollywood.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Count Binface to perform at Fringe after by-election defeat</b></p>
+      <p>The alter ego of comedian Jon Harvey finished second to Nigel Farage in the Clacton by-election.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>An Unlikely Emergency Appeal to the Supreme Court From a Dog Named Bruce</b></p>
+      <p>A last-ditch filing this week came on behalf of a dog that a judge found to be “vicious” and shows how the court’s emergency docket has been growing.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Prisoners charged over attack on Sara Sharif's father</b></p>
+      <p>Steven Sansom, 47, and Adam Watson, 39, are also charged with other offences relating to the Belmarsh Prison incident.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Builders unearth €9m gold stash sealed in walls of Belgian property</b></p>
+      <p>Construction workers found the stash in the walls of a cellar while drilling to lay sewage pipes.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Can Polls Measure the True Strength of the Left?</b></p>
+      <p>Recent polling issues could continue in Democratic primaries in part because progressives are more likely to enjoy taking surveys.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>The Markets Have Been on a Roll. Is It Time to Hedge Your Bets?</b></p>
+      <p>The S&amp;P 500 is in position for a rare fourth year of consecutive annual gains. Risks are rising, our columnist says, yet Wall Street is doubling down.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>New Yorkers Can’t Stop Lining Up for This Sushi</b></p>
+      <p>At a proliferating number of stores, discounts on sushi and other items are offered after 8 p.m. To get the best meals, you have to be there early.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Instagram accounts fuelling Ceuta migrant crisis with paid advice for help to cross</b></p>
+      <p>BBC's Top Comment podcast has found a network of Instagram profiles glamourising the swim around the Morocco-Ceuta border fence.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>What do people in Clacton think of Farage's by-election win?</b></p>
+      <p>The Reform leader wins the by-election he triggered, and gains more votes than last time.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>'Glam helps mentality' says sprinter Amy Hunt, but can it give you that winning edge?</b></p>
+      <p>Sprinter Amy Hunt has been showing off her nails at the European Athletics Championships in Birmingham.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Selena Gomez sued for alleged fraud over mental health company</b></p>
+      <p>Investors say the actor and singer did not take an "active role" in the company as promised.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-14 · 🔵</div>
+      <p><b>時隔20年，台灣前總統陳水扁女兒陳幸妤再次成為媒體焦點</b></p>
+      <p>台灣前總統陳水扁的女兒陳幸妤，近日因離婚一事曝光，時隔多年再次成為了台灣輿論焦點，也引起社會反思20年前媒體追訪她的倫理問題。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>VAR, timewasting and subs - new rules for the new season</b></p>
+      <p>The 2026-27 season will feature an unprecedented number of new laws, mostly designed to tackle tempo disruption and make the game quicker.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>8 Matisse Works, Looted from Library in Brazil, Are Recovered</b></p>
+      <p>The prints by the French master were taken in São Paulo last year in a brazen daylight heist.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Are Political Polls Accurate?</b></p>
+      <p>We look at recent problems with political polling.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Eurovision proposes new rules to reduce political voting</b></p>
+      <p>Organisers reportedly say politically motivated voting is "persistent" and is seen as "deeply worrying".</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Mother jailed for killing baby by burning her with a hairdryer</b></p>
+      <p>Courtney Gartshore, 28, used the appliance to subject three-month-old Dahlia-Rose to "significant and sustained heat" on her head and body.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Kevin Rideout, American Missionary Kidnapped in Niger, Is Released</b></p>
+      <p>Kevin Rideout, a pilot, had been abducted from his home in the country’s capital, Niamey, last fall. His mission organization said he was in “good health” after his release.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Concerns Grow Over Conditions on Aircraft Carrier, and Trump Pushes New Hacking Effort</b></p>
+      <p>Plus, your Friday news quiz.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-14 · 🔵</div>
+      <p><b>中國國產C919首飛國際航線 挑戰波音、空中巴士再進一步？</b></p>
+      <p>C919完成首次國際商業航班飛行，由北京飛往蒙古烏蘭巴托，象徵中國國產客機邁向海外市場的里程碑。北京希望藉此挑戰波音及空中巴士的市場主導地位，但此款飛機仍面臨國際認證及供應鏈緊張等挑戰。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-14 · 🔵</div>
+      <p><b>朱鎔基的話：從「搞台獨沒好下場」 到「搞壞香港是民族罪人」</b></p>
+      <p>朱鎔基辭世，台灣聚焦2000年「搞台獨沒好下場」反助陳水扁勝選；港澳感念其金融風暴挺港與市場開放貢獻。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>The Office's Lucy Davis 'overwhelmed' by kindness after cancer diagnosis</b></p>
+      <p>The Office actress thanks well-wishers for their support after she revealed she had incurable cancer.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Ocasio-Cortez Can Run. Can She Win?</b></p>
+      <p>She will run as a woman but unlike how every woman before her was forced to run.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Trump’s Justice Dept. Targets Smaller Fraud Cases</b></p>
+      <p>As the Trump administration drops charges against corporations and the wealthy, it is also taking aim at small-scale fraud cases, including against the operator of a weathered food truck in California.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Federal Job Cuts Are Making Wildfires Harder to Fight</b></p>
+      <p>The Trump administration pushed out thousands of veteran U.S. Forest Service staff. An ‘extraordinary’ fire season is testing those who are left.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Gone in 20 Minutes: Half-Off Sushi Draws Throngs to New York’s Japanese Markets</b></p>
+      <p>At a proliferating number of stores, discounts on items like sushi are offered after 8 p.m. To get the best meals, you have to be there early.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>How Thrillers Hook You With Their First Sentence</b></p>
+      <p>Can our Book Review editor, Tina Jordan, guess thrillers from their first sentence? In this game we explore a few of the books from The New York Times’s “50 Best Thrillers of the 21st Century” list; and learn a bit more about why opening sentences are so important to get people reading.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Chatbots Are Pushing Us Toward a Post-Human Internet</b></p>
+      <p>In matters of work, school and even romance, we turn to A.I. chatbots. But what happens when the bots begin talking to one another?</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Extreme Heat Is the New Normal</b></p>
+      <p>Firefighters in Phoenix race to save lives in a city that’s only getting hotter.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Stolen Matisse artworks recovered by police in Brazil</b></p>
+      <p>A man is arrested after eight works by the French artist are found at a home in greater São Paulo.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Farage's by-election victory won't stop questions about finances</b></p>
+      <p>Nigel Farage triggered the Clacton by-election and the result was predictable - so what did he achieve?</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Teens who fled Venezuela after deadly quakes caught in another disaster in Colombia</b></p>
+      <p>Deivi Delfín and his brother moved to Colombia after a quake in Venezuela killed their mother, but were caught in another deadly disaster.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Teenage swimmer delayed opening A-level results to focus on winning European Championships</b></p>
+      <p>Filip Nowacki delays opening his results as to not distract from the final - which he then won.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Farage Wins Special U.K. Election That He Initiated, as Expected</b></p>
+      <p>Nigel Farage, the leader of Reform U.K., won the Clacton by-election with 63 percent. Count Binface, his costumed main rival, came second with 27 percent, a personal best.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Watch: Video shows scale of devastation in Stourbridge</b></p>
+      <p>Multiple fires tore through the West Midlands on Thursday, with firefighters still working to control the blazes.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Who to pick, who to avoid - your team's Fantasy Premier League assets analysed</b></p>
+      <p>Our team of FPL experts assess the best and worst picks for 2026-27 from each of the 20 Premier League teams.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-14 · 🔵</div>
+      <p><b>为了安全旅行，女性付出了什么代价？</b></p>
+      <p>图像来源，Getty ImagesArticle InformationAuthor, 洛琳·博兹库尔特（Lorin Bozkurt）Published 2026年8月13日阅读时间: 4 分钟女性专用房间需求旺盛，而且有时价格更高。这反映出人们为了获得安全感需要付出怎样的代价？在伦敦市中心一个潮湿的星期五，晚上23:00，我站在“皮卡迪利圆环”（Piccadilly Circus）一家胶囊旅馆灯光明亮的大堂里，盯着自助服务萤幕上的两个几乎一模一样的预订选项。一个位于男女混合楼层的胶囊床位收费35英镑（47美元），而位于女性专用楼层的胶囊床位则收费45英镑（60美元）。多出的10英镑，买不到更</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-14 · 🔵</div>
+      <p><b>美軍林肯號航母航行250天 引發官兵人道狀況擔憂</b></p>
+      <p>據報美國海軍亞伯拉罕·林肯號航空母艦（USS Abraham Lincoln）上數以千計水兵面臨食物短缺和排污管道損壞，部分人甚至試圖跳海。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>New Zealand breaks ranks and withdraws Infantino support</b></p>
+      <p>New Zealand break rank with Oceania's football governing body to become the latest nation to withdraw support for Fifa president Gianni Infantino.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 08-14 · 🟢</div>
+      <p><b>首发 | 澎湃OS 4 体验：小米第一个 AIOS，用起来怎么样？</b></p>
+      <p>过去，小米手机以快著称——产品迭代快、价格跟进快，但唯独在 AI 这件事上，小米倒是不徐不疾。<br>时至今日，手机 AI 的叙事已经迭代好几个版本，苹果高调官宣的 AI 战略也已跳票了两年，就连豆包手机都出到第二代了——小米的第一个 AIOS，澎湃OS 4 才姗姗来迟。<br><br>我手里这台小米 17 Ultra 已经刷上澎湃OS 4 一段时间了，用下来感受非常奇妙：一方面我会讶异于 AI 对于澎湃OS 的改造无处不在；另一方面，我又对 AIOS 在小米生态的发挥抱有更大的期待。<br>总而言之，这就是小米 AI 手机</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>'She was just Gaynor from up the road' - villagers ready for emotional Bonnie Tyler goodbye</b></p>
+      <p>The Total Eclipse of the Heart star went global, but villagers felt they all knew her personally.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 纽约时报中文</span> · 08-14 · 🔵</div>
+      <p><b>2000万被系统性抹去的人：阿富汗女性的孤立绝境</b></p>
+      <p>EPHRAT LIVNI2026年8月14日去年阿富汗喀布尔的一个集市。大多数女性表示，她们必须征得男性亲属的同意才能出门。 Tomas Munita for The New York Times就在五年前的这一周，塔利班重新控制了阿富汗，在阔别政坛20年后重返权力中心，并恢复了曾经严重限制妇女权利的伊斯兰政府。专家表示，在这短短几年里，妇女和女童已被系统性地从大多数公共生活中抹去。还有一些专家指出，强加于半数人口的限制可能会在未来很长一段时间内阻碍阿富汗的发展。对妇女和女童的严厉限制使阿富汗恢复了20世纪90年代末塔利班上一次控制该国时的状态。目前当局颁布了160多项针对妇女和女童的法令，禁</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-14 · 🔵</div>
+      <p><b>Jimmy Fallon Reacts to Karoline Leavitt’s White House Exit</b></p>
+      <p>The “Tonight Show” host said President Trump had been surprised by the press secretary’s decision to step down. “She was like, ‘I wanted to wait for a good time but there hasn’t been one, so.’”</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>NHS service admits data breach due to pager use</b></p>
+      <p>The medical data of transplant patients from across the UK was sent over an unencrypted pager network.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-14 · 🔵</div>
+      <p><b>美國稱數十國助中國避特朗普關稅</b></p>
+      <p>美國一份新報告稱，中國透過關稅較低的國家轉運貨物，以規避較高關稅。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 纽约时报中文</span> · 08-14 · 🔵</div>
+      <p><b>美国想在人形机器人赛道与中国竞争，这并非易事</b></p>
+      <p>MEAGHAN TOBIN2026年8月14日决定在美国制造人形机器人时，泰迪·哈格蒂非常清楚自己面临的是什么。自2022年以来，哈格蒂一直是中国领先的人形机器人制造商宇树科技在北美的主要分销商。这一角色让他近距离观察到一个由中国企业主导的行业——中国生产机器人的生产成本更低、规模更大，美国制造商至今难以企及。“在中国，这些东西已经在街上走了，”他说，“他们的经验比我们丰富得多。”但在长岛郊区一个绿树成荫的工业园区内的仓库里，30岁的哈格蒂正试图完成一项看似不切实际的任务——在美国生产类人机器人。他的新公司Robo Inc.是这位连续创业者的最新项目。过去十年间，他一直在追逐下一个风口，从无人</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-14 · 🔵</div>
+      <p><b>AI浪潮衝擊青年就業 畢業生如何應對？</b></p>
+      <p>2026年度中國高校畢業生達1,270萬人，創歷史新高，加上往屆未就業與回流的海外留學生，求職人數突破1,500萬人。面對「降本增效」的職場新常態，年輕一代應如何調整定位？</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-14 · 🔵</div>
+      <p><b>Watch: What happens if Luigi Mangione pleads guilty?</b></p>
+      <p>Mangione is accused of killing UnitedHealthcare CEO Brian Thompson in New York - but any plea deal in his federal case could impact a separate state trial.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-13 · 🔵</div>
+      <p><b>Great Movie and TV Adaptations From 21st- Century Thrillers</b></p>
+      <p>From “Slow Horses” to “Big Little Lies,” our list of great psychological thrillers, spy novels and crime fiction have inspired a heap of great adaptations.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-13 · 🔵</div>
+      <p><b>Readers Choose the Best Thrillers and Mysteries of the Century</b></p>
+      <p>The backbone of the list: nine novels by Tana French, and five novels each from John le Carré, Kate Atkinson and Mick Herron.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-13 · 🔵</div>
+      <p><b>「白海豚」中國暴雨持續：為何颱風災情愈來愈深入內陸地區？</b></p>
+      <p>今年目前為止吹襲中國的最強颱風「白海豚」，於8月9日登陸後持續帶來災情，至本週仍為中國東部、中北部帶來廣泛暴雨和水災，影響範圍甚至波及內陸地區。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-13 · 🔵</div>
+      <p><b>近30年最壯觀日食登場 數百萬英歐民眾抬頭見證</b></p>
+      <p>在英格蘭康沃爾郡，超過95%的太陽被月球遮蔽；而西班牙部分地區的民眾則有幸見證日全食帶來的震撼景象。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-13 · 🔵</div>
+      <p><b>台灣首度模擬戰時「斷網」，30分鐘演練了什麼？</b></p>
+      <p>台灣今年的「城鎮韌性」演習，首度模擬戰時的「斷網」情境，測試海底通訊電纜等關鍵通訊設施受損後的應變能力。對於距離台灣本島約200公里的馬祖居民來說，類似情境曾真實發生，當時「斷網」長達50天。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-13 · 🔵</div>
+      <p><b>為了安全旅行，女性付出了什麼代價？</b></p>
+      <p>女性專用房間需求旺盛，而且有時價格更高。這反映出人們為了獲得安全感需要付出怎樣的代價？</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-12 · 🔵</div>
+      <p><b>朱鎔基逝世：推動中國經濟改革的「鐵腕總理」是誰？</b></p>
+      <p>中國前總理朱鎔基週三在北京逝世。在1990至2000年代擔任副總理和總理期間，他主導中國經濟改革逾十年，被外界稱為中國「經濟沙皇」。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-12 · 🔵</div>
+      <p><b>美國特勤局如何玩弄「障眼法」，將特朗普在眾目睽睽之下隱藏</b></p>
+      <p>精心策劃的欺騙行動和誘餌經常被用來欺騙對美國總統構成潛在威脅的人。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-12 · 🔵</div>
+      <p><b>朱鎔基逝世，享年97歲——為中國留下改革遺產的「經濟沙皇」</b></p>
+      <p>朱鎔基前後12年主導中國經濟發展，改革過程中因為造成大量國企工人下崗而受民間批評。但中國整體上往市場經濟的方向邁了一大步，也由此開啟了歷史上發展速度最高的20年。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-12 · 🔵</div>
+      <p><b>海濱公寓原本空無一人，然後警察說，詐騙犯搬進來了</b></p>
+      <p>馬來西亞的森林城市曾被宣傳為「天堂」，但最近警方因涉嫌詐騙活動對其進行突襲搜查。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-12 · 🔵</div>
+      <p><b>澤連斯基：俄羅斯使用朝鮮飛彈攻擊烏克蘭</b></p>
+      <p>基輔稱，莫斯科使用了來自朝鮮（北韓）的導彈攻擊烏克蘭，造成多人死傷。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-12 · 🔵</div>
+      <p><b>「我被朝鮮綁架，還被迫嫁給美國士兵」</b></p>
+      <p>曾我瞳十多歲時遭綁架，並被扣押超過20年。她是東京指稱於1970年代和1980年代遭朝鮮綁架的至少17名日本公民之一。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-12 · 🔵</div>
+      <p><b>太陽前所未有的清晰：迄今最詳細的觀測影像曝光</b></p>
+      <p>最新影像和影片顯示到了太陽活動形成的「漩渦」，呈現出過去無法觀測到的景象。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-11 · 🔵</div>
+      <p><b>「我根本沒想過要停下來」：美國物理學家講述長崎原爆內幕</b></p>
+      <p>1945年8月9日，一枚鈽彈被投向日本長崎市，為第二次世界大戰畫上句號。30年後接受BBC訪問時，一名參與組裝該炸彈的美國物理學家披露了為何當時無法阻止這次爆炸，以及後續更多核攻擊的計劃。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-11 · 🔵</div>
+      <p><b>台灣首度演練「斷網半小時」：戰時通訊中斷，民眾準備好了嗎？</b></p>
+      <p>台灣2026年「城鎮韌性演習」首次加入「斷網場景」，BBC中文記者前往台中現場直擊，了解民眾對網路降速措施的看法。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-11 · 🔵</div>
+      <p><b>中國單身男性陷「閃婚」騙局：在孤獨與婚姻焦慮中受害</b></p>
+      <p>「閃婚」詐騙現象，反映出中國長期累積的人口結構危機已走向極端。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-11 · 🔵</div>
+      <p><b>MySpace 要回歸？粉絲想念那個無濾鏡、原圖直出的年代</b></p>
+      <p>粉絲和創作者表示，MySpace 若要復興，必須給人一種個人化的感覺，而不是由演算法驅動的。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-10 · 🔵</div>
+      <p><b>為什麼航空公司對鋰電池日趨警惕</b></p>
+      <p>航空公司希望乘客在攜帶鋰離子電池旅行時要格外小心。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 07-28 · 🔵</div>
+      <p><b>In 1940s Australia, a young orphan is brought to a remote orphanage</b></p>
+      <p>The miracle is in the mystery. A nun's faith is challenged by an orphan at her monastery</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>📊 今日统计</h2>
+    <div class="statgrid">
+      <div class="statcard">
+        <h4>🐦 X 推文：156 条</h4>
+        <ul>
+          <li><span>General</span><b>141 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📰 RSS 新闻：127 条</h4>
+        <ul>
+          <li><span>BBC</span><b>47 条</b></li>
+          <li><span>NYT</span><b>43 条</b></li>
+          <li><span>BBC中文</span><b>32 条</b></li>
+          <li><span>爱范儿</span><b>3 条</b></li>
+          <li><span>纽约时报中文</span><b>2 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📚 累计数据</h4>
+        <ul>
+          <li><span>X</span><b>13,520 条</b></li>
+          <li><span>NGA</span><b>584 条</b></li>
+          <li><span>S1</span><b>375 条</b></li>
+          <li><span>RSS</span><b>3,940 条</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+    <p>🤖 由 Hermes Agent 自动采集 · 每日 09:00 推送 · 多源合并 + 事件聚类 + 时序分析</p>
+  </footer>
+
+</div>
+</body>
+</html>
