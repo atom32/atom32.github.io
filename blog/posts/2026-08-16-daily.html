@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日资讯早报 | 2026-08-16</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1f2328; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --accent-soft:#eff6ff;
+    --gold:#b45309; --blue:#1d4ed8; --yellow:#a16207;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:32px 20px 64px;}
+  header.hero{
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%);
+    color:#fff; border-radius:16px; padding:36px 32px; margin-bottom:28px;
+  }
+  header.hero h1{font-size:26px; font-weight:700; letter-spacing:.5px;}
+  header.hero .date{font-size:15px; opacity:.85; margin-top:6px;}
+  .stats{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;
+  }
+  .stat-pill{
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; padding:4px 14px; font-size:13px;
+  }
+  .lead{
+    background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:10px; padding:16px 20px; margin-bottom:28px; color:#374151; font-size:15px;
+  }
+  section.block{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 24px 8px; margin-bottom:24px;}
+  section.block h2{
+    font-size:19px; font-weight:700; margin-bottom:4px;
+  }
+  section.block .sub{font-size:13px; color:var(--muted); margin-bottom:16px;}
+  h3.topic{
+    font-size:16px; font-weight:700; margin:20px 0 12px; padding-top:16px;
+    border-top:1px dashed var(--line);
+  }
+  .intro{font-size:14.5px; color:#374151; background:#fafbfc; border-radius:10px; padding:10px 16px; margin-bottom:12px;}
+  .item{
+    border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin-bottom:12px;
+    background:#fafbfc;
+  }
+  .item .meta{font-size:12.5px; color:var(--muted); margin-bottom:6px;}
+  .item .meta .tag-src{font-weight:600; color:#374151;}
+  .item p{font-size:14.5px; color:#24292f; white-space:pre-line;}
+  .item p + p{margin-top:6px;}
+  .item .link{color:var(--accent); word-break:break-all;}
+  .summary-line{
+    background:var(--accent-soft); border-radius:10px; padding:10px 16px; margin-bottom:12px;
+    font-size:14.5px; color:#1e3a8a;
+  }
+  .perspectives{
+    background:#fafbfc; border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; margin-bottom:12px;
+  }
+  .perspectives .ptitle{font-size:13px; font-weight:700; color:var(--muted); margin-bottom:8px;}
+  .perspectives .psrc{font-size:13px; color:#374151; margin-bottom:6px;}
+  .perspectives .psrc b{color:var(--blue); font-weight:600;}
+  .timeline{font-size:13px; color:#374151; background:#fafbfc; border-radius:8px; padding:8px 14px; margin:10px 0;}
+  .timeline .tl{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .chip{
+    background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:1px 10px; font-size:12px; color:#374151;
+  }
+  .trend{font-size:13px; color:var(--muted); margin:10px 0;}
+  .bars{display:flex; align-items:flex-end; gap:6px; height:34px; margin-top:6px;}
+  .bar{background:linear-gradient(180deg,#60a5fa,#2563eb); border-radius:3px 3px 0 0; min-width:18px;}
+  .bar small{display:block; text-align:center; font-size:10px; color:var(--muted); margin-top:2px;}
+  .note-more{font-size:13px; color:var(--muted); font-style:italic; padding:4px 2px 12px;}
+  .statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:8px;}
+  .statcard{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fafbfc;}
+  .statcard h4{font-size:14px; margin-bottom:8px;}
+  .statcard ul{list-style:none;}
+  .statcard li{font-size:13.5px; color:#374151; padding:2px 0; display:flex; justify-content:space-between; gap:12px;}
+  .statcard li b{color:var(--ink);}
+  footer.foot{
+    text-align:center; color:var(--muted); font-size:13px; margin-top:32px; padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  footer.foot .note{color:#374151; font-size:14px; margin-bottom:4px;}
+  @media (max-width:600px){
+    header.hero{padding:26px 20px;}
+    header.hero h1{font-size:21px;}
+    section.block{padding:18px 14px 6px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🌅 每日资讯早报</h1>
+    <div class="date">2026 年 8 月 16 日 · 星期日</div>
+    <div class="stats">
+      <span class="stat-pill">📊 共 187 条信息</span>
+      <span class="stat-pill">🐦 X：133 条</span>
+      <span class="stat-pill">📰 RSS：54 条</span>
+      <span class="stat-pill">💬 NGA：0 条</span>
+      <span class="stat-pill">💭 S1：0 条</span>
+      <span class="stat-pill">🗂️ 聚类 6 个事件</span>
+    </div>
+  </header>
+
+  <div class="lead">
+    今天的 AI 信息流几乎被 DeepSeek Harness 承包：VS Code 插件、Web UI、长期记忆、插件市场，配套工具一天之内扎堆出现，生态肉眼可见地热闹起来。Claude Code 默认开启 Auto 模式，安全防护从手动按键变成语义分类器；也有人做了 Graft，让 agent 不用每次重读整个项目。价格战打到了中间层，GPT-5.6 Luna 直接砍价 80%，美国头部实验室的模型客户均价一个月降了近四分之一。国际这边，以色列空袭黎巴嫩南部造成 11 人死亡，伊朗说卡塔尔早在 3 月就扣押了他们的三名飞行员。下面按话题过一遍。
+  </div>
+
+  <section class="block">
+    <h2>📌 各平台话题</h2>
+    <div class="sub">按话题聚类后的重点内容</div>
+
+    <h3 class="topic">🤖 AI/大模型（33 条）</h3>
+
+    <p class="intro">DeepSeek Harness 是今天的主角：VS Code 插件、dsh-noema 长期记忆、better-sidebar，还有按 GitHub Star 排的插件盘点，开源生态一天比一天完整。Claude Code 这边默认开了 Auto 模式，用语义分类器代替手动确认；Guillermo 推荐的 Graft 解决的是 agent 每次重读项目的老毛病。价格战打到中间层，GPT-5.6 Luna 降价 80%，Anthropic 拿 Opus 5 打半价前沿智能。李继刚的 skills 开源库被大范围安利，Cursor 作者手绘 600 多个图标的设计过程也很值得读。</p>
+    <div class="summary-line">📝 一键聊天、实时Diff、自动恢复会话，功能强大体验满分！</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 SuSu_酥酥@NFT_Chen</span> · 6小时前 · 15:30 · 📷×2 · 🟡</div>
+      <p>🔥实用推荐：DeepSeekHarness 如何接入VS Code ！DSH Pro 插件来了！
+
+一键聊天、实时 Diff、自动恢复会话，体验直接拉满，比终端香太多！
+
+5步极速接入：
+1️⃣装 Node.js
+2️⃣npm i -g @deepseek-ai/dsh
+3️⃣去 https://t…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 SuSu_酥酥@NFT_Chen</span> · 1小时前 · 09:00 · 📷×1 · 🟡</div>
+      <p>🔥插件推荐：DeepSeek Harness必装！10大高星实用插件盘点（按GitHub Star排序）
+
+DeepSeek刚开源的Harness生态起飞了！界面丑？没视觉？迁移麻烦？这些插件全给你解决！按GitHub Star精选，数据截至今天，直接抄作业👇
+
+1️⃣dsh-web-ui ⭐131…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 yistar@yistar04</span> · 4小时前 · 11:05 · 📷×1 · 🟡</div>
+      <p>DSH 这个插件机制真的给生态留了非常大的发挥空间
+
+给大家推荐几个明显更成熟、值得一试的DSH插件：
+
+DSH-better-sidebar
+GitHub：<a class="link" href="https://t.co/ejfE7pvy5I">https://t.co/ejfE7pvy5I</a>
+⭐ 3.4k stars
+
+我目前最推荐的一个。文件管理、编辑预览、终端、Git、后台任务、S…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Fini.Yang@FiniYang</span> · 5小时前 · 10:31 · 📷×1 · 🟡</div>
+      <p>这是我们的第二个 DeepSeek Harness 插件 🥳
+长期记忆插件 dsh-noema 🐳
+基于现有成熟的记忆系统产品
+让 DeepSeek Harness 中的 Agent
+能跨会话记住重要内容工作前主动回忆
+也能在设置页里查看和管理记忆
+不用每次都从零开始复述背景
+
+⚙️ 支持从 Cod…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 撸毛吃猪脚饭|Gate美股0费率@mnm</span> · 16:32 · 🎬×1 · 🟡</div>
+      <p>我终于找到 AI 写代码越来越臃肿的原因了
+
+不是模型不够强，是它太爱"从零重写"
+
+这个开源 Skill 叫 Ponytail，专门给 Codex、Claude Code 戴紧箍咒：
+
+能复用现成代码，就别重写。
+系统原生能解决，就别造轮子。
+实在没办法，才允许新增代码。
+
+作者拿 12 个真实任…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Chasen@chasen_liao</span> · 5小时前 · 16:25 · 🟡</div>
+      <p>ClaudeDevs 团队宣布为 Claude Code 默认开启 Auto 模式，Pro 和 Team 用户无需逐条手动确认终端命令，改由内置的安全分类器进行前置拦截
+
+人在命令行里反复按确认键早晚会陷入审查疲劳，把安全防护从被动的按键确认转变为独立的语义分类器判定，才是 CLI Agent 从半…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 LinearUncle@LinearUn</span> · 15:53 · 📷×4 · 🟡</div>
+      <p>推荐提示词之神：李继刚的skills 开源库。
+
+<a class="link" href="https://t.co/LK5XqIcck9">https://t.co/LK5XqIcck9</a>
+
+西方有matt pocock, 东方有刚神。
+参看图中我用AI调研的分类，按需索取。
+玩文字，刚神绝对No.1
+
+# 安装全部技能（全局，org-mode 格式）
+bunx skills add li…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Tw93@HiTw93</span> · 1小时前 · 14:56 · 📷×1 · 🟡</div>
+      <p>终于把 Claude Code 在 Mac 应用里面拉的这个 Claude Code URL Handler app 给干掉了，没有图标很丑，一直是强迫症很讨厌的，甚至直接卸载没有用，其实你只需要在~/.claude/settings.json 里加上 disableDeepLinkRegistra…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 13:46 · 📷×1 · 🟡</div>
+      <p>今天最棒的阅读：
+<a class="link" href="https://t.co/WPpOqWKCVZ">https://t.co/WPpOqWKCVZ</a>
+
+Cursor 从零设计整套图标系统的过程，
+
+作者用了大约一年时间，手绘纯完成 600 多个图标，包含两种尺寸16px 和 24px 和两种风格Outline 线框 + Filled 填充，没有 AI 生成。
+
+提供了各种设计要点，…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Niko爱学习@ai_super_nik</span> · 12:00 · 📷×1 · 🟡</div>
+      <p>OpenAI 把 GPT-5.6 Luna 价格砍了 80%，Anthropic 拿 Opus 5 打"半价前沿智能"，但这是中间层价格战，不是全面降价。
+
+自 7 月中旬，美国头部实验室模型客户均价已降近 1/4。DeepSeek、Kimi 等开源模型逼近，DoorDash、Airbnb 已转用中…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Guillermo Casaus@_gu</span> · 11:30 · 📷×1 · 🟡</div>
+      <p>🚨 Acaban de resolver uno de los mayores problemas de Claude Code.
+
+Han creado Graft, una herramienta que evita que el agente relea tu proyecto en cada…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:08 · 📷×1 · 🟡</div>
+      <p>纸雕原来也可以这么美🥳
+
+GPT Image 2生产东方剪纸艺术：冬日故宫。
+
+提示词：
+
+9:16竖版，现代东方女性梦境立体剪纸艺术，modern oriental papercut art，layered paper cut illustration，dimensional paper scul…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 熊布朗@Stephen4171127</span> · 2小时前 · 09:58 · 📷×2 · 🟡</div>
+      <p>Gemini 3.7 Flash 太快了，虽然不能和 GPT 5.6 SOL 比较，但是只要找准合适它的任务，用起来是相当爽的。</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-04、2026-08-07、2026-08-11、2026-08-12、2026-08-15。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08/02 前manus开源Codexloom：Codex变成长期在岗的数字员工</span>
+        <span class="chip">08/03 Anthropic公开详尽报告《Graph Engine》</span>
+        <span class="chip">08/04 GPT-SoVITS开源项目学会"像人一样说话"</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（15天共1093条）
+      <div class="bars">
+        <div class="bar" style="height:42%"><small>46</small></div>
+        <div class="bar" style="height:80%"><small>88</small></div>
+        <div class="bar" style="height:75%"><small>83</small></div>
+        <div class="bar" style="height:81%"><small>89</small></div>
+        <div class="bar" style="height:100%"><small>110</small></div>
+        <div class="bar" style="height:86%"><small>95</small></div>
+        <div class="bar" style="height:78%"><small>86</small></div>
+      </div>
+    </div>
+
+    <h3 class="topic">🇮🇱 中东局势（5 条）</h3>
+
+    <p class="intro">以色列空袭黎巴嫩南部，卫生部门证实 11 人死亡，其中包含儿童。伊朗方面抛出新说法：三名飞行员早在 3 月 2 日就被卡塔尔扣押。纽约时报还报道了一个敢于越界的伊朗 YouTube 辩论节目，以及亚洲盟友对美国保护承诺的普遍疑虑。</p>
+    <div class="summary-line">📝 以色列军事行动导致11人死亡，卫生部门证实。</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-15 · 🔵</div>
+      <p><b>Eleven killed in Israeli strikes on southern Lebanon, authorities say</b></p>
+      <p>Israel's military said it had struck "Hezbollah terror infrastructure" in response to what it descri…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-15 · 🟢</div>
+      <p><b>Israeli Strikes in Lebanon Kill 11, Health Officials Say</b></p>
+      <p>The Lebanese health ministry said children were among those killed. The Israeli prime minister's off…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-15 · 🟢</div>
+      <p><b>Iran Says Qatar Captured Three of Its Pilots Early in War With U.S.</b></p>
+      <p>Iran said the airmen have been held since March 2 when their fighter jets were shot down. The Qatari…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-15 · 🟢</div>
+      <p><b>The Iranian YouTube Show Posing Questions Few Dare Ask</b></p>
+      <p>Azad, a popular online debate program, has tackled topics that push the limits of Iran's authoritari…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-15 · 🟢</div>
+      <p><b>As China Pushes to Expand in Asia, Trump Focuses on Iran</b></p>
+      <p>Asian allies are beginning to wonder whether the United States would or could defend them in a war.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-09、2026-08-11、2026-08-12、2026-08-13、2026-08-14。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">03/Au 特朗普表示同意取消对伊朗的打击，前提是能"迅速"达成协议</span>
+        <span class="chip">09/Au 中东海湾国家阿曼称霍尔木兹海峡会谈进展顺利，伊朗警告协议不会打通海峡</span>
+        <span class="chip">29/Ju 欧洲游客"消失"，东南亚旅游业者陷入困境</span>
+        <span class="chip">09/Ju 三位自以为是的领导人和他们的愚蠢战争 | 美国与沙特签署核协议，为中东再引核扩散风险</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（10天共20条）
+      <div class="bars">
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:100%"><small>4</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+      </div>
+    </div>
+
+    <h3 class="topic">🔧 开发工具（3 条）</h3>
+
+    <p class="intro">Kimi K3 的权重免费开放下载了，但 2.8 万亿参数意味着几乎没人真能跑起来——下载是最容易的一步。有人科普 Google 靠广告一年赚 3000 亿美元，还有人发现自己开完源就没管过的项目，今天一看已经 590 个 star 了。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 20:53 · 📷×1 · 🟡</div>
+      <p>Google gana 300 mil millones de dolares al año solo por llenarte de anuncios
+
+La mayoria pelea contra eso instalando bloqueadores en cada celular, tab…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:18 · 🎬×1 · 🟡</div>
+      <p>Kimi K3's weights are free to download. Almost nobody on earth can actually run them.
+
+2.8 trillion parameters. The download is the easy part.
+
+Open w…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 huangserva@servasyy_</span> · 12:24 · 🟡</div>
+      <p>没想到这个开源这么受大家欢迎
+
+开源后，我就没理会过
+
+今天一看，590个star了
+
+<a class="link" href="https://t.co/BLusItI0nF">https://t.co/BLusItI0nF</a></p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-05、2026-08-08、2026-08-12、2026-08-13、2026-08-15。</i></div>
+
+    <h3 class="topic">🇪🇺 欧洲（2 条）</h3>
+
+    <p class="intro">卫星从太空拍下了欧洲热浪后的焦黑地貌：冰川萎缩、沉船暴露。法国南特一家肉店和滑板店共用一块双关招牌，从一边看是牛排，从另一边看是滑板。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 NO CONTEXT HUMANS@Hu</span> · 17:57 · 📷×1 · 🟡</div>
+      <p>In Nantes, France, a butcher shop and a skateboard store sit next to each other and share the same clever sign.
+
+From one side it looks like a steak, …</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-15 · 🔵</div>
+      <p><b>Europe's scorched landscapes seen from space after summer heatwaves</b></p>
+      <p>From glaciers shrinking to an exposed shipwreck, satellites capture the impact of extreme heat and…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-02、2026-08-04、2026-08-08、2026-08-09。</i></div>
+
+    <h3 class="topic">🏢 创业/商业（1 条）</h3>
+
+    <p class="intro">朋友想靠 ComfyUI 批量产短剧，理由很充分：开源视频模型够强、普通显卡能跑、工作流现成、成本比闭源低。作者只问了一句：折腾完这些，你对客户多知道了什么？对方愣住了。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 凡人小北@frxiaobei</span> · 11小时前 · 11:00 · 🟡</div>
+      <p>一个打算创业的朋友跟我聊起 ComfyUI。
+
+他说，最近的开源视频模型已经很强，普通显卡也能跑，网上还有大量现成工作流。只要把节点调顺，就能批量生产短剧和短视频，成本比闭源模型低很多。
+
+我问他：
+
+「折腾这些以后，你对客户多知道了什么？」
+
+他愣了一下。什么题材有人看，什么质量客户愿意买，做到什…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-08、2026-08-09、2026-08-12、2026-08-14、2026-08-15。</i></div>
+  </section>
+
+  <section class="block">
+    <h2>🗂️ 其他零散内容（130 条）</h2>
+    <div class="sub">未聚类的零散推文</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 はるこんC108 2日目東２ セ-05a</span> · 21:37 · 🟡</div>
+      <p>コンビニおにぎり高すぎワロタ</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 晃田ヒカ@コミケ2日目東 Ａ-15b@a</span> · 21:17 · 🟡</div>
+      <p>昨日はブルアカ島で買い物出来なかったので新刊交換させてください🙏</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 21:10 · 📷×1 · 🟡</div>
+      <p>RT @akitahika44: 【C108おしながき】
+今年の夏はアスナメインです！
+お待ちしております！ <a class="link" href="https://t.co/QQMX7HO57h">https://t.co/QQMX7HO57h</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 21:03 · 📷×4 · 🟡</div>
+      <p>RT @Miga2580: ちょっと遅い暑中見舞い👻🔨😜 <a class="link" href="https://t.co/gABpuCcHbk">https://t.co/gABpuCcHbk</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 梦@eee3namnar_</span> · 56分钟前 · 21:03 · 🟡</div>
+      <p>"早上起床后去公园散步，清新的空气！🌳"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 21:01 · 🟡</div>
+      <p>RT @Cubebrush: Add more energy to your figure drawings with 740+ high-quality photographs of dynamic…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 5分钟前 · 21:01 · 🟡</div>
+      <p>"今天学到了一些实用的生活技巧，增长见识。"</p>
+    </div>
+    <div class="note-more">*…还有 122 条未显示*</div>
+  </section>
+
+  <section class="block">
+    <h2>📊 今日统计</h2>
+    <div class="statgrid">
+      <div class="statcard">
+        <h4>🐦 X 推文：133 条</h4>
+        <ul>
+          <li><span>General</span><b>117 条</b></li>
+          <li><span>R18（已过滤）</span><b>16 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📰 RSS 新闻：54 条</h4>
+        <ul>
+          <li><span>BBC</span><b>33 条</b></li>
+          <li><span>NYT</span><b>21 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📚 累计数据</h4>
+        <ul>
+          <li><span>X</span><b>14,018 条</b></li>
+          <li><span>NGA</span><b>584 条</b></li>
+          <li><span>S1</span><b>374 条</b></li>
+          <li><span>RSS</span><b>4,043 条</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+    <p>🤖 由 Hermes Agent 自动采集 · 每日 09:00 推送 · 多源合并 + 事件聚类 + 时序分析</p>
+  </footer>
+
+</div>
+</body>
+</html>
