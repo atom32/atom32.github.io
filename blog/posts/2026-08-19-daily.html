@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日资讯早报 | 2026-08-19</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1f2328; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --accent-soft:#eff6ff;
+    --gold:#b45309; --blue:#1d4ed8; --yellow:#a16207;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:32px 20px 64px;}
+  header.hero{
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%);
+    color:#fff; border-radius:16px; padding:36px 32px; margin-bottom:28px;
+  }
+  header.hero h1{font-size:26px; font-weight:700; letter-spacing:.5px;}
+  header.hero .date{font-size:15px; opacity:.85; margin-top:6px;}
+  .stats{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;
+  }
+  .stat-pill{
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; padding:4px 14px; font-size:13px;
+  }
+  .lead{
+    background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:10px; padding:16px 20px; margin-bottom:28px; color:#374151; font-size:15px;
+  }
+  section.block{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 24px 8px; margin-bottom:24px;}
+  section.block h2{
+    font-size:19px; font-weight:700; margin-bottom:4px;
+  }
+  section.block .sub{font-size:13px; color:var(--muted); margin-bottom:16px;}
+  h3.topic{
+    font-size:16px; font-weight:700; margin:20px 0 12px; padding-top:16px;
+    border-top:1px dashed var(--line);
+  }
+  .intro{font-size:14.5px; color:#374151; background:#fafbfc; border-radius:10px; padding:10px 16px; margin-bottom:12px;}
+  .item{
+    border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin-bottom:12px;
+    background:#fafbfc;
+  }
+  .item .meta{font-size:12.5px; color:var(--muted); margin-bottom:6px;}
+  .item .meta .tag-src{font-weight:600; color:#374151;}
+  .item p{font-size:14.5px; color:#24292f; white-space:pre-line;}
+  .item p + p{margin-top:6px;}
+  .item .link{color:var(--accent); word-break:break-all;}
+  .summary-line{
+    background:var(--accent-soft); border-radius:10px; padding:10px 16px; margin-bottom:12px;
+    font-size:14.5px; color:#1e3a8a;
+  }
+  .perspectives{
+    background:#fafbfc; border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; margin-bottom:12px;
+  }
+  .perspectives .ptitle{font-size:13px; font-weight:700; color:var(--muted); margin-bottom:8px;}
+  .perspectives .psrc{font-size:13px; color:#374151; margin-bottom:6px;}
+  .perspectives .psrc b{color:var(--blue); font-weight:600;}
+  .timeline{font-size:13px; color:#374151; background:#fafbfc; border-radius:8px; padding:8px 14px; margin:10px 0;}
+  .timeline .tl{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .chip{
+    background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:1px 10px; font-size:12px; color:#374151;
+  }
+  .trend{font-size:13px; color:var(--muted); margin:10px 0;}
+  .bars{display:flex; align-items:flex-end; gap:6px; height:34px; margin-top:6px;}
+  .bar{background:linear-gradient(180deg,#60a5fa,#2563eb); border-radius:3px 3px 0 0; min-width:18px;}
+  .bar small{display:block; text-align:center; font-size:10px; color:var(--muted); margin-top:2px;}
+  .note-more{font-size:13px; color:var(--muted); font-style:italic; padding:4px 2px 12px;}
+  .statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:8px;}
+  .statcard{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fafbfc;}
+  .statcard h4{font-size:14px; margin-bottom:8px;}
+  .statcard ul{list-style:none;}
+  .statcard li{font-size:13.5px; color:#374151; padding:2px 0; display:flex; justify-content:space-between; gap:12px;}
+  .statcard li b{color:var(--ink);}
+  footer.foot{
+    text-align:center; color:var(--muted); font-size:13px; margin-top:32px; padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  footer.foot .note{color:#374151; font-size:14px; margin-bottom:4px;}
+  @media (max-width:600px){
+    header.hero{padding:26px 20px;}
+    header.hero h1{font-size:21px;}
+    section.block{padding:18px 14px 6px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🌅 每日资讯早报</h1>
+    <div class="date">2026 年 8 月 19 日 · 星期三</div>
+    <div class="stats">
+      <span class="stat-pill">📊 共 188 条信息</span>
+      <span class="stat-pill">🐦 X：92 条</span>
+      <span class="stat-pill">📰 RSS：96 条</span>
+      <span class="stat-pill">💬 NGA：0 条</span>
+      <span class="stat-pill">💭 S1：0 条</span>
+      <span class="stat-pill">🔞 R18 已过滤</span>
+    </div>
+  </header>
+
+  <div class="lead">
+    今天的主线是 OpenAI 给 ChatGPT 加了面向青少年的安全模式，主动限制敏感内容，NYT 和 BBC 都在跟进。DeepSeek Harness 的生态还在发酵，GitHub 星标已过 21 万，配套的 Pilot Harness 客户端、跨工具记忆方案 ai-memory 接连冒出来；Codex 5.6 的 Skill 沉淀技巧继续刷屏。企业微信正式向外部 AI Agent 开放，CLI + MCP 直通 11 类办公能力。国际这边，以色列空袭叙利亚空军基地引来美国不满，加沙的致命打击让特朗普的和平计划更悬，伊朗僵局把 30 年期美债收益率推上近 20 年新高；俄乌方向俄罗斯再次威胁英国，Kanye West 却宣布要去俄罗斯巡演。下面按话题过一遍。
+  </div>
+
+  <section class="block">
+    <h2>📌 各平台话题</h2>
+    <div class="sub">按话题聚类后的重点内容（R18 内容已过滤）</div>
+
+    <h3 class="topic">🤖 AI/大模型（14 条）</h3>
+
+    <div class="summary-line">📝 OpenAI推出新的ChatGPT版本，减少对青少年用户的敏感内容。</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-18 · 🟢</div>
+      <p><b>OpenAI Introduces ‘ChatGPT for Teens’ as Safety Concerns Grow</b> — The artificial intelligence start-up announced a chatbot mode that will automatically limit some con</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-18 · 🔵</div>
+      <p><b>OpenAI makes ChatGPT less 'human' for teens in new safety update</b> — OpenAI insisted this was not in response to a particular issue with children believing ChatGPT to be</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 15:25 · 🟡</div>
+      <p>OpenAI recommends companies use its AI to defend from attacks like the ones its own models committed <a class="link" href="https://t.co/naPeEm5UrE">https://t.co/naPeEm5UrE</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 xIA@xiathis</span> · 7小时 · 14:42 · 🎬×1 · 🟡</div>
+      <p>213.000 estrellas en GitHub.
+
+No es un modelo. No es una app. No es un framework.
+
+Es el sistema que hace que tu agente de IA trabaje mejor.
+
+Se llama…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 凡人小北@frxiaobei</span> · 7小时 · 14:30 · 🟡</div>
+      <p>大家都在说企业 AI 转型到底该怎么做。
+
+那可以看看 ABC Legal 这个故事。
+ABC Legal 是一家有 1100 多名员工的法律服务公司。
+
+他们想让更多员工用上 AI，但没有成立一个 AI 团队，然后让各个业务部门排着队提需求、等着开发 Agent。
+
+他们反过来操作，直接让业务人员…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 govin.eth | G哥@goan9</span> · 13:27 · 🎬×1 · 🟡</div>
+      <p>Codex 5.6 必装金融分析工具，让你秒变股票分析专家
+
+你是不是还在每天盯 A股、港股、美股，还要自己看新闻、资金流、技术指标，最后再手动做复盘？其实这些AI都能帮你搞定。
+
+用这个开源项目 daily_stock_analysis 自动抓取行情和相关信息，生成 AI 分析报告，再推送到企业微…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 AI樱木@0xSilver_Time</span> · 11:55 · 📷×1 · 🟡</div>
+      <p>免费直接从顶级公司学习AI
+
+1 - Anthropic:
+<a class="link" href="https://t.co/dKqZ8lmf7T">https://t.co/dKqZ8lmf7T</a>
+
+2 - Google:
+<a class="link" href="https://t.co/srmXEfNTOS">https://t.co/srmXEfNTOS</a>
+
+3 - Meta:
+<a class="link" href="https://t.co/0S78U9cVCR">https://t.co/0S78U9cVCR</a>
+
+4 - NVIDIA:
+https://t.c…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 11:00 · 📷×4 · 🟡</div>
+      <p>快冲快冲，兄弟们！Starryblu 这张实体 Mastercard 真的太牛逼了！！！
+
+几乎零门槛，没有开卡费，一张卡搞定所有海外支付！
+
+申请通过后有虚拟 Mastercard，也能申请实体卡寄回国内/海外。
+
+1、ChatGPT、Claude、Cursor、X Premium、海外 SaaS…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 泊舟@bozhou_ai</span> · 12小时 · 09:54 · 🟡</div>
+      <p>终于有人开始处理多个 AI 编程工具之间的记忆问题了。
+
+我们在使用Claude Code或者Codex的时候，有个很大的痛点就是记忆并不互通。即使面对同一个项目，两边的项目上下文也不会自动互通。换工具后，你仍要重讲背景，项目架构、失败方案和开放问题也得再交代一遍。
+
+ai-memory 做的是专门…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 govin.eth | G哥@goan9</span> · 09:17 · 🎬×1 · 🟡</div>
+      <p>Codex 5.6 真正省90% token 的技巧：不要重复教 AI，要把流程沉淀成 Skill
+
+很多人用 Codex 时，每次遇到类似任务，都需要重新解释：
+
+怎么 Review PR？怎么测试？怎么初始化项目？怎么排查 Bug？
+
+你这不是在使用 AI，这样不仅浪费你的打字时间，而且还在不断…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 歸藏(guizang.ai)@op741</span> · 09:16 · 📷×4 · 🟡</div>
+      <p>终于搞定了！给 DeepSeek Harness 做了一个开箱即用的客户端 Pilot Harness。
+
+这个客户端主要由两部分组成：
+一个是客户端的壳；另一个是所有的优化，它们本质上都是 DeepSeek Harness 的插件。
+
+也就是说，你既可以直接使用我这个客户端（默认加载所有插件），也…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 2026-08-18 · 🟢</div>
+      <p><b>支付宝拉上手机、汽车、大模型，准备让 AI 办一件大事</b> — 2026-08-18 18:00:26
+
+今年我很喜欢的一部科幻剧集《同乐者》里，一段来自太空的信号，把地球上大多数人连接进同一个意识网络。一个人的</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-18 · 🟢</div>
+      <p><b>The A.I.s Are Already Out of Control</b> — Helen Toner, who served on OpenAI’s board, hopes the recent hack by that company’s models serves as </p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 2026-08-18 · 🟢</div>
+      <p><b>奔驰连发两款重磅油车：C 级全面焕新，国产 GLE 剑指 X5L</b> — 2026-08-18 14:52:06
+
+奔驰最近很忙。
+8 月 17 日晚，官方口中的「新一代 C 级车」完成全球首秀。几天后，奔驰首款国产大型豪</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-07、2026-08-11、2026-08-12、2026-08-17、2026-08-18。</i></div>
+<div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08/05 🎊 关键进展</span>
+        <span class="chip">08/06 🎉 关键进展</span>
+        <span class="chip">08/07 🎊 关键进展</span>
+      </div>
+    </div>
+<div class="trend">📊 趋势（15天共1149条）
+      <div class="bars">
+        <div class="bar" style="height:82%"><small>91</small></div>
+        <div class="bar" style="height:100%"><small>111</small></div>
+        <div class="bar" style="height:89%"><small>99</small></div>
+        <div class="bar" style="height:92%"><small>102</small></div>
+        <div class="bar" style="height:66%"><small>73</small></div>
+        <div class="bar" style="height:92%"><small>102</small></div>
+        <div class="bar" style="height:60%"><small>67</small></div>
+      </div>
+    </div>
+
+    <h3 class="topic">🔧 开发工具（6 条）</h3>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 lumxss@bkdgiffug</span> · 2小时 · 19:05 · 📷×1 · 🟡</div>
+      <p>40万首中国古诗词被做成开箱即用的API了？chinese-poetry-api，不用自己爬数据清洗建库，调接口就能拿到诗。
+
+收录了唐诗、宋词、元曲、诗经、楚辞，按朝代、作者、类型查，全文搜索、随机来一首、简繁体切换都支持。Go写的，REST和GraphQL双接口，Docker一键跑。
+
+做古诗小…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 黄赟@huangyun_122</span> · 4小时 · 17:23 · 🎬×1 · 🟡</div>
+      <p>兄弟们，这个 GitHub 开源宝库，真神了啊
+
+<a class="link" href="https://t.co/vcP3Bmbznl">https://t.co/vcP3Bmbznl</a>
+
+把它嫁接到 Codex 里面，分分钟出视频，日更100条不是痴人说梦
+
+我试了一条天涯的神贴，配上祁同伟的口音，有那个味了 <a class="link" href="https://t.co/PLd26gsw5I">https://t.co/PLd26gsw5I</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 13:30 · 📷×1 · 🟡</div>
+      <p>想给智能手表、家居这些小设备塞个 AI，几百 MB 的模型放不下，联网调接口又不安全。
+
+Cactus 团队的 Needle 2 走了条极小路线，将 4500 万参数模型压成一个 14MB 文件，跑起来只吃 28MB 内存。
+
+它专门干三件事，听懂指令去调工具、操作设备、从一段文字里抽出结构化数据。…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 鸟哥 | 蓝鸟会@NFTCPS</span> · 9小时 · 12:49 · 📷×1 · 🟡</div>
+      <p>警惕！这个来源AI语音项目可能会成为缅北电诈新武器，GitHub 都 3.7 万 Star 了。
+
+它牛在哪？就一句话：你只要录大概 10 分钟干净人声，喂给它，它就能训练出一个专属你的音色模型。
+
+拿这玩意能干嘛？给你捋清楚：
+1️⃣ AI 翻唱，让谁唱都行
+2️⃣ 声音转换，随便换嗓
+3️⃣ 实…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 12:46 · 📷×1 · 🟡</div>
+      <p>Cheaper Inference is selling API access to most major models for 30% off. 
+
+<a class="link" href="https://t.co/PwDxeyq3tH">https://t.co/PwDxeyq3tH</a> <a class="link" href="https://t.co/e7nssHReNU">https://t.co/e7nssHReNU</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitHubDaily@GitHub_D</span> · 10:00 · 📷×1 · 🟡</div>
+      <p>海量投简历的时候，哪家走到哪一轮、约了什么时间，全靠脑子和聊天记录硬记。
+
+JobSync 把这摊事收进一套开源系统，投递进度、简历、面试题、待办都归到一处。
+
+内置的 AI 助手能审简历，拿简历和岗位描述互相打分，顺手把求职信也写了。
+
+简历从 PDF 或 Word 导入，AI 自动拆出工作经历、…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-08、2026-08-12、2026-08-13、2026-08-17、2026-08-18。</i></div>
+
+    <h3 class="topic">🇮🇱 中东局势（4 条）</h3>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-18 · 🟢</div>
+      <p><b>Israel Strikes Air Base in Syria, Drawing Ire From the U.S.</b> — The attack was the latest in a series of Israeli military interventions in Syria over the past two y</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-18 · 🟢</div>
+      <p><b>Deadly Israeli Strike on Gaza Raises Doubts About Trump Peace Plan</b> — A day after President Trump’s envoy, Jared Kushner, visited Israel to advance a stalled plan for dem</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-18 · 🟢</div>
+      <p><b>Bond Yields Jump and Stocks Slip as Iran Stalemate Unsettles Investors</b> — The yield on the 30-year U.S. Treasury bond rose to its highest level in nearly 20 years.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-18 · 🟢</div>
+      <p><b>How Israel’s Financial Chokehold Is Stifling the West Bank Economy</b> — Intensifying restrictions have hit every part of the territory’s dealings, spurring worries about wh</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-11、2026-08-12、2026-08-14、2026-08-16、2026-08-17。</i></div>
+<div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">03/Au 特朗普表示同意取消对伊朗的打击，前提是能“迅速”达成协议</span>
+        <span class="chip">09/Au 中东海湾国家阿曼（Oman）方面称，霍尔木兹海峡会谈进展顺利，而伊朗则警告协议不会打通海峡。</span>
+        <span class="chip">23/Ju 三位自以为是的领导人和他们的愚蠢战争 | 美国与沙特签署核协议 为中东再引核扩散风险</span>
+        <span class="chip">29/Ju 欧洲游客“消失”，东南亚旅游业者陷入困境。</span>
+      </div>
+    </div>
+<div class="trend">📊 趋势（11天共22条）
+      <div class="bars">
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:100%"><small>4</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+      </div>
+    </div>
+
+    <h3 class="topic">🇷🇺 俄乌冲突（4 条）</h3>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-18 · 🔵</div>
+      <p><b>Russia Threatens The UK (Again)</b> — Threat comes after British-made drones were used in recent Ukrainian strikes in Russia.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-18 · 🔵</div>
+      <p><b>Kanye West announces tour dates in Russia</b> — The musician would be the first major Western artist to play Russia since the invasion of Ukraine.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-18 · 🟢</div>
+      <p><b>A Mother’s Quest to Rescue Her Son From Russian-Occupied Ukraine</b> — They made a risky bid to reunite after three years of separation, illness and deprivation — the kind</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 纽约时报中文</span> · 2026-08-18 · 🟢</div>
+      <p><b>乌克兰无人机何以精准打击俄罗斯本土？</b> — MICHAEL SCHWIRTZ, TYLER HICKS2026年8月18日上月在乌克兰扎波罗热地区，一名乌克兰士兵正在为一架无人机打击俄军目标做准备。 俄方无人机操作员已经躺下睡觉了。他们那辆白色</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-11、2026-08-12、2026-08-15、2026-08-16、2026-08-17。</i></div>
+<div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08/10 主要障碍在于雷神公司设计的防空发射器和导弹生产许可未授</span>
+        <span class="chip">08/16 西方始终将俄罗斯视为战略对手而非平等伙伴</span>
+        <span class="chip">10/03 中国、美国和俄罗斯的太空攻防战：卫星成为第一击</span>
+        <span class="chip">02/27 中国将14家欧盟实体列入出口管控名单</span>
+        <span class="chip">04/23 泽连斯基撤换乌克兰军方总司令</span>
+        <span class="chip">02/18 乌克兰无人机精准打击俄罗斯本土</span>
+        <span class="chip">02/22 泽连斯基撤换最高将领</span>
+      </div>
+    </div>
+<div class="trend">📊 趋势（12天共22条）
+      <div class="bars">
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+      </div>
+    </div>
+
+    <h3 class="topic">💻 AI Agent（3 条）</h3>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Ding@dingyi</span> · 8小时 · 13:15 · 📷×4 · 🟡</div>
+      <p>最近在研究用 AI agent 做投资的产品，发现 Questflow 做得还不错。它做的不是通用 AI agent，而是专门针对金融的 AI finance agent 和 financial harness。这是为什么它能在 Hyperliquid 和 Polymarket 上跑赢那些通用 ag…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 13:00 · 🎬×1 · 🟡</div>
+      <p>Access has been democratized. 
+Financial intelligence has not.
+
+Questflow turns top investors’ market judgment into AI Agents that retail investors ca…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Kelvin@ai_Goge</span> · 7小时 · 14:21 · 📷×1 · 🟡</div>
+      <p>🚀 企业微信正式向外部 AI Agent 开放了
+
+今天官网上线 AI 开放能力页面，通过 CLI 和 MCP，把消息、邮件、文档、表格、智能表格、智能文档、待办、日程、会议、微盘、通讯录这 11 类核心办公能力，直接开放给 Codex、DeepSeek Harness、Kimi Work、Mini…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-11、2026-08-12、2026-08-13、2026-08-17、2026-08-18。</i></div>
+
+    <h3 class="topic">🌍 环境/能源（2 条）</h3>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-18 · 🔵</div>
+      <p><b>Global borrowing costs hit fresh highs on oil, AI and inflation</b> — Interest rates on long-term US, UK, German and Japanese government debt have soared.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-18 · 🔵</div>
+      <p><b>Brazil's President Lula hails oil discovery near Amazon river</b> — Environmentalists have heavily criticised the exploratory drilling in the sea off the mouth of the A</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-06、2026-08-08、2026-08-09、2026-08-12、2026-08-18。</i></div>
+
+    <h3 class="topic">🇹🇼 台海局势（2 条）</h3>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-18 · 🟢</div>
+      <p><b>Ship Exiting the Strait of Hormuz Is Attacked</b> — At least 17 commercial sailors have been killed in and around Iranian and Omani waters since March. </p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-18 · 🔵</div>
+      <p><b>朱镕基逝世：从“搞台独没好下场” 到“搞坏香港便是民族罪人”，回顾他说过的话</b> — 图像来源，AFP via Getty Images2000年3月中，台湾总统大选前几天，朱镕基在人大记者会回答记者询问时，强烈批评台湾总统大选及台独。Published 2026年8月13日最近更新：</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-09、2026-08-12、2026-08-16、2026-08-17、2026-08-18。</i></div>
+<div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">04/04 美国与日本罕有联手干预汇市，图阻日圆跌至40年来新低 | 1000公里环台单车之旅：为何越来越多人踏上这段旅程？</span>
+        <span class="chip">11/11 如果中国切断台湾互联网，台湾将如何应对？ | 台湾“汉光演习”四大看点：首次阻绝淡江大桥、动员民用工厂产武器 | 台湾首度演练“断网半小时”：战时通讯中断，民众准备好了吗？</span>
+        <span class="chip">18/18 距离金门仅三公里，厦门翔安机场为何引发台湾国安疑虑？</span>
+        <span class="chip">21/05 东海开发：施压日本、探测美国反应：中国新设施释放哪些讯息？ | 台湾“汉光演习”四大看点：首次阻绝淡江大桥、动员民用工厂产武器 | 台湾物流商成为“审书人”：香港国安法如何改变跨境图书供应链？</span>
+        <span class="chip">28/07 亚洲安全局势正经历一场历史性的转变 | 美国以“强迫劳动”为由徵新关税，影响中国、台湾等60个贸易伙伴</span>
+        <span class="chip">29/09 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌 | 白色恐怖迷雾中，台湾政治受难者后代如何摸索真相 | 距离金门仅三公里，厦门翔安机场为何引发台湾国安疑虑？ | 智能戒指都知道我怀孕了，我还不知道</span>
+      </div>
+    </div>
+<div class="trend">📊 趋势（12天共32条）
+      <div class="bars">
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>4</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>4</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+      </div>
+    </div>
+
+    <h3 class="topic">🇪🇺 欧洲（2 条）</h3>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-18 · 🔵</div>
+      <p><b>《No 10: Full Confidence》：热门游戏让你体验英国首相的处境。</b> — 图像来源，Sleepy Boy Games在首相模拟游戏中，玩家必须平衡包括内阁和媒体在内的各派系的情绪。Article InformationAuthor, 劳拉·克雷斯 （Laura Cress）</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-18 · 🔵</div>
+      <p><b>Inside secret police warehouse as Germany targets small boats gangs</b> — German authorities seize dinghies and life jackets during their first raids under a new law that cra</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-04、2026-08-08、2026-08-09、2026-08-17。</i></div>
+
+    <h3 class="topic">🎮 二次元/游戏（1 条）</h3>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:21 · 📷×1 · 🟡</div>
+      <p>最近发现一个 Obsidian 主题，非常的好看，有一点毛玻璃的效果。
+
+试用之后我就把用了两年半的主题给换了，大家有需要的可以试试看，主题叫做 Apex。 <a class="link" href="https://t.co/NncMMYbX5I">https://t.co/NncMMYbX5I</a></p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-11、2026-08-12、2026-08-13、2026-08-15、2026-08-18。</i></div>
+
+    <h3 class="topic">🇰🇵 朝鲜半岛（1 条）</h3>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-18 · 🟢</div>
+      <p><b>Gulf Oil Giants Push to Expand Overseas Stockpiles as Iran War Drags On</b> — Saudi Arabia and the United Arab Emirates are seeking larger oil reserves in Japan and South Korea a</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-05、2026-08-06、2026-08-08、2026-08-15、2026-08-17。</i></div>
+
+    <h3 class="topic">🇯🇵 日本/东亚（1 条）</h3>
+
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-18 · 🔵</div>
+      <p><b>人工智慧（AI）：日本企业应用为何如此缓慢</b> — 图像来源，AFP via Getty Images财务省表示企业对AI的采用率已大幅提高。目前已有75%公司使用这项技术，而五年前这一比例仅为11%。Article InformationAuthor</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-12、2026-08-13、2026-08-14、2026-08-15、2026-08-17。</i></div>
+
+  </section>
+
+  <section class="block">
+    <h2>📌 其他零散内容（140 条）</h2>
+    <div class="sub">未聚类的零散推文，按时间倒序（R18 内容已过滤）</div>
+    <p class="intro">没进话题聚类的零散消息，按时间倒序：GLM-5.3 的跑分争议、海外账号工具合集、马斯克随手一个 Cool，不一定每条都值得点开。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 KC@karanC_12</span> · 34分钟 · 21:26 · 📷×1 · 🟡</div>
+      <p>Everyone talks about GLM-5.3 for coding.
+
+But a 60 on the Artificial Analysis Intelligence Index tel…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 21:24 · 📷×1 · 🟡</div>
+      <p>GLM-5.3 scores 60 on the Artificial Analysis Intelligence Index.
+
+While GLM is best known for its co…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Sara@Sara72941793</span> · 21:13 · 📷×1 · 🟡</div>
+      <p>海外账号与工具合集：
+
+Telegram / 纸飞机
+TikTok
+Instagram
+Discord
+Google邮箱
+美国苹果ID
+香港苹果ID
+Shadowrocket小火箭 VPN
+年卡138…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Elon Musk@elonmusk</span> · 20:55 · 🟡</div>
+      <p>Cool</p>
+    </div>
+    <p class="note-more">…还有 132 条未显示（另有 4 条 R18 内容已过滤）</p>
+  </section>
+
+  <section class="block">
+    <h2>📊 今日统计</h2>
+    <div class="statgrid">
+      <div class="statcard">
+        <h4>🐦 X 推文：92 条</h4>
+        <ul>
+          <li><span>General</span><b>83 条</b></li>
+          <li><span>R18（已过滤）</span><b>9 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📰 RSS 新闻：96 条</h4>
+        <ul>
+          <li><span>BBC</span><b>46 条</b></li>
+          <li><span>NYT</span><b>41 条</b></li>
+          <li><span>爱范儿</span><b>4 条</b></li>
+          <li><span>BBC中文</span><b>3 条</b></li>
+          <li><span>纽约时报中文</span><b>2 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📚 累计数据</h4>
+        <ul>
+          <li><span>X</span><b>15,312 条</b></li>
+          <li><span>NGA</span><b>584 条</b></li>
+          <li><span>S1</span><b>374 条</b></li>
+          <li><span>RSS</span><b>4,464 条</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+    <p>🤖 由 Hermes Agent 自动采集 · 每日 09:00 推送 · 多源合并 + 事件聚类 + 时序分析</p>
+  </footer>
+
+</div>
+</body>
+</html>
