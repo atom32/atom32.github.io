@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日资讯早报 | 2026-08-21</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1f2328; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --accent-soft:#eff6ff;
+    --gold:#b45309; --blue:#1d4ed8; --yellow:#a16207;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:32px 20px 64px;}
+  header.hero{
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%);
+    color:#fff; border-radius:16px; padding:36px 32px; margin-bottom:28px;
+  }
+  header.hero h1{font-size:26px; font-weight:700; letter-spacing:.5px;}
+  header.hero .date{font-size:15px; opacity:.85; margin-top:6px;}
+  .stats{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;
+  }
+  .stat-pill{
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; padding:4px 14px; font-size:13px;
+  }
+  .lead{
+    background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:10px; padding:16px 20px; margin-bottom:28px; color:#374151; font-size:15px;
+  }
+  section.block{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 24px 8px; margin-bottom:24px;}
+  section.block h2{
+    font-size:19px; font-weight:700; margin-bottom:4px;
+  }
+  section.block .sub{font-size:13px; color:var(--muted); margin-bottom:16px;}
+  h3.topic{
+    font-size:16px; font-weight:700; margin:20px 0 12px; padding-top:16px;
+    border-top:1px dashed var(--line);
+  }
+  .intro{font-size:14.5px; color:#374151; background:#fafbfc; border-radius:10px; padding:10px 16px; margin-bottom:12px;}
+  .item{
+    border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin-bottom:12px;
+    background:#fafbfc;
+  }
+  .item .meta{font-size:12.5px; color:var(--muted); margin-bottom:6px;}
+  .item .meta .tag-src{font-weight:600; color:#374151;}
+  .item p{font-size:14.5px; color:#24292f; white-space:pre-line;}
+  .item p + p{margin-top:6px;}
+  .item .link{color:var(--accent); word-break:break-all;}
+  .summary-line{
+    background:var(--accent-soft); border-radius:10px; padding:10px 16px; margin-bottom:12px;
+    font-size:14.5px; color:#1e3a8a;
+  }
+  .perspectives{
+    background:#fafbfc; border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; margin-bottom:12px;
+  }
+  .perspectives .ptitle{font-size:13px; font-weight:700; color:var(--muted); margin-bottom:8px;}
+  .perspectives .psrc{font-size:13px; color:#374151; margin-bottom:6px;}
+  .perspectives .psrc b{color:var(--blue); font-weight:600;}
+  .timeline{font-size:13px; color:#374151; background:#fafbfc; border-radius:8px; padding:8px 14px; margin:10px 0;}
+  .timeline .tl{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .chip{
+    background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:1px 10px; font-size:12px; color:#374151;
+  }
+  .trend{font-size:13px; color:var(--muted); margin:10px 0;}
+  .bars{display:flex; align-items:flex-end; gap:6px; height:34px; margin-top:6px;}
+  .bar{background:linear-gradient(180deg,#60a5fa,#2563eb); border-radius:3px 3px 0 0; min-width:18px;}
+  .bar small{display:block; text-align:center; font-size:10px; color:var(--muted); margin-top:2px;}
+  .note-more{font-size:13px; color:var(--muted); font-style:italic; padding:4px 2px 12px;}
+  .statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:8px;}
+  .statcard{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fafbfc;}
+  .statcard h4{font-size:14px; margin-bottom:8px;}
+  .statcard ul{list-style:none;}
+  .statcard li{font-size:13.5px; color:#374151; padding:2px 0; display:flex; justify-content:space-between; gap:12px;}
+  .statcard li b{color:var(--ink);}
+  footer.foot{
+    text-align:center; color:var(--muted); font-size:13px; margin-top:32px; padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  footer.foot .note{color:#374151; font-size:14px; margin-bottom:4px;}
+  @media (max-width:600px){
+    header.hero{padding:26px 20px;}
+    header.hero h1{font-size:21px;}
+    section.block{padding:18px 14px 6px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🌅 每日资讯早报</h1>
+    <div class="date">2026 年 8 月 21 日 · 星期五</div>
+    <div class="stats">
+      <span class="stat-pill">📊 共 213 条信息</span>
+      <span class="stat-pill">🐦 X：112 条</span>
+      <span class="stat-pill">📰 RSS：101 条</span>
+      <span class="stat-pill">💬 NGA：0 条</span>
+      <span class="stat-pill">💭 S1：0 条</span>
+      <span class="stat-pill">🗂️ 聚类 15 个事件</span>
+    </div>
+  </header>
+
+  <div class="lead">
+    今天最重的一条是许家印：深圳中院判无期徒刑，恒大集团被罚近 160 亿，地产时代最后一个符号人物算是落了槌。国际上，美国对伊朗的经济施压继续加码，贝森特放话要"压扁"伊朗经济，美伊两边都在等对方先眨眼；俄罗斯导弹又砸基辅，至少 13 人死亡，乌克兰的防空弹药快见底了。科技圈被 Agent 刷屏：DeepSeek Harness 出了 iOS 真机自动化插件，/variate 让 Claude Code 能批量出 UI 方案，还有人把仙剑 95 用 Rust+Wasm 搬进了浏览器。下面按话题过。
+  </div>
+
+
+  <section class="block">
+    <h2>📌 各平台话题</h2>
+    <div class="sub">按话题聚类后的重点内容</div>
+    <h3 class="topic">🤖 AI/大模型（5 条）</h3>
+
+    <p class="intro">DeepSeek Harness 生态今天又添新东西：官方出了 iOS 模拟器和真机自动化插件 dsh-ios，Agent 能直接看屏幕、点按、跑 App、查内存泄漏；/variate 是个开源的 UI 设计迭代 skill，Claude Code、Codex 都能用；GitHubDaily 推了个 Youtube-clipper-skill，给视频按话题自动分段加字幕。最好玩的是仙剑 95 浏览器版，作者把 SDLPAL 的 C 源码用 Rust 重写，再靠 Wasm 跑在 Web Worker 里，音频走 SharedArrayBuffer 环形缓冲，老游戏在浏览器里活了。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 AriesTheCoder@AriesT</span> · 21:05 · 🎬×1 · 🟡</div>
+      <p>RE: Deepseek Harness | #AriesShipLog<br><br>Today, I downloaded and installed Deepseek Harness by @deepseek_ai and I will be experimenting with it. https:/…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:29 · 🎬×1 · 🟡</div>
+      <p>Announcing /variate.<br><br>An open source design skill to iterate on UIs by generating multiple design variations.<br><br>Works in Claude Code, Codex, and OpenCo…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 13:21 · 🎬×1 · 🟡</div>
+      <p>这是我们的第 4 个 DeepSeek Harness 插件 🥳<br>iOS 模拟器 + 真机自动化插件 dsh-ios 🐳📱<br>让 DSH 中的 Agent 直接查看并操作 iOS 模拟器和真机<br>构建并运行 App，完成点击、滑动、输入等操作<br>还能检查进程、调用栈和内存泄漏<br><br>⚙️ 内置 21 个 Ag…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitHubDaily@GitHub_D</span> · 10:00 · 📷×1 · 🟡</div>
+      <p>想要把视频当中高光片段单独剪出来，手动找时间点、切片、加字幕，颇为耗时。<br><br>Youtube-clipper-skill 给 Claude Code 装上视频剪辑能力，从下载视频到分段加字幕。<br><br>切割靠的是 AI 理解内容，并且按话题自然分段，每段还带标题和摘要。<br><br>GitHub：https://t.…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 熊布朗@Stephen4171127</span> · 09:18 · 📷×1 · 🟡</div>
+      <p>偶然发现了一个牛逼的开源作品，仙剑 95 浏览器版本。<br>——<br>作者做了 Rust 移植（自 SDLPAL 的 C 源码移植），<br>利用 Wasm 让引擎运行在 Web Worker 中：画面输出到 canvas，键盘输入与音频采样通过 SharedArrayBuffer 环形缓冲传递（音乐由 Audio…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-11、2026-08-17、2026-08-18、2026-08-19、2026-08-20。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08-07 开源 AI multi-agent 系统</span>
+        <span class="chip">08-08 开源 AI 视频动画制作 Skill</span>
+        <span class="chip">08-10 发现 Stanford Online 课程资源</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（15天共1173条）
+      <div class="bars">
+        <div class="bar" style="height:95%"><small>99</small></div>
+        <div class="bar" style="height:98%"><small>102</small></div>
+        <div class="bar" style="height:71%"><small>74</small></div>
+        <div class="bar" style="height:100%"><small>104</small></div>
+        <div class="bar" style="height:96%"><small>100</small></div>
+        <div class="bar" style="height:81%"><small>84</small></div>
+        <div class="bar" style="height:41%"><small>43</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇪🇺 欧洲（4 条）</h3>
+
+    <p class="intro">英法德意加五国一起谴责以色列在约旦河西岸的定居点扩建计划，E1 区域一旦动工，等于把西岸切成两半。文化这边两条中文报道值得读：胡安焉的《我在北京送快递》被译成英文，20 年 19 份工作换来的打工文学在书市上卖成了畅销书；还有一篇讲欧洲加大前沿技术投资想跟美中掰手腕，开头那个 C3 Biotech 的实验室场景挺扎心，几百万美元的不锈钢设备堆在墙边当废铁。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-20 · 🔵</div>
+      <p><b>UK, France, Germany, Italy and Canada condemn Israel's West Bank settlement project</b></p>
+      <p>European countries and Canada pile on pressure over Israel's plans to expand settlements in a strategic area east of Jerusalem.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-20 · 🔵</div>
+      <p><b>《No 10: Full Confidence》：热门游戏让你体验英国首相的处境</b></p>
+      <p>Sleepy Boy Games 的首相模拟游戏，玩家必须平衡包括内阁和媒体在内的各派系的情绪。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 纽约时报中文</span> · 2026-08-20 · 🟢</div>
+      <p><b>经济悲观情绪蔓延，中国农民工文学引发共鸣</b></p>
+      <p>胡安焉的回忆录《我在北京送快递》在中国成为畅销书，后来被译成英文。这本书以日记形式记录了他 20 年间在中国各地从事的 19 份工作。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 纽约时报中文</span> · 2026-08-20 · 🟢</div>
+      <p><b>欧洲加大对前沿技术投资，能否与美中抗衡？</b></p>
+      <p>C3 Biotech 的实验室里，闪亮的圆柱形罐体和斜顶控制面板被推到墙边，这些价值数百万美元的高等级不锈钢设备基本上已经变成了一座昂贵的废料场。所有这些……</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-08、2026-08-09、2026-08-17。</i></div>
+    <h3 class="topic">🇯🇵 日本/东亚（2 条）</h3>
+
+    <p class="intro">美国把国际刑事法院院长 Akane 列为制裁对象，日本怎么劝都没用；另一条是悲剧，东京北边的新鹿沼站，四个工人被列车撞上，全死了。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-20 · 🟢</div>
+      <p><b>Japan's U.S. Ties Could Not Save a Top Judge From Trump's I.C.C. Sanctions</b></p>
+      <p>Japan had tried to dissuade the U.S. from imposing sanctions on Tomoko Akane, president of the International Criminal Court.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-20 · 🔵</div>
+      <p><b>Four workers dead after being hit by train in Japan</b></p>
+      <p>The train collided with the four men at Shin-Kanuma Station, north of Tokyo, authorities say.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-15、2026-08-17、2026-08-18、2026-08-19、2026-08-20。</i></div>
+    <h3 class="topic">🏢 创业/商业（3 条）</h3>
+
+    <p class="intro">游戏科学又卡着 8 月 20 日交作业，《黑神话：钟馗》15 分钟实机公布，这次总算能看懂玩什么了；鸿蒙智行第一台硬派 9 系享界 G9 上市，42.98 万起，增程纯电都有。Neo4j 的播客聊了 Memorang 这家创业公司。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Neo4j@neo4j</span> · 16:00 · 🎬×1 · 🟡</div>
+      <p>The Connected Startup, Episode 3: Memorang https://t.co/qIhojoqIW1</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 2026-08-20 · 🟢</div>
+      <p><b>《黑神话：钟馗》15 分钟实机来了，这次终于看懂在玩什么</b></p>
+      <p>又是一年 8 月 20 日，游戏科学准时交作业了。今天上午，《黑神话：钟馗》正式公布了一段长达 15 分钟……</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 2026-08-20 · 🟢</div>
+      <p><b>42.98 万元起，享界 G9 正式上市，鸿蒙智行有了第一台硬派 9 系</b></p>
+      <p>8 月 20 日，鸿蒙智行首款科技豪华硬派 SUV 享界 G9 正式上市。新车提供增程、纯电两种动力，大五……</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-09、2026-08-14、2026-08-17、2026-08-19、2026-08-20。</i></div>
+    <h3 class="topic">🇮🇱 中东局势（3 条）</h3>
+
+    <p class="intro">美国财政部长贝森特放话，制裁要把伊朗经济"压扁"、政权"搞垮"，还问盟友站哪边；特朗普的经济威胁把伊朗的贸易伙伴架在火上烤；NYT 那篇分析说，美伊现在进入一个谁先眨眼的僵局，几周没有外交进展，也没有全面开打。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-20 · 🔵</div>
+      <p><b>US says sanctions will 'squash' Iran's economy and 'collapse' its regime</b></p>
+      <p>US Treasury Secretary Scott Bessent says allies will need to decide whether they "are with us or against us".</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-20 · 🟢</div>
+      <p><b>Trump's Economic Threat Puts Focus on Iran's Trading Partners</b></p>
+      <p>President Trump appeared to suggest that the United States would impose economic penalties on countries that keep trading with Iran.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-20 · 🟢</div>
+      <p><b>As Iran and U.S. Settle Into an Uneasy Standoff, Who Will Blink First?</b></p>
+      <p>For weeks, there has been no diplomatic progress, but also no full-scale fighting, as both sides see the costs of escalation.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-11、2026-08-14、2026-08-16、2026-08-17、2026-08-19。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08-14 伊朗跟美国、以色列打仗还能撑多久？</span>
+        <span class="chip">07-24 印度青年抗议：一场莫迪始料未及的政治危机 | 美国与沙特签署核协议为中东再引核扩散风险</span>
+        <span class="chip">08-03 特朗普表示同意取消对伊朗的打击，前提是能"迅速"达成协议</span>
+        <span class="chip">08-10 霍尔木兹海峡：阿曼称会谈进展顺利，伊朗则警告协议不会打通海峡</span>
+        <span class="chip">08-02 特朗普表示同意取消对伊朗的打击，前提是能"迅速"达成协议</span>
+        <span class="chip">08-09 中东海湾国家阿曼（Oman）方面称，霍尔木兹海峡会谈进展顺利，而伊朗则警告协议不会打通海峡</span>
+        <span class="chip">07-09 特朗普虚张声势再多，除了与伊朗谈判别无选择——BBC编辑鲍文观察</span>
+        <span class="chip">07-23 三位自以为是的领导人和他们的愚蠢战争 | 美国与沙特签署核协议为中东再引核扩散风险</span>
+        <span class="chip">08-19 战争和权力的新物理规律</span>
+        <span class="chip">07-29 欧洲游客"消失"，东南亚旅游业者陷入困境</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（10天共22条）
+      <div class="bars">
+        <div class="bar" style="height:100%"><small>4</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇷🇺 俄乌冲突（3 条）</h3>
+
+    <p class="intro">俄罗斯趁乌克兰防空弹药见底，导弹又砸基辅，至少 13 死；战争打了这么久，乌克兰的超市货架开始空了，俄军空袭目标从电厂转向了超市供应链；BBC 采访了被俘的乌克兰裔俄罗斯士兵，他们因为替俄国打仗被以叛国罪审判。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-20 · 🟢</div>
+      <p><b>Russian Missiles Kill at Least 13 in Kyiv as Air Defenses Dwindle</b></p>
+      <p>Moscow is taking advantage of Ukraine's depleted stock of interceptors and is intensifying attacks.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-20 · 🟢</div>
+      <p><b>Bare Grocery Shelves Are a New Wartime Hardship for Ukrainians</b></p>
+      <p>After years of pounding power plants and cities, Russia's air war has taken aim at Ukraine's supermarket supply chains.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-20 · 🔵</div>
+      <p><b>Captured Ukrainian-born soldiers tell BBC why they fought for Russia</b></p>
+      <p>Men born in Ukraine who fought for Russia are tried for treason, but at a prisoner of war camp in western Ukraine they tell a more complicated story.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-11、2026-08-16、2026-08-17、2026-08-18、2026-08-19。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08-03 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击？</span>
+        <span class="chip">08-10 中国再挥稀土大棒，将14家欧盟实体列入出口管控名单</span>
+        <span class="chip">08-18 乌克兰无人机何以精准打击俄罗斯本土？</span>
+        <span class="chip">08-22 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（11天共19条）
+      <div class="bars">
+        <div class="bar" style="height:67%"><small>2</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇰🇵 朝鲜半岛（2 条）</h3>
+
+    <p class="intro">特朗普下令削减与韩国的联合军演，盟友开始怀疑美国的承诺还靠不靠谱；Jimmy Fallon 拿这事开涮，说特朗普找朝鲜重温旧情像"给七年前的前任发短信"。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-20 · 🟢</div>
+      <p><b>Trump's Order to Cut Military Exercises With South Korea Carries Risks, Experts Say</b></p>
+      <p>President Trump's decision to curtail the military exercises came as allies question the U.S. commitment to the region.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-20 · 🟢</div>
+      <p><b>Jimmy Fallon Teases Trump's Efforts to Rekindle North Korea Bromance</b></p>
+      <p>"Man, you know you're depressed when you're texting an old hookup from seven years ago," Fallon said.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-06、2026-08-08、2026-08-15、2026-08-17。</i></div>
+    <h3 class="topic">🏛️ 国内政策（2 条）</h3>
+
+    <p class="intro">许家印案落槌。深圳中院判他无期徒刑，恒大集团被罚近 160 亿元人民币。从 2017 年发布会上那个意气风发的地产首富，到 2026 年认罪悔罪的被告，这条线走了快十年。</p>
+    <div class="summary-line">📝 恒大创始人被判无期徒刑及罚款近160亿人民币</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 纽约时报中文</span> · 2026-08-20 · 🟢</div>
+      <p><b>恒大创始人许家印被判无期徒刑</b></p>
+      <p>2017 年，恒大集团创始人兼前董事长许家印在香港出席新闻发布会。周四，中国一家法院判处恒大集团亿万富翁创始人无期徒刑。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-20 · 🔵</div>
+      <p><b>恒大爆雷：许家印被判处无期徒刑 集团罚款近160亿元人民币</b></p>
+      <p>广东深圳中院称，许家印（中）在 4 月的庭审中"认罪悔罪"。</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-12、2026-08-16、2026-08-18、2026-08-19、2026-08-20。</i></div>
+    <h3 class="topic">💻 AI Agent（1 条）</h3>
+
+    <p class="intro">Rion Wu 的微信 CLI 和微信个人情报库正式版本周开源，功能包括总结过去 24 小时聊天记录、自动汇总重要群聊、HTML 交互日报。鸽了挺久，作者自己先道歉了。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Rion Wu@rionaifantas</span> · 17:30 · 📷×4 · 🟡</div>
+      <p>实在对不起家人们！！让大家久等了！！！😤<br>我的微信 cli 和微信个人情报库正式版，本周即将开源。。。<br>最近几天正在加紧优化中。。。<br><br>完整版功能：<br>1、通过微信 cli 总结过去 24 小时聊天记录，给出行动总览<br>2、自动总结过去 24 小时重要群聊信息<br>3、新增 html 交互日报，比 markdown 文档看起来…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-12、2026-08-13、2026-08-18、2026-08-19、2026-08-20。</i></div>
+    <h3 class="topic">🔧 开发工具（1 条）</h3>
+
+    <p class="intro">今天 GitHub 被 Agent 项目屠榜，Fred-New 拆了 10 个星标暴涨的项目，头一个 Agent-Reach 给 AI Agent 装"全网眼睛"，Twitter、Reddit、YouTube、GitHub、B 站、小红书一键读取，号称零 API 费用。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Fred-New@Fred834567</span> · 16:29 · 🟡</div>
+      <p>今天 GitHub 被万能 Agent 屠榜了！10 个星标暴增最狠的项目，专业拆解下：<br><br>1. Panniantong/Agent-Reach<br>给 AI Agent 装上全网眼睛。Twitter、Reddit、YouTube、GitHub、B 站、小红书……一键读取，零 API 费用，自愈路由…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-08、2026-08-13、2026-08-17、2026-08-19、2026-08-20。</i></div>
+    <h3 class="topic">🚀 芯片/半导体（1 条）</h3>
+
+    <p class="intro">Roland.W 聊了个有意思的视角：英伟达的"垃圾矿卡"能逆袭成 AI 算力卡，是因为 6 月 25 日有研究员发了相关论文，随后矿卡价格暴涨。他说接下来怎么从期刊里挖信息、做处理会是个重点。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Roland.W@rwayne</span> · 09:38 · 🟡</div>
+      <p>期刊的作用不容小觑<br><br>英伟达这个垃圾矿卡能够重生逆袭成为 ai 算力卡，就是因为 6 月 25 日有研究员发布了相关研究<br><br>随后就是一连串的市场行情，矿卡价格暴涨<br><br>如何从期刊里面获取信息并处理将会是接下来一个重点</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-14、2026-08-15、2026-08-16、2026-08-17、2026-08-19。</i></div>
+    <h3 class="topic">🌍 环境/能源（1 条）</h3>
+
+    <p class="intro">市场又紧张了：债券市场波动加剧，油价上涨，投资者在消化地缘政治的不确定性。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-20 · 🟢</div>
+      <p><b>Bond Market Stress Returns and Oil Rises in Edgy Day for Markets</b></p>
+      <p>Bond markets remained volatile, as investors assessed the geopolitical turmoil.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-09、2026-08-16、2026-08-18、2026-08-19、2026-08-20。</i></div>
+    <h3 class="topic">💰 股市/金融（1 条）</h3>
+
+    <p class="intro">NYT 问了个尖锐的问题：贝森特把美联储架住了吗？财政部干预债券市场的计划暂时安抚了市场，但华尔街还是担心。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-20 · 🟢</div>
+      <p><b>Did Bessent Put the Fed in a Bind?</b></p>
+      <p>The Treasury Department's plan for bond interventions has calmed markets. But Wall Street is worried about the consequences.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-10、2026-08-12、2026-08-17、2026-08-19、2026-08-20。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">14/10 iPhone全线涨价100美元</span>
+        <span class="chip">24/10 ChatGPT开始拥有你的电脑历史</span>
+        <span class="chip">31/10 长鑫科技市值超过腾讯</span>
+        <span class="chip">20/11 亚洲年轻人大举押注科技股</span>
+        <span class="chip">16/12 韩国股市震荡："我一个月便亏了一万四美元"</span>
+        <span class="chip">20/12 恒大爆雷：许家印被判处无期徒刑</span>
+        <span class="chip">19/12 美股全线暴跌，让子弹再飞一会儿</span>
+        <span class="chip">22/12 亚洲年轻人大举押注科技股</span>
+        <span class="chip">29/12 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（15天共117条）
+      <div class="bars">
+        <div class="bar" style="height:100%"><small>14</small></div>
+        <div class="bar" style="height:57%"><small>8</small></div>
+        <div class="bar" style="height:50%"><small>7</small></div>
+        <div class="bar" style="height:71%"><small>10</small></div>
+        <div class="bar" style="height:57%"><small>8</small></div>
+        <div class="bar" style="height:71%"><small>10</small></div>
+        <div class="bar" style="height:50%"><small>7</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🎮 二次元/游戏（1 条）</h3>
+
+    <p class="intro">Valve 的 Steam Frame VR 头显被爱范儿称为"今年最被低估的游戏硬件"，曝光消息说 Android 游戏手机可能因此变天。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 2026-08-20 · 🟢</div>
+      <p><b>Steam 最新 VR 头显曝光，Android 游戏手机要变天了？</b></p>
+      <p>Valve 的 Steam Frame，可能是今年最被低估的游戏硬件。而这个产品，已经离我们很近了……</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-11、2026-08-12、2026-08-13、2026-08-15、2026-08-18。</i></div>
+    <h3 class="topic">🇹🇼 台海局势（1 条）</h3>
+
+    <p class="intro">赖清德再提"普发一万"现金，BBC 中文从 K 型经济和政治算盘的角度拆了拆这个提案，能不能落地先得过立法院那关。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-20 · 🔵</div>
+      <p><b>台湾再提"普发一万"：背后的K型经济与政治算盘</b></p>
+      <p>赖清德的现金提案需要先在台湾立法院表决通过。</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-13、2026-08-17、2026-08-18、2026-08-19、2026-08-20。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08-04 美国与日本罕有联手干预汇市，图阻日圆跌至40年来新低</span>
+        <span class="chip">08-11 如果中国切断台湾互联网，台湾将如何应对</span>
+        <span class="chip">08-18 时隔20年，台湾前总统陈水扁女儿陈幸妤再次成为媒体焦点</span>
+        <span class="chip">07-21 距离金门仅三公里，厦门翔安机场引发台湾国安疑虑</span>
+        <span class="chip">07-28 亚洲安全局势正经历一场历史性转变</span>
+        <span class="chip">08-05 东海开发：施压日本、探测美国反应</span>
+        <span class="chip">08-12 "台海攸关安保"消失于日本防卫白皮书为什么</span>
+        <span class="chip">07-22 市场对AI支出和中国芯片竞争担忧加剧</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（13天共31条）
+      <div class="bars">
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>4</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>📌 其他零散内容（161 条）</h2>
+    <div class="sub">未聚类的零散推文，按时间倒序</div>
+    <p class="intro">没进聚类的零散消息。今天剩下的大多是随手转的图和视频，信息量一般，按时间倒序摆几条看看。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 爱@YYYYYm12345</span> · 21:48 · 🟡</div>
+      <p>"午餐尝试了一家新开的餐厅，菜品惊艳！🍽️"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 21:48 · 🎬×1 · 🟡</div>
+      <p>RT @RQXY1112: Wataa https://t.co/7tPsaXX6AQ</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 21:25 · 📷×1 · 🟡</div>
+      <p>RT @chocobeam_: https://t.co/kjmoDzAjE9</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 21:25 · 🎬×1 · 🟡</div>
+      <p>RT @latex_features: HOG https://t.co/8GbSVq5p3T</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 ro@RoTalluri</span> · 21:24 · 📷×1 🎬×1 · 🟡</div>
+      <p>banger</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 21:05 · 🎬×1 · 🟡</div>
+      <p>Brigador Killers is "boy slop" (and that's OK) 🤷‍♂️ https://t.co/NHoOD6wYMG<br>#brigador #brigadorkille…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 ᑄ野生摄ᐷ@Flashback_wild</span> · 20:54 · 📷×4 · 🟡</div>
+      <p>卧虎<br>@kkkkkkk91123<br>Creative Direction &amp; Production by @WANIMAL912 https://t.co/P6nF9WTBix</p>
+    </div>
+    <p class="note-more">…还有 153 条未显示</p>
+  </section>
+
+  <section class="block">
+    <h2>📊 今日统计</h2>
+    <div class="statgrid">
+      <div class="statcard">
+        <h4>🐦 X 推文：112 条</h4>
+        <ul>
+          <li><span>General</span><b>93 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📰 RSS 新闻：101 条</h4>
+        <ul>
+          <li><span>NYT</span><b>44 条</b></li>
+          <li><span>BBC</span><b>38 条</b></li>
+          <li><span>爱范儿</span><b>9 条</b></li>
+          <li><span>BBC中文</span><b>7 条</b></li>
+          <li><span>纽约时报中文</span><b>3 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📚 累计数据</h4>
+        <ul>
+          <li><span>X</span><b>16,025 条</b></li>
+          <li><span>NGA</span><b>584 条</b></li>
+          <li><span>S1</span><b>374 条</b></li>
+          <li><span>RSS</span><b>4,800 条</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+    <p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
+  </footer>
+
+</div>
+</body>
+</html>
