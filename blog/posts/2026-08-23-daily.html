@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日资讯早报 | 2026-08-23</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1f2328; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --accent-soft:#eff6ff;
+    --gold:#b45309; --blue:#1d4ed8; --yellow:#a16207;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:32px 20px 64px;}
+  header.hero{
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%);
+    color:#fff; border-radius:16px; padding:36px 32px; margin-bottom:28px;
+  }
+  header.hero h1{font-size:26px; font-weight:700; letter-spacing:.5px;}
+  header.hero .date{font-size:15px; opacity:.85; margin-top:6px;}
+  .stats{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;
+  }
+  .stat-pill{
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; padding:4px 14px; font-size:13px;
+  }
+  .lead{
+    background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:10px; padding:16px 20px; margin-bottom:28px; color:#374151; font-size:15px;
+  }
+  section.block{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 24px 8px; margin-bottom:24px;}
+  section.block h2{
+    font-size:19px; font-weight:700; margin-bottom:4px;
+  }
+  section.block .sub{font-size:13px; color:var(--muted); margin-bottom:16px;}
+  h3.topic{
+    font-size:16px; font-weight:700; margin:20px 0 12px; padding-top:16px;
+    border-top:1px dashed var(--line);
+  }
+  .intro{font-size:14.5px; color:#374151; background:#fafbfc; border-radius:10px; padding:10px 16px; margin-bottom:12px;}
+  .item{
+    border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin-bottom:12px;
+    background:#fafbfc;
+  }
+  .item .meta{font-size:12.5px; color:var(--muted); margin-bottom:6px;}
+  .item .meta .tag-src{font-weight:600; color:#374151;}
+  .item p{font-size:14.5px; color:#24292f; white-space:pre-line;}
+  .item p + p{margin-top:6px;}
+  .item .link{color:var(--accent); word-break:break-all;}
+  .summary-line{
+    background:var(--accent-soft); border-radius:10px; padding:10px 16px; margin-bottom:12px;
+    font-size:14.5px; color:#1e3a8a;
+  }
+  .perspectives{
+    background:#fafbfc; border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; margin-bottom:12px;
+  }
+  .perspectives .ptitle{font-size:13px; font-weight:700; color:var(--muted); margin-bottom:8px;}
+  .perspectives .psrc{font-size:13px; color:#374151; margin-bottom:6px;}
+  .perspectives .psrc b{color:var(--blue); font-weight:600;}
+  .timeline{font-size:13px; color:#374151; background:#fafbfc; border-radius:8px; padding:8px 14px; margin:10px 0;}
+  .timeline .tl{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .chip{
+    background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:1px 10px; font-size:12px; color:#374151;
+  }
+  .trend{font-size:13px; color:var(--muted); margin:10px 0;}
+  .bars{display:flex; align-items:flex-end; gap:6px; height:34px; margin-top:6px;}
+  .bar{background:linear-gradient(180deg,#60a5fa,#2563eb); border-radius:3px 3px 0 0; min-width:18px;}
+  .bar small{display:block; text-align:center; font-size:10px; color:var(--muted); margin-top:2px;}
+  .note-more{font-size:13px; color:var(--muted); font-style:italic; padding:4px 2px 12px;}
+  .statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:8px;}
+  .statcard{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fafbfc;}
+  .statcard h4{font-size:14px; margin-bottom:8px;}
+  .statcard ul{list-style:none;}
+  .statcard li{font-size:13.5px; color:#374151; padding:2px 0; display:flex; justify-content:space-between; gap:12px;}
+  .statcard li b{color:var(--ink);}
+  footer.foot{
+    text-align:center; color:var(--muted); font-size:13px; margin-top:32px; padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  footer.foot .note{color:#374151; font-size:14px; margin-bottom:4px;}
+  @media (max-width:600px){
+    header.hero{padding:26px 20px;}
+    header.hero h1{font-size:21px;}
+    section.block{padding:18px 14px 6px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🌅 每日资讯早报</h1>
+    <div class="date">2026 年 8 月 23 日 · 星期日</div>
+    <div class="stats">
+      <span class="stat-pill">📊 共 246 条信息</span>
+      <span class="stat-pill">🐦 X：193 条</span>
+      <span class="stat-pill">📰 RSS：53 条</span>
+      <span class="stat-pill">💬 NGA：0 条</span>
+      <span class="stat-pill">💭 S1：0 条</span>
+    </div>
+  </header>
+
+  <div class="lead">
+    今天的科技圈还是 Agent 的天下。Anthropic 上线了 Claude Academy，专门教普通人怎么把 AI 用明白，起因是每个月有几百万人跑去官网想学 AI；GitHub 热榜被 mattpocock/skills 血洗，一套工程级 Skills 标准库，强制访谈式确认加 TDD 红绿重构，评论区都在说这才是把 Agent 当工程做。工具这边也热闹：Wake 把 Mac 上 14 种 Agent 的历史会话收进一个原生应用，全文搜索一键恢复；dsh-im 让 DeepSeek Harness 直接住进微信、Telegram 等 9 大聊天平台。国内两条值得存：浙大开源了《大模型基础》六章全本 PDF，a-stock-data 把 13 个数据源打包成统一接口，写 A 股策略的人不用再挨个平台对接。国际上看点在中东：叙利亚指责以色列空袭大马士革附近违反国际法，黎巴嫩想驯服真主党，进展不顺。下面按话题过。
+  </div>
+
+
+  <section class="block">
+    <h2>📌 各平台话题</h2>
+    <div class="sub">按话题聚类后的重点内容</div>
+    <h3 class="topic">🤖 AI/大模型（13 条）</h3>
+
+    <p class="intro">Agent 工具链又添一批新东西。Anthropic 的 Claude Academy 想解决"不会提要求、不知道哪些活该交给机器"的问题；Wake 统一浏览 Mac 上所有 Agent 的历史会话，支持 Claude Code、Codex、Gemini CLI 等 14 种工具；agency-agents-zh 内置 275 个即插即用 AI 专家，连小红书、抖音、B 站这些中国市场 Agent 都安排上了。还有人在 GitHub 传一个让 Claude Code 免费永久用的仓库，转发里全是"疯了"，真伪自己判断。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Jokker@0xJokker·7小时</span> · 🎬×1 · 14:24 · 🟡</div>
+      <p>🔴 ESTO ES UNA LOCURA<br><br>Alguien creo un repo en GitHub que te deja usar Claude Code completamente GRATIS y PARA SIEMPRE<br><br>Redirige todo tu trafico a 49 p…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 🎬×1 · 13:46 · 🟡</div>
+      <p>UN TRADER CONVIRTIÓ $1.092 EN $83.000 EN SOLO 3 SEMANAS USANDO LA GUÍA DE ANTHROPIC.<br><br>Sin código. Sin suscripciones.<br><br>Solo un sistema de 3 partes que …</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitHubDaily@GitHub_D</span> · 📷×1 · 13:30 · 🟡</div>
+      <p>明明记得上周跟 Claude Code 讨论过一个方案，想再翻出来，找半天没找到那对话。<br><br>Wake 把 Mac 上所有 Agent 的历史会话收进一个原生应用，统一浏览、全文搜索、一键恢复。<br><br>支持 Claude Code、Codex、Gemini CLI、OpenCode 等 14 种工具，搜索…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 摸鱼巨匠@SunNeverSetsX·8</span> · 13:09 · 🟡</div>
+      <p>模型再强大，也需要 Harness 才能更可靠。<br><br>学习 Harness，我推荐这个开源课程。<br><br>这个课程从理论讲解，到项目实操并深度综合了 OpenAI、Anthropic 等前沿实践，非常适合那些在 Coding 中经常遇到 "上下文丢失、Agent 失控等情况的人。<br><br>链接：https://t…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Gorden Sun@Gorden_Su</span> · 📷×1 · 13:03 · 🟡</div>
+      <p>Anthropic上线Claude Academy学习平台，专门教大家怎么把 AI 用好。<br><br>事情的起因其实很简单。现在每个月都有几百万人跑到 Anthropic 的网站上想学 AI，团队觉得有责任帮大家理清思路。他们发现，很多人用 AI 时要么不知道怎么提要求，要么不知道哪些活儿该交给机器、哪些活…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 📷×1 · 11:37 · 🟡</div>
+      <p>DeepSeek Harness 终于可以直接塞进微信、Telegram 里用了。<br><br>推荐一个开源插件 dsh-im，一个插件直接打通 微信、飞书、钉钉、企业微信、QQ、Slack、Telegram、Discord、WhatsApp 9 大平台。<br><br>很多平台扫码就能接入，之后直接在聊天软件里和自己…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 周览资源@grgerwcwetwet·1</span> · 📷×1 · 11:37 · 🟡</div>
+      <p>推荐开源项目 agency-agents-zh，内置 275 个即插即用 AI 专家，覆盖开发、设计、营销、产品、金融等 20 个部门。<br><br>最爽的是还有 60 个中国市场 Agent：小红书、抖音、微信、B站、飞书、钉钉等都安排上了，还支持 Claude Code、Cursor、Copilot 等…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 🎬×1 · 11:24 · 🟡</div>
+      <p>Found a big collection of jailbreaks<br><br>Prompt collections for working with GPT, Claude, Gemini, DeepSeek, Grok, and more: github{.}com/...<br><br>1. elder-pl…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Serena 木瓜@369Serena·</span> · 📷×1 · 11:14 · 🟡</div>
+      <p>刚才试了元 skill<br><br>跟 codex 自带的 skill creator比<br><br>真的有点惊为天人，规整又稳定！！！<br><br>我居然才开始用 https://t.co/UhFiXvoQHd</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitTrend@GitTrend0x·</span> · 10:15 · 🟡</div>
+      <p>今天 GitHub 排行榜被血洗了！<br><br>1.  mattpocock/skills<br>工程级 Skills 标准库，专治 Agent 写代码时"听不懂需求、乱改架构"。强制访谈式确认 + TDD 红绿重构，直接把 Claude Code / Codex / 任意 harness 从玩具升级成可靠工程…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 余温@gkxspace·5小时</span> · 📷×1 · 10:01 · 🟡</div>
+      <p>一个好的🪜对 AI 的影响真的大，拿 Codex 举例：<br><br>我以前的节点又慢又不稳，Codex 经常断线、重载，连上下文压缩都会出问题。<br><br>你甚至还会遇到降智、封号、砍额度的问题。。。<br><br>换了节点后：<br>1、连接更稳定，断线和重新加载都没怎么遇到了。<br>2、上下文压缩没再出过问题。<br>3、长任务连续跑工具…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 空谷 Arvin Xu@arvin17x</span> · 📷×1 · 09:35 · 🟡</div>
+      <p>Pi 今天开始做的这些 「数据库范式」方向的尝试，其实是我们去年开始 agent 转型时候就已经预设好的，而且方向上更加激进 —— 如何实现在 Vercel 这样进程级实例，短单次时长（timeout 可能 300s）的  Serverless 平台上，实现超长程级 agent 的执行。<br><br>当时没有…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Alex Prompter@alex_p</span> · 📷×1 🎬×1 · 09:19 · 🟡</div>
+      <p>How to setup projects in Claude</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-17、2026-08-18、2026-08-19、2026-08-21、2026-08-22。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08-10 全球首部95分钟全AI长片《Hell Grind》开源全部数字资产和prompt；Stanford CS329A 课程录像上YouTube</span>
+        <span class="chip">08-11 微软开源 SkillRecorder，录操作自动还原成意图；MkAgent 开源</span>
+        <span class="chip">08-12 Code-Graph-RAG 把代码库转成知识图谱；photo-abstract-editorial 生图 Skill；Manim 数学动画仍是神器</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（15天共1248条）
+      <div class="bars">
+        <div class="bar" style="height:70%"><small>74</small></div>
+        <div class="bar" style="height:100%"><small>105</small></div>
+        <div class="bar" style="height:96%"><small>101</small></div>
+        <div class="bar" style="height:81%"><small>85</small></div>
+        <div class="bar" style="height:75%"><small>79</small></div>
+        <div class="bar" style="height:95%"><small>100</small></div>
+        <div class="bar" style="height:52%"><small>55</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🔧 开发工具（5 条）</h3>
+
+    <p class="intro">几条值得存下来的：浙大《大模型基础》六章全本 PDF 开源，GitHub 1.65 万 star，补中文大模型材料的缺口；a-stock-data 把 13 个数据源统一成一套接口，行情、研报、龙虎榜、北向资金不用再挨个平台对接；PDFMathTranslate 翻译科研论文保留公式排版，35.6k star。Sabrina 那条也在传：让新手配数据库、接登录、连 API 的工具，都算失败。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Sabrina Ramonov @Sab</span> · 21:45 · 🟡</div>
+      <p>If an AI builder asks a beginner to:<br>- configure a database<br>- wire up login<br>- connect an API<br><br>it failed.<br><br>A beginner tool should turn plain English in…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Amto@XAMTO_AI·8小时</span> · 📷×1 · 13:28 · 🟡</div>
+      <p>搞A股量化的人应该都有同感：写策略其实不费劲，费劲的是把数据凑齐。<br><br>行情一个接口，研报另一个，龙虎榜再换一个，北向资金还得重新写一套，每一个平台都有自己的脾气，参数还隔三差五变一下。a-stock-data 这个项目倒是解决了这个烦恼。<br><br>它把13个数据源打包成一套统一接口，不再是一个个平台来回切…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Ren@Ryrenz·2小时</span> · 13:09 · 🟡</div>
+      <p>🧠 浙大开源了一本《大模型基础》，六章全本 PDF 免费下<br><br>GitHub 上 1.65 万 stars<br><br>想系统补大模型的底子，中文材料一直不太够。要么是博客拼凑的碎片，读完不成体系；要么直接啃英文论文，术语和数学一起上，第一章就劝退。<br><br>这本《大模型基础》是浙大团队做的，六章顺着能力递进铺：语言…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 周览资源@grgerwcwetwet·4</span> · 📷×2 · 11:43 · 🟡</div>
+      <p>不想花钱，又想看书、追剧、听歌？这 15 个资源站可以先存着。<br><br>📚 电子书<br>1. Z-Library：https://t.co/bnNNJ14ewK —— 综合电子书搜索<br>2. WeLib：https://t.co/02IoRhZXtc —— 图书、教材、学术资料<br>3. Anna's Archi…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Denzii @denziideng·5</span> · 🎬×1 · 10:39 · 🟡</div>
+      <p>绝对好使！35.6k星开源免费，PDF翻译格式老乱？这款完美保留排版！😍<br><br>科研论文翻译后公式图表全乱？排版崩坏看不下去？😭<br><br>科学 PDF 文档翻译及双语对照工具 PDFMathTranslate 的核心就狠在这⬇️<br><br>✅ 完整保留排版：公式、图表、目录、注释原样保留<br>✅ AI精准翻译：支持…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-13、2026-08-17、2026-08-19、2026-08-20、2026-08-22。</i></div>
+    <h3 class="topic">🎮 二次元/游戏（3 条）</h3>
+
+    <p class="intro">漫威党在重刷内战一路看到终局之战，停不下来；FF47 活动现场有人拍了 NIKKE 的 cos；剩下一条是马娘玩家的卡池预测，押的是エピファネイア。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 ほたてちゃん 新作DL販売中！@hota</span> · 16:51 · 🟡</div>
+      <p>シビルウォーおもろすぎるよな<br>この流れでインフィニティウォーからのエンドゲーム見るのやめらんない</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 김조박@KimJoPark_·6小时</span> · 📷×1 · 15:53 · 🟡</div>
+      <p>26. 08. 22 FF47<br><br>마르차나 마린스터디: 반쮸님(@underpants_2)<br><br>#니케 #NIKKE #cosplay #コスプレ #FF https://t.co/mOvhDyRgvW</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 シギノソウジFANBOX始動@Sohuz</span> · 09:55 · 🟡</div>
+      <p>ぱかライブハフバガチャ予想<br>キャラ：◎エピファネイア<br>長距離LoHが菊花賞で特効になる可能性<br>サポカ：◎キズナ<br>エピが実装されるなら新ウマ枠で来る読み<br>去年のスティルに対するアルヴ枠</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-12、2026-08-13、2026-08-15、2026-08-18、2026-08-20。</i></div>
+    <h3 class="topic">🇮🇱 中东局势（2 条）</h3>
+
+    <p class="intro">叙利亚指责以色列空袭大马士革附近违反国际法，此前已有以军袭击军事基地的传闻；黎巴嫩那边，总统奥恩带着"重掌控制权"的民意授权上台，但想驯服真主党，进展不大。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-22 · 🔵</div>
+      <p><b>Syria says Israeli strike near Damascus violation of international law</b></p>
+      <p>The latest incident comes days after reports emerged Israel had struck a military airbase close to t…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-22 · 🟢</div>
+      <p><b>Lebanon's Efforts to Tame Hezbollah Stall Amid Israel War</b></p>
+      <p>President Joseph Aoun took office with a popular mandate to reassert control after the militant grou…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-14、2026-08-16、2026-08-19、2026-08-21、2026-08-22。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">07-09 特朗普虚张声势再多，除了与伊朗谈判别无选择（BBC 鲍文观察）</span>
+        <span class="chip">07-23 三位自以为是的领导人和他们的愚蠢战争；美国与沙特签署核协议引核扩散担忧</span>
+        <span class="chip">07-24 印度青年抗议；美沙核协议为中东再引核扩散风险</span>
+        <span class="chip">07-29 欧洲游客"消失"，东南亚旅游业者陷入困境</span>
+        <span class="chip">08-02 特朗普：若"迅速"达成协议，可取消对伊朗的打击</span>
+        <span class="chip">08-03 特朗普同意取消对伊朗打击，前提是能"迅速"达成协议</span>
+        <span class="chip">08-09 阿曼称霍尔木兹海峡会谈进展顺利，伊朗警告协议不会打通海峡</span>
+        <span class="chip">08-10 霍尔木兹海峡：阿曼称会谈顺利，伊朗警告协议不会打通海峡</span>
+        <span class="chip">08-14 伊朗跟美国、以色列打仗还能撑多久？</span>
+        <span class="chip">08-19 战争和权力的新物理规律</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（12天共27条）
+      <div class="bars">
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>🗂️ 其他零散内容（194 条）</h2>
+    <div class="sub">未聚类的零散推文，以插画、摄影、日常转发为主；挑了几条能看的，其余已略过</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 RenLu@Renlu_ai·17分钟</span> · 🎬×1 · 21:44 · 🟡</div>
+      <p>AIGC 这三年飞速发展<br><br>看看 seedance 2.5 的效果吧<br><br>这条成本¥40 https://t.co/OA1jhNO8Ru</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 ibexdream@ibexdream·</span> · 📷×3 · 21:39 · 🟡</div>
+      <p>Just Do It Tomorrow.<br>120MB / 7616x10176px / 10K<br><br>How long do you actually work on an image before y…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 📷×1 · 21:06 · 🟡</div>
+      <p>RT @thesabuart: The "Elf Princess" and the Bokoblins 💚🧡💛 https://t.co/9vboV1tAup</p>
+    </div>
+    <p class="note-more">…还有 190 条未显示</p>
+  </section>
+
+  <section class="block">
+    <h2>📊 今日统计</h2>
+    <div class="statgrid">
+      <div class="statcard">
+        <h4>🐦 X 推文：193 条</h4>
+        <ul>
+          <li><span>General</span><b>166 条</b></li>
+          <li><span>🔞 已过滤未展示</span><b>27 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📰 RSS 新闻：53 条</h4>
+        <ul>
+          <li><span>BBC</span><b>28 条</b></li>
+          <li><span>NYT</span><b>24 条</b></li>
+          <li><span>爱范儿</span><b>1 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📚 累计数据</h4>
+        <ul>
+          <li><span>X</span><b>17,094 条</b></li>
+          <li><span>NGA</span><b>584 条</b></li>
+          <li><span>S1</span><b>374 条</b></li>
+          <li><span>RSS</span><b>5,080 条</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+    <p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
+  </footer>
+
+</div>
+</body>
+</html>
