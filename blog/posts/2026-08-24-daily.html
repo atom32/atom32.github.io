@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日资讯早报 | 2026-08-24</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1f2328; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --accent-soft:#eff6ff;
+    --gold:#b45309; --blue:#1d4ed8; --yellow:#a16207;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:32px 20px 64px;}
+  header.hero{
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%);
+    color:#fff; border-radius:16px; padding:36px 32px; margin-bottom:28px;
+  }
+  header.hero h1{font-size:26px; font-weight:700; letter-spacing:.5px;}
+  header.hero .date{font-size:15px; opacity:.85; margin-top:6px;}
+  .stats{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;
+  }
+  .stat-pill{
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; padding:4px 14px; font-size:13px;
+  }
+  .lead{
+    background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:10px; padding:16px 20px; margin-bottom:28px; color:#374151; font-size:15px;
+  }
+  section.block{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 24px 8px; margin-bottom:24px;}
+  section.block h2{
+    font-size:19px; font-weight:700; margin-bottom:4px;
+  }
+  section.block .sub{font-size:13px; color:var(--muted); margin-bottom:16px;}
+  h3.topic{
+    font-size:16px; font-weight:700; margin:20px 0 12px; padding-top:16px;
+    border-top:1px dashed var(--line);
+  }
+  .intro{font-size:14.5px; color:#374151; background:#fafbfc; border-radius:10px; padding:10px 16px; margin-bottom:12px;}
+  .item{
+    border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin-bottom:12px;
+    background:#fafbfc;
+  }
+  .item .meta{font-size:12.5px; color:var(--muted); margin-bottom:6px;}
+  .item .meta .tag-src{font-weight:600; color:#374151;}
+  .item p{font-size:14.5px; color:#24292f; white-space:pre-line;}
+  .item p + p{margin-top:6px;}
+  .item .link{color:var(--accent); word-break:break-all;}
+  .summary-line{
+    background:var(--accent-soft); border-radius:10px; padding:10px 16px; margin-bottom:12px;
+    font-size:14.5px; color:#1e3a8a;
+  }
+  .perspectives{
+    background:#fafbfc; border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; margin-bottom:12px;
+  }
+  .perspectives .ptitle{font-size:13px; font-weight:700; color:var(--muted); margin-bottom:8px;}
+  .perspectives .psrc{font-size:13px; color:#374151; margin-bottom:6px;}
+  .perspectives .psrc b{color:var(--blue); font-weight:600;}
+  .timeline{font-size:13px; color:#374151; background:#fafbfc; border-radius:8px; padding:8px 14px; margin:10px 0;}
+  .timeline .tl{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .chip{
+    background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:1px 10px; font-size:12px; color:#374151;
+  }
+  .trend{font-size:13px; color:var(--muted); margin:10px 0;}
+  .bars{display:flex; align-items:flex-end; gap:6px; height:34px; margin-top:6px;}
+  .bar{background:linear-gradient(180deg,#60a5fa,#2563eb); border-radius:3px 3px 0 0; min-width:18px;}
+  .bar small{display:block; text-align:center; font-size:10px; color:var(--muted); margin-top:2px;}
+  .note-more{font-size:13px; color:var(--muted); font-style:italic; padding:4px 2px 12px;}
+  .statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:8px;}
+  .statcard{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fafbfc;}
+  .statcard h4{font-size:14px; margin-bottom:8px;}
+  .statcard ul{list-style:none;}
+  .statcard li{font-size:13.5px; color:#374151; padding:2px 0; display:flex; justify-content:space-between; gap:12px;}
+  .statcard li b{color:var(--ink);}
+  footer.foot{
+    text-align:center; color:var(--muted); font-size:13px; margin-top:32px; padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  footer.foot .note{color:#374151; font-size:14px; margin-bottom:4px;}
+  @media (max-width:600px){
+    header.hero{padding:26px 20px;}
+    header.hero h1{font-size:21px;}
+    section.block{padding:18px 14px 6px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🌅 每日资讯早报</h1>
+    <div class="date">2026 年 8 月 24 日 · 星期一</div>
+    <div class="stats">
+      <span class="stat-pill">📊 共 219 条信息</span>
+      <span class="stat-pill">🐦 X：152 条</span>
+      <span class="stat-pill">📰 RSS：67 条</span>
+      <span class="stat-pill">💬 NGA：0 条</span>
+      <span class="stat-pill">💭 S1：0 条</span>
+    </div>
+  </header>
+
+  <div class="lead">
+    今天早报的 C 位是短剧。Toonflow 把小说到成片整成了一条流水线，丢本小说进去，AI 编剧扒骨架、智能分镜切画面、角色一致性锁人设，每个环节还能人工微调；陈硕KAI 则晒了一条本地可持续生产的 AI 手绘视频线，声音克隆、分镜、白板动画、字幕一路合成到底，说已经有人在抖音跑出千赞。工具链继续堆料：HarnessRouter 想把 Codex、Claude Code、Hermes 统一到一套 API 后面，claude-obsidian 把 Karpathy 的 LLM Wiki 概念落成了 Local-First 知识系统。也有人整活，有人把自己接进 Codex 的 Agent Loop 当"星怒"，属于是物理意义上的玩坏了。国际方面，伊朗新安全顾问放话不许海湾国家加入特朗普的经济战，美国一家创业公司靠低成本反无人机拦截弹吃到了战争红利；国内恒大案尘埃落定，许家印无期徒刑。下面按话题过。
+  </div>
+
+
+  <section class="block">
+    <h2>📌 各平台话题</h2>
+    <div class="sub">按话题聚类后的重点内容</div>
+    <h3 class="topic">🤖 AI/大模型（15 条）</h3>
+
+    <p class="intro">短剧制作是今天最热的词。Toonflow 的 v1 是纯离线架构，本机装 codex 就能跑，没显卡就租 GPU 服务器；陈硕KAI 的流水线想解决的是"怎么把一条视频变成一套能稳定复用的生产系统"。工具侧：HarnessRouter 统一 Agent runtime，claude-obsidian 落地 LLM Wiki，Anthropic 内部那个 ELI5 skill 也被人扒出来安利。还有条"Claude Code 免费 13 亿 token"的开源项目在转发里刷屏，真伪自己判断。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 烁皓@eternityspring·3小</span> · 📷×1 · 14:21 · 🟡</div>
+      <p>心心念念的短剧工作台，终于把流程理顺了<br><br>角色、场景、道具、剧本、分镜——每个环节都能人工介入微调，不再是AI流程一把抓了！<br><br>目前 v1 是纯离线架构：<br>- 本机装了 codex 就能跑<br>- 没显卡？租个 GPU 服务器 + MiniMax H3 comfyui API 接入就行<br><br>唯一未完成的：…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Dliyang@yiyirats·4小时</span> · 📷×1 · 13:25 · 🟡</div>
+      <p>蹲短剧赛道这么久，最让人窝火的从来不是缺点子，而是产能死活顶不上去。小说改剧本、分镜设计、角色定稿、视频生成、拼接剪辑，一整串流程跑下来，一个月能磨出一部都算烧高香了。<br><br>Toonflow 直接把这事儿整成了流水线。<br><br>丢一本小说进去，AI编剧帮你扒骨架、智能分镜给你切画面、角色一致性帮你锁住人设、…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 陈硕KAI@ChenshuoAI·5小时</span> · 📷×1 🎬×1 · 12:21 · 🟡</div>
+      <p>我把 AI 手绘视频，做成了一条可以本地持续生产的自动化流水线，有人之前已经在抖音跑出千赞<br><br>现在市面上 AI 视频工具很多，但大多数只解决"生成一条视频"<br><br>我更想解决的是：<br>怎么把一条视频，变成一套能稳定复用、持续产出的生产系统<br><br>所以我把声音克隆、文案拆解、分镜、插画、白板动画、字幕和最终合成，…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 📷×1 · 09:55 · 🟡</div>
+      <p>AI 영상 만들 때 모델의 검열은 피하면서<br>캐릭터 아이덴티티와 자연스러운 질감을 유지하고 싶다면<br><br>인용글의 방법과 힉스필드식 캐릭터 시트 제작법을<br>같이 활용해보는 것도 괜찮을 듯함<br><br>프롬프트, 캐릭터 시트 제작법은 타래에 https://t.co/K82f4Gr6rE</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 govin.eth | G哥@goan9</span> · 🎬×1 · 13:24 · 🟡</div>
+      <p>Claude Code 免费了？13 亿 token 免费用！<br><br>很多人想用 Claude Code / Codex 做 Vibe Coding，最大的痛点不是不会用，而是：模型额度不够、成本太高、单一模型容易受限制。<br><br>GitHub 上有个开源项目 Free Claude Code（4.76 万 …</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Smartpig@Smartpigai</span> · 🎬×1 · 09:31 · 🟡</div>
+      <p>Codex、Claude Code、Hermes这些harness环境不用再来回切了<br><br>发现一个开源项目：HarnessRouter<br><br>它想做的事情很直接：<br>把 Codex、Claude Code、Hermes 这些不同的 AI Agent runtime，统一到一套 API 后面。<br><br>1、Se…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:26 · 🟡</div>
+      <p>Karpathy 提出的「LLM Wiki」概念，终于有了极其工业级的开源实现：claude-obsidian。<br><br>这不仅是一个简单的 prompt 或插件，而是一套严密、Local-First 的知识工程系统：<br><br>🔹 真正的本地所有权：纯 Markdown + JSON 存储，绝不把知识锁在专有数…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 K2S@k2sbhai·23分钟</span> · 📷×1 · 21:37 · 🟡</div>
+      <p>you can test 50+ ai models for free on one platform 😳<br><br>AIHubMix has a free model catalog with models like:<br><br>- Kimi K3<br>- Ox Alpha<br>- Gemini 3.7 Flash<br>- …</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Guillermo Casaus@_gu</span> · 🎬×1 · 15:26 · 🟡</div>
+      <p>Claude Code no funciona todo lo bien que debería.<br><br>Hasta que instalas este plugin.<br><br>Analiza tu proyecto y te dice exactamente qué deberías configurar …</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 想风@xaiwind·4小时</span> · 📷×1 · 13:18 · 🟡</div>
+      <p>Anthropic 内部超赞的skill：ELI5<br><br>源自互联网流行语 "Explain Like I'm 5"（把我当成5岁小孩来解释）<br><br>适合学习 演示讲解知识点<br><br>用法就一行：/eli5  后面跟你想搞懂的东西。<br><br>它会按「你完全不懂」来讲，还甩一张大图少字的 HTML。<br><br>我盯着看了半天…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Max For AI@MaxForAI</span> · 📷×2 · 13:12 · 🟡</div>
+      <p>神了，有人已经开始当Codex的星怒了😂<br><br>有人真的把自己接进了 Codex 的 Agent Loop。<br><br>而且不是接机械臂，也不是接机器人。<br><br>是接了一个……会让人身体有反应的小玩具。<br><br>作者让 Codex + GPT-5.5 扮演 RPG 里的「触手怪」，iPhone 摄像头实时观察自己的姿势和…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Indie Fox@indie_make</span> · 10:39 · 🟡</div>
+      <p>codex 明天要重置了，怎么蹬完token？<br><br>1、在 canIVibeCodeIt 上找个你想要复刻的SaaS产品，复制提示词<br><br>2、在codex中安装 matt skills，调用 wayfinder 技能，复制提示词<br><br>3、按照建议，依次会调用 prototype、to-spec、to-ti…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 📷×1 · 10:34 · 🟡</div>
+      <p>做PPT的AI Skill榜单我按实用性重排了。<br>第一名48.7k stars，不是最好看的那个，但一定是唯一一个正式场合真能交差的。<br><br>用 AI 做 PPT 最大的坑，不是生成得慢，而是生成出来的全是一张张无法二次修改的静态废图，或者土到掉渣的默认模板,<br><br>这次按真实可编辑性、审美上限和 GitH…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Sac@Saccc_c·8小时</span> · 📷×1 · 09:39 · 🟡</div>
+      <p>发现一个能让 Agent 抓网页时获取更多信息的方法，而且完全免费！<br><br>原理是将Agent的网站请求身份模拟成OpenAI、xAI等官方AI公司，这样就能获得更完整且更AI友好的数据信息<br><br>我用抖音视频实际测试了一下，普通curl请求完全无法抓到相关信息，但尝试冒充官方AI爬虫身份就可以了，神奇～<br>…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Ren@Ryrenz·12小时</span> · 09:05 · 🟡</div>
+      <p>🃏 上头了，把 PDF 和微信读书笔记直接变成 Anki 卡片<br><br>GitHub 上 4.1K stars<br><br>准备考试的人都干过这件事：一边翻教材一边往 Anki 里敲卡片，一晚上敲一百张，手酸眼花，真正用来复习的时间反而没剩多少。制卡这一步本身不产生记忆，纯粹是搬运。<br><br>PDF Guru Anki …</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-18、2026-08-19、2026-08-21、2026-08-22、2026-08-23。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08-11 微软开源 SkillRecorder，通过操作录屏自动还原意图</span>
+        <span class="chip">08-11 MkAgent 正式开源，结合"AI+虚拟世界"风口，月入 16000 美元</span>
+        <span class="chip">08-12 发现并推荐 photo-abstract-editorial 生图 Skill</span>
+        <span class="chip">08-12 推广 ManimGL 作为可编程数学动画引擎</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（15天共1304条）
+      <div class="bars">
+        <div class="bar" style="height:98%"><small>105</small></div>
+        <div class="bar" style="height:94%"><small>101</small></div>
+        <div class="bar" style="height:79%"><small>85</small></div>
+        <div class="bar" style="height:75%"><small>80</small></div>
+        <div class="bar" style="height:100%"><small>107</small></div>
+        <div class="bar" style="height:69%"><small>74</small></div>
+        <div class="bar" style="height:65%"><small>70</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🔧 开发工具（8 条）</h3>
+
+    <p class="intro">几条对干活儿的人有用：Pluely 是浮在桌面最上层的半透明小窗，边开会边转写、带说话人标注还能给接话建议；docTR 用 PyTorch 把 PDF 整页文字取出来，中英混排也扛得住；Ydisks 把闲鱼的多账号、自动回复、付款发货全塞进一个后台；theme.park 给自托管的十几个服务统一换皮，不用再被十种界面来回折磨。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Vaidehi@Ai_Vaidehi·2</span> · 📷×1 · 17:35 · 🟡</div>
+      <p>20 YouTube channels that teach AI better than most CS degrees.<br><br>Free. No application required. No tuition.<br><br>This list covers everything: theory, intui…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Amto@XAMTO_AI·4小时</span> · 📷×1 · 13:59 · 🟡</div>
+      <p>市面上的ML教程我翻过不少，要么公式堆到劝退，要么全程调包不讲为什么。结果就是跑得动代码，但换个场景又不知道从哪调起。<br><br>这本《Applied Machine Learning in Python》走的是中间路线，数学推导不跳步，Python实现也一行行写给你看，把原理和代码绑在一起讲。<br><br>1⃣ 覆…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitHubDaily@GitHub_D</span> · 📷×1 · 13:30 · 🟡</div>
+      <p>开线上会议边听边记，散会翻笔记发现关键的几句全漏了，只能回去重听一遍录音。<br><br>Pluely 是一个浮在桌面最上层的半透明小窗，分问答和聆听两种模式，开箱即用。<br><br>聆听模式实时转写麦克风和系统声音，带说话人标注，还能一边转写一边给出可以接的回答。<br><br>GitHub：https://t.co/V0kH53…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 周览资源@grgerwcwetwet·6</span> · 📷×1 · 11:48 · 🟡</div>
+      <p>闲鱼卖家可以看看这个开源神器：客服、发货、铺货直接自动化。<br><br>推荐 最新的Ydisks 闲鱼助手，把 多账号管理、自动回复、付款自动发货、卡密库存、批量铺货、订单管理全塞进一个后台，还能接 OpenAI 兼容 API，让 AI 自动当客服。<br><br>支持 Docker 部署，也有 Windows / m…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 周览资源@grgerwcwetwet·6</span> · 📷×1 · 11:43 · 🟡</div>
+      <p>电子书多到电脑里到处都是？这个开源项目直接给你建一座私人数字图书馆。<br><br>推荐 BookLore，可以把散落的 PDF、EPUB、漫画统一管理，自动抓取封面和书籍信息，浏览器直接阅读，还能自动保存阅读进度、标注和高亮。<br><br>支持 Docker 部署，数据和书都掌握在自己手里，不依赖商业阅读平台，也不用…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Ren@Ryrenz·6小时</span> · 11:09 · 🟡</div>
+      <p>🖌️ 自托管的一堆服务终于能长成一个样了<br><br>GitHub 上 3.1K stars<br><br>自己搭服务的人有个通病：装了十几个，界面十几种风格。这个是深蓝，那个是刺眼的白，第三个还停在十年前的审美，每天在标签页之间切来切去，眼睛累。<br><br>theme.park 就是给这些应用统一换皮的。主题给了 11 套，D…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitHubDaily@GitHub_D</span> · 📷×1 · 10:00 · 🟡</div>
+      <p>想在自己产品里加文字识别功能，装完 Tesseract 调半天参数，中英混排还是识别得七零八落。<br><br>docTR 是个 PyTorch 写的文字识别库，几行代码就能把 PDF 或者图片里的文字整页取出来。<br><br>它分两步走，先定位每个词在页面上的位置，再识别里面的字符，两步各自的模型都能单独换。<br><br>Git…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 轩辕之风@xuanyuanzhifeng</span> · 🎬×1 · 09:05 · 🟡</div>
+      <p>用DeepSeek Harness来diy自己的Agent真的太舒服了，模块化架构，在不破坏原有代码核心架构的基础上，非常轻松的插拔额外的插件实现定制化Agent。<br><br>这是我用DSH开发的一个X监控系统，帮助我快速产出自媒体内容。<br><br>以往开发这样的系统，需要自己接AI API，自己做一套Agent …</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-13、2026-08-17、2026-08-19、2026-08-20、2026-08-23。</i></div>
+    <h3 class="topic">🎮 二次元/游戏（3 条）</h3>
+
+    <p class="intro">B-銀河 在晒"构成自己的 9 款游戏"，还吐槽怎么可以没有《水月》，懂的都懂；トゲ 想消除记忆重新体验《宝可梦 金/银》；剩下一条是 Sakiel 制服手办的补货预告，下次贩售要等冬WF。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 B-銀河@body_ma_ginga·5</span> · 16:51 · 🟡</div>
+      <p>私を構成する9つのゲーム<br>何故水月がないのか私には理解に困るね<br>#My9Games #私を構成する9つのゲーム<br>https://t.co/B7QJFuUUK9</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 しょっぱい言さん@B5rEf·2分钟</span> · 📷×1 · 09:59 · 🟡</div>
+      <p>「制服サキエル」一次販売分の余剰在庫が2点ございますので、後ほど在庫を追加いたします<br>なお、次回の販売は冬ワンフェスを予定しております https://t.co/iiMLevs1X6</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 トゲ@toge_painter·7分钟</span> · 09:55 · 🟡</div>
+      <p>#記憶を消して一からやりたいゲーム<br>ポケモン金銀。<br>きみはいま！</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-15、2026-08-18、2026-08-20、2026-08-22、2026-08-23。</i></div>
+    <h3 class="topic">🇪🇺 欧洲（2 条）</h3>
+
+    <p class="intro">两条偏社会新闻：伦敦 Hounslow 火灾致一死八伤，一名 34 岁男子在前往法国的路上被捕，涉嫌谋杀；法国部长把今年夏天溺水死亡激增归咎于热浪——人们下水太冒险了，已确认 301 人死亡。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-23 · 🔵</div>
+      <p><b>Man arrested travelling to France after London fire left one dead and eight inju</b></p>
+      <p>A 34-year-old man is arrested on suspicion of murder following a fatal fire in Hounslow.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-23 · 🔵</div>
+      <p><b>France links rise in drownings to heatwaves</b></p>
+      <p>A government minister says people have been taking risks by going into the water, with 301 deaths si…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-09、2026-08-17、2026-08-22。</i></div>
+    <h3 class="topic">🇮🇱 中东局势（2 条）</h3>
+
+    <p class="intro">伊朗新国家安全顾问 Mohsen Rezaei 放话，要阻止海湾国家"一滴油"流向特朗普的经济战阵营；另一边，佛罗里达的 Powerus 靠低成本反无人机拦截弹，成了伊朗战争里的隐形赢家，正在冲击全球供应商的位置。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-23 · 🟢</div>
+      <p><b>Iran Warns Gulf States Not to Join Trump's Economic War</b></p>
+      <p>Iran's new hard-line national security adviser, Mohsen Rezaei, vowed to prevent "a single drop of oi…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-23 · 🟢</div>
+      <p><b>The U.S. Start-Up Making Low-Cost Interceptors for the Iran War</b></p>
+      <p>For Florida-based Powerus, becoming a global supplier of counterdrone technology has meant involving…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-16、2026-08-19、2026-08-21、2026-08-22、2026-08-23。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">07-09 特朗普虚张声势再多，除了与伊朗谈判别无选择（BBC 鲍文观察）</span>
+        <span class="chip">07-23 三位自以为是的领导人和他们的愚蠢战争；美国与沙特签署核协议引核扩散担忧</span>
+        <span class="chip">07-24 印度青年抗议；美沙核协议为中东再引核扩散风险</span>
+        <span class="chip">07-29 欧洲游客"消失"，东南亚旅游业者陷入困境</span>
+        <span class="chip">08-02 特朗普：若"迅速"达成协议，可取消对伊朗的打击</span>
+        <span class="chip">08-03 特朗普同意取消对伊朗打击，前提是能"迅速"达成协议</span>
+        <span class="chip">08-09 阿曼称霍尔木兹海峡会谈进展顺利，伊朗警告协议不会打通海峡</span>
+        <span class="chip">08-10 霍尔木兹海峡：阿曼称会谈顺利，伊朗警告协议不会打通海峡</span>
+        <span class="chip">08-14 伊朗跟美国、以色列打仗还能撑多久？</span>
+        <span class="chip">08-19 战争和权力的新物理规律</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（12天共28条）
+      <div class="bars">
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+      </div>
+    </div>
+    <h3 class="topic">₿ Crypto/Web3（1 条）</h3>
+
+    <p class="intro">唯一一条还是关于 Codex 额度的——柴郡整理了 4 个提示词，教你在重置前把额度"蹬"干净：从架构审查、代码质量到用户体验，把项目从头到尾过一遍。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 柴郡｜Crypto+AI Plus@0x</span> · 📷×1 · 15:11 · 🟡</div>
+      <p>如果你今晚无法快速蹬完 Codex 额度，下面 4 个提示词能帮助到你：<br><br>1/ 检查前端和后端的架构，找出所有需要解决的问题<br><br>2/ 检查项目代码是否高内聚低耦合，是否有重复实现或者相近的功能代码可以合并，是否有上帝类文件，是否有不合理的硬编码<br><br>3/ 仔细检查还有哪些用户体验上的问题<br><br>4/ 检…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-09、2026-08-11、2026-08-15、2026-08-18、2026-08-23。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08-19 Speculators have rebuilt net-long Bitcoin futures to near-record levels. Retail remains neutral.</span>
+        <span class="chip">08-20 JUST IN: President Trump declares the U.S. is "way ahead" of China in the artificial intelligence sector.</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（15天共76条）
+      <div class="bars">
+        <div class="bar" style="height:60%"><small>6</small></div>
+        <div class="bar" style="height:60%"><small>6</small></div>
+        <div class="bar" style="height:100%"><small>10</small></div>
+        <div class="bar" style="height:40%"><small>4</small></div>
+        <div class="bar" style="height:20%"><small>2</small></div>
+        <div class="bar" style="height:50%"><small>5</small></div>
+        <div class="bar" style="height:90%"><small>9</small></div>
+      </div>
+    </div>
+    <h3 class="topic">💻 AI Agent（1 条）</h3>
+
+    <p class="intro">brucexu.eth 晒了个真香组合：Hermes + Tailscale。以前新服务器从 SSH 到各种安全配置要折腾几小时甚至几天，现在两步五分钟：装上 Tailscale，连上账号，完事。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 brucexu.eth@brucexu_</span> · 📷×1 · 09:00 · 🟡</div>
+      <p>Hermes 加 Tailscale 简直是太牛逼了！<br><br>以前买一台新的服务器，需要连接 SSH，或者是配置各种安全命令，还有脚本，把这个服务器一步一步配置好，直到能用。少则 1-2 小时，多则几天。<br><br>而现在只需要做两个步骤，大概 5 分钟：<br>第一步是在上面装上 Tailscale，然后连接到账…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-12、2026-08-13、2026-08-18、2026-08-19、2026-08-23。</i></div>
+    <h3 class="topic">🏛️ 国内政策（1 条）</h3>
+
+    <p class="intro">恒大案落槌：许家印被判处无期徒刑，集团被罚款近 160 亿元人民币。深圳中院称其在 4 月庭审中"认罪悔罪"。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-23 · 🔵</div>
+      <p><b>恒大爆雷：许家印被判处无期徒刑 集团罚款近160亿元人民币</b></p>
+      <p>图像来源，Shenzhen Intermediate People's Court via WeChat 广东深圳中院称，许家印（中）在4月的庭审中"认罪悔罪"。Published 2026年8月20日</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-16、2026-08-18、2026-08-19、2026-08-21、2026-08-22。</i></div>
+    <h3 class="topic">🇷🇺 俄乌冲突（1 条）</h3>
+
+    <p class="intro">被解职的乌克兰前国防部长放话：泽连斯基政府内部的腐败问题"需要回答"，还呼吁在乌克兰举行选举。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-23 · 🔵</div>
+      <p><b>Zelensky has 'questions to answer' about corruption in his government, sacked mi…</b></p>
+      <p>The sacked former defence minister has also called for elections to be held in Ukraine.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-17、2026-08-18、2026-08-19、2026-08-20、2026-08-21。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">07-22 泽连斯基为何在战争关键时刻撤换最高将领</span>
+        <span class="chip">07-23 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</span>
+        <span class="chip">08-01 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击？</span>
+        <span class="chip">08-03 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击？</span>
+        <span class="chip">08-10 台湾的无人机"地狱景象"能抵御中国入侵吗？</span>
+        <span class="chip">08-18 乌克兰无人机何以精准打击俄罗斯本土？</span>
+        <span class="chip">08-19 战争和权力的新物理规律</span>
+        <span class="chip">08-21 生于乌克兰，为何替俄罗斯作战？被俘士兵向BBC讲述他们的故事</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（11天共18条）
+      <div class="bars">
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:33%"><small>1</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇹🇼 台海局势（1 条）</h3>
+
+    <p class="intro">台湾在推"鞭刑入法"公投。背景是保母虐童致死的"剀剀案"——犯罪手段太残忍，民众多次上街抗议，民意一路被推着走。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-23 · 🔵</div>
+      <p><b>台湾为何此刻提出"鞭刑入法"公投？</b></p>
+      <p>图像来源，Getty Images 近年台湾几起重大刑事案件推动了相关民意。其中，保母虐童致死的"剀剀案"因犯罪手段残忍，引发社会强烈愤怒，民众多次上街抗议。Article Information Aut…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-18、2026-08-19、2026-08-21、2026-08-22、2026-08-23。</i></div>
+    <div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">07-21 距离金门仅三公里，厦门翔安机场引发台湾国安疑虑</span>
+        <span class="chip">07-22 市场对AI支出和中国芯片竞争担忧加剧</span>
+        <span class="chip">07-28 亚洲安全局势正经历一场历史性转变</span>
+        <span class="chip">08-04 美国与日本罕有联手干预汇市，图阻日圆跌至40年来新低</span>
+        <span class="chip">08-05 东海开发：施压日本、探测美国反应</span>
+        <span class="chip">08-11 如果中国切断台湾互联网，台湾将如何应对</span>
+        <span class="chip">08-12 "台海攸关安保"消失于日本防卫白皮书为什么</span>
+        <span class="chip">08-18 时隔20年，台湾前总统陈水扁女儿陈幸妤再次成为媒体焦点</span>
+      </div>
+    </div>
+    <div class="trend">📊 趋势（15天共39条）
+      <div class="bars">
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:100%"><small>4</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:50%"><small>2</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇯🇵 日本/东亚（1 条）</h3>
+
+    <p class="intro">NYT 写的是日本城市争夺"备份首都"头衔的竞赛：大阪、福冈、札幌都在抢当东京之外的第二个中心，图的是名头，也是钱。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-22 · 🟢</div>
+      <p><b>Cities Compete in Dizzying 'Gold Rush' to Be Japan's Backup Capital</b></p>
+      <p>Osaka? Fukuoka? Sapporo? The race is on to be second to Tokyo — and to claim the prestige and money…</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-19、2026-08-20、2026-08-21、2026-08-22、2026-08-23。</i></div>
+  </section>
+
+  <section class="block">
+    <h2>🗂️ 其他零散内容（176 条）</h2>
+    <div class="sub">未聚类的零散推文，以插画、日常转发为主；挑了几条能看的，其余已略过</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 📷×1 · 21:54 · 🟡</div>
+      <p>RT @_Do_t: オリ魔法少女本に向けてのアイデアラフです https://t.co/8y3Hj954Bm</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Tom Dörr@tom_doerr·3</span> · 📷×1 · 21:27 · 🟡</div>
+      <p>xyOps combines job scheduling, workflow automation, and server monitoring into a single open-source …</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 熊布朗@Stephen4171127·1</span> · 📷×1 · 20:17 · 🟡</div>
+      <p>Agent 研发很有意思的一件事就是用自己改自己。 https://t.co/QcsU5RVlte</p>
+    </div>
+    <p class="note-more">…还有 173 条未显示</p>
+  </section>
+
+  <section class="block">
+    <h2>📊 今日统计</h2>
+    <div class="statgrid">
+      <div class="statcard">
+        <h4>🐦 X 推文：152 条</h4>
+        <ul>
+          <li><span>General</span><b>143 条</b></li>
+          <li><span>🔞 已过滤未展示</span><b>9 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📰 RSS 新闻：67 条</h4>
+        <ul>
+          <li><span>BBC</span><b>33 条</b></li>
+          <li><span>NYT</span><b>27 条</b></li>
+          <li><span>BBC中文</span><b>7 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📚 累计数据</h4>
+        <ul>
+          <li><span>X</span><b>17,611 条</b></li>
+          <li><span>NGA</span><b>584 条</b></li>
+          <li><span>S1</span><b>374 条</b></li>
+          <li><span>RSS</span><b>5,196 条</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+    <p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
+  </footer>
+
+</div>
+</body>
+</html>
