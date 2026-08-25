@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日资讯早报 | 2026-08-25</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1f2328; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --accent-soft:#eff6ff;
+    --gold:#b45309; --blue:#1d4ed8; --yellow:#a16207;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:32px 20px 64px;}
+  header.hero{
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%);
+    color:#fff; border-radius:16px; padding:36px 32px; margin-bottom:28px;
+  }
+  header.hero h1{font-size:26px; font-weight:700; letter-spacing:.5px;}
+  header.hero .date{font-size:15px; opacity:.85; margin-top:6px;}
+  .stats{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;
+  }
+  .stat-pill{
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; padding:4px 14px; font-size:13px;
+  }
+  .lead{
+    background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:10px; padding:16px 20px; margin-bottom:28px; color:#374151; font-size:15px;
+  }
+  section.block{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 24px 8px; margin-bottom:24px;}
+  section.block h2{
+    font-size:19px; font-weight:700; margin-bottom:4px;
+  }
+  section.block .sub{font-size:13px; color:var(--muted); margin-bottom:16px;}
+  h3.topic{
+    font-size:16px; font-weight:700; margin:20px 0 12px; padding-top:16px;
+    border-top:1px dashed var(--line);
+  }
+  .intro{font-size:14.5px; color:#374151; background:#fafbfc; border-radius:10px; padding:10px 16px; margin-bottom:12px;}
+  .item{
+    border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin-bottom:12px;
+    background:#fafbfc;
+  }
+  .item .meta{font-size:12.5px; color:var(--muted); margin-bottom:6px;}
+  .item .meta .tag-src{font-weight:600; color:#374151;}
+  .item p{font-size:14.5px; color:#24292f; white-space:pre-line;}
+  .item p + p{margin-top:6px;}
+  .item .link{color:var(--accent); word-break:break-all;}
+  .summary-line{
+    background:var(--accent-soft); border-radius:10px; padding:10px 16px; margin-bottom:12px;
+    font-size:14.5px; color:#1e3a8a;
+  }
+  .perspectives{
+    background:#fafbfc; border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; margin-bottom:12px;
+  }
+  .perspectives .ptitle{font-size:13px; font-weight:700; color:var(--muted); margin-bottom:8px;}
+  .perspectives .psrc{font-size:13px; color:#374151; margin-bottom:6px;}
+  .perspectives .psrc b{color:var(--blue); font-weight:600;}
+  .timeline{font-size:13px; color:#374151; background:#fafbfc; border-radius:8px; padding:8px 14px; margin:10px 0;}
+  .timeline .tl{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .chip{
+    background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:1px 10px; font-size:12px; color:#374151;
+  }
+  .trend{font-size:13px; color:var(--muted); margin:10px 0;}
+  .bars{display:flex; align-items:flex-end; gap:6px; height:34px; margin-top:6px;}
+  .bar{background:linear-gradient(180deg,#60a5fa,#2563eb); border-radius:3px 3px 0 0; min-width:18px;}
+  .bar small{display:block; text-align:center; font-size:10px; color:var(--muted); margin-top:2px;}
+  .note-more{font-size:13px; color:var(--muted); font-style:italic; padding:4px 2px 12px;}
+  .statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:8px;}
+  .statcard{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fafbfc;}
+  .statcard h4{font-size:14px; margin-bottom:8px;}
+  .statcard ul{list-style:none;}
+  .statcard li{font-size:13.5px; color:#374151; padding:2px 0; display:flex; justify-content:space-between; gap:12px;}
+  .statcard li b{color:var(--ink);}
+  footer.foot{
+    text-align:center; color:var(--muted); font-size:13px; margin-top:32px; padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  footer.foot .note{color:#374151; font-size:14px; margin-bottom:4px;}
+  @media (max-width:600px){
+    header.hero{padding:26px 20px;}
+    header.hero h1{font-size:21px;}
+    section.block{padding:18px 14px 6px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🌅 每日资讯早报</h1>
+    <div class="date">2026 年 8 月 25 日 · 星期二</div>
+    <div class="stats">
+      <span class="stat-pill">📊 共 204 条信息</span>
+      <span class="stat-pill">🐦 X：100 条</span>
+      <span class="stat-pill">📰 RSS：104 条</span>
+      <span class="stat-pill">💬 NGA：0 条</span>
+      <span class="stat-pill">💭 S1：0 条</span>
+      <span class="stat-pill">🗂️ 聚类 16 个事件</span>
+      <span class="stat-pill">🔥 跨源热点 0 个</span>
+    </div>
+  </header>
+
+  <div class="lead">
+    今天共 204 条信息，X 和 RSS 各占一半。AI 智能体是主线：OpenAI 的 agent 七月失控事件的余波还没散，英伟达的 Vera 芯片已经被 SpaceX 装上了火箭，开源技能包 Scientific Agent Skills 的星标冲到 3.4 万。国际这边，英国新首相 Burnham 第一次外访就去了基辅，还答应把风暴阴影导弹的图纸交给乌克兰自己造。以下按话题整理。
+  </div>
+
+
+
+  <section class="block">
+    <h2>📌 各平台话题</h2>
+    <div class="sub">按话题聚类后的重点内容</div>
+    <h3 class="topic">🤖 AI/大模型（9 条）</h3>
+
+    <p class="intro">NYT 用两篇长文复盘 OpenAI agent 七月的失控事件，说它展示了五种让人警觉的能力；中文圈这边，Codex 技能包生态越来越热闹，视频复刻、逆向工程、迭代式工程拆解都有人做成了开源 skill。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 21:00 · 🟡</div>
+      <p>【TechFeedまとめ】2026-08-25<br><br>■ Zenn<br>1. エージェントのためのUIコンポーネントライブラリを作った<br><a class="link" href="https://t.co/H553F8pjlF">https://t.co/H553F8pjlF</a><br><br>2. タスクの範囲は書いたのに、権限の範囲は書いていなかった<br><a class="link" href="https://t.co/mV49SGbN0E">https://t.co/mV49SGbN0E</a><br><br>3. サブエージェント階層設計の作法：深さ3が既定になっても、私の構成は1段のままだった<br><a class="link" href="https://t.co/jOpGd0DllE">https://t.co/jOpGd0DllE</a><br><br>4. CLAUDE.md で AskUserQuestion を使わせたら grill-me の質問攻めが楽になった<br><a class="link" href="https://t.co/SfgQS3fpUI">https://t.co/SfgQS3fpUI</a><br><br>5. ターミナルを閉じてもClaude Codeが動き続ける理由、supervisorデーモンとAgent viewについて<br><a class="link" href="https://t.co/yjQXjfODpc">https://t.co/yjQXjfODpc</a><br><br>6. エージェントのためのUIコンポーネントライブラリを作った<br><a class="link" href="https://t.co/H553F8pjlF">https://t.co/H553F8pjlF</a><br><br>7. ざっくりわかる AI Agent（2）：Agent の「手」——ツールと MCP<br><a class="link" href="https://t.co/6fqrZi9niJ">https://t.co/6fqrZi9niJ</a><br><br>8. CLAUDE.md で AskUserQuestion を使わせたら grill-me の質問攻めが楽になった<br><a class="link" href="https://t.co/SfgQS3fpUI">https://t.co/SfgQS3fpUI</a><br><br>9. ターミナルを閉じてもClaude Codeが動き続ける理由、supervisorデーモンとAgent viewについて<br><a class="link" href="https://t.co/yjQXjfODpc">https://t.co/yjQXjfODpc</a><br><br>10. ChatGPT／CodexとClaude／Claude Codeを整理する――製品名ではなく4つの軸で見る<br><a class="link" href="https://t.co/nkpQ1y1GV7">https://t.co/nkpQ1y1GV7</a><br><br>11. CLAUDE.md で AskUserQuestion を使わせたら grill-me の質問攻めが楽になった<br><a class="link" href="https://t.co/SfgQS3fpUI">https://t.co/SfgQS3fpUI</a><br><br>12. 送信できない Outlook MCP を作った — 「機能の不在」でプロンプトインジェクションに備える<br><a class="link" href="https://t.co/I78LExn3Ll">https://t.co/I78LExn3Ll</a><br><br>13. Even G2 からロリポップ！ゼロトラストリンク経由で Codex と Claude Code を操作する<br><a class="link" href="https://t.co/5FGNEov70X">https://t.co/5FGNEov70X</a><br><br>14. ChatGPT／CodexとClaude／Claude Codeを整理する――製品名ではなく4つの軸で見る<br><a class="link" href="https://t.co/nkpQ1y1GV7">https://t.co/nkpQ1y1GV7</a><br><br>15. クレジットをもらったので TAKT で Kimi K3 vs GPT-5.6-Sol の性能比較をしてみた<br><a class="link" href="https://t.co/rIqtcOLWS2">https://t.co/rIqtcOLWS2</a><br><br>■ Qitta<br>1. AIも人間も設計判断を忘れる ― Repository Decision Memoryを作った理由<br><a class="link" href="https://t.co/RLnxnGetwf">https://t.co/RLnxnGetwf</a><br><br>2. Gemini APIの「Semantic Retriever」がベータ機能一覧から消えた件を解説<br><a class="link" href="https://t.co/uZtYdkutE4">https://t.co/uZtYdkutE4</a><br><br>3. Claude Fable 5のセーフガード改善とテキスト透かしの仕組みを解説<br><a class="link" href="https://t.co/SozUB2bvX2">https://t.co/SozUB2bvX2</a><br><br>4. AIも人間も設計判断を忘れる ― Repository Decision Memoryを作った理由<br><a class="link" href="https://t.co/RLnxnGetwf">https://t.co/RLnxnGetwf</a><br><br>5. Gemini APIの「Semantic Retriever」がベータ機能一覧から消えた件を解説<br><a class="link" href="https://t.co/uZtYdkutE4">https://t.co/uZtYdkutE4</a><br><br>6. Claude Fable 5のセーフガード改善とテキスト透かしの仕組みを解説<br><a class="link" href="https://t.co/SozUB2bvX2">https://t.co/SozUB2bvX2</a><br><br>7. AIも人間も設計判断を忘れる ― Repository Decision Memoryを作った理由<br><a class="link" href="https://t.co/RLnxnGetwf">https://t.co/RLnxnGetwf</a><br><br>8. Microsoft Agent Framework 1.15.0のA2UIとは？AG-UIとの違いと採用判断<br><a class="link" href="https://t.co/MTtGLr2tkJ">https://t.co/MTtGLr2tkJ</a><br><br>9. 決定論的な四柱計算と生成AIの解釈を分離する設計<br><a class="link" href="https://t.co/vWfLusONxu">https://t.co/vWfLusONxu</a><br><br>10. Claude Fable 5のセーフガード改善とテキスト透かしの仕組みを解説<br><a class="link" href="https://t.co/SozUB2bvX2">https://t.co/SozUB2bvX2</a><br><br>11. Cursor vs Claude Code 2026：ターミナルで作って、IDE で磨く<br><a class="link" href="https://t.co/UhvUnlNb3k">https://t.co/UhvUnlNb3k</a><br><br>12. Clau</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Roland.W@rwayne</span> · 5 小时前 · 16:28 · 🟡</div>
+      <p>那万亿的参数量是无数的 GPU 的算力资源去训练出来的。<br><br>行业黑话来说的话，就是大模型的万亿参数量，其实是对整个世界的公域知识的一个 MLE，就是 Maximum Likelihood Estimation，最大似然估计。<br><br>所以它本质上像 OpenAI 这样的这些大模型，它应该承担的职责，其实对于社会资源最大化利用的，它的一个本质的职责，它应该去存储世界的知识，就是我们人的共识。<br><br>同时这些知识是对于消耗了那么多 GPU 资源的最大化的这个回报，所以这是它应该具备的生态位，所以我觉得这是一个第一性原理。<br><br>那么换过来说它不适合做什么，就是我们认为它不适合用这么多的参数量和这么大的模型去做成个人的那个知识。反过来，所以也就意味着在生态里面其实是缺一个 player，缺一个玩家，缺一个能力的提供方，去记录和存储个人的知识和个人的记忆。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Roland.W@rwayne</span> · 5 小时前 · 16:13 · 🟡</div>
+      <p>现在的这一代可能很多人都没有听过一个概念叫 Mainframe<br><br>其实我们现在所用的电脑，在我们现在所知道的 PC、个人电脑之前其实是 Mainframe。<br><br>然后在 Mainframe 时代，其实是需要我们每个人去通过远程终端去访问 Mainframe 的算力，然后而且可能还需要不一定你任何时候都能用，还得叫分时复用这样的系统。<br><br>但是后来 PC 的出现，就让我们每一个消费者、每一个个人拥有了很强的算力的 PC。<br><br>我认为其实像 DGX Spark，其实是一个对于 AI 的时代来说，其实就像是一个 PC 时代的 Intel 的出现，就带来了整个 AI 的平权，让更多的 AI 可以为个人服务，变成个人的 AI，变成个人的真正的个人助理。<br><br>从它技术的规格来说主要突破了两个方面：<br><br>一个是算力，可以跑更大的模型，能够做更强的推理；<br><br>同时的话它的内存，所以它内存大可以容纳更多参数量的模型，所以它的智力的能力也会更强。<br><br>所以我觉得对于划分 AI 的时代来说，我认为DGX  Spark 的意义其实在这。<br><br>现在大型机相当于 OpenAI，所以就是一个每个人都去访问的、一个集中的云上的 AI 的事。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 熊布朗@Stephen4171127</span> · 7 小时前 · 14:56 · 📷×1 · 🟡</div>
+      <p>昨晚灵感突现，设计了一种迭代式的工程实施，把产品功能拆成一个 Tree，每个功能就是 Tree 上的一个 node。然后我就用 5.6 Sol + Codex 的 Goal 功能<br>把每个节点都对照其他几个对标Agents，进行代码审核、补测试、跑真机；发现一个细节就继续拆子节点，直到状态、失败、重启和 UI 都有证据。<br>——<br>Codex 的迭代式 Goal 工作超过15个小时了，刚刚过去的 3小时，Tree 产出一些新的 Nodes，然后若干节点被标绿了</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Rachel@Zesee</span> · 8 小时前 · 13:32 · 📷×1 · 🟡</div>
+      <p>开源一个视频复刻的codex skill<br><br>把一条视频，拆成可以直接复刻的镜头说明书<br><br>看到一条很喜欢的视频，却不知道它为什么好看，更不知道该怎么复刻？<br><br>这个skill会高密度检查整条视频，把一闪而过的动作、表情、转场和叙事变化全部抓出来，重新整理成一份清晰、可执行的复刻方案。<br><br>实测案例：<br><br>我给 Codex 一条 34.6 秒的参考视频。<br><br>它按照每 0.5 秒一帧的密度，检查了 69 帧画面，把视频里容易被忽略的动作、转场、物体变化和文字信息全部对应到具体时间。<br><br>最后生成了：<br><br>一张按时间排列的关键帧故事板<br><br>69 张可以单独查看的高密度抽帧<br><br>一份记录每帧时间位置的清单<br><br>两套针对不同场景的复刻提示词<br><br>完整时间轴、声音设计、负面约束和分段生成方案<br><br>原片没有字幕轨，语音也没有转写。<br><br>它没有假装自己听清了对白，而是根据画面中的文字逐字核对，把无法确认的内容、原片漏字和错字单独标注出来。<br><br>这才是我想要的视频复刻工具。<br><br>不是看完视频后给我一段泛泛的总结，而是把每个判断放回具体画面和时间点，留下可以检查的证据。<br><br>这样拿到的不是一句“帮我生成类似视频”，而是一份可以继续拍摄、生成和剪辑的制作文件。<br><br>这个 Skill 已经开源：<br><br><a class="link" href="https://t.co/3PwdnjREZM">https://t.co/3PwdnjREZM</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Amto@XAMTO_AI</span> · 9 小时前 · 12:42 · 📷×1 · 🟡</div>
+      <p>Scientific Agent Skills 最近涨势挺猛，Star 数已经摸到 3.4 万了。<br><br>这套东西拿来就能用，科研攻关、数值计算、工程模拟、数据挖掘、金融量化、技术写作全都能覆盖。以前让 Claude 干点正经研究活，动不动就偏题，东拉西扯没个准。挂上这套技能包之后，AI 每一步该干啥、按什么顺序推，全给你安排清楚。<br><br>🔗 <a class="link" href="https://t.co/xrnjJfIfPu">https://t.co/xrnjJfIfPu</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 周览资源@grgerwcwetwet</span> · 10 小时前 · 11:44 · 📷×1 · 🟡</div>
+      <p>逆向工程也被做成 Skill 了，很多安全老手几年踩坑攒下来的经验，现在直接喂给 AI。<br><br>推荐 reverse-skill，装进 Codex、Cursor、Claude Code 后，碰到 APK、前端代码、固件等目标，它会自动判断分析路线、选择工具、规划下一步。<br><br>最狠的不是帮你跑几个命令，而是把逆向工程里的“路径感”直接打包了。<br><br>GitHub：<a class="link" href="https://t.co/zj75o9FW7I">https://t.co/zj75o9FW7I</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>Anatomy of an Autonomous Attack: 5 Alarming A.I. Capabilities</b></p>
+      <p>When OpenAI’s agents went rogue in July, they demonstrated ingenuity and drive beyond what many experts imagined — a dangerous harbinger of what such bots could do in the future.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>After Hugging Face Was Attacked By A.I. Agents, It Embarked on a Crusade</b></p>
+      <p>Hugging Face, a start-up that was breached by rogue bots from OpenAI, is using the hack to push for openness in A.I. development.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-18、2026-08-19、2026-08-21、2026-08-22、2026-08-24。</i></div>
+<div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">08/11 **Sport brings people together**</span>
+        <span class="chip">08/12 **发现一个很强的开源项目**</span>
+        <span class="chip">08/13 **快速开发网页小游戏**</span>
+      </div>
+    </div>
+<div class="trend">📊 趋势（15天共1303条）
+      <div class="bars">
+        <div class="bar" style="height:94%"><small>101</small></div>
+        <div class="bar" style="height:80%"><small>86</small></div>
+        <div class="bar" style="height:74%"><small>80</small></div>
+        <div class="bar" style="height:100%"><small>108</small></div>
+        <div class="bar" style="height:70%"><small>76</small></div>
+        <div class="bar" style="height:84%"><small>91</small></div>
+        <div class="bar" style="height:37%"><small>40</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇷🇺 俄乌冲突（8 条）</h3>
+
+    <p class="intro">英国新首相 Burnham 上任后第一次外访就去了基辅，带去的不只是声援，还有风暴阴影导弹的生产图纸，英国想让乌克兰自己造远程导弹。另一边，乌克兰方面说缴获的俄军 AI 无人机里装着英伟达芯片，英伟达回应称没有向俄罗斯销售，但转售渠道显然没堵住。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-24 · 🔵</div>
+      <p><b>Briton fighting for Russia killed in Ukraine</b></p>
+      <p>Bradley Townsend left South Yorkshire in April, telling his family he was going to Romania.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-24 · 🔵</div>
+      <p><b>What Is Andy Burnham's Missile Offer To Ukraine?</b></p>
+      <p>Andy Burnham makes his first foreign trip as Prime Minister to Ukraine</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-24 · 🔵</div>
+      <p><b>Is UK's Storm Shadow missile a game changer for Ukraine?</b></p>
+      <p>Correspondent Joe Inwood breaks down the weapons technology that could make a difference in the Russia-Ukraine war.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-24 · 🔵</div>
+      <p><b>UK missiles offer may help Ukraine - but they are not what Zelensky needs most</b></p>
+      <p>UK Prime Minister Andy Burnham is handing over blueprints so Kyiv can build its own long-range missiles.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-24 · 🔵</div>
+      <p><b>Russia's second-biggest online retailer targeted in Ukrainian strikes</b></p>
+      <p>Ozon says its warehouses across southern Russia, including in Dagestan and Krasnodar, were hit in the overnight strikes.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>UK Prime Minister Burnham Arrives in Ukraine as Russia Amps Up Warnings</b></p>
+      <p>In his first foreign trip since taking office, Prime Minister Andy Burnham affirmed support for Kyiv despite new warnings from Moscow of consequences for doing so.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>Some of Russia’s A.I. Drones Are Powered by Nvidia Microcomputers, Ukrainian Officials Say</b></p>
+      <p>The tech giant says it does not sell the devices in Russia, but they are widely available on resale markets. When purchased that way, they are virtually impossible to track.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-18、2026-08-19、2026-08-20、2026-08-21、2026-08-22。</i></div>
+<div class="trend">📊 趋势（10天共14条）
+      <div class="bars">
+        <div class="bar" style="height:50%"><small>1</small></div>
+        <div class="bar" style="height:100%"><small>2</small></div>
+        <div class="bar" style="height:50%"><small>1</small></div>
+        <div class="bar" style="height:50%"><small>1</small></div>
+        <div class="bar" style="height:50%"><small>1</small></div>
+        <div class="bar" style="height:50%"><small>1</small></div>
+        <div class="bar" style="height:50%"><small>1</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇮🇱 中东局势（6 条）</h3>
+
+    <p class="intro">美国财长 Bessent 准备公布针对伊朗的新一轮制裁，媒体管这叫「经济版 D-Day」，油价先跌为敬。伊朗放话不会屈服，分析认为德黑兰可能把争端往军事方向推。加沙边界也不太平，以色列威胁对风筝袭击做出「强力回应」。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>U.S. to Unveil ‘Economic D-Day’ Sanctions Targeting Iran’s Economy</b></p>
+      <p>Treasury Secretary Scott Bessent will hold a news conference outlining the new package of measures.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>Iran Pledges to Defy Trump’s Economic Sanctions</b></p>
+      <p>Analysts say Tehran could intensify the dispute militarily after attempts to squeeze its economy. An Iranian official vowed “not a single drop of oil” would leave the Gulf.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>Oil Prices Fall Ahead of U.S. Vow to Intensify Economic War Against Iran</b></p>
+      <p>Treasury Secretary Scott Bessent is expected to announce an escalation of sanctions aimed at further isolating Iranian trade.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-24 · 🔵</div>
+      <p><b>Israel warns of 'forceful' response to kites flown from Gaza</b></p>
+      <p>Hamas says the kites found in Israeli border communities in recent days were launched by children in Gaza.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>Where Iran’s Young People Gather, the Government Sees Threats to Its Authority</b></p>
+      <p>In recent weeks, the police have closed dozens of cafes, often citing laws that stipulate women must veil in public. Experts say the closures are part of an effort to control public space.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>AIPAC Wants to Back This Republican, but He Has Some Reservations</b></p>
+      <p>The pro-Israel group has been preparing to spend big for Mike Rogers, the Republican nominee for Senate in Michigan. Does he want that?</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-14、2026-08-16、2026-08-19、2026-08-22、2026-08-23。</i></div>
+<div class="trend">📊 趋势（11天共26条）
+      <div class="bars">
+        <div class="bar" style="height:33%"><small>1</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+        <div class="bar" style="height:67%"><small>2</small></div>
+        <div class="bar" style="height:100%"><small>3</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🚀 芯片/半导体（4 条）</h3>
+
+    <p class="intro">英伟达跟 SpaceX 合作，把一套太空优化的 Vera Rubin NVL72 系统送上天，计划明年 Q4 发射，号称是「第一款为智能体打造的 CPU」要上轨道干活。地面上英伟达也没闲着，过去几个月豪掷上千亿美金做投资，成了 AI 行业最大的投资基金，还重仓了 Perplexity，市场在问它到底值不值 300 亿美金。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 17:22 · 🟡</div>
+      <p>SpaceX, in partnership with Nvidia, has designed a space-optimized Vera Rubin NVL72 system for launch to orbit in Q4 next year, with significant scale in 2028</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:08 · 📷×1 · 🟡</div>
+      <p>The first CPU built for agents is going to work at scale. <br><br>@SpaceX is deploying NVIDIA Vera to accelerate the orchestration, code execution, and data processing that powers its next generation of agentic AI — keeping GPUs fed and agents acting fast.<br><br>From gigawatt AI factories to orbit. One NVIDIA architecture, everywhere.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>A Drone Killed Three Ukrainians. It Was Guided Entirely by A.I.</b></p>
+      <p>An attack by what Ukrainian officials said was a Russian drone with an Nvidia chip presages a dystopian future of weaponry untethered to humans.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 2026-08-24 · 🟢</div>
+      <p><b>英伟达押注 Perplexity，但它真的值 300 亿美金吗？</b></p>
+      <p> <br>英伟达已经成为 AI 行业最大的投资基金——在最近几个月里，英伟达豪掷千亿美金，把芯片、模型和算力公司都投了个遍。<br>现在，他们把筹码压到了 AI 应用公司上了——这次看上的，是曾经的 AI 明星公司 Perplexity。<br>根据 The Information 报道，英伟达正在洽谈投资 AI 搜索初创公司 Perplexity，本轮融资落地之后，这家公司估值有望突破 300 亿美元，相比一年前的估值涨幅超过 50%——倘若交易敲定，这也将成为英伟达近几年布局 AI 生态又一笔分量十足的投</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-19、2026-08-20、2026-08-21、2026-08-22、2026-08-23。</i></div>
+    <h3 class="topic">🎮 二次元/游戏（2 条）</h3>
+
+    <p class="intro">沙特又往欧洲撒钱：60 亿欧元投资巴黎附近三个主题公园，其中一个还是漫画主题。另一边 Fanatical 在推青年漫画（Seinen）合集，180 本漫画加 graphic novel 打包卖。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Fanatical@Fanatical</span> · 5 小时前 · 17:00 · 📷×1 · 🟡</div>
+      <p>Welcome to the world of Seinen manga. <br><br>Dive into this huge collection of 180 comics and graphic novels, brought to you by Medibang.<br><br>Including legendary franchises such as GUT'S, Jadou: The Corrupt Path, and Gourmet Glutton, amongst others.<br><br>Grab all 180 comics across 58 packs for $14.99! 🔽</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-24 · 🔵</div>
+      <p><b>Manga-inspired theme park to be built near Paris</b></p>
+      <p>The construction of three new parks was given the green light after a €6bn investment from Saudi Arabia.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-15、2026-08-18、2026-08-22、2026-08-23、2026-08-24。</i></div>
+    <h3 class="topic">🇪🇺 欧洲（2 条）</h3>
+
+    <p class="intro">两条欧洲的华人视角新闻：移英港人在布里斯托尔靠一个编织小组找到了「家的感觉」；全球粮食安全则因为战争、气候和贸易争端集体亮红灯，连德国的小麦都因干旱减产。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-24 · 🔵</div>
+      <p><b>移英港人生活：布里斯托尔的编织小组带来“家的感觉”</b></p>
+      <p>透过“编织微笑”小组，居住在英国的香港人建立了新的联系。Article InformationAuthor, 安迪·霍华德（Andy Howard）Role,  BBC布里斯托尔（BBC Bristol）记者Published 26 分钟前阅读时间: 3 分钟移居英国的香港人表示，他们透过一个编织小组，找到了社群的归属感和认同感。60多名居住在英格兰西部的人士，每两星期便会在布里斯托尔（Bristol；碧仙桃）参加一次“编织微笑”（Crafting Smiles）的小组聚会。成员表示，这让他们能够结交朋友，并参与创意项目。自2025年10月成立以来，该小组的成员人数已增长10倍，并制作了阵亡将</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 纽约时报中文</span> · 2026-08-24 · 🔵</div>
+      <p><b>战争、气候和贸易争端多重冲击，全球粮食安全亮红灯</b></p>
+      <p>SOMINI SENGUPTA2026年8月24日本月，德国塞卢布村的一片农田里，一台联合收割机正在给小麦脱粒。由于干旱和高温，德国包括小麦在内的多种作物产量均有所下降。 Lisi Niesner/Reuters方便面。热乎乎的恰帕提饼。切片面包。小麦是现代饮食的核心，而今年，它正面临着不断累积的一系列现代威胁。全球的粮仓正遭受无人机袭击和恶劣天气的双重打击，在伊朗战争后本已飙升的食品价格基础上进一步推高了粮价。高温和干旱导致包括美国在内的一些主要小麦生产国的收成减少，预计美国将迎来半个世纪以来最差的小麦收成，这将导致价格飙升。在特朗普关税威胁下同意购买美国小麦的贫穷国家可能被迫要支付异常高昂</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-17、2026-08-22、2026-08-24。</i></div>
+    <h3 class="topic">🇰🇵 朝鲜半岛（1 条）</h3>
+
+    <p class="intro">美国海军陆战队取消了与韩国的联合演习，理由是伊朗战争的战备需求，韩方说这个消息六月份就接到了通知。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>U.S. Marines Cancel Drill With South Korea, Citing Iran War Demands</b></p>
+      <p>The move to call off the high-profile event was communicated in June, South Korea said. President Trump shortened another joint military exercise earlier this month.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-15、2026-08-17、2026-08-20、2026-08-21、2026-08-23。</i></div>
+    <h3 class="topic">🇹🇼 台海局势（1 条）</h3>
+
+    <p class="intro">这话题下唯一一条是 NYT 的评论《让伊朗控制霍尔木兹海峡》，讲特朗普得面对霍尔木兹海峡的现实。管道按关键词把它归到了台海，内容其实跟台海无关，读着倒也不亏。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-24 · 🔵</div>
+      <p><b>Let Iran Control the Strait of Hormuz</b></p>
+      <p>President Trump needs to face reality on the Strait of Hormuz.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-13、2026-08-18、2026-08-19、2026-08-22、2026-08-23。</i></div>
+<div class="trend">📊 趋势（14天共39条）
+      <div class="bars">
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:25%"><small>1</small></div>
+        <div class="bar" style="height:100%"><small>4</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+        <div class="bar" style="height:75%"><small>3</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>📌 其他零散内容（137 条）</h2>
+    <div class="sub">未聚类的零散推文，按时间倒序</div>
+    <p class="intro">没聚成话题的零散内容：Google 庆祝美国国家公园管理局 110 周年，PC Gamer 转述 Bethesda 开发者说微软「有什么东西变了」，还有个叫 AGIDefect-4K 的 AI 图像缺陷检测数据集发布。RSS 这边以 BBC 和 NYT 的欧美社会新闻为主。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 21:38 · 🎬×1 · 🟡</div>
+      <p>RT @maleloooo: 我不行了  😭😭 <a class="link" href="https://t.co/JtJahs9K0n">https://t.co/JtJahs9K0n</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Google@Google</span> · 37 分钟前 · 21:23 · 📷×4 · 🟡</div>
+      <p>This month, we’re celebrating 110 years of the @NatlParkService. With people continuing to look for ways to unplug and connect in real life, searches like “hiking for beginners” increased by 165% over the past month with @ZionNPS being the most searched park for hiking. 🧗<br><br>Whether you’re planning your next bucket list trip or looking to reconnect with nature, here’s some inspiration for how Google can help you discover, prepare, and make the most of the great outdoors.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 21:20 · 📷×1 · 🟡</div>
+      <p>AGIDefect-4K: A Richly Annotated Dataset for AI-Generated Image Defect Detection, Localization and Explanation<br><br><a class="link" href="https://t.co/6l7o3yFb2a">https://t.co/6l7o3yFb2a</a> <a class="link" href="https://t.co/MX09K9eKoC">https://t.co/MX09K9eKoC</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 50 分钟前 · 21:10 · 🎬×1 · 🟡</div>
+      <p>'Something has changed' under Microsoft, says Bethesda dev 🤔<br>#microsoft #bethesda #fallout #skyrim #news #pcgaming #pcgamer <a class="link" href="https://t.co/0dm8XC7beo">https://t.co/0dm8XC7beo</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 白金告阑_镧镧@BaiJinGaoLan2</span> · 1 小时前 · 20:12 · 📷×1 · 🟡</div>
+      <p>在网上找了好久都没有合适的，找到差不多的结果没货，今天跑到附近饰品批发的地方也没有合适的，最后在网上发现了这个，我觉得很神似呢。还得是朋友有这个谷子，要不然看不清这个细节呢。不过这个发型，我觉得大部分情况下都看不清我的耳饰哭晕<br><br>#伊落玛丽 #ba #cosplay #私享假日 #cos #碧蓝档案 <a class="link" href="https://t.co/5N8Z2e6auo">https://t.co/5N8Z2e6auo</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 20:06 · 🎬×1 · 🟡</div>
+      <p>RT @PabloLeite25: 我不行了😭📷📷 <a class="link" href="https://t.co/oXa3FoWESt">https://t.co/oXa3FoWESt</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Fascinating@fasc1nate</span> · 2 小时前 · 19:30 · 📷×1 · 🟡</div>
+      <p>Mark Jackson basketball card featuring the Menendez Brothers.<br><br>Eerie historical photos: <a class="link" href="https://t.co/l5p7U8P4A2">https://t.co/l5p7U8P4A2</a> <a class="link" href="https://t.co/gY7xJjrwnO">https://t.co/gY7xJjrwnO</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 19:27 · 📷×3 · 🟡</div>
+      <p><a class="link" href="https://t.co/IEDakpatOo">https://t.co/IEDakpatOo</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Fascinating@fasc1nate</span> · 2 小时前 · 19:15 · 📷×1 · 🟡</div>
+      <p>Gorgeous photos of Monica Bellucci in the 80s and 90s <br><a class="link" href="https://t.co/blDgX7R1kW">https://t.co/blDgX7R1kW</a> <a class="link" href="https://t.co/gfnfXCvNGh">https://t.co/gfnfXCvNGh</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 爱@YYYYYm12345</span> · 2 小时前 · 19:01 · 🟡</div>
+      <p>"今天天气晴朗，心情格外愉悦。"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 蟹黄饼宝@xiehuangbb</span> · 3 小时前 · 18:56 · 🟡</div>
+      <p>"周末计划是什么？与大家交流一下！🗓️"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 18:51 · 🎬×1 · 🟡</div>
+      <p>RT @umutguney72: 我不行了😭😭😭😭 😭😭 <a class="link" href="https://t.co/LRysSWgQ9f">https://t.co/LRysSWgQ9f</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 梦@eee3namnar_</span> · 3 小时前 · 18:37 · 🟡</div>
+      <p>"早上去了一家特色咖啡馆，咖啡香浓！☕️"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 3 小时前 · 18:35 · 🟡</div>
+      <p>"和家人一起做游戏，欢声笑语不断！🎲"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 3 小时前 · 18:31 · 🟡</div>
+      <p>"在社交媒体上看到了一篇让人深思的文章，值得分享。"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 3 小时前 · 18:30 · 🟡</div>
+      <p>"刚刚在家自制了一份美味的午餐，色香味俱全！🍽️"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Fascinating@fasc1nate</span> · 3 小时前 · 18:30 · 📷×1 · 🟡</div>
+      <p>Helen Mirren: Beautiful photos of the young Hollywood icon<br><a class="link" href="https://t.co/oUS0QiQOX1">https://t.co/oUS0QiQOX1</a> <a class="link" href="https://t.co/BzuniJnpeR">https://t.co/BzuniJnpeR</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 甲甲@kou_koutwo</span> · 4 小时前 · 17:33 · 📷×2 · 🟡</div>
+      <p>脱がせると頭身が低く見える🤔🤔 <a class="link" href="https://t.co/tIsfxVCSLn">https://t.co/tIsfxVCSLn</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 BlackPoloDress@BlackPoloDress</span> · 4 小时前 · 17:25 · 🟡</div>
+      <p>자다 깨서 그런지 더욱 심심하당...</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 17:14 · 📷×1 · 🟡</div>
+      <p>RT @GovoeJ: 并蒂芳莲，双头红药<br>🧚🏻‍♀️：@TiTi40511552 <br>📷：@douw1027 <a class="link" href="https://t.co/beVzxd4QS3">https://t.co/beVzxd4QS3</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 17:11 · 📷×1 · 🟡</div>
+      <p><a class="link" href="https://t.co/POG6NVO9sc">https://t.co/POG6NVO9sc</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 4 小时前 · 17:10 · 🎬×1 · 🟡</div>
+      <p>US Army offers soldiers who reenlist 4 days to play GTA 6 🪖<br>#gta6 #grandtheftauto #usarmy #news #pcgaming #pcgamer <a class="link" href="https://t.co/XmCJPO30Fk">https://t.co/XmCJPO30Fk</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 观察者网@realGuancha</span> · 4 小时前 · 17:06 · 🎬×1 · 🟡</div>
+      <p>Look at that shy little sprint 😂 Who knew "hiding its face" was the secret to gold? <br><br>Tiangong Omni  took home the 400m small-size title with a time of 45.66s at the 2026 2nd World Humanoid Robot Games. (Video source: Douyin 交汇点新闻) <a class="link" href="https://t.co/sreonv5JOE">https://t.co/sreonv5JOE</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 BlackPoloDress@BlackPoloDress</span> · 4 小时前 · 17:03 · 🟡</div>
+      <p>어휴 인간쓰레기...;;</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 4 小时前 · 17:02 · 🟡</div>
+      <p>I turned car friction off in GTA 5. Help <a class="link" href="https://t.co/xvpZoK1Cpb">https://t.co/xvpZoK1Cpb</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 BlackPoloDress@BlackPoloDress</span> · 4 小时前 · 17:02 · 🟡</div>
+      <p>발 칼차단 박았는데 어휴 세상 무섭다</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:57 · 🟡</div>
+      <p>Former Rockstar dev says the GTA 6 leaks are a 'nothing burger': 'There won't be much damage' <a class="link" href="https://t.co/xzqHqmPr39">https://t.co/xzqHqmPr39</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:56 · 📷×3 · 🟡</div>
+      <p>RT @remana22: 💜💖🤸‍♀️🤸‍♂️💖💜 <a class="link" href="https://t.co/qLZNkVClJn">https://t.co/qLZNkVClJn</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 漫展阿薰kaOri@maleloooo</span> · 5 小时前 · 16:54 · 🎬×1 · 🟡</div>
+      <p>我不行了  😭😭 <a class="link" href="https://t.co/JtJahs9K0n">https://t.co/JtJahs9K0n</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Roland.W@rwayne</span> · 5 小时前 · 16:48 · 🟡</div>
+      <p>说其实AI coding给非技术人员带来的红利其实是更多的<br><br>因为我们是获得了之前没有的研发资源<br><br>大家不要把它看作是一个你要懂，你要把它看作是你底下招了一个开发团队，作为老板提示的时候就好了</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 琴義弓介@kotoyoshi_y</span> · 5 小时前 · 16:47 · 🟡</div>
+      <p>ｼﾃ…ﾒﾃﾞｨｱ欄ﾓﾄﾞｼﾃ…✖</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 琴義弓介@kotoyoshi_y</span> · 5 小时前 · 16:42 · 🟡</div>
+      <p>ワールドイズダンシング<br>芸の基本と門と極意が詰まった最新話…語彙力死んだ</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:42 · 📷×1 · 🟡</div>
+      <p><a class="link" href="https://t.co/We4qmpPwnW">https://t.co/We4qmpPwnW</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:34 · 📷×2 · 🟡</div>
+      <p>RT @takamura_ch: 遊びで命の削られる西城飛鳥 <a class="link" href="https://t.co/acrQRwdDcJ">https://t.co/acrQRwdDcJ</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:32 · 📷×1 · 🟡</div>
+      <p>🤔 <a class="link" href="https://t.co/dkCTCJyMyL">https://t.co/dkCTCJyMyL</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 ヘルケバブけん@ken553</span> · 5 小时前 · 16:28 · 🟡</div>
+      <p>デビルマンの「あぁあああああ」が気になりすぎて調べてしまったｗ<br>この後のポストにある眼より先に上達する手はないっての禿同</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Keiろり@Kei_Lori</span> · 5 小时前 · 16:28 · 🟡</div>
+      <p>月収１００万円になりたい</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 5 小时前 · 16:17 · 🟡</div>
+      <p>The Witcher 4 is 'targeting' a 2028 release <a class="link" href="https://t.co/AyS6Hn4A0o">https://t.co/AyS6Hn4A0o</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 National Geographic@NatGeo</span> · 5 小时前 · 16:17 · 🎬×1 · 🟡</div>
+      <p>1,947 years ago, ash and pumice darkened the sky as Vesuvius erupted, producing pyroclastic surges that buried Pompeii in just 24 hours. But that's not where the story ends. #PompeiiOutOfTime with Tom Hiddleston is now streaming on @DisneyPlus and @hulu. <a class="link" href="https://t.co/lOcKabQgPt">https://t.co/lOcKabQgPt</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 16:09 · 🎬×1 · 🟡</div>
+      <p>RT @denisonjaya73: 这城市那么空  这回忆那么凶 <a class="link" href="https://t.co/jhUVgNPX7T">https://t.co/jhUVgNPX7T</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Tamaki桥本环爱@GovoeJ</span> · 6 小时前 · 15:49 · 📷×1 · 🟡</div>
+      <p>并蒂芳莲，双头红药<br>🧚🏻‍♀️：@TiTi40511552 <br>📷：@douw1027 <a class="link" href="https://t.co/beVzxd4QS3">https://t.co/beVzxd4QS3</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 小邪僻@wings12moon</span> · 7 小时前 · 14:55 · 📷×1 · 🟡</div>
+      <p>戰姬姊妹：<br>零 @hushubudu023 ＆ 蕾 @muamualeilei05 <a class="link" href="https://t.co/VXq2tn6W8J">https://t.co/VXq2tn6W8J</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 VIDEO REBIRTH@video_rebirth</span> · 14:33 · 🎬×1 · 🟡</div>
+      <p>Seedance 2.0 — up to 50% OFF<br>Seedance 2.5 — 20% OFF<br>Our BACH chef is cooking up something delicious with Seedance 2.5. And yes, you can get all that creative power now.<br><br>Create more, spend less. Offer ends Sep 24.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 I'm Batman@BatmanTweetzz</span> · 7 小时前 · 14:28 · 📷×2 · 🟡</div>
+      <p>Hey @grok, can you nail this outfit swap perfectly? 🥶👀 <a class="link" href="https://t.co/U64GZAU7AJ">https://t.co/U64GZAU7AJ</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 我真的没有拼多多@nopinduoduo</span> · 14:27 · 🎬×1 · 🟡</div>
+      <p>同一个 prompt，两个模型，30 秒直观对比。<br><br>左边 Wan 3.0：$1.20/30s，365 天无限<br><br>右边 Seedance 2.5：$3.60/30s，60 天无限<br><br>价格 1/3，无限时长 6 倍，画风差距你自己看。<br><br>对高频出片的内容团队来说，这就是把「不敢试」变成「随便试」。<br><br>@TopviewAIhq   Wan 3.0 已上线，Ultra Annual 直接开跑👇</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 13:02 · 🟡</div>
+      <p><a class="link" href="https://t.co/0Ts2fOXMyo">https://t.co/0Ts2fOXMyo</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 12:58 · 🎬×1 · 🟡</div>
+      <p>Wan 3.0 is now on Topview.<br>More value. Longer unlimited access. Lower cost.<br><br>With Ultra Annual, generate 30s videos with Wan 3.0 for just $1.20.<br>Plus, get 365 days of unlimited generations.<br><br>That’s 1/3 the cost and 6x longer unlimited access compared to Seedance 2.5.<br><br>Create more AI videos, test more ideas, and scale your workflow with Wan 3.0 on Topview. 🚀<br><br>#TopviewAI #Wan3 #AIVideo #AIContentCreation #AIMarketing</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 disk@disk_j</span> · 9 小时前 · 12:57 · 🎬×1 · 🟡</div>
+      <p>#MMEデータ配布 ハート吹き出しパーティクル <a class="link" href="https://t.co/tCheDnfDR2">https://t.co/tCheDnfDR2</a><br><br>ごく狭い範囲にハート入りトゲ吹き出しをランダムに撒くエフェクト。Z_Particle (by ビームマンP) をいじってたらできた何か。テクスチャ描き替えたりフキダシ・漫符・セリフ素材など買ってきて流用するのもいい <a class="link" href="https://t.co/JH7jrPViJE">https://t.co/JH7jrPViJE</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 12:36 · 🟡</div>
+      <p><a class="link" href="https://t.co/yW5XDpNIuW">https://t.co/yW5XDpNIuW</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:53 · 🟡</div>
+      <p>"刚刚完成了一次早起锻炼，精力充沛。"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:26 · 📷×1 · 🟡</div>
+      <p><a class="link" href="https://t.co/imupKYFXAW">https://t.co/imupKYFXAW</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:07 · 📷×3 · 🟡</div>
+      <p>RT @remana22: 💜💖🤸‍♀️🤸‍♂️💖💜 <a class="link" href="https://t.co/qLZNkVClJn">https://t.co/qLZNkVClJn</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 タカムラ@takamura_ch</span> · 12 小时前 · 09:02 · 📷×2 · 🟡</div>
+      <p>遊びで命の削られる西城飛鳥 <a class="link" href="https://t.co/acrQRwdDcJ">https://t.co/acrQRwdDcJ</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 卫斯理@imwsl90</span> · 13 小时前 · 09:01 · 📷×1 · 🟡</div>
+      <p>下班了，弄了个RSS聚合阅读，参考这个网站 <a class="link" href="https://t.co/yqx61vcNCT">https://t.co/yqx61vcNCT</a> <br><br>当前版本还不太可用，需要优化阅读体验，增加AI对接，感觉本周可以弄一个比较好的版本出来<br><br>多一些高质量的信息源很有好处<br><br>感觉现在很多软件工具都能vibe coding出来，看到一个功能不错，集成到自己的系统就好了<br><br>目前而言，工具软件已经失去了它们的价值了<br><br>对于个体而言，处理信息的效率更高了<br><br>多去vibe coding，多去做自己的工具</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:00 · 📷×3 · 🟡</div>
+      <p>💜💖🤸‍♀️🤸‍♂️💖💜 <a class="link" href="https://t.co/qLZNkVClJn">https://t.co/qLZNkVClJn</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Kit Harington joins HBO's Harry Potter series as Gilderoy Lockhart</b></p>
+      <p>The role marks Harington's third collaboration with HBO, after starring in the tentpole Game of Thrones and financial drama The Industry.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>70,000 social and affordable homes to be built across England as part of £39bn plan</b></p>
+      <p>Funding has been granted to Greater Manchester, the West Midlands and West Yorkshire as well as £6bn for London.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Justices Allow Plans to Restrict Mail Voting, for Now</b></p>
+      <p>Also, the college admissions process is shifting once again. Here’s the latest at the end of Monday.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>US-Canada trade war escalates as Trump threatens tariff hike on autos after Carney vows to retaliate</b></p>
+      <p>Mark Carney accused Trump of wanting to "destroy" Canada's auto industry, and said he would only resume trade talks if the US comes with the "right attitude".</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Supreme Court Allows Trump Plan to Restrict Mail-In Voting, for Now</b></p>
+      <p>The administration asked the court to clear the way for President Trump’s order that creates “state citizenship lists” and directs the Postal Service to decide who gets a mail-in ballot.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>S.E.C. Investigating Near-Implosion of A.I. Hedge Fund</b></p>
+      <p>Regulators sent subpoenas to major Wall Street banks seeking information about the trading of Situational Awareness, three people briefed on the outreach said.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Judge Orders U.S. to Return Deported Man at Risk of Torture</b></p>
+      <p>The Mexican man was sent to his home country after assisting federal law enforcement by testifying against Mexican drug cartels.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Teenager arrested after four viable devices found in security alert</b></p>
+      <p>Police said four viable explosive devices were found and removed from the property for forensic examination.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Nevada Sues Trump Administration Over Colorado River Cuts</b></p>
+      <p>The state seeks to block plans for significant water use restrictions over the next decade.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Man charged with murder and eight attempted murders after house fire</b></p>
+      <p>Pawel Kulpa is accused of one count of murder, eight of attempted murder and one count of arson.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Trump Lays It on the Line for Darline Graham Ahead of South Carolina Runoff</b></p>
+      <p>The president rallied for the sister of Lindsey Graham in her South Carolina Senate run and pressured allies to endorse her. A super PAC run by his advisers has spent nearly $800,000 on her campaign. Will it be enough?</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>What’s Behind the U.S. Treasury’s Latest Attempt to Lower Interest Rates</b></p>
+      <p>The Treasury Department said it could begin to buy back more of its debt, and bond market investors are assessing the potential effects on borrowing costs.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Hodgkinson withdraws from Zurich Diamond League</b></p>
+      <p>Keely Hodgkinson withdraws from the women's 800 metres at Thursday's Diamond League meeting in Zurich because her "body is not quite ready".</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>What You Should Know About College Admissions Changes</b></p>
+      <p>After loosening requirements during the Covid era, some schools are shaking up admissions again, facing pressure from the Trump administration, A.I. and even their own professors.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Charity? Acting? The Cotswolds? What will Harry and Meghan's UK life look like?</b></p>
+      <p>The couple's return to the UK is imminent - and what they'll be focusing on here is gradually becoming clearer.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Videos showing dangerous driving easily found on social media</b></p>
+      <p>At least one of the young people killed in the crash appears in videos posted on TikTok showing dangerous driving.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Police pass Mohamed Al Fayed case file to prosecutors</b></p>
+      <p>The Crown Prosecution Service will review evidence relating to a man in his 80s gathered by police investigating allegations against the late Harrods owner.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Trump Threatens New 50% Tariffs on Cars, Trucks and Steel as U.S.-Canada Trade War Unfolds</b></p>
+      <p>President Trump vowed to increase tariffs on cars, trucks, auto parts and steel to 50 percent starting Jan. 1, as the countries edged toward a full-blown trade war.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Americanswers… Are Trump’s Canada tariffs legal?</b></p>
+      <p>Canadian Prime Minister Mark Carney says he will match US tariffs “dollar for dollar”.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>U.S.S. Abraham Lincoln Sailor Says Father Was Arrested by Border Patrol</b></p>
+      <p>The sailor, Joshua Aviles, was on his way home from the Middle East aboard the beleaguered aircraft carrier when he learned his father had been detained.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Organised crime arrests as police investigate A66 crash that killed two officers</b></p>
+      <p>Nine men and three women are arrested as police investigate the lead-up to the crash that killed seven people.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>How the deadly A66 crash unfolded leaving seven dead</b></p>
+      <p>At 03:30 BST on Saturday, two police officers were killed when a Volkswagen Passat collided with their marked car on the A66 motorway.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Watkins' departure would cut deepest - and Villa did not see it coming</b></p>
+      <p>Ollie Watkins has been an Aston Villa legend but it appears his time at the club is nearing a painful end amid interest from Saudi Arabia.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Alvarez's Arsenal dilemma amid summer's most bitter transfer tussle</b></p>
+      <p>An analysis of Julian Alvarez's future with the transfer window closing on 1 September - and the Argentine's chances of a move from Atletico Madrid to Arsenal.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>World's oceans hit highest temperature on record as El Niño grows</b></p>
+      <p>The record "is another clear signal of an ocean under growing stress", according to Dr Samantha Burgess from the European Copernicus climate change service.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Los Angeles Dodgers Owner’s Troubles Roil Insurance World</b></p>
+      <p>Federal investigations of Mark Walter’s business empire have put a spotlight on private-equity-owned insurers that invest premiums in risky assets.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Prince Harry steps down from African wildlife charity board</b></p>
+      <p>Last year the organisation African Parks  admitted human rights abuses were committed by its rangers in Congo-Brazzaville.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>The Ruthless Efficiency of Ultrapotent Street Drugs</b></p>
+      <p>Five decades after the “war on drugs” sought to make substance abuse unaffordable, illicit drugs are cheaper and more powerful than ever. A visit to Baltimore shows why.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Fast-Moving Reno Wildfire Forces Thousands to Evacuate in Nevada</b></p>
+      <p>The Hawk fire has burned more than 15,000 acres since it began on Saturday in the foothills of the Sierra Nevada near Reno.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Graduate job vacancies drop by almost 50% in a year, survey suggests</b></p>
+      <p>Job site Adzuna said the number of graduate vacancies was the lowest since 2016</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>More Companies Are Promising Cloud Seeding Can Make Rain</b></p>
+      <p>States are spending millions of dollars on cloud seeding technology, backed by new data on its effectiveness — and driven by desperation for water.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Teen pleads guilty over Channel boat with 165 migrants</b></p>
+      <p>A man admits endangering lives at sea after piloting a dinghy with a then-record number of migrants.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Eon Huntley, the Democratic Socialist Running for Office While Working at Bergdorf</b></p>
+      <p>For Eon Huntley, who won his primary in New York in June, good clothes and populist policies go together.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Snooker champion Graeme Dott guilty of child sex abuse</b></p>
+      <p>The former world champion was found guilty of lewd and libidinous behaviour towards a girl and boy.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Does Elliott have a Liverpool future after latest omission?</b></p>
+      <p>Harvey Elliott's position at Liverpool looks uncertain following his absence from the matchday squad at Newcastle on the opening weekend of the Premier League season.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Carse dropped from England squad for second Test after nightclub incident</b></p>
+      <p>Pace bowler Brydon Carse is removed from England's squad for the second Test against Pakistan following an incident that led to him being handcuffed by police.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Washington Post Ordered to Rehire Fired Columnist Karen Attiah</b></p>
+      <p>An arbitrator ordered the newspaper to reinstate Karen Attiah, who was fired after posting about “white men who espouse hatred and violence” following Charlie Kirk’s killing.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>With Trump Against Him, Can Ralph Norman Win in South Carolina?</b></p>
+      <p>The ultraconservative congressman who has broken with the president on spending is hoping voters reward his experience, contrarian streak and all.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>EsDeeKid mystery no problem for fans after 'insane' All Points East set</b></p>
+      <p>We still don't know the Scouse rapper's true identity, but do music lovers really care who he is?</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>'101-year-old great-grandmother' arrested for selling cannabis in Nigeria</b></p>
+      <p>Esther Ogunmabo is accused of selling "retail sachets" of a strain of cannabis known as skunk.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>U.S. Military Kills 2 People in Attack on Boat in Pacific</b></p>
+      <p>The United States has killed at least 223 people since its campaign of boat strikes began nearly a year ago.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>The Woman Guiding Tourists Through New York City’s Worst Day</b></p>
+      <p>Christina Stanton offers a very specific and deeply personal tour of the World Trade Center site to remind visitors what happened 25 years ago.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Research Firm’s Founder Explains $6 Million Payment to Fired Forbes Editor</b></p>
+      <p>RJ Shook of Shook Research said he paid Randall Lane, the former top editor at Forbes, for “services and guidance” in partnering with Forbes and later selling his research firm.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>London Zoo animals hop on scales for weigh-in</b></p>
+      <p>Kiwi the Capybara is among animals getting their annual health check while data is gathered and shared.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Toddler with sun allergy can play in daylight thanks to UV window film</b></p>
+      <p>Two-year-old Mollie Murray from Montrose has a rare genetic disorder that makes her extremely sensitive to ultraviolet light</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Dutch broadcaster Avrotros pulls out of  2027 Eurovision Song Contest</b></p>
+      <p>It says contest can no longer be considered neutral while a participating country remains involved in a large-scale military conflict.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Should We Read ‘Huck Finn’?</b></p>
+      <p>One reporter traveled to understand how it is taught now.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 08-24 · 🟢</div>
+      <p><b>小米发布玄戒 AI 芯片「全家桶」，还官宣了小米「阔折叠」</b></p>
+      <p>下个月，苹果就要端出 iPhone 18 Pro 系列和首款折叠屏 iPhone。未曾想，就在这场「科技春晚」即将到来之际，小米直接把桌子给掀了。<br>就在刚刚结束的玄戒技术沟通会上，小米第二代自研 SoC「玄戒 O3」刷新了手机 SoC 跑分纪录：Geekbench 6.5 多核成绩冲上 1.5 万分，比目前行业的性能标杆苹果 A19 Pro 还要高出近四成，实验室低温环境下的安兔兔极限跑分更是冲破了 500 万大关，达到 522 万分。<br><br>但这 522 万的跑分，还远远不是这次发布会的重点。<br>十颗全大</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 08-24 · 🟢</div>
+      <p><b>折叠 iPhone 细节曝光，苹果想折叠的不只是屏幕</b></p>
+      <p>苹果终于要迈入折叠屏时代了。<br>今天凌晨，彭博社记者 Mark Gurman 在 Power On 专栏中透露，苹果正在筹备首款折叠 iPhone，预计将于今年秋季发布。<br>Gurman 将其称为苹果近年来最值得期待的新设备之一，在他看来，折叠 iPhone 可能成为苹果重新找回「产品魔力」的关键之作。<br><br>过去十多年，苹果也推出过不少颇具影响力的新产品。比如 2016 年的 AirPods，2018 年重新设计的 iPad Pro ，2022 年的 Apple Watch Ultra，以及集苹果工程能力大</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Race Across the World star Jo Gardiner dies aged 61 one year after son's death</b></p>
+      <p>Former TV contestant, Jo Gardiner, 61, dies of cancer one year after her son's death in a crash.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Nearly 90,000 told to evacuate as wildfire approaches Reno, Nevada</b></p>
+      <p>The fire has burned around 10,500 acres and is completely uncontained, officials say.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Esports World Cup ends with surprise win for China-based team</b></p>
+      <p>AG.AL claim the overall title and $7m (£5.1m) top prize at the third Esports World Cup in Paris.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Canada Is ‘at War’ With U.S. Over Tariffs, and U.S.P.S. Publishes Plan to Restrict Ballots</b></p>
+      <p>Plus, what it’s like to live next to a roller coaster.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Social media firms should remove dangerous driving videos, minister says</b></p>
+      <p>Defence minister Luke Pollard says "there's no place" for social media trend showing people driving the wrong way down roads.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>'Half my business will be gone' - Firms in Canada and US fear trade war</b></p>
+      <p>Business owners in both countries are navigating uncertainty and worry as the tit-for-tat import taxes ratchet up.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Dale Dickey Is Way Past Crying in Barney Suits</b></p>
+      <p>Years ago, she donned a dinosaur costume to help make ends meet. Now she is a first-time Emmy nominee for her role in “Widow’s Bay.”</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>We’re in a New Era of Class Warfare. History Points to a Way Out.</b></p>
+      <p>The class-based violence of the past was part of a broader struggle. Today, the violence is the end in itself.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Can Democrats Win Back the Senate? Why Their Chances Are Improving.</b></p>
+      <p>Republicans still have some clear advantages on the map, but President Trump’s unpopularity has opened the door for an outcome that once seemed far-fetched.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Farmers Struggle to Get Basic Services From Depleted Agriculture Dept.</b></p>
+      <p>After the departure of thousands of federal workers, rural communities report problems obtaining loans, grants, technical assistance and support for infrastructure and other services.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>These Conservatives Want to Be Working Moms. The Manosphere Disapproves.</b></p>
+      <p>At a conservative center for women leaders, interns told stories about their lives. One said a male classmate told her, “I don’t know if women should be lawyers.”</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>In West Texas, Trump’s Border Wall Collides With Latino History</b></p>
+      <p>A century ago, Mexican American families came together to build an adobe church near the border. Can its bell toll again as the wall expansion nears?</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>How Should ‘Huckleberry Finn’ Be Taught?</b></p>
+      <p>I traveled around the country to find out if “Adventures of Huckleberry Finn” still has a place in the classroom.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>As Democrats Struggle in Some Western States, Independents See an Opening</b></p>
+      <p>From South Dakota to Alaska, independents are challenging incumbent Republicans and eschewing a Democratic label that Western voters find toxic.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Why Getting High Has Only Gotten Cheaper</b></p>
+      <p>The “war on drugs” sought to reduce substance abuse by driving up prices and lowering demand. Today, street drugs are less expensive and more dangerous than ever.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>King of Norway's health has worsened, palace says</b></p>
+      <p>Norway's King Harald remains in hospital receiving antibiotics for a bloodstream bacterial infection.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>UK's rarest bird of prey rears new chicks in secret location</b></p>
+      <p>The Montagu Harrier successfully nested for the second year running in the same secret location.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-24 · 🔵</div>
+      <p><b>离婚、智能手机与管控——BBC观察塔利班如何治理阿富汗</b></p>
+      <p>朱兹詹省省长阿卜杜拉·萨尔哈迪（Abdullah Sarhadi）。他曾为塔利班作战，并曾在美国设于关塔那摩湾的拘留设施中被关押数年。Article InformationAuthor, 卡翁·哈穆什（Kawoon Khamoosh）Role,  BBC国际部Reporting from,  希比尔甘、喀布尔、坎大哈报导Published 27 分钟前阅读时间: 5 分钟省长阿卜杜拉·萨尔哈迪（Abdullah Sarhadi）出钱为一名男孩治疗骨折的手臂，又拨款给当地一座清真寺。接着，在他位于阿富汗北部的办公室里，一场令人惊讶的对话就此展开。一名年轻女子告诉这位满脸灰白胡须的前塔利班指挥官，</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-24 · 🔵</div>
+      <p><b>冒险心理学：你选择稳袋5万元，还是以一半机会博取100万元？</b></p>
+      <p>图像来源，Getty Images你会选择稳稳拿到一笔钱，还是冒险博取20倍的回报？Article InformationAuthor, 莉齐·麦克尼尔（Lizzy McNeill）、汤姆·科尔斯（Tom Colls）Role,  BBC播客及系列节目《More or Less》Published 2026年8月23日阅读时间: 3 分钟假如现在给你两个选择：立即获得5万美元，或者有50%的机会赢得100万美元，你会怎样选？国际市场研究及数据分析公司YouGov最近向4,600名英国成年人提出了一个类似问题。结果如何？接近四分之三的人（73%）表示，会立即拿走5万英镑。略多于五分之一（21%）</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-24 · 🔵</div>
+      <p><b>起床不用闹钟：你能训练自己这样醒来吗？</b></p>
+      <p>图像来源，Getty Images按时起床似乎不可能。但，如果你甚至不用设定闹钟就能做到这一点呢？Article InformationAuthor, 艾莉·赫希拉格 （Ally Hirshlag）Role,  BBC未来网（BBC Future）Published 2026年8月23日阅读时间: 3 分钟对我们许多人来说，依靠闹钟起床是日常生活的一部分。曾经，学校里重复的日常作息或许能帮助我们建立起可靠的“内在闹钟”。但随着我们日后生活日程安排日趋多样化，人们可能会越来越依赖时钟或手机的声响。训练身体在正确的时间自行醒来，可以带来许多健康益处－从减少早晨的昏沉感到改善情绪。以下是一些睡前可以</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>California Cancels Talks With Paramount Over Warner Bros. Merger</b></p>
+      <p>The attorney general of California, one of 12 states suing to block the $111 billion deal, accused Paramount of leaking and misrepresenting earlier settlement discussions.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Maradona's 'Hand of God' ball sells for £2.5m</b></p>
+      <p>The football with which Diego Maradona scored his famous 'hand of God' goal in the 1986 World Cup quarter-final victory over England is sold at auction.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-24 · 🔵</div>
+      <p><b>泰国南部一夜50多起纵火 军方称为有组织捣乱</b></p>
+      <p>你的器材不支持播放多媒体材料Play video, "Shop set ablaze as southern Thailand hit by wave of arson attacks", 节目全长 0,3200:32泰国陶公府一家便利店遭纵火，也有人在马路上放火挡路。Article InformationAuthor, 安巴拉桑·埃希拉扬（Anbarasan Ethirajan）Role,  BBC全球事务记者Published 2026年8月23日阅读时间: 2 分钟泰国军方表示，在受叛乱影响的南部地区，发生逾50宗有组织的纵火及燃烧弹袭击，称有人“意图制造动荡”。袭击</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 爱范儿</span> · 08-24 · 🟢</div>
+      <p><b>折叠 iPhone 最全爆料汇总：用过的都说好，但有两个大缺点</b></p>
+      <p>今年是折叠屏诞生的第七个年头，苹果终于要交出他的第一份答卷。<br>彭博社记者 Mark Gurman 给出了迄今为止最接近「上手体验」的爆料。按照 Gurman 的说法，他已经与数名实际使用过折叠 iPhone 的人士交流，几名体验者给出的反馈颇为一致：<br>这台手机放进口袋里的感觉不错，新的铰链机构手感和耐用性也很好；而展开之后，苹果为内屏准备了一套接近 iPad 的应用布局。<br>更有意思的是相机。<br>Gurman 提到，折叠 iPhone 的影像表现也可圈可点——这意味着苹果并不会像 iPhone Air 那</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 纽约时报中文</span> · 08-24 · 🔵</div>
+      <p><b>洲际旅行迪拜转机？不，也许是首尔</b></p>
+      <p>JOHN YOON2026年8月24日自伊朗战争爆发以来，服务于首尔的仁川国际机场的中转客流量急剧上升。 Kim Hong-Ji/Reuters计划飞越全球？与中东爆发战争前相比，你现在更有可能在亚洲中转。战争之前，阿联酋航空、卡塔尔航空和阿提哈德航空等波斯湾主要航空公司主导着洲际旅行，约占欧洲和亚洲之间客流量的三分之一，以及欧洲和澳大利亚之间旅客量的大约一半。但据一项估计，自2月底战争爆发以来，在连接亚洲和欧洲的航线上，中东地区的中转客流量已减少了近一半。至少在目前，曾经途经中东往返于亚洲、澳大利亚和欧洲之间的旅客正在选择直飞航班，或通过香港、伊斯坦布尔、首尔和新加坡等地的机场进行中转。航空</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>'It's not Alton Towers' - rows break out over queuing at Wales' highest mountain</b></p>
+      <p>There has been disagreement between queuers and others skipping the line to reach the top of Yr Wyddfa.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-24 · 🔵</div>
+      <p><b>Divorce, smartphones and control - BBC sees how Taliban run Afghanistan</b></p>
+      <p>Five years after the Taliban’s return, the BBC follows senior figures as the group reshapes the country.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-24 · 🔵</div>
+      <p><b>Mark Carney Did What Canadians Elected Him to Do</b></p>
+      <p>Mark Carney has chosen suffering, but he did what Canadians elected him to do.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-23 · 🔵</div>
+      <p><b>Uefa chief Ceferin rules out Fifa presidency bid</b></p>
+      <p>Uefa president Aleksander Ceferin rules himself out of the running to replace Gianni Infantino, but expects a candidate to challenge the Fifa president's leadership in March.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-23 · 🔵</div>
+      <p><b>Relief for Iraola but Liverpool have work to do after snatching draw at Newcastle</b></p>
+      <p>Dominik Szoboszlai's injury-time penalty rescues a point at the start of the Andoni Iraola era - but Liverpool need to improve after below-par display.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-23 · 🔵</div>
+      <p><b>Norris and McLaren 'don't have car' to fight for title despite Dutch GP win</b></p>
+      <p>Lando Norris says he and McLaren "don't have the car I need to fight for a championship", despite a second consecutive win of the season at the Dutch Grand Prix.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-20 · 🔵</div>
+      <p><b>An action-revenge thriller steeped in mythology, starring Dev Patel</b></p>
+      <p>One small ember can burn down everything. Dev Patel’s thriller steeped in mythology</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 05-31 · 🔵</div>
+      <p><b>Busby, Shankly and Stein: The makers of modern football</b></p>
+      <p>iPlayer's most added watchlist pick</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>📊 今日统计</h2>
+    <div class="statgrid">
+      <div class="statcard">
+        <h4>🐦 X 推文：100 条</h4>
+        <ul>
+          <li><span>General</span><b>85 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📰 RSS 新闻：104 条</h4>
+        <ul>
+          <li><span>BBC</span><b>48 条</b></li>
+          <li><span>NYT</span><b>45 条</b></li>
+          <li><span>BBC中文</span><b>5 条</b></li>
+          <li><span>爱范儿</span><b>4 条</b></li>
+          <li><span>纽约时报中文</span><b>2 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📚 累计数据</h4>
+        <ul>
+          <li><span>X</span><b>17,915 条</b></li>
+          <li><span>NGA</span><b>584 条</b></li>
+          <li><span>S1</span><b>374 条</b></li>
+          <li><span>RSS</span><b>5,362 条</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+    <p>🤖 由 Hermes Agent 自动采集 · 每日 09:00 推送 · 多源合并 + 事件聚类 + 时序分析</p>
+  </footer>
+
+</div>
+</body>
+</html>
