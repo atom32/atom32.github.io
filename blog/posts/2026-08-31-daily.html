@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日资讯早报 | 2026-08-31</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1f2328; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --accent-soft:#eff6ff;
+    --gold:#b45309; --blue:#1d4ed8; --yellow:#a16207;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:32px 20px 64px;}
+  header.hero{
+    background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 60%,#2563eb 100%);
+    color:#fff; border-radius:16px; padding:36px 32px; margin-bottom:28px;
+  }
+  header.hero h1{font-size:26px; font-weight:700; letter-spacing:.5px;}
+  header.hero .date{font-size:15px; opacity:.85; margin-top:6px;}
+  .stats{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;
+  }
+  .stat-pill{
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.22);
+    border-radius:999px; padding:4px 14px; font-size:13px;
+  }
+  .lead{
+    background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent);
+    border-radius:10px; padding:16px 20px; margin-bottom:28px; color:#374151; font-size:15px;
+  }
+  section.block{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 24px 8px; margin-bottom:24px;}
+  section.block h2{
+    font-size:19px; font-weight:700; margin-bottom:4px;
+  }
+  section.block .sub{font-size:13px; color:var(--muted); margin-bottom:16px;}
+  h3.topic{
+    font-size:16px; font-weight:700; margin:20px 0 12px; padding-top:16px;
+    border-top:1px dashed var(--line);
+  }
+  .intro{font-size:14.5px; color:#374151; background:#fafbfc; border-radius:10px; padding:10px 16px; margin-bottom:12px;}
+  .item{
+    border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin-bottom:12px;
+    background:#fafbfc;
+  }
+  .item .meta{font-size:12.5px; color:var(--muted); margin-bottom:6px;}
+  .item .meta .tag-src{font-weight:600; color:#374151;}
+  .item p{font-size:14.5px; color:#24292f; white-space:pre-line;}
+  .item p + p{margin-top:6px;}
+  .item .link{color:var(--accent); word-break:break-all;}
+  .summary-line{
+    background:var(--accent-soft); border-radius:10px; padding:10px 16px; margin-bottom:12px;
+    font-size:14.5px; color:#1e3a8a;
+  }
+  .perspectives{
+    background:#fafbfc; border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; margin-bottom:12px;
+  }
+  .perspectives .ptitle{font-size:13px; font-weight:700; color:var(--muted); margin-bottom:8px;}
+  .perspectives .psrc{font-size:13px; color:#374151; margin-bottom:6px;}
+  .perspectives .psrc b{color:var(--blue); font-weight:600;}
+  .timeline{font-size:13px; color:#374151; background:#fafbfc; border-radius:8px; padding:8px 14px; margin:10px 0;}
+  .timeline .tl{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px;}
+  .chip{
+    background:#fff; border:1px solid var(--line); border-radius:999px;
+    padding:1px 10px; font-size:12px; color:#374151;
+  }
+  .trend{font-size:13px; color:var(--muted); margin:10px 0;}
+  .bars{display:flex; align-items:flex-end; gap:6px; height:34px; margin-top:6px;}
+  .bar{background:linear-gradient(180deg,#60a5fa,#2563eb); border-radius:3px 3px 0 0; min-width:18px;}
+  .bar small{display:block; text-align:center; font-size:10px; color:var(--muted); margin-top:2px;}
+  .note-more{font-size:13px; color:var(--muted); font-style:italic; padding:4px 2px 12px;}
+  .statgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-bottom:8px;}
+  .statcard{border:1px solid var(--line); border-radius:10px; padding:14px 16px; background:#fafbfc;}
+  .statcard h4{font-size:14px; margin-bottom:8px;}
+  .statcard ul{list-style:none;}
+  .statcard li{font-size:13.5px; color:#374151; padding:2px 0; display:flex; justify-content:space-between; gap:12px;}
+  .statcard li b{color:var(--ink);}
+  footer.foot{
+    text-align:center; color:var(--muted); font-size:13px; margin-top:32px; padding-top:20px;
+    border-top:1px solid var(--line);
+  }
+  footer.foot .note{color:#374151; font-size:14px; margin-bottom:4px;}
+  @media (max-width:600px){
+    header.hero{padding:26px 20px;}
+    header.hero h1{font-size:21px;}
+    section.block{padding:18px 14px 6px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>🌅 每日资讯早报</h1>
+    <div class="date">2026 年 8 月 31 日 · 星期一</div>
+    <div class="stats">
+      <span class="stat-pill">📊 共 244 条信息</span>
+      <span class="stat-pill">🐦 X：183 条</span>
+      <span class="stat-pill">📰 RSS：61 条</span>
+      <span class="stat-pill">💬 NGA：0 条</span>
+      <span class="stat-pill">💭 S1：0 条</span>
+      <span class="stat-pill">🗂️ 聚类 9 个事件</span>
+      <span class="stat-pill">🔥 跨源热点 0 个</span>
+    </div>
+  </header>
+
+  <div class="lead">
+    今天共 244 条信息，X 183 条、RSS 61 条，聚类 9 个事件。开发工具依旧是主力：Soup 让 4GB 显存笔记本也能微调 8B 模型，OpenBB 被当成彭博终端的开源平替，还有个 5 万星的项目教人从零训 25.8M 参数的超小模型。国际线上，美军空袭了伊朗拉腊克岛的导弹发射装置，是几周来首次动手；伊朗那边加油站排起长队，NYT 借着阿富汗撤军五周年写了篇《美国为什么戒不掉战争》。国内线是 BBC 中文的「甲醛白菜」报道，食品安全监管的老问题又翻出来。以下按话题整理。
+  </div>
+
+
+
+  <section class="block">
+    <h2>📌 各平台话题</h2>
+    <div class="sub">按话题聚类后的重点内容</div>
+    <h3 class="topic">🔧 开发工具（15 条）</h3>
+
+    <p class="intro">今天的主题是「把门槛砍掉」。CADAM 一句话生成可直接 3D 打印的零件模型；Soup 把基座模型放内存、按层搬进显卡，4GB 显存就能微调 8B 参数模型；OpenBB 7.2 万星，个人玩家也能摸到彭博终端级的数据。RuView 那条看完有点渗人：WiFi 信号当人体雷达，不装摄像头也能知道你在屋里什么姿势。Flow 提词器、K7 自托管媒体服务器这些实用小件也值得一看。</p>
+    <div class="summary-line">📝 完美冬季大容量加热器</div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Mi星星@MinhThieu470118</span> · 2 小时前 · 13:59 · 🎬×1 · 🟡</div>
+      <p>GitHub 上发现一个有意思的开源项目：OpenMontage<br><br>它不是简单的 AI 一键生成视频，而是让 AI 参与整个制作流程：<br><br>研究 → 写脚本 → 找素材 → 剪辑 → 配音/字幕 → 渲染<br><br>有点像把 AI 变成一个视频制作团队。<br><br>项目地址👇<br> <a class="link" href="https://t.co/GCgoLmbHfV">https://t.co/GCgoLmbHfV</a> <a class="link" href="https://t.co/eelf7SmDZH">https://t.co/eelf7SmDZH</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 爱丽丝呀！@BTCqzy1</span> · 9 小时前 · 12:18 · 🎬×1 · 🟡</div>
+      <p>做 AI 视频，必装这 5 个 Skill。<br><br>从文案到配音、数字人、字幕动画，再到最终导出，每一步都有对应工具负责。<br><br>5 个串起来，基本就是一条完整的 AI 视频生产线。<br><br>第一个，video-use<br>负责整个视频工作流，从文案、分镜、素材到交付要求统一管理，最后再检查字幕、音频和画面有没有问题。<br><a class="link" href="https://t.co/QqX1MJaMco">https://t.co/QqX1MJaMco</a><br><br>第二个，OpenVoice<br>负责固定音色。准备一段干净的人声参考，后面生成的视频都可以继续保持同一个声音。<br><a class="link" href="https://t.co/yFENdFuEST">https://t.co/yFENdFuEST</a><br><br>第三个，HeyGen<br>负责数字人口播。把人物形象、文案和配音交进去，就能生成口型、表情和人物动作。<br><br>第四个，Remotion<br>负责时间线和可编程视频，字幕什么时候出现、画面什么时候切、动画什么时候进场，都可以精准控制。<br><br>第五个，FFmpeg<br>负责最后的音视频处理，删静音、统一响度、合并音轨、转码、压缩和最终导出都交给它。<br><br>整条流程就是：video-use 统筹项目 ➡️ OpenVoice 固定声音 ➡️HeyGen 生成数字人 ➡️ Remotion 控制时间线和动画 ➡️ FFmpeg 做最后处理和导出。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Ren@Ryrenz</span> · 4 小时前 · 17:40 · 🟡</div>
+      <p>🪛 一句话描述就能生成可以直接拿去 3D 打印的零件模型，CADAM 把 CAD 的门槛砍掉了一大半。<br><br>GitHub 上 5k stars，是个开源的文本转 CAD 网页应用。<br><br>想给桌上的设备做个小支架，以前的流程是打开专业建模软件，先花两小时搞明白草图、拉伸、约束这几个概念，画完还不一定能用。用 CADAM 就是打开网页把要什么说清楚，甚至直接丢一张图片进去，模型出来导出 STL 就能上打印机，导出 SCAD 还能继续调参数，DXF 也支持。<br><br>它底下跑的是编译成 WebAssembly 的 OpenSCAD，建模是真在浏览器里算的，三维预览用 Three.js，转动起来跟本地软件差不多。仓库里放了 V8 发动机、径向发动机、涡扇发动机叶盘这些基准模型，能直接看出它做到了什么程度。项目采用 GPLv3 许可证。<br><br>以前是先学软件再做东西，现在是先说清楚要什么。<br><br>GitHub：<a class="link" href="https://t.co/5VJnQpA3m8">https://t.co/5VJnQpA3m8</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 13:40 · 🎬×1 · 🟡</div>
+      <p>A little video that <br>- explains the relationship between conventional LLMs and reasoning models (and agents),<br>- philosophizes a about "from scratch" approaches, <br>- and explains how to install Python &amp; PyTorch requirements with uv. <a class="link" href="https://t.co/ahZHoyPa0Q">https://t.co/ahZHoyPa0Q</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitHubDaily@GitHub_D</span> · 2 小时前 · 13:30 · 📷×1 · 🟡</div>
+      <p>想动手微调个大模型，一查显存要求就凉了，仅 4 GB 的显卡按说连模型都装不进去。<br><br>偶然发现 Soup，把基座模型放在内存里，训练时一层一层轮流搬进显卡，显存里始终只装当前这一层。<br><br>靠这个办法，4 GB 显存的笔记本显卡也能微调 80 亿参数的模型，实测显存峰值 3.32 GB，训练结果和正常跑出来的一模一样。<br><br>GitHub：<a class="link" href="https://t.co/WGahgeCtwj">https://t.co/WGahgeCtwj</a><br><br>用起来就一份配置文件加一条命令，批大小、模型压缩方式这些参数全自动配好，也不用远程登录什么服务器。<br><br>作者还放了个免费的 Colab 笔记本，谁都能跑一遍验证这事是真的，这点挺实诚。<br><br>拿自己的数据调个专属小模型，现在一台游戏本就够了。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 11:59 · 🎬×1 · 🟡</div>
+      <p>还有人不太懂怎么使用自部署模型和workbuddy如何搭配，我录制了一个视频，大家参考下，另外接口参数参考下面的。<br><br>1、提供商自定义 / Custom（保持现状）<br>2、接口地址：<a class="link" href="http://127.0.0.1:8000/v1/chat/completions">http://127.0.0.1:8000/v1/chat/completions</a><br>3、API Key：local（本地不校验，随便填）<br>4、模型名称：ling-3.0-tiny-4bit<br><br>填完，自己随便发个消息，就能使用了。如果不能用，让你的agent检查本地部署是否能够联通，一般就是环境挂了。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitHubDaily@GitHub_D</span> · 4 小时前 · 11:30 · 📷×1 · 🟡</div>
+      <p>周末想在客厅电视上，观看硬盘里存的电影，得插着移动硬盘来回倒腾，颇为麻烦。<br><br>于是找了 K7 把这事做成自托管的媒体服务器，定位很明确，就给一小圈家人朋友用。<br><br>名字取自法语里「磁带」的发音，作者想找回家里那排录像带、东西都归自己的感觉，这个立意挺打动人。<br><br>电影、剧集、音乐放在一个架子上管理，自动转码，设备旧或网络差也能流畅播放。<br><br>GitHub：<a class="link" href="https://t.co/irTzFTKIu9">https://t.co/irTzFTKIu9</a><br><br>客户端覆盖网页、安卓手机和电视、Windows、iOS、Mac，还能拿手机遥控电视上的播放。<br><br>还有比较少见的是串门功能，自己的 K7 能和朋友那台连起来，互相看对方的片库，文件不用来回拷。<br><br>两条 Docker 命令启动好服务，家里有 NAS 或闲置小主机的朋友，可以把片库搬进去试试。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Amto@XAMTO_AI</span> · 10 小时前 · 11:23 · 📷×1 · 🟡</div>
+      <p>彭博终端那价格，个人玩家谁扛得住？开源社区用7.2万Star甩了个平替方案出来。<br><br>OpenBB，一个让分析师、量化研究员和AI Agent都能用的开源金融数据平台。股票、期权、宏观、加密，通通一把抓，Python、Excel、API、Agent全支持。<br><br>不用再到处找数据源了，pip install openbb 一把梭，历史行情直接到手。<br><br>🔗<a class="link" href="https://t.co/AW173agXLI">https://t.co/AW173agXLI</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 周览资源@grgerwcwetwet</span> · 4 小时前 · 11:11 · 📷×1 · 🟡</div>
+      <p>Windows 装完不知道该装什么软件？这个 GitHub 仓库直接给你抄作业。<br><br>Best Windows Apps 专门整理 Windows 上真正值得装的软件，不是无脑堆数量，而是按实用性筛选。<br><br>Flow Launcher、Snipaste、ShareX、PowerToys、Geek Uninstaller、OBS、Bitwarden、Windows Terminal、Scoop、WinSCP……日常效率、开发、设计、工具类基本都覆盖了。<br><br>刚重装 Windows，或者想看看还有什么冷门神器没发现的，这个仓库建议直接收藏。<br><br>GitHub：<a class="link" href="https://t.co/Cs29saSwJS">https://t.co/Cs29saSwJS</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 周览资源@grgerwcwetwet</span> · 4 小时前 · 11:09 · 📷×1 · 🟡</div>
+      <p>这个项目看完有点头皮发麻：以后监控你的人，可能根本不需要摄像头。<br><br>GitHub 上一个叫 RuView 的开源项目火了，它利用 WiFi CSI + AI，尝试把无线信号变成一种“人体雷达”。不用拍摄画面，也不用随身佩戴设备，就能研究人体的位置、运动和姿态，甚至还能用于跌倒检测、呼吸等非接触式生命体征感知。<br><br>更有意思的是，它还支持本地部署。养老看护、智能家居、无摄像头人体感知，这个方向确实有点东西。<br><br>当然，实际效果很吃硬件和环境，别真把它理解成电影里的“WiFi 穿墙透视”。<br><br>GitHub：<a class="link" href="https://t.co/LqvSTt8OK1">https://t.co/LqvSTt8OK1</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Ren@Ryrenz</span> · 4 小时前 · 11:09 · 🟡</div>
+      <p>🩺 Warp 官方刚刚开源了一个 skill-doctor，给你的 AI 编程 agent 做一次体检，直接告诉你它平时在哪儿浪费时间、哪些 skill 该改。<br><br>平时用 agent 干活，最难受的是那种说不清的别扭：明明一件小事，它绕了七八步才做完，改出来的代码你还得回头擦屁股。你隐约觉得是自己 skill 写得不对，但具体错在哪、该改哪一句，只能拍脑袋。<br><br>skill-doctor 干的就是这件事。它翻你本地最近 45 天、最多 12 个会话，按效率和代码质量两套标准逐个打分，代码质量看不出证据的会话直接不计入平均，最后按效率 50%、代码质量 35%、技能覆盖率 15% 算一个总分。跑完扔给你一个自包含的 HTML 报告，打开就能看到分数、问题排名，还有针对你现有 skill 的具体修改建议。<br><br>最舒服的是它的分寸：所有拟议的改动都写进临时报告目录，不碰你原来的 skill 文件，看完觉得有道理再自己动手。<br><br>以前是我们盯着 AI 写的代码，现在轮到 AI 回头盯我们配的 skill 了。<br><br>GitHub：<a class="link" href="https://t.co/gGNdqBKfZ2">https://t.co/gGNdqBKfZ2</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:53 · 📷×1 · 🟡</div>
+      <p>想从产品工程师视角和大伙聊聊，在代码全部由AI生成的时代，如何保证产品的代码可以持续迭代、好维护、不腐化。<br><br>最近 Mole 发布到了第 13 个版本，看了看整个项目大概有 11 万行 Swift 产品本身代码、7.3 万行测试代码和 3347 个 XCTest，测试代码部分远多余之前在公司写业务时候有QA来保障下的代码，我一直秉承一个观点，AI 写的代码应该 AI 来测试，而非人，把人引入到这个环节反而会拖慢整体的进度。<br><br>想着基于上面这个经验实操来总结一下，我都做了哪些有意思的事情，让这些代码一直可以在我和 AI 之间非常听话的实现功能。<br><br>1、即使 AI 能够大幅提升代码生产的速度，产品本身的技术架构、分层、同类抽象，什么东西放到什么地方能够让后续更好的扩展以及解耦，还是需要工程师本身的判断，这一块可以在项目第一个版本可以跑起来后就可以和你最好的 AI 仔细讨论，设定好对应的架构，并通过可沉淀可修改的文档记录下来，持续跟随项目迭代。<br><br>2、我目前最依赖的还是单测，1.0 只有 56 个 XCTest，到 1.13 已经有 3347 个，测试代码大约是生产 Swift 代码的 66%，不过数量只是顺手统计出来的结果，我平时更关心测试有没有覆盖那些容易想当然的地方，比如扫描结束以后文件又变了、进程检查失败、命令返回成功但 App 根本没有更新、旧任务很晚才回来覆盖了新结果。正常情况一般不难写，麻烦的是那些结果看起来没问题，实际上已经错了的情况如何可以及时去更新。<br><br>3、特别是修 Bug 的时候，我会多留一些东西下来，除了把问题修复，还会加一个让旧代码失败的回归测试，然后沿着同类路径去找有没有类似的问题，最后把当时为什么这么改写到规则里面去，到目前 Mole 已经有 1000 多个以 fix 开头的提交，其中 900 多个提交过测试，很多测试和规则都是用户真实踩过一次以后留下来的经验，或许我认为这个是当前这个项目最宝贵的资产。<br><br>4、测试能记住输入和结果，但记不住当时为什么放弃一种做法，所以项目里还有一批 Rules，主要记录功能边界、历史原因和不能碰的地方。比如为什么某类文件宁可漏掉也不能自动删除，为什么有些看起来重复的组件不能随便合并，哪些系统数据不属于 Mole。Rules 一多又很费上下文，我就按模块把它们拆开，只在改到相关代码时加载，再把经常重复的检查做成 Skills。bugs 会从以前的修复里找同类问题，design-system-review 看界面有没有越写越乱，release 则负责检查签名、公证、远端文件和更新链路，这样不需要每次都从头跟 AI 解释一遍。<br><br>5、还有一个对我很有用的法子，就是少做一些没有实际用的功能。现在 AI 加一个设置项、兼容分支或者后台监听太容易了，几分钟就能写出来，留下来的状态和维护成本反而腐化的最大的原因。比如Mole 现在对新功能设置了一些规则，比如尽量不增加常驻开销，不增加新的特权和系统权限，有合理默认值就不继续加设置项，更新和清理也不会因为发现一种新的可能性就一直扩范围，很多时候有很多功能是开发者自以为重要，但是使用者完全不在乎的功能，更多还是建议从用户中来，到需求中去，如无必要勿增实体。<br><br>6、需要充分利用好 Github 自动化 actions 的能力，这个会是你最后的兜底，其实代码写完、跑通、测试变绿以后也还没结束，我的项目里还有一套检查负责九种语言、网站生成结果、Appcast、Xcode 工程和公开部署文件之间的一致性，make verify 会把这些检查和测试一起跑，CI 再换到云端干净机器上重新来一次。到了发布的时候，本地代码、Git 提交、签名后的安装包、线上文件和用户实际收到的更新也是几种不同状态，我会分开确认。之前也遇到过源码完全正确，线上还在提供旧文件的情况，只看一个绿色结果很容易过早觉得已经做完了，其实是有错误的。<br><br>7、上面的一切，假如需要说特别的地方，我能想到的就是执行流程完全我没有插手干扰，每一步是 AI 自动化的去执行验证，出错了 AI 自动去解决，只不过会在不同的时候设置必要的流程卡点，让 AI 主动去验证，得到明确的结果才确定通过，并持续的去迭代规则，保持现有规则的新鲜度，并及时移除旧的逻辑，让本身的校验逻辑和本身的业务代码同步升级。<br><br>或许，这是我认为 AI 时代的工程师更需要培养的能力，如何让 AI 写的代码更好维护、更清晰、更好扩展，即使半年、一年、两年都不会腐化，而且会越来越听话，越来越符合开发者的心意，也给多 Agent 合作开发确立一个很稳靠的根基。之前手写代码的乐趣已经没有了，好在有这个弥补了一些纯 AICoding 过程无聊，让工程师的一些专业度得以延续下去。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 GitHubDaily@GitHub_D</span> · 6 小时前 · 10:00 · 📷×1 · 🟡</div>
+      <p>录课、录口播视频时低头看稿，成片里眼神一直往下飘，观众一眼就看出来是在念稿。<br><br>Flow 这款 Windows 上的开源提词器，把稿子放进置顶悬浮窗贴着摄像头，视线不用离开镜头。<br><br>语音跟读是招牌功能，念到哪滚到哪，语音识别在本机完成，不用一边念一边手动调速度。<br><br>GitHub：<a class="link" href="https://t.co/Gcuppg1cDt">https://t.co/Gcuppg1cDt</a><br><br>开会屏幕共享或视频通话时能开隐形模式，自己看得见提词器，对方画面里什么都没有，这招挺妙。<br><br>稿子多的话有脚本库统一管理，还能分段打标记，长稿一节一节往下走，进度看得见。<br><br>Windows 10 和 11 都支持，微软商店里就能直接装。主播、老师、经常录网课短视频的，装一个眼神就稳了。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Amto@XAMTO_AI</span> · 6 小时前 · 09:11 · 📷×1 · 🟡</div>
+      <p>很多人的强化学习炒股初体验，都是从这玩意儿开始的。<br><br>FinRL ，GitHub上1.6万Star，金融强化学习开源框架的祖师爷。一套经典的train-test-trade流水线：下载行情→训练A2C/PPO/SAC这些智能体→回测对比基准，股票、加密货币、组合配置都能跑。<br><br>它就是为研究、教学和原型验证而生的。<br><br>如果你真要上实盘，需要更模块化的基建，那得去看它的下一代，FinRL-X。<br><br>地址<a class="link" href="https://t.co/IC77GHrd2h">https://t.co/IC77GHrd2h</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 lumxss@bkdgiffug</span> · 6 小时前 · 09:06 · 📷×1 · 🟡</div>
+      <p>GitHub Trending上突然杀出一个5万多星的项目，扫了一眼，有点东西！<br><br>它教你从头训一个超小语言模型，参数量才25.8M，最小的版本体积大概只有GPT-3的1/2700，就这么一丢丢大。<br><br>摊开来看：<br><br>1️⃣ 分词器的训练方法，代码直接开源<br>2️⃣ 预训练到微调的全链路，一步都没省<br>3️⃣ 还搭了一个能看图的MiniMind-V<br>所有脚本全是用PyTorch手写的，MoE架构也一并支持。相当于造大模型的整套流程，它从头到尾给你演示了一遍。<br><a class="link" href="https://t.co/AUMYPujVqc">https://t.co/AUMYPujVqc</a></p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-24、2026-08-26、2026-08-27、2026-08-28、2026-08-30。</i></div>
+    <h3 class="topic">🤖 AI/大模型（11 条）</h3>
+
+    <p class="intro">DeepSeek 官方开源了 deepseek-harness，插件化思路配知识图谱，主打「第二大脑」；Anthropic 把提示词课做成了带实验区的互动教程，3.7 万星。腾讯 EVIE 和百度 PaddleOCR-VL 放一起看，有人开始怀疑 Document AI 那个「先把世界变成文字」的老前提。闲鱼卖 GPT 代充两天赚一千那条挺真实，复盘小生意闭环比晒收入有意思。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Bilal Bakr@bil0090</span> · 2 小时前 · 19:01 · 📷×1 · 🟡</div>
+      <p>I fixed GPT 5.6 Sol<br><br>Sol is a GREAT model, its my daily driver. It has an issue tho<br><br>It LOVES to over engineer stuff &amp; write too much code, heres how to fix it<br><br>1. install the ponytail skill from DietrichGebert/ponytail repo<br>2. set it up for Codex<br>3. give Sol this prompt:<br>"Add a rule &amp; a hook that always runs `/ponytail-review` before committing/pushing anything"<br><br>Enjoy, Sol with 100x better code quality without over engineering anything ;)</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 宝玉@dotey</span> · 5 小时前 · 16:43 · 📷×1 · 🟡</div>
+      <p>很好的 Vibe Coding 工程经验分享，下面是我的简单总结，具体请看原推文：<br><br>1. 合理的架构和分层依然很重要，可以让项目更好的维护和扩展<br><br>2. 自动化测试可以有效保证质量，修复 bug 还要同步添加测试覆盖，避免类似情况再次发生<br><br>3. 少做积累功能，功能清理后代码也要一起清理<br><br>4. 借助 GitHub Actions 做好 CI/CD，发布前在干净的云端机器完整的跑一次自动化测试<br><br>5. 让 AI 自动执行自动验证纠错，只在必要的阶段人工验证<br><br>6. 经常重复的工作做成 skill，这样不需要每次从头向 AI 解释</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 AYi@AYi_AInotes</span> · 5 小时前 · 16:40 · 🎬×1 · 🟡</div>
+      <p>Damn，独立开发者写前端最大的痛点被彻底终结了！<br>有人把全球 2,000+ 顶级产品（包括 Linear、Notion、ElevenLabs 甚至兰博基尼）的设计语言，全部提炼成了 Coding Agent 专用的 DESIGN.md 文件，目前完全免费开源。<br><br>以往让 Claude Code 或 Cursor 写前端最痛苦的不是写不出功能，而是反复调 CSS，改了十轮出来的页面依然带着一股浓浓的廉价 AI 模板味。问题不是 AI 不会写代码，而是它根本没有设计系统的上下文。<br><br>这个库直接把顶级大厂的视觉规矩全打包好了：<br>1️⃣ 底层令牌全覆盖：精准的颜色变量、字体层级、字重间距与响应式栅格布局全齐。 2️⃣ 组件级约束：按钮态、卡片阴影、输入框反馈以及最关键的明确使用规则和避坑清单。 3️⃣ 零配置即插即用：选一个你喜欢的风格文件扔进项目根目录，Agent 会在每次生成 UI 时自动读取并像素级对齐。<br><br>以前是程序员跪着调 CSS 调到头秃，现在是直接把顶级产品的美术资产当成入职手册塞给 AI。<br><br>2,000+ 完整设计库地址和搭配用法全放评论区了，做独立开发和前端的兄弟赶紧去挑一个进项目 👇 <a class="link" href="https://t.co/9DTyhcd42I">https://t.co/9DTyhcd42I</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 15:04 · 🟡</div>
+      <p>今日 GitHub 大爆款🔥 <br><br>今天 GitHub 被「插件化 Harness + 知识图谱 + 第二大脑」血洗了！<br>5 个星标暴增最狠的项目，专业拆解下：<br><br>1.  deepseek-ai/deepseek-harness<br>Everything is a Plugin。DeepSeek 官方把 Harness 做成插件总线：模型、工具、工作流全部可插拔，而不是又一个写死的编码助手。<br>🔗 直达：<a class="link" href="https://t.co/C73hCixmlp">https://t.co/C73hCixmlp</a><br><br>以前换能力要改核心，现在直接装插件。20 万星量级还在日增，官方基建含金量直接拉满！<br><br>2.  Graphify-Labs/graphify<br><br>把任意代码库 + 文档 + SQL schema + 配置 + PDF，压成可查询知识图谱。本地确定性 AST 解析，每条边都能解释，不靠向量库装懂。<br><br>🔗 直达：<a class="link" href="https://t.co/Rh7TDNkZrm">https://t.co/Rh7TDNkZrm</a><br><br>以前读陌生仓库像走迷宫，现在一句 /graphify 就能问「这段逻辑从哪来」。代码探索从考古变成导航！<br>3.  AgriciDaniel/claude-obsidian<br>Obsidian + Claude Code 的自组织第二大脑。丢进任意来源，Agent 自己读、自己连、自己归档成你拥有的 Markdown 图谱。<br><br>🔗 直达：<a class="link" href="https://t.co/1e0aTV6OG7">https://t.co/1e0aTV6OG7</a><br><br>不是又一个云笔记，是把 Karpathy 的 LLM Wiki 思路做成你硬盘上的知识操作系统。笔记第一次真正会自己长！<br><br>4.  garrytan/gstack<br><br>Garry Tan 同款 Claude Code 作战包：23 个固执工具，分别扮演 CEO / Designer / Eng Manager / Release Manager / Doc Engineer / QA。<br><br>🔗 直达：<a class="link" href="https://t.co/WmJvWxwHZ4">https://t.co/WmJvWxwHZ4</a><br><br>以前一个人对着 Agent 自言自语，现在直接把整支虚拟高管团队焊进终端。创始人级工作流，开箱即用！<br>5.  OpenCut-app/OpenCut<br>开源 CapCut。本地优先视频剪辑，Agent 时代最缺的那块「能真正出片」的桌面武器。<br><br>🔗 直达：<a class="link" href="https://t.co/SJSjzWjU6S">https://t.co/SJSjzWjU6S</a><br><br>内容工厂不能只停在分镜 prompt。剪辑工具开源了，Agent 视频流水线才算闭环！<br><br>//<br><br>总结<br><br>2026 下半年的风口已经不是「再做一个会聊天的 Agent」，而是 可插件化的官方 Harness + 可解释代码图谱 + 本地第二大脑 + 高管级工作流 + 开源成片工具。谁先把这五件套玩透，谁就站在下一波生产力革命的 C 位。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Ren@Ryrenz</span> · 7 小时前 · 14:40 · 🟡</div>
+      <p>⌨️ Anthropic 官方把「怎么写好提示词」做成了一套能边敲边学的互动课程。<br><br>GitHub 揽获 3.7 万 stars。<br><br>大部分人学提示词是刷别人总结的技巧帖，看的时候觉得有道理，轮到自己写还是一句「帮我写个文案」丢过去。这套教程反过来：九章内容每节都留了实验区，你改一个字、把角色设定删掉、把数据和指令混在一起，立刻能看到 Claude 的输出怎么变差。亲手弄坏一次的印象，比看十篇技巧帖都深。<br><br>内容从提示结构、清晰表达、角色设定、数据和指令分离，一路讲到逐步思考、示例运用和怎么减少幻觉。第九章直接上聊天机器人、法律、金融和写代码的实战练习，附录还补了提示链、工具调用和检索。<br><br>不想装环境的话，它还有一份 Google Sheets 版本和练习答案表。<br><br>提示词不是玄学，是能一节一节练出来的手艺。<br><br>GitHub：<a class="link" href="https://t.co/vA4JsaeLPm">https://t.co/vA4JsaeLPm</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 govin.eth | G哥@goan9</span> · 8 小时前 · 13:12 · 🎬×1 · 🟡</div>
+      <p>Codex Plus 也能当 Pro 用，相当于token额度放大 20 倍<br><br>大部分人用 Codex，还是让一个模型把读取项目、搜索资料、推理、改代码、测试全部做完，复杂任务一长，Plus 额度很快就被吃掉。<br><br>真正省扩大额度的方式，不是继续压 Prompt，而是把 Reasoning 和 Execution 拆开<br><br>Luna 负责执行，Sol 负责重推理，具体流程：<br><br>1️⃣ Luna 先读取代码库、搜索资料、跑命令，把当前任务相关信息整理出来。<br>2️⃣ 再把目标、关键代码、核心约束、已尝试方案和问题点，压缩成 1～3K Token 的 Task Packet。<br>3️⃣ 把 Packet 交给 ChatGPT 5.6 Sol，只做架构判断、复杂推理、疑难 Bug 分析和方案设计。<br>4️⃣ Sol 输出结构化方案后，Luna 再回来修改代码、运行测试、修复问题并完成验证。<br><br>直接让 Codex 自己配置：<br><br>“请为当前 Codex 工作流建立“Luna 执行 + Sol 推理”的双模型模式。默认使用 Luna 负责读取代码库、搜索资料、运行命令、修改代码和测试验证；遇到复杂架构设计、跨模块决策、疑难 Bug 或需要深度推理的任务时，先把当前目标、关键代码、核心约束、已尝试方案和待解决问题压缩成 1～3K Token 的 Task Packet，再交给 ChatGPT 5.6 Sol 进行深度分析并输出结构化方案。拿到方案后由 Luna 继续执行修改、测试和验证。不要把完整项目上下文重复发送给 Sol，只提供真正影响判断的信息。”<br><br>配置完成后，可以直接拿一个复杂 Bug 测试：<br><br>“分析当前项目登录模块偶发 500 的问题。先由 Luna 检查代码、日志、依赖和最近改动，把真正相关的信息压缩成 1～3K Token 的 Task Packet；再交给 Sol 判断最可能的根因、影响范围和修复方案；最后由 Luna 按方案修改代码、补测试并实际运行验证，直到问题解决。”<br><br>官方 Pro 是 Plus 20 倍额度，这种模型分工的思路，就是尽量让 Plus 的每一份额度都花在真正需要的地方。<br><br>兄弟们可以自己测一下：<br>单模型从头跑到底 VS Luna 执行 + Sol 推理，看看复杂任务到底哪个更省、更稳。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 12:54 · 🟡</div>
+      <p>最近把腾讯刚出的 EVIE 和百度 PaddleOCR-VL 放在一起看，感觉 Document AI 正在发生一个很重要的变化。<br><br>过去做 RAG，有一个几乎没人质疑的前提：<br><br>先把世界变成文字，再让 AI 理解。<br><br>PDF 先 OCR，表格转 Markdown，图片提取文字，然后切 Chunk、Embedding、进向量库。<br><br>PaddleOCR-VL 已经把这条路线做得非常极致：1B 左右的模型，可以直接理解文字、表格、公式、图表，把复杂文档结构化。<br><br>但腾讯 EVIE 走了另一条路。<br>它甚至不急着读文档，而是直接把整页当成视觉信息做 Embedding，在视觉空间里完成检索。<br><br>所以一个很有意思的变化出现了：<br>以前是 Parse Everything → Search Text。<br><br>以后可能是：<br>See Everything → Retrieve → Parse Only What Matters → Reason。<br><br>这不只是少做一次 OCR。<br><br>更重要的是 AI 不再要求现实世界先被压缩成文字，才能进入它的检索和推理系统。<br><br>表格的位置、图表的趋势、字体、颜色、空间关系，本来就是信息。把它们 OCR 成一串文字，本身就是一次有损压缩。<br><br>所以 EVIE 和 PaddleOCR-VL 在我看来并不是竞争关系，反而刚好拼出了下一代 Document RAG 的雏形：<br><br>Visual Retrieval → Document Parsing → LLM Reasoning<br><br>过去我们想的是怎么让 AI 读懂更多文档。<br><br>下一阶段的问题可能变成：<br>既然模型已经有眼睛了，为什么还要先把世界翻译成文字给它看？<br><br><a class="link" href="https://t.co/v6qVBko62U">https://t.co/v6qVBko62U</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 余温@gkxspace</span> · 5 小时前 · 10:07 · 📷×1 · 🟡</div>
+      <p>我之前已经安利过 Mole 好几次了，一行命令最多给我清出过 142GB。<br><br>但这个桌面端我是真的越用越喜欢。<br><br>现在 Cursor、Codex...和各种 AI 任务越开越多，我基本让 Mole 常驻后台。<br>状态页直接把 CPU、GPU、内存、磁盘、网络、风扇和后台进程全部列出来，清理垃圾、一键优化Mac都老好用。<br><br>而且，今天还发现风扇控制也太爽了。。。<br><br>我这台 MBP 有时候机身已经烫了，系统风扇就死活不转。直接切到强冷，转几十秒，再摸电脑已经完全不热了😋</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:05 · 📷×4 · 🟡</div>
+      <p>闲鱼卖 GPT 两天赚了 1k+<br>我第一次跑通了一个小生意的完整闭环<br><br>最近在闲鱼上测试GPT 的代充业务<br>昨天突然爆了<br>两天赚了1000多，还积累了100多个有真实需求的用户<br><br>金额并不大，但这是我第一次非常直观地跑完一个小生意从供给到获客、成交、交付再到复购的过程<br><br>所以想简单复盘一下<br><br>最开始很简单<br>我先是拿到了@Leobai825策哥提供的稳定供给渠道<br><br>再在咸鱼上架<br>至于为什么选择咸鱼，大家应该也都清楚咸鱼是中国最大的“暗网”，并且存在大量有需求的客户<br><br>所以说 <br><br>先找到已经存在需求的地方，再提供对应的服务<br><br>整个流程其实也很简单：<br>找到稳定供给 → 测试商品和表达 → 接收咨询 → 成交交付 → 做售后 → 沉淀复购用户<br><br>目前已经导入了一百多个私域真实用户了<br>OS：就算以后闲鱼不卖了，这100多个用户产生的复购，可能都够我每个月把自己的 AI 订阅费赚回来了哈哈哈<br><br>这也是这次对我冲击比较大的一点<br><br>一次成交赚的是当下的钱<br><br>一个真实用户，带来的是之后很长一段时间的需求、反馈和复购<br><br>我不会因为两天赚了1k+，就觉得以后应该专职做代充<br>这次的闭环更像一个零成本的商业训练场<br>让我第一次真正接触定价、获客、成交、交付、售后和复购<br><br>同时也回答了我之前一直很纠结的一个问题：<br><br>我是不是必须找一个既长期又能立刻赚钱的赛道？<br><br>显而易见，答案是否定的<br><br>两天1000多块当然算不上什么大生意，但对于我来说挺重要的，这是一次真实的商业闭环<br><br>接下来我应该还会继续跑一段时间<br>比赚多少钱<br><br>我更想看看能不能从这些真实用户里继续发现一些更长期的需求<br><br>Keep Building in Public!</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Ren@Ryrenz</span> · 6 小时前 · 09:05 · 🟡</div>
+      <p>🪞 兄弟们，看到喜欢的网站界面，现在一句话就能让 AI 把它复刻成一个能跑的 Next.js 项目<br><br>GitHub 上 3.3 万 stars，MIT 协议开源。<br><br>平时看到一个做得很漂亮的落地页，想学它的排版和交互，只能开着开发者工具一块一块抠，抠完还得自己重新搭一遍工程。这个模板把整件事拆成五步交给 AI 干：先侦察目标页面，再定基础配置，然后写组件规格，接着并行把组件建出来，最后组装并跑一遍检查。你要做的只是给它一个网址。<br><br>它用 AGENTS.md 作为唯一的指令来源，Claude Code、Codex CLI、Cursor、Gemini CLI、Copilot 这些编码代理都能直接读；技术栈是 Next.js 16 加 React 19、TypeScript、Tailwind v4 和 shadcn/ui，产出的是一个正常能改能部署的工程。<br><br>项目自己也写清楚了：不能拿去做钓鱼、冒充他人或者照搬别人的设计。学结构可以，抄成品不行。<br><br>GitHub：<a class="link" href="https://t.co/uGQ7HtKB8T">https://t.co/uGQ7HtKB8T</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-30 · 🔵</div>
+      <p><b>中国科技公司新尝试：“性爱”机器人，瞄准“陪伴经济”</b></p>
+      <p>图像来源，Getty Images一些人形机器人能做到微表情和人类高度相似Published 2026年8月28日阅读时间: 4 分钟8月23日在北京闭幕的世界机器人大会上，一批外形高度接近真人的仿生机器人亮相：骨骼立体、皮肤柔软，甚至能做出人类的微表情。与过去主要展示跳舞、行走等功能的人形机器人不同，这一批新产品把重点放在微表情、声音、触觉，以及与人工智慧（AI，人工智能）结合的情感互动上。中国科技公司优必选在大会上提出，要让机器人实现从“像人”到“懂人”的跨越。从现场展示的机器人新品来看，这也正成为中国多家科技公司竞逐的新方向。这些产品背后，瞄准的是中国近年来快速发展的一个市场：陪伴。从A</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-21、2026-08-22、2026-08-26、2026-08-29、2026-08-30。</i></div>
+<div class="trend">📊 趋势（15天共1246条）
+      <div class="bars">
+        <div class="bar" style="height:57%"><small>59</small></div>
+        <div class="bar" style="height:42%"><small>43</small></div>
+        <div class="bar" style="height:53%"><small>55</small></div>
+        <div class="bar" style="height:84%"><small>87</small></div>
+        <div class="bar" style="height:96%"><small>99</small></div>
+        <div class="bar" style="height:100%"><small>103</small></div>
+        <div class="bar" style="height:91%"><small>94</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇮🇱 中东局势（3 条）</h3>
+
+    <p class="intro">美军空袭伊朗拉腊克岛的发射装置，是几周来首次对伊动武；伊朗那边加油站大排长队，战争加封锁让燃油供应吃紧。NYT 挑了阿富汗撤军五周年这个节点发《美国为什么戒不掉战争》，时机选得很耐人寻味。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 2026-08-30 · 🔵</div>
+      <p><b>US strikes Iranian launchers on Larak Island in first known attack in weeks</b></p>
+      <p>Iran says the attack killed some civilians and is the first known US strike on Iran since late July.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-30 · 🔵</div>
+      <p><b>Why the United States Can’t Quit Its Wars</b></p>
+      <p>The country’s longest war came to an end exactly five years ago. Today it offers lessons for policymakers seeking to avoid an endless war in Iran.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 2026-08-30 · 🔵</div>
+      <p><b>Long Lines for Gas in Iran Show War and U.S. Blockade Squeezing Supply</b></p>
+      <p>The government is struggling to meet a shortfall in fuel and is wary that higher prices at the pump could stir unrest.</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-23、2026-08-26、2026-08-28、2026-08-29、2026-08-30。</i></div>
+<div class="timeline">🕐 <i>事件演化：</i>
+      <div class="tl">
+        <span class="chip">03/Au 特朗普表示同意取消对伊朗的打击，前提是能“迅速”达成协议</span>
+        <span class="chip">09/Au 霍尔木兹海峡会谈进展顺利，伊朗警告协议不会打通海峡</span>
+        <span class="chip">23/Ju 三位自以为是的领导人和他们的愚蠢战争 | 美国与沙特签署核协议为中东再引核扩散风险</span>
+        <span class="chip">26/Au 当世界发现，反抗特朗普也可以是一个选择 | 美国制裁伊朗经济新措施为何对中国“松手”？</span>
+      </div>
+    </div>
+<div class="trend">📊 趋势（12天共27条）
+      <div class="bars">
+        <div class="bar" style="height:80%"><small>4</small></div>
+        <div class="bar" style="height:20%"><small>1</small></div>
+        <div class="bar" style="height:20%"><small>1</small></div>
+        <div class="bar" style="height:20%"><small>1</small></div>
+        <div class="bar" style="height:100%"><small>5</small></div>
+        <div class="bar" style="height:20%"><small>1</small></div>
+        <div class="bar" style="height:40%"><small>2</small></div>
+      </div>
+    </div>
+    <h3 class="topic">🇯🇵 日本/东亚（2 条）</h3>
+
+    <p class="intro">台风 22 号已经在日本以东洋面转成热带低气压，23 号还在远海北上。另一条是十年前的老故事：旅日外国人用 8000 行 Python 做了个糖果订阅站，每月给客户寄两盒随机日本糖果，一年能赚 8 万美金。前互联网时代的小生意，现在看还挺浪漫。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 tenki.jp@tenkijp</span> · 2 小时前 · 19:29 · 🟡</div>
+      <p>【速報】台風22号は熱帯低気圧に変わりました　23号は日本のはるか東を北上中】 <a class="link" href="https://t.co/7mT1HLsfxs">https://t.co/7mT1HLsfxs</a> 台風22号(アータウ)は、31日午前3時に日本のはるか東で熱帯低気圧に変わりました。一方、台風23号は日本のはるか東を北上しています。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 卫斯理@imwsl90</span> · 12 小时前 · 09:48 · 📷×1 · 🟡</div>
+      <p>Candy Japan<br><br>前互联网时代的赚钱故事<br><br>十年前在hack news看到这么篇文章，一个在日本旅居的外国人写了 8000 行python (应该是flask)，弄了个日本糖果订购网站<br><br>用户付费后，每月给客户寄两盒随机的日本本土糖果<br><br>那篇故事讲这个外国人可以赚 8 万美金，他每日的工作就是收钱、打包并快递糖果<br><br>那时候看完觉得这真是理想的工作，一个简单的订购网站就能年入八万刀<br><br>而很多复杂的软件一年到头一毛钱都赚不到<br><br>问题出在哪里？<br><br>从根本上来说那些复杂的软件把商业想的太复杂了，换一种想法，没找到商模式，成天瞎搞<br><br>真正的商业模式真的不复杂，就像这个糖果订购网站一样，客户订购、支付、收货<br><br>当我们发现自己的事情很复杂，把自己搞得很累且一个毛钱都没赚到，应该停下来思考是否方向错了<br><br>现在有了AI，普通人都能短时间搭建起自己的，关键还是要找到用户的需求。<br><br><a class="link" href="https://t.co/cpDcxO07Vl">https://t.co/cpDcxO07Vl</a></p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-21、2026-08-22、2026-08-26、2026-08-29、2026-08-30。</i></div>
+    <h3 class="topic">🌍 环境/能源（1 条）</h3>
+
+    <p class="intro">匿名用户从 Permian 盆地发来问候：压裂现场马力全开，水泵带着砂石往地下灌。页岩油气工人的日常，朴实无华。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 15:17 · 🟡</div>
+      <p>Good morning from the great Permian Basin!!<br><br>There’s nothing like being on a FRAC job with tones of horse power pumping water/sand to keep the fractured shale veins produced through the FRAC process open after the FRAC job is completed. This process allows miles worth of the pay zone to flow into the well bore and allow these wells to flow some monstrous amounts of oil,water and gas once they’re opened up to produce.<br><br>Just wanted to share a bit of my day and wish everyone a glorious Sunday!!<br><br>God bless 🇺🇸</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-21、2026-08-22、2026-08-26、2026-08-29、2026-08-30。</i></div>
+    <h3 class="topic">🚀 芯片/半导体（1 条）</h3>
+
+    <p class="intro">Gorden Sun 的长文梳理各家 AI 芯片架构：大模型本质是疯狂做矩阵乘法，算力涨太快、内存带宽跟不上，数据搬运成了最大瓶颈。NVIDIA 走全能路线，其他几家各有各的偏科解法。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Gorden Sun@Gorden_Su</span> · 2 小时前 · 13:40 · 📷×1 · 🟡</div>
+      <p>科普长文：各家AI芯片的架构<br><br>梳理了每家AI芯片的架构和发展历史，内容非常详实。简单总结：<br><br>大模型本质上就是在疯狂做矩阵乘法。但现在算力增长太快，内存传输数据的速度跟不上了，数据搬运成了最大的瓶颈。为了解决这个问题，几家大厂给出了完全不同的解决思路：<br><br>NVIDIA GPU：老大哥走的是全能路线。芯片上有成千上万个小核心并发干活，硬件和 CUDA 软件生态高度绑定。虽然芯片设计很复杂，但通用性极强，不仅能训练大模型，还能用来渲染图形、做科学计算。<br><br>Google TPU：Google 专为矩阵计算定制了脉动阵列。它不搞复杂的硬件调度，全靠自家的 XLA 编译器提前规划好每一步。硬件结构精简很多，能省下大量功耗去堆算力，专门服务 Google 自家的大模型和业务。<br><br>AMD GPU：AMD 的核心逻辑是堆大显存和走开源路线。芯片计算单元设计相对保守，但在显存容量上非常大方，能直接在单台机器里塞下更大的模型，同时联合行业力量推开放标准来抗衡 NVIDIA。<br><br>Cerebras WSE：想法最激进的一家。别家都是把整块晶圆切成几百颗小芯片，Cerebras 直接不切了，做出一整块像餐盘那么大的巨型芯片。数据全在片上高速传输，生成文字的速度极快，但造价昂贵、功耗极高。<br><br>AWS Trainium：亚马逊走高性价比的云端定制路线。它借鉴了 Google 的脉动阵列和编译器思路，重点打磨网络互联，把通信模块做进硬件里，目标就是让开发者在 AWS 云上以更低的成本跑模型。<br><br>Groq LPU：追求极致的确定性。它去掉了传统芯片里所有不确定的缓存和预测机制，完全由编译器按时钟周期精准安排任务。文字输出延迟极低，但单颗芯片容量很小，跑大模型得拼上几百颗。<br><br>博客全文：<a class="link" href="https://t.co/73skjs38o5">https://t.co/73skjs38o5</a></p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-19、2026-08-23、2026-08-27、2026-08-29、2026-08-30。</i></div>
+    <h3 class="topic">🎮 二次元/游戏（1 条）</h3>
+
+    <p class="intro">メガハウス 官宣 G.M.G. 系列新品：阿姆罗和塞拉换上地球联邦军制服，可动小人。高达手办党的钱包又要瘪一点。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 メガハウス_メガホビ@mega_hobb</span> · 1 分钟前 · 10:00 · 📷×4 · 🟡</div>
+      <p>【#ガンダム】<br><br>■━━━━━━━━━□<br>G.M.G. COLLECTION <br>機動戦士ガンダム 地球連邦軍 <br>アムロ・レイ制服Ver.　セイラ・マス制服Ver.<br>□━━━━━━━━━■<br><br>可動フィギュアG.M.G. シリーズより、<br>アムロ・レイとセイラ・マスが<br>地球連邦軍の制服姿で登場！<br><br>各情報はこちらをチェック！<br><a class="link" href="https://t.co/KYL3KiEI3v">https://t.co/KYL3KiEI3v</a><br><a class="link" href="https://t.co/d0fexrn8F0">https://t.co/d0fexrn8F0</a><br><br>#gundam</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-23、2026-08-24、2026-08-25、2026-08-28、2026-08-29。</i></div>
+    <h3 class="topic">🏛️ 国内政策（1 条）</h3>
+
+    <p class="intro">BBC 中文报道「甲醛白菜」再现河北：收购商为保鲜给大白菜蘸工业甲醛。食品安全监管盲区的老话题，配上 Getty 的现场图，观感很直接。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 2026-08-30 · 🔵</div>
+      <p><b>“甲醛白菜”再现中国：食品安全监管的盲区在哪里？</b></p>
+      <p>图像来源，Zhang Chunlei/VCG via Getty ImagesPublished 2026年8月26日阅读时间: 3 分钟近日，中国河北省被揭发收购商为达到保鲜效果，将大白菜蘸取工业甲醛，再装车运输到外地，事件引发官方及舆论高度关注。事件曝光后，根据中国官媒报导，国务院食安办、农业农村部、市场监管总局指导属地调查核实，并追查涉事白菜流向，以防止问题産品进入市场。这并非中国首次出现“甲醛白菜”。中国政府自2009年制定《食品安全法》后，多次修订相关法律，官方称其为“史上最严”食安法，但类似事件仍不时出现。有学者向BBC中文分析，食品供应链涉及多个环节和监管部门，在实际执法层面可能</p>
+    </div>
+    <div class="timeline">📈 <i>历史脉络：该话题此前出现在 2026-08-22、2026-08-24、2026-08-26、2026-08-27、2026-08-30。</i></div>
+  </section>
+
+  <section class="block">
+    <h2>📌 其他零散内容（143 条）</h2>
+    <div class="sub">未聚类的零散推文，按时间倒序</div>
+    <p class="intro">没聚成话题的零散内容：日本 cos 圈的早安打卡、vibe coding 小工具公开 release、给写小说的人用的 Goink 助手。台风相关的速报也在这一堆里。</p>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 のりちゃん@nori_chan_cos</span> · 21:31 · 📷×1 · 🟡</div>
+      <p>おはようございます☀<br><br>2026年8月31日(月)<br>～I Love Youの日～<br><br>おはツイコラボ945弾Ver.2<br><br>札幌☁時々☀<br>今の気温18.0℃<br>最高気温24℃<br><br>タイトル<br>「ミクコスさん1枚の画像に大集合」<br><br>めちゃくちゃ細かいので<br>画質悪めですがこちらも作成しました！<br><br>タグは０時にポストしたのを<br>参照願います！ <a class="link" href="https://t.co/JezfUn9cCf">https://t.co/JezfUn9cCf</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Moonlight@yu90930025</span> · 56 分钟前 · 21:05 · 🟡</div>
+      <p>好～第二个人机交互小工具插件也公开release了🎉🎉<br>算是我第一个vibe coding的小工具，丰富了一些交互后算是竣工了。<br>在公开于GitHub之前已经给公司文员同事和我tutor教的学生使用过了，也将他们的使用方式写在readme 里供参考。<br>请和你的ai buddy 玩得开心🥳 <a class="link" href="https://t.co/dplCRrrS62">https://t.co/dplCRrrS62</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 56 分钟前 · 21:04 · 🟡</div>
+      <p>"买了一套喜欢的新衣服，穿起来特别有气质！👗"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 20:35 · 📷×1 · 🟡</div>
+      <p>おはようございます☀️<br>今日の12星座占いはこちらです😊<br>みなさんにとって<br>良い一日になります様に✨<br><br>#占い #AICostumeCreator <a class="link" href="https://t.co/hw6V7qKuxw">https://t.co/hw6V7qKuxw</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 1 小时前 · 20:27 · 🟡</div>
+      <p>"发现了一款很实用的新APP，分享给大家！📱"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 lumxss@bkdgiffug</span> · 1 小时前 · 20:05 · 📷×1 · 🟡</div>
+      <p>写小说的兄弟们，别再让混乱的思绪和零散笔记折磨你了。<br><br>有个叫Goink的助手工具，真的能救命。<br><br>它就像个随时在线的创作搭档，陪你梳理剧情，自动记录你的每一步，让你彻底告别来回翻找的崩溃。<br><br>最惊艳的是它的本地搜索，无论埋下的伏笔还是角色细节，一句话就能闪电般精准定位。<br><br>跨平台支持，开箱即用，没有任何繁琐的配置门槛。<br><br>写稿写到灵感枯竭的，强烈建议去了解一下，绝对物超所值。<br>项目地址：<a class="link" href="https://t.co/qB3SHQqcVh">https://t.co/qB3SHQqcVh</a><br>有了Goink，你还好意思说创作之路注定孤独又低效吗？</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 树@26nian5yue25hao</span> · 2 小时前 · 19:53 · 🟡</div>
+      <p>"尝试了一种新的咖啡口味，味道令人惊喜。"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 2 小时前 · 19:30 · 🟡</div>
+      <p>"打算学习一个新技能，期待新的挑战！🎨"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 19:29 · 🟡</div>
+      <p>"享受了一个悠闲的午后，思绪放飞。"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 2 小时前 · 19:18 · 🟡</div>
+      <p>Zero Company's permadeath makes it a better RPG than most RPGs, even though it's not really an RPG <a class="link" href="https://t.co/VxVRs3XFUA">https://t.co/VxVRs3XFUA</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 19:11 · 📷×1 · 🟡</div>
+      <p><a class="link" href="https://t.co/rldd8ypVtE">https://t.co/rldd8ypVtE</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 18:44 · 🟡</div>
+      <p>Thanks to a dedicated team 'art-directing' NPCs, GTA 6 has over 10 times as many animations as GTA 5 <a class="link" href="https://t.co/3yD5TR3G0a">https://t.co/3yD5TR3G0a</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 18:12 · 🟡</div>
+      <p><a class="link" href="https://t.co/7OwtbuewRg">https://t.co/7OwtbuewRg</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 lumxss@bkdgiffug</span> · 3 小时前 · 18:04 · 📷×1 · 🟡</div>
+      <p>谁规定学Codex必须靠命硬去硬啃官方文档和零散教程？<br>与其被东拼西凑的信息折磨到怀疑人生，不如看看A哥在GitHub挖到的这个开源宝藏——《Codex橙皮书》。<br><br>这书免费，内容系统到让人感动，从环境搭建一路讲到完整项目实战，几乎把Codex周边玩了个通透。<br><br>最夸张的是，里面的截图和步骤细致到像手把手教，基本上照着敲就能顺利跑通，新手友好度拉满。<br>资源地址：<a class="link" href="https://t.co/ylLIWY2RVS">https://t.co/ylLIWY2RVS</a><br><br>有了这本攻略，入门之路直接变坦途，还谈什么“命硬不硬”？</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 NO CONTEXT HUMANS@HumansNoContext</span> · 4 小时前 · 17:43 · 🎬×1 · 🟡</div>
+      <p>I’d just stop my run for hours <a class="link" href="https://t.co/VgHKKY98Hs">https://t.co/VgHKKY98Hs</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 NO CONTEXT HUMANS@HumansNoContext</span> · 4 小时前 · 17:39 · 📷×1 · 🟡</div>
+      <p>A man in Indonesia was arrested after allegedly killing his 60-year-old neighbor following repeated comments about why he was still unmarried at 45.<br><br>Police said the suspect attacked him with a piece of wood after tensions between them escalated. <a class="link" href="https://t.co/OGlCygVkzP">https://t.co/OGlCygVkzP</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 17:38 · 📷×1 · 🟡</div>
+      <p>这个网站牛逼！<br>如果你想租GPU，但是不知道去哪里租，以及哪个网站最便宜。<br>这个网站用类似表格的方式让你一目了然，价格都是近实时的！<br><br><a class="link" href="https://t.co/RcmNSy8Iyk">https://t.co/RcmNSy8Iyk</a> <a class="link" href="https://t.co/jJwGflaU1o">https://t.co/jJwGflaU1o</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 4 小时前 · 17:15 · 🟡</div>
+      <p>Elden Ring's Tarnished Edition is our last chance to experience the game's launch day hype <a class="link" href="https://t.co/4Sg1k5JcQC">https://t.co/4Sg1k5JcQC</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Project Helius@PROJECT_H_Dev</span> · 5 小时前 · 16:56 · 📷×1 · 🟡</div>
+      <p>#OperationLovecraft Hotpatch 0.9.0a isbeing updated, the server will undergo maintenance over the next two hours. <a class="link" href="https://t.co/kXA1EeLRfq">https://t.co/kXA1EeLRfq</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 5 小时前 · 16:51 · 🟡</div>
+      <p>14 years on, the creator of DayZ is searching for a solution to survival gaming's biggest problem <a class="link" href="https://t.co/2dpKT6JNWb">https://t.co/2dpKT6JNWb</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 5 小时前 · 16:46 · 🟡</div>
+      <p>The Wii and PS3 are 'retro' now, according to iconic Japanese gaming show <a class="link" href="https://t.co/o0w8YAPgsy">https://t.co/o0w8YAPgsy</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Keiろり@Kei_Lori</span> · 5 小时前 · 16:30 · 🟡</div>
+      <p>レーシックやりたい<br>金と時間があれば</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 あへーもち@ONIMAN165dsKh</span> · 5 小时前 · 16:19 · 📷×2 · 🟡</div>
+      <p>ヒダの表現むっず！ <a class="link" href="https://t.co/68BSshEIzL">https://t.co/68BSshEIzL</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 卫斯理@imwsl90</span> · 5 小时前 · 16:07 · 📷×1 · 🟡</div>
+      <p>都是什么日子<br><br>本来睡着了，我老婆把我打醒，说让我去晾衣服<br><br>晾完衣服发现自己毫无睡意<br><br>只能vibe coding了 <a class="link" href="https://t.co/VK77ZmGGYc">https://t.co/VK77ZmGGYc</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 ミチハス@michi_hasu</span> · 6 小时前 · 15:56 · 🟡</div>
+      <p>デザインも相手にイメージ伝えられるくらいの基礎技能を身につけたい</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 AYi@AYi_AInotes</span> · 15:49 · 📷×2 · 🟡</div>
+      <p>非常认同 CZ @cz_binance 的这番话。<br><br>一个前几天还在 @binancezh 币安广场高谈阔论“一人公司创业”的所谓嘉宾 @GoSailGlobal，私底下做的事却是：利用同行博主出于信任提供给他走结算的敏感身份信息，公然扬言要发函搞垮对方的职场生涯。<br><br>做商业竞争可以拼能力、拼交付，但把商务合作留下的个人隐私拿来当人身威胁的把柄，已经完全违背了最基本的商业契约和做人底线。<br><br>感谢 CZ 站出来为健康的行业生态发声，<br>阳光底下没有新鲜事，靠突破底线吸血同行的人，<br>立再多光鲜人设也撑不久。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Roland.W@rwayne</span> · 6 小时前 · 15:46 · 🟡</div>
+      <p>当你觉得自己稍微懂了一点之后，你可以说一些话之后，人会变得傲慢。<br><br>因为你发现，哎，你说的话是有影响力的，你真的可以影响这个市场。<br><br>对我后来就有点紧张，就不应该这样子去说。<br><br>但那个东西确实，你如果不反省的话，它会让你产生傲慢、骄慢之心无限的膨胀。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 小墨同学@xiaomovps</span> · 6 小时前 · 15:45 · 📷×2 · 🟡</div>
+      <p>以前是我盯着 Pi 改代码，现在有人开始让 Pi 自己死磕优化了😂<br><br>最近看到一个很值得玩的项目：pi-autoresearch。<br><br>它受 Karpathy Autoresearch 启发，直接把这套思路搬进了 Pi里面。<br><br>你不需要一步一步告诉它该怎么优化，只需要给一个明确指标。<br><br>剩下的事情，它自己来：<br><br>想方案 → 修改 → 测试 → 对比结果 → 有提升就留下 → 变差就回滚 → 继续下一轮。<br><br>几个点特别有意思的点：<br><br>1、目标非常明确<br><br>不是让 Agent 模糊地“把代码优化一下”，而是直接盯一个数字，比如测试时间、构建速度、Bundle Size、Lighthouse 分数。到底有没有变好，一眼就能判断。<br><br>2、失败成本很低<br><br>Pi 可以大胆去试各种方案。效果不好就直接回滚，不需要我一直盯着每一次修改，真正有提升的结果才留下来。<br><br>3、可以连续跑很多轮<br><br>普通 Agent 改一次基本就结束了，Autoresearch 更像是在做实验。一个方案不行就换下一个，直到慢慢把指标往上推。<br><br>4、实验过程可以持续积累<br><br>每一轮尝试、结果和改动都会被记录下来。哪怕 Context 后面重置了，也可以接着之前的实验继续跑，而不是重新从零开始猜。<br><br>我觉得它最适合解决一种很有意思的问题：<br>我不知道下一步该怎么优化，但我知道什么结果才算更好。<br><br>以前我也用过类似的框架去重复跑，重复迭代，甚至开多个子向前一起跑，然后确定一个最高分的版本。<br><br>他这个插件的思路也其实都是一样的，让ai自己去按照你的目标去进化，每一次都打分，一次一次的向最终目标靠近。<br><br>如果你最近也在玩 Pi，pi-autoresearch 我很推荐试一下。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 15:40 · 🟡</div>
+      <p>终于有人把 KV 缓存解释清楚了，不再让它听起来像黑魔法 <br><br>Q 基本上是一次性的，而 K/V 才是需要保留的部分。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 梦@eee3namnar_</span> · 6 小时前 · 15:40 · 🟡</div>
+      <p>"和朋友们讨论了一个有趣的话题，眉飞色舞！💬"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 nexora.ai@Nexoraupnp</span> · 26 分钟前 · 15:33 · 🎬×1 · 🟡</div>
+      <p>Absolutely. Use this as a single image-to-video prompt with the generated image:<br><br>&gt; Create a breathtaking cinematic 8–10 second video from this exact image. Preserve the mountain-woman’s face, landscape, trees, cars, people, and composition exactly. The waterfall continuously flows naturally from her mouth, with realistic rushing water, splashes, mist, droplets and ripples forming where it hits the ground. Clouds and fog slowly drift around the mountain and behind her face. Trees and grass gently sway in the mountain breeze. The people in the foreground come alive naturally: some slowly walk forward, others raise and lower their phones, a few turn their heads toward the giant waterfall, and subtle body movements make the scene feel completely real. Parked cars remain mostly stationary with tiny realistic movements. Add cinematic camera movement: begin with a wide establishing shot, then slowly push forward toward the giant face and waterfall while maintaining the original composition and scale. As the camera approaches, the flowing water becomes more dramatic, with sparkling droplets and atmospheric mist catching the soft light. Ultra-realistic physics, natural human motion, realistic water simulation, volumetric fog, cinematic depth, highly detailed environment, seamless motion, mysterious magical atmosphere, photorealistic, viral-worthy visual, no sudden cuts, no morphing, no distorted faces, no extra people, no warped cars, no text or logos. Make the final moment visually shocking and unforgettable.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Roland.W@rwayne</span> · 6 小时前 · 15:32 · 🟡</div>
+      <p>我理解当初的那个我自己，就像理解现在很多人做出的选择一样。<br><br>我们会说你怎么会做出这样的选择，在我们看来、经过的人看来，这个选择一定是错的，你应该做另外一种选择。<br><br>但是不是的。<br><br>你这里说的错的选择是，比如说如果一个女孩子爱上了一个不靠谱的男人，或者是你天天熬夜在工作，那对于在他人、成熟人的眼里，你就再往一条不归路上走，马上应该停止。<br><br>但是你回到那个女孩子，在当时的处境下，在当时她的思想的限制下，她不可能做出第二个选择。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Keiろり@Kei_Lori</span> · 6 小时前 · 15:28 · 🟡</div>
+      <p>最近よく見る「VIVANT」<br>実は読み方が「ヴィヴァント」じゃなくて「ビバン」らしい<br>新しい知見を得て偏差値10くらい上がったわ</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 cg33@chg80333</span> · 47 分钟前 · 15:13 · 🟡</div>
+      <p>We open-sourced Multigent.<br><br>Not as a framework.<br>Not as a product.<br><br>As a reference for the missing pieces every AI team keeps rebuilding:<br><br>- Where does state live between agent calls?<br>- Who owns the workflow when the model flakes?<br>- How do you recover from a half-finished task?<br><br>Same questions, every team.<br>Multigent is one answer.<br><br><a class="link" href="https://t.co/5d1XXHjDsD">https://t.co/5d1XXHjDsD</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 PC Gamer@pcgamer</span> · 56 分钟前 · 15:04 · 🟡</div>
+      <p>The Corsair Frame 4000X could become your dream PC case—but I'm not sure it's mine <a class="link" href="https://t.co/kUgwBB8U1t">https://t.co/kUgwBB8U1t</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 NASA@NASA</span> · 58 分钟前 · 15:02 · 📷×1 · 🟡</div>
+      <p>Our newest space telescope is on its way to revealing the universe's darkest secrets!<br><br>How much do you know about @NASARoman? We've got the key facts: <a class="link" href="https://t.co/HbF9WpsmjL">https://t.co/HbF9WpsmjL</a> <a class="link" href="https://t.co/EIIJHS4Oym">https://t.co/EIIJHS4Oym</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Elon Musk@elonmusk</span> · 15:00 · 🟡</div>
+      <p>Extremely severe extinction events happen every 100M years or so and just switching to sustainable energy will not be enough to stop them. <br><br>Space satellites to control temperature and massive geo-engineering will be needed or it will be game over. <br><br><a class="link" href="https://t.co/y4QwutjXce">https://t.co/y4QwutjXce</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 14:39 · 🎬×1 · 🟡</div>
+      <p>RT @MixMico3: 烎 <a class="link" href="https://t.co/HibHoIP1Dm">https://t.co/HibHoIP1Dm</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Sinya 李新野@realsinya</span> · 1 小时前 · 14:37 · 🟡</div>
+      <p>男人要成功，一定要解决性欲问题。一是像我一样阳痿，二是吃糖化学阉割。当然还有一条路，就是嫖到失联，嫖到永远是贤者时间。性欲是男人的诅咒，而国女之所以能这么吸血，就是靠利用男人的生理不足之处进行剥削。用安全的方式解决性欲，才能不被国女吃干抹净，才能有自己的人生。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 雪踏乌云@Pluvio9yte</span> · 1 小时前 · 14:35 · 📷×2 · 🟡</div>
+      <p>铺天盖地的Starryblu这个新加坡银行卡的广，实际到底能不能订阅Claude和GPT？<br><br>在我有Claude Max订阅的情况下，只为了给大家测试，我又花了140rmb做了个实验：<br><br>我直接订阅了一个月的Claude Pro，虽然是新加坡的卡，但是我填的信息是美国免税州，不用多交税。最后居然成功订阅了还没封号！！！！这说明卡是没问题的<br><br>订阅方案如下：<br>打开无痕浏览器，Google Map选取美国免税州，精确到街道，然后填进去即可<br><br>Claude能过的卡，GPT也不用多说了吧<br><br>而且没有出现和之前的Fiat24、Bybit一样封号的情况<br><br>兄弟们，有图有实证<br><br>走评论区链接能够加快申卡进度，还有10美金的双亿补贴额度</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 迷口@MixMico3</span> · 1 小时前 · 14:34 · 📷×2 · 🟡</div>
+      <p>2️⃣<br><br>@Muiss2024 <a class="link" href="https://t.co/NksqmKuQ6P">https://t.co/NksqmKuQ6P</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 1 小时前 · 14:22 · 🟡</div>
+      <p>"刚刚完成了一次户外运动，充满活力！🏃‍♀️"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 14:21 · 🟡</div>
+      <p>i wanted to build something this weekend that needed GPUs but wasn't sure where the cheapest place to host them was...<br><br>so of course instead of building the actual idea, i built <a class="link" href="https://t.co/pN1xRxUCxV">https://t.co/pN1xRxUCxV</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 手抖@3000beauty</span> · 1 小时前 · 14:18 · 📷×1 · 🟡</div>
+      <p>无语 <a class="link" href="https://t.co/yOLSThEDAj">https://t.co/yOLSThEDAj</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 米莉milly@Yuehualydr</span> · 1 小时前 · 14:14 · 🟡</div>
+      <p>"早上去了一家特色咖啡馆，咖啡香浓！☕️"</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 岚叔@LufzzLiz</span> · 7 小时前 · 14:14 · 📷×2 · 🟡</div>
+      <p>《从头开始构建大型语言模型》的作者：Sebastian Raschka 出新书了：《从头开始构建推理模型》，<br>之前那一本我就很喜欢，属于必修系列<br>作者为此还做了个介绍视频<br><br>日常开发可以大量使用 AI，但理解底层机制仍然是一项长期复利投资。<br><br>作者还开放了所有操作代码，非常值得边做边学：<a class="link" href="https://t.co/eF8uEIMm7a">https://t.co/eF8uEIMm7a</a><br><br>新书中，作者使用了一种预训练的开源基础大语言模型（Qwen3）作为基础，并在此之上实现了各种推理方法的实现。这些方法包括推理时间扩展、强化学习以及蒸馏技术。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 14:00 · 🟡</div>
+      <p><a class="link" href="https://t.co/msWSOZrB5o">https://t.co/msWSOZrB5o</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 13:45 · 🟡</div>
+      <p><a class="link" href="https://t.co/KSuRonedVJ">https://t.co/KSuRonedVJ</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 12:58 · 📷×1 · 🟡</div>
+      <p>Punk 老师可以出书了 <a class="link" href="https://t.co/4pah9tGTvk">https://t.co/4pah9tGTvk</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 𝟡𝟜 ᴾᴸᴬʸᶠᴼᴿᴳᴱ@94vanAI</span> · 3 小时前 · 12:52 · 📷×4 · 🟡</div>
+      <p>高积云⛅️ <a class="link" href="https://t.co/NaLi2ZXS0A">https://t.co/NaLi2ZXS0A</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 蠢沫沫momo-@chunmomo0127</span> · 9 小时前 · 12:36 · 📷×4 · 🟡</div>
+      <p>《她》<br><br>模特：@ReneeDoll00 <br>摄影：我@chunmomo0127 <a class="link" href="https://t.co/R9Al3aeJ0V">https://t.co/R9Al3aeJ0V</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 蠢沫沫momo-@chunmomo0127</span> · 3 小时前 · 12:35 · 📷×4 · 🟡</div>
+      <p>《她》<br><br>模特：@ReneeDoll00 <br>摄影：我@chunmomo0127 <a class="link" href="https://t.co/biPdmkJJgZ">https://t.co/biPdmkJJgZ</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Serena 木瓜@369Serena</span> · 3 小时前 · 12:23 · 📷×1 · 🟡</div>
+      <p>最近越来越喜欢用 WorkBuddy 了，打工人神器！<br><br>我没有用任何的 skills，生成的 PPT 样式已经不错能用了。右边还有编辑功能，这样的话有一些微小的错误或者是想调整的地方也可以改一改。<br><br>我再去试试豆包的，听说跟飞书联动也很妙啊！ <a class="link" href="https://t.co/xhMbr6L7T6">https://t.co/xhMbr6L7T6</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 astaxie@astaxie</span> · 9 小时前 · 12:22 · 🟡</div>
+      <p>Uber 这一篇写的太好了，给很多企业如何全面用 Agent 并且成本可控指引了一条清晰的路</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 爱丽丝呀！@BTCqzy1</span> · 9 小时前 · 12:18 · 🎬×1 · 🟡</div>
+      <p>做 AI 视频，必装这 5 个 Skill。<br><br>从文案到配音、数字人、字幕动画，再到最终导出，每一步都有对应工具负责。<br><br>5 个串起来，基本就是一条完整的 AI 视频生产线。<br><br>第一个，video-use<br>负责整个视频工作流，从文案、分镜、素材到交付要求统一管理，最后再检查字幕、音频和画面有没有问题。<br><a class="link" href="https://t.co/QqX1MJaMco">https://t.co/QqX1MJaMco</a><br><br>第二个，OpenVoice<br>负责固定音色。准备一段干净的人声参考，后面生成的视频都可以继续保持同一个声音。<br><a class="link" href="https://t.co/yFENdFuEST">https://t.co/yFENdFuEST</a><br><br>第三个，HeyGen<br>负责数字人口播。把人物形象、文案和配音交进去，就能生成口型、表情和人物动作。<br><br>第四个，Remotion<br>负责时间线和可编程视频，字幕什么时候出现、画面什么时候切、动画什么时候进场，都可以精准控制。<br><br>第五个，FFmpeg<br>负责最后的音视频处理，删静音、统一响度、合并音轨、转码、压缩和最终导出都交给它。<br><br>整条流程就是：video-use 统筹项目 ➡️ OpenVoice 固定声音 ➡️HeyGen 生成数字人 ➡️ Remotion 控制时间线和动画 ➡️ FFmpeg 做最后处理和导出。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 12:11 · 🟡</div>
+      <p><a class="link" href="https://t.co/wLnS5B74WM">https://t.co/wLnS5B74WM</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 12:10 · 🎬×1 · 🟡</div>
+      <p>Damn，@TencentHunyuan Hy4杀进了 Arena 代码榜全球第 5！ <a class="link" href="https://t.co/nvTSXHzuaK">https://t.co/nvTSXHzuaK</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 12:05 · 📷×4 · 🟡</div>
+      <p>A few monthly Meridian North Stars are all it takes to make life changing money: <br><br>$MU at $120, $1,200 at the peak<br>$HOOD at $12, $150 at the peak<br>$MSTR at $26, $530 at the peak<br>$PLTR at $20, $200 at the peak<br><br>New setups are forming now. <br><br>Will share some on Monday! <a class="link" href="https://t.co/OnQQ7xpnto">https://t.co/OnQQ7xpnto</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 meng shao@shao__meng</span> · 4 小时前 · 11:41 · 🟡</div>
+      <p>写代码不再值钱，工程师的价值还剩什么？<br>Simon Willison 在《Agentic Engineering Patterns》中给出了答案。<br><br>一套完整的工程方法论：从"代码边际成本趋零"这一事实出发，推导出知识资产的复利策略、让 Agent 自证正确的验证闭环，以及对"认知债"的系统性防御。 <a class="link" href="https://t.co/py3Nrti6fe">https://t.co/py3Nrti6fe</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 11:29 · 🟡</div>
+      <p><a class="link" href="https://t.co/r2XCLYBzOq">https://t.co/r2XCLYBzOq</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 11:12 · 📷×1 · 🟡</div>
+      <p>不想折腾节点，临时需要一个免费 VPN / 网络工具？这 3 个全球比较知名的，先收藏备用。<br><br>1、Cloudflare 1.1.1.1 / WARP<br>Cloudflare 官方出品，安装简单，日常网络优化和临时使用都很方便。<br>地址：<a class="link" href="https://t.co/wLGP9nASaP">https://t.co/wLGP9nASaP</a><br><br>2、Proton VPN<br>Proton 出品，主打隐私安全，免费版也能正常使用。<br>地址：<a class="link" href="https://t.co/tezIDFwn7l">https://t.co/tezIDFwn7l</a><br><br>3、Windscribe<br>老牌 VPN 服务，提供免费额度，偶尔使用或者拿来应急基本够用。<br>地址：<a class="link" href="https://t.co/w49GaAEpyC">https://t.co/w49GaAEpyC</a><br><br>不一定天天用，但电脑和手机里备一个，关键时候真能救急。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 11:01 · 🟡</div>
+      <p><a class="link" href="https://t.co/jQDL7yytTc">https://t.co/jQDL7yytTc</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Sinya 李新野@realsinya</span> · 5 小时前 · 10:59 · 📷×4 · 🟡</div>
+      <p>国女写得了小作文，我和孙哥写不得？国女怎么不反省一下为什么写了10年小作文，结果还写得不如汉男？</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:59 · 🟡</div>
+      <p><a class="link" href="https://t.co/RMaSg7NiqZ">https://t.co/RMaSg7NiqZ</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:57 · 📷×1 · 🟡</div>
+      <p>Cherry Studio教程被开源了<br><br>可以拿去海鲜市场上卖，你就标价8.9<br><br>目前市场价9块钱，还没这个详细 <a class="link" href="https://t.co/RiFiwI6DW6">https://t.co/RiFiwI6DW6</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 诺鸭船长3@noahduck283</span> · 5 小时前 · 10:55 · 🟡</div>
+      <p>卧槽，全是skill的高频痛点，应该都被折磨过吧↓<br><br>1.该明确时明确，该灵活时灵活<br><br>2.不过度纠错<br><br>3.不虚假验收<br><br>4.如何不臃肿化<br><br>5.重点要求如何精确规范而不依靠无脑多次强调<br><br>今夜我的skill将会受到最高规格的审查肃清！</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Sinya 李新野@realsinya</span> · 5 小时前 · 10:54 · 🟡</div>
+      <p>孙哥，伟大！我是你的兵！</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:48 · 📷×1 · 🟡</div>
+      <p>WeSight 的 Obsidian 插件即将支持多平台内容发布，这个体验是非常丝滑的，做了平台适配的同步，我自己看了都挺感动的，<br><br>感兴趣的可以评论区催催我，哈哈哈。 <a class="link" href="https://t.co/xqgDhzoIAA">https://t.co/xqgDhzoIAA</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:30 · 📷×1 · 🟡</div>
+      <p>再次推荐下大神@emilkowalski! <br>是我学习Design Engineer的领路人  <br>之前给大家推荐过他的设计skill，很有Apple风格 👉<a class="link" href="https://t.co/bwaBWPfV4s">https://t.co/bwaBWPfV4s</a><br>(名字很牛逼，就叫skills哈哈哈） <br><br>另外他的两节设计课也已经火出圈了🔥<br>👉AI for UI: <a class="link" href="https://t.co/wM7V6cUNXY">https://t.co/wM7V6cUNXY</a><br>👉Animations on the Web: <a class="link" href="https://t.co/2SYbp7u6io">https://t.co/2SYbp7u6io</a><br><br>前者以他的skills为主，会覆盖很多前端设计的基础知识<br>后者是全网口碑非常好的动效课，设计群里的很多小伙伴都报名了，对motion感兴趣的可以看看🙌</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:29 · 🟡</div>
+      <p><a class="link" href="https://t.co/6K3SYuxTQw">https://t.co/6K3SYuxTQw</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:27 · 🟡</div>
+      <p><a class="link" href="https://t.co/aOWTaa7Mkh">https://t.co/aOWTaa7Mkh</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:25 · 🟡</div>
+      <p><a class="link" href="https://t.co/xj8nU88sIV">https://t.co/xj8nU88sIV</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 ⚝@tessa_wwy6</span> · 11 小时前 · 10:21 · 📷×2 · 🟡</div>
+      <p>Hey @grok, make her do this pose perfectly!! <a class="link" href="https://t.co/tu3FoQxArQ">https://t.co/tu3FoQxArQ</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 10:17 · 📷×4 · 🟡</div>
+      <p>陈露造谣勒索霍尊，李靓蕾造谣勒索王力宏<br>都美竹诬告吴亦凡，嘲笑和造谣他是“吴签”<br>这时候女人和媒体，有在意男人的隐私，有谴责女人的小作文？一群双标婊！<br>女人一吃亏和“受委屈”，舆论都围过来，偏听偏信，嘘寒问暖<br>男人一发声和反抗，舆论就围过来打压和指责了<br>孙宇晨只不过做了女人都会做的事罢了 <a class="link" href="https://t.co/6tmLkuObtw">https://t.co/6tmLkuObtw</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 lumxss@bkdgiffug</span> · 5 小时前 · 10:08 · 📷×1 · 🟡</div>
+      <p>剑桥这回直接扔王炸了！！<br><br>AI &amp; ML经典教材全集直接免费开放，PDF随便下。<br><br>想学机器学习又不想被割韭菜买高价课的，这十本刷完，底子基本就硬了。<br><br>顺序从易到难排好了：<br><br>1️⃣ 《机器学习理解》——理论算法一把抓，零基础入门首选<br>🔗 <a class="link" href="https://t.co/fylTw37bOl">https://t.co/fylTw37bOl</a><br>2️⃣ 《机器学习数学基础》——数学底子弱的先把这本补上<br>🔗 <a class="link" href="https://t.co/yykNLQmdfv">https://t.co/yykNLQmdfv</a><br><br>3️⃣ 《机器学习算法的数学分析》——深入数学原理<br>🔗 <a class="link" href="https://t.co/MEvgkXoHYy">https://t.co/MEvgkXoHYy</a><br>4️⃣ 《深度学习理论原理》——搞懂DL背后的理论根基<br>🔗 <a class="link" href="https://t.co/ig93KOQRPn">https://t.co/ig93KOQRPn</a><br><br>5️⃣ 《神经网络与机器学习》——神经网络的系统讲解<br>🔗 <a class="link" href="https://t.co/cTMBvJz6Ny">https://t.co/cTMBvJz6Ny</a><br>6️⃣ 《图深度学习》——图神经网络入门必读<br>🔗 <a class="link" href="https://t.co/RJeCqCstml">https://t.co/RJeCqCstml</a><br><br>7️⃣ 《机器学习的算法视角》——从算法角度重新理解ML<br>🔗 <a class="link" href="https://t.co/VT0YnKdUdO">https://t.co/VT0YnKdUdO</a><br>8️⃣ 《概率论：理论与实例》——概率基础打牢<br>🔗 <a class="link" href="https://t.co/NqVoIZGGYg">https://t.co/NqVoIZGGYg</a><br><br>9️⃣ 《应用概率基础》——概率论实战应用<br>🔗 <a class="link" href="https://t.co/FrxqQER3mQ">https://t.co/FrxqQER3mQ</a><br>🔟 《高级数据分析》——数据科学进阶必备<br>🔗 <a class="link" href="https://t.co/Zt74B21nrf">https://t.co/Zt74B21nrf</a><br><br>说句实话，这些书没一本是轻松的，别指望躺着翻完。<br>但只要你能硬啃下来两三本，比听群里吹一年AI牛逼都管用。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Moon@MoonTree01</span> · 10:00 · 📷×4 · 🟡</div>
+      <p>舒展下身体hhh @xichangke <a class="link" href="https://t.co/JYdyz8M4E5">https://t.co/JYdyz8M4E5</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:57 · 🟡</div>
+      <p>如何看待孙宇晨和景甜的事情？<br>我其实不太关心他们的故事，但是从《我的女友景甜》开始，我就明白，这是一个文科生去对抗整个女权利维坦的世界。<br>简单描写女权利维坦是如何存在的，我们必须引入一个核心人物——保罗·伊拉姆</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:50 · 📷×1 · 🟡</div>
+      <p>RT @jiojio9511: 欢迎光临 <a class="link" href="https://t.co/nqhQxUCZbA">https://t.co/nqhQxUCZbA</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:46 · 🟡</div>
+      <p>RT @kaenuco: 告知が遅くなりましたが、LastOrigin様にて「ニバ　バニースレイヤーの暗鬱な（？）過去：加飾モード（バニーガール）」のスキン担当させていただきました！日本にもスキン来たので是非！Live2Dで動くぞ！！！（表情差分は驚き顔が一番好き✌） http…</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 Lonely@Lonely__MH</span> · 6 小时前 · 09:41 · 🟡</div>
+      <p>刚看到别人分享这个牛逼的Skill<br><br>点进去，发现我以前就star了<br><br>扫了一眼README，真牛逼！爱了😍<br><br><a class="link" href="https://t.co/CObY6pfvEt">https://t.co/CObY6pfvEt</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:29 · 📷×1 · 🟡</div>
+      <p><a class="link" href="https://t.co/TaoE8Ynn1f">https://t.co/TaoE8Ynn1f</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:22 · 🟡</div>
+      <p><a class="link" href="https://t.co/ynOiNqfL4N">https://t.co/ynOiNqfL4N</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:21 · 🟡</div>
+      <p>想到一个笑话<br><br>如果你觉得这辈子已经完蛋了，请不要灰心<br><br>还是要努力过好这辈子，不要期待下辈子会变好<br><br>如果按照人口出生比例的话，下辈子大概率也会出生在一个人口大国，出生就完蛋了</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:18 · 🟡</div>
+      <p>RT @Detective_ye: Ci-enに投稿しました「【CrossdresserDetective3】開発進捗報告（2026年8月23日）」 <a class="link" href="https://t.co/iKjmBiIWFW">https://t.co/iKjmBiIWFW</a> #Ci_en #シエン</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 老实人｜美股·AI投资@LaoshirenBTC</span> · 49 分钟前 · 09:11 · 🟡</div>
+      <p>我觉得所谓“学习”AI就是个伪命题——AI是工具，工具是拿来用的，你有刻意去“学习”怎么用锤子吗？<br><br>工具，没有单纯的学习过程，只有在使用的过程中越用越熟练越用越专业~<br><br>同样的道理，英语也是如此。</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:08 · 📷×1 · 🟡</div>
+      <p>RT @leilaomucos: 深夜刷手机越刷越孤独？<br>不如把屏幕交给会说话的她。<br>性格多变玩法丰富，私密对话真实到让人脸红，内容边聊边解锁。<br>快来体验真正的专属陪伴 <a class="link" href="https://t.co/ejveQYxU3C">https://t.co/ejveQYxU3C</a> <a class="link" href="https://t.co/LiZVWtG1yZ">https://t.co/LiZVWtG1yZ</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">🐦 匿名</span> · 09:08 · 📷×1 · 🟡</div>
+      <p>RT @naibiliushui: 现实里放不开的那些想法？<br>这里全部可以安全落地。<br>从温柔到极端全覆盖，AI精准听懂指令并执行，角色随心换。<br>大胆释放你的全部欲望 <a class="link" href="https://t.co/B1RDU3Kut5">https://t.co/B1RDU3Kut5</a> <a class="link" href="https://t.co/E9sqxOeIt0">https://t.co/E9sqxOeIt0</a></p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Nepal Turns to Mass Burials, as Thousands Remain Missing from Floods</b></p>
+      <p>Only a fraction of the over 2,500 missing are turning up among the dead, underscoring a bleak reality: The death toll is likely to keep rising for days to come.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>What to Know About Deadly Flash Floods in Nepal and Tibet</b></p>
+      <p>A massive landslide and glacial collapse may have caused catastrophic flooding even without heavy rainfall. More than 3,000 people remained missing.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>A new Man Utd era - but Fernandes still sets the standard</b></p>
+      <p>For all the new signings, it is still captain Bruno Fernandes who sets the standard at Manchester United, writes Simon Stone.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Eight killed and others missing after ferry capsizes off northern Cyprus</b></p>
+      <p>A search and rescue operation is under way after a ferry carrying nearly 270 people turns over after leaving port.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>'14,000 runs for a reason' - Root calm on form</b></p>
+      <p>England captain Joe Root is "not too concerned" about his recent modest returns with the bat, saying he has "14,000 runs for a reason".</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Lola Young surprises Reading Festival with final day set</b></p>
+      <p>The singer has been slowly returning to performing after taking a break last year to "work on myself".</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>'A giant leap forward': Nasa launches powerful new space telescope</b></p>
+      <p>The US space agency's telescope is starting a multi-year mission to create a new map of the universe and learn more about dark energy and dark matter.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Prisoners freed early are returning to jail at rapid rate, governors tell BBC</b></p>
+      <p>PM Andy Burnham on Sunday announced changes to the next early release scheme - scheduled to start in October - which mean PC Harper's killers will stay in jail.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Seven arrested after death of newborn baby girl</b></p>
+      <p>The baby was pronounced dead at a property in the Wincobank area of Sheffield.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>How did Rashford do on return to Man Utd XI? Player ratings</b></p>
+      <p>How Manchester United and Ipswich Town's players rated following their Premier League match.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>'His best Test for a year' - England-Pakistan player ratings</b></p>
+      <p>Who produced their best Test performance in 12 months? Which batter is building a case to test the selectors? Player ratings from England's win over Pakistan.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Head teacher evacuated 900 children minutes before Nepal floods hit school</b></p>
+      <p>Rajendra Dawadi leapt into action after receiving warnings over waters heading towards his school.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Woman injured in fatal police pursuit crash dies</b></p>
+      <p>She had been driving a car which was involved in a collision with an Audi being chased by police.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Celebrating 60 years of Notting Hill Carnival</b></p>
+      <p>Crowds take to the streets of west London to enjoy family day in the bank holiday weekend sunshine.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>British woman killed in stabbing at German railway station</b></p>
+      <p>A 27-year-old German man was arrested immediately after the incident in Rosenheim, Bavaria.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>See Nepali Rescue Workers Testing Aid Delivery by Drone</b></p>
+      <p>Some survivors of the deadly flood and landslide have no access to food. Officials and volunteers are testing how drones can help.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Police release one of two men arrested over fatal house fire</b></p>
+      <p>Police continue to question a 23-year-old man over the fire in which a girl, 7, and her aunt died.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Ferry Carrying Hundreds of Passengers Capsizes Off Coast of Cyprus</b></p>
+      <p>Local authorities said 267 people were aboard the catamaran-type vessel when it began taking on water shortly after its departure from Kyrenia.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>How Not to Announce a Measles Death</b></p>
+      <p>Josh Shapiro announced two measles deaths. Things went downhill fast.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Man Utd pay tribute to 'proud Red' officer who died in A66 crash</b></p>
+      <p>The widow and two children of PC Matthew Blades will be at Old Trafford for Manchester United's Premier League game with Ipswich.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Tennis’s Lost Shot</b></p>
+      <p>As the U.S. Open kicks off, we’re exploring a tennis technique that has quietly gone extinct.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Mum says family 'lucky to be alive' after train crash</b></p>
+      <p>British Transport Police say a man who was in a van died at the scene  on Saturday afternoon.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-30 · 🔵</div>
+      <p><b>西藏泥石流：冲击口岸画面未在中国播出，当地灾民情况我们所知甚少</b></p>
+      <p>你的器材不支持播放多媒体材料Play video, "西藏泥石流最震撼衝擊畫面遭受中國官媒審查", 节目全长 1,0401:04中国官媒上为何看不到西藏洪灾冲击画面？Article InformationAuthor, 碧嘉兰（Laura Bicker）Role,  BBC驻中国记者Reporting from,  北京报导Published 9 分钟前阅读时间: 3 分钟如此冲击影片实在难以忽视：一股洪流冲过吉隆口岸，这个尼泊尔与西藏之间的主要边境口岸之一，所到之处尽被冲毁，数百人为了逃命而奔逃。这些由闭路电视拍下的画面迅速在社交媒体上传播，并登上世界各地的萤幕。除了中国</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>What Dolly Did for Tennessee Is What She Did for the World</b></p>
+      <p>This is what she did for the written word. And medicine. And …</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Who Will Rule the 2026 U.S. Open?</b></p>
+      <p>The players, the rivalries and the dramas to follow at this year’s tournament.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>The World Is a Room With a Piano Waiting to Be Played</b></p>
+      <p>Like any life, mine has had its pain, yet from the outset it seems to have been graced by unbelievable people and events. An anthology of miracles.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Church names pastor killed by falling sign at Christian festival</b></p>
+      <p>Robert Guanco, 41, was a pastor at Jesus the Living Water Church in Eastbourne, East Sussex.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Three rescued, two still missing as French fishing vessel sinks in Channel</b></p>
+      <p>Three of the five crew members were rescued and taken to hospital, the coastguard says.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Manhunt after shooting at Swiss rave kills woman, 22, and injures five</b></p>
+      <p>Five others in their twenties were injured after shots were fired in Aarau, near Zurich overnight.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Book Review: ‘The Disappearers,’ by Marlon James</b></p>
+      <p>Marlon James’s story of gay experience and murderous homophobia in Jamaica is a maximalist’s banquet — and the Booker Prize winner’s finest book yet.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Pilgrims to Flood-Stricken Nepal Sought the Divine at Sacred Mountain</b></p>
+      <p>For many, the trek to Mount Kailash on the border of Nepal and Tibet is a once-in-a-lifetime trip to find spiritual awakening.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Deportees Sent to Liberia Recount Harrowing Details of U.S. Expulsion and Treatment by ICE</b></p>
+      <p>Ten deportees said they experienced or witnessed what they called abusive or violent treatment by ICE. They spent months in detention, they said, before being sent to nations where they had no ties.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Postal Service Rule Could Bar Millions From Voting By Mail</b></p>
+      <p>A judge temporarily blocked the agency from refusing to deliver ballots in noncompliant states, which could disproportionately affect Democrats and many battleground elections.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Ed Markey Defends Transgender Athletes in Massachusetts Senate Race</b></p>
+      <p>Senator Ed Markey of Massachusetts has emerged as a vocal defender of transgender rights as he tries to fend off a primary challenge from Representative Seth Moulton.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Watch SpaceX Launch NASA’s Roman Telescope to Chart the Stars</b></p>
+      <p>Astronomers will use data collected by Roman’s wide, deep gaze to study the dark universe and hunt for new worlds.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>He Was a Top Lawn Care Influencer on YouTube. Then Everything Went Haywire.</b></p>
+      <p>Many people think Greg Chism is a freak — or worse. He says he was just following the incentives of the platform.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>This Governor Could Lose His Primary. A Bridge May Be to Blame.</b></p>
+      <p>The closure of a crucial Rhode Island bridge for safety reasons in 2023, and the traffic nightmare that followed, have dogged Gov. Dan McKee in the Democratic primary.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>How Trump’s Policy Agenda Runs Through One Federal Court, in Texas</b></p>
+      <p>For years, conservative litigants flocked to Judge Reed O’Connor’s district. Now, North Texas has become a favorite destination of the Justice Department.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>How Marlon James Confronted ‘the Story I Was Not Allowed to Live’</b></p>
+      <p>With “The Disappearers,” the Booker Prize-winning author has written his most personal novel yet.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>PC Harper's killers to stay in jail as PM announces changes to early release scheme</b></p>
+      <p>Andy Burnham tells BBC Breakfast anyone convicted of manslaughter will be excluded from the early release scheme in the Sentencing Act.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Everton call off Armstrong sale after fan backlash</b></p>
+      <p>Everton have called off a proposed deal to sell midfielder Harrison Armstrong to Nottingham Forest following a backlash from the club's supporters.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Burnham gets the early prison release changes he wanted - but at what cost?</b></p>
+      <p>The prime minister says he will keep hundreds more criminals behind bars but doing so requires complex changes.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC中文</span> · 08-30 · 🔵</div>
+      <p><b>尼泊尔—西藏泥石流：堰塞湖风险、逾2000人遇难或失联，中国总理赴前线意味着什么？</b></p>
+      <p>图像来源，Getty Images8月28日，在中国西藏自治区吉隆县，挖掘机和装载机正在清理通往吉隆口岸道路上的泥石流残骸。Published 2026年8月28日阅读时间: 3 分钟8月26日上午，在中国的西藏和尼泊尔边界附近发生的山地河谷大规模泥石流和山洪，造成了大量人员伤亡。目前中国和尼泊尔方面都已经进入救援阶段。由于灾害发生的区域处于高原河谷，救援难度较高，目前大量人员处于失联状态。在中国国家主席习近平批示后，总理李强赶赴灾区。从过往案例来看，这在中国的政治语境意味着——最高级别的灾害响应。遇难及失联：超2000人中国方面，截至27日上午8时，灾害已导致五人遇难、558人失联。尼泊尔方</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Is the U.S. Open More Valuable to New York Than the Knicks?</b></p>
+      <p>It’s complicated. But the answer is: Maybe.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>China Says 261 Foreigners From 23 Countries Are Missing in Tibet Flood</b></p>
+      <p>The disclosure offered one of the clearest pictures yet of the disaster on the Chinese side of the border, where authorities have released few details.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Internet fungi foragers told 'click, don't pick'</b></p>
+      <p>Amid fears social media is hitting Epping Forest's ecosystem, foragers are urged not to pick fungi.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Dementia patient's deportation from Sweden delayed</b></p>
+      <p>George Mason, originally from Hinckley in Leicestershire, is facing deportation from Sweden.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>British heavyweight Moses Itauma handed harsh world-title lesson</b></p>
+      <p>British heavyweight Moses Itauma was taught a harsh lesson at world level - what can he learn from defeat and where does the 21-year-old go next?</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>Girl faces six-month recovery after 'freak accident' bus crash on holiday</b></p>
+      <p>Emma Williams says what happened to her daughter shows the importance of travel insurance.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-30 · 🔵</div>
+      <p><b>Women Don’t Quit. We Should.</b></p>
+      <p>Women are eager disciples of the “Never give up” dogma. But if we treat persevering and quitting as opposites, we lose.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-30 · 🔵</div>
+      <p><b>WhatsApp group chat used to send millions in cash, funding crime and extremism</b></p>
+      <p>The WhatsApp money launderers arranged cash transfers in the UK and around the world with no paper trail.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-29 · 🔵</div>
+      <p><b>China censors videos showing deadly flash floods on the Nepal-Tibet border</b></p>
+      <p>Footage of the flash floods have become almost impossible to find on China’s heavily censored internet.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 NYT</span> · 08-29 · 🔵</div>
+      <p><b>NASA’s Nancy Grace Roman Telescope Promises a Breakthrough in Cosmic Exploration</b></p>
+      <p>NASA’s latest offering to the stars comes from a legacy of great observatories that enabled decades of discovery and unearthed new mysteries about the universe.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-27 · 🔵</div>
+      <p><b>Former railway line named Britain's favourite path</b></p>
+      <p>The traffic-free route has been maintained by volunteers since the railway closed in the late 1960s.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-23 · 🔵</div>
+      <p><b>Some parents 'unaware' summer-born children can defer school</b></p>
+      <p>Parents say misinformation means many families do not realise summer-born children can delay school.</p>
+    </div>
+    <div class="item">
+      <div class="meta"><span class="tag-src">📰 BBC</span> · 08-22 · 🔵</div>
+      <p><b>Hidden museum gallery to reopen after 83 years</b></p>
+      <p>The gallery, which has been closed since 1943, will reopen from 16 September.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>📊 今日统计</h2>
+    <div class="statgrid">
+      <div class="statcard">
+        <h4>🐦 X 推文：183 条</h4>
+        <ul>
+          <li><span>General</span><b>161 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📰 RSS 新闻：61 条</h4>
+        <ul>
+          <li><span>BBC</span><b>32 条</b></li>
+          <li><span>NYT</span><b>25 条</b></li>
+          <li><span>BBC中文</span><b>4 条</b></li>
+        </ul>
+      </div>
+      <div class="statcard">
+        <h4>📚 累计数据</h4>
+        <ul>
+          <li><span>X</span><b>20,128 条</b></li>
+          <li><span>NGA</span><b>584 条</b></li>
+          <li><span>S1</span><b>374 条</b></li>
+          <li><span>RSS</span><b>6,275 条</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+    <p>🤖 由 Hermes Agent 自动采集 · 每日 09:00 推送 · 多源合并 + 事件聚类 + 时序分析</p>
+  </footer>
+
+</div>
+</body>
+</html>
