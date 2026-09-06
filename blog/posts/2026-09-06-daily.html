@@ -3,8 +3,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-09-06 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+  <title>每日资讯早报 | 2026-09-06</title>
+  <style>
+:root {
+  color-scheme: light;
+  --bg:#f6f7f2; --panel:#ffffff; --ink:#1f2428; --muted:#66706a;
+  --line:#d9ded7; --accent:#226f54; --accent2:#b1442f; --soft:#eef1ec;
+  --shadow:0 16px 42px rgba(31,36,40,.08);
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  line-height:1.8; font-size:16px;
+}
+.page{max-width:860px;margin:0 auto;padding:32px 24px 56px;}
+a{color:inherit;text-decoration:none;}
+a:hover{color:var(--accent);}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;margin-bottom:36px;}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;}
+.mark{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--line);background:var(--panel);color:var(--accent);border-radius:8px;box-shadow:var(--shadow);}
+.nav{display:flex;gap:18px;color:var(--muted);font-size:14px;}
+.back-link{display:inline-block;margin-bottom:20px;font-size:14px;color:var(--muted);}
+.back-link:hover{color:var(--accent);}
+h1{margin:0 0 10px;font-size:30px;line-height:1.35;}
+.post-meta{font-size:13px;color:var(--muted);margin:0 0 30px;}
+.lede{
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:18px 20px;box-shadow:var(--shadow);font-size:15px;margin:0 0 8px;
+}
+.lede .kicker{display:inline-block;font-size:12px;letter-spacing:1px;color:var(--accent);font-weight:700;margin-bottom:6px;}
+.post-content p{margin:0 0 16px;}
+.post-content hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
+.post-content h2{font-size:22px;margin:40px 0 6px;letter-spacing:.3px;display:flex;align-items:center;gap:8px;}
+.post-content h2 .count{font-size:12px;color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:1px 10px;font-weight:400;}
+.post-content h2::after{content:"";flex:1;height:1px;background:var(--line);}
+.post-content h3{font-size:17px;margin:26px 0 8px;color:#173f31;}
+.post-content h3::before{content:"▍";color:var(--accent);margin-right:6px;}
+.post-content blockquote{
+  margin:14px 0;padding:14px 18px;
+  background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:8px;box-shadow:0 4px 14px rgba(31,36,40,.05);
+}
+.post-content blockquote p{margin:0 0 10px;font-size:14.5px;}
+.post-content blockquote p:last-child{margin-bottom:0;}
+.tag{display:inline-block;font-size:12px;font-weight:600;border-radius:4px;padding:0 7px;margin-right:6px;vertical-align:1px;}
+.tag.x{background:#eef1ec;color:#31443b;border:1px solid var(--line);}
+.tag.bbc{background:#e8f0e8;color:#226f54;border:1px solid #cfe0cf;}
+.tag.nyt{background:#f6ece7;color:#b1442f;border:1px solid #ecd9d0;}
+.tag.if{background:#f3efe6;color:#8a6d1f;border:1px solid #e6dcc2;}
+.src{font-size:13px;color:var(--muted);margin-right:8px;}
+.timeline{list-style:none;margin:10px 0 0;padding:0;}
+.timeline li{position:relative;padding:4px 0 4px 22px;font-size:14.5px;color:#3a443e;border-bottom:1px dashed #e3e7e1;}
+.timeline li:last-child{border-bottom:none;}
+.timeline li::before{content:"·";position:absolute;left:6px;color:var(--accent);font-weight:700;}
+.post-content em.meta{color:var(--muted);font-size:13px;}
+.post-content .note-box{background:#fbfcf9;border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:8px;padding:12px 16px;margin:16px 0;font-size:14.5px;}
+.post-content code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--soft);color:#31443b;padding:1px 6px;border-radius:4px;font-size:13px;
+  word-break:break-all;
+}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0;}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;box-shadow:0 4px 14px rgba(31,36,40,.05);}
+.stat .num{font-size:22px;font-weight:700;color:var(--accent);line-height:1.2;}
+.stat .lbl{font-size:12.5px;color:var(--muted);}
+footer.foot{
+  margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:13px;text-align:center;
+}
+footer.foot .note{color:var(--ink);font-size:14px;margin-bottom:4px;}
+@media (max-width:600px){
+  .page{padding:20px 14px 40px;}
+  h1{font-size:23px;}
+  .topbar{flex-direction:column;align-items:flex-start;margin-bottom:24px;}
+  .post-content h2{font-size:19px;}
+  body{font-size:15px;}
+}
+</style>
 </head>
 <body>
   <main class="page">
@@ -20,266 +97,162 @@
     </header>
 
     <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-09-06</h1>
-    <p class="post-meta">2026-09-06 · 每日资讯早报 · 确定性兜底发布</p>
+    <h1>每日资讯早报 | 2026-09-06</h1>
+    <p class="post-meta">2026-09-06 · 多源采集、事件聚类与时序分析</p>
 
     <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-09-06</strong></p>
-<p>📊 <strong>共 202 条信息</strong>  ·  🐦 X(150)  ·  📰 RSS(52)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（12 条）</h3>
+<div class="lede">
+  <span class="kicker">今日总览</span>
+  <p>今天共聚合 202 条信息，其中 X 150 条、RSS 52 条。话题高度集中：GPT-6 Astra 全量上线后的社区实测还在刷屏，旧 Skill 与新模型打架的适配问题开始冒头；国际那边，美军打击伊朗油轮、特朗普特使抵莫斯科，两条线都在往前走。AI/大模型是绝对主线，15 天里相关讨论累计 1129 条，热度没有要退的意思。</p>
+</div>
+
+<h2>🤖 AI / 大模型<span class="count">12 条</span></h2>
+
+<h3>GPT-6 Astra 全量上线，社区实测刷屏</h3>
+<p><span class="tag if">爱范儿</span><span class="src">2026-09-05 17:28</span>爱范儿报道，GPT-6 Astra 毫无预警地全量上线，面向 ChatGPT 正式开放，额度同步重置。这解释了这两天 X 上密集的实测贴：大家突然都在同一时间玩上了新模型。</p>
+<p>几个实测角度值得分开看：</p>
 <blockquote>
-<p>📝 <em>Astra 的强大表现</em></p>
-<p>🐦 <strong>Justin3go@Justin1024</strong> · 🎬×1 · 15:46 🟡
-话不多说，直接上效果，拿 GPT 6 Astra 蹬的一个博客首页的效果，由于是个人博客，所以做得比较偏轻松简单，整体效果看着还不错，目前还是很喜欢的</p>
+  <p><span class="tag x">X</span><span class="src">Justin3go · 15:46</span>用 GPT-6 Astra 做个人博客首页，轻松简单的风格，整体效果满意，代码开源。</p>
+  <p><span class="tag x">X</span><span class="src">歸藏 · 11:53</span>把 GPT-6 Astra 接进 Blender + Three.js + ChatGPT Sites 的流程：从建模、导入、网站动效交互到在线部署一步到位。他的原话是，现在做这种网站的成本实在太低。</p>
+  <p><span class="tag x">X</span><span class="src">匿名开发者 · 10:43</span>给 GPT-6 一张图，它用 Blender 搭出整套场景和动画视频，主要靠 bpy 和 Blender MCP，Computer Use 用得很少。本人形容：太好玩了，停不下来。</p>
 </blockquote>
-<p>欢迎大家赏光：https://t.co/vaKbnGd3CX
-提示词就不赘述了，代码都是开源的，直接叫AI参考一下就O了 https://t.co…</p>
+<p>三条贴子串起来其实是同一件事：模型负责"想"，Blender MCP 这类工具负责"做"，中间几乎不需要人。成本掉到哪一步，从"一个人一天做个网站"变成"几句话做个网站"，可以直观感受到。</p>
+<p>爱范儿另一篇《硬哲学》专栏（9 月 5 日）提了个反向观点：消费电子总用更快的芯片、更多的功能证明进步，但一件产品怎么被人记住，往往取决于细小而具体的设计。说的是 3D 打印机，放在 GPT-6 发布当口看，也算给"参数崇拜"泼了盆冷水。</p>
+
+<h3>新模型带来的适配成本：旧的 AGENTS.md 和 Skill 该清理了</h3>
+<div class="note-box">
+  <p><span class="tag x">X</span><span class="src">森叔 · 10:24</span>GPT-6 Astra 出来后，一定要重新检查和清理旧的 AGENTS.md 和 Skill。官方提到的两个变化：一是 Astra 对指令更敏感，旧 Skill 里模糊或冲突的规则可能直接让它停下来；二是它更爱澄清问题，以前你以为它会自行判断的地方，现在它会停下等你回答。</p>
+</div>
+<p>因果链很清楚：模型行为变了 → 配置没跟上 → 工作流卡壳。这波"上线即适配"大概会持续一两周，社区里已经有人在整理新写法。</p>
+
+<h3>OpenAI 开源 codex-security，查漏洞的工具免费给了</h3>
+<p><span class="tag x">X</span><span class="src">オープンソース研究所 · 12:00</span>OpenAI 官方公开了 codex-security，GitHub 星标已破万。装上之后把要检查的文件夹交给它，它会自动开始诊断；找到的漏洞会先验证是不是真问题，再给出修复建议，一条龙做完。还给批量场景准备了 Docker 一键扫描的配置。代码找洞这件事，门槛又被拉低了一截。</p>
+
+<h3>GenOffice：Genspark 开源整套 AI 办公软件</h3>
+<p><span class="tag x">X</span><span class="src">GitHubDaily · 10:00</span>Genspark 团队开源了 GenOffice，Word、Excel、PPT、PDF、Markdown 五个编辑器共用一套引擎，macOS、Windows、Linux 全平台有安装包。GitHubDaily 顺带讲了自己的痛点：以前用免费办公软件，打开同事发的 docx，改两行保存发回去，对方一打开排版全乱。共用引擎的思路，就是想从根上消掉这种兼容性问题。</p>
+
+<h3>Pi 生态：手机远程 + 插件化，快被玩成瑞士军刀了</h3>
 <blockquote>
-<p>🐦 <strong>歸藏(guizang.ai)@op741</strong> · 🎬×1 · 11:53 🟡
-GPT-6 Astra + Blender +  Three.js + ChatGPT Sites</p>
+  <p><span class="tag x">X</span><span class="src">实践哥 Li · 15:56</span>折腾过 Tailscale + tmux、Claude Remote、Codex 远程，全浪费时间——手机上的画面和你电脑上的终端 100% 一致，这才是终极的手机 AI 远程。他手机跑 Qwen 27B Dense 模型，配合 Pi 使用。</p>
+  <p><span class="tag x">X</span><span class="src">GitTrend · 09:18</span>Pi 的插件生态被玩家玩成了"Claude 配置直通车 + 日常作战零件箱 + 不污染主会话的 Git 外科刀 + 仓库知识图谱眼 + 多供应商额度仪表盘"，比如 ilovepixelart/pi-code。</p>
 </blockquote>
-<p>从建模到导入模型，再到网站生成对应的动效和交互，然后到在线部署，一步到位</p>
-<p>现在做这种网站的成本实在是低</p>
-<p>这里体验：https://t.co/9QtJgFMdab https://t.co/fP9…</p>
+
+<h3>反方声音：也有人用得很不爽</h3>
+<p><span class="tag x">X</span><span class="src">匿名开发者 · 14:33</span>一位做 MVP 的开发者直言 "I hate Claude Code"——它生成的 UI 基本没法用，并反问是不是自己姿势不对。实测贴刷屏的时候，这种挫败感贴反而值得留意：工具链的方差依然很大，同一套东西，有人一步到位，有人卡在原地。</p>
+
 <blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 10:43 🟡
-太好玩了，玩得停不下来！</p>
+  <p><em class="meta">📈 历史脉络：该话题此前出现在 08-22、08-26、09-01、09-02、09-05。15 天累计 1129 条，近一周热度曲线：117 → 72 → 67 → 74 → 96 → 60 → 51。</em></p>
 </blockquote>
-<p>GPT-6 给了他一张图，然后他就用 Blender 构建了一个这样的场景和动画视频。</p>
-<p>主要用的是 bpy 和 Blender MCP，Computer Use 用的很少。 https://t.co/QST5vShOdb</p>
+
+<hr>
+
+<h2>🔧 开发工具<span class="count">4 条</span></h2>
+
+<h3>Augur：18 个投资大师同时给一只股票投票</h3>
+<p><span class="tag x">X</span><span class="src">爱丽丝呀！ · 11:41</span>开源项目 Augur 的思路是把 18 个知名投资大师的分析框架同时跑在一只股票上，最后汇总成"看多 / 看空 / 观望"的结论，覆盖价值、成长、宏观多个维度，支持 A 股、美股和港股。很多人用 AI 看股票是丢一只票进去问一句"怎么看"，Augur 想做的则是把回答变成一套可复现的完整分析。</p>
+
+<h3>AI 投研流水线：不替你选股，替你留痕</h3>
 <blockquote>
-<p>🐦 <strong>实践哥 Li@MinLiBuilds·6</strong> · 🎬×1 · 15:56 🟡
-突然发现，之前折腾什么 Tailscale + tmux、Claude Remote、Codex 远程，全他妈浪费时间。</p>
+  <p><span class="tag x">X</span><span class="src">辣条味奶糖 · 10:56</span>都在用 AI 看股票，问完"能不能买"就结束了。亏的往往不是模型不够聪明，是你每次都在从零开始聊天，事后连自己当时为什么买都复盘不了。</p>
 </blockquote>
-<p>这才是终极的手机 AI 远程。</p>
-<p>目前体验下来最舒服的产品，手机上看到的 100% 和你电脑上的那个终端一致。</p>
-<p>我手机使用的是 Qwen3.8-27B Dense，用 Pi …</p>
+<p>他推荐的这套 AI 投研流水线不会替你选股，但把看盘、读公司、拆财报、做估值、查持仓收成一条能反复用、能回头看的路径。这个思路比"预测准不准"更实在——决策过程留得下来，错了才知道错在哪一步。</p>
+
+<h3>Pomodoist：待办清单和番茄钟合体</h3>
+<p><span class="tag x">X</span><span class="src">GitHubDaily · 13:30</span>任务视图一次给全：收件箱、今天、即将到来、项目、时间线、看板、优先级矩阵，再加搜索，一共 8 种。选中一个任务就能开一轮番茄钟，深度专注和任务管理不再需要两个 App 来回切。</p>
+
+<h3>ESP32 开源机器人框架：桌面版机器狗</h3>
+<p><span class="tag x">X</span><span class="src">匿名 · 10:28</span>一套跑在 ESP32 上的开源机器人框架，能自己攒出类似宇树机器狗的桌面机器人。配套的 Petoi BiBoard 是基于 ESP32 的多关节机器人开发板：板载 12 路舵机输出，支持无线连接、扩展接口和音频，还加了语音指令模块和树莓派支持。</p>
+
+<hr>
+
+<h2>🇮🇱 中东局势<span class="count">3 条</span></h2>
+
+<h3>美军打击三艘伊朗"影子网络"油轮</h3>
 <blockquote>
-<p>🐦 <strong>匿名</strong> · 14:33 🟡
-I hate Claude Code 😐</p>
+  <p><span class="tag bbc">BBC</span><span class="src">2026-09-05</span>US hits three Iranian oil tankers after saying its warships were targeted —— 在美伊之间战斗于近一周前再度爆发后，双方继续以牙还牙。</p>
+  <p><span class="tag nyt">NYT</span><span class="src">2026-09-05</span>U.S. Strikes Three Iranian 'Shadow Network' Oil Tankers —— 美军称这是报复：伊朗先向两艘美军军舰发射了导弹。</p>
 </blockquote>
-<p>I’m working on an MVP, and the UI it generates is pretty useless.</p>
-<p>Am I doing something wrong?</p>
+<p>两家媒体对同一件事的落点略有不同：BBC 强调这是"报复循环"的最新一环，NYT 则点出美方给打击对象贴的标签——"影子网络"油轮，即那些绕开制裁运油的船只。合起来读，因果链是完整的：伊朗导弹瞄准美舰 → 美军报复性打击伊朗油轮 → 双方各自对外宣称是"回应对方"。</p>
+<p>制裁、油轮、导弹，三样东西绑在一起，说明这场冲突已经打到经济命脉上，不只是军事对射。</p>
+
+<h3>战争账单的另一面：一个金星家庭</h3>
+<p><span class="tag nyt">NYT</span><span class="src">2026-09-05</span>NYT 发了篇人物向报道：一等兵 Tyler James Feehan，25 岁，部署在约旦一处空军基地时遭敌方导弹袭击身亡。文章讲的是这场战争对一个家庭的代价。在每天的军事动态之外，这种报道把"战争成本"从数字还原成人。</p>
+
 <blockquote>
-<p>🐦 <strong>オープンソース研究所@opensourc</strong> · 12:00 🟡
-【公式】
-コードの穴を見つけて直す道具をOpenAIが無料公開😳
-openai/codex-security、★1.0万。</p>
+  <p><em class="meta">📈 历史脉络：该话题此前出现在 08-29、08-30、09-01、09-02、09-04，11 天累计 22 条。演化时间线（关键进展节点）：</em></p>
+  <ul class="timeline">
+    <li>07/29 · 关键进展</li>
+    <li>08/02 · 关键进展</li>
+    <li>08/10 · 关键进展</li>
+    <li>08/19 · 关键进展</li>
+    <li>08/26 · 关键进展</li>
+    <li>09/03 · 关键进展（美舰遇袭 → 油轮遭报复打击）</li>
+  </ul>
 </blockquote>
-<p>・入れて、調べたいフォルダを渡すだけで診断が始まる
-・見つけた穴が本物かの検証と、直し方の提案まで通しでやる
-・まとめて調べたい人向けにDocker一括スキャンの構成も同梱
-…</p>
+<p>从 7 月底到 9 月初排下来，这轮升级不是单点事件，而是持续一个多月、每隔一周左右就有一个新节点的拉锯。</p>
+
+<hr>
+
+<h2>🇷🇺 俄乌冲突<span class="count">2 条</span></h2>
+
+<h3>特朗普特使抵莫斯科，周日再赴基辅</h3>
 <blockquote>
-<p>🐦 <strong>AI様の下僕@aigeboku·11小时</strong> · 📷×1 🎬×2 · 10:42 🟡
-うほほ。GPT-6 Astraは「他を操る能力が高い」という通り、ComputerUse使えば色々とやれることが広がりますなあ😎🙌</p>
+  <p><span class="tag bbc">BBC</span><span class="src">2026-09-05</span>US envoys arrive in Moscow ahead of Ukraine talks —— Steve Witkoff 与 Jared Kushner 先与俄方会谈，按计划周日前往乌克兰。</p>
+  <p><span class="tag nyt">NYT</span><span class="src">2026-09-05</span>Trump Envoys Arrive in Moscow for Talks on Ukraine War —— 特朗普的特使 Witkoff 与女婿 Kushner 计划访问基辅。</p>
 </blockquote>
-<p>流石に一撃は難しいにしても、こっから調整すればもっと面白い表現にできそう。 https://t.co/rLXY8mOjSA</p>
+<p>BBC 和 NYT 的信息一致：美方派出的是"特使 + 家人"组合——Witkoff 是总统特使，Kushner 是特朗普女婿。先莫斯科、后基辅的路线，等于一趟把两边都跑到。谈判能不能谈出东西另说，至少 shuttle diplomacy 又动起来了。</p>
+
 <blockquote>
-<p>🐦 <strong>森叔@harrisonitsme·5小时</strong> · 📷×1 · 10:24 🟡
-GPT-6 Astra 出来后,一定要重新检查和清理旧的 AGENTS.md 和 Skill！逸尘这个用法挺方便：</p>
+  <p><em class="meta">📈 历史脉络：该话题此前出现在 08-30、08-31、09-01、09-02、09-04。近两周 BBC 相关长文主题：</em></p>
+  <ul class="timeline">
+    <li>07/22 · 泽连斯基在战争关键时刻撤换最高将领</li>
+    <li>08/01 · 中美俄太空攻防战：卫星如何成为现代战争的第一击</li>
+    <li>08/18 · 乌克兰无人机何以精准打击俄罗斯本土</li>
+    <li>08/23 · 泽连斯基在连日抗议后撤换军方总司令</li>
+    <li>08/25 · 生于乌克兰，为何替俄罗斯作战（被俘士兵口述）</li>
+    <li>09/01 · 美国邀请俄罗斯出席 G20 财长会议，欧洲强烈不满</li>
+    <li>09/02 · 当普京把铁锤挥向文学</li>
+  </ul>
 </blockquote>
-<p>官方提到几个变化:
-1. Astra 对指令更敏感,旧 Skill 里模糊或冲突的规则可能直接让它停下。</p>
-<ol start="2">
-<li>它更爱澄清问题,有些你以为它会自行判断的地方,它会停下等你回答。建议…</li>
-</ol>
-<blockquote>
-<p>🐦 <strong>GitHubDaily@GitHub_D</strong> · 📷×1 · 10:00 🟡
-Genspark 团队开源了一整套 AI 办公软件 GenOffice，Word、Excel、PPT、PDF、Markdown 5 个编辑器共用一套引擎，macOS、Windows、Linux 都有安装包。</p>
-</blockquote>
-<p>以前用免费办公软件，打开同事发来的 docx，改两行保存发回去，对方一打开排版全乱。</p>
-<p>G…</p>
-<blockquote>
-<p>🐦 <strong>GitTrend@GitTrend0x·</strong> · 09:18 🟡
-重磅推荐 Pi 插件🔥 </p>
-</blockquote>
-<p>全网玩家把 Pi 玩成了下一代「Claude 配置直通车 + 日常作战零件箱 + 不污染主会话的 Git 外科刀 + 仓库知识图谱眼 + 多供应商额度仪表盘」：</p>
-<p>1️⃣ ilovepixelart/pi-code（https://t.co/c34PP1Yk5Y）
-直接读…</p>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-09-05 🟢
-<strong>GPT-6 突然全量上线，额度重置再+1，全网实测效果太离谱</strong> — 2026-09-05 17:28:35</p>
-</blockquote>
-<p>就在刚刚，GPT-6 Astra 毫无预警地全量上线。
-GPT-6 Astra 已经正式面向 ChatGP</p>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-09-05 🟢
-<strong>一台 3D 打印机，为什么藏着 GPT-6 最大的野心？｜硬哲学</strong> — 2026-09-05 15:08:57</p>
-</blockquote>
-<p>消费电子总习惯用更快的芯片、更多的功能来证明进步，但一件产品如何被人记住，往往取决于那些细小而具体的设计</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-22, 2026-08-26, 2026-09-01, 2026-09-02, 2026-09-05</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-08-23] <strong>08/23</strong> 新型Obsidian记录方式发布；短视频制作痛点分析及解决方案分享
-[2026-08-24] <strong>08/24</strong> 发现并分享去除AI生成内容水印的开源工具Remove-AI-Watermarks；iOS客户端项目分享
-[2026-08-25] <strong>08/25</strong> 乔木RSS阅读器分享；AI应用中的常见问题探讨
-[2026-08-26] <strong>08/26</strong> Apodex开源教程发布；AI原生项目开发指南分享</p>
-<p>📊 <em>趋势（15天共1129条）</em> <code>█117 █72 █67 █74 █96 █60 █51</code></p>
-</blockquote>
-<h3>🔧 开发工具（4 条）</h3>
-<blockquote>
-<p>📝 <em>股票分析</em></p>
-<p>🐦 <strong>爱丽丝呀！@BTCqzy1·4小时</strong> · 📷×1 · 11:41 🟡
-这个股票分析开源项目直接开挂！</p>
-</blockquote>
-<p>一只股票，18 个投资大师同时出手，最后直接告诉你：看多、看空，还是观望！</p>
-<p>最近又找到一个宝藏开源项目：Augur</p>
-<p>支持 A 股、美股和港股。</p>
-<p>很多人用 AI 做股票分析，都是丢进去一只票，然后问一句：这只股票怎么看？</p>
-<p>它写得很完整，价值、成长、宏观一口气全…</p>
-<blockquote>
-<p>🐦 <strong>辣条味奶糖| Gate Card刷遍全球</strong> · 📷×1 · 10:56 🟡
-都在用 AI 看股票，问完「能不能买」就结束了。<br />
-亏的往往不是模型不够聪明，是你每次都在从零开始聊天，事后连自己当时为什么买都复盘不了。</p>
-</blockquote>
-<p>这套【AI 投研流水线】它不会替你选股。<br />
-但它能把看盘、读公司、拆财报、做估值、查持仓，收成一条能反复用、能回头看的路径。</p>
-<p>【Stock Market…</p>
-<blockquote>
-<p>🐦 <strong>GitHubDaily@GitHub_D</strong> · 📷×1 · 13:30 🟡
-Pomodoist，把待办清单和番茄钟合在一起，任务规划、专注计时、进度报告一个 App 里搞定。</p>
-</blockquote>
-<p>任务这块该有的视图都有，收件箱、今天、即将到来、项目、时间线、看板、优先级矩阵加搜索，一共 8 种。</p>
-<p>GitHub：https://t.co/dsKZh8csZr</p>
-<p>选个任务就能开一轮番茄，深度专…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 10:28 🟡
-这是一套跑在 ESP32 上的开源机器人框架，能手搓出类似宇树机器狗的桌面机器人。</p>
-</blockquote>
-<p>配套的 Petoi BiBoard 是一块基于 ESP32 的开发板，面向多关节机器人，板载 12 路舵机输出；支持无线连接、扩展接口和音频功能；还增加了语音指令模块以及对树莓派的支持。</p>
-<p>这块板子搭配开源框架 O…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-27, 2026-08-28, 2026-08-30, 2026-09-01, 2026-09-05</em></p>
-</blockquote>
-<h3>🇮🇱 中东局势（3 条）</h3>
-<blockquote>
-<p>📝 <em>油轮号袭击</em></p>
-<p>📰 <strong>BBC</strong> · 2026-09-05 🔵
-<strong>US hits three Iranian oil tankers after saying its warships were targeted</strong> — The tit-for-tat strikes come nearly a week after fighting between the US and Iran flared again follo</p>
-<p>📰 <strong>NYT</strong> · 2026-09-05 🟢
-<strong>U.S. Strikes Three Iranian ‘Shadow Network’ Oil Tankers, Military Says</strong> — The U.S. military said it retaliated after Iran launched missiles at two warships. The strikes came </p>
-<p>📰 <strong>NYT</strong> · 2026-09-05 🟢
-<strong>What the War in Iran Has Cost One Gold Star Family</strong> — First Lt. Tyler James Feehan, who was 25, had been deployed to an air base in Jordan when enemy miss</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-29, 2026-08-30, 2026-09-01, 2026-09-02, 2026-09-04</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Mon, 10/Au</strong> 关键进展
-<strong>Sun, 02/Au</strong> 关键进展
-<strong>Thu, 03/Se</strong> 关键进展
-<strong>Thu, 09/Ju</strong> 关键进展
-<strong>Wed, 19/Au</strong> 关键进展
-<strong>Wed, 26/Au</strong> 关键进展
-<strong>Wed, 29/Ju</strong> 关键进展</p>
-<p>📊 <em>趋势（11天共22条）</em> <code>█1 █5 █1 █5 █1 █1 █1</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 17:10 🟡</p>
-<h1>ゲーム制作 #indiedev 煽り男との壮絶な戦い https://t.co/ifTo02v5W2</h1>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 13:23 🟡
-Finally, the first trailer for my game!</p>
-</blockquote>
-<p>Please forgive me for taking so long. 
-I hope you like it ❤️</p>
-<p>NOW ON CONSOLE STORES!</p>
-<p>Wishlist on PlayStation…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-28, 2026-08-29, 2026-08-31, 2026-09-01, 2026-09-04</em></p>
-</blockquote>
-<h3>💻 AI Agent（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>meng shao@shao__meng</strong> · 10:24 🟡
-Cursor 如何让 AI Agent 成为更好的工程师</p>
-</blockquote>
-<p>@poteto 用五个月时间，从只敢盯着一个 agent 逐条看输出，走到 agent 自动合并 PR、她事后在 main 上审阅，月合并量近千。</p>
-<p>课程围绕三个支柱展开：验证闭环、Skills 与 Evals、CI 硬约束。 https:…</p>
-<blockquote>
-<p>🐦 <strong>Morry.AI@Morry4AI·5小</strong> · 📷×1 · 10:19 🟡
-最近这个叫 show-me 的Skill 火了起来，很多大佬在推荐。</p>
-</blockquote>
-<p>实测了 5 天，它的核心作用很简单：</p>
-<p>把当前讨论的话题，压缩成最小、最清晰的视觉结构，让你一眼看懂复杂关系。</p>
-<p>对我这个内容创作者来说，show-me 主要被我用在 4 个地方：</p>
-<p>01｜找选题</p>
-<p>把一条新闻、产品更新或行业事…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-26, 2026-08-27, 2026-09-01, 2026-09-03, 2026-09-05</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（2 条）</h3>
-<blockquote>
-<p>📝 <em>会谈内容</em></p>
-<p>📰 <strong>BBC</strong> · 2026-09-05 🔵
-<strong>US envoys arrive in Moscow ahead of Ukraine talks</strong> — Steve Witkoff and Jared Kushner are due to hold talks with Russia before travelling to Ukraine on Su</p>
-<p>📰 <strong>NYT</strong> · 2026-09-05 🟢
-<strong>Trump Envoys Arrive in Moscow for Talks on Ukraine War</strong> — Steve Witkoff, President Trump’s special envoy, and Jared Kushner, his son-in-law, plan to visit Kyi</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-30, 2026-08-31, 2026-09-01, 2026-09-02, 2026-09-04</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>01/Au 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击</strong>
-<strong>23/Au 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</strong>
-<strong>01/Se 美国邀请俄罗斯出席G20财长会议，欧洲强烈不满</strong>
-<strong>04/Au 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击</strong>
-<strong>18/Au 乌克兰无人机何以精准打击俄罗斯本土</strong>
-<strong>25/Au 生于乌克兰，为何替俄罗斯作战？被俘士兵向BBC讲述他们的故事</strong>
-<strong>02/Se 当普京把铁锤挥向文学</strong>
-<strong>19/Au 战争和权力的新物理规律</strong>
-<strong>22/Ju 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</strong></p>
-<p>📊 <em>趋势（6天共7条）</em> <code>█1 █1 █2 █1 █1 █1</code></p>
-</blockquote>
-<h3>🇯🇵 日本/东亚（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>PC Gamer@pcgamer·5小时</strong> · 📷×1 · 17:00 🟡
-What's included at the #PCGamingShow Tokyo Direct on September 20? </p>
-</blockquote>
-<p>⭐️ A blistering 90 minute showcase
-🎮 Spotlights on the best upcoming games for PC…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-31, 2026-09-01, 2026-09-03, 2026-09-04, 2026-09-05</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（163 条）</h2>
-<blockquote>
-<p>🐦 <strong>JM117@JM1179347915·1</strong> · 📷×2 · 21:44 🟡
-ピンク感の強いウチの看板娘さん
-　　 </p>
-</blockquote>
-<h1>全クリエイターに告ぐ桃の作品を解放せよ https://t.co/ifoj200OoA</h1>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 21:44 🟡
-RT @mochimo_sol: ブンノイチに厚みのあるアクスタを持って行きたいです。 https://t.co/47U5PEMYKN</p>
-<p>🐦 <strong>Kiyomai@qingwuwu·17分</strong> · 📷×2 · 21:43 🟡
-一女子坚持食用了两年半冰雪奇缘，这是她的身体发生的变化。</p>
-</blockquote>
-<p>"QW，一位xx岁女子，因报告对2027年的极度焦虑与悲伤被送进我们现在的急诊室。她的主治医生经过检查后惊讶地发现她已经彻底被冰腌制入味了。…</p>
-<blockquote>
-<p>🐦 <strong>あかつき茜@9/6こみトレ48 F40a</strong> · 21:43 🟡
-こみトレ、天気はなんともなさそうだな。</p>
-<p>🐦 <strong>双龍@Souryu_std·26分钟</strong> · 21:34 🟡
-マンションを仕事部屋にしてる漫画家あるある</p>
-</blockquote>
-<p>部屋にこもってるので郵便ポストを見に行かないので、重要書類の確認が遅れる。</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 21:30 🟡
-RT @Yueyetutur: ‼️直播火热进行中‼️ 速来围观呀💦</p>
-<p>🐦 <strong>トゲ@toge_painter·37分钟</strong> · 21:24 🟡
-メガミデバイスにディーラーパーツが付いて1500円は安いな！こういうのってどこで買えるんだろ</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:11 🟡
-RT @mzyaoyao: 烧鸡cos太敬业了，尾巴链接了身体，还没有贴安全贴😍 https://t.co/1pqxIbv5ql</p>
-<p><em>…还有 155 条未显示</em></p>
-</blockquote>
-<hr />
+<p>把这些主题摊开看，最近两周的报道重心在变：军事线（无人机、人事）之外，外交线（G20、和谈）和软性线（文学管制、战俘故事）的篇幅明显上来了。</p>
+
+<hr>
+
+<h2>🤖 AI Agent 实践<span class="count">2 条</span></h2>
+
+<h3>Cursor 的工程师课：从盯输出到放手合并 PR</h3>
+<p><span class="tag x">X</span><span class="src">meng shao · 10:24</span>转发的一条课程信息挺有信息量：@poteto 用五个月，从只敢盯着一个 agent 逐条看输出，走到让 agent 自动合并 PR、她事后在 main 分支上审阅，月合并量接近一千。课程围绕三根支柱展开：验证闭环、Skills 与 Evals、CI 硬约束。</p>
+<p>这个转变的本质是把信任从"过程"挪到"护栏"上——不是相信 agent 不会犯错，而是用 CI 和验证兜住错误，让人只做最后一道审阅。月合并近千这个数，个人开发者很难想象，但方向是明确的。</p>
+
+<h3>show-me：把讨论压缩成一张图</h3>
+<p><span class="tag x">X</span><span class="src">Morry.AI · 10:19</span>最近被很多大佬推荐的 show-me Skill，实测五天的结论：把当前话题压缩成最小、最清晰的视觉结构，让人一眼看懂复杂关系。内容创作者主要用在四件事上，排第一的是找选题——把一条新闻、一个产品更新拆成可视化的结构，选题角度自己就浮出来了。</p>
+
+<hr>
+
+<h2>🎮 游戏 / 东亚<span class="count">3 条</span></h2>
+
+<h3>PC Gaming Show Tokyo Direct 定档 9 月 20 日</h3>
+<p><span class="tag x">X</span><span class="src">PC Gamer · 17:00</span>9 月 20 日的 Tokyo Direct 是一整场 90 分钟的展示，聚焦即将登陆 PC 的作品。这个时间点卡在东京电玩展（TGS）前后，PC 平台想借日本市场的场子刷一波存在感。</p>
+
+<h3>独立开发者的第一个预告片</h3>
+<p><span class="tag x">X</span><span class="src">匿名开发者 · 13:23</span>一位独立游戏开发者发布了作品的第一支预告片，游戏已上架主机商店，PlayStation 平台可以加入愿望单。"花了这么久，请见谅"——这种发布文案比任何宣发稿都真实。</p>
+
+<hr>
+
 <h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 150条
-    General: ██████████ (137)</p>
-<p>📰 <strong>RSS 新闻</strong>: 52条
-    · BBC: 27条
-    · NYT: 22条
-    · 爱范儿: 3条</p>
-<p>📚 累计: X=22211 | NGA=584 | S1=374 | RSS=7204</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
+<div class="stats">
+  <div class="stat"><div class="num">150</div><div class="lbl">X 推文（General 137）</div></div>
+  <div class="stat"><div class="num">52</div><div class="lbl">RSS 新闻</div></div>
+  <div class="stat"><div class="num">27+22+3</div><div class="lbl">BBC + NYT + 爱范儿</div></div>
+  <div class="stat"><div class="num">0</div><div class="lbl">NGA / S1</div></div>
+</div>
+<p><em class="meta">累计数据：X 22211 条 · NGA 584 条 · S1 374 条 · RSS 7204 条。来源构成：X（150 条，General 137）与 RSS（52 条：BBC 27、NYT 22、爱范儿 3）。</em></p>
     </article>
+
+    <footer class="foot">
+      <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+      <p>🤖 多源合并 + 事件聚类 + 时序分析 · 每日 09:00 推送</p>
+    </footer>
   </main>
 </body>
 </html>
