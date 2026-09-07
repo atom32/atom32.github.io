@@ -3,8 +3,87 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-09-07 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+  <title>每日资讯早报 | 2026-09-07</title>
+  <style>
+:root {
+  color-scheme: light;
+  --bg:#f6f7f2; --panel:#ffffff; --ink:#1f2428; --muted:#66706a;
+  --line:#d9ded7; --accent:#226f54; --accent2:#b1442f; --soft:#eef1ec;
+  --shadow:0 16px 42px rgba(31,36,40,.08);
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  line-height:1.8; font-size:16px;
+}
+.page{max-width:860px;margin:0 auto;padding:32px 24px 56px;}
+a{color:inherit;text-decoration:none;}
+a:hover{color:var(--accent);}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;margin-bottom:36px;}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;}
+.mark{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--line);background:var(--panel);color:var(--accent);border-radius:8px;box-shadow:var(--shadow);}
+.nav{display:flex;gap:18px;color:var(--muted);font-size:14px;}
+.back-link{display:inline-block;margin-bottom:20px;font-size:14px;color:var(--muted);}
+.back-link:hover{color:var(--accent);}
+h1{margin:0 0 10px;font-size:30px;line-height:1.35;}
+.post-meta{font-size:13px;color:var(--muted);margin:0 0 30px;}
+.lede{
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:18px 20px;box-shadow:var(--shadow);font-size:15px;margin:0 0 8px;
+}
+.lede .kicker{display:inline-block;font-size:12px;letter-spacing:1px;color:var(--accent);font-weight:700;margin-bottom:6px;}
+.post-content p{margin:0 0 16px;}
+.post-content hr{border:none;border-top:1px solid var(--line);margin:40px 0;}
+.post-content h2{font-size:22px;margin:40px 0 6px;letter-spacing:.3px;display:flex;align-items:center;gap:8px;}
+.post-content h2 .count{font-size:12px;color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:1px 10px;font-weight:400;}
+.post-content h2::after{content:"";flex:1;height:1px;background:var(--line);}
+.post-content h3{font-size:17px;margin:26px 0 8px;color:#173f31;}
+.post-content h3::before{content:"▍";color:var(--accent);margin-right:6px;}
+.post-content blockquote{
+  margin:14px 0;padding:14px 18px;
+  background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);
+  border-radius:8px;box-shadow:0 4px 14px rgba(31,36,40,.05);
+}
+.post-content blockquote p{margin:0 0 10px;font-size:14.5px;}
+.post-content blockquote p:last-child{margin-bottom:0;}
+.post-content ul{margin:10px 0 16px;padding-left:22px;}
+.post-content li{margin:4px 0;font-size:15px;}
+.tag{display:inline-block;font-size:12px;font-weight:600;border-radius:4px;padding:0 7px;margin-right:6px;vertical-align:1px;}
+.tag.x{background:#eef1ec;color:#31443b;border:1px solid var(--line);}
+.tag.bbc{background:#e8f0e8;color:#226f54;border:1px solid #cfe0cf;}
+.tag.nyt{background:#f6ece7;color:#b1442f;border:1px solid #ecd9d0;}
+.tag.if{background:#f3efe6;color:#8a6d1f;border:1px solid #e6dcc2;}
+.src{font-size:13px;color:var(--muted);margin-right:8px;}
+.timeline{list-style:none;margin:10px 0 0;padding:0;}
+.timeline li{position:relative;padding:4px 0 4px 22px;font-size:14.5px;color:#3a443e;border-bottom:1px dashed #e3e7e1;}
+.timeline li:last-child{border-bottom:none;}
+.timeline li::before{content:"·";position:absolute;left:6px;color:var(--accent);font-weight:700;}
+.post-content em.meta{color:var(--muted);font-size:13px;}
+.post-content .note-box{background:#fbfcf9;border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:8px;padding:12px 16px;margin:16px 0;font-size:14.5px;}
+.post-content code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--soft);color:#31443b;padding:1px 6px;border-radius:4px;font-size:13px;
+  word-break:break-all;
+}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0;}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;box-shadow:0 4px 14px rgba(31,36,40,.05);}
+.stat .num{font-size:22px;font-weight:700;color:var(--accent);line-height:1.2;}
+.stat .lbl{font-size:12.5px;color:var(--muted);}
+footer.foot{
+  margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:13px;text-align:center;
+}
+footer.foot .note{color:var(--ink);font-size:14px;margin-bottom:4px;}
+@media (max-width:600px){
+  .page{padding:20px 14px 40px;}
+  h1{font-size:23px;}
+  .topbar{flex-direction:column;align-items:flex-start;margin-bottom:24px;}
+  .post-content h2{font-size:19px;}
+  body{font-size:15px;}
+}
+</style>
 </head>
 <body>
   <main class="page">
@@ -20,231 +99,129 @@
     </header>
 
     <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-09-07</h1>
-    <p class="post-meta">2026-09-07 · 每日资讯早报 · 确定性兜底发布</p>
+    <h1>每日资讯早报 | 2026-09-07</h1>
+    <p class="post-meta">2026-09-07 · 多源采集、事件聚类与时序分析</p>
 
     <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-09-07</strong></p>
-<p>📊 <strong>共 245 条信息</strong>  ·  🐦 X(188)  ·  📰 RSS(57)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（6 条）</h3>
-<blockquote>
-<p>🐦 <strong>VIXO@VixoProtocol</strong> · 18:23 🟡
-Cursor / Claude Code 也能接自定义 API。
-2 分钟填好 Base URL 和 Key，GPT、Claude、Gemini 都能调。
-适合不想为每个模型单独开户的开发者。</p>
-<p>🐦 <strong>Theclues@follow_clue</strong> · 📷×1 · 13:12 🟡
-箱体形态识别工具，适用于A股和Crypto</p>
-</blockquote>
-<p>开发工具：Deepseek V4 Pro ，零推理</p>
-<p>非常适合魔改，比如只分析特定板块/自选池</p>
-<p>https://t.co/bqrfsBhwjp https://t.co/orbWcE2P6o</p>
-<blockquote>
-<p>🐦 <strong>余温@gkxspace·3小时</strong> · 📷×1 · 12:14 🟡
-兄弟们，遇到这种项目别犹豫，第一件事先 fork，晚了可能就没了！！！</p>
-</blockquote>
-<p>微信相关的开源工具指不定哪天就 404 了......而且这个真的很实用了。</p>
-<p>它把我很多头疼的微信问题解决了：
-1、上百个免打扰群不用一个个看，每天自动帮你把商单、合作线索全捞出来
-2、自动扫描待回复和未兑现承诺，不用担心漏…</p>
-<blockquote>
-<p>🐦 <strong>徐伦@Jolyne_AI·4小时</strong> · 📷×1 · 11:02 🟡
-Cowart 是一款 Codex 原生的「无限画布」插件，主打实用与高效。</p>
-</blockquote>
-<ul>
-<li>基于 tldraw，在 Codex 内一键打开画布</li>
-<li>用来构思、标注、生成并迭代图片</li>
-<li>所有数据自动落到项目的 <code>canvas/</code> 目录，跟代码一起管理</li>
+<div class="lede">
+  <span class="kicker">今日总览</span>
+  <p>今天聚合了 245 条信息：X 188 条、RSS 57 条，NGA 和 S1 两个社区源零产出，是纯社交+媒体的一天。三条线最扎眼：一是俄乌和谈进入新阶段，特朗普特使在莫斯科见过普京之后，预计首次踏足基辅，但 BBC 直说基辅的预期是战斗继续，象征意义和根本分歧在同一个画面里；二是美伊互袭升级，美国打了伊朗油轮，德黑兰放话报复会"更快、更重、更痛"，霍尔木兹海峡卡在致命僵局里，OPEC+ 干脆按兵不动；三是开发者工具圈异常热闹，斯坦福把智能体课程公开了，同花顺下场开源金融 API，连 Codex 都多了个无限画布插件。</p>
+</div>
+
+<h2>🇷🇺 俄乌冲突<span class="count">4 条</span></h2>
+
+<h3>和谈的象征意义很足，根本分歧一点没动</h3>
+<p><span class="tag nyt">NYT</span><span class="src">2026-09-06</span>特朗普的特使预计将首次访问基辅。就在前一天，史蒂夫·维特科夫和贾里德·库什纳刚在莫斯科与普京会面。谈判接触面从莫斯科铺到基辅，这在流程上是个新节点。</p>
+<p><span class="tag bbc">BBC</span><span class="src">2026-09-06</span>的报道给这层乐观泼了盆冷水：和谈充满象征意义，但俄罗斯与乌克兰之间的根本分歧依然横在那里，基辅方面的预期是战斗还会继续。</p>
+<p>两家媒体并排看很有意思。NYT 在讲"接触在推进"，BBC 在讲"预期很冷"。合起来的图景是：美方在努力搭一条先停火、再谈判的通道，但双方的要价差距太大，短期内谁也说服不了谁。</p>
+
+<h3>秘密审计：乌克兰军购的另一面</h3>
+<p><span class="tag nyt">NYT</span><span class="src">2026-09-06</span>连续两篇深度报道指向同一批文件。第一篇说，这些秘密审计文件相当于对乌克兰武器采购流程做了一次尸检；第二篇的标题更直接：在乌克兰，欺诈和浪费换来的反而是更多武器合同，仅 2024 年一年就问题成堆。</p>
+<p>两篇连起来读，因果链很清楚：采购环节监管缺位，虚报和低质交付没有被追责，承包商反而继续拿单，最后买单的是前线弹药和装备的供给。这提醒我们，军援的瓶颈不只在生产线，也在采购端的管理。</p>
+<p class="note-box">这个话题从 7 月底就在日报里反复出现，最近 6 天累计 7 条相关报道，热度不高但持续。近两个月的事件脉络如下：</p>
+<ul class="timeline">
+  <li><b>07/22</b> 泽连斯基在战争关键时刻撤换最高将领</li>
+  <li><b>08/01</b> 中美俄太空攻防战：卫星如何成为现代战争的第一击</li>
+  <li><b>08/18</b> 乌克兰无人机何以精准打击俄罗斯本土</li>
+  <li><b>08/19</b> 战争和权力的新物理规律</li>
+  <li><b>08/23</b> 连日抗议后，泽连斯基撤换军方总司令</li>
+  <li><b>08/25</b> 生于乌克兰、为何替俄罗斯作战：被俘士兵向 BBC 讲述他们的故事</li>
+  <li><b>09/01</b> 美国邀请俄罗斯出席 G20 财长会议，欧洲强烈不满</li>
+  <li><b>09/02</b> 当普京把铁锤挥向文学</li>
 </ul>
-<p>内置多种高频能力：
-- AI 图片框
-- 可单文件运行的 …</p>
-<blockquote>
-<p>🐦 <strong>meng shao@shao__meng</strong> · 09:20 🟡
-斯坦福大学把 CS329A Self-Improving AI Agents 视频都公布到 Youtube 了。</p>
-</blockquote>
-<p>两位主讲老师做过 PaLM、Gemini、Claude。9 讲讲透一个循环：
-采样 → 验证 → 筛选 → 训练 → 更强的模型</p>
-<p>想知道为什么 coding agent 最新普及，写…</p>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-09-06 🟢
-<strong>AI 降低了创造的门槛，B 站则想放大创造的回声</strong> — 2026-09-06 14:00:38</p>
-</blockquote>
-<p>坚持 1 晚通宵，烧掉 2 亿 Token，用上 3D 打印，掏出 4 千账单，购置 512GB 内存 M</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-26, 2026-09-01, 2026-09-02, 2026-09-06</em></p>
-<p>🕐 <em>事件演化：</em></p>
-<p>📊 <em>趋势（15天共1143条）</em> <code>█72 █67 █75 █97 █65 █81 █65</code></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（4 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-06 🔵
-<strong>Peace talks rich in symbolism but fundamental differences between Russia and Ukr</strong> — Despite talks between US envoys and both Putin and Zelensky, the expectation in Kyiv is the fighting</p>
-<p>📰 <strong>NYT</strong> · 2026-09-06 🟢
-<strong>Trump Envoys Expected to Make First Visit to Kyiv</strong> — Steve Witkoff and Jared Kushner met with President Vladimir V. Putin of Russia in Moscow on Saturday</p>
-<p>📰 <strong>NYT</strong> · 2026-09-06 🟢
-<strong>What Secret Audits Tell Us About How Ukraine’s Military Is Spending Its Money</strong> — The documents amount to an autopsy of the weapons-contracting process.</p>
-<p>📰 <strong>NYT</strong> · 2026-09-06 🟢
-<strong>In Ukraine, Fraud and Waste Are Rewarded With More Weapons Contracts</strong> — Secret military audits reveal a military procurement system riddled with mismanagement. In 2024 alon</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-01, 2026-09-02, 2026-09-04, 2026-09-05, 2026-09-06</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>01/Au 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击</strong>
-<strong>23/Au 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</strong>
-<strong>01/Se 美国邀请俄罗斯出席G20财长会议，欧洲强烈不满</strong>
-<strong>04/Au 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击</strong>
-<strong>18/Au 乌克兰无人机何以精准打击俄罗斯本土</strong>
-<strong>25/Au 生于乌克兰，为何替俄罗斯作战？被俘士兵向BBC讲述他们的故事</strong>
-<strong>02/Se 当普京把铁锤挥向文学</strong>
-<strong>19/Au 战争和权力的新物理规律</strong>
-<strong>22/Ju 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</strong></p>
-<p>📊 <em>趋势（6天共7条）</em> <code>█1 █2 █1 █1 █1 █1</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（3 条）</h3>
-<blockquote>
-<p>🐦 <strong>うたたね翠🌙.*· Utatane Su</strong> · 18:08 🟡
-最近いちばん頑張った断捨離は、、
-アニメフィギュアの箱…何個かサヨナラした事です。(開封済みでも、箱含め好きなので、とても辛い)←フィギュア収集癖の方…誰か解ってぇ〜😭wwww</p>
-<p>🐦 <strong>ミチハス@michi_hasu·6小时</strong> · 15:57 🟡
-少しゼンゼロやっていい？いいよ</p>
-<p>🐦 <strong>月无关 | 0xKyne@0xkyne·</strong> · 📷×2 · 15:15 🟡
-卧槽！
-超神提示词之所以超神，
-就是它生成出来的女生真的太漂亮了！
-这次又是雷电将军炸场么？！</p>
-</blockquote>
-<p>CCD直闪 + 人流车流拖影 + 性感Coser + 城市混沌
-脸好看，身材好看，气质也对，
-放进这种混乱雨夜街头里更是直接炸穿画面！</p>
-<p>这套我自己都刷上瘾了🔥</p>
-<h1>AIart️️️️️️️️️️️️️…</h1>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-28, 2026-08-29, 2026-08-31, 2026-09-01, 2026-09-04</em></p>
-</blockquote>
-<h3>🇮🇱 中东局势（3 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-06 🔵
-<strong>Iran warns of 'faster, heavier, more painful response' to US attacks</strong> — The comments came a day after Washington said it had struck Iranian oil tankers in response to Tehra</p>
-<p>📰 <strong>NYT</strong> · 2026-09-06 🟢
-<strong>Iran’s Attacks Keep the Strait of Hormuz in a Lethal Stalemate</strong> — The U.S. military is helping oil get out of the Persian Gulf on tankers, but Iran is still attacking</p>
-<p>📰 <strong>NYT</strong> · 2026-09-06 🟢
-<strong>It’s Not Just the West Bank Settlers. It’s Israel.</strong> — Settler violence is reaching new heights.</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-01, 2026-09-02, 2026-09-04, 2026-09-05, 2026-09-06</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Mon, 10/Au</strong> 关键进展
-<strong>Sun, 02/Au</strong> 关键进展
-<strong>Thu, 03/Se</strong> 关键进展
-<strong>Thu, 09/Ju</strong> 关键进展
-<strong>Wed, 19/Au</strong> 关键进展
-<strong>Wed, 26/Au</strong> 关键进展
-<strong>Wed, 29/Ju</strong> 关键进展</p>
-<p>📊 <em>趋势（11天共21条）</em> <code>█5 █1 █5 █1 █2 █1 █1</code></p>
-</blockquote>
-<h3>🇯🇵 日本/东亚（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>内閣府防災@CAO_BOUSAI·2小时</strong> · 19:29 🟡
-[Landslide Level5 Emergency warning]Landslide level5 emergency warning was issued in Tokyo. In this area, take the best action to protect your life im…</p>
-<p>🐦 <strong>PC Gamer@pcgamer·5小时</strong> · 🎬×1 · 16:02 🟡
-Two weeks to go until we'll be grabbing the popcorn and getting ready to enjoy the #PCGamingShow Tokyo Direct! https://t.co/QYPzpINWag</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-31, 2026-09-01, 2026-09-03, 2026-09-04, 2026-09-05</em></p>
-</blockquote>
-<h3>🇪🇺 欧洲（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>NO CONTEXT HUMANS@Hu</strong> · 📷×1 · 16:49 🟡
-Vitória Bueno was born without both arms and started ballet at just 5 years old after a physiotherapist noticed how much she loved to dance.</p>
-</blockquote>
-<p>She deve…</p>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-06 🔵
-<strong>German far-right set for big win eastern state - exit polls</strong> — Germany's AfD has hailed a "historic result" and is projected to win 44.5% of the vote, far ahead of</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-24, 2026-08-27, 2026-08-31, 2026-09-02, 2026-09-06</em></p>
-</blockquote>
-<h3>🔧 开发工具（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>范师傅@FanShifu·5小时</strong> · 🎬×1 · 10:53 🟡
-介绍一个开源 SEO 项目 OpenSEO ，目前官网流量从 20K 涨到 138.7K，GitHub 17.3K 星。</p>
-</blockquote>
-<p>很多独立开发者每月都在给 Ahrefs / Semrush / Similarweb 交钱，本质上是在买专有爬虫数据的黑盒服务；Semrush 之类的还能找闲鱼买共享号，像Ah…</p>
-<blockquote>
-<p>🐦 <strong>Lucas@lksmlabc·6小时</strong> · 📷×1 · 09:03 🟡
-A股玩家这回是真有人把数据给你喂到嘴边了。</p>
-</blockquote>
-<p>同花顺官方亲自下场，开源了一个叫Financial-API的项目，专门给AI Agent用。只要申请一个API Key，剩下的基本都能拿：</p>
-<p>1️⃣ 实时行情、历史K线，趋势回测随便跑
-2️⃣ 涨跌停、炸板、个股异动，盘口那点猫腻都能扒
-3️⃣ 热榜、龙…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-27, 2026-08-28, 2026-08-30, 2026-09-01, 2026-09-06</em></p>
-</blockquote>
-<h3>🚀 芯片/半导体（2 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-06 🟢
-<strong>How a Blacklisted Chinese Tech Giant Kept Buying America’s Best A.I. Chips</strong> — Washington imposed sanctions on Inspur because of its work with the Chinese military. But the compan</p>
-<p>📰 <strong>爱范儿</strong> · 2026-09-06 🟢
-<strong>专访康宁 CCO 李汉超：175 年以来，康宁始终是一家创新材料公司</strong> — 2026-09-06 18:30:22</p>
-</blockquote>
-<p>有这么一家公司，它的产品在全球消费电子市场中有着举足轻重的地位、它本身也长期位于全球电子供应链的上游关键位</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-01, 2026-09-02, 2026-09-03, 2026-09-05, 2026-09-06</em></p>
-</blockquote>
-<h3>🏢 创业/商业（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>Cheery@cheery9998·21</strong> · 09:40 🟡
-这一年，我最大的成长，就是亲自走完了一个从 0 到 1 的过程。</p>
-</blockquote>
-<p>从一个想法开始，到验证市场需求，再到打通销售链路、扩大销售规模，最后用赚来的钱创办了一家公司 AI Spark。</p>
-<p>说实话，整个过程给我最大的底气是：我不再恐惧任何形式的失业。</p>
-<p>换句话说，我不再恐惧市场竞争中的任何一种商业模式。纯…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-26, 2026-08-27, 2026-09-04, 2026-09-05, 2026-09-06</em></p>
-</blockquote>
-<h3>🌍 环境/能源（1 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-06 🟢
-<strong>OPEC Plus Holds Oil Production Steady as U.S.-Iran Strikes Resume</strong> — The decision on Sunday by the cartel of oil-producing nations and some of its allies came after the </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-25, 2026-08-26, 2026-08-27, 2026-08-29, 2026-09-06</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（199 条）</h2>
-<blockquote>
-<p>🐦 <strong>Curry カリー@curry3_aia</strong> · 📷×1 · 22:00 🟡
-おは月曜日💙 https://t.co/P7JDKGY1fW</p>
-<p>🐦 <strong>Open3DLab / SmutBase</strong> · 21:57 🟡
-Unless the AI socially engineers an entire nuclear state's defense apparatus, I think we will be fin…</p>
-<p>🐦 <strong>双龍@Souryu_std·8分钟</strong> · 📷×4 · 21:52 🟡
-漫画の読み方はヤンキーの方が詳しい説</p>
-<p>🐦 <strong>Von.Franken@Dr_VonFr</strong> · 📷×1 · 21:52 🟡
-为什么我表情现在是这样的，是只有我这样，还是大家都这样？ https://t.co/NGPQsFwjb1</p>
-<p>🐦 <strong>グリレ15@Tc205_17·18分钟</strong> · 21:42 🟡
-写真撮ってただけなのに筋肉痛っていう体力の無さ</p>
-<p>🐦 <strong>米莉milly@Yuehualydr·1</strong> · 21:42 🟡
-"和朋友们一起观赏了一场精彩的演出，感受艺术的魅力！🎭"</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:40 🟡
-RT @lin_wiath: 3女5男❤️多人大亂鬥瘋狂激戰潮吹噴不停❗️
-出國前先參加了一場多人群交派對🎉
-一開始大家玩著色情的荒唐遊戲😎
-玩著玩著愈來愈淫亂～
-開始不分妳我找洞就狂幹</p>
-</blockquote>
-<p>個人資料!…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 21:32 🟡
-RT @Yueyetutur: ‼️直播火热进行中‼️ 速来围观呀💦</p>
-<p><em>…还有 191 条未显示</em></p>
-</blockquote>
-<hr />
+
+<h2>🇮🇱 中东局势与能源<span class="count">4 条</span></h2>
+
+<h3>油轮互袭之后：伊朗放话，海峡僵持</h3>
+<p><span class="tag bbc">BBC</span><span class="src">2026-09-06</span>伊朗警告称，对美国打击的回应将"更快、更重、更痛"。这番话发表在美国宣布打击伊朗油轮、以回应德黑兰此前的袭扰之后一天。</p>
+<p><span class="tag nyt">NYT</span><span class="src">2026-09-06</span>则描述了一种谁也赢不了的平衡：美军在帮油轮驶出波斯湾，伊朗仍在对航运下手，霍尔木兹海峡因此陷入"致命僵局"。打不干净，也谈不拢，风险就这样持续压在航运和油价头上。</p>
+<p class="note-box">话题脉络显示，中东这条线自 7 月底以来共有 7 个"关键进展"节点（7/29、8/2、8/10、8/19、8/26、9/3），近 11 天累计 21 条报道，是日报里最稳定的高热度国际话题之一。</p>
+
+<h3>OPEC+ 的选择：先不动</h3>
+<p><span class="tag nyt">NYT</span><span class="src">2026-09-06</span>OPEC+ 周日决定维持石油产量不变，时间点恰好卡在美伊打击重新开始之后。产油国联盟显然在观望：海峡通行风险抬高油价预期的时候，与其用增产表态，不如等局势先明朗。这个话题从 8 月下旬起就与美伊摩擦交织出现，能源和地缘在这里是同一件事。</p>
+
+<h2>🚀 芯片与供应链<span class="count">2 条</span></h2>
+
+<h3>浪潮：上了黑名单，芯片没断供</h3>
+<p><span class="tag nyt">NYT</span><span class="src">2026-09-06</span>调查报道的标题本身就是结论：一家因与中国军方合作而被华盛顿制裁、列入黑名单的中国科技巨头，是怎么持续买到美国最先进 AI 芯片的。报道指向一个尴尬的事实，出口管制的执行存在缝隙，芯片最终流向了本不该流向的地方。这个话题在日报里已连续 6 天出现，说明美国对华芯片管制始终是媒体紧盯的线。</p>
+
+<h3>康宁：175 年的材料公司，站在供应链上游</h3>
+<p><span class="tag if">爱范儿</span><span class="src">2026-09-06 18:30</span>康宁首席商务官李汉超接受专访。这家公司的产品在全球消费电子里举足轻重，长期卡在电子供应链的上游关键位置，从大猩猩玻璃到光纤，都是"看不见但离不开"的存在。专访的核心观点是：175 年来，康宁始终是一家创新材料公司，靠材料本身的突破吃饭，而不是靠某款终端产品。</p>
+<p>把浪潮和康宁两条新闻放一起看挺有意思：一边是中国被制裁的厂商想尽办法买美国芯片，一边是美国材料巨头靠卖给全球消费电子赚钱。嘴上说着脱钩，供应链其实是缠在一起的。</p>
+
+<h2>🤖 AI / 大模型<span class="count">6 条</span></h2>
+
+<h3>斯坦福把"自我改进智能体"公开课放出来了</h3>
+<p><span class="tag x">X</span><span class="src">meng shao · 09:20</span>斯坦福大学的 CS329A《Self-Improving AI Agents》课程视频已全部公开到 YouTube。两位主讲老师做过 PaLM、Gemini、Claude，九讲围绕同一个循环展开：采样 → 验证 → 筛选 → 训练 → 更强的模型。课程试图回答一个很实际的问题：为什么 coding agent 是最先普及的那类智能体。</p>
+<p>值得留意的不是某个技巧，而是做前沿模型的人愿意把"训练与推理闭环"这套方法论完整摊开讲。自我改进是智能体下一阶段的关键词，这门课等于把路线图公开了。</p>
+
+<h3>Cursor / Claude Code 都能接自定义 API 了</h3>
+<p><span class="tag x">X</span><span class="src">VIXO · 18:23</span>现在给 Cursor 或 Claude Code 填一个 Base URL 和 API Key，前后两分钟，GPT、Claude、Gemini 就都能调了，适合不想为每个模型单独开户的开发者。客户端和模型正在加速解耦，自带 Key 成了默认能力。对开发者是省事，对模型厂商来说，竞争被推到了纯 API 层，对做模型聚合和中转的中间层倒是实实在在的利好。</p>
+
+<h3>Cowart：Codex 原生的"无限画布"</h3>
+<p><span class="tag x">X</span><span class="src">徐伦 · 11:02</span>一款叫 Cowart 的 Codex 原生插件，基于 tldraw，可以在 Codex 里一键打开画布，用来构思、标注、生成并迭代图片，所有数据自动落到项目的 <code>canvas/</code> 目录，跟代码一起管理。内置的能力包括 AI 图片框、单文件运行等。画布进 IDE、数据进 git，这算是把"可视化工作区"正式收编进编码工作流的一次尝试。</p>
+
+<h3>烧掉 2 亿 Token 的创作，B 站想放大它的回声</h3>
+<p><span class="tag if">爱范儿</span><span class="src">2026-09-06 14:00</span>报道的切口是一个具体的创作现场：有人坚持通宵一晚，烧掉 2 亿 Token，用上 3D 打印，掏出一张 4000 元的账单，再配一台 512GB 内存的机器，就为了把一个想法做成作品。AI 把创造的门槛压低了，B 站想做的则是把创造的"回声"放大，也就是让更多人的作品被看见、被讨论。</p>
+<p>这条话题自 8 月 26 日以来已在日报出现 5 次，15 天累计 1143 条相关讨论，近 7 日热度曲线是 72、67、75、97、65、81、65，属于持续发酵的长线话题。逻辑链条很顺：门槛降低让创作供给暴涨，供给暴涨之后，分发和放大就成了平台的新战场。</p>
+
+<h3>量化圈的小工具：箱体识别 + A股官方 API</h3>
+<p><span class="tag x">X</span><span class="src">Theclues · 13:12</span>有开发者分享了一个箱体形态识别工具，同时适用于 A 股和 Crypto，据称用 Deepseek V4 Pro 快速开发完成，特别适合魔改成只分析特定板块或自选池。工具本身不大，但它代表了一种趋势：个人开发者用大模型几天就能搓出以前要团队做的量化小工具。</p>
+
+<h2>🔧 开发工具<span class="count">2 条</span></h2>
+
+<h3>同花顺官方下场：开源一个给 AI Agent 用的 Financial-API</h3>
+<p><span class="tag x">X</span><span class="src">Lucas · 09:03</span>同花顺官方开源了名为 Financial-API 的项目，专门面向 AI Agent。申请一个 API Key 之后，实时行情、历史 K 线、趋势回测都能跑，涨跌停、炸板、个股异动这类盘口信息也能扒，热榜和龙虎榜数据同样在列。原话是"A股玩家这回真有人把数据喂到嘴边了"。</p>
+<p>这条的意义不在接口本身，而在谁在开：行情商开始主动为 Agent 时代准备数据接口，个人开发者和量化爱好者终于有了官方渠道，不用再靠爬虫和黑盒服务。话题从 8 月 27 日起已多次出现。</p>
+
+<h3>OpenSEO：开源项目把 SEO 工具的价格打下来了</h3>
+<p><span class="tag x">X</span><span class="src">范师傅 · 10:53</span>开源 SEO 项目 OpenSEO 势头很猛：官网流量从 20K 涨到 138.7K，GitHub 已收 17.3K 星。不少独立开发者每月给 Ahrefs、Semrush、Similarweb 交钱，本质上是在买一套专有爬虫数据的黑盒服务。开源替代的叙事核心就一句话：数据和算法都该透明，而不是锁在订阅费后面。</p>
+
+<h2>🇪🇺 欧洲<span class="count">2 条</span></h2>
+
+<h3>德国 AfD 在东部州拿下"历史性"胜利</h3>
+<p><span class="tag bbc">BBC</span><span class="src">2026-09-06</span>根据出口民调，德国选择党（AfD）预计在一个东部联邦州拿下 44.5% 的选票，大幅领先其他政党，该党已将其称为"历史性结果"。极右翼在德国东部的支持率持续走高，这条线自 8 月下旬以来在日报中反复出现，是欧洲政治里最值得盯的动向之一。</p>
+
+<h3>一条值得记住的故事</h3>
+<p><span class="tag x">X</span><span class="src">NO CONTEXT HUMANS · 16:49</span>Vitória Bueno 出生时没有双臂，5 岁那年，一位物理治疗师注意到她有多爱跳舞，从此她开始学芭蕾。故事的转折来自一个观察者：有人看见了她身体之外的意愿。剩下的部分没有更多细节，但开头已经足够说明问题。</p>
+
+<h2>🇯🇵 日本 / 东亚<span class="count">2 条</span></h2>
+
+<h3>东京发布泥石流 5 级紧急警报</h3>
+<p><span class="tag x">X</span><span class="src">内閣府防災 · 19:29</span>日本内阁府防灾部门发布消息：东京已发布泥石流（土砂灾害）5 级紧急警报，属于最高警戒级别。官方提醒相关区域民众立即采取保护生命的行动。9 月初仍是台风和暴雨活跃期，在日读者建议留意当地避难信息。</p>
+
+<h3>PC Gaming Show 东京专场还有两周</h3>
+<p><span class="tag x">X</span><span class="src">PC Gamer · 16:02</span>PC Gamer 预告，距离 PC Gaming Show Tokyo Direct 开播还有两周。东亚游戏动态近期在日报中日均出现，主机和 PC 厂商的秋季发布窗口正在临近。</p>
+
+<h2>🎮 社区与文化<span class="count">3 条</span></h2>
+
+<h3>手办收藏的断舍离之痛</h3>
+<p><span class="tag x">X</span><span class="src">うたたね翠 · 18:08</span>一位日本推友分享：最近做得最艰难的断舍离，是送走了好几个动漫手办的盒子。即使手办已经拆封，她依然连盒子一起喜欢，所以格外痛苦。收藏圈的人大概都能懂，盒子是占地方，但它也是收藏的一部分。这条贴子底下应该有不少共鸣。</p>
+
+<h3>绝区零的日常一问</h3>
+<p><span class="tag x">X</span><span class="src">ミチハス · 15:57</span>"可以稍微玩一下绝区零吗？""可以哦。"游戏玩家的日常对话，简短，但那种终于挤出一点游戏时间的快乐很真实。</p>
+
+<h3>AI 绘图：把角色放进雨夜街头</h3>
+<p><span class="tag x">X</span><span class="src">月无关 · 15:15</span>有创作者分享了一套 AI 绘图提示词试验：把生成的角色放进混乱的雨夜街头场景，叠加 CCD 直闪和人流车流的拖影效果，帖子互动量很高。这类"角色 + 城市实拍风格"的提示词创作近期在 AI 绘画社区讨论度居高不下，话题自 8 月 28 日起已在日报出现 5 次。</p>
+
 <h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 188条
-    General: ██████████ (170)</p>
-<p>📰 <strong>RSS 新闻</strong>: 57条
-    · BBC: 32条
-    · NYT: 19条
-    · BBC中文: 4条
-    · 爱范儿: 2条</p>
-<p>📚 累计: X=22761 | NGA=584 | S1=374 | RSS=7312</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
+<div class="stats">
+  <div class="stat"><div class="num">245</div><div class="lbl">今日聚合信息</div></div>
+  <div class="stat"><div class="num">188</div><div class="lbl">X 推文</div></div>
+  <div class="stat"><div class="num">57</div><div class="lbl">RSS 新闻</div></div>
+  <div class="stat"><div class="num">3.1万+</div><div class="lbl">累计入库信息</div></div>
+</div>
+<p><em class="meta">另有 199 条零散内容未进入正文：绝大部分是广告、无关闲聊与低质转发，已在增强版中过滤，不做搬运。</em></p>
+<p><em class="meta">来源构成：RSS 侧 BBC 32 条、NYT 19 条、BBC中文 4 条、爱范儿 2 条；累计数据 X=22761、RSS=7312、NGA=584、S1=374。</em></p>
+
+<hr>
+<p>今天的信息盘面大致如此：地缘上，俄乌和美伊两条线都在"谈与打并行"的状态里，和谈的桌子越铺越大，分歧却一点没变小；产业上，AI 的工具化在加速，斯坦福公开课、同花顺 API、画布插件、开源 SEO，都是同一个趋势的不同侧面，模型能力正在变成人人可调用的基础设施。明天的看点：美特使是否真的落地基辅，以及伊朗说的"更痛回应"会以什么形式出现。</p>
     </article>
+
+    <footer class="foot">
+      <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+      <p>多源合并 · 事件聚类 · 时序分析 · 2026-09-07</p>
+    </footer>
   </main>
 </body>
 </html>
