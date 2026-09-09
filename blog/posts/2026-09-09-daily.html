@@ -1,238 +1,342 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-09-09 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-09-09 · Dawei Xu</title>
+<style>
+  :root{
+    --bg:#faf9f6; --card:#ffffff; --ink:#1c1b1a; --muted:#6b6a66;
+    --line:#e7e4dd; --accent:#0f6b5c; --accent-soft:#e2efeb;
+    --warm:#a85a2a; --chip:#f1efe9;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    line-height:1.75;font-size:16px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
+
+  /* topbar */
+  .topbar{max-width:760px;margin:0 auto;padding:22px 20px 0;display:flex;justify-content:space-between;align-items:center}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:700;font-size:17px}
+  .mark{width:30px;height:30px;border-radius:8px;background:var(--accent);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+  .nav a{color:var(--muted);text-decoration:none;font-size:14px;margin-left:18px}
+  .nav a:hover{color:var(--ink)}
+
+  /* hero */
+  .back{display:inline-block;margin:34px 0 6px;color:var(--muted);text-decoration:none;font-size:14px}
+  .back:hover{color:var(--accent)}
+  .date-chip{display:inline-block;margin:8px 0 14px;padding:3px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:600;letter-spacing:.5px}
+  h1{font-family:Georgia,"Noto Serif SC","Songti SC",serif;font-size:clamp(26px,5vw,34px);line-height:1.3;margin:0 0 6px;letter-spacing:.5px}
+  .meta{color:var(--muted);font-size:13.5px;margin:0 0 8px}
+  .lede{font-size:16px;color:#3c3a37;border-left:3px solid var(--accent);padding:4px 0 4px 16px;margin:18px 0 8px}
+  .statline{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 14px;font-size:13.5px;color:var(--muted)}
+  .stat b{color:var(--ink)}
+
+  hr{border:none;border-top:1px solid var(--line);margin:34px 0}
+
+  /* tldr */
+  .tldr{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 22px 14px;margin:22px 0}
+  .tldr h2{margin:14px 0 8px}
+  .tldr li{margin:7px 0}
+
+  h2{font-size:22px;margin:44px 0 6px;display:flex;align-items:center;gap:10px;letter-spacing:.3px}
+  h2 .no{font-family:Georgia,serif;color:var(--accent);font-size:15px;border:1.5px solid var(--accent);border-radius:6px;padding:1px 7px;letter-spacing:1px}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:14px 0}
+  .card h3{margin:0 0 8px;font-size:17px;line-height:1.5}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;border-radius:5px;padding:1px 8px;margin-right:8px;vertical-align:2px;letter-spacing:.5px}
+  .tag.x{background:#eef1f6;color:#3d5577}
+  .tag.rss{background:var(--accent-soft);color:var(--accent)}
+  .card p{margin:8px 0;color:#33312e}
+  .card .src{color:var(--muted);font-size:12.5px}
+  .chain{background:var(--accent-soft);border-radius:10px;padding:10px 16px;margin-top:10px;font-size:14px;color:#155a4e}
+  .chain b{color:var(--accent)}
+
+  /* timeline */
+  .tl{list-style:none;padding:0;margin:12px 0 0}
+  .tl li{position:relative;padding:0 0 14px 22px;border-left:2px solid var(--line);margin-left:6px}
+  .tl li:last-child{border-left-color:transparent;padding-bottom:2px}
+  .tl li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+  .tl .d{font-family:Georgia,serif;font-size:12.5px;color:var(--warm);font-weight:700}
+  .tl .t{font-size:14.5px}
+
+  blockquote{margin:14px 0;padding:12px 18px;background:var(--chip);border-radius:10px;color:#4a4742;font-size:14.5px}
+  blockquote p{margin:0}
+
+  .foot{margin-top:56px;text-align:center;color:var(--muted);font-size:13px}
+  .foot .div{display:block;width:56px;height:2px;background:var(--line);margin:0 auto 16px}
+
+  @media(max-width:560px){
+    body{font-size:15px}
+    .card{padding:13px 15px}
+    h2{font-size:19px}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-09-09</h1>
-    <p class="post-meta">2026-09-09 · 每日资讯早报 · 确定性兜底发布</p>
+<header class="topbar">
+  <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
+  <nav class="nav">
+    <a href="/">首页</a>
+    <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
+  </nav>
+</header>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-09-09</strong></p>
-<p>📊 <strong>共 248 条信息</strong>  ·  🐦 X(146)  ·  📰 RSS(102)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（9 条）</h3>
-<blockquote>
-<p>📝 <em>博物院领导离职消息</em></p>
-<p>📰 <strong>NYT</strong> · 2026-09-08 🟢
-<strong>Smithsonian Leader Is Resigning After Clashes With Trump</strong> — Also, OpenAI says it solved one of math’s “Millennium Problems.” Here’s the latest at the end of Tue</p>
-<p>📰 <strong>NYT</strong> · 2026-09-08 🟢
-<strong>Smithsonian’s Secretary to Resign as Trump Tries to Rule the Institution</strong> — In the face of escalating White House attacks about how museums present American history, Lonnie G. </p>
-<p>📝 <em>开放AI宣称破解数学难题</em></p>
-<p>📰 <strong>NYT</strong> · 2026-09-08 🟢
-<strong>OpenAI Says It Has Cracked One of Math’s ‘Millennium Problems’</strong> — The company’s announcement is the most dramatic sign yet that artificial intelligence is fundamental</p>
-<p>📰 <strong>NYT</strong> · 2026-09-08 🟢
-<strong>What Is Navier-Stokes, the ‘Millennium’ Math Problem OpenAI Claims to Have Solve</strong> — OpenAI announced today that it had solved the problem, one of seven “Millennium Problems” seen as am</p>
-<p>🐦 <strong>熊布朗@Stephen4171127·2</strong> · 19:25 🟡
-GPT-6 让我有了新的理想，我想成为一名瑜伽🧘‍♀️大师。今天测量了下，30年的电脑生活让我四肢僵硬，几乎没有柔韧度，最近这周只看右边显示器，导致了左右不平衡，脖子肩膀直接有点落枕的感觉。我估计，如果一个青少年是从零开始练瑜伽，那我是从负 100 开始，目标是正 1000，即便如此，依旧不妨碍我有…</p>
-<p>🐦 <strong>小墨同学@xiaomovps·5小时</strong> · 📷×1 · 16:01 🟡
-Pi GUI 破局者可能已经出现了，那就是Pi Desktop</p>
-</blockquote>
-<p>我前面其实也看过几个，但一直没有特别想推荐的。</p>
-<p>直到最近看到 Pi Desktop，自己简单体验了一下，虽然还有很多瑕疵，但是他的优点还是很多的。</p>
-<p>我觉得几个点挺不错：</p>
-<p>1、Pi 和 OMP 可以放在一个桌面端里</p>
-<p>它会同时识别…</p>
-<blockquote>
-<p>🐦 <strong>Miguel Ángel Durán@m</strong> · 📷×1 · 15:59 🟡
-¡Microsoft saca tgrep para que los agentes de IA busquen código 50× más rápido!</p>
-</blockquote>
-<p>✓ Desarrollado en Rust y Open Source
-✓ Indexas una vez, buscas al ins…</p>
-<blockquote>
-<p>🐦 <strong>AYi@AYi_AInotes·9小时</strong> · 📷×1 · 12:10 🟡
-分享一套由架构师 Brij Kishore Pandey 提出的标准，
-是目前避免 Agent 上下文膨胀最优雅的工程解法。</p>
-</blockquote>
-<p>90% 的人都把 CLAUDE.md 当成普通的提示词文件,难怪你的 AI 永远像个乱改代码的弱智实习生: 
-把代码规范、API 格式、业务逻辑全往根目录死命塞, 模型还没…</p>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-09-08 🟢
-<strong>实测全球上线的 vivago R1，我用它打造了一部赛博西游记短片</strong> — 2026-09-08 21:40:34</p>
-</blockquote>
-<p>上周，《后西游记》在湖南卫视黄金档时段上映。
-这部剧最大的特点，是全程采用 AIGC 参与制作，并可根据观</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-01, 2026-09-02, 2026-09-06, 2026-09-07, 2026-09-08</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>08/26</strong> 关键进展
-<strong>08/27</strong> 关键进展
-<strong>08/28</strong> 关键进展</p>
-<p>📊 <em>趋势（15天共1136条）</em> <code>█75 █100 █69 █84 █85 █64 █21</code></p>
-</blockquote>
-<h3>🇮🇱 中东局势（9 条）</h3>
-<blockquote>
-<p>📝 <em>英国制裁巴以冲突相关话题</em></p>
-<p>📰 <strong>BBC</strong> · 2026-09-08 🔵
-<strong>UK announces sanctions on West Bank settlements prompting furious Israeli respon</strong> — Britain's foreign secretary accuses settlers of carrying out the "ethnic cleansing" of Palestinians,</p>
-<p>📰 <strong>NYT</strong> · 2026-09-08 🟢
-<strong>UK Imposes Sanctions on Israeli Settlements in West Bank, Accuses Settlers of Et</strong> — Britain said Israel had “turned a blind eye” to violence against Palestinians by extremist settlers,</p>
-<p>📰 <strong>NYT</strong> · 2026-09-08 🟢
-<strong>Britain Set to Target Israeli West Bank Settlements With Trade Ban</strong> — The expected move will be announced on Tuesday, officials said, and underscored Israel’s mounting is</p>
-<p>📰 <strong>BBC</strong> · 2026-09-08 🔵
-<strong>Where is Israel's proposed West Bank settlement the UK opposes?</strong> — BBC's Middle East correspondent Lucy Williamson reports from an area close to Israel's proposed site</p>
-<p>📰 <strong>BBC</strong> · 2026-09-08 🔵
-<strong>Paul Adams: British-Israeli relations at lowest ebb in decades</strong> — Israel's response to London's trade ban with Israeli settlements in the occupied West Bank shows how</p>
-<p>📰 <strong>BBC</strong> · 2026-09-08 🔵
-<strong>Why Has The UK Government Changed Its Approach to Israel?</strong> — UK imposes sanctions on Israeli settlements in the West Bank.</p>
-<p>📰 <strong>NYT</strong> · 2026-09-08 🟢
-<strong>Saudi Arabia Vows Retaliation After Houthi Attacks Injure Dozens</strong> — The latest escalation threatens to drag Saudi Arabia and the Iran-backed Houthi militia back into a </p>
-<p>📰 <strong>NYT</strong> · 2026-09-08 🟢
-<strong>Why Stocks Are Defying Gravity and What Could Bring Them Down</strong> — Investors are focused on strong corporate earnings and A.I., while looking past the war in Iran. But</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-02, 2026-09-04, 2026-09-05, 2026-09-06, 2026-09-08</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Mon, 10/Au</strong> 关键进展
-<strong>Sun, 02/Au</strong> 关键进展
-<strong>Thu, 03/Se</strong> 关键进展
-<strong>Thu, 09/Ju</strong> 关键进展
-<strong>Wed, 19/Au</strong> 关键进展
-<strong>Wed, 26/Au</strong> 关键进展
-<strong>Wed, 29/Ju</strong> 关键进展</p>
-<p>📊 <em>趋势（8天共17条）</em> <code>█5 █1 █5 █1 █2 █1 █1</code></p>
-</blockquote>
-<h3>🇪🇺 欧洲（4 条）</h3>
-<blockquote>
-<p>📝 <em>法国博物馆艺术品失窃</em></p>
-<p>📰 <strong>NYT</strong> · 2026-09-08 🟢
-<strong>Thieves Steal Artworks From Renoir Museum in France</strong> — Almost a year after the brazen Louvre heist, thieves targeted a museum that was formerly the artist’</p>
-<p>📰 <strong>BBC</strong> · 2026-09-08 🔵
-<strong>Renoir paintings worth millions stolen in French museum heist</strong> — It is the latest in a string of high-profile art thefts in Europe that has again put the security of</p>
-<p>📰 <strong>BBC</strong> · 2026-09-08 🔵
-<strong>British widow faces deportation from Sweden after 22 years</strong> — A 78-year-old British woman is facing deportation for failing to fill out a Brexit residence applica</p>
-<p>📰 <strong>NYT</strong> · 2026-09-08 🟢
-<strong>A Far-Right Win Puts New Pressure on Germany’s Leader</strong> — Chancellor Friedrich Merz was a drag on his conservative party in its disastrous loss to the far rig</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-27, 2026-08-29, 2026-08-31, 2026-09-02, 2026-09-06</em></p>
-</blockquote>
-<h3>🔧 开发工具（3 条）</h3>
-<blockquote>
-<p>🐦 <strong>Ren@Ryrenz·4小时</strong> · 17:40 🟡
-🐣 卧槽，花三块钱、两个小时，就能自己从零训出一个会聊天的大模型，这个项目叫 MiniMind。</p>
-</blockquote>
-<p>GitHub 上已经 5.9 万 star，直接封神了。仓库 2024 年 7 月才建，两年冲到这个量级，作者的 GitHub 主页写着南京大学，整个仓库的提交里他一个人占了 194 次，第二名只有 …</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 14:45 🟡
-Supermemory is 1st on every major AI memory benchmark - 95% recall with a 99.4% context reduction at 50ms.</p>
-</blockquote>
-<p>Your AI forgets everything between session…</p>
-<blockquote>
-<p>🐦 <strong>WquGuru@wquguru·12小时</strong> · 📷×4 · 09:09 🟡
-写完那篇 25万次阅读、2K 点赞收藏的《Agent Memory 五层架构》  https://t.co/ZEJtJQv5Vj 之后，有人问我有没有把 agent memory 发挥到极致的产品可以用。我用 @TodayAIofficial 跑了一段时间，它其实就是这套架构的一个真实运行实例：</p>
-</blockquote>
-<p>…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-30, 2026-08-31, 2026-09-01, 2026-09-07, 2026-09-08</em></p>
-</blockquote>
-<h3>🌍 环境/能源（3 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-08 🟢
-<strong>Oil Climbs Toward $100 a Barrel Following Houthi Attacks</strong> — Analysts said they expected the price of Brent crude, the international benchmark, to remain elevate</p>
-<p>📰 <strong>BBC</strong> · 2026-09-08 🔵
-<strong>Argentina to file criminal case against oil company operating in Falklands</strong> — The move comes days after President Javier Milei stepped up Argentina's claims of sovereignty over t</p>
-<p>📰 <strong>BBC</strong> · 2026-09-08 🔵
-<strong>'I've had no hot water or heating for most of my pregnancy'</strong> — Residents living in flats in Croydon are in limbo having have been without gas since March.</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-26, 2026-08-27, 2026-08-29, 2026-09-07, 2026-09-08</em></p>
-</blockquote>
-<h3>🇯🇵 日本/东亚（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>War Thunder@WarThund</strong> · 🎬×1 · 16:46 🟡
-🇯🇵 Harimau: Light tank, Japan, next major update
-- 105 mm gun with autoloader
-- Modern thermal imagers
-- LWS and laser rangefinder
-- Good mobility
-htt…</p>
-<p>🐦 <strong>PC Gamer@pcgamer·6小时</strong> · 🎬×1 · 16:00 🟡
-She's baaaccckkk! Here is the incredible @FrankieWard to remind you to tune in to the #PCGamingShow Tokyo Direct on September 20th! https://t.co/RWgZO…</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-01, 2026-09-03, 2026-09-04, 2026-09-05, 2026-09-08</em></p>
-</blockquote>
-<h3>🎮 二次元/游戏（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×2 · 10:00 🟡
-エリー修繕トーク Vol.14丨システム＆コンテンツ更新編</p>
-</blockquote>
-<p>プロキシの皆様、こんにちは！
-今回お届けするのは、Ver.3.2におけるシステム改善と「迷い路の謎：ベーグル計画Ⅱ」の更新情報です。さっそく見てみましょう！</p>
-<p>▼もっと見る
-https://t.co/6VGwenaBgQ</p>
-<h1>ゼンゼロ h…</h1>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-08-31, 2026-09-01, 2026-09-04, 2026-09-07, 2026-09-08</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-08 🔵
-<strong>Ukrainian TV channel building hit by Russian drone as five killed in Kyiv</strong> — The attack happened while the We Are Ukraine channel was broadcasting live, President Zelensky said.</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-04, 2026-09-05, 2026-09-06, 2026-09-07, 2026-09-08</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>01/01</strong> 关键进展
-<strong>02/01</strong> 美国特使在俄乌间穿梭外交：双方分歧未解 泽连斯基预计战事将持续到冬季 | 美国特使乘“和平快车”抵达基辅，但战争依然看不到终点
-<strong>03/01</strong> 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击？
-<strong>04/01</strong> 美国特使在俄乌间穿梭外交：双方分歧未解 泽连斯基预计战事将持续到冬季 | 美国特使乘“和平快车”抵达基辅，但战争依然看不到终点
-<strong>05/01</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令
-<strong>06/01</strong> 美国特使在俄乌间穿梭外交：双方分歧未解 泽连斯基预计战事将持续到冬季 | 美国特使乘“和平快车”抵达基辅，但战争依然看不到终点
-<strong>07/01</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令
-<strong>08/01</strong> 乌克兰无人机何以精准打击俄罗斯本土？
-<strong>09/01</strong> 美国特使在俄乌间穿梭外交：双方分歧未解 泽连斯基预计战事将持续到冬季 | 美国特使乘“和平快车”抵达基辅，但战争依然看不到终点
-<strong>10/01</strong> 生于乌克兰，为何替俄罗斯作战？被俘士兵向BBC讲述他们的故事
-<strong>11/01</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰</p>
-<p>📊 <em>趋势（6天共7条）</em> <code>█1 █2 █1 █1 █1 █1</code></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（196 条）</h2>
-<blockquote>
-<p>🐦 <strong>Evelyn🍑@MiTao_99999·</strong> · 21:59 🟡
-@Deepakk30081433 绝对值得点赞！</p>
-<p>🐦 <strong>ヘルケバブけん@ken553·2分钟</strong> · 21:59 🟡
-ヤニネコタバコよりもウンコの方が明らかに多いだろこれ
-糞ネコだわこれ</p>
-<p>🐦 <strong>奶霜小奈@xiaonai2005·18分</strong> · 21:42 🟡
-"刚刚尝试了一家新开的咖啡店，味道真不错！☕️"</p>
-<p>🐦 <strong>PC Gamer@pcgamer·19分</strong> · 21:41 🟡
-Thousand Hells is a feast of infernal storytelling, but its defeats can feel brutal https://t.co/HgL…</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:40 🟡
-https://t.co/vltlivZtiB</p>
-<p>🐦 <strong>0x12 Dark Developmen</strong> · 📷×1 · 21:33 🟡
-Credential Dumping via File Handle Redirection</p>
-</blockquote>
-<p>New Medium post. In this article, we’ll explore a te…</p>
-<blockquote>
-<p>🐦 <strong>EhimeJK Studio@Asuka</strong> · 📷×4 · 21:26 🟡
-C-120（56P+Video: 06:58) https://t.co/fmOCPnYoCQ</p>
-<p>🐦 <strong>Flasso 🦑🦞🦐🦀🦈🐬🐋@JpFla</strong> · 📷×1 · 21:22 🟡
-雅さんといちゃいちゃする話 https://t.co/uc9nJ0pY6k</p>
-<p><em>…还有 188 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 146条
-    General: ██████████ (125)</p>
-<p>📰 <strong>RSS 新闻</strong>: 102条
-    · NYT: 47条
-    · BBC: 46条
-    · BBC中文: 4条
-    · 爱范儿: 3条
-    · 纽约时报中文: 2条</p>
-<p>📚 累计: X=23481 | NGA=584 | S1=374 | RSS=7624</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+<main class="wrap">
+  <a class="back" href="/blog/">← 返回笔记列表</a>
+  <span class="date-chip">2026 年 9 月 9 日 · 周三</span>
+  <h1>OpenAI 宣称攻破"千禧年难题"，英国对以色列定居点亮出贸易禁令，雷诺阿故居博物馆遭劫</h1>
+  <p class="meta">每日资讯早报 · 增强版 · 数据来自 X / BBC / NYT / 爱范儿 等多源共 248 条信息</p>
+  <p class="lede">今天的新闻里有两件"想都不敢想"级别的事：OpenAI 说自己解开了数学界悬赏 26 年的 Navier-Stokes 难题；英国则直接对以色列定居点下了贸易禁令，英以关系被形容为"数十年最低点"。中间还夹着一场直播中的空袭、一桩博物馆劫案，和一个花三块钱就能训出大模型的南京大学学生。</p>
+
+  <div class="statline">
+    <span class="stat">共 <b>248</b> 条信息</span>
+    <span class="stat">🐦 X <b>146</b></span>
+    <span class="stat">📰 RSS <b>102</b></span>
+    <span class="stat">话题聚类 <b>8</b> 组</span>
+  </div>
+
+  <div class="tldr">
+    <h2>📌 今日速览</h2>
+    <ul>
+      <li><b>OpenAI 宣称已破解"千禧年难题"之一</b>的 Navier-Stokes 方程——七大难题悬赏百万美元、26 年无人攻破，数学界正等着看验证。</li>
+      <li><b>史密森尼学会掌门人辞职</b>，导火索是白宫对博物馆"如何讲述美国历史"的连番施压。</li>
+      <li><b>英国宣布制裁约旦河西岸以色列定居点</b>，外交大臣直指定居者搞"种族清洗"；以色列怒斥，英以关系跌至数十年冰点。</li>
+      <li>胡塞袭击致数十人受伤后，<b>沙特誓言报复</b>；布伦特油价被推向每桶 100 美元，股市却还在"无视地心引力"。</li>
+      <li><b>雷诺阿故居博物馆失窃</b>，数百万美元画作被盗，距卢浮宫大劫案不到一年。</li>
+      <li>开发者圈：微软开源 Rust 版 tgrep、3 块钱训大模型的 MiniMind、以及给 CLAUDE.md"瘦身"的工程标准。</li>
+    </ul>
+  </div>
+
+  <h2><span class="no">01</span> 🤖 AI·大模型：OpenAI 声称攻破 26 年未解的数学难题</h2>
+  <p class="sub">9 条 · 话题近半月累计 1136 条 · 8 月 26–28 日曾现关键进展，近两日再度升温</p>
+
+  <div class="card">
+    <h3><span class="tag rss">NYT</span>OpenAI：我们解开了 Navier-Stokes</h3>
+    <p>OpenAI 9 月 8 日宣布，已破解七大"千禧年难题"之一的 Navier-Stokes 方程。NYT 的措辞很重：这是迄今最戏剧性的信号，说明 AI 已经一脚踩进了基础数学的核心地带。</p>
+    <p>注意是"宣称"。这类声明最终要看两样东西：论文是否经得起同行评议，以及独立验证是否复现。数学界的习惯是先怀疑，再鼓掌。</p>
+    <p class="src">NYT · 2026-09-08 · 同题报道 2 篇（含科普解释）</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag rss">NYT</span>Navier-Stokes 到底是什么？</h3>
+    <p>简单说，它描述流体怎么流动：机翼为何产生升力、洋流如何涌动、明天的天气怎么算，背后都是这套方程。问题在于，它的解是否存在、是否光滑，数学家从 2000 年克莱数学研究所挂出百万美元悬赏到现在，26 年没人给出完整答案。</p>
+    <p>如果 OpenAI 的证明成立，这会是数学物理界的核爆级事件；如果只是又一次"AI 声称"，那它也会成为关于大模型推理能力上限的珍贵样本。两条路都很有看头。</p>
+    <p class="src">NYT · 2026-09-08 · 千禧年难题共七道，各悬赏 100 万美元</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag x">X</span>花絮：GPT-6 让一位程序员想转行当瑜伽大师</h3>
+    <p>一条意外出圈的推文：一位自称被电脑"绑架"了 30 年的老程序员说，GPT-6 让他萌生了新理想——当瑜伽大师。他自测柔韧度"从负 100 开始"，目标是正 1000，还抱怨长期只看右侧显示器导致左右不平衡、脖子落枕。</p>
+    <p>AI 越强，人类的反应越两极：有人焦虑失业，有人想放下键盘去拉伸。这条属于后者。</p>
+    <p class="src">X · 09-08 · 个人分享，转发热度较高</p>
+  </div>
+
+  <div class="chain">📈 <b>热度脉络：</b>该话题此前出现在 09-01 / 09-02 / 09-06 / 09-07 / 09-08 · 近 15 天累计 1136 条，8 月 26–28 日有连续关键进展，热度未见回落</div>
+
+  <h2><span class="no">02</span> 🏛️ 美国：史密森尼学会掌门辞职，文化战争烧到博物馆</h2>
+  <p class="sub">2 条 · 均为 NYT 头版级别的连续报道</p>
+
+  <div class="card">
+    <h3><span class="tag rss">NYT</span>馆长 vs 白宫：一场关于"美国历史该怎么讲"的战争</h3>
+    <p>史密森尼学会的掌门人 Lonnie G. Bunch 宣布辞职。这家机构不是普通博物馆：它旗下有 20 多座博物馆和国家动物园，是全球最大的博物馆综合体，也是美国叙事的"官方橱窗"。</p>
+    <p>辞职发生在白宫对博物馆的攻势不断升级的当口。争议焦点很直接：博物馆应该怎样呈现美国历史——尤其是那些不光彩的章节。特朗普政府试图直接"接管"这个原本半独立的机构，从人事到展陈都想插手。</p>
+    <p>Bunch 是史密森尼历史上第一位非裔掌门，2019 年上任。他的离开，等于把"文化战争"的战报又更新了一页：战场已经不止在国会山和校园里，还蔓延到了展厅的墙上。</p>
+    <p class="src">NYT · 2026-09-08 · 两篇连发，聚焦辞职与白宫角力</p>
+  </div>
+
+  <h2><span class="no">03</span> 🇮🇱 中东：英国对定居点下禁令，沙特誓言报复胡塞</h2>
+  <p class="sub">9 条 · BBC + NYT 多源交叉 · 自 7 月初已积累 7 个关键节点，9 月 8 日出现最新高峰</p>
+
+  <div class="card">
+    <h3><span class="tag rss">BBC</span>英国制裁以色列定居点：直指"种族清洗"，以色列怒斥</h3>
+    <p>英国外交大臣宣布对约旦河西岸的以色列定居点实施制裁，并罕见地用词严厉：指责定居者对巴勒斯坦人进行"种族清洗"，称以色列政府对极端分子的暴力"睁一只眼闭一只眼"。</p>
+    <p>这不是象征性表态。NYT 报道称，英方将对定居点相关实体施加贸易禁令，9 月 8 日（周二）正式宣布。以色列的反应可以用"暴怒"形容——BBC 中东事务编辑 Paul Adams 的评价是：英以关系正处于数十年来的最低点。</p>
+    <p>BBC 还专门解释了一个问题：英国政府为什么改弦更张？答案藏在英国国内政治和中东政策的双重转向里。记者 Lucy Williamson 则直接去了英方反对的定居点选址附近，让当地人说自己的版本。</p>
+    <p class="src">BBC ×3 · NYT ×2 · 2026-09-08 · 覆盖声明、选址现场与关系分析三个层面</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag rss">NYT</span>沙特誓言报复：胡塞袭击致数十人受伤</h3>
+    <p>也门胡塞武装的袭击造成数十人受伤后，沙特阿拉伯公开承诺报复。NYT 的评估很直接：这轮升级可能把沙特和伊朗支持的胡塞武装重新拖回正面冲突。</p>
+    <p>放在更大的图景里，加沙的停火脆弱、红海航运承压、如今沙特又被点名——中东的每一条线都在同时冒烟。</p>
+    <p class="src">NYT · 2026-09-08</p>
+  </div>
+
+  <div class="card">
+    <h3>🕐 该话题的演化轨迹</h3>
+    <ul class="tl">
+      <li><span class="d">07/09</span><br><span class="t">关键进展节点</span></li>
+      <li><span class="d">07/29 → 08/02 → 08/10</span><br><span class="t">节点密集：局势反复拉锯</span></li>
+      <li><span class="d">08/19 → 08/26</span><br><span class="t">连续关键进展，冲突面扩大</span></li>
+      <li><span class="d">09/03</span><br><span class="t">最新一轮关键节点</span></li>
+      <li><span class="d">09/08</span><br><span class="t">英国宣布制裁定居点 + 沙特报复表态，话题冲上当日高峰</span></li>
+    </ul>
+    <p class="src">话题此前出现在 09-02 / 09-04 / 09-05 / 09-06 / 09-08 · 8 天共 17 条</p>
+  </div>
+
+  <h2><span class="no">04</span> 🇪🇺 欧洲：雷诺阿故居失窃、德国政坛地震、脱欧余波伤人</h2>
+  <p class="sub">4 条 · 艺术窃案线索可追溯至 8 月下旬</p>
+
+  <div class="card">
+    <h3><span class="tag rss">BBC</span>雷诺阿画作被盗：又是法国，又是博物馆</h3>
+    <p>窃贼光顾了法国一座由雷诺阿故居改建的博物馆，多幅雷诺阿画作被盗，价值数百万美元。距离那起"大胆得离谱"的卢浮宫劫案，还不到一年。</p>
+    <p>BBC 的定性很扎心：这是欧洲一连串高调艺术窃案的最新一起，博物馆安保水平再次被架上审判台。法国博物馆这两年过得实在不太平——名画、安保、保险，成了比策展更头疼的话题。</p>
+    <p class="src">BBC · NYT · 2026-09-08 · 涉事馆为画家生前故居</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag rss">NYT</span>德国：极右翼赢了，压力全给到默茨</h3>
+    <p>极右翼在最新选举中胜出，总理默茨所在的保守派联盟党遭遇灾难性失利。NYT 的观察更不留情面：默茨本人就是党内的拖累——选民不是输给了对手，是被自家总理劝退的。</p>
+    <p>对欧洲来说，这比法国丢几幅画严重得多：德国是欧盟的压舱石，而压舱石正在被极右翼一块块撬动。</p>
+    <p class="src">NYT · 2026-09-08</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag rss">BBC</span>在英国生活 78 年，她因没填 Brexit 表格面临被瑞典驱逐</h3>
+    <p>一位 78 岁的英国寡妇在瑞典生活了 22 年，如今面临被驱逐出境——罪名是没填 Brexit 后的居留申请表。</p>
+    <p>一个表格，22 年的人生归零。脱欧的余波没有停在国境线上，它落在具体的人身上，而且往往是最不擅长跟 bureaucracy 打交道的那批人。</p>
+    <p class="src">BBC · 2026-09-08 · 人物报道</p>
+  </div>
+
+  <div class="chain">📈 <b>脉络：</b>欧洲艺术窃案话题此前出现在 08-27 / 08-29 / 08-31 / 09-02 / 09-06，与卢浮宫劫案及后续调查同属一条持续发酵的线索</div>
+
+  <h2><span class="no">05</span> 🔧 开发者生态：50 倍速搜代码、3 块钱训大模型、给 Agent 的"记忆"治病</h2>
+  <p class="sub">6 条 · 开发工具话题自 08-30 起反复上榜，今日信息密度很高</p>
+
+  <div class="card">
+    <h3><span class="tag x">X</span>微软开源 tgrep：AI 代理搜代码，快 50 倍</h3>
+    <p>微软放出了一个叫 tgrep 的工具，专为 AI 代理设计：Rust 编写、完全开源，思路是"索引一次，反复搜索"。宣称让代理在代码库里查找信息快 50 倍。</p>
+    <p>这个方向很有意思——当 AI 代理要读的代码库越来越大，grep 这种"每次从头扫"的老办法就成了瓶颈。给代理配一个专属搜索引擎，比给模型加参数更实在。</p>
+    <p class="src">X · Miguel Ángel Durán · 09-08 · Rust · Open Source</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag x">X</span>MiniMind：三块钱、两小时，从零训出一个会聊天的大模型</h3>
+    <p>一位开发者实测后感叹：花 3 块钱、2 小时，就能从零训出一个会聊天的大模型。这个叫 MiniMind 的项目在 GitHub 上已经攒了 5.9 万 star——仓库 2024 年 7 月才建立，两年冲到这量级。</p>
+    <p>最传奇的是作者背景：GitHub 主页写着南京大学，整个仓库 194 次提交几乎是他一个人完成的，第二名贡献者的提交数连零头都不到。一个人、两年、5.9 万星，这是开源世界最喜欢的剧本。</p>
+    <p class="src">X · Ren · 09-08 · GitHub 5.9 万 star</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag x">X</span>给 Agent 治病（一）：CLAUDE.md 的正确用法</h3>
+    <p>架构师 Brij Kishore Pandey 提了一套标准，被转发者称为"目前避免 Agent 上下文膨胀最优雅的工程解法"。核心观点很毒舌：90% 的人把 CLAUDE.md 当成普通提示词文件，把代码规范、API 格式、业务逻辑一股脑全塞进根目录——结果模型"永远像个乱改代码的弱智实习生"。</p>
+    <p>解法是分层：什么该进根目录、什么该按模块拆开、什么根本不该让模型每次读，分清楚之后，上下文干净，模型才不犯浑。</p>
+    <p class="src">X · AYi · 09-08 · 架构师 Brij Kishore Pandey 提出的标准</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag x">X</span>给 Agent 治病（二）：记忆成为新的竞赛场</h3>
+    <p>AI 圈正在给"健忘"开药方。两个信号今天撞在一起：Supermemory 宣称登顶各大 AI 记忆基准，95% 召回率、99.4% 上下文压缩、50ms 延迟；另一边，一篇《Agent Memory 五层架构》已经攒下 25 万阅读、2 千赞藏，作者还顺手安利了 TodayAI 作为该架构的真实运行实例。</p>
+    <p>逻辑链条很清楚：上下文窗口再大也装不下长期协作，于是记忆分层、压缩、召回成了工程刚需——谁能先解决"AI 一换会话就失忆"，谁就握住了下一代 agent 的命门。</p>
+    <p class="src">X · 09-08 · 该话题此前出现在 08-30 / 08-31 / 09-01 / 09-07 / 09-08</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag rss">爱范儿</span>AIGC 上卫视黄金档：vivago R1 实测"赛博西游记"</h3>
+    <p>爱范儿实测了全球上线的视频生成模型 vivago R1，用它做了一支"赛博西游记"短片。背景更有意思：上周《后西游记》在湖南卫视黄金档开播，全程采用 AIGC 参与制作——AI 生成的画面第一次以"剧集"身份坐进了晚间黄金时段。</p>
+    <p>从玩具到生产力，再到电视台的排片表，生成式视频只用了不到三年。接下来要回答的问题是：观众买不买账。</p>
+    <p class="src">爱范儿 · 2026-09-08 · 该话题此前出现在 09-01 / 09-02 / 09-06 / 09-07 / 09-08</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag x">X</span>Pi Desktop：Pi 的 GUI"破局者"出现了？</h3>
+    <p>一位关注 Pi 生态的体验者给出了近期少见的高评价：Pi Desktop 把 Pi 和 OMP 装进了同一个桌面端，还能同时识别内容。他坦言此前看过几个同类产品都没到想推荐的程度，这个虽有瑕疵，但优点突出。</p>
+    <p>对 Pi 生态来说，图形界面一直是被吐槽的短板。若真有一个能打的官方桌面端，出圈的速度会完全不一样。</p>
+    <p class="src">X · 小墨同学 · 09-08</p>
+  </div>
+
+  <h2><span class="no">06</span> 🌍 能源与市场：油价逼近 100，股市却无视地心引力</h2>
+  <p class="sub">4 条 · 与中东局势（03）同源联动</p>
+
+  <div class="card">
+    <h3><span class="tag rss">NYT</span>布伦特逼近每桶 100 美元</h3>
+    <p>胡塞袭击的冲击波传到了油市：布伦特原油价格向每桶 100 美元攀升，分析师预计高位会持续一段时间。因果链很短——中东每炸一次，风险溢价就涨一分。</p>
+    <p class="src">NYT · 2026-09-08 · 与 03 节沙特报复表态为同一事件的两面</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag rss">NYT</span>股市为什么"无视地心引力"？</h3>
+    <p>油价在涨、中东在打、伊朗局势悬而未决，美股却还在往上飘。NYT 的分析：资金眼下只盯着两样东西——强劲的企业盈利和 AI 叙事，对战争风险选择性失明。</p>
+    <p>文章真正的问题是后半句：什么能把股市拉下来？答案可能是通胀反复、油价传导，或者 AI 叙事本身的一次证伪。地心引力不会消失，只会迟到。</p>
+    <p class="src">NYT · 2026-09-08</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag rss">BBC</span>阿根廷起诉福克兰油气公司：主权主张升级为法律战</h3>
+    <p>阿根廷宣布对一家在福克兰群岛（阿根廷称马尔维纳斯群岛）作业的石油公司提起刑事诉讼。几天前，总统米莱刚刚升级了阿根廷对该群岛的主权主张——嘴仗打完，法律战跟上。</p>
+    <p class="src">BBC · 2026-09-08</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag rss">BBC</span>克罗伊登的冬天提前来了：孕妇自述"怀孕大半年没热水"</h3>
+    <p>伦敦克罗伊登的一批公寓自 3 月起断气，居民至今悬而未决。一位孕妇对 BBC 说，她怀孕的大半时间都没有热水和暖气。</p>
+    <p>能源危机的账本从来不只写在油价上，也写在普通人的浴室里。</p>
+    <p class="src">BBC · 2026-09-08 · 民生报道</p>
+  </div>
+
+  <div class="chain">📈 <b>脉络：</b>能源/环境话题此前出现在 08-26 / 08-27 / 08-29 / 09-07 / 09-08</div>
+
+  <h2><span class="no">07</span> 🇷🇺 俄乌：基辅电视台大楼遇袭，袭击发生在直播中</h2>
+  <p class="sub">1 条 · 但话题已连续 5 天出现在每日雷达上</p>
+
+  <div class="card">
+    <h3><span class="tag rss">BBC</span>俄无人机击中基辅电视台大楼，5 人遇难</h3>
+    <p>俄罗斯无人机击中了基辅一座电视台大楼，造成 5 人死亡。袭击发生时，We Are Ukraine 频道正在直播——观众在镜头里目睹了袭击的发生。泽连斯基随后发声回应。</p>
+    <p>针对媒体设施的攻击，目标从来不只是建筑本身，还有"声音"本身。战争打了这么久，这条底线依然在被试探。</p>
+    <p class="src">BBC · 2026-09-08</p>
+  </div>
+
+  <div class="card">
+    <h3>🕐 报道脉络（长期议题）</h3>
+    <p>该话题自 09-04 起连续 5 天出现。拉长时间看，围绕这场冲突的报道覆盖了多条线索：美国特使的穿梭外交始终未能弥合分歧、泽连斯基在关键时刻撤换最高将领、乌克兰无人机对俄罗斯本土的精准打击，以及被俘士兵讲述"为何替俄罗斯作战"——每一面都有人记录。</p>
+    <p class="src">近 6 天共 7 条 · 外交线与战线同步推进，未见终点</p>
+  </div>
+
+  <h2><span class="no">08</span> 🎮 游戏·文娱简讯</h2>
+  <p class="sub">3 条 · 来自 X 官方账号</p>
+
+  <div class="card">
+    <h3><span class="tag x">X</span>《War Thunder》：日本线新轻坦 Harimau 公布</h3>
+    <p>新版本给日本系加了一台 Harimau 轻型坦克：105 毫米炮配自动装弹机、现代热成像、激光告警加激光测距，机动性出色。高速侦察车的定位，适合喜欢"打了就跑"的玩家。</p>
+    <p class="src">X · War Thunder 官方 · 09-08</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag x">X</span>PC Gaming Show Tokyo Direct 定档 9 月 20 日</h3>
+    <p>PC Gamer 官宣：PC Gaming Show Tokyo Direct 将于 9 月 20 日举行，人气主持人 Frankie Ward 回归。东京专场的嘉宾名单值得蹲一波。</p>
+    <p class="src">X · PC Gamer · 09-08</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag x">X</span>《绝区零》Ver 3.2：系统改进 + "贝果计划 II"更新</h3>
+    <p>官方"艾莉修缮谈话 Vol.14"介绍了 3.2 版本：系统与内容双更新，重点包括一系列系统优化和限时活动"迷路之谜：贝果计划 II"的追加内容。代理人版本更新情报持续放送中。</p>
+    <p class="src">X · 绝区零官方 · 09-08 · 该话题此前出现在 08-31 / 09-01 / 09-04 / 09-07 / 09-08</p>
+  </div>
+
+  <hr>
+  <h2><span class="no">09</span> 🧭 今日数据附录</h2>
+  <p class="sub">采集统计与话题热度</p>
+
+  <div class="card">
+    <h3>📊 采集统计</h3>
+    <p class="src">X 146 条 · RSS 102 条（NYT 47 / BBC 46 / BBC中文 4 / 爱范儿 3 / 纽约时报中文 2）· NGA 0 · S1 0 · 另有 196 条低信噪比社交内容已过滤。历史累计：X 23481 · RSS 7624 · NGA 584 · S1 374</p>
+    <h3 style="margin-top:14px;">🕐 关键话题热度</h3>
+    <ul class="tl">
+      <li><span class="d">AI/大模型</span><br><span class="t">近 15 天累计 1136 条 · 8 月下旬以来高位运行，今日 OpenAI"千禧年难题"声明再添一把火</span></li>
+      <li><span class="d">中东</span><br><span class="t">7 月初至今 7 个关键节点 · 9 月 8 日英国制裁定居点成为最新高峰</span></li>
+      <li><span class="d">俄乌</span><br><span class="t">连续 5 天在榜 · 外交无解、战线未停，基辅电视台遇袭为最新一击</span></li>
+      <li><span class="d">艺术窃案</span><br><span class="t">卢浮宫劫案近一年后，雷诺阿故居博物馆再遭毒手，欧洲博物馆安保成焦点</span></li>
+    </ul>
+  </div>
+
+  <hr>
+  <p class="foot"><span class="div"></span>本内容由 Hermes Agent 自动采集分析，每日更新<br>多源合并 · 事件聚类 · 时序分析 · 2026-09-09</p>
+</main>
+
 </body>
 </html>
