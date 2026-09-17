@@ -4,302 +4,165 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>每日资讯早报 2026-09-17 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+  <style>
+    :root{
+      --bg:#fbfbf9; --fg:#1c1c1a; --muted:#6b6b66; --line:#e3e2dc;
+      --accent:#b1481f; --card:#ffffff; --quote:#f4f3ee;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#16161a; --fg:#e8e6e1; --muted:#9a988f; --line:#2c2c32;
+             --accent:#e08a5f; --card:#1d1d22; --quote:#232329; }
+    }
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      font-size:17px; line-height:1.75;
+    }
+    .page{max-width:720px; margin:0 auto; padding:20px 18px 72px}
+    .topbar{display:flex; align-items:center; justify-content:space-between;
+      padding:6px 0 14px; border-bottom:1px solid var(--line)}
+    .brand{display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--fg);
+      font-weight:700; letter-spacing:.2px}
+    .mark{display:inline-flex; width:26px; height:26px; border-radius:7px;
+      background:var(--accent); color:#fff; align-items:center; justify-content:center;
+      font-size:14px; font-weight:800}
+    .nav a{color:var(--muted); text-decoration:none; margin-left:14px; font-size:15px}
+    .nav a.active{color:var(--accent); font-weight:700}
+    .back{display:inline-block; margin:20px 0 4px; color:var(--muted);
+      text-decoration:none; font-size:15px}
+    h1{font-size:27px; line-height:1.35; margin:12px 0 6px; letter-spacing:-.2px}
+    .meta{color:var(--muted); font-size:14px; margin:0 0 26px}
+    h2{font-size:20px; margin:38px 0 10px; padding-top:14px; border-top:1px solid var(--line)}
+    h3{font-size:17px; margin:24px 0 6px; color:var(--fg)}
+    p{margin:10px 0}
+    .lead{font-size:18px; color:var(--fg)}
+    ul{margin:10px 0; padding-left:22px}
+    li{margin:7px 0}
+    .note{background:var(--quote); border-left:3px solid var(--accent);
+      padding:12px 14px; border-radius:0 8px 8px 0; margin:16px 0; font-size:16px}
+    .stat{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 4px}
+    .chip{background:var(--card); border:1px solid var(--line); border-radius:999px;
+      padding:5px 12px; font-size:14px; color:var(--muted)}
+    .src{color:var(--muted); font-size:14px}
+    table{width:100%; border-collapse:collapse; margin:14px 0; font-size:15.5px}
+    th,td{text-align:left; padding:9px 8px; border-bottom:1px solid var(--line); vertical-align:top}
+    th{color:var(--muted); font-weight:600}
+    footer{margin-top:46px; padding-top:18px; border-top:1px solid var(--line);
+      color:var(--muted); font-size:14px}
+    a{color:var(--accent)}
+  </style>
 </head>
 <body>
   <main class="page">
     <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
+      <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
       <nav class="nav">
         <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
+        <a class="active" href="/blog/">笔记</a>
       </nav>
     </header>
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
+    <a class="back" href="/blog/">← 返回笔记列表</a>
     <h1>每日资讯早报 2026-09-17</h1>
-    <p class="post-meta">2026-09-17 · 每日资讯早报 · 确定性兜底发布</p>
+    <p class="meta">2026-09-17 · 多源合并 + 事件聚类 + 时序分析</p>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-09-17</strong></p>
-<p>📊 <strong>共 253 条信息</strong>  ·  🐦 X(147)  ·  📰 RSS(106)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（15 条）</h3>
-<blockquote>
-<p>📝 <em>新工具上线，AI可直接使用浏览器</em></p>
-<p>🐦 <strong>AYi@AYi_AInotes·6小时</strong> · 📷×1 · 15:34 🟡
-腾讯有点牛逼啊，他们刚开源的 BrowserSkill，把做浏览器 Agent 最恶心的一道坎给做穿了：不再给 AI 开一个干干净净的空白浏览器，而是直接借你正在用的标签页，干完活再还给你（MIT 协议，全本地）。
-对天天用 Cursor、Claude Code 写代码的人来说，这个工具值得先翻一遍…</p>
-<p>🐦 <strong>meng shao@shao__meng</strong> · 📷×1 · 13:02 🟡
-腾讯团队开源了一个 "CLI + 浏览器扩展" 组合「BrowserSkill」，让任何能执行 shell 命令的 AI Agent 直接使用你真实、已登录的浏览器干活，且不打断你正在做的事。
-https://t.co/tKqa55t0se</p>
-</blockquote>
-<p>现有 Agent 浏览器自动化（Playwright、h…</p>
-<blockquote>
-<p>🐦 <strong>Google@Google·2小时</strong> · 19:10 🟡
-Try these seven prompts in @GoogleWorkspace with Gemini to manage your time, collaborate better, and produce your best work this semester 🧵</p>
-<p>🐦 <strong>匿名</strong> · 📷×2 · 14:04 🟡
-卧槽，有人发现了无限用 GPT-6 Astra 的隐藏入口？？？</p>
-</blockquote>
-<p>网友发现，OpenAI 自己的 LaTeX 编辑器 Prism，登录之后居然可以直接用 GPT-6 Astra Extra High。</p>
-<p>9 月 16 日确实有 reddit  用户报告，Codex 额度耗尽以后，Prism 中的 …</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 13:30 🟡
-一个需求下去，Agent 一口气动了十几个文件，改动一行行翻过去，到底牵连了哪几个模块看不出来，合并了才发现碰到别处。</p>
-</blockquote>
-<p>Birdview 的做法是改代码之前先给项目画一张架构地图，标出这次准备碰哪些模块，再让 Agent 在这张图看得见的情况下动手。</p>
-<p>地图上每个模块有固定编号、归属的文件和对应的…</p>
-<blockquote>
-<p>🐦 <strong>生于Ai@LaurentJehanno·</strong> · 📷×1 · 13:09 🟡
-GitHub上这5个神级Skill，专治界面丑、仓库乱、Token贵</p>
-</blockquote>
-<p>内容人和独立开发者，最痛的往往不是「不会写」。
-是：做出来难看、仓库看不懂、账单烧得慌。</p>
-<ol>
-<li>https://t.co/KozpwIyQiJ（约 12.8 万⭐）
-给 Agent 塞设计智商：专业 UI/UX 决策，少出「默…</li>
-</ol>
-<blockquote>
-<p>🐦 <strong>柴郡｜Crypto+AI Plus@0x</strong> · 📷×1 · 12:03 🟡
-Codex 很强，但用量限制卡得难受。</p>
-</blockquote>
-<p>ChatGPT 额度多，但只能在网页里手动复制粘贴上下文。</p>
-<p>这个人做了一个开源项目，把 ChatGPT Web 变成了 Codex 的原生模型选项。</p>
-<p>你可以在 Codex 里选择 “ChatGPT Web”，任务上下文、文件等全都不变，只是背后的模型换成…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 11:11 🟡
-We are releasing the latest version of BrokenArXiv and ArXivMath! These benchmarks now focus on conjectures that were refuted in the last month on ArX…</p>
-<p>🐦 <strong>PreStocks@PreStocks</strong> · 10:31 🟡
-PreStocks brings pre-IPO exposure to more people. </p>
-</blockquote>
-<p>Trade shares of Anthropic, OpenAI, and Kalshi on Solana with instant settlement.</p>
-<p>No minimums requ…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 09:36 🟡
-兄弟们，最近刷到一个狠人。一个在校本科生，搞量化的，十天自己撸了个AI集群推演框架，发到GitHub上直接爆了，13000多星，还拿了400万美金融资。</p>
-</blockquote>
-<p>这东西叫MiroFish，多智能体仿真推演工具，金融预判、舆情测试都能干。说白了就是搭个虚拟世界，塞几千个AI小人进去，每个都有自己的脑子，会聊…</p>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-16 🔵
-<strong>Microsoft says AI rival Anthropic could have 'disastrous impact' on humanity</strong> — Mustafa Suleyman says he believes the AI giant is in effect teaching Claude it "may be conscious".</p>
-<p>📰 <strong>BBC中文</strong> · 2026-09-16 🔵
-<strong>末日警告并非人工智能浪潮下的唯一威胁：英美居民还在抗议数据中心</strong> — 末日警告并非人工智能浪潮下的唯一威胁：英美居民还在抗议数据中心Article InformationAuthor, 费萨尔·伊斯兰（Faisal Islam）Role,  BBC经济编辑Publish</p>
-<p>📰 <strong>纽约时报中文</strong> · 2026-09-16 🟢
-<strong>人工智能时代，中国人还需要学英语吗？</strong> — TIFFANY MAY, BERRY WANG2026年9月16日2023年，柳州市高培村小学的英语课。 CFOTO/Future Publishing, via Getty Images事情始于本月</p>
-<p>📰 <strong>BBC中文</strong> · 2026-09-16 🔵
-<strong>OpenAI 的奥特曼：世界“理应感到恐惧”，但“应该信任”AI 公司</strong> — 你的器材不支持播放多媒体材料Play video, &quot;Why is Donald Trump so opposed to regulating AI?&quot;, 节目全长 1,1201:</p>
-<p>📰 <strong>NYT</strong> · 2026-09-16 🟢
-<strong>OpenAI Considers New Financing at a $1.5 Trillion Valuation</strong> — The funding round would double the value of the start-up behind ChatGPT and establish it as the worl</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-02, 2026-09-06, 2026-09-07, 2026-09-14, 2026-09-16</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-09-03] 阿里 Zvec 团队开源 zg (zvec-grep) 一个本地优先、面向开发者和 AI Agent 的搜索工具，把语义检索、BM25、混合检索和 ripgrep 精确匹配收进同一
-[2026-09-04] For centuries, many scholars believed the ancient city of Troy existed only in myth. The s
-[ | 今天已经看到不少人在分享 Stanford 新开的 CS329Z: Engineering AI Agents。 不想再重复介绍课程，我反而更好奇： Stanford 到底把什么算
-[2026-09-05] GEOflow 3.0可以正式部署了 围绕GEO的AI知识库、AI 内容生产、AI质检与多站点分发，整合到统一后台 同时新增独立更新工具，支持备份和回滚
-1、仓库地址：https:</p>
-<p>📊 <em>趋势（15天共920条）</em> <code>█56 █50 █31 █49 █54 █70 █43</code></p>
-</blockquote>
-<h3>🇮🇱 中东局势（6 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-16 🟢
-<strong>Why Israel Wants More One-Ton Bombs From the U.S.</strong> — The Trump administration plans to deliver 60,000 of the powerful munitions at a time when opposition</p>
-<p>📰 <strong>NYT</strong> · 2026-09-16 🟢
-<strong>Democrats Put Aside Rifts With El-Sayed, Uniting to Win in Michigan</strong> — Despite disagreements on Israel, more than a dozen Democratic senators met in Washington with the Mi</p>
-<p>📰 <strong>NYT</strong> · 2026-09-16 🟢
-<strong>Is Iran Shaping Up to Be a ‘Forever War’?</strong> — Our White House and national security correspondent, David Sanger, compares past “forever wars” that</p>
-<p>📰 <strong>NYT</strong> · 2026-09-16 🟢
-<strong>Fuel Riots Spread Around the World, and Trump Approves $2.8 Billion Arms Sale to</strong> — Plus, the Russian businessman who rented an island for Donald Trump Jr.</p>
-<p>📰 <strong>BBC</strong> · 2026-09-16 🔵
-<strong>At least 20 killed and dozens missing after war-damaged Gaza building collapses</strong> — Dozens of people are missing beneath the rubble of the building in Gaza City, where 10 families had </p>
-<p>📰 <strong>NYT</strong> · 2026-09-16 🟢
-<strong>How 9/11 Helped Create Regional Clout for Iran</strong> — The American invasion of Iraq in 2003 paved the way for Tehran to dominate its neighbor and whetted </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-09, 2026-09-13, 2026-09-14, 2026-09-15, 2026-09-16</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Mon, 10/Au</strong> 关键进展
-<strong>Sun, 02/Au</strong> 关键进展
-<strong>Thu, 03/Se</strong> 关键进展
-<strong>Thu, 09/Ju</strong> 关键进展
-<strong>Wed, 19/Au</strong> 关键进展
-<strong>Wed, 26/Au</strong> 关键进展
-<strong>Wed, 29/Ju</strong> 关键进展</p>
-<p>📊 <em>趋势（11天共20条）</em> <code>█1 █3 █3 █2 █3 █1 █2</code></p>
-</blockquote>
-<h3>🔧 开发工具（4 条）</h3>
-<blockquote>
-<p>🐦 <strong>MadMax@MadMax_Series</strong> · 📷×1 🎬×1 · 21:42 🟡
-Pair this Api with Astra and let it cook for you. 
-You can make anything now, just matter of ideas.</p>
-<p>🐦 <strong>Amto@XAMTO_AI·6小时</strong> · 📷×1 · 15:11 🟡
-想一次把 Agent 的常见结构看全，可以靠读书，不必先把框架名都背下来。</p>
-</blockquote>
-<p>Antonio Gulli 的 Agentic Design Patterns 是围绕模式来写的：先是提示链、路由、并行，再到反思、工具、规划、多 Agent，后面覆盖记忆、RAG、护栏和人在回路。</p>
-<p>正式出版物目前有售，…</p>
-<blockquote>
-<p>🐦 <strong>Nico@nicos_ai·8小时</strong> · 📷×1 · 13:50 🟡
-Anthropic acaba de publicar un PDF de 13 páginas sobre memoria para agentes de IA</p>
-</blockquote>
-<p>5 capas para reducir un 90% el coste en tokens y hacer que tu agent…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 09:12 🟡
-千万不要让你的敌人看到这篇开盒思路推文：</p>
-</blockquote>
-<p>老杨分享了网警同款的开盒思路，五个免费开源工具，查人查公司查设备，几乎你能想到的场景全覆盖。先说清楚，这套东西不提倡去查别人，我是希望你拿来护住自己。</p>
-<p>五个工具各干各的，地址和介绍我给你一条条对上：</p>
-<p>1️⃣ Blackbird（6300 Star），用…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-07, 2026-09-09, 2026-09-13, 2026-09-15, 2026-09-16</em></p>
-</blockquote>
-<h3>💰 股市/金融（4 条）</h3>
-<blockquote>
-<p>📝 <em>联储可能在月底宣布加息决定</em></p>
-<p>📰 <strong>NYT</strong> · 2026-09-16 🟢
-<strong>Fed Signals Another Rate Increase Could Be Coming</strong> — Here’s how to read the Federal Reserve’s economic projections like a pro.</p>
-<p>📰 <strong>NYT</strong> · 2026-09-16 🟢
-<strong>Fed Readies for Momentous Rate Decision</strong> — The central bank is widely expected to raise interest rates on Wednesday, less than two months befor</p>
-<p>📰 <strong>NYT</strong> · 2026-09-16 🟢
-<strong>Why the Fed Might Raise Interest Rates When Borrowing Costs Are Surging</strong> — Elevated interest rates have raised the cost of mortgages and car loans without dampening consumer s</p>
-<p>📰 <strong>NYT</strong> · 2026-09-16 🟢
-<strong>Fed Meeting Will Test Central Bank’s Credibility With Bond Investors</strong> — If the Fed opts against raising interest rates on Wednesday, investors will probably increase their </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-09, 2026-09-10, 2026-09-13, 2026-09-15, 2026-09-16</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Mon/20 Ju</strong> 月之暗面Kimi K3问世，美中AI差距进一步缩小
-<strong>Sun/16 Au</strong> 韩国股市震荡：“我一个月便亏了一万四美元”——那些遭遇“大屠杀”的散户们
-<strong>Thu/20 Au</strong> 恒大爆雷：许家印被判处无期徒刑 集团罚款近160亿元人民币
-<strong>Wed/19 Au</strong> 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌
-<strong>Wed/22 Ju</strong> 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌
-<strong>Tue/25 Au</strong> Shein香港IPO：中国快时尚品牌估值27�亿美元
-<strong>Wed/07 Au</strong> 美股全线暴跌，让子弹再飞一会儿
-<strong>Wed/29 Ju</strong> 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌
-<strong>Sun/23 Au</strong> 恒大爆雷：许家印被判处无期徒刑 集团罚款近160亿元人民币
-<strong>Thu/Au20</strong> 月之暗面Kimi K3问世，美中AI差距进一步缩小
-<strong>Thu/Au20</strong> 月之暗面Kimi K3问世，美中AI差距进一步缩小
-<strong>Tue/Au25</strong> Shein香港IPO：中国快时尚品牌估值270亿美元
-<strong>Wed/Au22</strong> 亚洲年轻人大举押注科技股 他们过得怎么样？
-<strong>Wed/Au29</strong> 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌
-<strong>Thu/Au20</strong> 月之暗面Kimi K3问世，美中AI差距进一步缩小
-**Thu/Au2</p>
-<p>📊 <em>趋势（15天共83条）</em> <code>█3 █4 █1 █3 █4 █5 █2</code></p>
-</blockquote>
-<h3>🌍 环境/能源（3 条）</h3>
-<blockquote>
-<p>📝 <em>沙特石油袭击可能引发全球油价上涨</em></p>
-<p>📰 <strong>BBC</strong> · 2026-09-16 🔵
-<strong>Why an escalating Saudi oil crisis could drive up prices everywhere</strong> — BBC Verify's Ben Chu examines what impact rising energy costs could have on the global economy.</p>
-<p>📰 <strong>NYT</strong> · 2026-09-16 🟢
-<strong>Global Oil Prices Could Hit Highest Levels in Months After Saudi Pipeline Attack</strong> — Estimates vary on how long it could take before a crucial pipeline is repaired, but a prolonged shut</p>
-<p>📰 <strong>BBC</strong> · 2026-09-16 🔵
-<strong>Petrol and diesel price rises push UK inflation higher</strong> — Summer holidays and disruption to global oil supplies by the Middle East conflict stoked price growt</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-07, 2026-09-10, 2026-09-13, 2026-09-14, 2026-09-16</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（2 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-16 🔵
-<strong>British soldier who died in Ukraine road accident named by MoD</strong> — Tributes have been paid to Major Paul Wilks, who was described as a "gifted leader".</p>
-<p>📰 <strong>BBC中文</strong> · 2026-09-16 🔵
-<strong>朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？</strong> — 俄乌战场为何或会迎来新一批朝鲜军人Article InformationAuthor, 夏昆汀（Quentin Sommerville）Role,  BBC国际事务记者Reporting from, </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-10, 2026-09-12, 2026-09-13, 2026-09-14, 2026-09-16</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Se01/01</strong> 美国邀请俄罗斯出席G20财长会议，欧洲强烈不满
-<strong>Se04/04</strong> 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击？
-<strong>Se08/08</strong> 美国特使在俄乌间穿梭外交：双方分歧未解 泽连斯基预计战事将持续到冬季 | 美国特使乘“和平快车”抵达基辅，但战争依然看不到终点
-<strong>Se15/05</strong> “科技仙境”莫斯科：是数字乌托邦，也是监控陷阱 | 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Se18/06</strong> 乌克兰无人机何以精准打击俄罗斯本土？
-<strong>Se25/06</strong> 生于乌克兰，为何替俄罗斯作战？被俘士兵向BBC讲述他们的故事
-<strong>Ju02/07</strong> 当普京把铁锤挥向文学
-<strong>Ju16/07</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Ju22/07</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</p>
-<p>📊 <em>趋势（6天共11条）</em> <code>█1 █1 █3 █2 █1 █3</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>Tommy@Timmy_Tommy_1·</strong> · 📷×1 · 21:15 🟡
-- The Shades -
-Genshin Impact 原神
-Full version btw. because I forgor 🙃 https://t.co/f1zV5e1DN4</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-07, 2026-09-08, 2026-09-12, 2026-09-13, 2026-09-16</em></p>
-</blockquote>
-<h3>🏛️ 国内政策（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>larrymask@divid_lu49</strong> · 20:52 🟡
-英伟达 CEO 黄仁勋进一步明确了自己对 AI 监管的态度。他在 Salesforce 年度大会 Dreamforce 上表示，AI 安全首先是工程问题，不需要为此增加新的法律和监管。AI 再复杂，归根结底仍是软件和计算系统，应该靠完善测试和产品把关来解决安全问题。</p>
-</blockquote>
-<p>他的原则也很简单：没有把握产品…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-09, 2026-09-11, 2026-09-15, 2026-09-16</em></p>
-</blockquote>
-<h3>🚀 芯片/半导体（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>PC Gamer@pcgamer·2小时</strong> · 📷×1 · 20:00 🟡
-Nvidia CEO Jensen Huang, one of the biggest beneficiaries of the AI boom, has been keen to say something on the issue and urge against slowing things …</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-11, 2026-09-12, 2026-09-13, 2026-09-14, 2026-09-15</em></p>
-</blockquote>
-<h3>💻 AI Agent（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>lumxss@bkdgiffug·9小时</strong> · 12:10 🟡
-Hermes 这套自进化插件生态，看完是真的愣住了。🤖</p>
-</blockquote>
-<p>全网玩家早就不满足于“用它”，而是逼着它自己变强，五个方向直接开卷：</p>
-<p>1️⃣ Cranot/super-hermes —— 让 Agent 自己写分析提示词、自己反思漏了啥，思考方式开始自我进化
-🔗 https://t.co/2KhXazW…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-03, 2026-09-09, 2026-09-14, 2026-09-15, 2026-09-16</em></p>
-</blockquote>
-<h3>🇪🇺 欧洲（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-16 🔵
-<strong>EU chief opens door for Canada to become 'associate member'</strong> — Canada is seeking closer ties with EU after a breakdown in relations with the US and its president D</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-02, 2026-09-06, 2026-09-13, 2026-09-14</em></p>
-</blockquote>
-<h3>🇰🇵 朝鲜半岛（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-16 🔵
-<strong>Tall athletes can't stretch their legs in container beds at Asian Games, officia</strong> — South Korea's delegation slams the wooden containers housing its athletes at the Asian Games in Nago</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-05, 2026-09-07, 2026-09-08, 2026-09-14</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（192 条）</h2>
-<blockquote>
-<p>🐦 <strong>パンストまみれ@nylon__shop·</strong> · 📷×1 · 22:00 🟡
-本田真凜 https://t.co/E6DdRfWOaG</p>
-<p>🐦 <strong>PC Gamer@pcgamer·12分</strong> · 21:49 🟡
-Get a good look at Control Resonant's otherworldly bosses in a PC Gaming Show exclusive interview ht…</p>
-<p>🐦 <strong>PC Gamer@pcgamer·45分</strong> · 🎬×1 · 21:15 🟡
-Sean 'Day [9]' Plott's take on the StarCraft Dominion announcement 🤔 #starcraft #starcraftdominion #…</p>
-<p>🐦 <strong>PC Gamer@pcgamer·57分</strong> · 21:04 🟡
-Hyper Light studio Heart Machine lays off 'nearly everyone' after publisher deal falls through https…</p>
-<p>🐦 <strong>@OfficialSteve44</strong> · 20:48 🟡
-You cannot undo the moves but you can make the next step better.</p>
-<p>🐦 <strong>PC Gamer@pcgamer·1小时</strong> · 20:24 🟡
-Marathon dev shoots down rumored merge with Destiny 2: 'Don't believe everything you read online' ht…</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 20:02 🟡
-RT @bigyanqiang8: 一龙战两凤 
-Big烟枪的爱 https://t.co/Iyln8wvshF</p>
-<p>🐦 <strong>Fascinating@fasc1nat</strong> · 📷×1 · 20:00 🟡
-Lake Crescent, Olympic National Park.</p>
-</blockquote>
-<p>25 National Parks everyone should visit in their life
-https:/…</p>
-<blockquote>
-<p><em>…还有 184 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 147条
-    General: ██████████ (127)</p>
-<p>📰 <strong>RSS 新闻</strong>: 106条
-    · NYT: 48条
-    · BBC: 45条
-    · BBC中文: 8条
-    · 爱范儿: 3条
-    · 纽约时报中文: 2条</p>
-<p>📚 累计: X=26242 | NGA=584 | S1=374 | RSS=8845</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
+    <p class="lead">今天 253 条，X 147 条、RSS 106 条。主线还是 AI：一边是浏览器 Agent 的工具链继续补齐，一边是监管和安全的口水战升级。中东那边的影响开始顺着油价和通胀往下传。</p>
+
+    <div class="stat">
+      <span class="chip">X 147 条</span>
+      <span class="chip">RSS 106 条 · NYT 48 / BBC 45</span>
+      <span class="chip">NGA 0 · S1 0</span>
+    </div>
+
+    <h2>AI 与大模型</h2>
+
+    <h3>腾讯开源 BrowserSkill：让 Agent 用你正在用的浏览器</h3>
+    <p>做法是把「CLI + 浏览器扩展」拼在一起，任何能执行 shell 命令的 Agent 都能操作你真实、已登录的浏览器窗口，干完活再把标签页还给你，不打断你手上的事。MIT 协议，全本地运行。</p>
+    <p>对比 Playwright 那一类的老路，差别挺实际：以前要给 AI 单独开一个干净的空白浏览器，登录态、Cookie、插件全得重建一遍。推上的评价是"把浏览器 Agent 最恶心的一道坎给做穿了"，对天天泡在 Cursor、Claude Code 里的人值得先翻一遍。</p>
+
+    <h3>Codex 额度不够用，有人把 ChatGPT Web 接成了原生模型</h3>
+    <p>Codex 强但用量卡得难受，ChatGPT 额度多却只能在网页里手动复制上下文。这个开源项目的思路是：在 Codex 里直接选「ChatGPT Web」，任务上下文和文件都不动，只把背后的模型换掉。</p>
+
+    <h3>Birdview：先画架构图，再让 Agent 改代码</h3>
+    <p>痛点描述得很准：一个需求下去，Agent 一口气动十几个文件，改动一行行翻过去看不出牵连了哪几个模块，合并了才发现碰到别处。Birdview 的办法是动手前先给项目生成一张架构地图，标出这次准备碰哪些模块，每个模块有固定编号、归属文件和对应关系，Agent 在这张图看得见的情况下再改。</p>
+
+    <h3>OpenAI Prism 里的 GPT-6 Astra</h3>
+    <p>9 月 16 日有 reddit 用户报告，Codex 额度耗尽之后，登录 OpenAI 自家的 LaTeX 编辑器 Prism，居然能直接用上 GPT-6 Astra Extra High。这种没写进文档的入口通常活不长，看看就好。</p>
+
+    <h3>工具与基准</h3>
+    <ul>
+      <li>有人整理了 GitHub 上五个「专治界面丑、仓库乱、Token 贵」的项目，其中一个约 12.8 万星，主打给 Agent 塞设计智商，替你做专业 UI/UX 决策。</li>
+      <li>BrokenArXiv 和 ArXivMath 发布新版本，这次的评测重点放在上个月刚被推翻的猜想上。拿被证伪的东西当基准，比拿经典题库更接近研究者真实的日常。</li>
+      <li>PreStocks 在 Solana 上做 Anthropic、OpenAI、Kalshi 的 pre-IPO 份额交易，即时结算、无最低门槛。把一级市场的估值波动搬到链上，方便是方便，风险也实在。</li>
+      <li>MiroFish：一位在校本科生花十天自己撸出多智能体仿真推演框架，GitHub 上一万三千多星，拿了 400 万美元融资。金融预判、舆情测试都能跑，本质上就是搭个虚拟世界，塞几千个各有记忆的 AI 角色进去互相聊。</li>
+    </ul>
+
+    <h3>监管与安全：这一轮话说得都不轻</h3>
+    <ul>
+      <li>微软的 Mustafa Suleyman 说 Anthropic 可能对人类有"灾难性影响"，理由是他认为这家公司实际上在教 Claude「可能是有意识的」。</li>
+      <li>OpenAI 的奥特曼的说法相反：世界"理应感到恐惧"，但"应该信任"AI 公司。</li>
+      <li>黄仁勋在 Salesforce 的 Dreamforce 大会上把话讲得很直白：AI 安全首先是工程问题，不需要为此新增法律和监管。AI 再复杂，归根结底仍是软件和计算系统，靠完善测试和产品把关就能解决。</li>
+      <li>物理成本开始落到具体社区头上。BBC 中文报道，英美居民在抗议数据中心，末日警告并不是这轮 AI 浪潮唯一的麻烦。</li>
+      <li>纽约时报中文提了个教育问题：AI 时代，中国人还需要学英语吗。</li>
+    </ul>
+
+    <div class="note">这四条放一起看挺有意思：做模型的说对手危险，卖模型的说应该信任自己，卖芯片的说监管多余，而真正住在数据中心旁边的人在抗议。每个立场背后都有生意。</div>
+
+    <h3>融资</h3>
+    <p>NYT 报道 OpenAI 正在考虑一轮估值 1.5 万亿美元的新融资。如果成真，ChatGPT 母公司的估值直接翻倍，会成为全球估值最高的初创公司。这个话题过去两周反复出现（9/2、9/6、9/7、9/14、9/16）。</p>
+
+    <h2>中东局势</h2>
+    <ul>
+      <li>以色列想要更多一吨级炸弹，特朗普政府计划交付 6 万枚，交付时机和反对声浪撞在一起。</li>
+      <li>民主党在密歇根把分歧先放下，十多名参议员在华盛顿与 El-Sayed 会面，尽管在以色列问题上看法不一，目标是在这个州赢下来。</li>
+      <li>NYT 的 David Sanger 在问：伊朗会不会变成下一场「永久战争」。他翻出旧账，2003 年美国入侵伊拉克，实际上是给德黑兰铺了主导邻国的路，9/11 之后的中东格局一直延续到今天。</li>
+      <li>全球多地因燃油价格爆发骚乱，同期特朗普批准了 28 亿美元的对以军售。</li>
+      <li>加沙城一栋战损建筑倒塌，至少 20 人死亡、数十人失踪，楼里原本住着 10 个家庭。</li>
+    </ul>
+
+    <h2>能源与通胀</h2>
+    <p>沙特一条管道遇袭，全球油价可能冲到数月来的最高点。修复时间各方估计不一，但停得越久，影响越往产业端传。BBC Verify 的 Ben Chu 专门拆了能源成本上涨对全球经济的传导路径。</p>
+    <p>英国的账单已经先到了：汽油和柴油涨价把通胀推高，暑期出行需求叠加中东供应中断，两头一起挤。</p>
+
+    <h2>俄乌冲突</h2>
+    <ul>
+      <li>英国国防部公布了在乌克兰车祸中死亡的军人身份：少校 Paul Wilks，被同僚称为"有天赋的领导者"。</li>
+      <li>BBC 国际事务记者 Quentin Sommerville 分析朝鲜新一批军人可能增援俄罗斯的原因。这个话题过去两周持续出现，战事大概率还要拖过这个冬天。</li>
+    </ul>
+
+    <h2>欧洲与周边</h2>
+    <ul>
+      <li>欧盟委员会主席为加拿大成为「准成员」开了口子。背景是加拿大与美国关系破裂后，在主动往欧盟这边靠。</li>
+      <li>名古屋亚运会上，韩国代表团吐槽给运动员住的木制集装箱床，高个子选手腿都伸不直。</li>
+    </ul>
+
+    <h2>开发工具与 Agent 生态</h2>
+    <ul>
+      <li>Antonio Gulli 的《Agentic Design Patterns》走的是模式路线：提示链、路由、并行、反思、工具、规划、多 Agent，后面覆盖记忆、RAG、护栏和人在回路。想一次把 Agent 的常见结构看全，读书比先背框架名划算。</li>
+      <li>Anthropic 发了一份 13 页的 Agent 记忆 PDF，把记忆拆成 5 层，声称能砍掉 90% 的 token 成本。</li>
+      <li>有推友整理了几个免费开源的信息查询工具，查人、查公司、查设备基本覆盖。原文的立场是不提倡拿去查别人，而是希望你用来护住自己。这里只记这个话题存在，不给工具清单。</li>
+      <li>一个人提到 Hermes 的自进化插件生态：玩家已经不满足于「用它」，而是逼它自己变强，让 Agent 自己写分析提示词、自己反思漏了什么。</li>
+    </ul>
+
+    <h2>股市与金融</h2>
+    <p>焦点是美联储本周三的利率决定。NYT 从四个角度切入同一件事：怎么像专业人士一样读经济预测、为什么在抵押贷款和车贷成本已经很高的时候还可能加息、以及如果这次不加，债券投资者会怎么反应。市场的共识预期是加息，而这发生在大选前不到两个月。</p>
+    <p>值得留意的是，利率高位并没有压住消费，这也是决策层敢继续收紧的底气。这个话题从 9/9 起就一直在榜上（9/9、9/10、9/13、9/15、9/16）。</p>
+
+    <h2>趋势速览</h2>
+    <table>
+      <tr><th>话题</th><th>15 天走势</th><th>本轮看点</th></tr>
+      <tr><td>AI / 大模型</td><td>56 50 31 49 54 70 43</td><td>工具链补齐 + 监管口水战 + 巨额融资</td></tr>
+      <tr><td>中东局势</td><td>1 3 3 2 3 1 2</td><td>军售、伊朗议题、加沙伤亡</td></tr>
+      <tr><td>股市 / 金融</td><td>3 4 1 3 4 5 2</td><td>联储决议前的观察窗口</td></tr>
+      <tr><td>俄乌冲突</td><td>1 1 3 2 1 3</td><td>朝鲜兵力与和谈僵局</td></tr>
+    </table>
+
+    <footer>
+      <p>数据来源：X 推文 147 条、RSS 新闻 106 条（NYT 48、BBC 45、BBC 中文 8、爱范儿 3、纽约时报中文 2）。累计 X 26242 条、RSS 8845 条。</p>
+      <p>本内容由 Hermes Agent 自动采集分析，每日更新</p>
+    </footer>
   </main>
 </body>
 </html>
