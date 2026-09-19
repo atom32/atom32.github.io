@@ -1,407 +1,177 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-09-19 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-09-19 · Dawei Xu</title>
+<meta name="description" content="2026-09-19 多源资讯早报：巴菲特交棒、MiniMax Code 开源、俄议会选举、伊朗战争成本与中美会晤变数。">
+<style>
+  :root{
+    color-scheme: light;
+    --bg:#f6f7f2; --panel:#ffffff; --ink:#1f2428; --muted:#66706a;
+    --line:#d9ded7; --accent:#226f54; --accent-2:#b1442f;
+    --shadow:0 16px 42px rgba(31,36,40,.08);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  a{color:inherit; text-decoration:none;}
+  a:hover{color:var(--accent);}
+  .page{max-width:760px; margin:0 auto; padding:28px 20px 64px;}
+  .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:48px; margin-bottom:36px;}
+  .brand{display:flex; align-items:center; gap:12px; font-weight:700;}
+  .mark{display:grid; place-items:center; width:36px; height:36px; border:1px solid var(--line);
+    background:var(--panel); color:var(--accent); border-radius:8px; box-shadow:var(--shadow);}
+  .nav{display:flex; gap:18px; font-size:14px; color:var(--muted);}
+  .back-link{display:inline-block; font-size:14px; color:var(--muted); margin-bottom:20px;}
+  h1{font-size:clamp(1.5rem,5vw,2rem); line-height:1.3; margin:0 0 10px; letter-spacing:-.01em;}
+  .post-meta{color:var(--muted); font-size:14px; margin:0 0 8px;}
+  h2{font-size:1.2rem; margin:44px 0 14px; padding-top:20px; border-top:1px solid var(--line);}
+  h2:first-of-type{border-top:0; padding-top:0;}
+  h3{font-size:1.03rem; margin:26px 0 8px; color:var(--accent);}
+  p{margin:0 0 14px;}
+  ul{margin:0 0 16px; padding-left:1.25em;}
+  li{margin:0 0 7px;}
+  strong{font-weight:650;}
+  .lede{font-size:1.02rem; color:#2c3338;}
+  .stats{display:flex; flex-wrap:wrap; gap:10px; margin:20px 0 8px;}
+  .stat{flex:1 1 128px; background:var(--panel); border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px; box-shadow:var(--shadow);}
+  .stat b{display:block; font-size:1.35rem; color:var(--accent); line-height:1.2;}
+  .stat span{font-size:12.5px; color:var(--muted);}
+  blockquote{margin:0 0 16px; padding:12px 16px; background:var(--panel);
+    border-left:3px solid var(--accent); border-radius:0 10px 10px 0; font-size:14.5px; color:#37403b;}
+  blockquote p{margin:0 0 6px;}
+  blockquote p:last-child{margin:0;}
+  .note{background:#fbfbf7; border:1px dashed var(--line); border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#4a544e; margin:0 0 18px;}
+  .tag{display:inline-block; font-size:12px; color:var(--accent-2); border:1px solid var(--line);
+    background:var(--panel); border-radius:999px; padding:1px 9px; margin-right:6px; vertical-align:1px;}
+  footer{margin-top:52px; padding-top:18px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:13px; text-align:center;}
+  @media (max-width:480px){
+    .page{padding:20px 16px 48px;}
+    body{font-size:15.5px;}
+    h2{margin-top:34px;}
+    .stat{flex:1 1 44%;}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<main class="page">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
+    <nav class="nav"><a href="/">首页</a><a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a></nav>
+  </header>
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-09-19</h1>
-    <p class="post-meta">2026-09-19 · 每日资讯早报 · 确定性兜底发布</p>
+  <a class="back-link" href="/blog/">← 返回笔记列表</a>
+  <h1>每日资讯早报 2026-09-19</h1>
+  <p class="post-meta">2026-09-19 · 每日资讯早报 · 多源聚类增强版</p>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-09-19</strong></p>
-<p>📊 <strong>共 337 条信息</strong>  ·  🐦 X(237)  ·  📰 RSS(100)  ·  💬 NGA(0)  ·  💭 S1(0)
-   聚类 204 个事件，跨源热点 1 个</p>
-<hr />
-<h2>🔥 跨源热点（多平台同步热议）</h2>
-<h3>1. Warren Buffet will step down as chair of Berkshire Hathaway</h3>
-<p><code>📰 🐦</code> 共 3 条</p>
-<blockquote>
-<p>📝 <em>Warren Buffet will step down after six decades at Berkshire</em></p>
-<p>🔍 <em>多源视角对比：</em></p>
-<h3>报道角度差异对比：</h3>
-<h4>rPentz BBC</h4>
-<ul>
-<li><strong>关注点</strong>：这篇报道主要聚焦于伯克希尔公司董事长沃伦·巴菲特的退休决定，强调其长达六十年的领导生涯结束。</li>
-<li><strong>内容重点</strong>：详细介绍了巴菲特为何退休以及即将由其子霍华德接任的消息。</li>
-</ul>
-<h4>Bites X</h4>
-<ul>
-<li><strong>关注点</strong>：这篇报道更加侧重于人道主义影响，特别提到巴菲特将让其子霍华德接任，以确保家族传承。</li>
-<li><strong>内容重点</strong>：突出巴菲特的这一决定是为了确保家族企业能够持续发展，并强调了这一决定对家族成员和企业的积极意义。</li>
-</ul>
-<p>📰 <strong>BBC</strong> · 2026-09-18 🔵
-<strong>Warren Buffett steps down after six decades at Berkshire - 'Father Time always w</strong> — Since taking control in 1965, Buffett grew a struggling textile mill into a global conglomerate.</p>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Warren Buffett Steps Down as Berkshire Hathaway Chairman</strong> — “Father Time always wins,” the 96-year-old, who turned Berkshire Hathaway into an investing powerhou</p>
-<p>🐦 <strong>UPI.com@UPI·15分钟</strong> · 15:46 🟡
-Warren Buffet will step down as chair of Berkshire Hathaway after six decades at the helm to make way for his son, Howard Buffet, the company said Fri…</p>
-<p>📈 <em>近14天该事件也曾出现：2026-09-18</em></p>
-</blockquote>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（13 条）</h3>
-<blockquote>
-<p>🐦 <strong>小墨同学@xiaomovps·5小时</strong> · 🎬×1 · 16:56 🟡
-GPT Pro x20 正在恢复订阅🔥</p>
-</blockquote>
-<p>看到网上很多都说 GPT Pro x20 可以订阅了，我还不信 上了号发现还真的可以</p>
-<p>Tibo 这波营销干得厉害，很多人的额度都烧完了呀 而且没有办法升级到 x20</p>
-<p>我现在已经看到可以升级了，我后面检查一下 看看是什么原因 可能是 IP 或者地区</p>
-<blockquote>
-<p>🐦 <strong>SuSu_酥酥@NFT_Chen·2小时</strong> · 📷×2 · 13:42 🟡
-🔥突发：暂停 8 天的ChatGPT Pro 20x，升级按钮回来了！</p>
-</blockquote>
-<p>路径：Codex 桌面端 → Settings → Usage &amp; billing → View plans</p>
-<p>已有人 5x→20x 付款成功。网页可能还没有，先查桌面端。</p>
-<h1>ChatGPTPro #Pro20x #…</h1>
-<blockquote>
-<p>🐦 <strong>Lonely@Lonely__MH·5小</strong> · 📷×1 · 16:04 🟡
-🎉 ChatGPT 20X Pro 正在灰度回归中！</p>
-</blockquote>
-<p>Tibo 这一波饥饿营销玩的6啊</p>
-<p>这一波估计要上车不少人</p>
-<p>大家需要上车的准备了🙂 https://t.co/d1c0NMsxQT</p>
-<blockquote>
-<p>🐦 <strong>SuSu_酥酥@NFT_Chen·7小时</strong> · 📷×2 · 14:57 🟡
-🚨重磅：MiniMax Code已正式开源，以76.7% 直接碾过 Codex 和 Claude Code！</p>
-</blockquote>
-<p>同一模型、同一批 30 题，换一层 harness，榜就翻了：
-🔹通过率：MiniMax Code 76.7%（23/30）&gt; Codex 66.7% &gt; Claude Code 63.3…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×2 · 11:03 🟡
-🚨突发：MiniMax Code 今晚开源！</p>
-</blockquote>
-<p>产研负责人 @Ronny_MiniMax 原话：</p>
-<p>Built with developers. Now, built in the open.
-See you on GitHub.</p>
-<p>以前是跟开发者一起做产品，现在连产品本身也放到阳光下。</p>
-<p>盯盘 G…</p>
-<blockquote>
-<p>🐦 <strong>Google@Google·1小时</strong> · 🎬×1 · 20:17 🟡
-Real-time help is now even more intuitive and natural in Search Live — powered by Gemini 3.8 Live, our latest audio model. https://t.co/PCdgTkiZyP</p>
-<p>🐦 <strong>Xiaoyin Qu@quxiaoyin</strong> · 🎬×1 · 15:17 🟡
-We just launched Agentsky @agentsky_dev, world’s 1st Agent Market!
-OpenRouter is for models. AgentSky is for agents.</p>
-</blockquote>
-<p>Use 40+ agents—Claude Code, Code…</p>
-<blockquote>
-<p>🐦 <strong>小盖@xiaogaifun·9小时</strong> · 12:20 🟡
-看来很多人没注意到Anthropic这个论文。</p>
-</blockquote>
-<p>Anthropic 这公司很多事情做得确实细致和严谨。今天周五，下午没什么事，我把他们刚发的这篇论文完整看了一遍。</p>
-<p>整篇 57 页，系统研究了如果未来几年 AI 能力继续快速提高，而且真的开始大规模进入工作，到 2030 年，GDP、工资、就业和整…</p>
-<blockquote>
-<p>🐦 <strong>周览资源@grgerwcwetwet·4</strong> · 11:51 🟡
-别再每天刷两小时 X 看二手 AI 消息了，真正想追 AI 前沿，直接盯一手源。</p>
-</blockquote>
-<p>1️⃣ AI News — 每日汇总 AI 社区、产品和论文动态，一篇顶你刷半天。
-https://t.co/LQosX3jeyU</p>
-<p>2️⃣ The Batch — 吴恩达团队的 AI 周报，不只是新闻，还有对行业趋…</p>
-<blockquote>
-<p>🐦 <strong>lumxss@bkdgiffug·6小时</strong> · 📷×1 · 09:30 🟡
-Claude Code 功能越来越多，真想系统学一遍，光看文档就容易迷路。</p>
-</blockquote>
-<p>最近翻到一个 claude-howto，直接把 Claude Code 从入门到进阶串成了一条学习路线。</p>
-<p>它不是简单罗列功能，而是用流程图、配置模板和实战例子，把 Slash Commands、Memory、Skills…</p>
-<blockquote>
-<p>🐦 <strong>曼波波波(chongzhi.websit</strong> · 09:12 🟡
-9/18 更新，最新了解到的资讯，有大佬从技术层面解读的降智的请求原理
-https://t.co/jLUfKwEzHc
-降智往往不是「模型突然变笨」，而是标记用户可以正常使用的通行证没了；要稳定一直用就得持续持有有效 292 state，并在收到 312 时马上换新的。
-🌟有技术力的可以尝试此方案通…</p>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Anthropic Pursues IPO Despite Its A.I. Safety Warnings</strong> — The company is expected to generate $100 billion in annualized revenue this year, even as chief exec</p>
-<p>📰 <strong>BBC中文</strong> · 2026-09-18 🔵
-<strong>人工智能“放缓”论战：业界示警言“恐惧人类未来”，特朗普提醒勿忘“中美竞争”</strong> — 图像来源，Getty ImagesPublished 2026年9月14日阅读时间: 4 分钟人工智能（AI）行业近日爆发一场罕见的公开争论。上星期六（9月12日），Anthropic行政总裁达里奥·</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-07, 2026-09-14, 2026-09-16, 2026-09-17, 2026-09-18</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-09-07] <strong>09/07</strong> 关键进展：What Did Daily American Life in the 1920s Look Like? https://t.co/VFOZvIpne6 https://t.co/</p>
-<p>📊 <em>趋势（15天共899条）</em> <code>█31 █49 █57 █76 █65 █61 █64</code></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（10 条）</h3>
-<blockquote>
-<p>📝 <em>https://t.co/3eIRYyRrYX</em></p>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Russia Holds Stage-Managed Elections</strong> — Also, a new kind of cat was found. Here’s the latest at the end of Friday.</p>
-<p>📰 <strong>BBC</strong> · 2026-09-18 🔵
-<strong>Watch: Voting under way in Russian election tightly controlled by Kremlin</strong> — Russia's parliamentary elections are under way, the first since the full-scale invasion of Ukraine i</p>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Why Russia Holds Elections, and How the Kremlin Gets the Results It Wants</strong> — Russian elections like the parliamentary vote that begins today are hardly free. But they are critic</p>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Russia Aims to Inject Chaos Into Elections, U.S. Intelligence Finds</strong> — The Kremlin is once again seeking to undermine confidence in American democracy with online influenc</p>
-<p>🐦 <strong>匿名</strong> · 15:34 🟡
-RT @MarioNawfal: 🇺🇦🇪🇺 Zelensky’s Former Pres Sec was BARRED from entering the European Parliament hours before giving a speech calling for…</p>
-<p>🐦 <strong>Mario Nawfal@MarioNa</strong> · 🎬×1 · 09:30 🟡
-🇺🇦🇪🇺 Zelensky’s Former Pres Sec was BARRED from entering the European Parliament hours before giving a speech calling for a “bad peace deal” over a “b…</p>
-<p>🐦 <strong>Henry Evans@bushong_</strong> · 📷×1 · 17:26 🟡
-They are actually doing this, lol, this billboard says ALASKA IS OURS! and apparently they are all over Russia https://t.co/A1rrQu2kcC</p>
-<p>🐦 <strong>匿名</strong> · 17:23 🟡
-@SRoksolan @democraticaxe I wouldn't mind Ukraine as a neighbor, either! </p>
-</blockquote>
-<p>Anyway, this is probably some shit talk for Russia boasting how they'll rec…</p>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Why Autocrats Care What People Think</strong> — Russia is staging an election that matters to almost no one — except President Vladimir V. Putin and</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-12, 2026-09-13, 2026-09-14, 2026-09-16, 2026-09-17</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Se01/01</strong> 美国邀请俄罗斯出席G20财长会议，欧洲强烈不满
-<strong>Se04/04</strong> 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击？
-<strong>Se08/08</strong> 美国特使在俄乌间穿梭外交：双方分歧未解泽连斯基预计战事将持续到冬季
-<strong>Se15/09</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Se18/10</strong> 乌克兰无人机何以精准打击俄罗斯本土？
-<strong>Se25/10</strong> 生于乌克兰，为何替俄罗斯作战？被俘士兵向BBC讲述他们的故事
-<strong>Ju02/11</strong> 当普京把铁锤挥向文学
-<strong>Ju16/11</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Ju22/11</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</p>
-<p>📊 <em>趋势（8天共16条）</em> <code>█1 █3 █2 █1 █3 █1 █4</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（6 条）</h3>
-<blockquote>
-<p>🐦 <strong>たひた荘@C108日曜東1ウ66b@bd</strong> · 15:30 🟡
-【配信開始】【たひた荘】「名探偵は捜査の虜3」配信開始しました。 #FANZA同人 https://t.co/5ssxiBjPXT</p>
-<p>🐦 <strong>たひた荘@C108日曜東1ウ66b@bd</strong> · 15:09 🟡
-FANZAの方名探偵は捜査の虜3配信開始されました
-https://t.co/CamodakIoQ</p>
-<p>🐦 <strong>9is@9is_9iz·5小时</strong> · 16:45 🟡
-ゲームの練習としてテトリス作ってる
-思ったよりスラスラ作れて成長を実感する</p>
-<p>🐦 <strong>朝凪@夏コミ新刊出ました。@Victim</strong> · 📷×1 · 15:14 🟡
-夏コミ新刊の「WSS～私が先に好きだったのに～」がDLsiteさんでも配信開始しました。
-純愛NTR漫画なのでNTR苦手な人にも入門書になるラブロマンスです。
-https://t.co/tKw41qag6t https://t.co/t9OptTiGOY</p>
-<p>🐦 <strong>v-mag@v_mag_·1小时</strong> · 14:30 🟡
-モンスターの攻撃エフェクト設定だけで、ついに3日目に突入！
-ゲーム制作って本当に永遠にやることが生まれてくる……
-けど、ようやくゴール地点が見えてきた気がする！
-もうひと踏ん張り！💪</p>
-<p>🐦 <strong>H Y O フィギュア原型師@hyo_u</strong> · 📷×1 · 09:57 🟡
-できてきたー！！</p>
-</blockquote>
-<p>新シリーズ［SQC］ 〈シンデレラ 黒水着版〉</p>
-<p>コンセプト通り１日で組み立て。
-構成をスマートにし、価格は従来の半分以下に。</p>
-<p>本日、完成→撮影→受注までいく！
-お楽しみに！ #メガニケ #ニケ #NIKKE https://t.co/PO2H2Jn0iP</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-08, 2026-09-12, 2026-09-13, 2026-09-16, 2026-09-18</em></p>
-</blockquote>
-<h3>🔧 开发工具（4 条）</h3>
-<blockquote>
-<p>🐦 <strong>AYi@AYi_AInotes·3小时</strong> · 📷×1 🎬×1 · 12:29 🟡
-清华大学和无问芯穹等团队刚刚开源了一篇注定载入史册的重磅论文（已收录于 ICLR 2026，代码已开源）：
-他们彻底打破了所有多智能体（Multi-Agent）系统的底层范式——
-大型语言模型之间，从今天起可以彻底不通过人类文字进行直接交流了！</p>
-</blockquote>
-<p>这项被称为 C2C（Cache-to-Cache，缓…</p>
-<blockquote>
-<p>🐦 <strong>周览资源@grgerwcwetwet·1</strong> · 📷×1 · 11:53 🟡
-推荐一个挺硬核的开源量化项目：stock，作者直接把自己做量化交易的代码和研究过程扔 GitHub 了。</p>
-</blockquote>
-<p>它不是单纯教你几个指标，而是一套边学边实战的量化代码库：数据采集、K 线分析、策略回测、基金、港股、机器学习预测、行情监控、自动交易等都拆成了独立目录。项目里甚至保留了选股、新闻分析、收益率曲…</p>
-<blockquote>
-<p>🐦 <strong>govin.eth | G哥@goan9</strong> · 📷×1 · 10:03 🟡
-别说话，赶紧照做！GPT-6 Astra 额度放大 100 倍</p>
-</blockquote>
-<p>GitHub 上日区找到开源项目 Chat On Steroids，可以把 ChatGPT 变成一个本地 AI Agent。赶快先fork一份避免404</p>
-<p>直接配置这段prompt：</p>
-<p>“
-读取当前项目所有相关文件，分析项目结构、代码…</p>
-<blockquote>
-<p>🐦 <strong>M.@wlzh·12小时</strong> · 09:02 🟡
-接码这事折腾几轮了，又刷到这个项目，HiDeck，</p>
-</blockquote>
-<p>移远EC20 模组，目前还是100块以内，想玩趁早。</p>
-<p>自托管的高通模组控制台：
-https://t.co/0ZB8VBC5RQ</p>
-<p>思路很简单，把自己的 USB 模组（QMI、MBIM、AT 都行）插在一台 Linux 机器上，所有操作都在浏览器…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-09, 2026-09-13, 2026-09-15, 2026-09-16, 2026-09-18</em></p>
-</blockquote>
-<h3>🇮🇱 中东局势（4 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Cost of Iran War Estimated at $43.6 Billion</strong> — For the first time, the Pentagon reported costs incurred by each armed service. The figures are almo</p>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Iran and China Create First-of-Their-Kind Autonomous A.I. Influence Campaigns</strong> — The countries, along with Israeli firms, combined Chinese open-source A.I. models and A.I. agents fo</p>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Israel Is Going to War Against a Documentary</strong> — It’s hard to tell whether Israelis are enraged by “NAZA” because they think it’s full of lies, or be</p>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Iran War Will Make Winter More Expensive for Some Americans</strong> — The cost of heating oil, which is similar to diesel and used extensively in Northeastern states, has</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-14, 2026-09-15, 2026-09-16, 2026-09-17, 2026-09-18</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Mon, 10/Au</strong> 关键进展
-<strong>Sun, 02/Au</strong> 关键进展
-<strong>Thu, 03/Se</strong> 关键进展
-<strong>Thu, 09/Ju</strong> 关键进展
-<strong>Wed, 19/Au</strong> 关键进展
-<strong>Wed, 26/Au</strong> 关键进展
-<strong>Wed, 29/Ju</strong> 关键进展</p>
-<p>📊 <em>趋势（10天共19条）</em> <code>█1 █3 █3 █2 █3 █1 █2</code></p>
-</blockquote>
-<h3>🇪🇺 欧洲（4 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-18 🔵
-<strong>Russian hybrid attacks against Europe intensifying, says Macron</strong> — The French president says he has tasked the government with protecting critical infrastructure and d</p>
-<p>📰 <strong>BBC</strong> · 2026-09-18 🔵
-<strong>Gabriel, 15, in Barcelona amid speculation over future</strong> — Man Utd youngster JJ Gabriel travels to Barcelona as some of Europe's biggest clubs continue to vie </p>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Why Europe Really, Really Needs a Mild Winter</strong> — The economy has been resilient despite higher prices stemming from the war in the Middle East, but t</p>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>German Art Institutions Prepare for a Fight as Far Right Looks to Take Power</strong> — As the Alternative for Germany party seeks to control a state government for the first time, its pus</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-05, 2026-09-06, 2026-09-13, 2026-09-14</em></p>
-</blockquote>
-<h3>🇰🇵 朝鲜半岛（2 条）</h3>
-<blockquote>
-<p>📰 <strong>纽约时报中文</strong> · 2026-09-18 🟢
-<strong>金正恩的“强国”背后，朝鲜人的血泪代价</strong> — CHOE SANG-HUN2026年9月18日上周，朝鲜在首都平壤举行阅兵式，庆祝建国78周年。无论是在经济上还是外交上，该国目前都处于有史以来最有强大的时刻之一。 Kim Won Jin/Agenc</p>
-<p>📰 <strong>NYT</strong> · 2026-09-18 🟢
-<strong>Rejecting Trump, South Korean Leader Says He Will Not Send Troops to Iran</strong> — President Lee Jae Myung’s comments followed President Trump’s repeated demand for “a little hand” fr</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-05, 2026-09-07, 2026-09-08, 2026-09-18</em></p>
-</blockquote>
-<h3>🇯🇵 日本/东亚（3 条）</h3>
-<blockquote>
-<p>🐦 <strong>PC Gamer@pcgamer·4小时</strong> · 17:01 🟡
-TWO DAYS until the #PCGamingShow Tokyo Direct at 9am PT / 12 noon ET / 5pm BST / 1am JST. </p>
-</blockquote>
-<p>You can watch the show live on our Steam page and wishlist…</p>
-<blockquote>
-<p>🐦 <strong>PC Gamer@pcgamer·5小时</strong> · 🎬×1 · 16:02 🟡
-JUST TWO DAYS until the #PCGamingShow Tokyo Direct hosted by @FrankieWard!</p>
-</blockquote>
-<p>Join us here: https://t.co/UHji4zV5uP https://t.co/EPCeymN2eN</p>
-<blockquote>
-<p>🐦 <strong>PC Gamer@pcgamer·1小时</strong> · 14:01 🟡
-Get ready for the #PCGamingShow Tokyo Direct on Sunday!</p>
-</blockquote>
-<p>⏰ 9am PT / 12 noon ET / 5pm BST / 1am JST
-📺 Join us on X, Twitch, YouTube and Steam
-🎤Hosted b…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-12, 2026-09-13, 2026-09-14, 2026-09-15, 2026-09-16</em></p>
-</blockquote>
-<h3>🏢 创业/商业（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>超级个体｜柿子@yaohui12138</strong> · 🎬×1 · 13:09 🟡
-离谱，AI 模拟出来的消费者反馈，和真人测出来的几乎一模一样？？？</p>
-</blockquote>
-<p>上周一个做出海的朋友找我，说想验证一个新产品方向，问我有没有什么快的办法</p>
-<p>他的情况很典型——独立开发者，一个人扛产品扛增长扛客服，手上同时跑三个项目
-想做用户调研？没时间也没预算</p>
-<p>以前在百度做 PM 的时候，想验证一个需求方向…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-14, 2026-09-15, 2026-09-16, 2026-09-17, 2026-09-18</em></p>
-</blockquote>
-<h3>🌍 环境/能源（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-18 🔵
-<strong>'We simply don't know' - JP Morgan struggling to forecast oil prices due to Trum</strong> — The bank said it "assumed" there would be economic red lines, like oil at $100 a barrel, that the US</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-13, 2026-09-14, 2026-09-16, 2026-09-17, 2026-09-18</em></p>
-</blockquote>
-<h3>🇨🇳 中美关系（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-09-18 🔵
-<strong>对台军售成“特习会”谈判筹码？北京警告或取消峰会施压特朗普</strong> — 你的器材不支持播放多媒体材料对台军售成“特习会”谈判筹码？北京警告或取消峰会施压特朗普Published 52 分钟前中美两国元首本月稍后预定在华府举行的“特习会”，是全球瞩目的外交焦点，中国官方至今</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-13, 2026-09-15, 2026-09-16, 2026-09-17, 2026-09-18</em></p>
-<p>🕐 <em>事件演化：</em>
-Tue, 21/Ju 中美人工智能发展策略截然不同 | 美国建国 250 周年：五个中美交往的历史细节
-Tue, 25/Au 03版 - 王沪宁会见第三届中美1.5轨对话美方代表
-Wed, 02/Se 李强会见美中贸易全国委员会董事会代表团 | 上合组织峰会与G20折射中美全球秩序博弈
-Wed, 05/Au 特习会后美中再现摩擦 “建设性稳定”能否撑到九月？
-Wed, 12/Au “看到热情好客 非常多元交融的新疆”
-Wed, 19/Au 从DeepSeek到“人工智能+”：中美AI竞赛究竟在比什么？
-Wed, 22/Ju 美国建国 250 周年：五个中美交往的历史细节
-Wed, 26/Au 03版 - 绿色情缘，见证中美民间友好薪火相传（和音） | 03版 - 落实元首会晤共识，积极构建中美建设性战略稳定关系 | 03版 - 第三届中美1.5轨对话举行</p>
-<p>📊 <em>趋势（15天共68条）</em> <code>█4 █4 █7 █7 █5 █4 █4</code></p>
-</blockquote>
-<h3>💰 股市/金融（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-09-18 🔵
-<strong>美国三年来首次加息 对全球和中国意味着什么？</strong> — 你的器材不支持播放多媒体材料Play video, &quot;Watch: How will higher interest rates impact US consumers?&quot;, 节目</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-13, 2026-09-15, 2026-09-16, 2026-09-17, 2026-09-18</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Mon/20 Ju</strong> 月之暗面Kimi K3问世，美中AI差距进一步缩小
-<strong>Sun/16 Au</strong> 韩国股市震荡：“我一个月便亏了一万四美元”——那些遭遇“大屠杀”的散户们
-<strong>Thu/20 Au</strong> 恒大爆雷：许家印被判处无期徒刑 集团罚款近160亿元人民币
-<strong>Wed/19 Au</strong> 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌
-<strong>Wed/22 Ju</strong> 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌
-<strong>Tue/25 Au</strong> Shein香港IPO：中国快时尚品牌估值27�亿美元
-<strong>Wed/07 Au</strong> 美股全线暴跌，让子弹再飞一会儿
-<strong>Wed/29 Ju</strong> 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌
-<strong>Sun/23 Au</strong> 恒大爆雷：许家印被判处无期徒刑 集团罚款近160亿元人民币
-<strong>Thu/Au20</strong> 月之暗面Kimi K3问世，美中AI差距进一步缩小
-<strong>Thu/Au20</strong> 月之暗面Kimi K3问世，美中AI差距进一步缩小
-<strong>Tue/Au25</strong> Shein香港IPO：中国快时尚品牌估值270亿美元
-<strong>Wed/Au22</strong> 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌
-<strong>Wed/Au22</strong> 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌
-<strong>Wed/Au22</strong> 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌</p>
-<p>📊 <em>趋势（15天共80条）</em> <code>█1 █3 █5 █6 █3 █7 █8</code></p>
-</blockquote>
-<h3>🏛️ 国内政策（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-09-18 🔵
-<strong>澳洲收紧移民政策：管制留学生、背包客，打击“签证跳转”</strong> — 图像来源，AFP via Getty Images澳洲政府宣布将打击“签证跳转”（visa hopping）行为，也就是学生完成一项课程后，再申请另一项课程，而后者通常属于较低等级的资格，有时甚至来自</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-09, 2026-09-11, 2026-09-16, 2026-09-18</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（253 条）</h2>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 21:58 🟡
-RT @JessieT81519721: #全班地铁求生就我一男的<br />
-第4集<br />
-睁开眼，三十多个赤裸的女体铺满铁皮车厢，全班只有一个男的—我。系统说：这是求生。又说：交配，就能变强。绿皮车隆隆驶向…</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:55 🟡
-RT @shoki16090527: 性癖アニメできた https://t.co/oC9ZSXwVOu</p>
-<p>🐦 <strong>Temuer郡主@infantatemu</strong> · 🎬×1 · 21:50 🟡
-都喜欢看海，都喜欢潮水🌊 https://t.co/wiGhu4a2w9</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:19 🟡
-RT @huangdoudj: 黄豆原创《女友帮我操闺蜜》第5集 完整版前往黄豆短剧app</p>
-</blockquote>
-<p>试衣间内，杜晴和谢薇都穿上了浩哥最爱的超短旗袍……</p>
-<h1>成人短剧 #AI成人 #女友帮我操闺蜜 #黄豆魔改…</h1>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 21:07 🟡
-@argofowl 👋</p>
-<p>🐦 <strong>PC Gamer@pcgamer·54分</strong> · 21:06 🟡
-Monster Hunter director says Capcom is retuning its difficulty standards for the Wilds DLC's endgame…</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:05 🟡
-RT @mel85308312: 相亲“日”记💕</p>
-</blockquote>
-<p>解锁完整版看个人资料主页～💕 
-24小时自助贩卖机在线值班 https://t.co/1Z2JMiOXHy</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:05 🟡</p>
-<p><em>…还有 245 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 237条
-    General: ██████████ (207)</p>
-<p>📰 <strong>RSS 新闻</strong>: 100条
-    · BBC: 46条
-    · NYT: 44条
-    · BBC中文: 6条
-    · 纽约时报中文: 2条
-    · 爱范儿: 2条</p>
-<p>📚 累计: X=27275 | NGA=584 | S1=374 | RSS=9187</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <article class="post-content">
+
+    <p class="lede">今天抓了 337 条信息，聚成 204 个事件，真正被多个平台同时讨论的只有一条：巴菲特要交棒了。剩下的内容分布得很散，但有几件事值得单独拎出来说：MiniMax 把 Code 开源了，俄罗斯在打仗的同时办了场选举，五角大楼第一次把伊朗战争账单拆到军种一级。</p>
+
+    <div class="stats">
+      <div class="stat"><b>337</b><span>信息总量</span></div>
+      <div class="stat"><b>237 / 100</b><span>X 推文 / RSS 新闻</span></div>
+      <div class="stat"><b>204</b><span>聚类事件</span></div>
+      <div class="stat"><b>1</b><span>跨源热点</span></div>
+    </div>
+
+    <h2>一、今日唯一的跨源热点：巴菲特交出董事长位置</h2>
+
+    <p>BBC、NYT 和社交平台在同一天把这条推到了最前面：96 岁的沃伦·巴菲特将卸任伯克希尔·哈撒韦董事长，结束在奥马哈长达六十年的掌舵。他从 1965 年接手一家挣扎中的纺织厂，把它做成了一家全球性集团。这句话 BBC 和 NYT 都写了，无非是想让读者意识到时间跨度有多离谱。</p>
+
+    <p>NYT 引了他自己的一句话做标题：<strong>“Father Time always wins.”</strong>（时间永远赢）。翻译过来没劲，但意思够清楚了。</p>
+
+    <p>报道口径的差异挺有意思。BBC 的落点在公司治理与权力交接本身，而社交平台上流传的版本更强调家族传承，说接任者是其子霍华德·巴菲特。两边关注的东西不太一样：一边问“公司接下来怎么走”，另一边问“谁来继承”。这种差异本身就是信息，不必强行统一成一个结论。</p>
+
+    <div class="note">多源对比只保留观点差异，不引用原始链接与媒体素材。</div>
+
+    <p>顺带一提，这个事件在 9 月 18 日就已经露头，今天正式成为唯一的多平台同步热点。</p>
+
+    <h2>二、AI 与大模型：今天是开源的场子</h2>
+
+    <p><span class="tag">开源</span>最热的一条是 <strong>MiniMax Code 正式开源</strong>。传播里最抓眼球的是那组对比数字：同一批 30 道题、同一个模型，仅仅换了一层 harness，通过率就变成 MiniMax Code 76.7%（23/30），高于 Codex 的 66.7% 和 Claude Code 的 63.3%。产研负责人 Ronny 的说法被反复转引：<strong>“Built with developers. Now, built in the open.”</strong> 换成中文大概是，以前是和开发者一起做产品，现在连产品本身也摆到台面上了。</p>
+
+    <p>这里值得留个心眼：harness 换一层、榜单翻一篇，说明当前各类“编码能力排行榜”对评测脚手架的敏感度仍然很高。比分数本身更值得看的是评测条件是否公开。</p>
+
+    <p><span class="tag">订阅</span><strong>ChatGPT Pro 20x</strong> 的升级入口在暂停八天后回来了。路径是 Codex 桌面端 → Settings → Usage &amp; billing → View plans，网页端据说还没跟上。已经有人从 5x 付款升级到 20x。评论区普遍认为这轮节奏是刻意的饥饿营销，不少人的额度在这段时间里被烧完，且无法直接升档。</p>
+
+    <p><span class="tag">产品</span>Google 把 <strong>Gemini 3.8 Live</strong>（最新音频模型）接进了 Search Live，主打实时、更自然的语音帮助。同一天上线的还有 <strong>AgentSky</strong>，自称全球第一个 Agent Market，开放 40 多个 agent 供调用，定位写得很直白：“OpenRouter 给模型，AgentSky 给 agent。”</p>
+
+    <p><span class="tag">研究</span>Anthropic 那份 57 页的论文被中文圈重新翻出来讨论。假设 AI 能力在未来几年继续快速提升并大规模进入工作场所，论文系统推演了到 2030 年 GDP、工资和就业可能发生什么。同一家公司另一条消息是：尽管 CEO 一直在发 AI 安全警告，公司仍在推进 IPO，预计今年年化收入可达 1000 亿美元。<span class="tag">对比</span>BBC 中文则把最近的公开争论整理成了一场“放缓论战”：一边是业界对未来的警告，一边是特朗普提醒别忘了中美竞争。</p>
+
+    <p>此外还有两条偏工具的分享：一份把 Claude Code 从入门到进阶串成路线的 <strong>claude-howto</strong> 资料，以及一份“少刷二手消息、直接盯一手源”的清单（AI News、吴恩达团队的 The Batch）。还有一个技术向的讨论在解释所谓“降智”的机制，大意是通行证（292 state）失效后需要及时换新，而不是模型本身突然变笨。</p>
+
+    <p>这个话题不是新面孔，9 月 7 日以来已经在早报里反复出现五次。15 天内累计 899 条相关讨论，热度曲线虽然有起伏，但一直没掉出主要位置。</p>
+
+    <h2>三、俄罗斯：一边打仗，一边办选举</h2>
+
+    <p>俄罗斯议会选举正在进行，这是自全面入侵乌克兰以来的第一次。NYT 的两篇报道把框架讲得很清楚：这类选举算不上自由，但确实是“有竞争力”的：问题不在于谁赢，而在于克宫如何拿到它想要的结果。另一条来自美国情报系统的消息称，俄方正试图通过网络影响活动再次削弱美国民众对本国民主的信心。</p>
+
+    <p>欧洲一侧的情绪在同步升温。马克龙表示俄罗斯对欧洲的混合攻击正在加剧，他已要求政府保护关键基础设施。社交平台上还流传着一段插曲：泽连斯基的前新闻秘书在欧洲议会发表演讲前几个小时被拒绝入场，以及俄罗斯境内出现写着“ALASKA IS OURS”的广告牌。</p>
+
+    <div class="note">该话题的演化脉络横跨数月：从美国邀请俄方出席 G20 财长会议引发欧洲不满，到卫星与太空攻防、特使穿梭外交、朝鲜增兵、乌军无人机打击俄本土、被俘士兵的讲述，再到泽连斯基撤换军方高层。8 天累计 16 条，讨论密度不高，但从未中断。</div>
+
+    <h2>四、中东：账单、AI 和一部纪录片</h2>
+
+    <p>五角大楼首次按军种公布了伊朗战争的开支，总额约 <strong>436 亿美元</strong>。同一批报道还提到，这场战争会推高部分美国人的冬季取暖成本。取暖油与柴油性质相近，在东北部各州使用广泛。</p>
+
+    <p>另一条更值得注意：伊朗和中国被指构建了<strong>首个自主 AI 影响行动</strong>，把中国开源模型与 AI agent 组合起来使用，以色列公司也被提及。这条如果成立，意味着舆论战的操作单位从“账号”变成了“agent 集群”。</p>
+
+    <p>还有一条略显荒诞的：以色列正在和一部纪录片开战，外界很难判断民众的愤怒究竟是因为片中造假，还是因为它说中了一些东西。</p>
+
+    <h2>五、朝鲜半岛与东亚</h2>
+
+    <p>朝鲜上周在平壤举行阅兵式庆祝建国 78 周年，NYT 中文的报道把镜头对准了另一面：无论经济还是外交，这个国家目前确实处在一个相对强势的位置，代价由普通人承担。另一条是韩国总统李在明拒绝了特朗普的要求，明确表示不会向伊朗派兵。</p>
+
+    <p>东亚这边比较轻松：PC Gaming Show 的东京专场将在周日播出，时间对亚洲观众不太友好，但阵容值得期待。</p>
+
+    <h2>六、中美与财经：会晤前的筹码</h2>
+
+    <p>中美两国元首本月稍后预定在华盛顿会晤，而对台军售正在变成谈判筹码。BBC 中文报道称，北京警告可能因此取消峰会，以此向特朗普施压。这个话题 15 天内累计 68 条，是早报里最稳定的长线议题之一。</p>
+
+    <p>财经方面，美国三年来首次加息，BBC 中文在讨论这对全球和中国意味着什么。摩根大通则在能源上罕见地承认了无知：由于特朗普政策的不确定性，该行表示很难预测油价走向，只能假设存在诸如“100 美元一桶”这样的经济红线——原话是“我们真的不知道”。</p>
+
+    <h2>七、开发者工具与开源项目</h2>
+
+    <p>清华大学与无问芯穹等团队的一篇论文已被 ICLR 2026 收录，代码也已开源。核心是 <strong>C2C（Cache-to-Cache）</strong>：让多个大模型之间直接交换缓存，不再必须把信息写成人类可读的文字再互相传递。如果这条路走通，多智能体系统的通信开销会下降一个量级。</p>
+
+    <ul>
+      <li><strong>stock</strong>：一位作者把自己做量化交易的完整代码和研究过程开源了，数据采集、K 线分析、策略回测、港股、机器学习预测、行情监控、自动交易各自独立成目录。</li>
+      <li><strong>Chat On Steroids</strong>：一个可以把 ChatGPT 变成本地 AI Agent 的项目，思路是给模型一套读取项目文件、分析结构的提示词配置。</li>
+      <li><strong>HiDeck</strong>：自托管的高通模组控制台，把 USB 模组插在 Linux 机器上，浏览器里完成全部操作，硬件成本在百元以内。</li>
+    </ul>
+
+    <h2>八、游戏与二次元</h2>
+
+    <p>这一栏以同人作品配信和独立开发进度为主，内容不适合展开，略过具体条目。比较有意思的是两个开发侧记录：有人拿俄罗斯方块当练习项目，写着写着发现比预想中顺利；另一个独立开发者卡在怪物攻击特效的第三天，感慨“做游戏永远有新活”，但终点已经能看见了。手办那边则有一款新系列原型一天完成组装，定价压到过去的一半以下，当天就要走完拍摄到接单的全流程。</p>
+
+    <h2>九、几条零散但有用的小事</h2>
+
+    <ul>
+      <li><strong>用户调研</strong>：有独立开发者发现 AI 模拟出的消费者反馈与真人测试结果几乎一致，这对没时间没预算做调研的小团队是个新选项——但样本偏差问题依然存在。</li>
+      <li><strong>移民政策</strong>：澳大利亚收紧签证规则，重点打击“签证跳转”，即读完一个课程后转入等级更低的课程以延长停留。</li>
+      <li><strong>德国政治</strong>：选择党（AfD）试图首次控制一个州政府，当地艺术机构正在为可能的冲突做准备。</li>
+      <li><strong>欧洲经济</strong>：欧洲今年很需要一个温和的冬天，中东战争推高的价格已经在给经济施压。</li>
+      <li><strong>体育花絮</strong>：曼联 15 岁小将 JJ Gabriel 出现在巴塞罗那，多家欧洲豪门仍在争夺。</li>
+    </ul>
+
+    <h2>今日小结</h2>
+
+    <p>把今天的所有条目放在一起看，主线其实只有两条。AI 那一侧，能力竞争正在从模型本身挪到脚手架上：MiniMax 换了 harness 就翻榜，C2C 想换掉智能体之间的通信层，Anthropic 一边发安全警告一边冲 IPO。地缘那一侧，俄罗斯在选举、中东在算账、中美在会晤前互相加码。</p>
+
+    <p>两条线在某个点上会合：AI 已经足够便宜，便宜到能直接被拿来做影响行动。</p>
+
+  </article>
+
+  <footer>本内容由 Hermes Agent 自动采集分析，每日更新</footer>
+</main>
 </body>
 </html>
