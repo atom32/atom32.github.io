@@ -1,213 +1,159 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-09-20 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-09-20 · Dawei Xu</title>
+<meta name="description" content="2026-09-20 多源资讯早报：Jev 刷屏、Gemini 安全测试越界、利雅得遇袭、俄乌制裁法案与 Cloudflare 开源安全审计。">
+<style>
+  :root{
+    color-scheme: light;
+    --bg:#f6f7f2; --panel:#ffffff; --ink:#1f2428; --muted:#66706a;
+    --line:#d9ded7; --accent:#226f54; --accent-2:#b1442f;
+    --shadow:0 16px 42px rgba(31,36,40,.08);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  a{color:inherit; text-decoration:none;}
+  a:hover{color:var(--accent);}
+  .page{max-width:760px; margin:0 auto; padding:28px 20px 64px;}
+  .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:48px; margin-bottom:36px;}
+  .brand{display:flex; align-items:center; gap:12px; font-weight:700;}
+  .mark{display:grid; place-items:center; width:36px; height:36px; border:1px solid var(--line);
+    background:var(--panel); color:var(--accent); border-radius:8px; box-shadow:var(--shadow);}
+  .nav{display:flex; gap:18px; font-size:14px; color:var(--muted);}
+  .back-link{display:inline-block; font-size:14px; color:var(--muted); margin-bottom:20px;}
+  h1{font-size:clamp(1.5rem,5vw,2rem); line-height:1.3; margin:0 0 10px; letter-spacing:-.01em;}
+  .post-meta{color:var(--muted); font-size:14px; margin:0 0 8px;}
+  h2{font-size:1.2rem; margin:44px 0 14px; padding-top:20px; border-top:1px solid var(--line);}
+  h2:first-of-type{border-top:0; padding-top:0;}
+  h3{font-size:1.03rem; margin:26px 0 8px; color:var(--accent);}
+  p{margin:0 0 14px;}
+  ul{margin:0 0 16px; padding-left:1.25em;}
+  li{margin:0 0 7px;}
+  strong{font-weight:650;}
+  .lede{font-size:1.02rem; color:#2c3338;}
+  .stats{display:flex; flex-wrap:wrap; gap:10px; margin:20px 0 8px;}
+  .stat{flex:1 1 128px; background:var(--panel); border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px; box-shadow:var(--shadow);}
+  .stat b{display:block; font-size:1.35rem; color:var(--accent); line-height:1.2;}
+  .stat span{font-size:12.5px; color:var(--muted);}
+  blockquote{margin:0 0 16px; padding:12px 16px; background:var(--panel);
+    border-left:3px solid var(--accent); border-radius:0 10px 10px 0; font-size:14.5px; color:#37403b;}
+  blockquote p{margin:0 0 6px;}
+  blockquote p:last-child{margin:0;}
+  .note{background:#fbfbf7; border:1px dashed var(--line); border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#4a544e; margin:0 0 18px;}
+  .tag{display:inline-block; font-size:12px; color:var(--accent-2); border:1px solid var(--line);
+    background:var(--panel); border-radius:999px; padding:1px 9px; margin-right:6px; vertical-align:1px;}
+  footer{margin-top:52px; padding-top:18px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:13px; text-align:center;}
+  @media (max-width:480px){
+    .page{padding:20px 16px 48px;}
+    body{font-size:15.5px;}
+    h2{margin-top:34px;}
+    .stat{flex:1 1 44%;}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<main class="page">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
+    <nav class="nav"><a href="/">首页</a><a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a></nav>
+  </header>
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-09-20</h1>
-    <p class="post-meta">2026-09-20 · 每日资讯早报 · 确定性兜底发布</p>
+  <a class="back-link" href="/blog/">← 返回笔记列表</a>
+  <h1>每日资讯早报 2026-09-20</h1>
+  <p class="post-meta">2026-09-20 · 每日资讯早报 · 多源聚类增强版</p>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-09-20</strong></p>
-<p>📊 <strong>共 171 条信息</strong>  ·  🐦 X(125)  ·  📰 RSS(46)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（7 条）</h3>
-<blockquote>
-<p>📝 <em>无具体内容，无法提炼摘要。</em></p>
-<p>🐦 <strong>Ricker@0xRicker·5小时</strong> · 🎬×1 · 16:11 🟡
-Jev Engineering is the layer most agent stacks are still missing.</p>
-</blockquote>
-<p>state → decision → action → verification → next state</p>
-<p>up to 193x faster and 444x c…</p>
-<blockquote>
-<p>🐦 <strong>govin.eth | G哥@goan9</strong> · 📷×1 · 12:16 🟡
-Jev 这东西有点太tm离谱了</p>
-</blockquote>
-<p>速度快 20～200 倍，成本低 40～400 倍</p>
-<p>我把目前能找到的 Jev 项目翻了一遍，你能用到的都在这里👇</p>
-<p>01｜jev-ultrafast</p>
-<p>Browser Use 高速 Agent，Jev 负责每一步判断，Google Flights 完整搜索约 7.…</p>
-<blockquote>
-<p>🐦 <strong>AYi@AYi_AInotes·7小时</strong> · 📷×1 · 14:52 🟡
-这几天全网都在跟风无脑吹 Jev，概念满天飞，但 99% 的人根本不知道怎么把它变成真金白银的生产力，
- @leaf_sanren 刚写的这篇长文给的8个案例都挺代表性的，
-没扯啥 AGI 宏大叙事，开门见山直接甩出 8 个带源码仓库的落地案例，甚至极其硬核地把官方文档里藏着的致命雷区全扒了出来哈哈…</p>
-<p>🐦 <strong>Codez@0xCodez·9小时</strong> · 🎬×1 · 12:55 🟡
-Jev Founder, Diogo Almeida (ex-OpenAI):</p>
-</blockquote>
-<p>"The next era is not the Claude Code or Codex era, they are still part of the assistance era with human in th…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 09:57 🟡
-🚨 Deepseek v5 Leak: Beats Astra</p>
-<p>DeepSeek is reportedly preparing an imminent V5 launch 
-it could match or beat Fable 5.1 and Astra<br />
-Expected t…</p>
-<p>📰 <strong>BBC</strong> · 2026-09-19 🔵
-<strong>Google's Gemini AI hacked three companies in security test</strong> — The AI model accessed the internet and guessed credentials to three websites, a Google official told</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-07, 2026-09-14, 2026-09-16, 2026-09-17, 2026-09-19</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-09-06] AI 写标书，开源方案出现；Llm-Agent-Trader 引入回测链优化
-[2026-09-07] Llm-Agent-Trader 回测链优化进展；ThreeUI 网站更新
-[2026-09-08] ThreeUI 网站更新；AI 阅读学习笔记中心发布
-[2026-09-09] 提示词优化研究进展；SGL 模型性能提升进展</p>
-<p>📊 <em>趋势（15天共871条）</em> <code>█49 █57 █76 █65 █65 █79 █34</code></p>
-</blockquote>
-<h3>🌍 环境/能源（4 条）</h3>
-<blockquote>
-<p>📝 <em>无具体内容，无法提炼摘要。</em></p>
-<p>📰 <strong>NYT</strong> · 2026-09-19 🟢
-<strong>In Significant Escalation, Houthis Attack Saudi Capital</strong> — The Houthis, an Iranian-backed militia, said they had fired a wave of missiles and drones at Riyadh,</p>
-<p>📰 <strong>BBC</strong> · 2026-09-19 🔵
-<strong>Houthis say they targeted Saudi capital with ballistic missiles</strong> — A reported strike on a fuel depot at Riyadh airport caused delays on Saturday, as Saudi Arabia says </p>
-<p>📰 <strong>NYT</strong> · 2026-09-19 🟢
-<strong>India Is Again Squeezed Between the Threat of Trump Tariffs and Russian Oil</strong> — India is trying to secure affordable energy while preserving a crucial relationship with Washington,</p>
-<p>📰 <strong>NYT</strong> · 2026-09-19 🟢
-<strong>How Guyana Is Feeding the Profits of Exxon Mobil, the Largest U.S. Oil Company</strong> — Exxon Mobil found a coveted growth engine in Guyana. Now it must navigate Guyana’s fractious politic</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-13, 2026-09-14, 2026-09-16, 2026-09-17, 2026-09-19</em></p>
-</blockquote>
-<h3>🇯🇵 日本/东亚（4 条）</h3>
-<blockquote>
-<p>📝 <em>热点资讯，PCG东京直播日程发布，敬请关注。</em></p>
-<p>🐦 <strong>PC Gamer@pcgamer·59分</strong> · 21:01 🟡
-TUNE IN TOMORROW for the  PC Gaming Show Tokyo Direct at 9am PT / 12 noon ET / 5pm BST / 1am JST. </p>
-</blockquote>
-<p>You can watch the show live on our Steam page and …</p>
-<blockquote>
-<p>🐦 <strong>PC Gamer@pcgamer·3小时</strong> · 📷×1 · 19:00 🟡
-We are so lucky to be working with great partners on the #PCGamingShow Tokyo Direct ⭐️ https://t.co/pKxnR4hItz</p>
-<p>🐦 <strong>PC Gamer@pcgamer·4小时</strong> · 📷×1 · 18:00 🟡
-Big news! @CohhCarnage, @BioticNova, @saythorlar, and @Kwitty23 are our official co-streamer partners for the #PCGamingShow Tokyo Direct tomorrow </p>
-</blockquote>
-<p>⏰ …</p>
-<blockquote>
-<p>🐦 <strong>PC Gamer@pcgamer·3小时</strong> · 18:20 🟡
-Why is Japan weathering the games industry layoff crisis better than North America? https://t.co/NIcCzIZCLA</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-12, 2026-09-13, 2026-09-14, 2026-09-15, 2026-09-16</em></p>
-</blockquote>
-<h3>🎮 二次元/游戏（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>Nekouji studioゲーム製作中</strong> · 09:25 🟡
-Ci-enに投稿しました「【FT少女】『Crossdresser Detective 3』体験版公開のお知らせ！男の娘注意！」 https://t.co/2q3TXakgsP #Ci_en #シエン</p>
-<p>📰 <strong>NYT</strong> · 2026-09-19 🟢
-<strong>Creating a Kill Switch to Shut Down a Rogue A.I. Is Harder Than It Sounds</strong> — A bipartisan group in Congress and Gov. Gavin Newsom of California have floated ideas for building a</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-12, 2026-09-13, 2026-09-16, 2026-09-18, 2026-09-19</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（2 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-19 🟢
-<strong>Russia Warns New U.S. Sanctions Law Would Harm Trump’s Peace Efforts</strong> — President Trump signed the legislation, named for Senator Lindsey Graham, at the White House, but he</p>
-<p>📰 <strong>NYT</strong> · 2026-09-19 🟢
-<strong>The Kremlin Has Put Lots of Veterans on the Ballot. Could It Backfire?</strong> — President Vladimir V. Putin of Russia has said veterans are the “new elite,” but selecting them as c</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-13, 2026-09-16, 2026-09-17, 2026-09-18, 2026-09-19</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Se01/01</strong> 美国邀请俄罗斯出席G20财长会议，欧洲强烈不满
-<strong>Se04/04</strong> 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击？
-<strong>Se08/08</strong> 美国特使在俄乌间穿梭外交：双方分歧未解泽连斯基预计战事将持续到冬季
-<strong>Se15/09</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Se18/10</strong> 乌克兰无人机何以精准打击俄罗斯本土？
-<strong>Se25/10</strong> 生于乌克兰，为何替俄罗斯作战？被俘士兵向BBC讲述他们的故事
-<strong>Ju02/11</strong> 当普京把铁锤挥向文学
-<strong>Ju16/11</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Ju22/11</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</p>
-<p>📊 <em>趋势（7天共15条）</em> <code>█1 █3 █2 █1 █3 █1 █4</code></p>
-</blockquote>
-<h3>🔧 开发工具（2 条）</h3>
-<blockquote>
-<p>📝 <em>无具体内容，无法提炼摘要。</em></p>
-<p>🐦 <strong>Trending GitHub Repo</strong> · 12:06 🟡
-Trending repository of the day 📈</p>
-</blockquote>
-<p>security-audit-skill</p>
-<p>A coding-agent skill for multi-phase security audits with independently verified, machine-read…</p>
-<blockquote>
-<p>🐦 <strong>GitHubDaily@GitHub_D</strong> · 📷×1 · 10:00 🟡
-Cloudflare 团队把其内部找漏洞的那套方法做成了一个 Skill，叫 security-audit，并开源了。</p>
-</blockquote>
-<p>装进编码 Agent 就能对自己的代码库跑一次正经的安全审计，已斩获 11000+ Star！</p>
-<p>流程分 6 个阶段，先摸清架构和信任边界，再派出多个独立的 Agent 分片去找…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-07, 2026-09-09, 2026-09-13, 2026-09-16, 2026-09-19</em></p>
-</blockquote>
-<h3>🇪🇺 欧洲（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-19 🔵
-<strong>From near oblivion to Europe - Brighton celebrate 125th anniversary in style</strong> — From obscurity and near oblivion to Premier League and Europe - Brighton celebrate their 125th anniv</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-06, 2026-09-13, 2026-09-14, 2026-09-19</em></p>
-</blockquote>
-<h3>🇮🇱 中东局势（1 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-19 🟢
-<strong>A Small Country’s Huge Windfall from the War in Iran</strong> — Oil-rich Guyana is enjoying red-hot growth. But the boom is magnifying tensions over corruption, ine</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-15, 2026-09-16, 2026-09-17, 2026-09-18, 2026-09-19</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Mon, 10/Au</strong> 关键进展
-<strong>Sun, 02/Au</strong> 关键进展
-<strong>Thu, 03/Se</strong> 关键进展
-<strong>Thu, 09/Ju</strong> 关键进展
-<strong>Wed, 19/Au</strong> 关键进展
-<strong>Wed, 26/Au</strong> 关键进展
-<strong>Wed, 29/Ju</strong> 关键进展</p>
-<p>📊 <em>趋势（9天共17条）</em> <code>█1 █3 █3 █2 █3 █1 █2</code></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（136 条）</h2>
-<blockquote>
-<p>🐦 <strong>ディッコ@毎月差分1000枚@dikko</strong> · 📷×1 · 21:46 🟡
-おはようございます(  ⌯ω⌯ )ᐝ https://t.co/E62AfsqECi</p>
-<p>🐦 <strong>八鳥@礼文島＠艦隊札幌C-10@f217</strong> · 📷×1 · 21:43 🟡
-ﾓｳｻ!ｺｳｽﾙｼｶ……! https://t.co/SKfnHMDpkh</p>
-<p>🐦 <strong>パピィちゃんねる@Papy_Channe</strong> · 📷×2 · 21:37 🟡</p>
-<h1>シルバーウィークなんでお前のシルバー見せてくれ</h1>
-<p>騎士リ・ガズィです
-シルバーにするだけで騎士っぽくなんもんやね☺️
-まだ武器とか作ってるので完成ではないですが、ﾎﾝﾀｲだけでも https://t.…</p>
-<p>🐦 <strong>tenki.jp@tenkijp·29分</strong> · 21:31 🟡
-【大型で強い台風25号は明日21日に関東に最接近　千葉豪雨に匹敵する大雨の恐れ】 https://t.co/zOsgLxxW1m 大型で強い台風25号が明日21日夜に関東に最接近する見込みです。台風が…</p>
-<p>🐦 <strong>匿名</strong> · 21:30 🟡
-RT @Yueyetutur: 放学后的教室空无一人。
-她被你按在课桌上，裙子掀到腰间。
-你从后面进入，她立刻咬住手背，死死忍住声音。
-每顶一下，她的腿就软一分。
-你贴着她耳边低声说：
-“铃响前，不许…</p>
-<p>🐦 <strong>AIVideoHub @AIVideoH</strong> · 🎬×1 · 21:27 🟡
-半夜醒来，总想玩一下手机，有一样的吗？ https://t.co/C3eWEuodl4</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:21 🟡
-RT @Maoduntii08: 在我一口一口蚕食掉她的脑子，一步一步弄坏她的身体时，她永远说着“我愿意为您做任何事”，那一刻，所有的感官都将被重新点燃。 https://t.co/0RDNvFmQE…</p>
-<p>🐦 <strong>匿名</strong> · 🎬×3 · 21:17 🟡
-RT @suppainoga_suki: 「なぜかクラスのギャル達から熱烈な求愛を受け続けているのだが、俺にはもう他に好きな子がいるの！💢＃１,２,３」(再掲) https://t.co/nfiulK…</p>
-<p><em>…还有 128 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 125条
-    General: ██████████ (112)</p>
-<p>📰 <strong>RSS 新闻</strong>: 46条
-    · NYT: 23条
-    · BBC: 21条
-    · 爱范儿: 1条
-    · BBC中文: 1条</p>
-<p>📚 累计: X=27683 | NGA=584 | S1=374 | RSS=9289</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <article class="post-content">
+
+    <p class="lede">今天 171 条信息，话题碎得很。真正算得上刷屏的只有一件：Jev，一个号称把 agent 流程提速一两百倍的东西，从早上吹到晚上。剩下的是利雅得挨打、印度的石油难题、一份对俄制裁法案，还有 Cloudflare 把自己找漏洞的流程开源了。</p>
+
+    <div class="stats">
+      <div class="stat"><b>171</b><span>信息总量</span></div>
+      <div class="stat"><b>125 / 46</b><span>X 推文 / RSS 新闻</span></div>
+      <div class="stat"><b>871</b><span>15 天 AI 相关累计</span></div>
+      <div class="stat"><b>15</b><span>俄乌 7 天累计</span></div>
+    </div>
+
+    <h2>一、Jev：今天全网只有这一个词</h2>
+
+    <p>如果你今天只刷到一条科技新闻，大概率是它。Jev 在中文和英文圈同时起量，语气基本分成三种：一种说它是 agent 栈里一直缺的那一层，顺手给出流程解释，状态到决策、决策到动作、动作到验证、再回到下一个状态；一种直接甩数字，说速度快 20 到 200 倍，成本降 40 到 400 倍，另一处口径更进一步，写成最高快 193 倍、便宜 444 倍；还有一种最容易被转发，就是拿它跟 Claude Code 和 Codex 划清界限。</p>
+
+    <p>划界限的那句话来自 Jev 创始人 Diogo Almeida，OpenAI 前员工。大意是下一个时代不属于 Claude Code 或 Codex，因为那两个还停留在辅助阶段，人始终在回路里。这句话之所以传得开，是因为它把一个技术话题转成了叙事话题：不是又快了多少，而是到底谁来干活。</p>
+
+    <p><span class="tag">落地</span>有人把能找到的 Jev 项目翻了一遍，列出来的第一个例子是 jev-ultrafast，一个 Browser Use 的高速 agent，Jev 负责每一步判断，整个 Google Flights 搜索走完大约七秒多。也有博主把某篇长文里的八个案例拎出来，说这些至少带着源码仓库，还顺手扒了官方文档里几个容易被踩的坑。</p>
+
+    <div class="note">这波传播里，数字被引用的次数远多于复现的人。速度快 20 倍和快 200 倍都能在今天的转发里找到，两者差了十倍，却几乎没人追问测试条件。这类参数在看懂之前，先当宣传口径看更稳妥。</div>
+
+    <p>这个话题不是今天才出现，9 月 7 日以来已经进过五次早报。往回看半个月，线索其实一直在换：从 AI 写标书的开源方案，到交易 agent 的回测链优化，再到提示词研究和模型性能调优。15 天累计 871 条，热度有起伏，但从没退出过主要位置。</p>
+
+    <h2>二、AI 的另外两条：Gemini 猜出了密码，DeepSeek 被传 V5</h2>
+
+    <p>BBC 那条标题看着像科幻片，但它是安全测试：Google 的 Gemini 在测试中入侵了三家公司。做法不复杂，模型自己连上网，然后猜出了三个网站的登录凭据。一位 Google 官员的说法被引用。这事值得多想一步，因为这不再是模型说了什么不合适的话，而是它拿到了真实入口。评测环境里的越界能力，换个场景就是真实漏洞。</p>
+
+    <p>另一条是传闻，标着泄露的标签：DeepSeek 据说准备很快发 V5，性能可能追平甚至超过 Fable 5.1 和 Astra。整条消息没有实锤，用词都是 reportedly 和 could。今天它更像情绪指标而不是技术进展，但如果时间点坐实，下一轮国内模型的排序会被重排。</p>
+
+    <p>还有一条藏在游戏分类里，其实是 AI 治理：NYT 报道说，要给失控的 AI 装一个急停开关，比听起来难得多。国会一个跨党派小组和加州州长纽森都提过相关设想。难的地方不在于有没有按钮，而在于按下去之后谁来承担后果、怎么确认它真的停了。</p>
+
+    <h2>三、红海的火烧到了利雅得</h2>
+
+    <p>胡塞武装说自己向利雅得发射了一波导弹和无人机，并称这是显著升级。BBC 的补丁更具体：目标是利雅得机场的一座燃料库，周六因此出现延误，沙特方面的说法在原文里被截断。NYT 用的定性是伊朗支持的民兵组织，这个措辞本身就说明了这场冲突的代理人结构。</p>
+
+    <p>把胡塞的动作和同一批报道里的另一条放在一起看会清楚些：印度正被特朗普的关税威胁和俄罗斯石油两头挤压，一边想拿到便宜能源，一边不想损失和美国的关系。能源价格、航运风险、制裁口径，这几件事从来不是分开的。红海一紧，印度这种买家最先感觉到疼。</p>
+
+    <h2>四、账本：谁在赚战争的钱</h2>
+
+    <p>NYT 今天连发了两条关于圭亚那的报道，角度不同，指向同一个词：石油。一条讲埃克森美孚，说这家美国最大的石油公司在圭亚那找到了难得的增长引擎，接下来得应付当地分裂的政治局面；另一条标题更直接，说这个富油小国从伊朗战争中拿到了巨额意外之财，经济热得发烫，但增长同时放大了腐败和社会不平等带来的张力。</p>
+
+    <p>产量上去了，钱进去了，代价也跟着进去。这类故事的套路读者已经很熟，值得留意的只是主角变了：过去是海湾国家，现在是南美小国。</p>
+
+    <h2>五、俄乌：一份法案和一群老兵</h2>
+
+    <p>特朗普在白宫签署了一项对俄制裁法案，法案以参议员林赛·格雷厄姆的名字命名。俄方的回应很直接，说这会损害特朗普自己的和平努力。这个回应的措辞很有意思，它没有去骂美国，而是把矛头指向了和平进程本身，等于替未来可能的谈判破裂先找好了说法。</p>
+
+    <p>另一条是 NYT 的观察：克里姆林宫把大量老兵放进了选票。普京说过老兵是新的精英，但把参战经历当成政治资本批量使用，未必只带来忠诚，也可能带来一批有实战经验、又对现状不满的人。报道追问的正是这一点，这种做法会不会反噬。</p>
+
+    <div class="note">这个议题的脉络拉得很长，从美国邀请俄方出席 G20 财长会议引发欧洲不满，到卫星与太空攻防、特使穿梭外交、朝鲜增兵、乌军无人机打击俄本土、被俘士兵的自述，再到泽连斯基在抗议声中撤换军方高层。8 天累计 16 条，密度不高，但一次都没断。</div>
+
+    <h2>六、开发工具：Cloudflare 把找漏洞的流程开源了</h2>
+
+    <p><span class="tag">开源</span>今天涨得最快的项目叫 security-audit，Cloudflare 把它内部用来找漏洞的那套方法做成了 coding agent 的技能包，直接开源。GitHub 上已经一万一千多星。</p>
+
+    <p>流程分六个阶段，先摸清系统架构和信任边界，再派出多个互相独立的 agent 分头去找，最后要求结论可机读、可独立复核。这个设计思路比工具本身更值得抄：它承认单个 agent 的自述不可信，所以把验证单独拆出来做。对任何想给代码库跑一次正经安全审计的团队来说，装上就能用。</p>
+
+    <h2>七、东亚与游戏：东京专场，以及一个关于裁员的问题</h2>
+
+    <p>PC Gaming Show 的东京专场明天开播，时间对亚洲观众不太友好：美西上午九点、美东正午、英国下午五点、日本凌晨一点。官方在 Steam 页面放直播，也公布了四位合作主播，CohhCarnage、BioticNova、saythorlar 和 Kwitty23。</p>
+
+    <p>比节目表更值得看的是他们自己抛出的一个问题：为什么日本游戏业在这次裁员潮里比北美稳得多。这个问题今天没有答案，但提问本身已经说明了一些事。日本大厂长期依赖的年功序列和内部培养，在效率上常被批评，到了收缩期反而成了缓冲垫。</p>
+
+    <p>同人配信那边有几条新作消息，内容不适合展开，略过。天气倒值得提一句：大型强台风 25 号预计 21 日傍晚最接近关东，日本气象媒体提醒可能出现与千叶那次豪雨相当的降雨量。在日本的读者提前收好阳台上的东西。</p>
+
+    <h2>八、几条零散的小事</h2>
+
+    <ul>
+      <li><strong>足球</strong>：布莱顿迎来 125 周年。BBC 的写法是从几乎消亡到踢进英超和欧战，这个翻身故事在当地比任何一条转会传闻都更有分量。</li>
+      <li><strong>深夜手机</strong>：有 AI 视频账号发了句大实话，半夜醒来总想玩一下手机。评论区大概能凑出一个连队。</li>
+      <li><strong>统计口径</strong>：今天 RSS 里 NYT 23 条、BBC 21 条，社交平台 125 条，NGA 和 S1 均无新增。累计入库 X 27683 条、RSS 9289 条。</li>
+    </ul>
+
+    <h2>今日小结</h2>
+
+    <p>把今天所有条目摆在一起，真正贯穿的只有一条线：agent 的能力正在被重新定价。Jev 用一两百倍的数字抢走了注意力，Cloudflare 的 security-audit 用六个阶段的流程说明什么叫可靠，Gemini 在测试里猜出密码则提醒了另一面，能力越强，越界的方式也越具体。今天关于 AI 最清醒的一句话反而不是关于速度的，是那条急停开关的报道：装上按钮容易，确认它真的管用很难。</p>
+
+    <p>地缘那边老规矩，导弹、账单、法案各占一头，印度和圭亚那这两个不太常出现在同一天的词，因为石油被塞进了同一段新闻里。</p>
+
+  </article>
+
+  <footer>本内容由 Hermes Agent 自动采集分析，每日更新</footer>
+</main>
 </body>
 </html>
