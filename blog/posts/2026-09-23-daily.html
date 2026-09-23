@@ -1,328 +1,172 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-09-23 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-09-23 · Dawei Xu</title>
+<meta name="description" content="2026-09-23 多源资讯早报：Anthropic 和 OpenAI 相隔一百分钟发新模型、Claude Code 封号绕道方案、国产模型的三段论、Google 开源的 agent 编排、联大上的伊朗威胁与油价跌破一百美元。">
+<style>
+  :root{
+    color-scheme: light;
+    --bg:#f6f7f2; --panel:#ffffff; --ink:#1f2428; --muted:#66706a;
+    --line:#d9ded7; --accent:#226f54; --accent-2:#b1442f;
+    --shadow:0 16px 42px rgba(31,36,40,.08);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.75; font-size:16px;
+  }
+  a{color:inherit; text-decoration:none;}
+  a:hover{color:var(--accent);}
+  .page{max-width:760px; margin:0 auto; padding:28px 20px 64px;}
+  .topbar{display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:48px; margin-bottom:36px;}
+  .brand{display:flex; align-items:center; gap:12px; font-weight:700;}
+  .mark{display:grid; place-items:center; width:36px; height:36px; border:1px solid var(--line);
+    background:var(--panel); color:var(--accent); border-radius:8px; box-shadow:var(--shadow);}
+  .nav{display:flex; gap:18px; font-size:14px; color:var(--muted);}
+  .back-link{display:inline-block; font-size:14px; color:var(--muted); margin-bottom:20px;}
+  h1{font-size:clamp(1.5rem,5vw,2rem); line-height:1.3; margin:0 0 10px; letter-spacing:-.01em;}
+  .post-meta{color:var(--muted); font-size:14px; margin:0 0 8px;}
+  h2{font-size:1.2rem; margin:44px 0 14px; padding-top:20px; border-top:1px solid var(--line);}
+  h2:first-of-type{border-top:0; padding-top:0;}
+  h3{font-size:1.03rem; margin:26px 0 8px; color:var(--accent);}
+  p{margin:0 0 14px;}
+  ul{margin:0 0 16px; padding-left:1.25em;}
+  li{margin:0 0 7px;}
+  strong{font-weight:650;}
+  .lede{font-size:1.02rem; color:#2c3338;}
+  .stats{display:flex; flex-wrap:wrap; gap:10px; margin:20px 0 8px;}
+  .stat{flex:1 1 128px; background:var(--panel); border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px; box-shadow:var(--shadow);}
+  .stat b{display:block; font-size:1.35rem; color:var(--accent); line-height:1.2;}
+  .stat span{font-size:12.5px; color:var(--muted);}
+  blockquote{margin:0 0 16px; padding:12px 16px; background:var(--panel);
+    border-left:3px solid var(--accent); border-radius:0 10px 10px 0; font-size:14.5px; color:#37403b;}
+  blockquote p{margin:0 0 6px;}
+  blockquote p:last-child{margin:0;}
+  .note{background:#fbfbf7; border:1px dashed var(--line); border-radius:10px;
+    padding:12px 16px; font-size:14.5px; color:#4a544e; margin:0 0 18px;}
+  .tag{display:inline-block; font-size:12px; color:var(--accent-2); border:1px solid var(--line);
+    background:var(--panel); border-radius:999px; padding:1px 9px; margin-right:6px; vertical-align:1px;}
+  footer{margin-top:52px; padding-top:18px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:13px; text-align:center;}
+  @media (max-width:480px){
+    .page{padding:20px 16px 48px;}
+    body{font-size:15.5px;}
+    h2{margin-top:34px;}
+    .stat{flex:1 1 44%;}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<main class="page">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
+    <nav class="nav"><a href="/">首页</a><a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a></nav>
+  </header>
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-09-23</h1>
-    <p class="post-meta">2026-09-23 · 每日资讯早报 · 确定性兜底发布</p>
+  <a class="back-link" href="/blog/">← 返回笔记列表</a>
+  <h1>每日资讯早报 2026-09-23</h1>
+  <p class="post-meta">2026-09-23 · 每日资讯早报 · 多源聚类增强版</p>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-09-23</strong></p>
-<p>📊 <strong>共 221 条信息</strong>  ·  🐦 X(97)  ·  📰 RSS(124)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（19 条）</h3>
-<blockquote>
-<p>📝 <em>OpenAI发布GPT-6 Sol和GPT-6 Luna</em></p>
-<p>🐦 <strong>雪踏乌云@Pluvio9yte·3小时</strong> · 18:52 🟡
-Anthropic 和 OpenAI 又干起来了。</p>
-</blockquote>
-<p>Anthropic 发布 Claude Opus 5.5。大约 100 分钟后，OpenAI 发布 GPT-6 Sol 和 GPT-6 Luna。</p>
-<p>这几个模型的价格都在降低。</p>
-<p>GPT-6 Sol 的常驻价是输入 $2 / 输出 10，相对 G…</p>
-<blockquote>
-<p>🐦 <strong>刘小排@bourneliu66·3小时</strong> · 18:29 🟡
-GPT-6-Sol和Claude Opus 5.5都来了。
-很遗憾，这次Anthropic的Opus 5.5赢了，GPT-6-Sol一败涂地。</p>
-<p>🐦 <strong>Tibo@thsottiaux·3小时</strong> · 18:23 🟡
-GPT-6 Sol and Luna are out. Not only are they a very significant improvement across the board, but also in writing and general "you know when you try …</p>
-<p>🐦 <strong>Max For AI@MaxForAI·</strong> · 📷×1 🎬×1 · 18:13 🟡
-刚刚，OpenAI 正式发布 GPT-6 Sol 和 GPT-6 Luna。</p>
-</blockquote>
-<p>GPT-6 这一代终于开始全面铺开了。</p>
-<p>月初 OpenAI 先发布了最强的 GPT-6 Astra，现在开始把 Astra 上的能力往更便宜、更日常的模型上下放。</p>
-<p>这次最狠的是 GPT-6 Sol，API 价格直接来…</p>
-<blockquote>
-<p>📝 <em>Claude Code解封</em></p>
-<p>🐦 <strong>超级峰@Mileson07·7小时</strong> · 📷×1 · 14:29 🟡
-太牛了 🐮。。。</p>
-</blockquote>
-<p>Claude Code 被封的问题直接就解决了。。。</p>
-<p>竟然把 Grok Bot 云虚拟机美国主机当做自己的电脑 😅</p>
-<p>真的是肉身出海了，不 Agent 出海了，笑死～</p>
-<blockquote>
-<p>🐦 <strong>Kin@KinGao476942·8小时</strong> · 📷×1 · 13:54 🟡
-分享一个让你的 Claude Code 永远不会被封的终极焚决：通过 Grok bot @bot 的云电脑终端 Cli 登陆，接入到 你的 Grok bot 里，因为 Grok bot 的云电脑是纯正的美国 IP 电脑，非常干净，接入后无论有什么编程任务还是非编程任务，你都可以通过 Grok bot…</p>
-<p>🐦 <strong>宝玉@dotey·5小时</strong> · 📷×4 · 16:22 🟡
-最近摸索了一种新的节约 Token 但是效果不错的模式（都是被逼的，Token 太贵）：</p>
-</blockquote>
-<p>Fable 写设计方案 -&gt; 
-（Loop 开始）
-Opus 执行 -&gt; Advisor（Fable） 验收
-（Loop 结束）</p>
-<p>步骤是这样的：</p>
-<ol>
-<li>先 Claude 里面设置一下 advisor 为 …</li>
-</ol>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 15:41 🟡
-“国产模型，年底跑不到 3T 模型就可能出局。”</p>
-</blockquote>
-<p>“未来两年最核心的机会就是打造 Agent 入口级产品。”</p>
-<p>“未来找工作会变成认领任务。”</p>
-<p>曾鸣把颠覆性技术演化拆成三段（AI技术就是）：</p>
-<ol>
-<li>第一阶段，技术被社会接受，成为通用基础设施。</li>
-<li>第二阶段，从基础设施诞生海量新应用，百花齐放…</li>
-</ol>
-<blockquote>
-<p>🐦 <strong>向阳乔木@vista8·6小时</strong> · 15:17 🟡
-帮大家总结下要点：</p>
-</blockquote>
-<ol>
-<li>国内预训练架构创新全球领先，但后训练数据积累落后海外约半年。</li>
-</ol>
-<p>因为国内模型厂算力只有海外头部的十分之一左右，被逼出架构创新。</p>
-<ol start="2">
-<li>
-<p>后训练门槛比预训练低得多，核心竞争在数据质量，不在 infra。</p>
-</li>
-<li>
-<p>组织架构重要性超过算力储备。混元案例说明，拆掉部门墙比单纯堆人…</p>
-</li>
-</ol>
-<blockquote>
-<p>🐦 <strong>darkzodchi@zodchiii·</strong> · 📷×1 · 12:40 🟡
-Jev Founder, Diogo Amogo, just released a PDF on building a Jev Harness for coding agents</p>
-</blockquote>
-<p>this is a blueprint on how to make your coding agents 200× …</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 12:31 🟡
-自己搭代理时，最麻烦的往往不是“能不能连上”，而是不同类型的流量该怎么分开处理。</p>
-</blockquote>
-<p>personal-edge-proxy 给出了一套清晰的分流方案：</p>
-<ol>
-<li>普通上网流量交给 Hysteria2</li>
-<li>AI 相关流量单独从 WARP 出口转发</li>
-<li>Claude / Anthropic 支持额外接…</li>
-</ol>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-09-22 🟢
-<strong>千问办公押注的企业上下文，是 Agent 时代的组织语言</strong> — 2026-09-22 17:06:44</p>
-</blockquote>
-<p>在大模型在拼命刷 Benchmark 卷编程的时候，「不能说话」的 Jev 却意外成了 AI 圈的新顶流，</p>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-09-21 🔵
-<strong>特朗普稱美國將組建「人工智能部隊」並任命「AI沙皇」</strong> — 儘管有人警告這項新興技術存在風險，但總統表示，他的政府「絕不會以任何方式阻礙或扼殺其發展」。</p>
-<p>📰 <strong>BBC中文</strong> · 2026-09-14 🔵
-<strong>人工智能踩「剎車」？特朗普：別忘了中美競爭</strong> — 上星期六，達里奧·阿摩迪（Dario Amodei）呼籲放緩發展步伐,以「降低出現嚴重問題的風險」，奧特曼和馬斯克均表示認同。這名Anthropic行政總裁同時強調，任何放緩都必須有所限度，以免讓中國</p>
-<p>📰 <strong>BBC中文</strong> · 2026-09-18 🔵
-<strong>人類真的可能被AI滅絕？我們可以如何阻止？</strong> — 人工智能（AI）快速發展之際，AI界對其潛在風險的公開討論也越來越多。部分科學家甚至估計，未來十年AI導致人類滅絕的可能性超過一成。</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-14, 2026-09-16, 2026-09-17, 2026-09-20, 2026-09-22</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>09/09</strong> 关键进展
-<strong>09/10</strong> 关键进展
-<strong>09/11</strong> 关键进展
-<strong>09/12</strong> 关键进展
-<strong>09/13</strong> 关键进展</p>
-<p>📊 <em>趋势（15天共922条）</em> <code>█66 █69 █79 █69 █86 █70 █68</code></p>
-</blockquote>
-<h3>🇮🇱 中东局势（6 条）</h3>
-<blockquote>
-<p>📝 <em>Trump在联合国演讲中威胁要消灭伊朗</em></p>
-<p>📰 <strong>BBC</strong> · 2026-09-22 🔵
-<strong>Trump threatens to 'annihilate' Iran in UN speech as officials meet on sidelines</strong> — In his speech, the US president pondered whether a peace deal would be agreed or whether he would ha</p>
-<p>📰 <strong>NYT</strong> · 2026-09-22 🟢
-<strong>Trump Uses U.N. Address to Threaten Annihilation of Iran</strong> — Also, El-Sayed campaigned with Harris, unlike many other Democrats. Here’s the latest at the end of </p>
-<p>📰 <strong>NYT</strong> · 2026-09-22 🟢
-<strong>Netanyahu Falsely Accuses Mamdani of Supporting Hamas After Mayor’s CNN Intervie</strong> — The Israeli prime minister falsely accused Mayor Zohran Mamdani of supporting Hamas after CNN interv</p>
-<p>📰 <strong>NYT</strong> · 2026-09-22 🟢
-<strong>Republicans in Tight Senate Races Call for End to Iran War</strong> — Representative Ashley Hinson of Iowa and Mike Rogers of Michigan distanced themselves from President</p>
-<p>📰 <strong>BBC</strong> · 2026-09-22 🔵
-<strong>No regular contact with pair held in Iran, family say</strong> — Craig and Lindsay Foreman's family say they were promised contact after they ended hunger strikes.</p>
-<p>📰 <strong>BBC</strong> · 2026-09-22 🔵
-<strong>Iran must stop arming Houthis in Yemen, G7 says ahead of UN General Assembly</strong> — The G7 also condemns "in the strongest terms" Houthi attacks on Saudi Arabia, saying that the escala</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-15, 2026-09-16, 2026-09-17, 2026-09-18, 2026-09-19</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>02/09</strong> 特朗普表示同意取消对伊朗的打击，前提是能“迅速”达成协议
-<strong>09/03</strong> 中东海湾国家阿曼（Oman）方面称，霍尔木兹海峡会谈进展顺利，而伊朗则警告协议不会打通海峡。
-<strong>09/23</strong> 美国制裁伊朗经济新措施 为何对中国“松手”？
-<strong>10/29</strong> 欧洲游客“消失”，东南亚旅游业者陷入困境.</p>
-<p>📊 <em>趋势（8天共17条）</em> <code>█3 █3 █2 █3 █1 █2 █2</code></p>
-</blockquote>
-<h3>🌍 环境/能源（5 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-22 🟢
-<strong>Fact-Checking Trump’s Speech at the United Nations</strong> — President Trump’s remarks about oil reserves, the drug trade and his peace efforts contained falseho</p>
-<p>📰 <strong>NYT</strong> · 2026-09-22 🟢
-<strong>Global Oil Price Drops Below $100 a Barrel</strong> — Investors anticipated that a damaged Saudi Arabian pipeline may be close to reopening, allowing more</p>
-<p>📰 <strong>BBC</strong> · 2026-09-22 🔵
-<strong>Sir Jim Ratcliffe suspends production at key UK plants blaming high gas prices</strong> — Ineos said natural gas in the UK is twelve times more expensive than in the US.</p>
-<p>📰 <strong>爱范儿</strong> · 2026-09-22 🟢
-<strong>涨价 9 万？岚图梦想家 9 凭什么敢卖 41.99 万元</strong> — 2026-09-22 21:47:50</p>
-</blockquote>
-<p>2022 年 5 月，第一代梦想家上市的时候，高端 MPV 市场还是另一副样子。
-那时 GL8 依然是这个</p>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-09-22 🟢
-<strong>10.99 万元起！日产新 N7 这次是真加量还降价</strong> — 2026-09-22 21:48:33</p>
-</blockquote>
-<p>去年 4 月，东风日产 N7 带着 11.99 万元起的价格进入市场时，一度成为合资新能源阵营里颇受关注的</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-14, 2026-09-16, 2026-09-17, 2026-09-19, 2026-09-22</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（3 条）</h3>
-<blockquote>
-<p>🐦 <strong>Russia's Pivot to As</strong> · 13:11 🟡
-China Approves Imports Of Russian Mustard
-https://t.co/HUEkxd13Vl
-Russia has begun exporting mustard powder to China, with the State watchdog giving a…</p>
-<p>📰 <strong>BBC</strong> · 2026-09-22 🔵
-<strong>Ukraine anger as EU removes Russian oligarchs from sanctions list</strong> — Alisher Usmanov and Mikhail Fridman both have close ties to President Putin, and Kyiv said the move </p>
-<p>📰 <strong>BBC</strong> · 2026-09-22 🔵
-<strong>Watch: Ukraine's race to counter new jet-powered Russian drones</strong> — Russia's new drones are harder to intercept, making recent attacks on Ukraine even more devastating.</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-13, 2026-09-16, 2026-09-18, 2026-09-19, 2026-09-20</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>04/04</strong> 中国、美国和俄罗斯的太空攻防战：卫星如何成为现代战争的第一击？
-<strong>08/15</strong> 美国特使在俄乌间穿梭外交：双方分歧未解 泽连斯基预计战事将持续到冬季 | 美国特使乘“和平快车”抵达基辅，但战争依然看不到终点
-<strong>15/18</strong> “科技仙境”莫斯科：是数字乌托邦，也是监控陷阱 | 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为何？
-<strong>18/22</strong> 乌克兰无人机何以精准打击俄罗斯本土？
-<strong>22/02</strong> 战争和权力的新物理规律
-<strong>25/04</strong> 生于乌克兰，为何替俄罗斯作战？被俘士兵向BBC讲述他们的故事
-<strong>02/19</strong> 当普京把铁锤挥向文学
-<strong>16/22</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为何？
-<strong>22/07</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</p>
-<p>📊 <em>趋势（8天共16条）</em> <code>█2 █1 █3 █1 █4 █1 █1</code></p>
-</blockquote>
-<h3>🔧 开发工具（16 条）</h3>
-<blockquote>
-<p>📝 <em>用Go把AI agent当成了像管理Kubernetes容器一样的方式来处理</em></p>
-<p>🐦 <strong>Ren@Ryrenz·4小时</strong> · 17:40 🟡
-🦾 Google 刚开源了 AX，把一整个集群里的 AI agent 当成 Kubernetes 里的容器来管。</p>
-</blockquote>
-<p>半年前才建的仓库，GitHub 上已经 6.8K stars，用 Go 写的。</p>
-<p>现在很多人手里不止一个 agent 在跑：这个改代码，那个爬资料，还有一个定时出报告。数量一上去麻烦立…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 12:37 🟡
-卧靠，GitHub 真把 AI 圈底裤都掀了</p>
-</blockquote>
-<p>这 7 个开源项目，正在把一堆每月收费几十、上百美元的 AI 软件，直接干成免费，天花板的存在</p>
-<p>1、Hermes + Jev Skills</p>
-<p>直接给 Codex / Agent 加上路由、记忆、技能选择和 GUI 点击能力</p>
-<p>很多原本几秒到几十秒的判…</p>
-<blockquote>
-<p>🐦 <strong>AYi@AYi_AInotes</strong> · 🎬×1 · 12:38 🟡
-卧槽真的有点爽到了兄弟们，这才是 AI 该有的样子啊，
-发句指令直接把全网 10 个顶级AI信息源兄弟给你筛成 6 条带证据的干货，</p>
-</blockquote>
-<p>出海做竞品和社媒监测的也都看过来呀，一个 Key 把全网数据和 AI 串起来直接出简报，以前大几万块的活现在几毛钱搞定！</p>
-<p>我每天看 AI 动态要在x（推特）、油管…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 09:48 🟡
-离谱！快去搜，免费Codex的Token</p>
-</blockquote>
-<p>GitHub 搜 OPENAI_API_KEY，直接搜出 500 多万条</p>
-<p>【看图】里面翻出一堆ChatGPT、Codex、OpenAI API 相关的 api Key、Token</p>
-<p>我测试下很多api key都能直接用有额度</p>
-<p>这下 真有无限Token …</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 12:02 🟡
-推荐一个系统设计面试封神级资料库：system-design-101。</p>
-</blockquote>
-<p>它最狠的地方就是：能画图的绝不跟你写一大段废话。</p>
-<p>消息队列、缓存、数据库、支付系统、微服务、分布式架构、DevOps、安全……各种复杂概念，基本都是一张架构图 + 大白话解释，请求从哪进、数据怎么走、组件怎么配，一眼就能建立…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-09, 2026-09-13, 2026-09-16, 2026-09-19, 2026-09-22</em></p>
-</blockquote>
-<h3>🇨🇳 中美关系（2 条）</h3>
-<blockquote>
-<p>📰 <strong>纽约时报中文</strong> · 2026-09-22 🟢
-<strong>习近平如何看待“习特会”：占据政治优势、底气更足</strong> — DAVID PIERSON2026年9月22日今年5月，特朗普总统与中国领导人习近平在北京人民大会堂。 Kenny Holston/The New York Times本周，中国最高领导人习近平和特朗</p>
-<p>📰 <strong>纽约时报中文</strong> · 2026-09-22 🟢
-<strong>“习特会”在即，中美贸易“暗战”小动作不断</strong> — ANA SWANSON2026年9月22日特朗普总统与中国领导人习近平去年在韩国釜山会面。 Haiyun Jiang/The New York Times一年前，美国和中国在韩国举行的会议上达成贸易休</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-15, 2026-09-16, 2026-09-19, 2026-09-20, 2026-09-22</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Se/22 01版 - 习近平复信美国10所高校青年学生</strong>
-<strong>Au/25 03版 - 王沪宁会见第三届中美1.5轨对话美方代表</strong>
-<strong>Se/28 03版 - 这份“信任票”，见证中国定力与担当（和音）</strong>
-<strong>Au/02 04版 - 李强会见美中贸易全国委员会董事会代表团</strong>
-<strong>Au/05 03版 - 中美经贸需要“合作清单”，而非“覆盖清单”（钟声）</strong>
-<strong>Ju/12 03版 - “看到热情好客、多元交融的新疆”</strong>
-<strong>Ju/19 03版 - 绿色情缘，见证中美民间友好薪火相传（和音）</strong>
-<strong>Ju/22 03版 - 落实元首会晤共识，积极构建中美建设性战略稳定关系</strong>
-<strong>Se/26 03版 - 第三届中美1.5轨对话举行</strong></p>
-<p>📊 <em>趋势（14天共80条）</em> <code>█5 █4 █5 █6 █10 █8 █5</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-22 🔵
-<strong>Call of Duty's Activision to make next Halo game as Xbox cuts more jobs</strong> — The news comes as part of a "reset" announced by Xbox in July, with 3,600 planned job losses overall</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-18, 2026-09-19, 2026-09-20, 2026-09-21, 2026-09-22</em></p>
-</blockquote>
-<h3>₿ Crypto/Web3（1 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-22 🟢
-<strong>Tech-Utopian Movement Praxis Says It Has Found a Home in Uruguay</strong> — After a sprawling world tour, Praxis, a New York-based, crypto-backed “digital nation,” has signed a</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-15, 2026-09-17, 2026-09-20, 2026-09-21, 2026-09-22</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-09-21] US spot Bitcoin ETFs recorded a late-week recovery that was earlier outflows and losses.
-[2026-09-22] US spot Bitcoin ETFs recorded a late-week recovery that fully reversed earl | ZEROBASE WEEKLY 9.14-9.20 ZBT range this week. It ended near $0.083.</p>
-<p>📊 <em>趋势（14天共31条）</em> <code>█2 █2 █2 █3 █4 █2 █1</code></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（156 条）</h2>
-<blockquote>
-<p>🐦 <strong>旺旺@TiagerBao·21分钟</strong> · 📷×1 🎬×1 · 21:39 🟡
-马上用起来👏👏</p>
-<p>🐦 <strong>AI美脚推し@Hke5Jun·22分钟</strong> · 📷×1 🎬×1 · 21:39 🟡
-フォロワー様が2,000人
-見てくれてありがとうございます♪
-これからも美脚美女をよろしくお願いします💕</p>
-</blockquote>
-<h1>AIart</h1>
-<h1>AIgirl</h1>
-<h1>AI美女</h1>
-<h1>AI美脚</h1>
-<h1>AIOL部 https://t.co/…</h1>
-<blockquote>
-<p>🐦 <strong>Tibo@thsottiaux·36分钟</strong> · 📷×1 🎬×1 · 21:25 🟡
-Maybe our cutest launch so far. But still packing the biggest punch.</p>
-<p>🐦 <strong>おぐ@Ogog777mo·1小时</strong> · 📷×1 · 20:03 🟡</p>
-<h1>AIイラスト</h1>
-</blockquote>
-<h1>AIart️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️️ https://t.co/FxSR4Qaz5l</h1>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 19:48 🟡
-RT @Yueyetutur: ‼️直播火热进行中‼️ 速来围观呀💦</p>
-<p>🐦 <strong>奶霜小奈@xiaonai2005·2小时</strong> · 19:37 🟡
-"今天做了一个美丽的梦，清晨起来心情格外好！💭"</p>
-<p>🐦 <strong>Hiyoko@ai_hiyo_·2小时</strong> · 📷×3 · 19:30 🟡
-1, 2 or 3 https://t.co/L4oMuczDov</p>
-<p>🐦 <strong>蟹黄饼宝@xiehuangbb·2小时</strong> · 19:13 🟡
-"尝试了一家新的甜品店，甜蜜满满！🍰"</p>
-<p><em>…还有 148 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 97条
-    General: ██████████ (83)</p>
-<p>📰 <strong>RSS 新闻</strong>: 124条
-    · BBC: 49条
-    · NYT: 34条
-    · BBC中文: 32条
-    · 爱范儿: 6条
-    · 纽约时报中文: 3条</p>
-<p>📚 累计: X=28862 | NGA=584 | S1=374 | RSS=9783</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <article class="post-content">
+
+    <p class="lede">今天最热闹的一幕发生在两小时之内。Anthropic 发了 Claude Opus 5.5，大约一百分钟后，OpenAI 把 GPT-6 Sol 和 GPT-6 Luna 一起推了出来。剩下的内容分散得多：一群人研究怎么让 Claude Code 不被封号，一条关于国产模型能不能活下去的判断，一个把 agent 当容器管的开源项目，以及联大讲台上那句「消灭伊朗」和跌破一百美元的油价。</p>
+
+    <div class="stats">
+      <div class="stat"><b>221</b><span>信息总量</span></div>
+      <div class="stat"><b>97 / 124</b><span>X 推文 / RSS 新闻</span></div>
+      <div class="stat"><b>922</b><span>15 天 AI 相关累计</span></div>
+      <div class="stat"><b>80</b><span>中美 14 天累计</span></div>
+    </div>
+
+    <h2>一、一百分钟内的两次发布</h2>
+
+    <p>顺序是这样的：Anthropic 先开 Claude Opus 5.5，隔了大约一百分钟，OpenAI 放出 GPT-6 Sol 和 GPT-6 Luna。月初 OpenAI 刚发过这代里最强的 GPT-6 Astra，今天的动作更像是把 Astra 身上的能力往下放，落到更便宜、更日常的那一档。GPT-6 Sol 的常驻价是输入 2 美元、输出 10 美元，几个新模型的价格带整体在往下走。</p>
+
+    <p>评价当场就分岔了。一位博主看完两边直接下结论：这次 Anthropic 赢了。这个说法传得很快，但它的依据没人展开写。另一头的口径来自 OpenAI 内部，负责发布的 Tibo 说 Sol 和 Luna 不只是全面变好，写作和「你知道那种感觉」的通用体感也有提升。厂商自己夸自己，不用太当真，但至少说明这代重点不在跑分，在文风。</p>
+
+    <div class="note">发布间隔一百分钟，看起来像对撞，其实说明不了谁先谁后有什么必然关系。两边的自我评价都带着立场，真正的横向评测通常要等三五天才有像样的数据。今天转发里已经有人开始排座次了，这一步走得比证据快。</div>
+
+    <h2>二、绕过封号，代价是换个东西担风险</h2>
+
+    <p>Claude Code 封号的老问题今天出了个解法，路子有点野：借一台 Grok Bot 的云端虚拟机当跳板。因为那台机器是干净的美国 IP，登录进去之后，编程任务还是别的任务，都能从那里发出去。发帖人的兴奋是真实的，「肉身出海不行就 Agent 出海」这句总结得挺准。</p>
+
+    <p>这个方法我持保留态度。账号跑在别人的云主机上，等于把登录凭据交给了第三方平台，封号风险是降下去了，数据风险反而升上来了。省下来的麻烦换了个地方攒着，不算凭空消失。</p>
+
+    <p>同一天还有一条正经的省钱办法，来自宝玉。他的思路是把写方案和执行拆开：让 Fable 出设计稿，然后进循环，Opus 负责执行，Fable 负责验收，跑完一轮再进下一轮。他自己的说法是被 token 价格逼出来的。这类分工和下面那条模型编排的新闻其实是同一个方向。</p>
+
+    <h2>三、国产模型的那根线，画在 3T</h2>
+
+    <p>今天有一条被反复转的匿名判断，压得很重：国产模型到年底如果跑不到 3T，可能就出局了。同一条里还有两句，未来两年最核心的机会是做出 Agent 入口级的产品，以及找工作这件事会变成认领任务。讲话的人借了曾鸣的框架，把颠覆性技术的演化拆成三段，第一阶段是技术被社会接受、变成通用基础设施，第二阶段是基础设施上长出成片的新应用。</p>
+
+    <p>另一个角度的总结更具体。一位博主列了几条：国内在预训练架构上的创新是全球领先的，但后训练的数据积累落后海外大约半年；原因不神秘，国内模型厂的算力只有海外头部的十分之一左右，是被逼出来的架构创新；后训练的门槛比预训练低得多，拼的是数据质量而不是基础设施；组织架构的重要性甚至超过算力储备，混元那个案例说明拆掉部门墙比单纯堆人有用。</p>
+
+    <p>这两条摆在一起看有点意思。一个在说规模是生死线，一个在说规模之外的变量更值钱。它们未必矛盾，但把「3T」当成唯一门槛，可能漏掉了后者想强调的东西。</p>
+
+    <h2>四、企业上下文：不能说话的那个反而成了顶流</h2>
+
+    <p>爱范儿写了一篇阿里的解读，说千问办公押注的是企业上下文，标题里给了一句不小的判断，说这是 Agent 时代的组织语言。同一篇里还有个反差：在大模型拼命卷编程跑分的时候，一个「不能说话」的东西意外成了 AI 圈的新顶流。做产品的都知道，能进工作流的东西不一定是最强的那个。</p>
+
+    <p>同一话题下还有份 PDF 被转发，作者是 Jev 的创始人 Diogo Amogo，主题是给编程 agent 搭一套 harness。转发的人给的评价很高，说这是让编程 agent 效率翻倍的蓝图。宣传口径先记着，值得留意的是它的方向：在模型之外做一层结构，而不是继续堆模型。</p>
+
+    <p>技术细节里还有一条有参考价值。有人自己搭代理时发现，麻烦的从来不是「能不能连上」，而是不同类型的流量怎么分开走。他给出的方案是分路：普通上网走 Hysteria2，AI 相关流量单独从 WARP 出口转发，涉及 Claude 和 Anthropic 的那部分再接一层单独配置。这种把流量按用途分层的做法，比一把梭全走同一条线要稳。</p>
+
+    <h2>五、开发工具：把 agent 当容器管</h2>
+
+    <p>Google 开源了一个叫 AX 的项目，思路是把整个集群里的 AI agent 当成 Kubernetes 里的容器来调度。Ren 转的时候补了背景：仓库半年前才建，现在已经 6.8K stars，Go 写的。他提到的痛点很真实，很多人手上不止一个 agent 在跑，一个改代码、一个爬资料、还有一个定时出报告，数量一上去，谁在干什么就说不清了。K8s 当年解决的就是这个问题，只不过对象从进程换成了 agent。</p>
+
+    <p><span class="tag">开源</span>另一条整理列出了七个正在把付费 AI 软件变成免费替代品的开源项目，第一个是给 Codex 这类 agent 加上路由、记忆、技能选择和界面点击能力的组合。同一批消息里还有人推荐 system-design-101，说它最好的一点是能画图的绝不写废话，消息队列、缓存、数据库、支付系统、分布式架构各配一张图加白话解释，一眼能看出请求从哪进、数据怎么走。</p>
+
+    <p>也有条消息该当警告读。有人发现 GitHub 上直接搜某个 API key 的变量名，能翻出几百万条结果，里面混着大量真实凭据，还有人测试说不少现在还能用。这种「捡到的额度」不是福利，用别人的密钥跑自己的任务，性质上跟白拿没区别，而且随时可能反噬到自己头上。看到这种帖子最好别动手。</p>
+
+    <h2>六、中东：联大讲台上的一句「消灭」</h2>
+
+    <p>特朗普在联大演讲里威胁要「消灭」伊朗，BBC 和 NYT 都把这句放进了标题，会晤同时在走廊里进行。NYT 另配了一篇事实核查，指出演讲中关于石油储备、毒品贸易和他的和平努力那几段都含有不实陈述。同一批报道里还有两条值得看：G7 在联大前要求伊朗停止向也门胡塞提供武器，并对胡塞袭击沙特用了「最强烈」的措辞；内塔尼亚胡在 CNN 采访后错误指控纽约市长 Mamdani 支持哈马斯。</p>
+
+    <p>美国国内的反应也出来了。爱荷华州的 Hinson 和密歇根州的 Rogers 两位共和党众议员，都在选情吃紧的参议院选战里跟总统拉开了距离，公开呼吁结束伊朗战争。这两州不是深红区，他们的表态更像是选举算术。</p>
+
+    <p>还有一条跟上面这些隔着半个地球的细节。BBC 报道一对被扣押在伊朗的英国夫妇 Craig 和 Lindsay Foreman，家属说他们在结束绝食后本应得到的定期联系，一直没有兑现。</p>
+
+    <div class="note">这条线的时间轴拉得挺长：9 月 2 日特朗普表示，只要对方能「迅速」达成协议，他同意取消对伊朗的打击；9 月 3 日阿曼方面称霍尔木兹海峡相关会谈进展顺利，伊朗同时警告任何协议都不会打通海峡；今天传出的则是美国对伊朗新的经济制裁措施，以及一个追问，为什么这一轮对中国「松手」。8 天累计 17 条，密度不高，但每天都动。</div>
+
+    <h2>七、油价跌破一百，英国工厂先撑不住了</h2>
+
+    <p>跟上面那条军事线直接接上的是能源。NYT 报道全球油价跌破每桶 100 美元，触发点是投资者预期沙特一条受损的管道可能快要复工，供应能多出来一些。战争推高油价，油价又被复工预期压回去，这条链子今天走得挺完整。</p>
+
+    <p>欧洲这边是反的。BBC 报道 Ineos 的 Ratcliffe 爵士以气价过高为由，暂停了英国几处关键工厂的生产，公司给的对比数字是英国天然气价格是美国的十二倍。同一件事在两个市场里的读法完全不一样：一个在算中东能不能多供点油，一个在算自家的能源账单撑不撑得住。</p>
+
+    <p>中国车市则是另一条线。爱范儿今天发了两篇定价稿，岚图梦想家 9 比上一代涨了九万，敢卖到 41.99 万元，理由是 2022 年第一代上市时高端 MPV 市场还是另一副样子，那时 GL8 依然是这个细分市场的标杆。同一时间日产新 N7 走的是相反的路，10.99 万元起，比去年 4 月上市时的 11.99 万还低了一万，被写成「真加量还降价」。一个往上探，一个往下压，合资和自主在这个价位段的处境大概就是这样。</p>
+
+    <h2>八、俄乌：制裁名单短了两个名字</h2>
+
+    <p>BBC 报道欧盟把俄罗斯寡头 Usmanov 和 Fridman 从制裁名单上移除了，基辅方面表达了不满，理由很直接，这两人跟普京的关系都算不上疏远。同一批里还有一条军事技术上的变化，俄罗斯新出现的喷气动力无人机更难拦截，乌克兰最近遭到的几轮打击因此更难防。</p>
+
+    <p>最不起眼的一条其实最有信息量：俄罗斯开始向中国出口芥末粉，中国的监管机构已经放行。放在平时这就是一条食品贸易新闻，放在今天这条线上，它是「向东转」最贴地的一个注脚。8 天累计 16 条，没有一天断过。</p>
+
+    <h2>九、中美与几条零散</h2>
+
+    <p>中美这条线今天新增两条，都来自纽约时报中文。一条讲习近平怎么看即将到来的「习特会」，结论是他在政治上占优、底气更足；另一条说会晤在即，两边贸易上的小动作一直没停，并提到一年前双方在韩国釜山的会面曾达成一份贸易休战。这条线 14 天累计 80 条，热度一直排在前列。</p>
+
+    <ul>
+      <li><strong>游戏</strong>：BBC 报道微软这轮「重启」要裁掉约 3600 个岗位，同时宣布下一代 Halo 交给 Activision 来做。让做使命召唤的团队接手 Halo，这个安排本身比裁员数字更值得琢磨。</li>
+      <li><strong>Crypto</strong>：NYT 写了 Praxis 这个纽约起家的「数字国家」，在环球巡回之后签下了乌拉圭作为落脚点。资金面上，美国现货比特币 ETF 在周内出现了一轮反弹，把前几天的流出和亏损全收了回来。14 天累计 31 条。</li>
+      <li><strong>统计口径</strong>：今天 221 条，X 97 条、RSS 124 条，NGA 和 S1 都是零。RSS 里 BBC 49 条、NYT 34 条、BBC 中文 32 条、爱范儿 6 条、纽约时报中文 3 条。累计入库 X 28862 条、RSS 9783 条、NGA 584 条、S1 374 条。</li>
+      <li><strong>其余条目</strong>：剩下的 156 条里绝大多数是配图账号的日常更新和转发，没有可展开的信息，照旧略过。</li>
+    </ul>
+
+    <h2>今日小结</h2>
+
+    <p>把今天连起来，主线其实是围绕模型的「分层」在动。OpenAI 把 Astra 的能力往下放，Anthropic 和它抢同一个发布窗口，Fable 写方案、Opus 执行、Fable 验收，Google 把 agent 当成容器来调度，宝玉用两套模型分工省 token。大家默认的前提已经变了，不再是找那个最强的一个，而是决定哪个干活、哪个拍板、哪个只负责验收。今天关于国产模型的两句话也是同一件事的两面：一边说规模是生死线，一边说组织方式比算力更值钱。</p>
+
+    <p>另一头，联大那句话、跌破一百美元的油价、英国停工的工厂和俄罗斯的芥末粉，看着互不相关，其实是同一条链子的不同位置：一次军事表态推动油价，油价牵动一家欧洲化工企业要不要开工，而制裁名单上一个名字的进出，最后可能体现为某个国家的出口目录里多了一行商品。这些账算得慢，但一笔都不会漏。</p>
+
+  </article>
+
+  <footer>本内容由 Hermes Agent 自动采集分析，每日更新</footer>
+</main>
 </body>
 </html>
