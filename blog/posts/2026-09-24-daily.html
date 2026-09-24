@@ -1,513 +1,189 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-09-24 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-09-24 · Dawei Xu</title>
+<style>
+  :root{
+    --accent:#226f54;
+    --bg:#f6f7f2;
+    --ink:#1f2421;
+    --muted:#6b736c;
+    --line:#dfe3da;
+    --card:#ffffff;
+    --soft:#eef2ea;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16.5px;
+    line-height:1.78;
+    letter-spacing:.01em;
+  }
+  .page{max-width:760px;margin:0 auto;padding:0 20px 72px;}
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 0 14px;border-bottom:1px solid var(--line);margin-bottom:26px;
+  }
+  .brand{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--ink);text-decoration:none;font-size:16px;}
+  .mark{
+    width:26px;height:26px;border-radius:7px;background:var(--accent);color:#fff;
+    display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;
+  }
+  .nav a{margin-left:16px;color:var(--muted);text-decoration:none;font-size:14.5px;}
+  .nav a:hover{color:var(--accent);}
+  .back-link{
+    display:inline-block;margin-bottom:18px;color:var(--accent);
+    text-decoration:none;font-size:14.5px;
+  }
+  .back-link:hover{text-decoration:underline;}
+  h1{
+    font-size:clamp(24px,5.6vw,31px);
+    line-height:1.32;margin:0 0 10px;font-weight:800;letter-spacing:-.01em;
+  }
+  .post-meta{color:var(--muted);font-size:14px;margin:0 0 28px;}
+  .post-content h2{
+    font-size:20px;margin:40px 0 14px;padding-top:16px;
+    border-top:1px solid var(--line);font-weight:700;letter-spacing:-.005em;
+  }
+  .post-content h2:first-of-type{border-top:none;padding-top:0;margin-top:24px;}
+  .post-content p{margin:0 0 15px;}
+  .post-content ul{margin:0 0 16px;padding-left:22px;}
+  .post-content li{margin-bottom:9px;}
+  .lede{
+    background:var(--soft);border-left:3px solid var(--accent);
+    padding:16px 18px;border-radius:0 10px 10px 0;margin:0 0 30px !important;
+    font-size:16px;
+  }
+  .tl{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px 6px;margin:0 0 18px;
+  }
+  .tl h3{margin:0 0 10px;font-size:15px;color:var(--accent);font-weight:700;}
+  .tl ul{list-style:none;padding-left:0;margin:0;}
+  .tl li{
+    padding-left:16px;position:relative;font-size:15px;
+    color:#333a35;margin-bottom:10px;
+  }
+  .tl li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:7px;height:7px;border-radius:50%;background:var(--accent);opacity:.55;
+  }
+  .tl .when{font-weight:700;color:var(--ink);margin-right:6px;}
+  .stat{
+    display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;
+  }
+  .stat span{
+    background:var(--card);border:1px solid var(--line);border-radius:999px;
+    padding:5px 13px;font-size:13.5px;color:var(--muted);
+  }
+  strong{color:#12160f;}
+  .note{
+    margin-top:34px;padding-top:18px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:13.5px;text-align:center;
+  }
+  @media (max-width:520px){
+    body{font-size:16px;}
+    .post-content h2{font-size:18.5px;}
+    .page{padding:0 16px 56px;}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<main class="page">
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="mark" aria-hidden="true">A</span>
+      <span>Dawei Xu</span>
+    </a>
+    <nav class="nav">
+      <a href="/">首页</a>
+      <a href="/blog/" style="color:#226f54;font-weight:700;">笔记</a>
+    </nav>
+  </header>
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-09-24</h1>
-    <p class="post-meta">2026-09-24 · 每日资讯早报 · 确定性兜底发布</p>
+  <a class="back-link" href="/blog/">← 返回笔记列表</a>
+  <h1>每日资讯早报 2026-09-24</h1>
+  <p class="post-meta">2026-09-24 · 共 239 条信息 · X 103 / RSS 136</p>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-09-24</strong></p>
-<p>📊 <strong>共 239 条信息</strong>  ·  🐦 X(103)  ·  📰 RSS(136)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（20 条）</h3>
-<blockquote>
-<p>📝 <em>科学宝，一个围绕科研工作流的AI Agent</em></p>
-<p>🐦 <strong>雪踏乌云@Pluvio9yte·6小时</strong> · 🎬×1 · 15:48 🟡
-Anthropic 在 2026 年 9 月 17 日公布了一组进展：在两名技术人员监督下，Claude 用了不到四周时间，协助优化了 30 多个开源生物学模型，其中包括 AlphaFold3 和 Boltz-2，相关优化代码已经开源。</p>
-</blockquote>
-<p>这件事情吸引人的地方，在于它处理实际科研代码的具体过程，也就…</p>
-<blockquote>
-<p>🐦 <strong>来碗牛肉粉@beefnoode·6小时</strong> · 🎬×1 · 15:35 🟡
-WC，科研界的WorkBuddy终于来了！
-有个做科研的朋友给我安利了 @PhAILabs 最新推出的 ScienceBuddy
-他做科研用过不少 AI Agent
-但真正能把研究流程完整跑下来的其实不多
-但 ScienceBuddy 真的不一样
-它是一个真正围绕科研工作流设计的 AI Agent
-…</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 14:46 🟡
-Introducing ScienceBuddy — a free workspace for scientific agents that improve through researcher collaboration. </p>
-</blockquote>
-<p>Use GPT-6 in ScienceBuddy at no cos…</p>
-<blockquote>
-<p>📝 <em>Opus 5.5 生成输出，秀到飞边子了</em></p>
-<p>🐦 <strong>陈成@chenchengpro·6小时</strong> · 15:31 🟡
-Opus 5.5 用了一天，攒了 24 条 tips，分五块。</p>
-</blockquote>
-<p>一、怎么用</p>
-<ol>
-<li>整个任务直接扔给它。说清什么算做完，什么时候要回来找你。</li>
-<li>别写「think carefully」，它本来就会先想。思考模式也关不掉了。</li>
-<li>长任务跑完，问它「还缺什么才能继续」，别急着自己接手。</li>
-<li>长任…</li>
-</ol>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 12:26 🟡
-Opus 5.5 官方提示词指南：
-effort 怎么设、Agent 为何中途停、哪些提示词该删？</p>
-</blockquote>
-<p>Opus 5.5 中 effort 的默认值改为了medium，Anthropic 称测试中 5.5 的 medium 达到或超过 Opus 5 的 high...</p>
-<p>Opus 5.5 生成输出 t…</p>
-<blockquote>
-<p>🐦 <strong>XiaoLei Liu@leo_xiao</strong> · 🎬×1 · 11:38 🟡
-Opus 5.5 直出，秀到飞边子了！我愿称之为最强！！！</p>
-</blockquote>
-<p>参考提示词如下（温馨提示额度消耗和耗时会有点大）：</p>
-<p>你现在是 Claude Opus 5.5，作为资深创意编程工程师（Creative Coder）、动态设计师（Motion Designer）与前端动画工程师。
-你的任务是复现我所提供…</p>
-<blockquote>
-<p>📝 <em>apk逆向工程也被做成Skill了</em></p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 18:03 🟡
-逆向工程也被做成 Skill 了，很多安全老手几年踩坑攒下来的经验，现在直接喂给 AI，你听说了吗？</p>
-</blockquote>
-<p>推荐 reverse-skill，装进 Codex、Cursor、Claude Code 后，碰到 APK、前端代码、固件等目标，它会自动判断分析路线、选择工具、规划下一步。</p>
-<p>最狠的不是帮你跑几…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 14:24 🟡
-安卓逆向的工具链很长：解包、反编译、改 smali、重签重打包、Frida Hook，再到 so/native 分析。现在，这套流程也被整理成了可交给 AI Agent 编排的 Skill。</p>
-</blockquote>
-<p>apk-reverse 基于实际逆向项目经验构建，适合使用 Claude Code、Codex 做安卓分析…</p>
-<blockquote>
-<p>📝 <em>特朗普联合国演说五个要点：古巴垮台、摧毁伊朗、格陵兰基地，以及把AI改名SI</em></p>
-<p>🐦 <strong>雨哥向前冲@xiangxiang103·</strong> · 10:20 🟡
-你下的 Qwen-Image 无限制版，可能只解锁了一半。</p>
-</blockquote>
-<p>官方流程里还藏着一道锁：提示词改写器。如果你的工作流接了它，你的一句话会先被它扩写成详细的英文提示词，再交给生图模型。它自己也会拒绝，原版 100 条请求里拒绝 98 条。上条的生图模型和文本编码器去得再干净，这一环照样会卡住你。</p>
-<p>现在…</p>
-<blockquote>
-<p>🐦 <strong>Fini.Yang@FiniYang·1</strong> · 📷×3 · 10:11 🟡
-兄弟们一起致敬 Unsloth !
-Qwen-Image-2.1 的本地部署门槛被打下来了！
-FP8 offload，6GB 显存就能出图
-Mac 统一内存 16G 也能玩
-我看看谁还没部署 👀 </p>
-</blockquote>
-<p>已经为兄弟们准备了全套开箱即用合集：
-1、Qwen生图改图必备Skill:https://t.co/…</p>
-<blockquote>
-<p>🐦 <strong>Bojie Li@bojie_li·8小</strong> · 📷×1 · 13:05 🟡
-DeepSeek 的 Agent 沙箱平台 DSec 是《深入理解 AI Infra》一个很好的例子。跟我当年在微软用 FPGA 加速网络、Bing 搜索，在华为用 UB 去掉抽象层的开销一样，都是打破旧的抽象边界，实现极致性能。传统操作系统和云要服务大量互不相关的程序，所以必须通用，有足够好的可编…</p>
-<p>🐦 <strong>老鬼@laogui·9小时</strong> · 📷×1 · 12:54 🟡
-再次推荐一下 @realcoreychiu 写的这个 Agent 会话管理工具：Wake，我平时 Claude Code、Codex、Cursor，Pi 等等混着用，会话散在十几个目录里，想找上周的某个会话基本靠猜。直到用上 Wake。</p>
-</blockquote>
-<p>Rust + GPUI 写的原生桌面应用，把 20 多个 a…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 12:09 🟡
-《你对 AGENTS.md 的理解几乎为零》</p>
-</blockquote>
-<p>作者：@rwayne @onlookersh </p>
-<p>“公司变大之后，人和公司都会犯糊涂。他们想复制最初的成功，于是很多人以为：当初成功的过程里一定藏着某种魔力。于是他们开始把流程在全公司制度化。很快，大家就把流程当成了内容本身。” ———史蒂夫·乔布斯 …</p>
-<blockquote>
-<p>🐦 <strong>娜美知识库@fhwofjow51260·</strong> · 📷×1 · 12:08 🟡
-微信聊天记录，终于可以直接喂给 AI Agent 了。</p>
-</blockquote>
-<p>wx-cli 直接读取 Mac 本地微信数据，让 Claude Code、Codex、Cursor 能搜索聊天记录、读取联系人/群聊、提取图片语音，还能实时监听新消息。数据默认留在本机。 </p>
-<p>最有意思的是，它自带 Agent Skill。以后…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 11:50 🟡
-终于用上最近很火的 Muse 了！</p>
-</blockquote>
-<p>Anthropic 的风控在 Meta 面前就是弟弟。小扎的产品说不让你用，你根本用不上，连账号都注册不了。</p>
-<p>根本不给你被封号的机会。 https://t.co/jA1mH87zNQ</p>
-<blockquote>
-<p>🐦 <strong>KC@ScarletKc·11小时</strong> · 10:00 🟡
-GPT-6 Astra 真的太傻逼了。刚用了一会儿 Claude Opus 5.5，你们知道我什么感觉吗？</p>
-</blockquote>
-<p>卧槽，这才叫人工智能啊。我之前用其他模型过的都是什么苦日子。</p>
-<blockquote>
-<p>🐦 <strong>Ren@Ryrenz·12小时</strong> · 09:05 🟡
-🗝️ 又挖到一个让 Claude Code、Codex、Cursor 共用同一份记忆的开源项目——ai-memory，换个工具接着聊，上下文不用重建。</p>
-</blockquote>
-<p>GitHub 上近 8000 stars，今年 5 月底才建的仓库，四个月涨到这个数，光这一周就发了四个版本，作者是 Fabio Akita。</p>
-<p>…</p>
-<blockquote>
-<p>📰 <strong>纽约时报中文</strong> · 2026-09-23 🟢
-<strong>面对人工智能威胁，这回真得喊“狼来了”</strong> — 托马斯·弗里德曼2026年9月23日“看起来到了4月，你知道的，理论上来说，天气稍微暖和一点，它就会奇迹般地消失。”这是特朗普总统在2020年2月10日谈及新冠疫情时所说的话，大约一个月后，这场疫情便</p>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>01版 - 加快培育壮大新兴产业和未来产业  持续做大做强先进制造业</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                        新华社上海9月22日电&amp;nbsp;&amp;nbsp;（记者邹伟）中共中央政治局常委、国务院总理李强9月22日在上海调研。他强调，要深入贯彻落
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>01版 -  丁薛祥会见哈萨克斯坦第一副总理纳利巴耶夫</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                         新华社北京9月22日电&amp;nbsp;&amp;nbsp;中共中央政治局常委、国务院副总理丁薛祥22日下午在北京会见哈萨克斯坦第一副总理纳利巴耶
-</code></pre>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-14, 2026-09-17, 2026-09-20, 2026-09-22, 2026-09-23</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-09-11] Ansible开源项目新增关注
-[2026-09-12] Imaria完整高清 hentai视频上线
-[2026-09-13] Claude渗透测试技能库发布</p>
-<p>📊 <em>趋势（15天共959条）</em> <code>█69 █79 █69 █86 █74 █84 █73</code></p>
-</blockquote>
-<h3>🇮🇱 中东局势（7 条）</h3>
-<blockquote>
-<p>📝 <em>外星生命会让我们生病吗？太空微生物带来哪些风险</em></p>
-<p>📰 <strong>BBC中文</strong> · 2026-09-23 🔵
-<strong>特朗普联合国演说五个要点：古巴垮台、摧毁伊朗、格陵兰基地，以及把AI改名SI</strong> — 你的器材不支持播放多媒体材料Play video, &quot;Watch: Trump threatens to &#x27;annihilate&#x27; Iran if no deal rea</p>
-<p>📰 <strong>BBC中文</strong> · 2026-09-23 🔵
-<strong>特朗普联合国演说五个要点：古巴垮台、摧毁伊朗、格陵兰基地，以及把AI改名SI</strong> — 你的器材不支持播放多媒体材料Play video, &quot;Watch: Trump threatens to &#x27;annihilate&#x27; Iran if no deal rea</p>
-<p>📰 <strong>NYT</strong> · 2026-09-23 🟢
-<strong>How Trump’s Iran War May Sink Republican Midterm Chances</strong> — The president might be supercharging what already looked like a blue wave.</p>
-<p>📰 <strong>NYT</strong> · 2026-09-23 🟢
-<strong>Iran Will Not Be Bullied, President Masoud Pezeshkian Says in U.N. Speech</strong> — President Masoud Pezeshkian said his country would not give up its civilian nuclear program, but lef</p>
-<p>📰 <strong>BBC</strong> · 2026-09-23 🔵
-<strong>Iran's president tells Trump it will never 'bend the knee'</strong> — Masoud Pezeshkian's defiant speech to the UN comes after the US president threatened to "annihilate"</p>
-<p>📰 <strong>BBC</strong> · 2026-09-23 🔵
-<strong>Netanyahu calls Macron's remarks on West Bank in UN speech 'grotesque'</strong> — Israel's PM denounces the French president after he appeared to downplay Hamas's activities in the o</p>
-<p>📰 <strong>BBC</strong> · 2026-09-23 🔵
-<strong>Reports of violence against women in Gaza surge, UN agency finds</strong> — The UN Population Fund also says there has been a "severe escalation" in the number of early and for</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-17, 2026-09-18, 2026-09-19, 2026-09-21, 2026-09-23</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>02/09</strong> 特朗普表示同意取消对伊朗的打击，前提是能“迅速”达成协议
-<strong>09/03</strong> 中东海湾国家阿曼（Oman）方面称，霍尔木兹海峡会谈进展顺利，而伊朗则警告协议不会打通海峡。
-<strong>09/23</strong> 美国制裁伊朗经济新措施 为何对中国“松手”？
-<strong>10/29</strong> 欧洲游客“消失”，东南亚旅游业者陷入困境.</p>
-<p>📊 <em>趋势（8天共15条）</em> <code>█2 █3 █1 █2 █2 █1 █1</code></p>
-</blockquote>
-<h3>🔧 开发工具（6 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 15:24 🟡
-Jev 发布才 8 天，开源替身已经一堆了，今天诺基亚也来蹭热闹了😅</p>
-</blockquote>
-<p>我在 MacBook 上，让官方 Jev 和 3 个开源方案同跑 20 张中文工单🫱</p>
-<p>Laya 25ms，比 Jev 快 50 倍
-djev 509ms
-官方 Jev 1.3 秒
-AnyJev 将近 4 秒</p>
-<p>仓库都在这：
-L…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 13:46 🟡
-以前折腾 TTS，要么上 GPU，要么接付费 API。</p>
-</blockquote>
-<p>Kyutai 最近开源了 Pocket TTS，只有约 1 亿参数，主打直接在 CPU 上本地运行。</p>
-<p>在 MacBook CPU 上，官方测试最高接近 6 倍实时速度，首个音频块大约 200ms 就能生成，而且只需要 2 个 CPU 核心。…</p>
-<blockquote>
-<p>🐦 <strong>Leaf Yeah!@leaf_sanr</strong> · 📷×3 🎬×1 · 13:03 🟡
-🎉🎉✌️啊啊啊爽了！兄弟们！以后我的视频，口播交给数字人拍，网感剪辑全交给 AI 自动跑通 😎</p>
-</blockquote>
-<p>今天 Opus 5.5 帮我把最后一公里啃下来了：
-① 让数字人生成我的口播视频（视频1）；
-② 派 Agent 套用训练的"网感"动效做A/B-roll编排；
-③ 自动出片，直接推成剪映工程文件（图2…</p>
-<blockquote>
-<p>🐦 <strong>娜美知识库@fhwofjow51260·</strong> · 📷×1 · 12:09 🟡
-GitHub 2600+ Star，连“恋爱军师”都有人做成 Codex Skill 了。  </p>
-</blockquote>
-<p>项目名字就叫「狗头军师」，你把聊天截图、聊天记录和感情经过丢给它，它会帮你分析对方态度、判断关系、想回复话术，再给下一步怎么推进。 </p>
-<p>暧昧、追人、邀约、吵架、分手、复合甚至婚姻选择都能聊，还加入了关系…</p>
-<blockquote>
-<p>🐦 <strong>Ren@Ryrenz·10小时</strong> · 11:09 🟡
-🧑‍💻 震惊，elizaOS 把 AI agent 从一个框架做成了一整套能装机的系统，聊天、语音、记忆、自动操作电脑全在里面。</p>
-</blockquote>
-<p>GitHub 揽获 1.9 万 stars，五千七百多个 fork、一千四百多个 issue 开着，fork 数快到 star 数的三成，说明是真有人在拿它改东西。</p>
-<p>…</p>
-<blockquote>
-<p>🐦 <strong>梭哈.AI@SUOHA_AI·1小时</strong> · 📷×2 · 09:01 🟡
-这是我见过最棒的Jev 导航站！没有之一</p>
-</blockquote>
-<p>直接把 GitHub 上所有真正在调用 Jev 的开源项目全收录了，788 个项目、182 个当场可跑、765 条源码调用证据，全部分好类每天自动更新</p>
-<p>最骚的是点进去不是看作者在 README 里吹牛逼，而是直接看它在源码里到底是怎么问 Jev 的</p>
-<p>而…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-13, 2026-09-16, 2026-09-19, 2026-09-22, 2026-09-23</em></p>
-</blockquote>
-<h3>🇨🇳 中美关系（9 条）</h3>
-<blockquote>
-<p>📝 <em>推动中美建设性战略稳定关系</em></p>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>02版 -  推进建设性战略稳定关系  共促世界和平稳定与繁荣</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                        应美利坚合众国总统特朗普邀请，国家主席习近平将于9月23日至25日对美国进行国事访问，国际社会高度关注。接受本报记者采访的国际人士表示
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>02版 -  推动中美建设性战略稳定关系落地落实（大使随笔）</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                        应美国总统特朗普邀请，习近平主席即将对美国进行国事访问。这是习近平主席时隔11年再次对美国进行国事访问，也是中美两国元首在半年之内实现
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>03版 -  推动中美建设性战略稳定关系落地落实（大使随笔）</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                        应美国总统特朗普邀请，习近平主席即将对美国进行国事访问。这是习近平主席时隔11年再次对美国进行国事访问，也是中美两国元首在半年之内实现
-</code></pre>
-<blockquote>
-<p>📝 <em>两国相处之道，相向而行，走好大国正确相处之道</em></p>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>01版 -  “真正的朋友，彼此挂念、互相铭记”</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                        美国艾奥瓦州马斯卡廷市，密西西比河静静流淌，见证了一段跨越四十余载的跨洋情谊。在习近平主席即将对美国进行国事访问之际，本报记者走进马斯
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>02版 -  “真正的朋友，彼此挂念、互相铭记”</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                        美国艾奥瓦州马斯卡廷市，密西西比河静静流淌，见证了一段跨越四十余载的跨洋情谊。在习近平主席即将对美国进行国事访问之际，本报记者走进马斯
-</code></pre>
-<blockquote>
-<p>📝 <em>无</em></p>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>02版 -  相向而行，走好大国正确相处之道（钟声）</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                        大国相处，方向至为关键，行动尤须笃实。此次华盛顿会晤，是双方落实元首共识、推进建设性战略稳定关系的又一重要契机应美利坚合众国总统特朗普
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>03版 -  相向而行，走好大国正确相处之道（钟声）</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                        大国相处，方向至为关键，行动尤须笃实。此次华盛顿会晤，是双方落实元首共识、推进建设性战略稳定关系的又一重要契机应美利坚合众国总统特朗普
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>02版 -  “为美中关系发展积蓄更深厚的青春力量”</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                        近日，习近平主席复信来华参加中美青年主题交流活动的美国10所高校青年学生，希望他们“继续同两国广大青年一道，努力成为中美友好合作的传承
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>02版 -  调查显示57%美国民众支持对华友好合作</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                         据新华社华盛顿9月21日电&amp;nbsp;&amp;nbsp;（记者颜亮）美国芝加哥全球事务委员会21日公布的调查报告显示：57%的美国民众认为
-</code></pre>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-15, 2026-09-19, 2026-09-20, 2026-09-22, 2026-09-23</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>25/03</strong> 王沪宁会见第三届中美1.5轨对话美方代表
-<strong>28/04</strong> 这份“信任票”，见证中国定力与担当（和音） | 重磅IPO：长鑫科技即将上市
-<strong>02/06</strong> 李强会见美中贸易全国委员会董事会代表团 | 上合峰会与G20折射中美全球秩序博弈
-<strong>05/07</strong> 中美经贸需要“合作清单”，而非“覆盖清单”
-<strong>12/09</strong> 中美经贸需要“合作清单”，而非“覆盖清单”
-<strong>02/19</strong> “看到热情好客、多元交融的新疆”
-<strong>02/22</strong> 美国建国250周年：五个中美交往的历史细节
-<strong>03/02</strong> 导读 | 推进建设性战略稳定关系共促世界和平稳定与繁荣
-<strong>03/05</strong> 绿色情缘，见证中美民间友好薪火相传（和音） | 积极元首会晤共识积极构建中美建设性战略稳定关系</p>
-<p>📊 <em>趋势（15天共87条）</em> <code>█4 █5 █6 █10 █8 █7 █8</code></p>
-</blockquote>
-<h3>💻 AI Agent（6 条）</h3>
-<blockquote>
-<p>📝 <em>开源股票终端</em></p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 12:39 🟡
-《深入理解 AI Agent》的 Web 阅读版更新成了 Astro 样式，比之前漂亮多了，对移动端也更友好了！感谢社区 whanyu1212 的贡献。</p>
-</blockquote>
-<p>https://t.co/z7IGiWWvnp https://t.co/72p6nYjT0P</p>
-<blockquote>
-<p>🐦 <strong>Bojie Li@bojie_li·9小</strong> · 📷×1 · 12:31 🟡
-感谢读者 LiNan1984 把《深入理解 AI Agent》蒸馏成了 22 个 skills，方便 agent 在开发 agent 的时候使用，也方便人类读者快速阅读。</p>
-</blockquote>
-<p>https://t.co/JvlPKhGIY3 https://t.co/X63G6fudkK</p>
-<blockquote>
-<p>📝 <em>生图改图必备Skill</em></p>
-<p>🐦 <strong>爱吃折耳根的Ace@_zheergen·</strong> · 🎬×1 · 10:40 🟡
-好家伙！18K+ Stars，这个开源股票终端真有点东西。</p>
-</blockquote>
-<p>OpenStock，把 TradingView 图表、行情、财务、新闻、Watchlist、市场情绪，全塞进一个网页里。</p>
-<p>以前看一只股票，图表一个网站、财报一个网站、新闻再开一个。</p>
-<p>这个项目直接把常用的东西收进一个工作台，而且源码开放…</p>
-<blockquote>
-<p>🐦 <strong>爱丽丝呀！@BTCqzy1·12小时</strong> · 📷×1 · 09:43 🟡
-这个开源股票量化系统有点狠！</p>
-</blockquote>
-<p>300 多维特征、13 种模型，AI 挖因子、训练模型、批量选股、历史回测，全放进一个工作台！</p>
-<p>支持 A 股、港股、美股和期货，这个开源项目叫 QuantMind。</p>
-<p>它把数据、因子、模型和回测串起来，直接让你搭建自己的量化研究流程。</p>
-<p>✅ AI 自动探索因子：把选…</p>
-<blockquote>
-<p>🐦 <strong>codila@0xCodila·4小时</strong> · 📷×1 · 17:01 🟡
-Send this Jev prompt to any LLM or AI agent</p>
-</blockquote>
-<p>It sets up Jev → analyzes you → finds where you waste time and money → upgrades your AI setup beyond 95% …</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 13:52 🟡
-Ai Hermes 插件🔥 </p>
-</blockquote>
-<p>Hermes 额度仪表 + 远程组网 + 第二大脑金库 + 工具洪水闸 + 失败变检查五连杀！</p>
-<p>全网玩家把 Hermes 玩成了下一代「花钱先看表 + 舰队能组网 + 笔记能当记忆 + 上下文不被淹死 + 翻车能变成回归单」：</p>
-<p>1️⃣ rarf/hermes-qu…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-16, 2026-09-17, 2026-09-20, 2026-09-22, 2026-09-23</em></p>
-</blockquote>
-<h3>🇪🇺 欧洲（4 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-23 🔵
-<strong>Uproar in France over award-winning author accused of using AI</strong> — Canadian-Haitian writer Thélyson Orélien has just been awarded the Prix du Roman Fnac for his first </p>
-<p>📰 <strong>BBC</strong> · 2026-09-23 🔵
-<strong>Drug deaths in Scotland rise 11% as country struggles with worst rate in Europe</strong> — The figure rose by 11% last  year, bringing the total deaths in a decade to more than 11,000.</p>
-<p>📰 <strong>NYT</strong> · 2026-09-23 🟢
-<strong>Why Germany’s Leader Merz Is Struggling to Sway Voters</strong> — As the far right surges, Chancellor Friedrich Merz’s unpopular economic policies and gruff manner ha</p>
-<p>📰 <strong>BBC</strong> · 2026-09-23 🔵
-<strong>Germany's saviour? How Klopp is looking to turn fortunes around</strong> — As Jurgen Klopp prepares for his first game as Germany manager, BBC Sport looks at how is trying to </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-13, 2026-09-14, 2026-09-19, 2026-09-22</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（3 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-23 🟢
-<strong>Trump Invites Putin to Attend Group of 20 Summit in Miami</strong> — Many leaders are unlikely to welcome the Russian leader’s presence at the event because of his count</p>
-<p>📰 <strong>BBC</strong> · 2026-09-23 🔵
-<strong>Eriksen leaves Wolfsburg by mutual consent</strong> — Christian Eriksen leaves Wolfsburg by mutual consent, just over three months after collapsing during</p>
-<p>📰 <strong>BBC</strong> · 2026-09-23 🔵
-<strong>Is Burnham right to blame Russia for spreading online disinformation?</strong> — BBC Verify examines Russian-linked operations spreading false information about the UK, Ukraine and </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-18, 2026-09-19, 2026-09-20, 2026-09-22, 2026-09-23</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Se08/08</strong> 美国特使在俄乌间穿梭外交：双方分歧未解 泽连斯基预计战事将持续到冬季 | 美国特使乘“和平快车”抵达基辅，但战争依然看不到终点
-<strong>Au18</strong> 乌克兰无人机何以精准打击俄罗斯本土?
-<strong>Se22</strong> 莫斯科遭到乌克兰450架无人机袭击，市长称规模“迄今最大”
-<strong>Se02</strong> 当普京把铁锤挥向文学
-<strong>Se16</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么?
-<strong>Au19</strong> 战争和权力的新物理规律
-<strong>Se23</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</p>
-<p>📊 <em>趋势（8天共16条）</em> <code>█2 █1 █3 █1 █4 █1 █1</code></p>
-</blockquote>
-<h3>🚀 芯片/半导体（2 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-23 🔵
-<strong>Trump reveals millions of dollars' worth of share deals in big tech and AI</strong> — Stock in major firms such as Microsoft, Nvidia and SpaceX was bought and sold on behalf of the US pr</p>
-<p>📰 <strong>NYT</strong> · 2026-09-23 🟢
-<strong>Jensen Huang vs. the A.I. Doomers</strong> — Jensen Huang, the chief executive of Nvidia, does not want you to be afraid of A.I.</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-17, 2026-09-18, 2026-09-19, 2026-09-22, 2026-09-23</em></p>
-</blockquote>
-<h3>🏛️ 国内政策（2 条）</h3>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>03版 -  李强会见世界技能组织主席乌汉和首席执行官霍伊</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                         本报上海9月22日电&amp;nbsp;&amp;nbsp;（记者崔寅）9月22日下午，国务院总理李强在上海会见来华出席第48届世界技能大赛的世界技
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>03版 -  配置好使用好新增建设用地等资源（权威发布·开局起步“十五五”）</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                        9月22日，国务院新闻办举行“开局起步‘十五五’”系列主题新闻发布会，介绍促进自然资源安全高效永续利用有关情况。为2800多个重大项目
-</code></pre>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-11, 2026-09-16, 2026-09-18, 2026-09-22, 2026-09-23</em></p>
-</blockquote>
-<h3>🎮 二次元/游戏（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>PC Gamer@pcgamer·1小时</strong> · 20:59 🟡
-Steam game disables mods after facing its second Workshop malware outbreak this year https://t.co/4zojbKCeWg</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-18, 2026-09-19, 2026-09-20, 2026-09-21, 2026-09-22</em></p>
-</blockquote>
-<h3>🏢 创业/商业（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>周览资源@grgerwcwetwet·9</strong> · 📷×1 · 12:05 🟡
-程序员空闲时间别只卷技术，推荐一本 DuckDuckGo 创始人写的《Traction》（拉新：快速实现用户增长）。</p>
-</blockquote>
-<p>核心就一句：会 Coding 只能做出产品，会营销和增长才能找到用户、赚到钱。</p>
-<p>尤其想做独立开发、副业、出海产品的，值得看看。</p>
-<p>📚 链接：https://t.co/VPfEMP…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-15, 2026-09-16, 2026-09-19, 2026-09-22, 2026-09-23</em></p>
-</blockquote>
-<h3>₿ Crypto/Web3（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 11:34 🟡
-The Hong Kong Digital Asset Summit takes place on 5-6 November at the Grand Hyatt Hong Kong.</p>
-</blockquote>
-<p>It brings together leaders from the SFC, BlackRock, Coin…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-17, 2026-09-20, 2026-09-21, 2026-09-22, 2026-09-23</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-09-21] US spot Bitcoin ETFs recorded a late-week recovery that was earlier outflows and losses.
-[2026-09-22] US spot Bitcoin ETFs recorded a late-week recovery that fully reversed earl | ZEROBASE WEEKLY 9.14-9.20 ZBT. | Lost ground to $0.074-$0.083 range.</p>
-<p>📊 <em>趋势（15天共33条）</em> <code>█2 █2 █3 █5 █2 █2 █2</code></p>
-</blockquote>
-<h3>💰 股市/金融（1 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-23 🟢
-<strong>Bond Yields Soar as Investors Foresee Another Fed Interest Rate Increase</strong> — The 10-year Treasury yield on Wednesday rose to around 5.1 percent, as investors increasingly expect</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-18, 2026-09-19, 2026-09-21, 2026-09-22, 2026-09-23</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>24/Au Shein香港IPO：中国快时尚品牌估值270亿美元</strong>
-<strong>19/Se 02版 - 前8月全国一般公共预算收入同比增5.7%</strong>
-<strong>23/Au 恒大爆雷：许家印被判处无期徒刑 集团罚款近160亿元人民币</strong>
-<strong>20/Au 恒大爆雷：许家印被判处无期徒刑 集团罚款近160亿元人民币</strong>
-<strong>25/Au Shein香港IPO：中国快时尚品牌估值270亿美元</strong>
-<strong>07/Au 美股全线暴跌，让子弹再飞一会儿</strong>
-<strong>19/Au 牛来了又走了，AI 股神暴亏300亿内幕曝光：成也 AI，败也 AI</strong>
-<strong>22/Ju 亚洲年轻人大举押注科技股 他们过得怎么样？</strong>
-<strong>29/Ju 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌</strong></p>
-<p>📊 <em>趋势（15天共83条）</em> <code>█8 █10 █9 █11 █7 █3 █4</code></p>
-</blockquote>
-<h3>🌍 环境/能源（1 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-23 🟢
-<strong>Chris Wright Sells Trump’s ‘Energy Dominance’ Vision</strong> — Energy Secretary Chris Wright is pitching a future of fossil fuel abundance. It’s not always an easy</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-14, 2026-09-16, 2026-09-17, 2026-09-19, 2026-09-23</em></p>
-</blockquote>
-<h3>🇰🇵 朝鲜半岛（1 条）</h3>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-23 🟢
-<strong>02版 -  全国人大常委会副委员长丁仲礼率团访问韩国并出席中韩议会交流机制会议</strong> — 2026年09月23日</p>
-</blockquote>
-<pre><code>                         本报首尔9月22日电&amp;nbsp;&amp;nbsp;（记者莽九晨、汪思源）应韩国国会邀请，全国人大常委会副委员长丁仲礼于9月21日至22日率
-</code></pre>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-10, 2026-09-14, 2026-09-16, 2026-09-18, 2026-09-21</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（161 条）</h2>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 22:00 🟡
-https://t.co/M5crfywtsU</p>
-<p>🐦 <strong>Kurt Buhler@kurtbuhl</strong> · 21:42 🟡
-Using AI to build semantic models and reports (Unplugged) </p>
-</blockquote>
-<p>A 1h video where I talk about agentic de…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 21:15 🟡
-We are jev-ifying open source models @FeatherlessAI 
-- which surpasses jev in evals
-- and includes i…</p>
-<p>🐦 <strong>PC Gamer@pcgamer·1小时</strong> · 20:46 🟡
-I apologize in advance for this, but: Introducing Drillposting https://t.co/VepNYqL7qy</p>
-<p>🐦 <strong>匿名</strong> · 20:44 🟡
-World of Warcraft: Forever dev addresses the debate over who it's made for https://t.co/vaBAhax2Lq</p>
-<p>🐦 <strong>匿名</strong> · 20:14 🟡
-Shoot the tires, please https://t.co/TrwADNxNzd</p>
-<p>🐦 <strong>米莉milly@Yuehualydr·2</strong> · 19:55 🟡
-"和朋友们进行了一次深度讨论，思维碰撞！💡"</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 19:31 🟡
-RT @victoriamonday_: 该遮的两位都没遮。衣服倒是都差不多 https://t.co/VSfH0z23M4</p>
-<p><em>…还有 153 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 103条
-    General: ██████████ (90)</p>
-<p>📰 <strong>RSS 新闻</strong>: 136条
-    · BBC: 52条
-    · NYT: 38条
-    · 人民网: 30条
-    · BBC中文: 10条
-    · 爱范儿: 4条
-    · 纽约时报中文: 2条</p>
-<p>📚 累计: X=29150 | NGA=584 | S1=374 | RSS=9950</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <article class="post-content">
+
+    <p class="lede">今天的信息流里 AI 占了大半，但真正有意思的不是哪家又出了新模型，而是围着模型搭起来的那层工具链：有人在用 Claude 批量优化科研代码，有人把安卓逆向的老经验打包成 Skill，有人干脆把微信聊天记录接给了 Agent。模型是水电，决定好不好用的往往是这些管道。下面按话题分开说。</p>
+
+    <div class="stat">
+      <span>AI/大模型 20 条</span>
+      <span>中美关系 9 条</span>
+      <span>中东局势 7 条</span>
+      <span>开发工具 6 条</span>
+      <span>AI Agent 6 条</span>
+      <span>欧洲 4 条</span>
+      <span>俄乌 3 条</span>
+    </div>
+
+    <h2>AI 与大模型</h2>
+
+    <p>Anthropic 在 9 月 17 日公布了一组结果：在两名技术人员监督下，Claude 花了不到四周，协助优化了 30 多个开源生物学模型，包括 AlphaFold3 和 Boltz-2，优化代码已开源。需要留意的是"监督"两个字，模型在这里干的是跑实验、调参、看结果这类重复劳动，判断和方向还是人给的。</p>
+
+    <p>同一天被反复提到的还有 PhAILabs 的 ScienceBuddy，定位是围绕科研工作流设计的 AI Agent，免费工作空间，可以在里面用 GPT-6。朋友圈里有人安利，说试过不少科研 Agent，能把完整流程跑下来的并不多。同一批讨论里也出现了 Opus 5.5 的存在，官方提示词指南调整了 effort 的默认值，从原来的高档位降到了 medium，官方称 medium 的表现达到或超过 Opus 5 的 high。指南里另外几条也挺实在：思考模式关不掉，别写"think carefully"，长任务跑完先问它"还缺什么才能继续"，不要急着接手。中文区有人攒了 24 条使用 tips，也有人拿它直出创意编程和动态设计，评价相当高。</p>
+
+    <p>工程侧的新动向是把散落的经验固化成 Skill。有人做了安卓逆向的 Skill，装进 Codex、Cursor 或 Claude Code 后，遇到 APK、前端代码、固件这类目标会自动判断分析路线、选工具、排下一步。安卓逆向本来链条很长：解包、反编译、改 smali、重签重打包、Frida Hook，再到 so/native 层分析，现在这一整套被打包成了可以让 Agent 编排的东西。安全圈几年踩坑攒下来的手感，正被写成可复用的文件。</p>
+
+    <p>生图这边，Unsloth 把 Qwen-Image-2.1 的本地部署门槛压得很低，FP8 offload 之后 6GB 显存能出图，Mac 统一内存 16G 也能跑。但有人提醒，官方的提示词改写器是另一道锁：你的一句话会先被扩写成详细英文提示词再交给模型，而这个改写环节自己也会拒绝请求，原版测试里 100 条拒了 98 条。生图模型和文本编码器处理得再干净，卡在这一环照样白搭。</p>
+
+    <p>Agent 基础设施方面，DeepSeek 的沙箱平台 DSec 被当作《深入理解 AI Infra》的典型案例来讲。工具层面，Wake 是个用 Rust 和 GPUI 写的原生桌面应用，专门收拾多个 Agent 会话散落在十几个目录里的乱局；ai-memory 则想让 Claude Code、Codex、Cursor 共用同一份记忆，作者是 Fabio Akita，仓库五月底建，四个月涨到 8000 stars，最近一周发了四个版本。wx-cli 走得更近，直接读 Mac 本地的微信数据，让 Agent 能搜聊天记录、读联系人和群聊、提取图片语音，甚至实时监听新消息，数据默认留本机，还自带 Agent Skill。另外有篇文章叫《你对 AGENTS.md 的理解几乎为零》，引了乔布斯那句关于"把流程当成内容本身"的话，批评意味挺明显。</p>
+
+    <p>舆论场上，纽约时报中文版刊了弗里德曼关于 AI 威胁的评论，用了"这回真得喊狼来了"的说法。国内这边，李强 9 月 22 日在上海调研时强调加快培育壮大新兴产业和未来产业、持续做大做强先进制造业；丁薛祥当天下午在北京会见哈萨克斯坦第一副总理纳利巴耶夫。</p>
+
+    <h2>开发工具</h2>
+
+    <p>Jev 发布刚满 8 天，开源替代已经冒出一堆，连诺基亚都来凑热闹。有人在 MacBook 上让官方 Jev 和三个开源方案同跑 20 张中文工单：Laya 25 毫秒，比官方快约 50 倍；djev 509 毫秒；官方 Jev 1.3 秒；AnyJev 接近 4 秒。配套的还有导航站，把 GitHub 上真正在调用 Jev 的开源项目收全了，788 个项目、182 个当场可跑、765 条源码调用证据，分类每天自动更新。它的卖点是不看 README 里怎么吹，直接看源码里怎么调。</p>
+
+    <p>语音合成也有了新选择。Kyutai 开源了 Pocket TTS，约 1 亿参数，主打在 CPU 上本地跑。官方在 MacBook CPU 上测出的速度最高接近 6 倍实时，首块音频约 200 毫秒生成，只需要 2 个 CPU 核心。以前做 TTS 要么上 GPU 要么接付费 API，这条路子算是被打开了一点。</p>
+
+    <p>视频生产线上，有人用 Opus 5.5 把最后一公里打通了：口播交给数字人生成，剪辑派 Agent 套用训练好的"网感"动效做 A/B-roll 编排，最后自动出片并推成剪映工程文件。另一头，GitHub 上 2600+ stars 的「狗头军师」把恋爱咨询做成了 Codex Skill，丢进聊天截图和记录，它来分析态度、判断关系、拟话术。elizaOS 则把 Agent 从框架做成了整套可装机系统，聊天、语音、记忆、自动操作电脑都在里面，1.9 万 stars，五千七百多个 fork，一千四百多个 issue 开着。fork 数接近 star 数的三成，说明确实有人在拿它改东西。</p>
+
+    <h2>AI Agent 与开源工作台</h2>
+
+    <p>OpenStock 把 TradingView 图表、行情、财务、新闻、Watchlist 和市场情绪全塞进一个网页，18K+ stars。以前看一只股票要开三四个网站，现在收进一个工作台，源码开放。QuantMind 面向量化，300 多维特征、13 种模型，AI 挖因子、训练模型、批量选股、历史回测串成一条流程，支持 A 股、港股、美股和期货。教程这边，《深入理解 AI Agent》的 Web 阅读版换成了 Astro 样式，移动端更友好；还有读者把整本书蒸馏成 22 个 skills，既方便 Agent 拿来写 Agent，也方便人快速过一遍。Hermes 的插件生态也在长，今天被提到的一组包括额度仪表、远程组网、第二大脑金库、工具洪水闸和"失败变回归单"。</p>
+
+    <h2>中美关系</h2>
+
+    <p>习近平 9 月 23 日至 25 日对美国进行国事访问。这是时隔 11 年再次以国事访问形式访美，也是两国元首在半年内的又一次会晤。人民日报这两天相关版面密集：钟声评论《相向而行，走好大国正确相处之道》、大使随笔《推动中美建设性战略稳定关系落地落实》，以及写马斯卡廷跨洋情谊的《"真正的朋友，彼此挂念、互相铭记"》。另外有一则数据值得记下，芝加哥全球事务委员会 9 月 21 日公布的调查显示，57% 的美国民众支持对华友好合作。</p>
+
+    <h2>中东局势</h2>
+
+    <p>特朗普在联合国大会的演说被总结成五个要点：古巴垮台、摧毁伊朗、格陵兰基地，以及把 AI 改名为 SI。他对伊朗的措辞是若无协议就"annihilate"（摧毁），伊朗总统佩泽希齐扬随后在联大回应，说伊朗"永不屈膝"，不会放弃民用核计划。纽约时报的分析认为，这场伊朗战争可能拖累共和党的中期选举形势。同一场联大上，内塔尼亚胡称马克龙关于约旦河西岸的表态"grotesque"；联合国人口基金则报告加沙针对女性的暴力事件激增，早婚和强迫婚姻数量"严重上升"。</p>
+
+    <div class="tl">
+      <h3>伊朗局势演化线</h3>
+      <ul>
+        <li><span class="when">9/02</span>特朗普表示，若能"迅速"达成协议，同意取消对伊朗的打击</li>
+        <li><span class="when">9/03</span>阿曼方面称霍尔木兹海峡会谈进展顺利，伊朗警告协议不会打通海峡</li>
+        <li><span class="when">9/23</span>美国推出对伊朗经济新制裁，外界关注其中对中国的处理</li>
+      </ul>
+    </div>
+
+    <h2>俄乌冲突</h2>
+
+    <p>特朗普邀请普京出席在迈阿密举行的 G20 峰会，考虑到普京面临的指控，不少领导人未必欢迎他到场。战场与政坛两头的消息同样密集：9 月 22 日莫斯科遭到 450 架乌克兰无人机袭击，市长称这是"迄今最大规模"的一次；泽连斯基在连日抗议后撤换了军方总司令。BBC Verify 则专门核查了与俄罗斯相关的虚假信息传播，看这些操作如何在英国、乌克兰议题上造势。这条话题里还混进了体育新闻，埃里克森与沃尔夫斯堡协商解约。</p>
+
+    <h2>欧洲</h2>
+
+    <p>法国文坛出了个争议：加拿大海地裔作家 Thélyson Orélien 凭首部小说拿下 Prix du Roman Fnac，随即被指使用 AI 写作，引发不小风波。苏格兰的药物致死人数比上一年上升 11%，十年累计超过 1.1 万，仍是欧洲最差的水平。德国方面，梅尔茨难以说服选民，极右翼势头上升，经济政策不受欢迎，加上他本人强硬的行事风格，都成了负担。足球迷可能更关心另一件事：克洛普即将迎来执教德国队的首场比赛。</p>
+
+    <h2>芯片、金融与其他</h2>
+
+    <p>特朗普披露了涉及大型科技与 AI 公司的大额股票交易，微软、英伟达、SpaceX 等标的都有买入卖出记录。另一边，黄仁勋继续在公开场合跟 AI 末日论者唱反调，核心意思是别怕 AI。市场这边，10 年期美债收益率周三升到约 5.1%，投资者越来越倾向于预期美联储还会再加息一次。加密领域，香港数字资产峰会定在 11 月 5 日至 6 日于君悦酒店举行，SFC、BlackRock 等机构会出席；美国现货比特币 ETF 上周尾段出现回升，部分收复了此前的流出。</p>
+
+    <p>国内政策层面，李强在上海会见了来华出席第 48 届世界技能大赛的世界技能组织主席乌汉和首席执行官霍伊。自然资源领域，国务院新闻办发布会介绍了促进自然资源安全高效永续利用的情况，提到为 2800 多个重大项目配置新增建设用地等资源。朝鲜半岛方面，全国人大常委会副委员长丁仲礼率团访问韩国并出席中韩议会交流机制会议。游戏圈有一条警示：某款 Steam 游戏今年第二次遭遇创意工坊恶意软件事件，已经禁用了 mod 功能。最后，有人推荐了 DuckDuckGo 创始人写的《Traction》，理由是"会 Coding 只能做出产品，会营销和增长才能找到用户"，做独立开发和出海的人可以翻翻。能源政策上，美国能源部长 Chris Wright 正在推销"能源主导"的愿景，描绘的是一个化石燃料充裕的未来。</p>
+
+    <p class="note">本内容由 Hermes Agent 自动采集分析，每日更新</p>
+  </article>
+</main>
 </body>
 </html>
