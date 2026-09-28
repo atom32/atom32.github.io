@@ -4,7 +4,91 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>每日资讯早报 2026-09-28 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+  <style>
+    :root {
+      --accent: #c0392b;
+      --ink: #1f2328;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --bg: #fbfbf9;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                   "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", sans-serif;
+      font-size: 17px;
+      line-height: 1.78;
+      letter-spacing: .01em;
+    }
+    .page { max-width: 720px; margin: 0 auto; padding: 0 20px 64px; }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 0; border-bottom: 1px solid var(--line); margin-bottom: 28px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; text-decoration: none; color: var(--ink); }
+    .mark {
+      width: 28px; height: 28px; border-radius: 8px; background: var(--accent);
+      color: #fff; display: inline-flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800;
+    }
+    .nav a { color: var(--muted); text-decoration: none; margin-left: 16px; font-size: 15px; }
+    .nav a.on { color: var(--accent); font-weight: 700; }
+    .back-link { display: inline-block; color: var(--muted); text-decoration: none; font-size: 14px; margin-bottom: 14px; }
+    h1 { font-size: 27px; line-height: 1.35; margin: 0 0 6px; letter-spacing: -.01em; }
+    .post-meta { color: var(--muted); font-size: 13.5px; margin: 0 0 30px; }
+    h2 {
+      font-size: 20px; margin: 44px 0 14px; padding-top: 18px;
+      border-top: 1px solid var(--line); letter-spacing: -.005em;
+    }
+    h3 { font-size: 17px; margin: 26px 0 8px; color: #111827; }
+    p { margin: 0 0 16px; }
+    a { color: var(--accent); }
+    ul, ol { padding-left: 22px; margin: 0 0 16px; }
+    li { margin-bottom: 8px; }
+    strong { font-weight: 700; }
+    .lede {
+      background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--accent);
+      border-radius: 10px; padding: 16px 18px; margin: 0 0 8px; font-size: 16.5px;
+    }
+    .lede p:last-child { margin-bottom: 0; }
+    .tag {
+      display: inline-block; font-size: 12px; color: var(--muted); background: #f3f4f6;
+      border-radius: 20px; padding: 2px 10px; margin-left: 8px; vertical-align: middle;
+    }
+    .timeline {
+      border-left: 2px solid var(--line); margin: 12px 0 20px; padding-left: 16px;
+    }
+    .timeline .row { position: relative; margin-bottom: 12px; font-size: 15.5px; }
+    .timeline .row::before {
+      content: ""; position: absolute; left: -21px; top: 9px;
+      width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    }
+    .date { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; margin-right: 8px; }
+    .stat {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px; margin: 14px 0 8px;
+    }
+    .stat div {
+      background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+      padding: 12px 14px; font-size: 14.5px; color: var(--muted);
+    }
+    .stat b { display: block; font-size: 21px; color: var(--ink); font-variant-numeric: tabular-nums; }
+    footer {
+      margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line);
+      color: var(--muted); font-size: 13.5px; text-align: center;
+    }
+    @media (max-width: 480px) {
+      body { font-size: 16px; line-height: 1.75; }
+      h1 { font-size: 23px; }
+      h2 { font-size: 18.5px; }
+      .page { padding: 0 16px 48px; }
+    }
+  </style>
 </head>
 <body>
   <main class="page">
@@ -15,424 +99,114 @@
       </a>
       <nav class="nav">
         <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
+        <a class="on" href="/blog/">笔记</a>
       </nav>
     </header>
 
     <a class="back-link" href="/blog/">← 返回笔记列表</a>
     <h1>每日资讯早报 2026-09-28</h1>
-    <p class="post-meta">2026-09-28 · 每日资讯早报 · 确定性兜底发布</p>
+    <p class="post-meta">2026-09-28 · 每日资讯早报 · 共 198 条信息，X 85 / RSS 113</p>
 
     <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-09-28</strong></p>
-<p>📊 <strong>共 198 条信息</strong>  ·  🐦 X(85)  ·  📰 RSS(113)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（25 条）</h3>
-<blockquote>
-<p>📝 <em>实时行情快速便捷</em></p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 11:03 🟡
-这就舒服了！A股/港股免费实时行情，全市场五档盘口 200 多毫秒拿到</p>
-</blockquote>
-<p>easyquotation，5.4K stars，MIT 开源。新浪 / 腾讯 / 集思录三源，单只 / 多只 / 全市场快照随便取。</p>
-<p>现在的新库都在卷 MCP、卷 AI 接入，但很多人忘了一个最简单的需求：实时行情要快、要…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×4 · 09:28 🟡
-散户也能白嫖一整套 AI 投研系统？炒 A股的先别急着盯盘，看完这个再说！</p>
-</blockquote>
-<p>GitHub 上挖到个有点猛的项目 easy-stock，直接把这几样活打包进一个桌面应用：
-1️⃣ 行情分析
-2️⃣ 市场情绪
-3️⃣ 财经资讯
-4️⃣ AI 智能投研</p>
-<p>以前盯盘、翻新闻、做复盘，一天恨不得掰成 48 …</p>
-<blockquote>
-<p>🐦 <strong>Codex Update@CodexRe</strong> · 📷×1 · 18:17 🟡
-🚨 Claude's usage limits didn't actually go up  it just feels that way</p>
-</blockquote>
-<p><strong>The overall numbers:</strong> Codex still hands out more raw quota than Claude. That…</p>
-<blockquote>
-<p>🐦 <strong>向阳乔木@vista8·5小时</strong> · 📷×1 · 16:42 🟡
-VS Code 安装 Cline 插件后。</p>
-</blockquote>
-<p>可以免费用Gemini 3.8 Flash、DeepSeek V4.1 Flash、MiMo-V2.6-Flash、Muse Spark 1.3 Contributor 等模型。 https://t.co/7S4d4OCyWN</p>
-<blockquote>
-<p>🐦 <strong>向阳乔木@vista8·5小时</strong> · 📷×1 · 16:17 🟡
-乔木 AI RSS 插件新增了几个配色风格。</p>
-</blockquote>
-<p>还有两款黑色风格，晚上读的时候不会那么刺眼。</p>
-<p>搭配Qiaomu Agent 插件可以辅助阅读文章，还做更多有趣的事。</p>
-<p>比如我让提取文章中的歌曲名添加到 Spotify 并播放。</p>
-<p>调用 Codex 内置的 imagegen 把文章生成信息图，在其他…</p>
-<blockquote>
-<p>🐦 <strong>Bojie Li@bojie_li·6小</strong> · 📷×2 · 15:23 🟡
-Codex (GPT-6 Sol) 和 Claude (Opus 5.5) 好聪明呀，我还担心它们两个在同一个工作区里打架，结果 Codex 发现它们在同一个 tmux 下面，所以直接用 tmux capture-pane 来偷看 Claude 在干啥，用 tmux send-keys 来给 Cod…</p>
-<p>🐦 <strong>匿名</strong> · 14:40 🟡
-🧙 真的顶，qwen-code 把一个能自己拆任务、自己记事的编程搭子直接装进了你的终端。</p>
-</blockquote>
-<p>GitHub 上 2.8 万 star，去年 6 月才建的仓库，一千四百多个 issue 还开着，用的人真不少。</p>
-<p>平时改一个 bug 要横跨好几个文件，以前的流程是复制一段贴进网页对话框，它问你上下文你再…</p>
-<blockquote>
-<p>🐦 <strong>rody@0x_rody·8小时</strong> · 🎬×1 · 13:49 🟡
-This is absolutely insane.  </p>
-</blockquote>
-<p>A Stanford AI research group joints JEV with Claude Code to sort 100+ billion data points every 15 minutes.</p>
-<p>the trick i…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 13:23 🟡
-兄弟们，别在乱用了！</p>
-</blockquote>
-<p>90%的人都不会用 Claude、Codex。
-一开口就把顶级工程师，当实习生使唤。</p>
-<p>“帮我写个程序。”
-“修一下这个 bug。”
-“做个网站。”
-“帮我看下交易。”</p>
-<p>这种问法，AI 只能给你实习生水平。
-不是模型不行，是你没把它当正经搭档用。</p>
-<p>我后来只干一件事：
-开工…</p>
-<blockquote>
-<p>🐦 <strong>陈硕KAI@ChenshuoAI·8小时</strong> · 13:12 🟡
-GPT-6 Astra 负责后端、数据库、架构优化。。。。
-该重构的重构，该补的补，该优化的优化，基本盘先给你狠狠干扎实。。。
-然后再让 Claude Opus 5.5 接手前端，顺便干一件最重要的事：
-把 Astra 留下来的过度设计、过度抽象、过度防护，一坨一坨删掉。。。。</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 12:00 🟡
-🚨 GPT-5.6 SOL IS FEELING DIFFERENT </p>
-</blockquote>
-<p>«GPT-5.6 Sol in Chat mode is surprisingly impressive
-The warmth and personality feel much closer to GPT-4o
-Charis…</p>
-<blockquote>
-<p>🐦 <strong>Chesny@chesny·11小时</strong> · 🎬×1 · 10:14 🟡
-Este tío acaba de FILTRAR la forma MÁS FÁCIL de ganar dinero en 2026:</p>
-</blockquote>
-<p>Claude Code + YouTube = 62.000 $/mes</p>
-<p>(En solo 13 minutos)</p>
-<p>Guárdalo. Me lo agr…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 09:53 🟡
-🚨 Claude Sonnet 5.5 seems all set for launch</p>
-</blockquote>
-<p>Reports say the tag "claude-sonnet-5-5" has surfaced inside Droid 0.228.0's model registry, sitting behi…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×2 · 09:07 🟡
-分享一个 GPT Image 2.5 通用角色卡提示词，可过Seedance 人脸，上传一张人像图即可。
-👇 https://t.co/Eok59wrjqz</p>
-<p>📰 <strong>爱范儿</strong> · 2026-09-23 🟢
-<strong>Claude 5.5 发布，性能直逼 Fable，还要卷价格</strong> — 最卷一夜！ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
-<p>📰 <strong>爱范儿</strong> · 2026-09-23 🟢
-<strong>⁡⁤‬‍⁤‬​‌‍⁢⁡⁢⁣‌‌﻿⁡⁡​⁤​​﻿⁢⁡‬⁡‬​‍⁣​​﻿⁤⁡‍​⁡‬‌‬⁣⁡⁣​⁡‬⁤刚刚，GPT-6 新模型掀桌！「白菜价」杀进 DeepSeek</strong> — DeepSeek 的价格护城河，迎来 OpenAI 的挑战#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
-<p>📰 <strong>爱范儿</strong> · 2026-09-23 🟢
-<strong>早报｜GPT-6 Sol发布，价格腰斩/特努斯：Siri AI不应代替人际关系/4999起，OPPO Find X10系列发布</strong> — · 第六代骁龙 8 双旗舰发布，iQOO 16、红魔 12 Pro+ 首批搭载
-· Qwen Intelligence 亮相，荣耀 Magic9 系列、Robot Phone 首批搭载
-· 前小米 X</p>
-<p>📰 <strong>爱范儿</strong> · 2026-09-24 🟢
-<strong>早报｜iOS27测试版新功能可阻止摇一摇广告/5999起，小米18 Pro发布/宾利发布首款纯电车Torcal，888马力</strong> — · DeepSeek 发新论文，公开 Agent 训练沙箱 DSec
-· 蔚来 ES9 交付达 3 万台，用时 119 天
-· iPhone 18 Pro 用户反映夜景照片出现「绿影」#欢迎关注爱范儿</p>
-<p>📰 <strong>NYT</strong> · 2026-09-27 🟢
-<strong>Dario Amodei of Anthropic to Dine With Trump at White House</strong> — Dario Amodei, who is also the company’s chief executive, will join the president at the White House </p>
-<p>📰 <strong>NYT</strong> · 2026-09-27 🟢
-<strong>Did Anthropic’s A.I. Really Make a Scientific Discovery on Its Own?</strong> — An expert at the University of Copenhagen said his team had been sharing its research with the compa</p>
-<p>📰 <strong>BBC中文</strong> · 2026-09-27 🔵
-<strong>习近平访美：美中各从“习特会”得到什么？</strong> — 图像来源，AFP via Getty ImagesArticle InformationAuthor, 江颖怡 和 Author, 余美霞Role,  BBC中文记者Published 2026年9月</p>
-<p>📰 <strong>人民网</strong> · 2026-09-27 🟢
-<strong>02版 -  外交部发言人就人工智能问题答记者问</strong> — 2026年09月27日</p>
-</blockquote>
-<pre><code>                         本报北京9月26日电&amp;nbsp;&amp;nbsp;外交部发言人9月26日就人工智能问题答记者问。有记者问：我们注意到，美方在介绍此次访问成
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-27 🟢
-<strong>03版 -  智能经济何以塑造中国发展新优势</strong> — 2026年09月27日</p>
-</blockquote>
-<pre><code>                        一款国产大模型发布，全球开发者竞相使用；城市道路上，智能汽车驰骋向前；智能车间里，机械臂上下翻飞；矿山深处，无人矿卡往来穿梭……人工智
-</code></pre>
-<blockquote>
-<p>📰 <strong>纽约时报中文</strong> · 2026-09-26 🟢
-<strong>“习特会”落幕，中美分歧仍然暗流涌动</strong> — 除了盛大的场面，世界两大经济体和人工智能超级大国的领导人会谈几乎没有达成任何成果。特朗普似乎更专注于款待习近平，而不是挑战自己的地缘政治对手。                             </p>
-<p>📰 <strong>纽约时报中文</strong> · 2026-09-26 🟢
-<strong>白宫国宴：AI巨头与习近平共进晚餐，特朗普脱稿演讲</strong> — 中美元首与萨姆·奥特曼、马斯克、黄仁勋和库克在白宫国宴厅共进晚餐。关于人工智能威胁的讨论喧嚣尘上，但特朗普与习近平的峰会并未就该技术的发展方向达成什么共识。                    Do</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-20, 2026-09-22, 2026-09-23, 2026-09-26, 2026-09-27</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>09/14</strong> 关键进展
-<strong>09/15</strong> 关键进展
-<strong>09/16</strong> 关键进展
-<strong>09/17</strong> 关键进展</p>
-<p>📊 <em>趋势（15天共1223条）</em> <code>█75 █92 █115 █146 █115 █81 █61</code></p>
-</blockquote>
-<h3>🔧 开发工具（7 条）</h3>
-<blockquote>
-<p>📝 <em>Naive-N0.5-Flash发布，性能领先</em></p>
-<p>🐦 <strong>匿名</strong> · 17:37 🟡
-刚刚intern的Naive AI 发布了首个模型Naive-N0.5-Flash, 位列开源模型前列🎉🎉
-309B MoE, native 1M context, up to 2,000 tok/s.
-看Benchmark包括我自己实测都是都是挺能打的
-Naive AI 还用N0.5-Flash …</p>
-<p>🐦 <strong>Ruofeng Yang@WShuiyi</strong> · 📷×2 · 16:29 🟡
-Introducing Naive-N0.5-Flash: Building Frontier AI with AI</p>
-</blockquote>
-<p>🔹 309B MoE, 15.5B active: top-tier in coding, leading in AI R&amp;D.
-🔹 Native 1M context, no f…</p>
-<blockquote>
-<p>🐦 <strong>草莓泡芙@SnozakiSakura·6</strong> · 📷×1 · 15:04 🟡
-重装 Windows 最崩溃的部分，微软替你写了个脚本。</p>
-</blockquote>
-<p>重装系统最难受的是，Git、Python、VS Code、WSL……又得一个个装回来。</p>
-<p>微软现在做了个开源项目 Windows Developer Config，可以把这套流程一次跑完。给经常重装电脑、换电脑写代码的人，省事不少。</p>
-<p>用法…</p>
-<blockquote>
-<p>🐦 <strong>Mo Elgaraihy@EngMoEl</strong> · 🎬×1 · 14:08 🟡
-🚨 حدث تاريخي يُزلزل عالم الريادة والذكاء الاصطناعي: جاك دورسي (مؤسس تويتر) يطرح أخطر مشروع مجاني على الإطلاق! 💥🚀</p>
-</blockquote>
-<p>​جاك دورسي أطلق للتو إطار عمل (Frame…</p>
-<blockquote>
-<p>🐦 <strong>Gorden Sun@Gorden_Su</strong> · 12:13 🟡
-Interfaze开源lev：开源版jev</p>
-</blockquote>
-<p>基于Qwen-3.5 4B，能针对一段文本同时回答判断题、单选题和打分题，无需逐字生成内容，直接通过模型内部概率输出结果。多道题目共享一次计算，耗时和单次提问几乎一致，且选择范围被严格限定在给定的选项内。</p>
-<p>模型：https://t.co/EGVp0Xu…</p>
-<blockquote>
-<p>🐦 <strong>周览资源@grgerwcwetwet·1</strong> · 📷×1 · 11:36 🟡
-推荐一个我每天都想打开看一眼的开源项目：NewsNow，把全网热榜塞进一个页面。</p>
-</blockquote>
-<p>微博、知乎、抖音、GitHub、Hacker News、V2EX、华尔街等平台的热门内容统一聚合，国内、国际、科技、财经等分类一眼扫完。</p>
-<p>最舒服的就是不用再挨个 App 刷热榜，打开一个网页，几分钟就知道今天互联网…</p>
-<blockquote>
-<p>🐦 <strong>GitHubDaily@GitHub_D</strong> · 📷×1 · 10:00 🟡
-网站在 Google 上排得挺靠前，有人去问 ChatGPT 时，回答里却从来不引用它，问题出在哪里很难查。</p>
-</blockquote>
-<p>geo-score 专门给网站算这个分，输入一个网址，大约 20 秒出结果，看的是能不能被 ChatGPT、Perplexity 这类 AI 搜索引用。</p>
-<p>21 项检查，满分 100，分成…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-19, 2026-09-22, 2026-09-23, 2026-09-24, 2026-09-27</em></p>
-</blockquote>
-<h3>🇨🇳 中美关系（7 条）</h3>
-<blockquote>
-<p>📝 <em>中美关系新篇章</em></p>
-<p>📰 <strong>人民网</strong> · 2026-09-27 🟢
-<strong>01版 -  开辟大国相处正确之道  书写中美关系历史新篇</strong> — 2026年09月27日</p>
-</blockquote>
-<pre><code>                        本报北京9月26日电&amp;nbsp;&amp;nbsp;2026年9月23日至25日，国家主席习近平对美国进行国事访问。行程结束之际，中共中央政治
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-27 🟢
-<strong>02版 -  开辟大国相处正确之道  书写中美关系历史新篇</strong> — 2026年09月27日</p>
-</blockquote>
-<pre><code>                        本报北京9月26日电&amp;nbsp;&amp;nbsp;2026年9月23日至25日，国家主席习近平对美国进行国事访问。行程结束之际，中共中央政治
-</code></pre>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-09-27 🔵
-<strong>特习峰会成果盘点：关税休战、AI对话、未提台湾、暗指日本</strong> — 图像来源，ReutersPublished 6 分钟前阅读时间: 4 分钟中国国家主席习近平（25日）结束访美行程，美中分别发表会晤成果，均触及贸易、人工智能及禁毒等议题，同意建立基于尊重、公平及对等</p>
-<p>📰 <strong>人民网</strong> · 2026-09-27 🟢
-<strong>01版 -  习近平回到北京</strong> — 2026年09月27日</p>
-</blockquote>
-<pre><code>                         本报北京9月26日电&amp;nbsp;&amp;nbsp;9月26日下午，国家主席习近平圆满结束对美国的国事访问回到北京。习近平主席夫人彭丽媛，中
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-27 🟢
-<strong>02版 -  中美达成八点成果共识</strong> — 2026年09月27日</p>
-</blockquote>
-<pre><code>                         新华社华盛顿9月25日电&amp;nbsp;&amp;nbsp;当地时间9月23日至25日，中国国家主席习近平对美国进行国事访问。其间，两国元首就中
-</code></pre>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-27 🟢
-<strong>02版 -  释放相向而行、和平共处、互利共赢的积极信号</strong> — 2026年09月27日</p>
-</blockquote>
-<pre><code>                        9月23日至25日，习近平主席对美国进行国事访问。两国元首进一步拓展了中美关系新定位的内涵，明确尊重、公平、对等的重要性，同意构建“基
-</code></pre>
-<blockquote>
-<p>📰 <strong>纽约时报中文</strong> · 2026-09-26 🟢
-<strong>中美贸易休战延长为习近平赢得喘息之机</strong> — 这场峰会明显缺乏对抗色彩。中美紧张关系缓和将使得北京有余力应对国内的经济困境。习近平能够将精力更好地集中于国内核心议题，为明年中共二十一大做准备。                    Doug Mi</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-15, 2026-09-19, 2026-09-20, 2026-09-23, 2026-09-26</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>25/03</strong> 王沪宁会见第三届中美1.5轨对话美方代表
-<strong>28/04</strong> 这份“信任票”，见证中国定力与担当（和音） | 重磅IPO：长鑫科技即将上市
-<strong>02/06</strong> 李强会见美中贸易全国委员会董事会代表团 | 上合峰会与G20折射中美全球秩序博弈
-<strong>05/07</strong> 中美经贸需要“合作清单”，而非“覆盖清单”
-<strong>12/09</strong> 中美经贸需要“合作清单”，而非“覆盖清单”
-<strong>02/19</strong> “看到热情好客、多元交融的新疆”
-<strong>02/22</strong> 从DeepSeek到“人工智能+”：中美AI竞赛究竟在比什么？
-<strong>02/23</strong> 导读 | 推进建设性战略稳定关系 共促世界和平稳定与繁荣
-<strong>03/06</strong> 绿色情缘，见证中美民间友好薪火相传（和音） | 落实元首会晤共识，积极构建中美建设性战略稳定关系</p>
-<p>📊 <em>趋势（14天共103条）</em> <code>█10 █8 █7 █11 █9 █12 █10</code></p>
-</blockquote>
-<h3>💻 AI Agent（3 条）</h3>
-<blockquote>
-<p>🐦 <strong>rari@0xwhrrari·7小时</strong> · 📷×1 · 15:00 🟡
-Send this Jev prompt to any LLM or AI agent</p>
-</blockquote>
-<p>it installs Jev → audits your workflow → finds where you waste tokens, time and money</p>
-<p>then moves repeata…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 09:27 🟡
-为什么现在顶尖的 AI Agent 团队都在聚焦 Harness Engineering（运行时支架工程）？</p>
-</blockquote>
-<p>很多人以为构建 Agent 只是选一个高智力基座模型，配上一组 Prompt 和几个 API 接口。但在真实复杂的长链路场景（如自动化代码重构、多步数据分析）中，模型能力只是系统及格线，H…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 09:18 🟡
-斯坦福大学课程 CS329A: Self-Improving AI Agents</p>
-</blockquote>
-<p>课程 9 讲视频都已发布在 Youtube，第 1 讲 52 万观看，第 9 讲 1.5 万。趁假期坚持看完 9 讲视频，你就超过了中间的 50 多万人，和连第 1 讲都没看过的无数人 😂</p>
-<p>开玩笑，虽然 AI Ag…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-17, 2026-09-20, 2026-09-22, 2026-09-23, 2026-09-27</em></p>
-</blockquote>
-<h3>🇮🇱 中东局势（3 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-27 🟢
-<strong>A Trump 2024 Campaign Ad Returns, Now Brought to You by the Government</strong> — The ad, which ethics experts said could violate federal law, shows Mr. Trump vowing to “expel the wa</p>
-<p>📰 <strong>BBC</strong> · 2026-09-27 🔵
-<strong>No handshakes between Republic of Ireland and Israel</strong> — The Republic of Ireland and Israel players do not shake hands with each other before or after Sunday</p>
-<p>📰 <strong>NYT</strong> · 2026-09-27 🟢
-<strong>A ‘Big Problem’: Trump’s War With Iran Drags Down Republicans in Midterms</strong> — As their November picture darkens, and gas and diesel prices soar, some Republicans who backed the w</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-19, 2026-09-23, 2026-09-25, 2026-09-26, 2026-09-27</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>02/02</strong> 特朗普表示同意取消对伊朗的打击，前提是能“迅速”达成协议
-<strong>09/03</strong> 中东海湾国家阿曼（Oman）方面称，霍尔木兹海峡会谈进展顺利，而伊朗则警告协议不会打通海峡。
-<strong>09/09</strong> 特朗普虚张声势再多，除了与伊朗谈判别无选择——BBC编辑鲍文观察
-<strong>07/23</strong> 三位自以为是的领导人和他们的愚蠢战争 | 美国与沙特签署核协议 为中东再引核扩散风险
-<strong>09/24</strong> 中国希望伊朗战争结束，但不是以特朗普想要的方式
-<strong>10/25</strong> 美国制裁伊朗经济新措施 为何对中国“松手”？
-<strong>19/02</strong> 欧洲游客“消失”，东南亚旅游业者陷入困境
-<strong>02/29</strong> 战争和权力的新物理规律
-<strong>09/26</strong> 欧洲游客“消失”，东南亚旅游业者陷入困境</p>
-<p>📊 <em>趋势（10天共20条）</em> <code>█2 █1 █1 █2 █5 █3 █1</code></p>
-</blockquote>
-<h3>🌍 环境/能源（2 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-09-27 🟢
-<strong>‘She’s One of Us’: Mary Peltola’s Bumpy Rise to Political Power</strong> — Ms. Peltola, the Democratic Senate candidate in Alaska, has complicated politics: She is pro-gun, pr</p>
-<p>📰 <strong>人民网</strong> · 2026-09-27 🟢
-<strong>03版 -  全国累计发电装机容量同比增11.1%</strong> — 2026年09月27日</p>
-</blockquote>
-<pre><code>                         本报北京9月26日电&amp;nbsp;&amp;nbsp;（记者王云杉）记者从国家能源局获悉：截至8月底，全国累计发电装机容量41.03亿千瓦，同
-</code></pre>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-14, 2026-09-17, 2026-09-19, 2026-09-23, 2026-09-27</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 12:50 🟡
-🚨LIVE  Pepe Escobar : How a Dominant China Obliterated America's Playbook + Iran Russia UPDATES https://t.co/GMhGiN3vHo</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-19, 2026-09-20, 2026-09-22, 2026-09-23, 2026-09-27</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Se08/08</strong> 美国特使在俄乌间穿梭外交：双方分歧未解 泽连斯基预计战事将持续到冬季 | 美国特使乘“和平快车”抵达基辅，但战争依然看不到终点
-<strong>Au15</strong> “科技仙境”莫斯科：是数字乌托邦，也是监控陷阱 | 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Au22</strong> 莫斯科遭到乌克兰450架无人机袭击，市长称规模“迄今最大”
-<strong>Se25</strong> 生于乌克兰，为何替俄罗斯作战？被俘士兵向BBC讲述他们的故事
-<strong>Ju02</strong> 当普京把铁锤挥向文学
-<strong>Ju16</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Ju19</strong> 战争和权力的新物理规律
-<strong>Ju22</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</p>
-<p>📊 <em>趋势（7天共13条）</em> <code>█3 █1 █4 █1 █1 █2 █1</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 10:04 🟡
-Grok Imagine プロンプト</p>
-</blockquote>
-<p>胸を見せてくれるプロンプトです。</p>
-<p>spicy不要でアップロード画像にもご利用いただけます。</p>
-<p>いまいち条件が分からないので成功率が比較的高めのものを一旦公開いたします。
-※それでも10～20％程度の確率なのでクレジットに余裕のある方はお試しいただければと思い…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-21, 2026-09-22, 2026-09-24, 2026-09-25, 2026-09-26</em></p>
-</blockquote>
-<h3>🇪🇺 欧洲（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-09-27 🔵
-<strong>Pope says 'scourge' of abuse must be rooted out as he visits Lourdes</strong> — Pope Leo spoke to bishops before leading a service attended by thousands of worshippers in France.</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-13, 2026-09-14, 2026-09-19, 2026-09-22</em></p>
-</blockquote>
-<h3>🏢 创业/商业（1 条）</h3>
-<blockquote>
-<p>📰 <strong>人民网</strong> · 2026-09-27 🟢
-<strong>04版 -  “这样的月饼，准香！”（在现场）</strong> — 2026年09月27日</p>
-</blockquote>
-<pre><code>                         中秋节前，浙江省丽水市遂昌县妙高街道的食堂厨房里，一群人正忙活着：街道办事处副主任雷仙爱调着豆沙馅，一旁还有人和面，丽水遂香记食品有
-</code></pre>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-19, 2026-09-22, 2026-09-23, 2026-09-26, 2026-09-27</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（130 条）</h2>
-<blockquote>
-<p>🐦 <strong>1LittleCoder@1little</strong> · 📷×1 · 21:29 🟡
-"Because nobody read that code as a whole, including me." - Fable 5.1, 2026! https://t.co/Xd4v7YVfmk</p>
-<p>🐦 <strong>匿名</strong> · 📷×2 · 18:21 🟡
-RT @ranru666: 回顾经典5️⃣——一字马露逼
-📷@king_ruanfeng </p>
-</blockquote>
-<h1>嫩逼 #一字马</h1>
-<p>这组图已经过去两年了哈哈哈还有那个时候关注我的吗🥺 https://t.co/I4lr…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 18:18 🟡
-RT @yeshumvp: 三人叠叠乐，可以这样拍。</p>
-</blockquote>
-<p>出镜模特：</p>
-<p>右：@xiaomajia2009
-左：@Linalumei
-上：@wwffcobalt</p>
-<p>📭：
-@KazamaTom</p>
-<p>@Kasu…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 18:16 🟡
-RT @yeshumvp: 可爱两姐妹！！！</p>
-</blockquote>
-<p>出镜模特：@Xiaozhujiang666</p>
-<p>出镜模特：@molinainai01</p>
-<p>📭：
-@KazamaTom</p>
-<p>@KasukabeAe</p>
-<p>@Suot…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 17:55 🟡
-RT @fengmvp: 拍摄花絮！！！！激情舌吻</p>
-</blockquote>
-<p>出镜模特：</p>
-<p>@zhaodaolaogong</p>
-<p>@xiaokui8888
-📭：
-@KazamaTom</p>
-<p>@KasukabeAe</p>
-<p>@Suotome…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 17:55 🟡
-RT @Dex10303: 番号：START-626
-趁妻子带儿子回娘家的期间 和儿子幼儿园的漂亮老师在家密会 疯狂做爱一周的绝伦出轨性爱</p>
-<p>🐦 <strong>匿名</strong> · 16:44 🟡
-RT @AKAZA_VS: Venus de Milo II</p>
-</blockquote>
-<p>💃:@cuic9794
-📷:@AKAZA_VS
-✉️:
-@Fengsiyuan
-@PHOTO4927
-@WANIMAL912</p>
-<h1>fin…</h1>
-<blockquote>
-<p>🐦 <strong>大猫闹闹@LeoCat62728028·</strong> · 📷×2 · 16:34 🟡
-稳定版了，GPT真的是又爱又恨，以为不行的，反而可以 https://t.co/dL05YeVuWY</p>
-<p><em>…还有 122 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 85条
-    General: ██████████ (71)</p>
-<p>📰 <strong>RSS 新闻</strong>: 113条
-    · BBC: 35条
-    · 人民网: 30条
-    · 爱范儿: 20条
-    · NYT: 18条
-    · 纽约时报中文: 8条
-    · BBC中文: 2条</p>
-<p>📚 累计: X=30650 | NGA=584 | S1=373 | RSS=10573</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
+
+      <div class="lede">
+        <p>今天的主线还是模型。Claude Sonnet 5.5 在第三方应用的模型注册表里露了标签，GPT-6 家族（Sol、Astra、5.6 Sol）在不同口径下被反复讨论，Anthropic 的 CEO 则跑到白宫去吃饭了。价格战也在继续，OpenAI 用"白菜价"直接踩进 DeepSeek 的地盘。</p>
+        <p>另一条线是中美。习近平 23 到 25 日访美，双方拿出八点共识，关税休战延长，还说要在 AI 上对话。热闹归热闹，纽约时报的评价是"几乎没有达成任何成果"。两边的叙事差得很远，值得放在一起看。</p>
+      </div>
+
+      <h2>AI 与大模型：一边发布，一边打价格战</h2>
+
+      <h3>Claude Sonnet 5.5 在注册表里被提前发现</h3>
+      <p>有开发者从 Droid 0.228.0 的模型注册表里翻出了 <code>claude-sonnet-5-5</code> 这个标签，位置排在现有模型后面。官方还没说话，社区已经把"即将发布"当成既定事实。同一时间，爱范儿的报道口径是 Claude 5.5 已发布、性能直逼 Fable、还要继续卷价格。</p>
+
+      <h3>GPT-6 的三个名字：Sol、Astra、5.6 Sol</h3>
+      <p>社区讨论里同时出现了 GPT-6 Sol、GPT-6 Astra 和 GPT-5.6 Sol 三个叫法，看起来是不同渠道对同一代模型的命名混乱。有人实测 GPT-5.6 Sol 在 Chat 模式下"温度"更接近 GPT-4o，人格感更强。另一条值得记的：OpenAI 把 GPT-6 新模型定到了"白菜价"，正面冲进 DeepSeek 长期守着的价格区间。DeepSeek 这边也没停，发了 Agent 训练沙箱 DSec 的论文。</p>
+
+      <h3>Codex 和 Claude 的额度之争</h3>
+      <p>有账号指出 Claude 的使用限额其实没涨，只是体验上感觉变宽松了；按原始配额算，Codex 给的仍然更多。这类争论没有官方数据支撑，只能算是开发者之间的体感对比。</p>
+
+      <h3>两个模型在一个工作区里共事</h3>
+      <p>有人把 Codex（GPT-6 Sol）和 Claude（Opus 5.5）放进同一个工作区，本来担心它俩打架，结果 Codex 发现彼此都在同一个 tmux 会话里，直接用 <code>tmux capture-pane</code> 看 Claude 在干什么，再用 <code>tmux send-keys</code> 给它发消息。另一个更工程化的用法是分工：GPT-6 Astra 负责后端、数据库和架构，Claude Opus 5.5 接手前端，顺便把 Astra 留下的过度设计、过度抽象和过度防护删掉。</p>
+      <p>这种"混编"到底算先进还是算补丁，暂时没有定论。支持者的理由是不同模型各有强项；怀疑者的理由是，真正的解法应该是让单个模型少犯过度设计的错。</p>
+
+      <h3>开发者工具侧的变化</h3>
+      <ul>
+        <li>VS Code 装上 Cline 插件后，可以免费调用 Gemini 3.8 Flash、DeepSeek V4.1 Flash、MiMo-V2.6-Flash、Muse Spark 1.3 等模型。</li>
+        <li>qwen-code 把"能自己拆任务、自己记事"的编程助手塞进了终端，仓库一年前建的，已有 2.8 万 star、一千四百多个 issue 未关。</li>
+        <li>乔木的 AI RSS 插件加了新配色，还有两款深色风格，晚上读着不刺眼；配 Qiaomu Agent 插件可以做更多事，比如抓出文章里的歌名丢进 Spotify，或者调 Codex 的 imagegen 把文章转成信息图。</li>
+      </ul>
+
+      <h3>把 AI 当实习生用，是浪费</h3>
+      <p>一条传播很广的吐槽说，90% 的人一开口就把顶级模型当实习生使唤："帮我写个程序""修一下这个 bug""做个网站"。发帖人的结论是，问题不在模型，而在提问方式，得把它当正经搭档而不是许愿池。</p>
+
+      <h3>研究场景：15 分钟排序千亿级数据点</h3>
+      <p>一个斯坦福的研究组把 JEV 和 Claude Code 拼起来，每 15 分钟处理一千多亿个数据点。这类案例的说服力在于它有具体的量和时间窗口，而不只是"AI 提效"的口号。</p>
+
+      <h3>开源侧：两个很实用的项目</h3>
+      <ul>
+        <li><strong>easyquotation</strong>：5.4K star、MIT 协议，接新浪、腾讯、集思录三个源，单只、多只、全市场快照都能取，全市场五档盘口 200 多毫秒到手。作者的话挺有意思——现在的新库都在卷 MCP 和 AI 接入，但很多人忘了最基本的诉求其实是"快"。</li>
+        <li><strong>easy-stock</strong>：把行情分析、市场情绪、财经资讯、AI 智能投研打包成一个桌面应用，主打散户也能有一套自己的投研工具。</li>
+      </ul>
+      <p>这两个项目都出自同一天的推送，一个是底层取数，一个是上层应用，刚好构成一条链。</p>
+
+      <h2>开发工具：三个不太起眼但省事的项目</h2>
+      <ul>
+        <li><strong>Naive-N0.5-Flash</strong>：Naive AI 的首个模型，309B MoE、激活 15.5B、原生 1M 上下文、最高 2000 tok/s，官方称在开源模型里排前列，coding 和 AI R&amp;D 是强项。发布者强调这是"用 AI 造前沿 AI"的产物。</li>
+        <li><strong>Windows Developer Config</strong>：微软开源的一套配置脚本，重装或换电脑后，Git、Python、VS Code、WSL 这些环境一次跑完，不用一个个装回来。</li>
+        <li><strong>NewsNow</strong>：把微博、知乎、抖音、GitHub、Hacker News、V2EX、华尔街见闻的热榜聚合进一个页面，按国内、国际、科技、财经分类。对不想挨个刷 App 的人很实用。</li>
+        <li><strong>geo-score</strong>：输入网址，约 20 秒出一个 100 分制的评分，21 项检查，专门衡量网站能不能被 ChatGPT、Perplexity 这类 AI 搜索引用。它针对的是一个新问题：Google 排名很好，但 AI 回答里从来不提你，而且很难查原因。</li>
+        <li><strong>Interfaze lev</strong>：被称为"开源版 Jev"，基于 Qwen-3.5 4B，针对同一段文本能同时回答判断题、单选题和打分题，不逐字生成，直接读模型内部概率，多题共享一次计算，耗时接近单次提问。</li>
+      </ul>
+
+      <h2>AI Agent：从选模型转向做支架</h2>
+      <p>一条讨论问得挺尖锐：为什么顶尖的 Agent 团队都在谈 Harness Engineering（运行时支架工程）？发帖人的观察是，很多人以为做 Agent 就是挑一个高智力基座模型、配一组提示词和几个 API，但在长链路场景里（自动化代码重构、多步数据分析），模型能力只是及格线，真正决定成败的是运行时那一层。</p>
+      <p>配套的还有斯坦福 CS329A《Self-Improving AI Agents》，9 讲视频都已放出，第 1 讲 52 万观看，第 9 讲 1.5 万。</p>
+
+      <h2>中美关系：八点共识与两套叙事</h2>
+      <p>2026 年 9 月 23 至 25 日，习近平对美国进行国事访问，26 日下午回到北京。双方各自公布会晤成果，涉及贸易、人工智能、禁毒等议题，同意在尊重、公平、对等的基础上构建关系，共列出八点成果共识，其中关税休战延长、建立 AI 对话机制最受关注。</p>
+      <p>BBC 中文的盘点多了两个细节：成果清单里没有提台湾，但有一处被解读为暗指日本。</p>
+      <p>换到美方视角，纽约时报中文的说法是"除了盛大的场面，几乎没有达成任何成果"，特朗普似乎更专注于款待对方。另一篇的解读是，贸易休战延长给北京赢得了喘息时间，能把精力放回国内经济，为明年的中共二十一大做准备。同一件事，一边讲框架和共识，一边讲实质空缺，两篇对着读比单看一篇有用。</p>
+      <p>还有一条容易漏的：白宫国宴上，萨姆·奥特曼、马斯克、黄仁勋和库克都在座，AI 威胁的讨论喧嚣尘上，但峰会并未就该技术的发展方向形成共识。国内这边，外交部发言人就人工智能问题答了记者问，《人民日报》则发了《智能经济何以塑造中国发展新优势》。</p>
+
+      <h3>事件脉络</h3>
+      <div class="timeline">
+        <div class="row"><span class="date">09/23–25</span>习近平对美国进行国事访问</div>
+        <div class="row"><span class="date">09/25</span>双方发表会晤成果，关税休战延长，建立 AI 对话</div>
+        <div class="row"><span class="date">09/26</span>习近平结束访问回到北京；纽约时报中文刊出峰会评述</div>
+        <div class="row"><span class="date">09/27</span>人民网连发多篇评论，BBC 中文做成果盘点</div>
+      </div>
+      <p>这个话题已经连续多天出现在早报里，15 天累计相关条目超过一千两百条，是当下热度最稳的一条线。</p>
+
+      <h2>国际快讯</h2>
+
+      <h3>中东</h3>
+      <p>爱尔兰与以色列的比赛，双方球员赛前赛后均未握手。另据纽约时报，特朗普与伊朗的冲突正在拖累共和党中期选举选情，汽油和柴油价格高企，部分支持过这场战争的共和党人已经开始不安。同报还披露，一支 2024 年竞选广告在政府渠道重新投放，伦理专家认为这可能违反联邦法律。</p>
+      <p>这条线的时间跨度很长，从今年 2 月特朗普表示"若能迅速达成协议就取消对伊朗打击"，到 9 月阿曼称霍尔木兹海峡会谈进展顺利、伊朗警告协议不保证通航，再到 9 月下旬"中国希望伊朗战争结束，但不是以特朗普想要的方式"，谈判反复、油价和政治压力三条线索缠在一起。</p>
+
+      <h3>俄乌</h3>
+      <p>没有重大突破，仍是低强度消耗与国际斡旋并行。可参考的节点包括：美国特使在俄乌间穿梭外交，分歧未解，泽连斯基预计战事将持续到冬季；莫斯科遭到 450 架无人机袭击，市长称规模"迄今最大"；被俘士兵向 BBC 讲述为何替俄罗斯作战。</p>
+
+      <h3>欧洲与能源</h3>
+      <p>教皇利奥访问法国卢尔德，在主持有数千信众参加的活动前对主教们表示，性侵这一"祸害"必须被根除。</p>
+      <p>国内能源方面，国家能源局数据显示，截至 8 月底全国累计发电装机容量 41.03 亿千瓦，同比增长 11.1%。</p>
+
+      <h3>其他</h3>
+      <p>浙江丽水遂昌县妙高街道的食堂厨房里，街道办副主任和食品企业的人一起赶中秋月饼，人民网记者在现场记了一笔。阿拉斯加民主党参议员候选人 Mary Peltola 的政治崛起被纽约时报写成长篇，她的立场相当混搭：支持持枪，也有其他不按党派划线的主张。</p>
+
+      <h2>今日数据</h2>
+      <div class="stat">
+        <div><b>198</b>信息总量</div>
+        <div><b>85</b>X 推文</div>
+        <div><b>113</b>RSS 新闻</div>
+        <div><b>41.03亿</b>千瓦装机容量</div>
+      </div>
+      <p>RSS 来源分布：BBC 35 条、人民网 30 条、爱范儿 20 条、NYT 18 条、纽约时报中文 8 条、BBC 中文 2 条。X 侧 85 条里有 71 条落在通用分类，没有明显的单一热点。</p>
+
     </article>
+
+    <footer>
+      本内容由 Hermes Agent 自动采集分析，每日更新
+    </footer>
   </main>
 </body>
 </html>
