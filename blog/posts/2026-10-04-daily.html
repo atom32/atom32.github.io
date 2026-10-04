@@ -1,218 +1,228 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-10-04 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-10-04 · Dawei Xu</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1b1f24; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --warm:#b45309; --teal:#0f766e;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+    font-size:16px; line-height:1.75;
+  }
+  .page{max-width:720px; margin:0 auto; padding:0 18px 64px}
+  .topbar{display:flex; align-items:center; justify-content:space-between; padding:20px 0 16px; border-bottom:1px solid var(--line)}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; text-decoration:none; color:var(--ink)}
+  .mark{display:inline-flex; width:28px; height:28px; border-radius:8px; background:var(--accent); color:#fff; align-items:center; justify-content:center; font-size:15px; font-weight:800}
+  .nav a{margin-left:16px; color:var(--muted); text-decoration:none; font-size:14px}
+  .nav a.active{color:var(--accent); font-weight:700}
+  .back-link{display:inline-block; margin:22px 0 6px; color:var(--muted); text-decoration:none; font-size:14px}
+  h1{font-size:26px; line-height:1.35; margin:6px 0 8px; letter-spacing:-0.01em}
+  .post-meta{color:var(--muted); font-size:13.5px; margin:0 0 22px}
+  .lead{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:0 0 26px}
+  .lead p{margin:0 0 10px}
+  .lead p:last-child{margin-bottom:0}
+  .stats{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+  .stat{flex:1 1 120px; background:#eef2ff; border-radius:10px; padding:10px 12px}
+  .stat b{display:block; font-size:20px; color:var(--accent)}
+  .stat span{font-size:12.5px; color:var(--muted)}
+  h2{font-size:19px; margin:34px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--line)}
+  h2 .emoji{margin-right:6px}
+  .item{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:15px 17px; margin:0 0 14px}
+  .item h3{font-size:16.5px; margin:0 0 8px; line-height:1.5}
+  .item p{margin:0 0 9px}
+  .item p:last-child{margin-bottom:0}
+  .src{font-size:12.5px; color:var(--muted); margin-bottom:8px}
+  .src b{color:var(--warm)}
+  .evolve{background:#f9fafb; border-left:3px solid var(--teal); border-radius:0 8px 8px 0; padding:10px 13px; margin:10px 0 0; font-size:14px; color:#374151}
+  .evolve .date{color:var(--teal); font-weight:700; margin-right:6px}
+  .evolve div{margin-bottom:5px}
+  .evolve div:last-child{margin-bottom:0}
+  .trend{font-size:13px; color:var(--muted); margin-top:10px}
+  .trend code{background:#f3f4f6; border-radius:5px; padding:2px 6px; font-size:12.5px; letter-spacing:1px}
+  .misc{background:var(--card); border:1px dashed var(--line); border-radius:14px; padding:15px 17px}
+  .misc ul{margin:0; padding-left:20px}
+  .misc li{margin-bottom:7px}
+  footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; text-align:center}
+  @media (max-width:480px){
+    h1{font-size:22px}
+    h2{font-size:17.5px}
+    body{font-size:15.5px}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<main class="page">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
+    <nav class="nav">
+      <a href="/">首页</a>
+      <a class="active" href="/blog/">笔记</a>
+    </nav>
+  </header>
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-10-04</h1>
-    <p class="post-meta">2026-10-04 · 每日资讯早报 · 确定性兜底发布</p>
+  <a class="back-link" href="/blog/">← 返回笔记列表</a>
+  <h1>每日资讯早报 2026-10-04</h1>
+  <p class="post-meta">2026-10-04 · 多源合并 · 事件聚类 · 时序分析</p>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-10-04</strong></p>
-<p>📊 <strong>共 169 条信息</strong>  ·  🐦 X(111)  ·  📰 RSS(58)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🔧 开发工具（5 条）</h3>
-<blockquote>
-<p>🐦 <strong>Gorden Sun@Gorden_Su</strong> · 14:05 🟡
-AI2开源Olmo-core：降低大模型全流程训练与调优门槛</p>
-</blockquote>
-<p>专为OLMo系列模型打造的模块化底层训练库，集成了官方全流程训练与退火脚本。采用即插即用设计，既兼容主流加速组件与低显存优化技术，也打通了主流开源推理框架。开发者可以直接基于成熟架构复现前沿大模型，无需从零搭建分布式基础设施。</p>
-<p>Git…</p>
-<blockquote>
-<p>🐦 <strong>GitHubDaily@GitHub_D</strong> · 📷×1 · 13:30 🟡
-收盘后想复盘，雪球、淘股吧、公众号上的大 V 文章一篇篇点开看，看完十几篇脑子里还是一团乱。</p>
-</blockquote>
-<p>easy-stock 是一个面向 A 股的开源 AI 投研桌面应用，把行情、题材、复盘文章和 AI 分析放进同一个本地工作台。</p>
-<p>最省事的是大 V 自动复盘，多位作者的盘后文章收进一条时间线。</p>
-<p>一键就能…</p>
-<blockquote>
-<p>🐦 <strong>铁锤人@lxfater·9小时</strong> · 12:40 🟡
-12GB 显存 + 64GB 内存，也能跑千亿模型了！！</p>
-</blockquote>
-<p>这个开源项目叫 Strata，跑的是 Qwen3.8-Flash-Next 的量化版</p>
-<p>作者的测试配置是 RTX 5070（12GB 显存）+ Ryzen 5 7600 + 64GB 内存，短聊天生成速度：
-Q2_0 版约 94 token…</p>
-<blockquote>
-<p>🐦 <strong>GitHubDaily@GitHub_D</strong> · 📷×1 · 10:00 🟡
-学 C 语言学到指针还行，一碰到进程、线程、锁这些操作系统的东西，课本讲得干巴巴，网上资料又东一块西一块。</p>
-</blockquote>
-<p>伊利诺伊大学的系统编程课 CS 341，把自己用的课本开源了，就叫 Coursebook。</p>
-<p>内容从 C 语言入门讲起，一路讲到进程、内存分配、线程、同步与死锁、进程间通信、调度、网络、文件…</p>
-<blockquote>
-<p>🐦 <strong>产品经理老王霸@laowangbabab</strong> · 🎬×1 · 09:50 🟡
-卧槽。这么小的模型，居然这么牛逼。。。</p>
-</blockquote>
-<p>蚂蚁百灵前几天开源了一个设计模型，叫 Ming-Image-0.1-Design，才 6B。放在现在的生图模型里，基本属于小不点了。</p>
-<p>然后这个小不点，在 Artificial Analysis 的 UI/UX 设计榜上，拿了开源第一。</p>
-<p>我寻思了一下，以后…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-22, 2026-09-24, 2026-09-30, 2026-10-02, 2026-10-03</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（4 条）</h3>
-<blockquote>
-<p>📝 <em>俄罗斯打击基辅桥梁</em></p>
-<p>📰 <strong>NYT</strong> · 2026-10-03 🟢
-<strong>Russia Turns to Striking Kyiv’s Bridges, Threatening a Vital Lifeline</strong> — The bridges, used by many commuters in the Ukrainian capital, are the latest target in a broad Russi</p>
-<p>📰 <strong>BBC</strong> · 2026-10-03 🔵
-<strong>Russia strikes second major bridge in Kyiv, mayor says</strong> — The strike on Northern Bridge comes after repeat attacks on another major bridge in recent days.</p>
-<p>📝 <em>特指美国青少年向贩毒集团供应武器</em></p>
-<p>📰 <strong>NYT</strong> · 2026-10-03 🟢
-<strong>Trump, Putin, Ukraine and an Oil Deal: 5 Takeaways</strong> — A proposal to bolster relations with the Kremlin through the purchase of Russian energy assets is st</p>
-<p>📰 <strong>NYT</strong> · 2026-10-03 🟢
-<strong>U.S.-Russia Talks on Ukraine Now Involve an Oil Deal Tied to Trump Allies</strong> — President Vladimir V. Putin brought up a sale of Russian energy assets with President Trump’s envoys</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-23, 2026-09-27, 2026-09-28, 2026-09-30, 2026-10-01</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Se08/08</strong> 美国特使在俄乌间穿梭外交：双方分歧未解 泽连斯基预计战事将持续到冬季 | 美国特使乘“和平快车”抵达基辅，但战争依然看不到终点
-<strong>Au15</strong> “科技仙境”莫斯科：是数字乌托邦，也是监控陷阱 | 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Se22</strong> 莫斯科遭到乌克兰450架无人机袭击，市长称规模“迄今最大”
-<strong>Au25</strong> 生于乌克兰，为何替俄罗斯作战？被俘士兵向BBC讲述他们的故事
-<strong>Se22</strong> 当普京把铁锤挥向文学
-<strong>Au19</strong> 战争和权力的新物理规律
-<strong>Se23</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令</p>
-<p>📊 <em>趋势（5天共6条）</em> <code>█1 █1 █2 █1 █1</code></p>
-</blockquote>
-<h3>🤖 AI/大模型（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>俊哥 Felix@LiFeng61532</strong> · 📷×2 · 15:03 🟡
-上海人工智能实验室有免费的DeepseekFlash
-科研导向 比官网API智商还高
-每天签到领五亿token
-入口:https://t.co/q3lN0ncgVk https://t.co/FyywdK5wjX</p>
-<p>🐦 <strong>向阳乔木@vista8·1小时</strong> · 📷×1 · 14:57 🟡
-刚在开发一个 Youtube 学习辅助插件：读取字幕，跟随时间轴查看、中文翻译+AI 对话。</p>
-</blockquote>
-<p>发现 GPT 6.1 Sol 远远不如 Opus 5.5 靠谱。</p>
-<p>界面和功能越改越糟糕、Bug 越来越多。</p>
-<p>交给 Opus 5.5 收拾烂摊子中。 https://t.co/fokotbf8pm</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-23, 2026-09-29, 2026-09-30, 2026-10-01, 2026-10-03</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-09-20] AI审美组件直接应用
-[2026-09-21] 审美需求增加
-[2026-09-22] AI工具创作实践分享
-[2026-09-23] 现成策略资源丰富化</p>
-<p>📊 <em>趋势（15天共1509条）</em> <code>█96 █107 █115 █137 █143 █119 █30</code></p>
-</blockquote>
-<h3>🇮🇱 中东局势（3 条）</h3>
-<blockquote>
-<p>📝 <em>Omani副驾驶声称有极端观点，机长被斧头袭击，阿联酋官方称</em></p>
-<p>📰 <strong>NYT</strong> · 2026-10-03 🟢
-<strong>Omani Co-Pilot on FlyDubai Flight Is Said to Have Extremist Views</strong> — It was unclear what background checks had been carried out before he was allowed to fly to Israel.</p>
-<p>📰 <strong>NYT</strong> · 2026-10-03 🟢
-<strong>FlyDubai Co-Pilot Used Crash Ax in ‘Terrorist’ Cockpit Attack, Emirates Says</strong> — The violent midair assault on a FlyDubai flight to Tel Aviv has deepened concerns about the safety o</p>
-<p>📰 <strong>BBC</strong> · 2026-10-03 🔵
-<strong>Flydubai co-pilot attacked captain with axe, UAE official says</strong> — The man accused of trying to take over the Israel-bound jet is named as Hamam al-Hammami by several </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-22, 2026-09-27, 2026-09-30, 2026-10-01, 2026-10-02</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>03/09</strong> 关键进展
-<strong>09/23</strong> 关键进展
-<strong>10/25</strong> 关键进展
-<strong>11/29</strong> 关键进展</p>
-<p>📊 <em>趋势（11天共27条）</em> <code>█3 █1 █3 █1 █5 █3 █2</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（2 条）</h3>
-<blockquote>
-<p>📝 <em>Ani版本魔法 potion故事</em></p>
-<p>🐦 <strong>匿名</strong> · 19:13 🟡
-RT @kevinleguillou: Anime version of the Love Potion story! I'm still giddy watching the result, it works so well 😁
-Script from @moonlightb…</p>
-<p>🐦 <strong>Kevin Le Guillou@kev</strong> · 🎬×1 · 15:29 🟡
-Anime version of the Love Potion story! I'm still giddy watching the result, it works so well 😁
-Script from @moonlightbro and Malfoid base artwork fro…</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-26, 2026-09-27, 2026-09-28, 2026-09-30, 2026-10-01</em></p>
-</blockquote>
-<h3>₿ Crypto/Web3（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>Beluga@heybeluga</strong> · 📷×1 · 15:13 🟡
-Daily Edition: A Postmortem on Blast</p>
-</blockquote>
-<p>Gone and easily forgotten.</p>
-<p>@blast just announced that it is closing its doors, marking the death of yet another…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-27, 2026-09-28, 2026-10-01, 2026-10-02, 2026-10-03</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-09-21] US spot Bitcoin ETFs recordedstickered a late-week recovery that happened last week.
-[2026-09-23] The collapse of the Clarity Act in the Senate has not created a regulatory vacuum so much.
-[2026-09-27] <strong>MM/DD</strong> 关键进展
-[2026-10-02] a过去50过50年最伟大的两篇科研论文是 Bitcoin: A Peer-to-Peer Electronic Cash System 和 Attention is All You Need.</p>
-<p>📊 <em>趋势（15天共60条）</em> <code>█1 █1 █5 █6 █8 █6 █3</code></p>
-</blockquote>
-<h3>🏢 创业/商业（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>铁锤人@lxfater·4小时</strong> · 12:01 🟡
-独立开发会写代码，不会营销？这套 Skill 希望可以帮你</p>
-</blockquote>
-<p>有人把落地页转化、文案、SEO、数据分析做成了一套 Agent Skills</p>
-<p>我觉得最值得先看的是 product-marketing skill：
-先把产品卖给谁、解决什么问题、怎么定位写清楚，存下来
-后面的 Skill 都会先读这份…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-19, 2026-09-22, 2026-09-27, 2026-09-30, 2026-10-02</em></p>
-</blockquote>
-<h3>🇰🇵 朝鲜半岛（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-10-03 🔵
-<strong>Kim wins Asian Games gold to secure military exemption</strong> — Golfer Tom Kim wins gold at the Asian Games to secure an exemption from mandatory service in South K</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-19, 2026-09-21, 2026-09-22, 2026-09-24</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（128 条）</h2>
-<blockquote>
-<p>🐦 <strong>Bocchi naci@Wheeljac</strong> · 📷×1 🎬×1 · 21:49 🟡
-Peak</p>
-<p>🐦 <strong>Alexander.@Florida_B</strong> · 21:47 🟡
-Harry coming home from an investigation as an Auror only to find Dracena on the couch holding onto a…</p>
-<p>🐦 <strong>StrayCatAlley@CaboVT</strong> · 📷×1 · 21:09 🟡
-Yo @MaroonR19 you said you chose the Peacock because you thought it was cool but you unintentionally…</p>
-<p>🐦 <strong>Skipos@skiposcmc·1小时</strong> · 📷×2 · 20:55 🟡
-Malfoid’s Secret</p>
-</blockquote>
-<h1>malfoid #malfoy https://t.co/3QM6PRYISf</h1>
-<blockquote>
-<p>🐦 <strong>Gruff Said@GruffSaid</strong> · 📷×1 · 20:41 🟡
-"Since you are still here, i'll make you some tea, Pottah... After all, your Patronus was quite exqu…</p>
-<p>🐦 <strong>Ananta@AnantaAI99·1小</strong> · 📷×1 · 20:15 🟡
-Last train to Hogwarts on a winter's night</p>
-</blockquote>
-<hr />
-<p>Potter x Malfoid https://t.co/3RH76YTtkP</p>
-<blockquote>
-<p>🐦 <strong>Kudasai@SomosKudasai</strong> · 📷×2 · 19:51 🟡
-La ilustradora Yunayu borró un dibujo de Draco Malfoy convertido en chica y se disculpó. Dijo que co…</p>
-<p>🐦 <strong>Jourd4n@Jourd4n_·2小时</strong> · 📷×2 · 19:28 🟡
-https://t.co/YQfTabzxHj</p>
-<p><em>…还有 120 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 111条
-    General: ██████████ (88)</p>
-<p>📰 <strong>RSS 新闻</strong>: 58条
-    · BBC: 32条
-    · NYT: 23条
-    · BBC中文: 2条
-    · 爱范儿: 1条</p>
-<p>📚 累计: X=33138 | NGA=584 | S1=373 | RSS=11491</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <section class="lead">
+    <p>10 月 4 日，全天共收到 <strong>169 条</strong>信息，其中 X 111 条、RSS 58 条。今天有两条主线：开源工具继续往下压硬件和模型的门槛，另一条是地缘新闻——基辅的桥、美俄之间那笔绕不开的石油交易。</p>
+    <div class="stats">
+      <div class="stat"><b>169</b><span>信息总量</span></div>
+      <div class="stat"><b>111</b><span>X 推文</span></div>
+      <div class="stat"><b>58</b><span>RSS 新闻</span></div>
+      <div class="stat"><b>8</b><span>聚类话题</span></div>
+    </div>
+  </section>
+
+  <h2><span class="emoji">🔧</span>开发工具</h2>
+
+  <div class="item">
+    <h3>AI2 开源 Olmo-core，把大模型训练的全流程摊开</h3>
+    <p class="src">🐦 Gorden Sun @Gorden_Su · 14:05</p>
+    <p>Allen Institute 给 OLMo 系列模型放出了一套模块化底层训练库，官方的全流程训练脚本和退火脚本都在里面。设计上是即插即用：既能接主流的加速组件和低显存优化，也打通了常用的开源推理框架。想在成熟架构上复现前沿大模型的人，不用再从零搭分布式基础设施。</p>
+  </div>
+
+  <div class="item">
+    <h3>easy-stock：把 A 股复盘塞进一个本地工作台</h3>
+    <p class="src">🐦 GitHubDaily @GitHub_D · 13:30</p>
+    <p>面向 A 股的开源 AI 投研桌面应用，行情、题材、复盘文章和 AI 分析都放在同一个本地界面里。最省事的一块是大 V 自动复盘：把多位作者的盘后文章收进一条时间线，省得一篇篇点开还要在脑子里重新拼。</p>
+  </div>
+
+  <div class="item">
+    <h3>Strata：12GB 显存 + 64GB 内存跑千亿模型</h3>
+    <p class="src">🐦 铁锤人 @lxfater · 12:40</p>
+    <p>这个开源项目跑的是 Qwen3.8-Flash-Next 的量化版。作者的测试机是 RTX 5070（12GB 显存）加 Ryzen 5 7600 和 64GB 内存，短对话场景下 Q2_0 版本约 94 token 每秒。硬件门槛这一块，最近半年降得比很多人预期快。</p>
+  </div>
+
+  <div class="item">
+    <h3>伊利诺伊把系统编程课的课本开源了</h3>
+    <p class="src">🐦 GitHubDaily @GitHub_D · 10:00</p>
+    <p>UIUC 的 CS 341（系统编程）把自己的 Coursebook 公开出来。内容从 C 语言入门一路铺到进程、内存分配、线程、同步与死锁、进程间通信、调度、网络和文件系统。指针之后那段最劝退的操作系统内容，终于有了一份连贯的教材。</p>
+  </div>
+
+  <div class="item">
+    <h3>6B 的 Ming-Image-0.1-Design 拿了设计榜开源第一</h3>
+    <p class="src">🐦 产品经理老王霸 @laowangbabab · 09:50</p>
+    <p>蚂蚁百灵开源的设计模型，只有 6B 参数，在现在的生图模型里算小个子。它在 Artificial Analysis 的 UI/UX 设计榜上拿到了开源第一。参数小不代表做不了细活，这一点今年在被反复验证。</p>
+  </div>
+
+  <p class="trend">📈 该话题此前出现在 09-22、09-24、09-30、10-02、10-03，属于连续多日的高频板块。</p>
+
+  <h2><span class="emoji">🇷🇺</span>俄乌冲突</h2>
+
+  <div class="item">
+    <h3>俄罗斯开始打基辅的桥</h3>
+    <p class="src">📰 NYT · 2026-10-03 ｜ 📰 BBC · 2026-10-03</p>
+    <p>基辅的两座主要桥梁接连遇袭，北方桥是最近的一处，此前几天另一座桥已经被反复打击。这些桥承担着大量通勤流量，被乌方视为一条关键生命线。NYT 的说法是，桥梁成了俄方更大范围打击里最新的目标。</p>
+  </div>
+
+  <div class="item">
+    <h3>美俄谈判里多出一笔和特朗普盟友相关的石油交易</h3>
+    <p class="src">📰 NYT · 2026-10-03</p>
+    <p>普京向特朗普的特使提起了出售俄罗斯能源资产的事。NYT 梳理出五个要点，核心是通过购买俄能源资产来拉近与克里姆林宫的关系。乌克兰问题谈着谈着，能源生意被摆上了桌面。</p>
+  </div>
+
+  <div class="evolve">
+    <div><span class="date">08-08</span>美国特使在俄乌之间穿梭外交，双方分歧未解；泽连斯基预计战事会拖到冬季。</div>
+    <div><span class="date">08-15</span>外媒描摹的「科技仙境」莫斯科：一面是数字乌托邦，一面被指是监控陷阱。</div>
+    <div><span class="date">08-25</span>被俘士兵向 BBC 讲述为何生于乌克兰却替俄罗斯作战。</div>
+    <div><span class="date">09-22</span>莫斯科遭乌克兰约 450 架无人机袭击，市长称规模「迄今最大」。</div>
+    <div><span class="date">09-23</span>泽连斯基在连日抗议后撤换军方总司令。</div>
+  </div>
+  <p class="trend">📊 近 5 天共 6 条 &nbsp;<code>█1 █1 █2 █1 █1</code>&nbsp;· 此前出现在 09-23、09-27、09-28、09-30、10-01。</p>
+
+  <h2><span class="emoji">🤖</span>AI / 大模型</h2>
+
+  <div class="item">
+    <h3>上海人工智能实验室放出免费的 DeepseekFlash</h3>
+    <p class="src">🐦 俊哥 Felix @LiFeng61532 · 15:03</p>
+    <p>面向科研场景，据发帖者说能力比官网 API 还强一些，每天签到可领五亿 token。对做实验、跑批量任务的人来说，这类免费额度比单次对话的价格更能改变使用习惯。</p>
+  </div>
+
+  <div class="item">
+    <h3>GPT 6.1 Sol 对 Opus 5.5：一个开发者的实测吐槽</h3>
+    <p class="src">🐦 向阳乔木 @vista8 · 14:57</p>
+    <p>他正在做一个 YouTube 学习辅助插件：读字幕、跟着时间轴看、中文翻译加 AI 对话。开发过程中他给出的判断是，GPT 6.1 Sol 远不如 Opus 5.5 靠谱——界面和功能越改越糟，Bug 越改越多，最后干脆把烂摊子交给 Opus 5.5 收拾。模型选型这种事，跑分之外还是得看手上这个项目。 </p>
+  </div>
+
+  <div class="evolve">
+    <div><span class="date">2026-09-20</span>AI 审美组件开始被直接应用。</div>
+    <div><span class="date">2026-09-21</span>审美需求上升。</div>
+    <div><span class="date">2026-09-22</span>创作者分享 AI 工具实践。</div>
+    <div><span class="date">2026-09-23</span>现成策略与资源进一步丰富。</div>
+  </div>
+  <p class="trend">📊 近 15 天累计 1509 条 &nbsp;<code>█96 █107 █115 █137 █143 █119 █30</code>&nbsp;· 此前出现在 09-23、09-29、09-30、10-01、10-03。</p>
+
+  <h2><span class="emoji">🇮🇱</span>中东局势</h2>
+
+  <div class="item">
+    <h3>迪拜航空航班驾驶舱袭击事件</h3>
+    <p class="src">📰 NYT · 2026-10-03 ｜ 📰 BBC · 2026-10-03</p>
+    <p>一架飞往特拉维夫的迪拜航空航班上，副驾驶被指用应急斧袭击机长。阿联酋方面称这是一起「恐怖」袭击，多家媒体把涉事者姓名报为 Hamam al-Hammami。有报道称此人此前被指持极端观点，而他获准执飞以色列航线前做过哪些背景审查，目前并不清楚。这起空中冲突加深了外界对相关航线安全的担忧。</p>
+  </div>
+
+  <div class="evolve">
+    <div><span class="date">09-23</span>话题持续发酵，区域安全讨论升温。</div>
+    <div><span class="date">10-01</span>多家中东媒体跟进事件细节。</div>
+  </div>
+  <p class="trend">📊 近 11 天共 27 条 &nbsp;<code>█3 █1 █3 █1 █5 █3 █2</code>&nbsp;· 此前出现在 09-22、09-27、09-30、10-01、10-02。</p>
+
+  <h2><span class="emoji">🎮</span>二次元 / 游戏</h2>
+
+  <div class="item">
+    <h3>AI 动画短片在 X 上继续升温</h3>
+    <p class="src">🐦 Kevin Le Guillou @kevinleguillou 等 · 15:29 起</p>
+    <p>一个把「爱情魔药」故事做成动漫短片的作品被反复转发，作者自述看到成片还是有点激动，脚本和基础美术由合作者提供。同一天 X 上还有相当数量的动漫风同人创作在滚动。这类「脚本 + AI 生成画面」的协作流程，正在成为个人创作者的常规打法。</p>
+  </div>
+  <p class="trend">📈 此前出现在 09-26、09-27、09-28、09-30、10-01。</p>
+
+  <h2><span class="emoji">₿</span>Crypto / Web3</h2>
+
+  <div class="item">
+    <h3>Blast 关停</h3>
+    <p class="src">🐦 Beluga @heybeluga · 15:13</p>
+    <p>Blast 官方宣布停止运营，被评论者形容为「又一个悄无声息退场的项目」。这一轮里倒下的不止它一个，能留住用户和资金的越来越少。</p>
+  </div>
+
+  <div class="evolve">
+    <div><span class="date">09-21</span>美国现货比特币 ETF 在周尾出现一轮回升。</div>
+    <div><span class="date">09-23</span>《Clarity 法案》在参议院搁浅，但并未因此形成监管真空。</div>
+    <div><span class="date">10-02</span>有观点称，过去 50 年最伟大的两篇科研论文是《Bitcoin: A Peer-to-Peer Electronic Cash System》和《Attention Is All You Need》。</div>
+  </div>
+  <p class="trend">📊 近 15 天共 60 条 &nbsp;<code>█1 █1 █5 █6 █8 █6 █3</code>&nbsp;· 此前出现在 09-27、09-28、10-01、10-02、10-03。</p>
+
+  <h2><span class="emoji">🏢</span>创业 / 商业</h2>
+
+  <div class="item">
+    <h3>给「会写代码不会营销」的独立开发者的一套 Skills</h3>
+    <p class="src">🐦 铁锤人 @lxfater · 12:01</p>
+    <p>有人把落地页转化、文案、SEO 和数据分析做成了一套 Agent Skills。发帖者建议先看 product-marketing 那个：先把「卖给谁、解决什么问题、怎么定位」写清楚存下来，后面每个 Skill 都会先读这份说明。</p>
+  </div>
+  <p class="trend">📈 此前出现在 09-19、09-22、09-27、09-30、10-02。</p>
+
+  <h2><span class="emoji">🇰🇵</span>朝鲜半岛</h2>
+
+  <div class="item">
+    <h3>高尔夫金牌换来兵役豁免</h3>
+    <p class="src">📰 BBC · 2026-10-03</p>
+    <p>韩国选手 Tom Kim 在亚运会高尔夫项目夺金，由此获得免除强制兵役的资格。</p>
+  </div>
+
+  <h2><span class="emoji">🌐</span>其他动态</h2>
+  <div class="misc">
+    <p>当日还有约 128 条零散内容，主要是个人向推文和转发，缺少可归类的主题。浏览下来大致两类：一类是围绕动漫与同人创作的高频互动，另一类是各语言用户的即时闲聊。这些没有到能单独成篇的量，就不展开了。</p>
+  </div>
+
+  <footer>
+    本内容由 Hermes Agent 自动采集分析，每日更新
+  </footer>
+</main>
 </body>
 </html>
