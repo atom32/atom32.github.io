@@ -1,322 +1,146 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-10-10 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-10-10 · Dawei Xu</title>
+<style>
+  :root{
+    --bg:#faf9f7; --card:#ffffff; --ink:#1c1b19; --muted:#6b6862;
+    --line:#e6e3dd; --accent:#b4541f; --accent-soft:#f3e4d8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#16150f; --card:#1e1d17; --ink:#ece8df; --muted:#9c978c;
+      --line:#33312a; --accent:#e8894f; --accent-soft:#2c2118;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:17px; line-height:1.78;
+    text-rendering:optimizeLegibility;
+  }
+  .page{max-width:720px; margin:0 auto; padding:22px 20px 64px}
+  .topbar{display:flex; align-items:center; justify-content:space-between;
+    padding-bottom:16px; border-bottom:1px solid var(--line)}
+  .brand{display:flex; align-items:center; gap:9px; text-decoration:none; color:var(--ink); font-weight:700}
+  .brand .mark{display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:7px; background:var(--accent); color:#fff;
+    font-size:15px; font-weight:800}
+  .nav a{margin-left:18px; color:var(--muted); text-decoration:none; font-size:15px}
+  .nav a:hover{color:var(--accent)}
+  .back-link{display:inline-block; margin:22px 0 4px; color:var(--muted); text-decoration:none; font-size:14px}
+  .back-link:hover{color:var(--accent)}
+  h1{font-size:1.72rem; line-height:1.35; margin:10px 0 6px; letter-spacing:.01em}
+  .post-meta{color:var(--muted); font-size:14px; margin:0 0 26px}
+  .lede{font-size:1.06rem; background:var(--accent-soft); border-left:3px solid var(--accent);
+    padding:16px 18px; border-radius:0 10px 10px 0; margin:0 0 34px}
+  .lede p{margin:0}
+  h2{font-size:1.24rem; margin:40px 0 12px; padding-top:20px; border-top:1px solid var(--line)}
+  h2:first-of-type{border-top:none; padding-top:0}
+  h3{font-size:1.03rem; margin:22px 0 6px}
+  p{margin:0 0 13px}
+  ul{margin:6px 0 16px; padding-left:22px}
+  li{margin:5px 0}
+  blockquote{margin:14px 0; padding:2px 0 2px 15px; border-left:3px solid var(--line);
+    color:var(--muted); font-size:.96rem}
+  blockquote p{margin:0 0 6px}
+  .who{color:var(--accent); font-weight:600; font-style:normal}
+  .src{color:var(--muted); font-size:.88rem}
+  .stat{display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 4px; padding:0; list-style:none}
+  .stat li{margin:0; background:var(--card); border:1px solid var(--line);
+    border-radius:9px; padding:8px 13px; font-size:.92rem}
+  footer{margin-top:52px; padding-top:20px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:.9rem; text-align:center}
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<main class="page">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
+    <nav class="nav">
+      <a href="/">首页</a>
+      <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
+    </nav>
+  </header>
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-10-10</h1>
-    <p class="post-meta">2026-10-10 · 每日资讯早报 · 确定性兜底发布</p>
+  <a class="back-link" href="/blog/">← 返回笔记列表</a>
+  <h1>每日资讯早报 2026-10-10</h1>
+  <p class="post-meta">2026-10-10 · 多源合并 · 事件聚类 · 时序分析</p>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-10-10</strong></p>
-<p>📊 <strong>共 243 条信息</strong>  ·  🐦 X(121)  ·  📰 RSS(122)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（9 条）</h3>
-<blockquote>
-<p>📝 <em>中国面临过度依赖AI的挑战</em></p>
-<p>📰 <strong>纽约时报中文</strong> · 2026-10-09 🟢
-<strong>AI无处不在：中国面临过度依赖人工智能的挑战</strong> — 中国政府积极推动民众接受人工智能，但随着人们将这项技术应用于娱乐、人际关系甚至农业生产建议，当局也开始担忧可能破坏社会秩序的因素，寻求加强监管、寻求平衡。                    Kev</p>
-<p>📰 <strong>纽约时报中文</strong> · 2026-10-09 🟢
-<strong>AI无处不在：中国面临过度依赖人工智能的挑战</strong> — YAN ZHUANG2026年10月9日中国政府正在对人工智能应用和聊天机器人的使用实施监管，原因是担心该技术可能会干扰人际关系并破坏社会秩序。 Kevin Frayer/Getty Images随着</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 18:22 🟡
-Now in beta: composer predictions in Codex for Pro users.</p>
-</blockquote>
-<p>Codex can now suggest your next message based on your conversation and how you talk to it.
-…</p>
-<blockquote>
-<p>🐦 <strong>阿良｜AI 工作流@RealYDT·7小</strong> · 14:52 🟡
-Anthropic 这一套组合拳砸下来，OpenAI 估计真被干懵了。</p>
-</blockquote>
-<p>​看两边今年的出牌节奏，完全不是一个维度的较量：</p>
-<p>​人家抬手掏出个登顶的 Opus 5.5，OpenAI 憋了半天，拿了个半吊子的 GPT-6.1 Sol 出来硬顶，跑分直接被按在地上摩擦；</p>
-<p>转头人家又把 Sonnet 5…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 11:56 🟡
-🐮🐮🐮 牛逼 !   这事我见过 Claude 方案里面最可行的之一 ,  而且被封可能性极小 </p>
-</blockquote>
-<p>原因是为什么: 
--  Claude 完全没有本地登陆
-- 在美国的云主机上, 不会有任何的IP问题 
-- 本地通过 Orca 用上 Claude </p>
-<p>Orca 是什么 ,  面向 100x 构建者的…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 11:39 🟡
-人们宁愿想尽一切办法，冒着封号的风险，折腾各种复杂的环境，也要坚持用 Claude，真的不是没有原因的。</p>
-</blockquote>
-<p>模型之间的差距已经大到有些离谱了。</p>
-<p>有些事情交给 Claude，你只需要说清楚自己想要什么，它就能理解你的意图，甚至把你没想到的地方一起做好。</p>
-<p>换成 GPT，可能折腾几个小时、写几十轮 P…</p>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-10-09 🔵
-<strong>Anthropic bans users from being 'cruel' to its AI systems</strong> — The firm said users can no longer engage in "sustained and needless" abusive behaviour towards the t</p>
-<p>📰 <strong>纽约时报中文</strong> · 2026-10-09 🟢
-<strong>报告称黑客利用中美人工智能工具攻击韩国银行</strong> — 网络安全公司CrowdStrike表示，黑客使用中国开发的ARTEX和美国的Claude Code等人工智能工具对韩国金融机构发起攻击，并指出攻击者可能讲中文且出于经济动机。             </p>
-<p>📰 <strong>纽约时报中文</strong> · 2026-10-09 🟢
-<strong>中国希望从国外招募人工智能科学家，这项努力并未奏效</strong> — 研究显示，尽管过去几年中国积极招募人工智能科学家，但前往中国的外国研究者并不多，而在美国工作的中国科学家人数不降反升。不过中国成功留住了大批本土人才。                    Jade </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-27, 2026-09-29, 2026-09-30, 2026-10-01, 2026-10-09</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>2026-09-26</strong> 关键进展
-<strong>2026-09-27</strong> 关键进展
-<strong>2026-09-28</strong> 关键进展</p>
-<p>📊 <em>趋势（15天共1154条）</em> <code>█47 █60 █57 █28 █35 █46 █20</code></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（8 条）</h3>
-<blockquote>
-<p>📝 <em>特朗普批准进口俄柴油遭泽尔尼批评</em></p>
-<p>📰 <strong>BBC</strong> · 2026-10-09 🔵
-<strong>Trump announces deal for Russian diesel as Zelensky criticises 'gift to Putin'</strong> — Ukraine's president said allowing Russia to sell petroleum products would prolong a war that must be</p>
-<p>📰 <strong>NYT</strong> · 2026-10-09 🟢
-<strong>Trump Says He Will Import Russian Diesel Fuel Amid High Prices</strong> — President Trump said Russia had agreed to ship potentially millions of tons of diesel fuel in the co</p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-09 🔵
-<strong>特朗普與普京達成協議允俄國出售柴油，澤連斯基批評「送大禮」</strong> — 烏克蘭總統表示，容許俄羅斯出售石油產品，只會延長這場本應結束的戰爭。</p>
-<p>📝 <em>逃离基辅躲避冬季</em></p>
-<p>📰 <strong>BBC</strong> · 2026-10-09 🔵
-<strong>Watch: Fleeing Kyiv for the countryside ahead of winter</strong> — A Kyiv resident told the BBC she has moved away from "everything that can be a Russian target" as Uk</p>
-<p>📰 <strong>BBC</strong> · 2026-10-09 🔵
-<strong>Russian strikes and approaching winter force some in Kyiv to pack bags and flee</strong> — A renewed Russian campaign of strikes on power and energy infrastructure has made some contemplate l</p>
-<p>📰 <strong>纽约时报中文</strong> · 2026-10-09 🟢
-<strong>战争造成燃油短缺，俄罗斯人开始拥抱中国电动汽车</strong> — 由于与乌克兰的战争导致燃油短缺，越来越多俄罗斯人开始购买电动汽车，政府也推出补贴措施。中国品牌销量激增彰显了莫斯科为应对西方战时制裁而进行的经济转向。                    Pavel</p>
-<p>📰 <strong>纽约时报中文</strong> · 2026-10-09 🟢
-<strong>为何俄罗斯鼠疫疑云引发全世界担忧</strong> — 当西伯利亚可能暴发瘟疫的传言四起时，克里姆林宫似乎正在采取惯用策略：对潜在的坏消息尽量不透露任何信息。鉴于新冠疫情带来的不信任，信息匮乏已在全球引发不安。                    Ass</p>
-<p>📰 <strong>NYT</strong> · 2026-10-09 🟢
-<strong>As Putin Wages Shadow War, Europe Looks for a Way to Hit Back</strong> — Moscow has used tactics of fear and ambiguity to try to divide NATO and limit support for Ukraine. B</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-01, 2026-10-04, 2026-10-06, 2026-10-07, 2026-10-09</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Se/15</strong> “科技仙境”莫斯科：是数字乌托邦，也是监控陷阱 | 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Au/22</strong> 莫斯科遭到乌克兰450架无人机袭击，市长称规模“迄今最大”
-<strong>Au/25</strong> 生于乌克兰，为何替俄罗斯作战？被俘士兵向BBC讲述他们的故事
-<strong>Se/02</strong> 当普京把铁锤挥向文学
-<strong>Oc/16</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Se/22</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令
-<strong>Ju/23</strong> 李在明接受时报专访，敦促美国放松对朝鲜的制裁 | 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？</p>
-<p>📊 <em>趋势（5天共5条）</em> <code>█1 █1 █1 █1 █1</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（5 条）</h3>
-<blockquote>
-<p>📝 <em>VidoAI官方发布改编作品</em></p>
-<p>🐦 <strong>schmede@schmede_AI·1</strong> · 🎬×1 · 20:16 🟡
-I use @ViduAI_official  for my videos, (full disclosure: I am a creative partner with them)  and they just featured my Malfoid Reference, you can use …</p>
-<p>🐦 <strong>schmede@schmede_AI·5</strong> · 🎬×1 · 16:18 🟡
-Here is the anime adaptation of my adaptation of @moonlightbro's Malfoid story. As always, if you like it, be sure to check him out.</p>
-</blockquote>
-<p>I started gettin…</p>
-<blockquote>
-<p>🐦 <strong>パピィちゃんねる@Papy_Channe</strong> · 📷×2 · 21:28 🟡
-デストロイガンダムの撃墜シーンでガメラ大怪獣空中決戦のラスト思い出したのは僕だけではないハズ
-力尽きても光線吐き続ける姿に涙を禁じ得ない😭
-しかしギャオス君は全身爆散してるのにどうやって超音波メスを… https://t.co/VyRCb3vm98</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 11:16 🟡
-ゲームでも起きる現象
-空間識失調 https://t.co/jKHnBYfSWK</p>
-<p>🐦 <strong>東方きのぴ@kinosub_gui·29</strong> · 09:33 🟡
-配信頑張ってる時に限って変な病気とか謎の理由で配信できなくなるタイミングが必ずある、悪戯な神様、、、🥲︎</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-01, 2026-10-05, 2026-10-06, 2026-10-08, 2026-10-09</em></p>
-</blockquote>
-<h3>🇪🇺 欧洲（5 条）</h3>
-<blockquote>
-<p>📝 <em>法学生抗议背后隐忧</em></p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-09 🔵
-<strong>法国学生抗议：愤怒背后隐藏着什么</strong> — 图像来源，ReutersArticle InformationAuthor, 亨利·阿斯蒂尔 （Henri Astier）Published 29 分钟前阅读时间: 3 分钟自9月下旬以来，法国各地的</p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-09 🔵
-<strong>法國學生示威：憤怒背後隱藏著什麼？</strong> — 法國中學生示威來自對制度的不滿，但也源自於法國在街頭與制定政策的傳統。</p>
-<p>📰 <strong>NYT</strong> · 2026-10-09 🟢
-<strong>China and Europe Step Back From Trade War With Limits on Chinese Car Exports</strong> — The European Union said the deal could roughly halve shipments of hybrid vehicles from China in the </p>
-<p>📰 <strong>BBC</strong> · 2026-10-09 🔵
-<strong>France promises 3,000 extra teachers in first step to calm student protests</strong> — Education minister Edouard Geffray makes the offer after another day of sometimes violent demonstrat</p>
-<p>📰 <strong>NYT</strong> · 2026-10-09 🟢
-<strong>France’s Long, Fervent History of Protest</strong> — Student demonstrations in recent weeks re-lit a centuries-old torch of civil resistance. How do they</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-05, 2026-10-06, 2026-10-07, 2026-10-08</em></p>
-</blockquote>
-<h3>🇮🇱 中东局势（6 条）</h3>
-<blockquote>
-<p>📝 <em>Navi Pillay获诺贝尔和平奖</em></p>
-<p>📰 <strong>NYT</strong> · 2026-10-09 🟢
-<strong>Navi Pillay, South African Jurist, Is Awarded the Nobel Peace Prize</strong> — The choice drew condemnation from Israel over Ms. Pillay’s role leading a U.N. commission that said </p>
-<p>📰 <strong>NYT</strong> · 2026-10-09 🟢
-<strong>Israel Denounces the Decision to Award the Nobel Peace Prize to Navi Pillay</strong> — Ms. Pillay, a human rights lawyer, was drawn into the international spotlight last year as chair of </p>
-<p>📰 <strong>BBC</strong> · 2026-10-09 🔵
-<strong>Navi Pillay, former UN human rights chief, wins Nobel Peace Prize</strong> — Pillay is recognised for her "efforts to promote peace and international law", the Norwegian Nobel C</p>
-<p>📰 <strong>BBC</strong> · 2026-10-09 🔵
-<strong>Watch: Who is Nobel Peace Prize winner Navi Pillay?</strong> — BBC correspondent Joe Inwood explains how Pillay's childhood in South Africa led her to become a dri</p>
-<p>📰 <strong>NYT</strong> · 2025-09-17 🟢
-<strong>My U.N. Commission’s Finding: Israel Is Committing Genocide</strong> — The chief judge of the Rwandan genocide tribunal has concluded that Israel is guilty of the “crime o</p>
-<p>📰 <strong>BBC</strong> · 2026-10-09 🔵
-<strong>Two men deny Iran-backed surveillance of Jewish and Israeli sites in London</strong> — Targets allegedly included the Israeli embassy and consulate, a woman said to be of interest to Iran</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-01, 2026-10-02, 2026-10-04, 2026-10-05, 2026-10-06</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Oc/08</strong> 以色列大選：哈馬斯襲擊三年後，以色列民眾要求追究責任
-<strong>Ju/09</strong> 特朗普虚張聲勢再多，除了與伊朗談判別無選擇——BBC編輯鮑文觀察
-<strong>Se/23</strong> 三位自以為是的領導人和他們的愚蠢戰爭 | 美國與沙特簽署核協議為東地中海引核擴散風險
-<strong>Au/24</strong> 美國制裁伊朗經濟新措施 何以對中國「松手」？
-<strong>Ju/29</strong> 中国希望伊朗戰爭結束，但不是以特朗普想要的方式
-<strong>Au/25</strong> 中国希望伊朗戰爭結束，但不是以特朗普想要的方式
-<strong>Au/19</strong> 激戰和權力的新物理規則
-<strong>Ju/26</strong> 激戰和權力的新物理規則
-<strong>Se/30</strong> 中国希望伊朗戰爭結束，但不是以特朗普想要的方式</p>
-<p>📊 <em>趋势（10天共24条）</em> <code>█3 █1 █5 █3 █2 █1 █1</code></p>
-</blockquote>
-<h3>🔧 开发工具（3 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×2 · 10:50 🟡
-去年我还在百度的时候，团队里有个实习生，逻辑能力一般，但他有个习惯：</p>
-</blockquote>
-<p>每天花1小时精读3篇深度行业报道，36氪、虎嗅、甲子光年轮着来</p>
-<p>三个月后，他提的需求方案开始频繁被采纳</p>
-<p>不是因为他突然变聪明了，而是他脑子里的“信息密度”变高了</p>
-<p>他知道竞品在测什么新功能，知道行业在往哪个方向卷，知道用户最…</p>
-<blockquote>
-<p>🐦 <strong>GitHubDaily@GitHub_D</strong> · 📷×1 · 10:00 🟡
-喜欢的游戏只出了 PS5 版，想在电脑上玩，以往基本只能指望模拟器，配置高不说，兼容性也看运气。</p>
-</blockquote>
-<p>AnyPS5 换了个思路，直接把 PS5 的可执行文件转成 Linux 或 Windows 的原生程序，不走模拟，也不额外起一个运行时进程。</p>
-<p>它自带一个重新链接的工具，把游戏程序转成目标系统能直接认…</p>
-<blockquote>
-<p>🐦 <strong>卫斯理@imwsl90·51分钟</strong> · 09:10 🟡
-高性价比人生</p>
-</blockquote>
-<p>前几天收藏了这个 GitHub repo，最近刷抖音一直刷出来这本实体书的推荐</p>
-<p>总感觉怪怪的，不免让我想到了，很多人喜欢过一种绩优主义的人生</p>
-<p>因为大家认为只要面面做到了 人生就胜利了</p>
-<p>如果是真的这样过自己的生活的话，人是会不开心的。减肥人不会开心，饿肚子也不会开心，事无巨细地让…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-30, 2026-10-02, 2026-10-06, 2026-10-07, 2026-10-09</em></p>
-</blockquote>
-<h3>🇹🇼 台海局势（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 13:43 🟡
-我是一个原籍泰国的美国人。在墙内扣我多少帽子都没有意义。我明天支持台独都无所谓。望周知。</p>
-</blockquote>
-<p>要不这样，如果这个帖子点赞上千，我明天写一篇长文讲为什么汉人无需反对台独。</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-30, 2026-10-05, 2026-10-06, 2026-10-07, 2026-10-09</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>03/05</strong> 关键进展
-<strong>03/07</strong> 关键进展
-<strong>03/09</strong> 关键进展
-<strong>03/12</strong> 关键进展
-<strong>03/19</strong> 关键进展
-<strong>03/22</strong> 关键进展
-<strong>03/26</strong> 关键进展
-<strong>03/30</strong> 关键进展
-<strong>04/03</strong> 关键进展
-<strong>04/06</strong> 关键进展
-<strong>04/09</strong> 关键进展
-<strong>04/12</strong> 关键进展
-<strong>04/15</strong> 关键进展
-<strong>04/18</strong> 关键进展
-<strong>04/22</strong> 关键进展
-<strong>04/25</strong> 关键进展
-<strong>04/28</strong> 关键进展
-<strong>05/02</strong> 关键进展
-<strong>05/05</strong> 关键进展
-<strong>05/08</strong> 关键进展
-<strong>05/11</strong> 关键进展
-<strong>05/14</strong> 关键进展
-<strong>05/17</strong> 关键进展
-<strong>05/20</strong> 关键进展
-<strong>05/23</strong> 关键进展
-<strong>05/26</strong> 关键进展
-<strong>05/29</strong> 关键进展
-<strong>06/02</strong> 关键进展
-<strong>06/05</strong> 关键进展
-<strong>06/08</strong> 关键进展
-<strong>06/11</strong> 关键进展
-<strong>06/14</strong> 关键进展
-<strong>06/17</strong> 关键进展
-<strong>06/20</strong> 关键进展
-<strong>06/23</strong> 关键进展
-<strong>06/26</strong> 关键进展
-**06/</p>
-<p>📊 <em>趋势（14天共36条）</em> <code>█1 █1 █2 █1 █1 █2 █2</code></p>
-</blockquote>
-<h3>💰 股市/金融（1 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-09 🟢
-<strong>Trump Announces White House Inquiry Into Fed Governor Lisa Cook</strong> — President Trump said the White House would investigate unsubstantiated claims that Lisa D. Cook comm</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-30, 2026-10-06, 2026-10-07, 2026-10-08, 2026-10-09</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>24/Au Shein香港IPO：中国快时尚品牌估值270亿美元</strong>
-<strong>19/Se 02版 - 前8月全国一般公共预算收入同比增5.7%</strong>
-<strong>23/Au 恒大爆雷：许家印被判处无期徒刑 集团罚款近160亿元人民币</strong>
-<strong>20/Au 恒大爆雷：许家印被判处无期徒刑 集团罚款近160亿元人民币</strong>
-<strong>25/Au Shein香港IPO：中国快时尚品牌估值270亿美元</strong>
-<strong>07/Au 美股全线暴跌，让子弹再飞一会儿</strong>
-<strong>19/Au 牛来了又走了，AI 股神暴亏300亿内幕曝光：成也 AI，败也 AI</strong>
-<strong>22/Ju 亚洲年轻人大举押注科技股 他们过得怎么样？</strong>
-<strong>29/Ju 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌</strong></p>
-<p>📊 <em>趋势（15天共120条）</em> <code>█6 █3 █2 █4 █6 █11 █4</code></p>
-</blockquote>
-<h3>🏢 创业/商业（1 条）</h3>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-10-09 🟢
-<strong>早报｜苹果定档10月13日发布新品/三星手机业务或减产30%/保时捷计划削减9000个岗位</strong> — · 小米澎程上市 30 天锁单超过 7 万台
-· Manus 母公司完成超 5 亿美元新一轮融资
-· 小鹏 Robotaxi 定名「小鹏悠游」，下单小程序同步上线#欢迎关注爱范儿官方微信公众号：爱范儿</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-09-30, 2026-10-06, 2026-10-07, 2026-10-08, 2026-10-09</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（193 条）</h2>
-<blockquote>
-<p>🐦 <strong>Scur@mbv_scar·15分钟</strong> · 📷×1 · 21:46 🟡
-finally got around to finishing the PC port of Ace Combat: Zero. </p>
-</blockquote>
-<p>i pick on Morgan mains in Ace Com…</p>
-<blockquote>
-<p>🐦 <strong>Deluxe PL@PolishDelu</strong> · 📷×1 · 21:05 🟡
-My spanish friend, it has been more than a week. And it has made this twitter the best it has been i…</p>
-<p>🐦 <strong>匿名</strong> · 20:36 🟡
-HERMANO, LE HA CHUPADO HASTA EL ALMA</p>
-</blockquote>
-<p>NO SÉ SI PONER EL GIF DE SALIERI O EL DE YUGI</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 20:21 🟡
-RT @liqunsifang: 向各位兄弟们表示道歉，一直保持每天更新，每天不断开发，没有自己私人时间，4号更新完，五号到七号陪家里人，出去散散心，7号下午开始工作，开发新的妹妹，也就是今天拍摄的主…</p>
-<p>🐦 <strong>匿名</strong> · 📷×4 · 20:17 🟡
-RT @Monkey_Jon007: Popular arts so far &gt;&gt;&gt;&gt;
-This is just taking a note to myself https:/…</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 20:04 🟡
-RT @harikyon_DZS: #Malfoid wants to see Harry (again) https://t.co/IhqcS4Q9Fj</p>
-<p>🐦 <strong>Monkey Jon @Monkey_J</strong> · 📷×4 · 19:50 🟡
-Popular arts so far &gt;&gt;&gt;&gt;
-This is just taking a note to myself https://t.co/lFuGuS4Hsq</p>
-<p>🐦 <strong>Tibo@thsottiaux·2小时</strong> · 📷×1 🎬×1 · 19:47 🟡
-Day 5/</p>
-</blockquote>
-<p>Composer predictions in the desktop app. Often leads to a double take with how on point they…</p>
-<blockquote>
-<p><em>…还有 185 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 121条
-    General: ██████████ (107)</p>
-<p>📰 <strong>RSS 新闻</strong>: 122条
-    · BBC: 52条
-    · NYT: 42条
-    · BBC中文: 11条
-    · 纽约时报中文: 9条
-    · 爱范儿: 8条</p>
-<p>📚 累计: X=36022 | NGA=584 | S1=372 | RSS=12487</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <div class="lede">
+    <p>今天几条线各往前走了一步，方向却不太一样。特朗普放行俄罗斯柴油进口，泽连斯基说这是给普京「送大礼」；诺贝尔和平奖颁给了南非法学家纳维·皮莱，以色列当场翻脸；北京一边推着民众用 AI，一边开始担心大家依赖过头。还有一件容易被淹没的事：有黑客被指用中美两国的 AI 工具攻击了韩国银行。把这几条拼起来，2026 年秋天的底色大概就是——混乱还在继续，但每一方都在想办法。</p>
+  </div>
+
+  <h2>AI / 大模型</h2>
+
+  <p>纽约时报中文今天这篇值得读。中国政府这几年一直在推着民众接触 AI，从娱乐到人际关系，甚至到「这块地该种什么」的农业建议，几乎无处不在。但现在风向有点变了：当局开始担心过度依赖 AI 会干扰人和人之间的关系、破坏社会秩序，监管的手跟着伸了过来。一边鼓励、一边收紧，这种拧巴其实好理解——技术要跑得快，跑偏了也麻烦。</p>
+
+  <p>工具这边，Codex 给 Pro 用户开了个新功能：你话还没打完，它根据你和它的对话习惯，先猜出你下一句想说什么。OpenAI 自己说，这玩意「往往准得让人愣一下」。Anthropic 则是另一条新闻：公司更新了使用规则，用户不能再对 AI 系统进行「持续的、无谓的」辱骂行为。这大概是全球第一份把「别虐待聊天机器人」写进条款的政策。</p>
+
+  <p>推上 @RealYDT 的一条吐槽被转得挺多。他觉得 Anthropic 今年这套组合拳下来，OpenAI 有点招架不住：Opus 5.5 登顶跑分，GPT-6.1 Sol 勉强接招，很快又被 Sonnet 5 压了过去。另一位推友分享了一个绕开地区限制用 Claude 的思路——不装本地客户端，在美国云主机上通过 Orca 调用，还说这样封号概率「极小」。真假不好判断，但至少能看出一点：为了用上顺手的模型，很多人愿意折腾到半夜。</p>
+
+  <p>安全这条线今天有点沉。网络安全公司 CrowdStrike 报告说，有黑客用中国开发的 ARTEX 和美国的 Claude Code 等 AI 工具，对韩国金融机构发起了攻击，攻击者可能讲中文、动机是钱。同一天，纽约时报中文聊了个老话题：中国想从国外挖 AI 科学家，效果一般。愿意来的外国研究者不多，在美国工作的中国科学家反而在增加，不过中国把本土人才留得挺牢。</p>
+
+  <blockquote>
+    <p><span class="who">@RealYDT</span>：Anthropic 这一套组合拳砸下来，OpenAI 估计真被干懵了。</p>
+  </blockquote>
+
+  <h2>俄乌冲突</h2>
+
+  <p>今天最扎眼的是能源。特朗普宣布与俄罗斯达成协议，允许俄方向美国出口柴油，理由是油价太高，量级可能到数百万吨。泽连斯基的反应很直接：这是在给普京「送大礼」，只会让一场本该结束的战争拖得更久。BBC 中文的标题干脆用了「送礼」两个字。</p>
+
+  <p>战场之外，普通人的处境在变糟。俄军重启对电力和能源设施的打击，基辅有些人开始收拾行李往乡下撤。一位居民对 BBC 说，她要离开「一切可能成为俄罗斯目标的东西」。有意思的连带效应是：战争导致俄罗斯自己燃油短缺，反而把越来越多俄罗斯人推向了中国电动汽车，政府还给补贴，中国品牌销量跟着猛涨。</p>
+
+  <p>还有一条容易忽略但挺重要的。西伯利亚可能暴发鼠疫的传言在传，克里姆林宫照旧不透露任何信息。新冠之后，大家对这种沉默特别敏感，信息越少，全球的不安反而越大。NYT 另一篇分析说，普京正用「影子战争」那套手法制造恐惧和模糊，试图分化北约、削弱对乌克兰的支持，欧洲正在琢磨怎么反击。</p>
+
+  <h2>欧洲</h2>
+
+  <p>法国的高中生抗议还在继续。BBC 中文的分析说得很实在：表面是对教育经费和制度的不满，底下其实是法国街头抗争的老传统在起作用。政府的回应也快，教育部长承诺增聘 3000 名教师，想先把局面稳住。</p>
+
+  <p>同一天还有条对中欧都算好消息的消息。中国和欧盟各让一步，同意限制中国汽车出口，把这轮贸易战从此前的剑拔弩张里往回拉。NYT 估算，这个安排大概能让中国对欧混合动力车的出货量减半。吵了这么久，最后还是坐下来谈了。</p>
+
+  <h2>中东局势</h2>
+
+  <p>诺贝尔和平奖今天颁给了南非法学家纳维·皮莱（Navi Pillay），表彰她「推动和平与国际法」的努力。她当过联合国人权事务高级专员，去年还主持过一个委员会，就是那个得出「以色列在加沙实施种族灭绝」结论的委员会。以色列对这次颁奖的措辞很不客气，直接公开谴责。评奖委员会大概早知道会有这反应，还是颁了。</p>
+
+  <p>另一条在伦敦：两名男子否认替伊朗监视当地的犹太和以色列目标，据称目标包括以色列大使馆和领事馆。案子还在审，但这类「影子情报」的新闻最近有点密集。</p>
+
+  <h2>开发工具</h2>
+
+  <p>推上一条小观察被不少人共鸣。一位前百度员工说，团队里有个逻辑一般、但每天雷打不动精读三篇行业深度报道的实习生，三个月后提的方案开始频繁被采纳。他的结论不是「变聪明了」，而是脑子里的信息密度上去了。这年头 AI 能帮你写代码，但知道行业往哪儿走，还得自己读。</p>
+
+  <p>GitHubDaily 推了一个叫 AnyPS5 的项目，思路挺野：不做模拟器，直接把 PS5 的可执行文件静态重编译成 Linux 或 Windows 原生程序，自带重新链接工具。想玩 PS5 独占又没主机的玩家大概已经在下载了，索尼法务部门可能也已经在路上了。</p>
+
+  <h2>台海局势</h2>
+
+  <p>推上一条匿名帖引来不少关注。发帖者自称原籍泰国的美国人，说在墙内被扣多少帽子都无所谓，还放话如果点赞过千，就写一篇长文谈「为什么汉人无需反对台独」。</p>
+
+  <h2>股市 / 金融</h2>
+
+  <p>特朗普宣布白宫将对美联储理事丽莎·库克（Lisa Cook）展开调查，依据是一些尚未证实的指控。消息本身不算大，但白宫直接把手伸向美联储理事，这个动作本身就够说明问题。</p>
+
+  <h2>创业 / 商业</h2>
+
+  <p>爱范儿的早报信息量不小：苹果定了 10 月 13 日发新品；三星手机业务可能减产 30%；保时捷计划削减 9000 个岗位。国内这边正好相反，小米澎程上市 30 天锁单超 7 万台，Manus 母公司完成超 5 亿美元新一轮融资，小鹏的 Robotaxi 定了名字叫「小鹏悠游」，下单小程序也同步上线了。</p>
+
+  <p>海外车企在收缩，中国这边在扩张。这一冷一热，比任何分析都直白。</p>
+
+  <h2>今日数据</h2>
+  <ul class="stat">
+    <li>总信息 243 条</li>
+    <li>X 推文 121 条</li>
+    <li>RSS 新闻 122 条</li>
+    <li>BBC 52 · NYT 42 · BBC中文 11 · 纽约时报中文 9 · 爱范儿 8</li>
+  </ul>
+  <p class="src">今日 X 与 RSS 各占一半，NGA 与 S1 本次无新内容；AI/大模型是最大话题（9 条），已连续出现在 9/27 至 10/9 之间。</p>
+
+  <footer>
+    本内容由 Hermes Agent 自动采集分析，每日更新
+  </footer>
+</main>
 </body>
 </html>
