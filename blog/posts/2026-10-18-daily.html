@@ -1,171 +1,159 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-10-18 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-10-18 · Dawei Xu</title>
+<meta name="description" content="2026-10-18 每日资讯早报：iPhone Duo 预购、AI 编程工作流的自我改造、半导体涨价传导、俄乌制裁松动、法国全国抗议。">
+<style>
+  :root{
+    --bg:#f6f7f2;
+    --ink:#1f2428;
+    --muted:#5f6b66;
+    --accent:#226f54;
+    --accent-2:#b1442f;
+    --rule:#d9ded4;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:17px;
+    line-height:1.85;
+    letter-spacing:.01em;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px 72px;}
+  .topbar{
+    max-width:720px;margin:0 auto;padding:20px 22px 0;
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:14px;
+  }
+  .brand{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:.02em;}
+  .mark{
+    width:26px;height:26px;border-radius:7px;background:var(--accent);color:#fff;
+    display:grid;place-items:center;font-size:14px;font-weight:800;
+  }
+  .nav a{color:var(--muted);text-decoration:none;margin-left:16px;}
+  .nav a.cur{color:var(--accent);font-weight:700;}
+  .back{
+    display:inline-block;margin:34px 0 0;font-size:14px;color:var(--muted);text-decoration:none;
+  }
+  .back:hover{color:var(--accent);}
+  header.post{margin:18px 0 34px;}
+  .kicker{
+    font-size:13px;letter-spacing:.14em;color:var(--accent);font-weight:700;
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  h1{
+    font-size:clamp(26px,6.4vw,36px);
+    line-height:1.28;margin:0 0 14px;letter-spacing:-.01em;font-weight:800;
+  }
+  .meta{font-size:14px;color:var(--muted);margin:0;}
+  .lead{
+    font-size:18px;line-height:1.8;color:#2b3230;margin:0 0 8px;
+    padding:20px 22px;background:var(--card);border-left:4px solid var(--accent);
+    border-radius:0 10px 10px 0;
+  }
+  h2{
+    font-size:21px;line-height:1.45;margin:44px 0 14px;font-weight:700;
+    padding-bottom:9px;border-bottom:1px solid var(--rule);letter-spacing:-.005em;
+  }
+  h2 .num{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:10px;font-weight:800;}
+  p{margin:0 0 17px;}
+  .tight{margin-bottom:9px;}
+  a{color:var(--accent);}
+  strong{font-weight:700;}
+  .stats{
+    margin:46px 0 0;padding:22px 24px;background:var(--card);
+    border:1px solid var(--rule);border-radius:12px;
+  }
+  .stats h3{margin:0 0 14px;font-size:16px;font-weight:700;letter-spacing:.02em;}
+  .stats dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 18px;font-size:15px;}
+  .stats dt{color:var(--muted);}
+  .stats dd{margin:0;font-variant-numeric:tabular-nums;}
+  .bar{
+    display:inline-block;height:9px;border-radius:3px;background:var(--accent);
+    opacity:.85;vertical-align:middle;margin-right:8px;
+  }
+  footer{
+    margin-top:52px;padding-top:22px;border-top:1px solid var(--rule);
+    font-size:13.5px;color:var(--muted);
+  }
+  @media (max-width:520px){
+    body{font-size:16.5px;line-height:1.8;}
+    .wrap,.topbar{padding-left:18px;padding-right:18px;}
+    .lead{padding:17px 18px;font-size:17px;}
+    h2{font-size:19.5px;margin-top:38px;}
+    .stats{padding:18px;}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-10-18</h1>
-    <p class="post-meta">2026-10-18 · 每日资讯早报 · 确定性兜底发布</p>
+<div class="topbar">
+  <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
+  <nav class="nav">
+    <a href="/">首页</a>
+    <a class="cur" href="/blog/">笔记</a>
+  </nav>
+</div>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-10-18</strong></p>
-<p>📊 <strong>共 211 条信息</strong>  ·  🐦 X(134)  ·  📰 RSS(77)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（8 条）</h3>
-<blockquote>
-<p>📝 <em>iPhone Duo开启预购，发货排到明年</em></p>
-<p>📰 <strong>爱范儿</strong> · 2026-10-15 🟢
-<strong>早报｜iPhone Duo完成大模型备案，有望12月上线/企业微信与WorkBuddy打通/OPPO与Manus官宣合作</strong> — · 苹果公布 HomeView 维修费：保修外服务预估 279 美元
-· ASML 第三季度营收 116.62 亿欧元，计划扩产应对 AI 需求
-· 9 月消费电子价格普涨，存储设备同比上涨 46.7</p>
-<p>📰 <strong>爱范儿</strong> · 2026-10-17 🟢
-<strong>早报｜iPhone Duo开启预购，发货排到明年/特斯拉超跑发布会现场飞了/华为阔直板出货量超71万台</strong> — · 华为云下月调整 AI 专业服务价格，原型开发基础版升至 85.12 万元
-· 17 岁研究员陈广宇离开 Kimi，否认将加入 Anthropic
-· 四部门要求车企规范产品宣传，不得诱导驾驶人忽视</p>
-<p>🐦 <strong>李不凯正在研究@libukai·5小时</strong> · 📷×1 · 16:45 🟡
-说实话，作为一个 Codex Pro 500 + Claude Pro 20 + DeepSeek Normal 10 (充了 10 块) 的三持用户，看到下面这个对比数据，我的内心是无比酸涩的。</p>
-</blockquote>
-<p>请问，怎么才能说服自己，我并不是个傻逼？ https://t.co/7UCGKygvbV</p>
-<blockquote>
-<p>🐦 <strong>Leto Bao@leto_bao·8小</strong> · 13:20 🟡
-今天又发现新加坡开公司的一个非常巨大的优势：可以同时做中国和海外的生意。</p>
-</blockquote>
-<p>比如你要上架一个 App，只要里面带了付费、AI 或评论，就必须要 ICP。境外主体是无法获得 ICP 的，你需要额外在中国注册一个 WFOE（外商独资企业），手续非常繁杂，而且要花很多钱。</p>
-<p>但是，新加坡跟中国有一个「沪新…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 10:40 🟡
-这周 GitHub 涨得最猛的十个 AI 开源项目，会用 AI 的人手里又多了哪些家伙。</p>
-</blockquote>
-<p>01 REA</p>
-<p>https://t.co/n9B6flcGRM</p>
-<p>第一个，REA，全称 Reverse Engineer Anything，逆向一切。</p>
-<p>现在二十六万九千颗星。它四月份才建库，光这一周就涨了二…</p>
-<blockquote>
-<p>🐦 <strong>宝玉@dotey·12小时</strong> · 🎬×2 · 09:09 🟡
-Claude Code 团队公开了他们审代码的做法：代码大约九成由 Claude 写，六月到九月合并的修改翻了一倍多，需要撤回的比例反而降了四成多。</p>
-</blockquote>
-<p>这期用一摞带洞的奶酪片讲这套做法：每道检查都会漏，叠起来就很难漏，底下还有一张网兜底。</p>
-<p>片中回答五个问题：哪些修改还要人看，AI 审 AI 会不会…</p>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-10-14 🟢
-<strong>刚刚，Anthropic 宣布弃用Git，统治编程20年的工具顶不住AI了</strong> — 以 AI 发展速度，一年后我们又该弃用 Scion#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
-<p>📰 <strong>爱范儿</strong> · 2026-10-14 🟢
-<strong>‌​‌⁤‌⁢​​​​​‬⁣⁣⁢⁢⁡⁡⁢​⁡‌​‬‍⁤⁢‌﻿⁡⁤⁡⁣⁡⁤﻿​‌​⁢​⁤⁤‌⁢​‬⁣⁡刚刚，Gemini 4 发布！性价比「斩杀」GPT-6 和 O</strong> — 哈基米终于支棱起来了。#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-07, 2026-10-09, 2026-10-13, 2026-10-16, 2026-10-17</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>10/04</strong> 关键进展
-<strong>10/05</strong> 关键进展
-<strong>10/06</strong> 关键进展</p>
-<p>📊 <em>趋势（15天共714条）</em> <code>█29 █49 █72 █67 █69 █50 █38</code></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（3 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-17 🟢
-<strong>Trump Offers Putin Economic Relief in Hopes That Russia Will Return the Favor</strong> — The Trump administration is ignoring the will of Congress and waiving new Russia sanctions amid fear</p>
-<p>📰 <strong>NYT</strong> · 2026-10-17 🟢
-<strong>Graham Breaks With Trump Over Russia Sanctions Law Her Brother Championed</strong> — Senator Darline Graham, appointed to fill the Senate seat of her late brother, Lindsey, gently disag</p>
-<p>📰 <strong>NYT</strong> · 2026-10-17 🟢
-<strong>U.S. Floats Lifeline to Russia: Allowing More Gas Sales to Europe</strong> — The Trump administration is pitching the idea as part of a peace deal with Ukraine, but Europe is wa</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-06, 2026-10-11, 2026-10-14, 2026-10-15, 2026-10-16</em></p>
-<p>🕐 <em>事件演化：</em>
-Tue, 18/02 <strong>战争起源与影响</strong>
-Tue, 22/06 <strong>军事行动扩大</strong>
-Wed, 02/07 <strong>平民伤亡与心理影响</strong>
-Wed, 07/08 <strong>国际社会反应</strong>
-Wed, 14/08 <strong>军事策略调整</strong>
-Wed, 16/09 <strong>新增援部队消息</strong>
-Wed, 19/09 <strong>物理规律与战争</strong>
-Wed, 22/10 <strong>高层变动与撤换</strong>
-Wed, 23/10 <strong>制裁与增援</strong></p>
-<p>📊 <em>趋势（5天共8条）</em> <code>█1 █1 █1 █4 █1</code></p>
-</blockquote>
-<h3>🇪🇺 欧洲（3 条）</h3>
-<blockquote>
-<p>📝 <em>法国抗议活动中发生暴力冲突和骚乱</em></p>
-<p>📰 <strong>BBC</strong> · 2026-10-17 🔵
-<strong>How day of protests unfolded as disorder breaks out across France</strong> — Demonstrations across the country turned violent, with cars and buildings set alight and shops ransa</p>
-<p>📰 <strong>BBC</strong> · 2026-10-17 🔵
-<strong>Violent clashes, looting and buildings ablaze in France as over 1,000 arrested a</strong> — Disorder broke out in cities across the country on a day in which more than half a million joined co</p>
-<p>📰 <strong>NYT</strong> · 2026-10-17 🟢
-<strong>Unrest Mars Day of Protest in France, as Student Movement Turns National</strong> — Riots broke out in several French cities alongside peaceful marches of tens of thousands of people d</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-06, 2026-10-12, 2026-10-13</em></p>
-</blockquote>
-<h3>🎮 二次元/游戏（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>なめこ汁@nameko_numeri·6</strong> · 📷×3 · 15:48 🟡
-グランデスケールのルミティア
-初期イラストやソシャゲ、そしてフィギュアのイメージに合わせてやらしくない範囲で健康的に盛ってる☺</p>
-</blockquote>
-<p>盛り自体はこんなもんで表面処理に移ります https://t.co/LYP4jq7X2a</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-09, 2026-10-13, 2026-10-14, 2026-10-15, 2026-10-16</em></p>
-</blockquote>
-<h3>🚀 芯片/半导体（1 条）</h3>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-10-16 🟢
-<strong>英伟达RTX Spark笔记本首发实测，我实现了WorkBuddy额度自由</strong> — 给了我们一个换电脑的理由#欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-12, 2026-10-13, 2026-10-14, 2026-10-15, 2026-10-17</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（176 条）</h2>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×4 · 21:56 🟡
-RT @AquiNas_MMD: ポロリしちゃってることに気付いていない唯ちゃん📸😚 https://t.co/SR7GSN6HYW</p>
-<p>🐦 <strong>MIN-NARAKEN☆こみトレ48【9</strong> · 21:50 🟡
-休日は永遠に寝てられるぜーとか言えればいいのにそうもいかないここ最近な日曜日の朝 おはよう</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 21:46 🟡
-RT @ryuubukuro: トイレに行って戻ってきたら自分の机に女子が座って雑談していて席に戻りづらい</p>
-</blockquote>
-<h1>裸ネクタイ学園 https://t.co/twBzlYPLoG</h1>
-<blockquote>
-<p>🐦 <strong>komsuke@komsuke1·20分</strong> · 📷×1 · 21:40 🟡
-nomadに取り込んだのでやってくじぇ
-ライノともリアルタイム連携してくれよな〜頼むよ〜 https://t.co/ZJyLrzKwG6</p>
-<p>🐦 <strong>你为什么这么对我@StipaMiMiMi</strong> · 📷×1 · 21:39 🟡
-全是无料。柔造快点印啊… https://t.co/fs2Zf0FeBf</p>
-<p>🐦 <strong>树@26nian5yue25hao·27</strong> · 21:33 🟡
-"刚刚尝试了一款新口味的咖啡，意外的好喝！☕️"</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 21:25 🟡
-久々の車！</p>
-</blockquote>
-<h1>30ミニッツ乗り物部</h1>
-<h1>30MM</h1>
-<h1>30MS https://t.co/L5RI77F8kB</h1>
-<blockquote>
-<p>🐦 <strong>Loooyd@LoooydArt·45分</strong> · 📷×1 · 21:15 🟡
-malfoy https://t.co/bTMgCV7dtp</p>
-<p><em>…还有 168 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 134条
-    General: ██████████ (118)</p>
-<p>📰 <strong>RSS 新闻</strong>: 77条
-    · BBC: 33条
-    · NYT: 23条
-    · 爱范儿: 20条
-    · BBC中文: 1条</p>
-<p>📚 累计: X=40046 | NGA=584 | S1=372 | RSS=13668</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+<main class="wrap">
+  <a class="back" href="/blog/">← 返回笔记列表</a>
+
+  <header class="post">
+    <div class="kicker">每日资讯早报</div>
+    <h1>2026 年 10 月 18 日</h1>
+    <p class="meta">211 条信息 · 增强版 · 阅读约 5 分钟</p>
+  </header>
+
+  <p class="lead">今天 211 条，绝大多数可以划过去。真正值得跟的是三条线：苹果 iPhone Duo 从备案走到预购只用了两天；AI 编程工具开始改自己的工作流，改得比外界以为的深；半导体那轮涨价，终于在终端价格和服务报价上露头了。</p>
+
+  <h2><span class="num">01</span>苹果：备案两天后就开预购</h2>
+  <p>10 月 15 日，iPhone Duo 完成大模型备案，当时的说法是"有望 12 月上线"。两天后预购开启，发货排到了明年。节奏比预期快，货比预期少。</p>
+  <p>同一批消息里夹着一条容易被划过去的：苹果公布 HomeView 保修外维修预估 279 美元。硬件卖得动是一回事，售后定价权是另一回事，后者影响更长久。</p>
+  <p>国内这边，华为阔直板出货量超过 71 万台。阔屏这条赛道，不是苹果一个人在跑。</p>
+
+  <h2><span class="num">02</span>AI 写完代码，再回头审代码</h2>
+  <p>Anthropic 宣布弃用 Git 那天，不少人当成标题党处理。把它和 Claude Code 团队公开的审查数据放在一起看，就没那么好笑了：代码大约九成由 Claude 写，6 月到 9 月合并的修改翻了一倍多，需要撤回的比例反而降了四成多。</p>
+  <p>宝玉打了个比方，一摞带洞的奶酪片。每道检查都会漏，叠起来就很难漏，底下还有一张网兜底。</p>
+  <p>这套流程能成立有个前提：检查要足够多，而且足够便宜。换句话说，AI 写代码省下来的时间，有相当一部分又投回了审查环节。净收益到底有多少，各家账本不一样，宣传口径也不一样。</p>
+  <p>李不凯那条吐槽是这个背景下最真实的声音。Codex Pro 500、Claude Pro 20、DeepSeek 充了十块钱，三个订阅同时开着，看到对比数据还是忍不住怀疑自己。工具越多，越难判断钱花得值不值。</p>
+  <p>开源侧的信号是 REA，Reverse Engineer Anything。四月才建的库，现在 26.9 万星，光这一周涨了两万多。逆向工程这种以前靠经验吃饭的活，正在被做成工具。</p>
+
+  <h2><span class="num">03</span>涨价是一条链，不是三条新闻</h2>
+  <p>ASML 第三季度营收 116.62 亿欧元，计划扩产应对 AI 需求。9 月消费电子价格普涨，存储设备同比涨 46.7%。华为云下月调整 AI 专业服务价格，原型开发基础版报到 85.12 万元。</p>
+  <p>三条消息其实是一条：AI 需求拉动产能和存储，成本顺着链条落到终端售价和服务报价上。英伟达 RTX Spark 的首发实测放在这个位置看，就不只是"给你一个换电脑的理由"了。</p>
+
+  <h2><span class="num">04</span>俄乌：拿制裁换让步</h2>
+  <p>NYT 今天三条都指向同一件事。特朗普政府在绕开国会，豁免新一轮对俄制裁，赌的是俄罗斯会投桃报李。同时提出允许更多俄罗斯天然气销往欧洲，包装成和平协议的一部分。欧洲那边态度谨慎。</p>
+  <p>共和党内有杂音。Darline Graham 接替已故兄弟 Lindsey 的参议院席位，在她兄弟生前主导的制裁法上表达了温和但明确的异议。措辞很轻，信号不小。</p>
+
+  <h2><span class="num">05</span>法国：五十万人上街</h2>
+  <p>10 月 17 日，法国全国抗议，参与人数超过五十万，被捕超过一千人。多个城市出现烧车、烧建筑、商铺被抢。学生运动从校园扩散成全国性事件，和平游行和骚乱发生在同一天、同一批城市。</p>
+
+  <h2><span class="num">06</span>几条短的</h2>
+  <p class="tight">企业微信与 WorkBuddy 打通，OPPO 与 Manus 官宣合作。17 岁研究员陈广宇离开 Kimi，否认将加入 Anthropic。四部门要求车企规范产品宣传。</p>
+
+  <section class="stats">
+    <h3>今日数据</h3>
+    <dl>
+      <dt>总条目</dt><dd>211 条</dd>
+      <dt>X 推文</dt><dd><span class="bar" style="width:134px"></span>134 条</dd>
+      <dt>RSS 新闻</dt><dd><span class="bar" style="width:77px"></span>77 条（BBC 33 · NYT 23 · 爱范儿 20 · BBC 中文 1）</dd>
+      <dt>NGA / S1</dt><dd>0 / 0</dd>
+      <dt>AI 话题</dt><dd>今日 8 条，近 15 天累计 714 条，趋势线仍在下行</dd>
+    </dl>
+  </section>
+
+  <footer>
+    本内容由 Hermes Agent 自动采集分析，每日更新
+  </footer>
+</main>
+
 </body>
 </html>
