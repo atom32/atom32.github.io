@@ -1,346 +1,324 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-10-20 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-10-20 · Dawei Xu</title>
+<style>
+  :root{
+    --ink:#1a1a1c;
+    --ink-soft:#4a4a52;
+    --ink-faint:#8a8a94;
+    --paper:#faf9f6;
+    --card:#ffffff;
+    --line:#e6e2da;
+    --accent:#b4471f;
+    --accent-soft:#fdf0e9;
+    --blue:#2b5c8a;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:17px;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:720px;margin:0 auto;padding:0 22px 72px;}
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 0 18px;border-bottom:1px solid var(--line);margin-bottom:28px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:700;letter-spacing:.02em;}
+  .mark{
+    width:26px;height:26px;border-radius:7px;background:var(--ink);color:#fff;
+    display:grid;place-items:center;font-size:14px;font-weight:800;
+  }
+  .nav a{color:var(--ink-faint);text-decoration:none;font-size:14px;margin-left:18px;}
+  .nav a.on{color:var(--accent);font-weight:700;}
+  .back{display:inline-block;color:var(--ink-faint);text-decoration:none;font-size:14px;margin-bottom:22px;}
+  h1{
+    font-size:30px;line-height:1.35;letter-spacing:-.01em;
+    margin:0 0 12px;font-weight:800;
+  }
+  .meta{color:var(--ink-faint);font-size:14px;margin:0 0 30px;}
+  .lede{
+    font-size:18px;color:var(--ink-soft);line-height:1.9;
+    padding:20px 22px;background:var(--card);border:1px solid var(--line);
+    border-radius:12px;margin:0 0 34px;
+  }
+  .lede strong{color:var(--ink);}
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 36px;}
+  .stat{
+    flex:1 1 96px;background:var(--card);border:1px solid var(--line);
+    border-radius:10px;padding:12px 14px;
+  }
+  .stat b{display:block;font-size:21px;line-height:1.2;letter-spacing:-.02em;}
+  .stat span{font-size:12px;color:var(--ink-faint);letter-spacing:.06em;}
+
+  section{margin:0 0 46px;}
+  .kicker{
+    font-size:12px;letter-spacing:.18em;color:var(--accent);
+    font-weight:700;margin-bottom:8px;
+  }
+  h2{
+    font-size:23px;line-height:1.4;margin:0 0 16px;font-weight:800;letter-spacing:-.01em;
+  }
+  h3{font-size:17px;margin:28px 0 8px;font-weight:700;color:var(--ink);}
+  p{margin:0 0 16px;color:var(--ink-soft);}
+  p strong{color:var(--ink);}
+  .first::first-letter{font-size:1.05em;}
+
+  .quote{
+    border-left:3px solid var(--accent);
+    background:var(--accent-soft);
+    padding:14px 18px;margin:20px 0;border-radius:0 8px 8px 0;
+    color:var(--ink);font-size:16.5px;line-height:1.8;
+  }
+  .quote cite{display:block;margin-top:8px;font-style:normal;font-size:13px;color:var(--ink-faint);}
+
+  .note{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px;margin:22px 0;
+  }
+  .note h4{margin:0 0 8px;font-size:15px;letter-spacing:.02em;color:var(--blue);}
+  .note p{margin:0;font-size:15.5px;}
+
+  ul.points{list-style:none;padding:0;margin:0 0 18px;}
+  ul.points li{
+    position:relative;padding-left:20px;margin-bottom:11px;color:var(--ink-soft);
+  }
+  ul.points li::before{
+    content:"";position:absolute;left:2px;top:.72em;
+    width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.55;
+  }
+
+  .tl{list-style:none;padding:0;margin:18px 0 22px;border-left:2px solid var(--line);}
+  .tl li{
+    position:relative;padding:0 0 18px 22px;color:var(--ink-soft);font-size:15.5px;
+  }
+  .tl li::before{
+    content:"";position:absolute;left:-6px;top:.62em;
+    width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--accent);
+  }
+  .tl b{display:block;color:var(--ink);font-size:15px;}
+
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;}
+  .duo > div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
+  .duo h5{margin:0 0 6px;font-size:13px;letter-spacing:.08em;color:var(--ink-faint);font-weight:700;}
+  .duo p{margin:0;font-size:15px;}
+
+  hr{border:0;border-top:1px solid var(--line);margin:0 0 40px;}
+
+  footer{
+    margin-top:56px;padding-top:22px;border-top:1px solid var(--line);
+    color:var(--ink-faint);font-size:13.5px;line-height:1.8;
+  }
+  @media (max-width:520px){
+    body{font-size:16.5px;}
+    h1{font-size:25px;}
+    h2{font-size:20.5px;}
+    .page{padding:0 18px 56px;}
+    .duo{grid-template-columns:1fr;}
+    .stat{flex:1 1 44%;}
+    .lede{padding:17px 18px;font-size:17px;}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<main class="page">
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-10-20</h1>
-    <p class="post-meta">2026-10-20 · 每日资讯早报 · 确定性兜底发布</p>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
+    <nav class="nav">
+      <a href="/">首页</a>
+      <a class="on" href="/blog/">笔记</a>
+    </nav>
+  </header>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-10-20</strong></p>
-<p>📊 <strong>共 303 条信息</strong>  ·  🐦 X(177)  ·  📰 RSS(126)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（9 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-19 🟢
-<strong>Saudis Aided Family of Engineer Accused of Bugging OpenAI, Prosecutors Say</strong> — Saudi officials paid for his wife and son to fly out of the U.S. and offered to cover his bail, acco</p>
-<p>📰 <strong>BBC</strong> · 2026-10-19 🔵
-<strong>Ex-OpenAI worker accused of planting device had Saudi support, says court filing</strong> — The Saudi government did not immediately respond to BBC requests for comment.</p>
-<p>🐦 <strong>M.@wlzh·33分钟</strong> · 15:27 🟡
-输入一句话，出来一个 3D 交互教学网页。这事现在真有人做出来了。</p>
-</blockquote>
-<p>AetherViz Master，一个 AI 驱动的教育可视化工具：你输入"牛顿第二定律"或者"光合作用"，它自动识别学科、匹配配色和渲染方案，生成一个能拖能转能调参数的 3D 交互页面。Three.js 做 3D，SVG 叠 2…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×2 · 11:16 🟡
-我的AI游戏最新成绩播报：</p>
-</blockquote>
-<p>《无为修仙传》上线48天，营收41935元人民币。</p>
-<p>《放置地下城：无尽远征》上线4天，营收3073元人民币。</p>
-<p>开发工具：codex</p>
-<p>发行平台：steam</p>
-<p>在未来，小灰会进一步迭代这两款游戏，也会尝试用AI开发更多的新游戏，敬请期待~~ https://t.co/…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 09:31 🟡
-笑死 DHH 很懂了，来中国用 Tailscale 访问 Claude Code</p>
-<p>🐦 <strong>小码哥@xmglab·6小时</strong> · 📷×2 · 09:31 🟡
-兄弟们，</p>
-</blockquote>
-<p>Google 终于不再沉默了，这次的 Google AI Pro 新套餐太炸裂了！！</p>
-<p>除了能使用 Gemini 4 Argon、Opus 5.5、Sonnet 5 模型，最香的是还送 YouTube Premium 会员！！😱</p>
-<p>没错，只需 8.99 美元，最长可以拿下长达 4 年 G…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×3 · 09:11 🟡
-有了 AI 之后，大家的生产力真是爆炸了。</p>
-</blockquote>
-<p>手头有一个中兴的移动 WiFi U30 Air，此前就在闲鱼上做了破解，可以不绑定官方流量而改用流量卡。</p>
-<p>后面一直想换一个支持 OpenWrt 的设备，直接一步到位支持科学上网更加方便，就是没中意的设备所以一直没下手。</p>
-<p>直到昨天刷 Timeline …</p>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-10-19 🔵
-<strong>US bans DeepSeek AI from government use as tech tension with China continues</strong> — DeepSeek is a powerful, popular and relatively inexpensive artificial intelligence model out of Chin</p>
-<p>📰 <strong>爱范儿</strong> · 2026-10-19 🟢
-<strong>我向新版 DeepSeek 许了个愿，4 块钱让特斯拉飞起来</strong> — </p>
-</blockquote>
-<p>中国人能飞，中国模型也能让特斯拉飞。
-前两天更新的 DeepSeek V4.1 Flash 太强大了，社交媒体上网友们清一色的评论都是「</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-09, 2026-10-13, 2026-10-16, 2026-10-18, 2026-10-19</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-10-06]:kan to关注M关注进展
-[2026-10-07] Muse应用测评开启
-[2026-10-08] AI润色效果讨论开源Skill发布
-[2026-10-09] 动画技能上线推广项目启动</p>
-<p>📊 <em>趋势（15天共797条）</em> <code>█72 █69 █70 █54 █68 █71 █70</code></p>
-</blockquote>
-<h3>🇪🇺 欧洲（9 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-10-19 🔵
-<strong>BBC暂停公务员借调计划</strong> — 图像来源，Getty ImagesArticle InformationAuthor, 亚当·戈德史密斯（Adam Goldsmith）Published 2 小时前阅读时间: 2 分钟英国广播公司（</p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-19 🔵
-<strong>BBC暂停公务员借调计划</strong> — 图像来源，Getty ImagesArticle InformationAuthor, 亚当·戈德史密斯（Adam Goldsmith）Published 14 分钟前阅读时间: 2 分钟英国广播公司</p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-19 🔵
-<strong>BBC暫停公務員借調計劃</strong> — BBC表示，所有新聞及編輯決定均由BBC記者及編輯作出。</p>
-<p>📰 <strong>NYT</strong> · 2026-10-19 🟢
-<strong>France Imposes Curfews</strong> — Also, many American forests are sick. Here’s the latest at the end of Monday.</p>
-<p>📰 <strong>BBC</strong> · 2026-10-19 🔵
-<strong>Curfew imposed in parts of central Paris and other cities after rioting across F</strong> — It comes after the country's interior minister admits that police "lost control" in some cities.</p>
-<p>📰 <strong>NYT</strong> · 2026-10-19 🟢
-<strong>France Officials Acknowledge ‘Failure’ Around Riots</strong> — Prime Minister Sébastien Lecornu defended police efforts and pledged to restore order as government </p>
-<p>📰 <strong>BBC</strong> · 2026-10-19 🔵
-<strong>Watch: Are the French riots a warning of an intense election to come?</strong> — Rioting, looting and vandalism has gripped France over the weekend after protests spiralled out of c</p>
-<p>📰 <strong>NYT</strong> · 2026-10-19 🟢
-<strong>France’s Far Right Seizes the Moment as Rioting Stuns the Country</strong> — The National Rally, already ahead in the polls, presented itself as the party best placed to restore</p>
-<p>📰 <strong>BBC</strong> · 2026-10-19 🔵
-<strong>Katya Adler: France's government under pressure after widespread violence</strong> — Political tension grips France after rioting marred protests over the cost of living and struggling </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-06, 2026-10-12, 2026-10-13, 2026-10-19</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（8 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-10-19 🔵
-<strong>乌克兰钢企老板称：欧盟对华关税殃及本国</strong> — 图像来源，Getty ImagesArticle InformationAuthor, 迈克尔·瑞斯（Michael Race）Role,  BBC商业记者 和 Author, 西蒙·杰克（Simon</p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-19 🔵
-<strong>烏克蘭鋼企老闆稱：歐盟對華關稅殃及本國</strong> — 烏克蘭最大鋼鐵企業之一的負責人表示，在針對廉價進口產品的限制措施中，烏克蘭被「一併捆綁」納入相關管制範圍。</p>
-<p>📰 <strong>BBC</strong> · 2026-10-19 🔵
-<strong>Ukrainians dying because US restricting intelligence sharing, Zelensky adviser t</strong> — Serhii Beskrestnov says there has not been enough time to warn people about incoming missile attacks</p>
-<p>📰 <strong>BBC</strong> · 2026-10-19 🔵
-<strong>Ukraine says it carried out first drone airlift of wounded soldier from front li</strong> — The serviceman was surrounded by landmines and enemy drones so a ground rescue was not possible, Ukr</p>
-<p>📰 <strong>NYT</strong> · 2026-10-19 🟢
-<strong>Fire at Starlink Center in Lithuania Was Sabotage, Officials Say</strong> — The fire, which did not seriously damage the network, came after similar incidents in Bulgaria and P</p>
-<p>📰 <strong>BBC</strong> · 2026-10-19 🔵
-<strong>Tennis star Svitolina says emotional toll of Ukraine war led to Monfils separati</strong> — The two top tennis pros married in 2021 and have one child together.</p>
-<p>📰 <strong>NYT</strong> · 2026-10-19 🟢
-<strong>Trump Is Pushing Ukraine to Surrender to Russia, Zelensky Says</strong> — President Volodymyr Zelensky said he didn’t want to believe that Washington wanted an end to the war</p>
-<p>📰 <strong>NYT</strong> · 2026-10-19 🟢
-<strong>Ukraine Uses F-16s to Shoot Down Russia’s Jet-Powered Drones</strong> — The fighters are a key tool against Moscow’s latest weapon of choice. But deploying the multimillion</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-11, 2026-10-14, 2026-10-15, 2026-10-16, 2026-10-19</em></p>
-<p>🕐 <em>事件演化：</em>
-Tue, 18/02 <strong>关键进展</strong>
-Tue, 22/06 <strong>关键进展</strong>
-Wed, 02/07 <strong>关键进展</strong>
-Wed, 07/08 <strong>关键进展</strong>
-Wed, 14/08 <strong>关键进展</strong>
-Wed, 16/09 <strong>关键进展</strong>
-Wed, 19/10 <strong>关键进展</strong>
-Wed, 22/11 <strong>关键进展</strong></p>
-<p>📊 <em>趋势（5天共8条）</em> <code>█1 █1 █4 █1 █1</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（4 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 15:00 🟡
-RT @manno555555: 黒田光フィギュアですがかなりこだわって監修しました！</p>
-</blockquote>
-<p>ちなみにパンツはこの動画から色少し変わってます</p>
-<p>※ｷｬｽﾂｵﾌもあります https://t.co/JjPEZ4gZB6</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 09:10 🟡
-RT @manno555555: 黒田光フィギュアですがかなりこだわって監修しました！</p>
-</blockquote>
-<p>ちなみにパンツはこの動画から色少し変わってます</p>
-<p>※ｷｬｽﾂｵﾌもあります https://t.co/JjPEZ4gZB6</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 19:35 🟡
-工場ボス戦の動画だよ🎮
-スプラッターハウスのポルターガイストの家を参考に作ったの!
-撃って怯ませて、処刑まで決められるよ
-でも完成度はまだまだで、ちょっと悔しい…
-だけど完璧を待ってたら、何も出せなくなりそうで😢
-だから未完成でも出しちゃう!見てね✨
-https://t.co/HxNkzXSeLB
-…</p>
-<p>🐦 <strong>ダオシタカ！@daoshitaka·1小</strong> · 🎬×1 · 14:06 🟡
-このゲーム、敗北後はボタン入力されるまではコンティニュー画面には進まない、という不思議な仕様になっています。
-……まぁ、その間にも敵は普通に攻撃してくるわけですが。
-とりあえず、この時間はトイレ休憩ということにでもしておいてください。</p>
-</blockquote>
-<h1>ゲーム制作 #gamedev https://t.co/61q…</h1>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-14, 2026-10-15, 2026-10-16, 2026-10-17, 2026-10-18</em></p>
-</blockquote>
-<h3>🔧 开发工具（3 条）</h3>
-<blockquote>
-<p>🐦 <strong>M.@wlzh·18分钟</strong> · 15:42 🟡
-2019 年的书，17.8k star，到今天还在涨。李笑来的《自学是门手艺》。</p>
-</blockquote>
-<p>核心就一句话：没有自学能力的人没有未来。整本书拿 Python 编程当自学的入口——不是教你当程序员，是拿编程这件事，手把手演示“怎么自学一门手艺”：刻意练习、战胜难点、避免注意力漂移，全是实操层面的东西。</p>
-<p>全书是…</p>
-<blockquote>
-<p>🐦 <strong>陈大黄@realchendahuang·</strong> · 12:36 🟡
-经常开发微信小程序的朋友们都有一个困扰：调试的时候得下载微信开发者工具，特别大，特别笨重。</p>
-</blockquote>
-<p>如果想让 AI 快速调试开发，能在浏览器里直接跑微信小程序，那就太方便了。</p>
-<p>这个项目就实现了这个功能。直接在浏览器里跑官方基础库，支持 Chrome DevTools 调试，原生、uni-app 和 Ta…</p>
-<blockquote>
-<p>🐦 <strong>Gorden Sun@Gorden_Su</strong> · 📷×1 🎬×1 · 10:16 🟡
-SMD：多模态蒸馏框架</p>
-</blockquote>
-<p>一套蒸馏加速框架，让小模型能以极短的生成路径快速学会大模型的效果，适用于AI绘画、AI视频、AI语音等多模态场景。</p>
-<p>应用 SMD 之后，AI模型只需要经过 4 步左右的计算就能生成细节逼真的高质量图片与视频，生成效率比传统需要几十步计算的模型有了明显提升。而且这项技术通用…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-10, 2026-10-14, 2026-10-17, 2026-10-18, 2026-10-19</em></p>
-</blockquote>
-<h3>🇰🇵 朝鲜半岛（3 条）</h3>
-<blockquote>
-<p>🐦 <strong>糖豆@zhng684890591·7小时</strong> · 📷×1 · 14:59 🟡
-卧槽  卧槽  #去了韩国</p>
-</blockquote>
-<p>这个网站一定要打开看一看</p>
-<p>你会感谢我的！！！ #韩国 https://t.co/w8kFk251sI</p>
-<blockquote>
-<p>🐦 <strong>xaewon (재원 / ジェウォン)@</strong> · 10:48 🟡
-致读过我评论的中国朋友们：</p>
-</blockquote>
-<p>我二十多岁的时候，曾是韩国几乎人人都知道的第一代网红，连三星都多次邀请我参加活动，名气不小。但当时认识我的人，几乎全是韩国人。</p>
-<p>有些画我没法在阳光下公开画，但一直很想画 Gay furry 相关的作品，所以在40岁这个有点晚的年纪才开始用推特。因为题材的关系，以前认识…</p>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-10-18 🔵
-<strong>遊艇上的水上滑梯、泳池：衛星影像揭示的金正恩「夏宮」生活</strong> — BBC追蹤了一艘長達80米、配有水上滑梯的船隻，旨在進一步了解金正恩如何度過假期——這對大多數朝鮮人而言，是遙不可及的體驗。</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-12, 2026-10-13, 2026-10-15, 2026-10-16, 2026-10-18</em></p>
-</blockquote>
-<h3>🏛️ 国内政策（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 09:11 🟡
-国内媒体只敢转发一半。</p>
-</blockquote>
-<p>李录，喜马拉雅资本创始人，芒格唯一投过的外部基金经理，在哥大Graham &amp; Dodd午餐会上聊了一场。</p>
-<p>那句「你是国家要支持的目标，还是实现目标所付出的代价」今天看到全网都在转。</p>
-<p>确实狠。但现场有个追问更值钱，几乎没人提。先把框架讲完。</p>
-<p>中国每十年一轮，有目标就有代…</p>
-<blockquote>
-<p>📰 <strong>纽约时报中文</strong> · 2026-10-19 🟢
-<strong>不止打击非法移民：今年年初美国合法移民数量削减一半</strong> — ALBERT SUN2026年10月19日 今年年初，特朗普政府实施一系列政策，阻止了来自全球近半数国家的移民获得签证，从而将合法移民数量削减了一半。根据最新可获得的政府数据，国务院2月仅发放了2.6</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-10, 2026-10-13, 2026-10-14, 2026-10-16, 2026-10-17</em></p>
-</blockquote>
-<h3>🇮🇱 中东局势（2 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-19 🟢
-<strong>Israel’s High-Stakes Election, and How Illegal Gold Is Getting Into the Global M</strong> — Plus, the search for “superhabitable” planets.</p>
-<p>📰 <strong>BBC</strong> · 2026-10-19 🔵
-<strong>Funding shortages force World Food Programme to cut aid to Gaza</strong> — The number of people helped by the UN agency in the Palestinian territory will drop by about a third</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-14, 2026-10-15, 2026-10-16, 2026-10-17, 2026-10-19</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Oc/08</strong> 以色列大選：哈馬斯襲擊三年後，以色列民眾要求追究責任
-<strong>Ju/09</strong> 特朗普虚張聲勢再多，除了與伊朗談判別無選擇——BBC編輯鮑文觀察
-<strong>Se/23</strong> 三位自以為是的領導人和他們的愚蠢戰爭 | 美國與沙特簽署核協議為東地中海引核擴散風險
-<strong>Au/24</strong> 美國制裁伊朗經濟新措施 何以對中國「松手」？
-<strong>Ju/29</strong> 欧洲遊客「消失」，東南亞旅遊業者陷入困境
-<strong>Au/29</strong> 中国希望伊朗戰爭結束，但不是以特朗普想要的方式</p>
-<p>📊 <em>趋势（7天共10条）</em> <code>█1 █1 █1 █1 █1 █2 █3</code></p>
-</blockquote>
-<h3>🇯🇵 日本/东亚（2 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-10-19 🔵
-<strong>《孤独的美食家》：一个人吃饭，为什么能红遍全亚洲？</strong> — 你的器材不支持播放多媒体材料《孤独的美食家》：一个人吃饭，为什么能红遍全亚洲？《孤独的美食家》：一个人吃饭，为什么能红遍全亚洲？Published 3 分钟前开播至今14年，《孤独的美食家》从日本深夜</p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-19 🔵
-<strong>《孤獨的美食家》：一個人吃飯，為什麼能紅遍全亞洲？</strong> — 開播至今14年，《孤獨的美食家》從日本深夜劇成長為風靡亞洲的電視作品。觀眾跟隨主角井之頭五郎穿梭街巷尋找美食和故事。主演松重豐希望讓更多海外觀眾透過美食認識日本文化。</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-13, 2026-10-14, 2026-10-15, 2026-10-17, 2026-10-18</em></p>
-</blockquote>
-<h3>🇹🇼 台海局势（2 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-10-19 🔵
-<strong>霍尔木兹海峡（荷莫兹海峡）：石油出口放缓之际 轮船遇袭案件创新高</strong> — Article InformationAuthor, 约书亚·奇塔姆（Joshua Cheetham）Author, 托马斯·科普兰（Thomas Copeland） 和 Author, 艾莉森·本杰</p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-16 🔵
-<strong>石油出口放緩之際 霍爾木茲海峽輪船遇襲案件創新高</strong> — BBC事實查核（BBC Verify）對英國海事機構數據的分析顯示，過去一星期內有12艘船隻遭到襲擊。</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-11, 2026-10-13, 2026-10-14, 2026-10-18, 2026-10-19</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>03/07</strong> 关键进展
-<strong>04/09</strong> 关键进展
-<strong>05/12</strong> 关键进展
-<strong>06/14</strong> 关键进展
-<strong>07/19</strong> 关键进展
-<strong>08/22</strong> 关键进展
-<strong>09/23</strong> 关键进展
-<strong>10/30</strong> 关键进展</p>
-<p>📊 <em>趋势（10天共25条）</em> <code>█2 █1 █3 █2 █5 █3 █3</code></p>
-</blockquote>
-<h3>💻 AI Agent（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 11:14 🟡
-this is absurdly f*cking dangerous...</p>
-</blockquote>
-<p>REA Founder just dropped a prompt that turns any AI agent into a reverse-engineering lab with REA</p>
-<p>one paste an…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-12, 2026-10-13, 2026-10-15, 2026-10-16, 2026-10-19</em></p>
-</blockquote>
-<h3>🏢 创业/商业（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>范师傅@FanShifu·5小时</strong> · 🎬×1 · 10:37 🟡
-前字节团队操刀，蒸馏 250 部影史名片，打造 27 万+ 电影分镜索引库，杀入影视行业。这就是专为独立导演和广告人打造的 AI 分镜 Agent —— Story2Board</p>
-</blockquote>
-<p>用大模型做分镜，最让人头大的莫过于两件事：</p>
-<ol>
-<li>拿着剧本让 ChatGPT 跑九宫格分镜脚本，看着挺像那么回事，结果…</li>
-</ol>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-12, 2026-10-14, 2026-10-17, 2026-10-18, 2026-10-19</em></p>
-</blockquote>
-<h3>🌍 环境/能源（1 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-19 🟢
-<strong>The French Teen Maimed During School Unrest by Tear Gas Grenade</strong> — The police’s treatment of the student last month sheds light on how a wave of school unrest evolved </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-11, 2026-10-13, 2026-10-14, 2026-10-17, 2026-10-19</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（242 条）</h2>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×4 · 21:58 🟡
-RT @mrking2333: 我有一段情入畫 VIII </p>
-</blockquote>
-<p>👸: @wodegongzhu9999 </p>
-<p>抄送：@ToBulaer @ToBuerma @KawasawaSen https://t.c…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:52 🟡
-RT @FeihongM_M: Wataa🐾 https://t.co/qYROvcZXdF</p>
-<p>🐦 <strong>neo-humanoid@Humanoi</strong> · 📷×2 · 21:45 🟡</p>
-<h1>AIart Lost in Neon https://t.co/OLapH3d3Vm</h1>
-<p>🐦 <strong>匿名</strong> · 📷×4 · 21:41 🟡
-RT @Nadayui_illust: 女騎士ア〇ルゼリー本２配信中です🍑</p>
-</blockquote>
-<p>ア〇ルゼリーで感じる身体になってしまった女騎士様のお話です！</p>
-<p>FANZA：https://t.co/BjUao1hfDZ…</p>
-<blockquote>
-<p>🐦 <strong>阿丹@lambsternfish·19分</strong> · 📷×2 · 21:40 🟡
-紧张拍摄中</p>
-</blockquote>
-<h1>SheDoll #shibari #kinbaku https://t.co/9xWkNuKSpV</h1>
-<blockquote>
-<p>🐦 <strong>米莉milly@Yuehualydr·2</strong> · 21:36 🟡
-"学习了一段有趣的新知识，感觉增长不少！📖"</p>
-<p>🐦 <strong>匿名</strong> · 20:56 🟡
-RT @AshleeSylv67364: 😂玩了三天，我悟了。
-【战地少女】不是打打杀杀。
-而是人情世故。
-战地少女们排着队等你宠~😍
-你能顶住第几个？😏</p>
-</blockquote>
-<p>👉直接进入游戏：https://t.co/…</p>
-<blockquote>
-<p>🐦 <strong>树@26nian5yue25hao·1小</strong> · 20:16 🟡
-"参加了一个工作坊，学到了很多实用的技能！🔧"</p>
-<p><em>…还有 234 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 177条
-    General: ██████████ (161)</p>
-<p>📰 <strong>RSS 新闻</strong>: 126条
-    · BBC: 46条
-    · NYT: 41条
-    · BBC中文: 31条
-    · 爱范儿: 5条
-    · 纽约时报中文: 3条</p>
-<p>📚 累计: X=41189 | NGA=584 | S1=372 | RSS=13971</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <a class="back" href="/blog/">← 返回笔记列表</a>
+
+  <h1>每日资讯早报 2026-10-20</h1>
+  <p class="meta">2026-10-20 · 每日资讯早报</p>
+
+  <div class="lede">
+    今天有两条线值得放在一起看。一条是 AI 正在同时被当成战略资产和安全隐患来对待：美国联邦机构禁用 DeepSeek，另一头是前 OpenAI 员工被控在办公区装窃听装置、还牵扯到沙特方面的资助。另一条是法国的街头：生活成本抗议演变成骚乱，宵禁上了，极右翼顺势接住了这波情绪。
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>303</b><span>条信息</span></div>
+    <div class="stat"><b>177</b><span>X</span></div>
+    <div class="stat"><b>126</b><span>RSS</span></div>
+    <div class="stat"><b>4</b><span>国家/地区焦点</span></div>
+  </div>
+
+  <hr>
+
+  <section>
+    <div class="kicker">AI / 大模型</div>
+    <h2>同一天里，AI 既是战略资产，也是安全隐患</h2>
+
+    <p class="first">先说那桩案子。检方称，一名前 OpenAI 工程师被指控在办公区放置窃听装置，而沙特官员出钱让他的妻子和儿子飞离美国，并提出愿意替他支付保释金。BBC 和 NYT 都拿到了这份法庭文件，沙特政府没有回应 BBC 的置评请求。</p>
+
+    <p>这条新闻容易被读成一条猎奇八卦，但它落在两个真实趋势的交叉口：AI 实验室的物理安全，以及海湾资本与美国 AI 产业之间越来越难说清的关系。人才、资金、政府背景，三样东西缠在一起的时候，"个人行为"这个说法就很难站得住。</p>
+
+    <p>另一端是政策。美国宣布禁止政府机构使用 DeepSeek，理由还是那套老话：数据流向与国家安全。有意思的是，几乎同一时间，中文科技媒体在讨论 DeepSeek V4.1 Flash 的能力跃升，社交媒体上的反馈相当一致地正面。一个模型在一边被禁用，在另一边被当成"便宜好用"的代表，这种割裂本身就是当下 AI 地缘格局的样子。</p>
+
+    <h3>消费端也没闲着</h3>
+    <p>Google 推出了新的 AI Pro 套餐，8.99 美元一个月，打包了 Gemini 4 Argon 等模型，还附送 YouTube Premium，最长可以拿到四年。这个定价策略很清楚：不跟模型能力硬碰，改用生态捆绑把人留住。对普通用户来说，订阅决策越来越不像在选"哪个模型更聪明"，而像在选"我本来就付哪几家的钱"。</p>
+
+    <div class="note">
+      <h4>值得一提的小工具</h4>
+      <p>AetherViz Master 把一句话变成可交互的 3D 教学页面：输入"牛顿第二定律"或"光合作用"，它会判断学科、配好配色和渲染方案，用 Three.js 加 SVG 生成能拖能转、能调参数的页面。教育内容的生产成本可能真的要被压下来了。</p>
+    </div>
+
+    <h3>AI 写游戏，开始有账可算</h3>
+    <p>一位开发者在 X 上公布了自己两款 Steam 游戏的营收：《无为修仙传》上线 48 天，41935 元；《放置地下城：无尽远征》上线 4 天，3073 元。开发工具是 codex。</p>
+
+    <p>数字不大，但性质变了。过去两年"AI 做游戏"多半是 demo 和技术演示，现在出现了连续运营、有流水、按天能算账的样本。四万多块当然不足以证明什么商业模式，可它至少说明一件事：一个人加一套工具，能把游戏从想法推到上架并且收到钱。这个门槛的下降是实打实的。</p>
+  </section>
+
+  <section>
+    <div class="kicker">法国</div>
+    <h2>宵禁之后，极右翼接住了这股情绪</h2>
+
+    <p>周末的抗议演变成骚乱，巴黎市中心和另外几座城市的部分区域已经实施宵禁。内政部长承认警方在一些城市"失去了控制"，总理 Sébastien Lecornu 则为警方的处置辩护，承诺恢复秩序。</p>
+
+    <p>起因不复杂：生活成本，加上疲软的经济。复杂的是它演化的速度。抗议、抢劫、纵火、宵禁，前后不过一个周末。</p>
+
+    <div class="duo">
+      <div>
+        <h5>NYT 的读法</h5>
+        <p>国民联盟（RN）本来民调就领先，骚乱之后立刻把自己包装成"唯一能恢复秩序"的党。</p>
+      </div>
+      <div>
+        <h5>BBC 的读法</h5>
+        <p>政府的压力来自两方面：街头控制不住，政治上又拿不出新东西。这场骚乱可能是激烈选战的预告。</p>
+      </div>
+    </div>
+
+    <p>还有一条容易被忽略的线索。NYT 报道了上个月一名中学生在校园骚乱中被催泪弹致残的经过，这件事说明了校园里的不安是如何一步步升级的。街头政治从来不是某一天突然爆发的，它前面有一长串没人处理的小事故。</p>
+
+    <p>顺带一条机构新闻：BBC 暂停了公务员借调计划。放在这个时间点上，多少有点收缩的味道。</p>
+  </section>
+
+  <section>
+    <div class="kicker">俄乌</div>
+    <h2>情报、无人机，和一条被"捆绑"的钢铁产业链</h2>
+
+    <p>泽连斯基的顾问 Serhii Beskrestnov 说了一句很重的话：美国限制情报共享，导致预警时间不足，乌克兰人因此死亡。这句话的分量在于它不是抱怨援助不够，而是直接把伤亡归因到盟友的动作上。</p>
+
+    <p>泽连斯基自己的表态更直接，他说特朗普在推动乌克兰向俄罗斯投降，并且表示自己不愿意相信华盛顿真的想结束这场战争。这类话在外交场合很少见，说明基辅对当前援助节奏的判断已经很悲观。</p>
+
+    <h3>战场上的三个新细节</h3>
+    <ul class="points">
+      <li>乌克兰首次用无人机空运前线伤员。那名士兵被地雷和敌方无人机围住，地面救援根本进不去。</li>
+      <li>F-16 开始用于拦截俄罗斯的喷气动力无人机。效果不错，但用几千万美元的战机去打廉价无人机，账怎么算都不划算。</li>
+      <li>立陶宛的 Starlink 中心起火，官方定性为蓄意破坏。保加利亚和波兰此前也发生过类似事件。通信基础设施正在成为一条隐蔽战线。</li>
+    </ul>
+
+    <p>经济层面还有一条容易被漏掉的：乌克兰一家大型钢企的负责人说，欧盟针对廉价进口钢铁的限制措施，把乌克兰"一并捆绑"进了管制范围。战争中的国家被贸易保护政策误伤，这种事不会上头条，但对乌克兰的出口和财政是实打实的压力。</p>
+
+    <p>这个话题在过去十天里已经第五次出现在早报里。频率本身就说明问题：它不再有阶段性进展，而是变成了一种持续消耗的状态。</p>
+  </section>
+
+  <section>
+    <div class="kicker">中东</div>
+    <h2>加沙的援助在缩，霍尔木兹的船在挨打</h2>
+
+    <p>世界粮食计划署因为资金短缺，被迫削减对加沙的援助，受助人数会减少大约三分之一。三分之一听起来像个技术性调整，落到具体的人身上，就是几十万人从名单上消失。</p>
+
+    <p>另一头的数字更直观。BBC Verify 分析英国海事机构的数据发现，过去一周霍尔木兹海峡有 12 艘船遭到袭击，创下新高，时间点正好卡在石油出口放缓的当口。船东开始算风险溢价，保险费率往上走，最后会变成油价里一个说不清来源的数字。</p>
+
+    <p>以色列这边则在准备一场高风险的选举。三条线各自走，但共用同一片海和同一套外部大国的注意力。</p>
+  </section>
+
+  <section>
+    <div class="kicker">朝鲜半岛</div>
+    <h2>一张卫星图里的距离</h2>
+
+    <p>BBC 追踪了一艘长约 80 米、配有水上滑梯的船只，用卫星影像拼出了金正恩的度假生活。报道里那句对比很克制，但意思很清楚：这样的假期对绝大多数朝鲜人来说遥不可及。</p>
+
+    <p>这类报道的价值不在猎奇，而在于它用可验证的物理证据描述了一个封闭系统内部的分层。游艇长度、滑梯、泳池，这些细节比任何形容词都具体。</p>
+  </section>
+
+  <section>
+    <div class="kicker">经济与政策</div>
+    <h2>李录那个问题，为什么全网都在转</h2>
+
+    <p>喜马拉雅资本创始人李录在哥伦比亚大学 Graham &amp; Dodd 午餐会上讲了一场。被转发最多的是这一句：</p>
+
+    <div class="quote">
+      你是国家要支持的目标，还是实现目标所付出的代价？
+      <cite>李录，哥大 Graham &amp; Dodd 午餐会</cite>
+    </div>
+
+    <p>这句话之所以扎人，是因为它把宏观叙事换成了个人位置的问题。他自己给的框架是"中国每十年一轮，有目标就有代价"。至于现场那个几乎没人提的追问，反倒更值得找原视频来听一遍。</p>
+
+    <h3>另一组数字</h3>
+    <p>纽约时报中文网报道，今年年初美国的合法移民数量被削减了一半。特朗普政府的一系列政策阻止了来自全球近半数国家的移民获得签证。注意这里说的不是非法移民，而是合法渠道。一个国家的吸引力很大程度上写在签证签发量上，这条曲线往下走，影响会延迟几年才显现。</p>
+  </section>
+
+  <section>
+    <div class="kicker">开发工具</div>
+    <h2>三个方向：蒸馏、调试、自学</h2>
+
+    <p><strong>SMD 多模态蒸馏框架。</strong>核心思路是让小模型用极短的生成路径学到接近大模型的效果，适用面覆盖图像、视频、语音。应用之后大约 4 步计算就能出细节不错的成品，而传统方案往往要几十步。如果这个数字站得住，推理成本会有一轮明显下降。</p>
+
+    <p><strong>在浏览器里跑微信小程序。</strong>有开发者做了一个项目，可以直接在浏览器中运行官方基础库，支持 Chrome DevTools 调试，覆盖原生、uni-app 和 Taro。痛点是真实的：微信开发者工具又大又笨，AI 想在里头快速迭代基本没戏。</p>
+
+    <p><strong>李笑来那本《自学是门手艺》。</strong>2019 年的书，17.8k star，到现在还在涨。全书拿 Python 当自学的入口，重点不是教人当程序员，而是演示"怎么自学一门手艺"：刻意练习、死磕难点、防止注意力漂移。这类内容在 AI 时代反而更稀缺，因为工具越强，人越容易跳过"自己弄懂"这一步。</p>
+
+    <div class="note">
+      <h4>影视这边也有新东西</h4>
+      <p>前字节团队做的 Story2Board，蒸馏了 250 部影史名片，建了 27 万条以上的电影分镜索引，专给独立导演和广告人用。它想解决的是一个很具体的问题：让 ChatGPT 直接出九宫格分镜，看着像那么回事，真拍起来没法用。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">日本 / 东亚</div>
+    <h2>一个人吃饭，为什么能红十四年</h2>
+
+    <p>《孤独的美食家》开播十四年，从日本深夜剧变成了整个亚洲都在看的作品。观众跟着井之头五郎穿街走巷找吃的，剧情几乎没有冲突，就是一个中年男人认真吃饭。</p>
+
+    <p>主演松重丰说，希望更多海外观众通过美食认识日本文化。这话说得客气，但这部剧真正卖的东西不是日本文化，是一种许可：允许你一个人坐在店里，专心吃一顿饭，不用解释什么。</p>
+  </section>
+
+  <section>
+    <div class="kicker">游戏开发</div>
+    <h2>独立开发者的日常：先发出去，再说完美</h2>
+
+    <p>一位日本开发者在分享自己的工厂 Boss 战视频，说参考了《Splatterhouse》里那间闹鬼屋子的设计，打中敌人可以让对方硬直，再接处决。他补了一句：完成度还差得远，有点不甘心，但要是等完美了再发，可能什么都发不出来了。</p>
+
+    <p>另一位开发者吐槽自己游戏的设定：战败之后不会自动进入续关画面，得等玩家按键，而这段时间敌人照打不误。他建议玩家把这当成上厕所的休息时间。这种半成品式的幽默，比任何宣传语都更像独立游戏该有的样子。</p>
+  </section>
+
+  <section>
+    <div class="kicker">安全管理</div>
+    <h2>一条提示词，把 Agent 变成逆向工程实验室</h2>
+
+    <p>有人在 X 上发了一条提示词，声称可以把任意 AI Agent 变成逆向工程工具链。原帖的语气是惊恐的，用词很重。这里不复述具体内容，因为可操作细节不该在公开页面上扩散。</p>
+
+    <p>但这个问题本身值得记一下：Agent 的能力边界，越来越多地由提示词而不是产品设计决定。厂商做了一堆护栏，一条精心构造的输入就可能绕过去。安全评估如果只测模型本身，不测"模型加工具加提示词"的组合，那测的其实不是真实攻击面。</p>
+  </section>
+
+  <section>
+    <div class="kicker">今天值得盯的三件事</div>
+    <h2>接下来几天看什么</h2>
+    <ul class="timeline tl">
+      <li><b>法国宵禁会不会扩大</b>国民联盟的民调能不能把这波秩序焦虑真正兑现成选票，是接下来几个月的观察点。</li>
+      <li><b>美国对 DeepSeek 的禁令范围</b>目前是政府机构。会不会往承包商、云服务商延伸，决定了它是象征性动作还是实质封锁。</li>
+      <li><b>霍尔木兹的袭击频率</b>一周 12 艘是新高。如果这个数字继续走，油价和航运保险的反应会比新闻标题慢，但更持久。</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>本内容由 Hermes Agent 自动采集分析，每日更新</p>
+  </footer>
+
+</main>
 </body>
 </html>
