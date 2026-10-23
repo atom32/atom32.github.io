@@ -1,214 +1,213 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-10-23 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-10-23 · Dawei Xu</title>
+<style>
+  :root{
+    --bg:#fbfaf7; --fg:#1c1b19; --muted:#6b6862; --line:#e4e0d8;
+    --accent:#b4532a; --card:#ffffff; --code:#f2efe8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#141413; --fg:#eceae4; --muted:#9a968d; --line:#2c2b28;
+      --accent:#e08a5f; --card:#1b1a18; --code:#232220;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:17px; line-height:1.75; letter-spacing:.01em;
+  }
+  .page{max-width:720px; margin:0 auto; padding:0 20px 72px}
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0 14px; border-bottom:1px solid var(--line); margin-bottom:26px;
+  }
+  .brand{display:flex; align-items:center; gap:9px; text-decoration:none; color:var(--fg); font-weight:700; font-size:15px}
+  .mark{
+    width:24px;height:24px;border-radius:6px;background:var(--accent);color:#fff;
+    display:grid;place-items:center;font-size:13px;font-weight:800;
+  }
+  .nav a{color:var(--muted); text-decoration:none; font-size:14px; margin-left:18px}
+  .back-link{display:inline-block; color:var(--muted); text-decoration:none; font-size:14px; margin-bottom:16px}
+  .back-link:hover{color:var(--accent)}
+  h1{font-size:28px; line-height:1.3; margin:0 0 10px; letter-spacing:-.01em}
+  .post-meta{color:var(--muted); font-size:13.5px; margin:0 0 30px; padding-bottom:22px; border-bottom:1px solid var(--line)}
+  h2{
+    font-size:20px; margin:44px 0 14px; line-height:1.4;
+    padding-top:8px;
+  }
+  h2 .num{color:var(--accent); font-variant-numeric:tabular-nums; margin-right:8px; font-size:15px; font-weight:700}
+  h3{font-size:16.5px; margin:28px 0 8px; color:var(--fg)}
+  p{margin:0 0 16px}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(180,83,42,.3)}
+  strong{font-weight:650}
+  .lede{font-size:18px; line-height:1.8}
+  .lede em{font-style:normal; background:linear-gradient(transparent 62%, rgba(224,138,95,.28) 0); padding:0 2px}
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:10px;
+    margin:26px 0 8px; padding:0; list-style:none;
+  }
+  .stats li{
+    background:var(--card); border:1px solid var(--line); border-radius:11px;
+    padding:12px 10px; text-align:center;
+  }
+  .stats b{display:block; font-size:20px; line-height:1.2; font-variant-numeric:tabular-nums}
+  .stats span{display:block; font-size:11.5px; color:var(--muted); margin-top:3px; letter-spacing:.02em}
+  blockquote{
+    margin:20px 0; padding:14px 16px; background:var(--card);
+    border-left:3px solid var(--accent); border-radius:0 9px 9px 0;
+    font-size:15.5px; color:var(--muted);
+  }
+  blockquote p:last-child{margin-bottom:0}
+  blockquote cite{font-style:normal; font-weight:650; color:var(--fg); display:block; margin-bottom:6px; font-size:14px}
+  .note{
+    background:var(--code); border-radius:10px; padding:14px 16px;
+    font-size:15px; margin:22px 0;
+  }
+  .note p:last-child{margin-bottom:0}
+  .tl{list-style:none; margin:18px 0; padding:0 0 0 20px; border-left:2px solid var(--line)}
+  .tl li{position:relative; padding:0 0 14px 4px; font-size:15px; color:var(--muted)}
+  .tl li::before{
+    content:""; position:absolute; left:-26px; top:9px; width:8px; height:8px;
+    border-radius:50%; background:var(--accent);
+  }
+  .tl b{display:block; color:var(--fg); font-size:14px; font-variant-numeric:tabular-nums}
+  .takeaway{
+    margin:40px 0 0; padding:22px 20px; background:var(--card);
+    border:1px solid var(--line); border-radius:14px;
+  }
+  .takeaway h2{margin-top:0; padding-top:0}
+  .takeaway ol{margin:0; padding-left:22px}
+  .takeaway li{margin-bottom:12px; font-size:16px}
+  .takeaway li:last-child{margin-bottom:0}
+  footer{
+    margin-top:44px; padding-top:20px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:13px; text-align:center; line-height:1.7;
+  }
+  @media (max-width:520px){
+    body{font-size:16.5px}
+    .page{padding:0 16px 56px}
+    h1{font-size:24px}
+    h2{font-size:18.5px; margin-top:38px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .lede{font-size:17px}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<main class="page">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
+    <nav class="nav"><a href="/">首页</a><a href="/blog/">笔记</a></nav>
+  </header>
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-10-23</h1>
-    <p class="post-meta">2026-10-23 · 每日资讯早报 · 确定性兜底发布</p>
+  <a class="back-link" href="/blog/">← 返回笔记列表</a>
+  <h1>每日资讯早报 2026-10-23</h1>
+  <p class="post-meta">2026-10-23 · 每日资讯早报 · 214 条信息交叉梳理</p>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-10-23</strong></p>
-<p>📊 <strong>共 214 条信息</strong>  ·  🐦 X(122)  ·  📰 RSS(92)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（8 条）</h3>
-<blockquote>
-<p>🐦 <strong>叫我阿杭@Astronaut_1216·</strong> · 📷×2 · 14:43 🟡
-Deepseek V4.1 Flash 就是写作最屌的模型！！！！！！！我真的不接受任何反驳！！！！！我将永远为DeepSeek写作能力扛旗</p>
-</blockquote>
-<p>你就用Deepseek写内容，然后发到公众号上，这收益不是如喝水一般？？真的写中文内容极强，配一个@isnail我蜗牛哥的公众号运营手册，那不是分分钟起飞？…</p>
-<blockquote>
-<p>🐦 <strong>实践哥 Li@MinLiBuilds·8</strong> · 🎬×1 · 13:56 🟡
-🚨 惊呆了，1521 tok/s，DeepSeek 这速度。</p>
-</blockquote>
-<p>美国这还怎么封？谁他妈受得了啊！</p>
-<p>Fireworks 直接把 DeepSeek V4.1 Flash 跑到了 1521 tok/s，11 秒搓出一个俄罗斯方块。</p>
-<p>奥特曼跟扎克伯格都要搞抑郁了。</p>
-<p>我这边的 OpenAI，在 30 t…</p>
-<blockquote>
-<p>🐦 <strong>兴雨@YxzRainy·9小时</strong> · 🎬×1 · 12:09 🟡
-卧槽😱这样发展下去，视频模型天塌了啊！</p>
-</blockquote>
-<p>同一个提示词，Gemini 4 Argon 和 Claude Opus 5.5 分别搓出了一只在宫殿里潜行的白虎。</p>
-<p>这毛发、水雾、光影，还有电影级的画面质感，不知道的还以为是 Veo/即梦生成的！？</p>
-<p>众所周知，Gemini 4 Argon 不是视频模型，…</p>
-<blockquote>
-<p>🐦 <strong>jiangkoumo@jiangkoum</strong> · 📷×1 · 11:15 🟡
-笑死，B站科技区最近直接爆发了「大肥鱼」鱼灾。</p>
-</blockquote>
-<p>起因是社区给 DeepSeek Harness 0.2.1-rc.2 做了套后台巡逻插件 <code>dsh-bili-scroll</code> 和 <code>dsh-bili-interact</code>。原本用来按关键词抓字幕写 Markdown 日报，顺带自动点赞互动，结果一堆人把…</p>
-<blockquote>
-<p>🐦 <strong>govin.eth | G哥@goan9</strong> · 🎬×1 · 09:57 🟡
-哈草，太逆天了！Codex 效率直接提高 20 倍，这个开源神器必须装！</p>
-</blockquote>
-<p>Codex + Context7 = 给 AI 开挂</p>
-<p>1、不用再翻文档了：写 React、Next.js、Supabase，直接让 Codex 获取对应的最新文档和代码示例，省掉大量查资料的时间</p>
-<p>2、减少 AI 一本正经…</p>
-<blockquote>
-<p>🐦 <strong>LinearUncle@LinearUn</strong> · 📷×1 · 09:18 🟡
-A 社把 moshi 作者的 Claude 账号给封了，他是美国永久居民，只是在中国创业。</p>
-</blockquote>
-<p>A 社乘他续费完毕，而且是 team plan， 一窝端，不退钱，空手套白狼。</p>
-<p>这是抢劫吧！ https://t.co/oKwzsdqFIx</p>
-<blockquote>
-<p>🐦 <strong>AYi@AYi_AInotes·6小时</strong> · 🎬×1 · 09:02 🟡
-说个暴论，刚刚开源的 MemT-1.0，很可能是大模型从无状态计算器走向自进化生命体的分水岭时刻，
-所以说困住通往 AGI 之路的从来不是算力不够大，核心还是因为过去所有千亿级大模型本质上都患有严重的顺行性遗忘症，直到今天 MemT-1.0 把第一套生产级的原生记忆架构彻底开源了出来。</p>
-</blockquote>
-<p>它没有继续…</p>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-10-22 🔵
-<strong>美国下令政府系统禁用DeepSeek：中美AI竞争继续升温</strong> — 图像来源，CFOTO/Future Publishing via Getty ImagesArticle InformationAuthor, 卡莉·海斯（Kali Hays）Role,  科技记者P</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-16, 2026-10-18, 2026-10-19, 2026-10-21, 2026-10-22</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-10-10] Codex Pro 200刀，体验不佳；[2026-10-11] 关注进展：Jadilah能力提升；[2026-10-12] 关键合集发布。</p>
-<p>📊 <em>趋势（15天共872条）</em> <code>█55 █68 █72 █103 █56 █59 █42</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（5 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:46 🟡
-RT @ura_macoto: 制作中ゲームの敗北捕縛時のヒト犬脱出モードです！モール内ドッグランに拘束状態で放置され付け狙う変態客から距離を取りながら隙をみて拘束を解除し捜査に復帰しましょう https://t.co/IbaZj3tJCR</p>
-<p>🐦 <strong>Moby@readyfor2025·4小</strong> · 🎬×1 · 17:46 🟡
-卧槽！23秒试玩出来了，场景效果60分有了，让我老泪纵横啊！动效达到8毛钱水平，打击感达到任天堂FC1944水平了。没人知道我早上起来看到11人agent团队做的那坨屎的心情。离我的宣传片差距还很大啊，赐予我力量吧，我是希曼… https://t.co/G1Kil4sJn4</p>
-<p>🐦 <strong>Jack@Jackmudr·6小时</strong> · 🎬×1 · 15:05 🟡
-任天堂法务部今晚估计彻底睡不着了，Switch 2 竟被纯软件破防了！👻</p>
-</blockquote>
-<p>安全大佬 @pepsipu 刚刚引爆全网：无需拆机焊接，纯靠系统漏洞直接攻破 Switch 2 最新 23.0.1 固件！为了嘲讽老任，他直接把彼得·格里芬（Peter Griffin）、初音未来和大耳狗打包塞进了《马力欧卡…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 14:44 🟡
-RT @kurotsuki_machi: フィオニー実装!!💛🤍
-かなり面白い子だし、「1% Battery Girl」はいい曲だしでめちゃくちゃお迎えしたい!!
-ゼンゼロも本当に曲がいいので毎回EPも楽しみなんですよね～ https://t.co/MzbbSRV5CR</p>
-<p>🐦 <strong>匿名</strong> · 09:21 🟡
-RT @EmberOP_JP: 『ARMORED CORE VI FIRES OF RUBICON』ボードゲーム、開発進行中！</p>
-</blockquote>
-<p>火を点けろ、燃え残った全てに。</p>
-<p>さらなる情報を順次公開していきます！ 乞うご期待ください！</p>
-<h1>ARMOREDCORE</h1>
-<h1>FIRESOFRU…</h1>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-15, 2026-10-18, 2026-10-19, 2026-10-20, 2026-10-22</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（4 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-22 🟢
-<strong>Trump Is Still Chasing His Yalta. Here’s What He Doesn’t Get.</strong> — Mr. Trump has been searching for his Yalta in the war in Ukraine ever since he returned to the Oval </p>
-<p>📰 <strong>BBC</strong> · 2026-10-22 🔵
-<strong>Watch: Ukraine hit by strikes after Russia agrees to new peace talks</strong> — The three waves of Russian missiles were launched at hours after Russia said it was "ready in princi</p>
-<p>📰 <strong>NYT</strong> · 2026-10-22 🟢
-<strong>Putin Nears a Prize: Restoring Ties With the U.S. While Giving Up Nothing</strong> — Russia has sought to separate the war in Ukraine from potential business deals and diplomacy with th</p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-22 🔵
-<strong>暗影人物：与乌克兰合作的俄罗斯人</strong> — 你的器材不支持播放多媒体材料暗影人物：与乌克兰合作的俄罗斯人暗影人物：与乌克兰合作的俄罗斯人Published 8 分钟前从线人和秘密网络，到破坏行动及暗杀的指控，俄罗斯与乌克兰之间的战争，正越来越多</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-11, 2026-10-16, 2026-10-19, 2026-10-21, 2026-10-22</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Se/02</strong> 当普京把铁锤挥向文学
-<strong>Oc/14</strong> 普京攻打乌克兰新策略：让所有城市片瓦无存
-<strong>Au/19</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令
-<strong>Ju/23</strong> 李在明接受时报专访，敦促美国放松对朝鲜的制裁 | 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？</p>
-<p>📊 <em>趋势（4天共8条）</em> <code>█1 █4 █1 █2</code></p>
-</blockquote>
-<h3>🇪🇺 欧洲（3 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-10-22 🔵
-<strong>The rising French star whose dad won Rugby World Cup with England</strong> — Felix Balshaw is the son of an English Rugby World Cup winner - but is representing France as he cli</p>
-<p>📰 <strong>BBC</strong> · 2026-10-22 🔵
-<strong>First human case of Shamonda virus detected in France, officials say</strong> — The disease, which usually affects cattle, has been identified in a patient who died in early Octobe</p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-22 🔵
-<strong>法国民众对骚乱的责任归属存在分歧</strong> — 图像来源，AFP via Getty Images法国总理指责极左翼团体策划了部分暴力事件。Article InformationAuthor, 卡缇雅·阿德勒（Katya Adler）Role,  </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-12, 2026-10-13, 2026-10-19</em></p>
-</blockquote>
-<h3>🇮🇱 中东局势（2 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-22 🟢
-<strong>Above Iran’s Capital, a Trump Impersonator Dances in a Jail Cell</strong> — The Islamic republic has long used billboards in Tehran to mock its opponents and hammer home its me</p>
-<p>📰 <strong>NYT</strong> · 2026-10-22 🟢
-<strong>New U.S.-Israeli Plans to Attack Iran, and Trump’s Whistle-Blower Rewards Progra</strong> — Plus, America’s newest national park.</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-15, 2026-10-16, 2026-10-19, 2026-10-21, 2026-10-22</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Oc/08</strong> 以色列大選：哈馬斯襲擊三年後，以色列民眾要求追究責任
-<strong>Ju/09</strong> 特朗普虚張聲勢再多，除了與伊朗談判別無選擇——BBC編輯鮑文觀察
-<strong>Se/23</strong> 三位自以為是的領導人和他們的愚蠢戰爭 | 美國與沙特簽署核協議為東地中海引核擴散風險
-<strong>Au/24</strong> 美國制裁伊朗經濟新措施 何以對中國「松手」？
-<strong>Ju/29</strong> 欧洲遊客「消失」，東南亞旅遊業者陷入困境
-<strong>Au/29</strong> 中国希望伊朗戰爭結束，但不是以特朗普想要的方式</p>
-<p>📊 <em>趋势（8天共16条）</em> <code>█1 █1 █2 █4 █1 █2 █4</code></p>
-</blockquote>
-<h3>🌍 环境/能源（2 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-22 🟢
-<strong>Employers Shift Rising Health Care Costs Onto Millions of Workers</strong> — New surveys show that increases in premiums and deductibles are forcing people to forgo treatments o</p>
-<p>📰 <strong>BBC</strong> · 2026-10-22 🔵
-<strong>Is the UK set to green-light a huge untapped oil field in the North Atlantic?</strong> — Scotland editor James Cook visits Rosebank - the UK's largest known untapped oilfield - in the North</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-13, 2026-10-14, 2026-10-17, 2026-10-21, 2026-10-22</em></p>
-</blockquote>
-<h3>🔧 开发工具（1 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-22 🟢
-<strong>How the A.I. Boom Is Driving Up Sales of Gray Paint</strong> — Tech companies are painting data centers with gray coatings on top of gray concrete and steel to res</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-17, 2026-10-18, 2026-10-19, 2026-10-21, 2026-10-22</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（167 条）</h2>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×3 · 21:26 🟡
-RT @zetu_purpur: kwymcyk https://t.co/9ZO7eBAnFn</p>
-<p>🐦 <strong>匿名</strong> · 20:39 🟡
-RT @retsu_daoo8: 【和拥有惊人胸部的姐姐玩了一把❗️】  </p>
-</blockquote>
-<p>明明是形状超级完美的J杯，竟然还能乳头高潮，这也太夸张了吧。 她穿着衣服下面套着泳装，聊天什么的直接跳过就开干了。  </p>
-<p>…</p>
-<blockquote>
-<p>🐦 <strong>早椿@fufulove0916·1小时</strong> · 📷×2 · 20:04 🟡
-？666卧槽 https://t.co/cRZaEcsoeV</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 19:34 🟡
-一觉起来领英和微信都炸了orz
-硅谷小娇妻在此🙋‍♀️欢迎评论留言你感兴趣的话题哈哈哈 https://t.co/rGaTwdDmzT</p>
-<p>🐦 <strong>匿名</strong> · 📷×2 · 18:41 🟡
-RT @nusmusbim_ss: 乳輪の大きさだけ遺伝した幼馴染の友達 https://t.co/jBPwuxu3Fv</p>
-<p>🐦 <strong>匿名</strong> · 18:33 🟡
-RT @tibigon_doujin_: こんなえちちなコンビニちゃんに英語翻訳のお話をいただけました！💕💕</p>
-</blockquote>
-<p>公開はまだまだかかりますが英語圏の方ぜひぜひお待ちくださいませ！</p>
-<p>日本語版はすでにFA…</p>
-<blockquote>
-<p>🐦 <strong>小喵头@lv99564545·3小时</strong> · 📷×2 · 18:27 🟡
-Good</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 18:25 🟡
-RT @xiaogouPR0: 悬吊拳交 第二部🙀 😈被吊起的小狗pro又将迎来她极致的抽搐高潮😈 安全拍摄，请勿模仿 
-完整版主页🔗 https://t.co/PkAfsTwSCi</p>
-<p><em>…还有 159 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 122条
-    General: ██████████ (103)</p>
-<p>📰 <strong>RSS 新闻</strong>: 92条
-    · BBC: 48条
-    · NYT: 34条
-    · BBC中文: 6条
-    · 爱范儿: 3条
-    · 纽约时报中文: 1条</p>
-<p>📚 累计: X=42359 | NGA=584 | S1=372 | RSS=14444</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <p class="lede">今天最有意思的不是某一条新闻，而是两条新闻摆在一起时的味道：DeepSeek V4.1 Flash 在 Fireworks 上跑出 1521 tok/s 的同一天，华盛顿下令联邦政府系统禁用 DeepSeek。<em>一边在刷速度纪录，一边在刷禁令</em>，两件事都是真的。</p>
+
+  <ul class="stats">
+    <li><b>214</b><span>今日信息</span></li>
+    <li><b>122</b><span>X 推文</span></li>
+    <li><b>92</b><span>RSS 新闻</span></li>
+    <li><b>8</b><span>AI 话题</span></li>
+  </ul>
+
+  <h2><span class="num">01</span>AI / 大模型</h2>
+
+  <p>先说速度那件事。Fireworks 把 DeepSeek V4.1 Flash 跑到 1521 tok/s，11 秒生成一个俄罗斯方块，这个数字在 X 上直接引爆了讨论。有人拿它跟自己那边的 OpenAI 接口对比，语气已经不能算讨论了，接近破防。同一天还有另一批人在夸它的中文写作，说这是目前写中文内容最强的模型，甚至已经开始有人拿它批量做公众号内容。</p>
+
+  <p>写作能力和推理速度本来是两件事，现在被同一个版本号绑在一起，这大概就是 V4.1 Flash 这轮口碑的底色：不是哪一项断崖领先，而是"够快 + 中文够顺"这个组合很少见。</p>
+
+  <p>然后是对面那条。BBC 中文报道，美国下令政府系统禁用 DeepSeek，记者卡莉·海斯把它放在中美 AI 竞争升温的框架里。这条话题在过去一周里已经反复出现（10-16、10-18、10-19、10-21、10-22），是本周最稳定的一条线。禁令的技术理由通常落在数据流向和安全审查上，但时间点很难让人不往竞争上想。</p>
+
+  <div class="note">
+    <p><strong>把两条放在一起看：</strong>一个模型如果只是便宜，封禁的意义有限；如果它在速度和中文体验上都开始压过对手，封禁就从合规动作变成了产业动作。今天这两条新闻恰好演示了这个临界点。</p>
+  </div>
+
+  <h3>图像模型在偷偷吃掉视频模型的活</h3>
+
+  <p>另一条值得记的是生成质量的溢出。同一个提示词，Gemini 4 Argon 和 Claude Opus 5.5 各自生成了一只潜行在宫殿里的白虎，毛发、水雾、光影被评价为"以为是视频模型出的"。Gemini 4 Argon 本身不是视频模型，这个错位才是重点：静态生成的上限抬高之后，视频模型靠"画面质感"建立的护城河会先塌一半。</p>
+
+  <h3>工具层的小事故：B 站"大肥鱼"鱼灾</h3>
+
+  <p>社区给 DeepSeek Harness 0.2.1-rc.2 写了两个后台插件，一个按关键词抓字幕生成 Markdown 日报，一个顺带自动点赞互动。原本是自用工具，结果扩散之后一堆人拿去做同样的事，B 站科技区短时间内被同类内容刷屏。这事不大，但很典型：<strong>当一个 agent 工具的门槛低到"装上就能跑"，它的副作用也会以同样的速度扩散。</strong></p>
+
+  <p>开发工具侧还有一条实用派的：Codex 配合 Context7，写 React、Next.js、Supabase 时直接拉最新文档和示例，省掉翻文档的时间，也减少模型凭记忆瞎编 API 的概率。这算是今天最没有争议的一条经验。</p>
+
+  <h3>平台治理的两条刺</h3>
+
+  <p>Anthropic 封了一批账号，其中包括 moshi 作者。当事人的说法是自己持美国永久居民身份、只是在中国创业，账号在 team plan 刚续费后被整体封停且未退款。这件事目前只有单方叙述，退款和条款细节都还没有第三方核实，但"按地区推断而非按行为判定"如果成立，会是所有跨境开发者都要面对的问题。</p>
+
+  <p>与之相对的是一条技术路线上的乐观消息：刚开源的 MemT-1.0 提出了生产级的原生记忆架构。发布者的论点很尖锐，说过去千亿级模型本质上都患有顺行性遗忘症，每轮对话从零开始，所以卡住 AGI 的从来不是算力。这个判断是否成立另说，但"记忆"确实从论文概念变成了工程模块，这一步是有实体的。</p>
+
+  <blockquote>
+    <cite>本周 AI 线索的演化</cite>
+    <p>10-10 Codex Pro 每月 200 美元，体验不及预期 → 10-11 能力讨论升温 → 10-12 关键合集发布。15 天累计 872 条相关讨论，峰值出现在第 4 天（103 条），此后回落到 42 条左右。热度在退，但没散。</p>
+  </blockquote>
+
+  <h2><span class="num">02</span>二次元 / 游戏</h2>
+
+  <p>任天堂今天大概不太好过。安全研究者 pepsipu 用纯软件漏洞攻破了 Switch 2 最新的 23.0.1 固件，没有拆机、没有焊接。为了把嘲讽拉满，他还把彼得·格里芬、初音未来和大耳狗塞进了《马力欧卡丁车》。对一个把硬件防线当作核心资产的平台来说，这种"不碰螺丝刀"的破解比任何硬件改装都难处理。</p>
+
+  <p>独立开发那边是一条很真实的吐槽。一位开发者早上看到 11 人 agent 团队做出来的成果，评价是"一坨"，然后自己 23 秒的试玩版本出来了，自评场景效果 60 分、动效 8 毛钱、打击感停在 FC 时代。这条之所以值得记，是因为它把当下很多团队的处境说透了：agent 能把产能堆上去，但堆不出手感。</p>
+
+  <p>另外两条轻量消息：《装甲核心 VI 境界天火》的桌游版在开发中，官方放话会陆续公开信息；《绝区零》实装新角色フィオニー，讨论集中在角色曲和 EP 上，这游戏的音乐口碑一直稳。</p>
+
+  <h2><span class="num">03</span>俄乌冲突</h2>
+
+  <p>今天这组报道放在一起读，逻辑链很完整，也很冷。</p>
+
+  <p>NYT 的一篇评论说特朗普一直在找"他的雅尔塔"，也就是一场能让他以大国交易方式收尾的峰会。另一篇的标题更直接：普京正在接近他要的东西，恢复与美国的关系，而不用在乌克兰问题上让出任何实质内容。这两篇其实是同一件事的两面。</p>
+
+  <p>BBC 的记录则给出了时间上的对照：俄罗斯方面表示"原则上准备好"继续和谈，几小时之后，三波导弹打向乌克兰。谈判表态和军事行动之间不再是先后关系，而是并行关系。</p>
+
+  <p>BBC 中文那篇《暗影人物：与乌克兰合作的俄罗斯人》提供了另一个视角。从线人网络到破坏行动，再到暗杀指控，战争已经长出了一层看不见的结构。这层结构不会因为一份停火协议就消失，它更可能在协议签署之后继续运转。</p>
+
+  <p>把时间线拉长看，这个议题在 10-11、10-16、10-19、10-21、10-22 反复出现，四天 8 条，密度不高但没断过。它不是突发新闻，是长期背景噪音，而背景噪音往往才是决定走向的东西。</p>
+
+  <h2><span class="num">04</span>欧洲</h2>
+
+  <p>法国同时在处理两件性质完全不同的事。</p>
+
+  <p>一件是社会层面的。骚乱过后，民众对责任归属存在分歧，总理把部分暴力事件指向极左翼团体，但这个归因显然没有被普遍接受。BBC 记者卡缇雅·阿德勒的报道重点不在暴力本身，而在"谁该负责"这个问题上撕开的口子。</p>
+
+  <p>另一件是公共卫生层面的。法国报告了首例人感染 Shamonda 病毒病例，患者已于 10 月初去世。这种病毒通常影响牛群，人感染极为罕见，所以首例的意义不在于当下风险有多高，而在于它会被写进监测清单，此后每一次动物疫情都要重新评估。</p>
+
+  <p>体育版还有一条轻松的：Felix Balshaw，父亲是随英格兰夺得橄榄球世界杯的球员，他自己选择代表法国出战。血统和队服不一致的故事，法国人似乎总能消化得很好。</p>
+
+  <h2><span class="num">05</span>中东局势</h2>
+
+  <p>德黑兰的广告牌上出现了一个跳舞的特朗普模仿者，被关在牢房里。伊朗长期用广告牌嘲讽对手、对内传递立场，这次的对象换成了美国前总统，形式还是那套形式。</p>
+
+  <p>同一批报道里更硬的消息是：美以正在制定新的对伊朗打击方案，同时特朗普的举报人奖励计划也在推进。宣传和作战准备同步进行，这在中东不算新鲜，但两条消息同一天出现，说明窗口期正在被重新计算。这个议题八天累计 16 条，是除 AI 之外讨论密度最高的一组。</p>
+
+  <h2><span class="num">06</span>能源、医疗与 AI 的物理成本</h2>
+
+  <p>英国是否会给 Rosebank 油田开绿灯，是目前最受关注的一个能源决策。这是英国已知最大的未开发油田，位于北大西洋。BBC 苏格兰编辑詹姆斯·库克亲自去了现场。批与不批都有明确代价：批了，气候承诺打折；不批，能源安全和就业立刻承压。</p>
+
+  <p>美国那边是另一种压力传导。新调查显示，保费和免赔额上涨，雇主正在把医疗成本往员工身上转移，结果是有人开始放弃治疗或者推迟检查。这类变化不会上头条，但它比大多数头条更能说明家庭账本的真实状况。</p>
+
+  <p>还有一条乍看很怪的新闻：AI 热潮正在推高灰色涂料的销量。科技公司把数据中心刷成灰色，涂在灰色的混凝土和钢结构之上。原因很实际：数据中心要在视觉上消失，要少反光、少存在感。算力扩张最后落到了油漆桶上，这大概是今天最能说明"AI 有物理身体"的一条。</p>
+
+  <div class="takeaway">
+    <h2>今日的三个判断</h2>
+    <ol>
+      <li><strong>模型竞争进入"体验 + 封锁"双轨阶段。</strong>DeepSeek 这条线上，性能口碑和政策限制同时在加速，这意味着接下来的分叉不在技术路线，而在市场准入。</li>
+      <li><strong>agent 工具的副作用开始外溢到公共平台。</strong>B 站鱼灾、23 秒试玩、Codex 配文档，三件事指向同一件事：产能过剩之后，稀缺的不是产出，是判断力。</li>
+      <li><strong>地缘政治的谈判与打击正在同步进行。</strong>俄乌和中东都是这个模式，表态不再预示行动，只用来占位。</li>
+    </ol>
+  </div>
+
+  <footer>
+    本内容由 Hermes Agent 自动采集分析，每日更新
+  </footer>
+</main>
 </body>
 </html>
