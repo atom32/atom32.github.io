@@ -1,306 +1,198 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-10-25 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10月25日：有人开始数 Claude 的 IP 了 · Dawei Xu</title>
+<style>
+  :root{
+    --bg:#fbfaf7;
+    --ink:#1c1c1a;
+    --ink-soft:#4a4a45;
+    --muted:#8a8a88;
+    --line:#e4e1d8;
+    --accent:#b8462f;
+    --card:#f4f2ec;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    font-size:17px;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px 80px;}
+  header.top{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 0 18px;border-bottom:1px solid var(--line);margin-bottom:34px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:700;font-size:15px;letter-spacing:.02em;}
+  .brand .mark{
+    width:26px;height:26px;border-radius:6px;background:var(--ink);color:var(--bg);
+    display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;
+  }
+  nav a{color:var(--ink-soft);text-decoration:none;font-size:14px;margin-left:18px;}
+  nav a:hover{color:var(--accent);}
+  .back{display:inline-block;margin-bottom:26px;color:var(--muted);text-decoration:none;font-size:14px;}
+  .back:hover{color:var(--accent);}
+  h1{
+    font-size:1.68rem;line-height:1.35;margin:0 0 14px;letter-spacing:-.01em;font-weight:750;
+  }
+  .meta{
+    color:var(--muted);font-size:13.5px;margin:0 0 30px;
+    padding-bottom:22px;border-bottom:1px solid var(--line);
+  }
+  .meta span{white-space:nowrap;}
+  .meta .dot{margin:0 8px;opacity:.5;}
+  article p{margin:0 0 18px;}
+  article h2{
+    font-size:1.12rem;font-weight:700;margin:42px 0 16px;line-height:1.5;
+    letter-spacing:-.005em;
+  }
+  article h2::before{
+    content:"";display:inline-block;width:14px;height:2px;background:var(--accent);
+    vertical-align:middle;margin-right:10px;transform:translateY(-2px);
+  }
+  article strong{font-weight:680;}
+  article em{font-style:normal;background:linear-gradient(transparent 62%,#ffe9a8 62%);padding:0 1px;}
+  blockquote{
+    margin:22px 0;padding:14px 18px;background:var(--card);border-left:3px solid var(--line);
+    color:var(--ink-soft);font-size:.94em;border-radius:0 6px 6px 0;
+  }
+  blockquote p:last-child{margin-bottom:0;}
+  .lede{
+    font-size:1.02rem;color:var(--ink-soft);
+  }
+  .lede strong{color:var(--ink);}
+  .stats{
+    display:flex;flex-wrap:wrap;gap:10px;margin:0 0 34px;
+  }
+  .chip{
+    background:var(--card);border-radius:20px;padding:5px 13px;font-size:13px;color:var(--ink-soft);
+    font-variant-numeric:tabular-nums;
+  }
+  .note{
+    margin:28px 0;padding:16px 18px;border:1px solid var(--line);border-radius:8px;font-size:.93em;color:var(--ink-soft);
+  }
+  .note b{color:var(--ink);}
+  hr.sep{border:0;border-top:1px solid var(--line);margin:46px 0 26px;}
+  footer{
+    margin-top:44px;padding-top:20px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+  footer a{color:var(--muted);text-decoration:none;}
+  @media (max-width:480px){
+    body{font-size:16px;line-height:1.8;}
+    .wrap{padding:0 18px 64px;}
+    h1{font-size:1.42rem;}
+    article h2{font-size:1.06rem;margin-top:36px;}
+    header.top{margin-bottom:26px;}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<div class="wrap">
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-10-25</h1>
-    <p class="post-meta">2026-10-25 · 每日资讯早报 · 确定性兜底发布</p>
+  <header class="top">
+    <a class="brand" href="/"><span class="mark">A</span><span>Dawei Xu</span></a>
+    <nav><a href="/">首页</a><a href="/blog/">笔记</a></nav>
+  </header>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-10-25</strong></p>
-<p>📊 <strong>共 198 条信息</strong>  ·  🐦 X(145)  ·  📰 RSS(53)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（11 条）</h3>
-<blockquote>
-<p>📝 <em>Claude客户端通过STUN协议探测用户IP</em></p>
-<p>🐦 <strong>Frey轰轰@HiFrey·10小时</strong> · 📷×1 · 11:55 🟡
-使用 Claude code 的朋友，请务必注意！！！近期发现，最新版 Claude 客户端已开始通过 STUN 协议探测用户公网 IP 及网络出口信息，通过连接STUN协议，如果你的WebRTC 泄露，会直接暴露你的真实IP地址，所以请务必检测你使用的网络环境是否有WebRTC 泄露，根据我的经验…</p>
-<p>🐦 <strong>匿名</strong> · 10:49 🟡
-卧槽，兄弟们，我可能知道了，为什么很多人的 Claude 被封号了</p>
-</blockquote>
-<p>因为他自己做测试，内容的时候 已经违反用户政策了</p>
-<p>只不过他自己不知道🫠🫠🫠</p>
-<blockquote>
-<p>🐦 <strong>小小东@xiaoxiaodong·11小</strong> · 📷×1 · 10:40 🟡
-12个Claude账号，全健在的！</p>
-</blockquote>
-<p>上午见，一个推文中说：
-才封了几个号就一堆总结，信誓旦旦的人，大有人在。
-——
-细想
-日常确实看过很多此类总结</p>
-<p>我同意推文中这句话：
-经验都是钱换来的！</p>
-<p>我牺牲了多少账号，付出了多少代价
-倔强的我，实践出这种最朴素的方案，确实不易。</p>
-<p>也没藏着掖着什么，大大…</p>
-<blockquote>
-<p>📝 <em>AGENTS.md 值得拥有</em></p>
-<p>🐦 <strong>Viking@vikingmute·2小</strong> · 📷×1 · 13:14 🟡
-OpenCode 的 AGENTS.md 值得拥有，专治 Codex 的过度设计，茫茫多的防御性代码，一坨坨几乎根本不会发生的极端边界。</p>
-</blockquote>
-<p>不仅仅是这一点，整个文件的内容都值得一看 ，style guide 一节写的很好，我已经用于我大部分 agent 的默认提示词了</p>
-<p>https://t.co/d…</p>
-<blockquote>
-<p>🐦 <strong>govin.eth | G哥@goan9</strong> · 09:37 🟡
-用了这么久 Codex，我终于把它摸透了！</p>
-</blockquote>
-<p>同样是用 Codex，有人一天烧掉几百万 Token，代码还全是 Bug</p>
-<p>有人却能让它自己查资料、写代码、修 Bug、跑测试，甚至同时指挥多个 Agent 干活！</p>
-<p>刚开始用 Codex，我也没少踩坑</p>
-<p>最崩溃的就是项目做到一半，上下文突然乱了，修一个…</p>
-<blockquote>
-<p>🐦 <strong>Orange AI@oran_ge·1小</strong> · 📷×1 · 14:10 🟡
-有价值的播客太多了，没那么多时间听怎么办呢？
-那就看 AI 转写的文章吧，差不多花十分钟，就能看到一小时的播客里的主要信息了
-加上是精细的转写而非总结，所以信息也不会丢很多，碰到非常感兴趣的就去听原音频，相得益彰。</p>
-</blockquote>
-<p>以下是我常听的 8 个播客，全部做了自动转写，每期自动更新文章，一目了然。
-感谢向…</p>
-<blockquote>
-<p>🐦 <strong>数码荔枝@DIGITALYCHEE·2小</strong> · 📷×1 · 13:46 🟡
-再次向大家推荐 Strata 这个项目。</p>
-</blockquote>
-<p>让一台家用游戏台式机，也能跑上 Qwen 3.8 Flash Next 这种 125B 级别的大模型，</p>
-<p>精度约为完全体的 93%，且输出速度为 100-120 token/秒。</p>
-<p>太梦幻了。</p>
-<p>然后状态页也是用本地大模型做的。 https://t.co/…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 12:49 🟡
-讲个鬼故事：从 10月30日起，ChatGPT Pro（$200）里 Codex 和 Work 的用量倍率从原来的 20× Plus 降到 10×（价格不变）</p>
-</blockquote>
-<p>还有一周🤓</p>
-<p>Tibo的28天计划也快结束了，
-让你满意了吗？🤔</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×2 🎬×1 · 09:12 🟡
-我的妈呀！！我真的觉得现在做一个能玩的steam游戏，真的比我想象中简单太多了，完全不用迷信opus5.5，Codex就能做一个完全可玩的demo，我小时候最喜欢玩的就是在诺基亚上的那个手机游戏，然后直到有了Steam，我花199块钱玩的Steep！！但现在我用一句话就做出了一个Steep的demo…</p>
-<p>🐦 <strong>向阳乔木@vista8·59分钟</strong> · 📷×1 · 09:01 🟡
-现在越狱kindle太方便，京东买一根type-c 转micro-usb（老安卓常用）的数据线。</p>
-</blockquote>
-<p>连上Mac，让任意一个大模型处理就行。</p>
-<p>越狱后打算好好用AI改造下，做一个AI阅读器。 https://t.co/3Cvx7nRsff</p>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-10-24 🟢
-<strong>一位开发者让电视服用了 Claude，这是它系统发生的变化</strong> — </p>
-</blockquote>
-<p>曾几何时，电视在人们心目中，还是个开机就能看、按两下遥控器就能换台的物种。
-现在，打开电视准备看部电影，首先映入眼帘的却是一段开机广告。好</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-18, 2026-10-19, 2026-10-21, 2026-10-23, 2026-10-24</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-10-12] 重磅合集🔥🔥🔥🔥 闭眼收藏 👇👇👇👇 这些工具都是我在推特上最受欢迎的，最实用的 当时出来就爆得不行的🔥🔥🔥 ✅1、就是这个浏览器插件，按一下，把视频下载下来 X
-[2026-10-13] Dumbledore: Harry, Harry, did you just kiss Malfoy? Harry: Ah, yeah, it was an accident, a
-[2026-10-14] 🖌️ 真的开眼了，MCP for Blender 能让 Claude 直接在 Blender 里给你建模、调材质、摆灯光。 GitHub 已经 30.6K star，两千七百多个</p>
-<p>📊 <em>趋势（15天共978条）</em> <code>█72 █105 █58 █62 █71 █88 █74</code></p>
-</blockquote>
-<h3>🇪🇺 欧洲（6 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-24 🟢
-<strong>Unrest Erupts Again in France, but This Time, With Less Property Damage</strong> — After largely peaceful marches on Saturday, clashes broke out in the evening. But a large-scale poli</p>
-<p>📰 <strong>BBC</strong> · 2026-10-24 🔵
-<strong>Almost 1,000 arrested as clashes follow another day of mass protests across Fran</strong> — Officials have so far managed to avoid a repeat of last weekend's rioting and looting as hundreds of</p>
-<p>📰 <strong>BBC</strong> · 2026-10-24 🔵
-<strong>Watch: BBC in Paris as police charge protesters and use tear gas during unrest</strong> — Europe correspondent Nick Beake reports from Paris where mostly peaceful protests turned into unrest</p>
-<p>📰 <strong>BBC</strong> · 2026-10-24 🔵
-<strong>England thrash France to keep alive World Cup hopes</strong> — England beat France 82-0 to maintain their hopes of reaching the Men's Rugby League World Cup semi-f</p>
-<p>📰 <strong>NYT</strong> · 2026-10-24 🟢
-<strong>How a Small Student Protest Spread Across France</strong> — A movement that began with a few high schools has broadened to encompass labor unions and other acti</p>
-<p>📰 <strong>NYT</strong> · 2026-10-24 🟢
-<strong>Looting Left Damage and Fear on Paradise Street in Marseille</strong> — Looters ravaged a storied commercial avenue in France’s second-largest city. Its merchants fear that</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-12, 2026-10-13, 2026-10-19</em></p>
-</blockquote>
-<h3>🔧 开发工具（5 条）</h3>
-<blockquote>
-<p>🐦 <strong>Ben Pierron@Ben_escr</strong> · 🎬×1 · 15:04 🟡
-🚨ESTO ACABA DE MATAR A ELEVENLABS</p>
-</blockquote>
-<p>74.000 personas ya lo han guardado en GitHub y casi nadie habla de ello.</p>
-<p>Se llama VoiceStudio y es un reemplazo 10…</p>
-<blockquote>
-<p>🐦 <strong>GitHubDaily@GitHub_D</strong> · 📷×1 · 14:00 🟡
-论文太长，直接让 AI 总结，又怕它把关键的推导和条件省掉。想回到原文，还得重新找那一段。</p>
-</blockquote>
-<p>TextFold 做了个挺有意思的阅读器，把同一篇文章折成 5 档详细程度，从章节概览一路展开到原文。</p>
-<p>最细是全文，收一档就变成每段 1 到 3 句原句，再往上是论点和理由、每节一句话，最后只剩章节主题。…</p>
-<blockquote>
-<p>🐦 <strong>Ren@Ryrenz·2小时</strong> · 13:09 🟡
-🪼 AI 短剧神器 Jellyfish，把一章剧本丢进去，从分镜拆解到视频生成导出一条龙做完。</p>
-</blockquote>
-<p>Jellyfish 出自北京的一位个人开发者，仓库 3 月才建，现在 6800 多 star、一千一百多个 fork。</p>
-<p>拿 AI 做短剧，最累的不是生成，是管理：几十个镜头散在各处，角色这一镜换了衣服…</p>
-<blockquote>
-<p>🐦 <strong>GitHubDaily@GitHub_D</strong> · 📷×1 · 12:00 🟡
-给 A 股策略做回测，代码写好了，数据还没准备好，下载、清洗、复权，每一项都得单独处理。</p>
-</blockquote>
-<p>free-stockdb 是个本地量化数据引擎，把这些准备工作放到一起，先同步数据，再启动本机服务，就能查询和计算。</p>
-<p>支持股票和 ETF 的日线、周线、月线，以及 1、5、15、30 分钟 K 线，前复权、…</p>
-<blockquote>
-<p>🐦 <strong>王军@ozmazzz·12小时</strong> · 10:00 🟡
-离谱！AI 最后一堵墙，终于被一个开源项目拆了！！</p>
-</blockquote>
-<p>以前 AI 再聪明，也像个被关在笼子里的天才，想刷 X、挖 Reddit、翻小红书评论，处处受限。</p>
-<p>现在有人直接给 AI 装上了“全网通行证”！</p>
-<p>这个叫 Agent Reach 的开源项目，已经在 GitHub 上火到 10 万+ Star。…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-17, 2026-10-18, 2026-10-19, 2026-10-21, 2026-10-24</em></p>
-</blockquote>
-<h3>🎮 二次元/游戏（4 条）</h3>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 12:00 🟡
-ローグライト3Dアクションゲーム『リングスガード』を開発中です</p>
-</blockquote>
-<h1>SuperDevDay #indiedev</h1>
-<p>スキルツリーとUIを更新し、タイ語とポルトガル語に対応しました。ストアページについても対応済です
-また、敵にストーンスライムを追加しました</p>
-<p>スキルツリーはステータス強化に加えて新たなスキ…</p>
-<blockquote>
-<p>🐦 <strong>Greysuki@Greysuki·11</strong> · 🎬×1 · 10:41 🟡
-I made a game where you drive a land battleship. Can you lead your allies through the enemy's defenses and destroy their reinforcements?</p>
-</blockquote>
-<p>The demo is …</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 09:16 🟡
-RT @white_and_pink: 甘園房シリーズのママ先生たちの
-フィギュア化の依頼もお待ちしております！</p>
-</blockquote>
-<p>ムチムチ巨乳ボディで個性豊かなヒロインたちが
-たくさん居ます！ https://t.co/LrzpnROzH7</p>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-10-19 🔵
-<strong>When to switch your clocks back as British Summer Time comes to an end</strong> — British Summer Time will soon comes to an end as the clocks go back an hour to Greenwich Mean Time.</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-18, 2026-10-19, 2026-10-20, 2026-10-22, 2026-10-23</em></p>
-</blockquote>
-<h3>🇮🇱 中东局势（2 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-10-24 🔵
-<strong>Palestinian families displaced as Israeli forces demolish Hebron homes</strong> — The crackdown follows the killing of two Israeli soldiers by two Palestinian gunmen on Friday - and </p>
-<p>📰 <strong>NYT</strong> · 2026-10-24 🟢
-<strong>Israel Cracks Down in West Bank City After Deadly Attack</strong> — Hundreds of Palestinian families fled their homes as the Israeli military raided Hebron. The operati</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-19, 2026-10-21, 2026-10-22, 2026-10-23, 2026-10-24</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Oc/08</strong> 以色列大選：哈馬斯襲擊三年後，以色列民眾要求追究責任
-<strong>Ju/09</strong> 特朗普虚張聲勢再多，除了與伊朗談判別無選擇——BBC編輯鮑文觀察
-<strong>Se/23</strong> 三位自以為是的領導人和他們的愚蠢戰爭 | 美國與沙特簽署核協議為東地中海引核擴散風險
-<strong>Au/24</strong> 美國制裁伊朗經濟新措施 何以對中國「松手」？
-<strong>Ju/29</strong> 欧洲遊客「消失」，東南亞旅遊業者陷入困境
-<strong>Au/29</strong> 中国希望伊朗戰爭結束，但不是以特朗普想要的方式</p>
-<p>📊 <em>趋势（10天共19条）</em> <code>█2 █4 █1 █2 █5 █1 █1</code></p>
-</blockquote>
-<h3>₿ Crypto/Web3（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>𝙃𝘼𝙕𝙀𝙉𝙇𝙀𝙀@hazenlee·2小</strong> · 🎬×1 · 19:31 🟡
-我有一个大胆的预测：</p>
-</blockquote>
-<p>AI逆向工程的成熟，可能让游戏行业迎来新一轮私服浪潮，而Web3的GameFi模式，或许会成为传统游戏厂商被迫寻找的最后一片净土。</p>
-<p>很多人可能不知道，陈志早年就与私服产业有着密切关联。</p>
-<p>过去，架设一款网游私服需要相当高的技术门槛：逆向工程、协议破解、服务端重构、数据库还原…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-13, 2026-10-16, 2026-10-20, 2026-10-23, 2026-10-24</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>10/13</strong> 关键进展
-<strong>10/17</strong> 关键进展
-<strong>10/18</strong> 关键进展
-<strong>10/20</strong> 关键进展</p>
-<p>📊 <em>趋势（13天共44条）</em> <code>█2 █4 █3 █1 █5 █6 █5</code></p>
-</blockquote>
-<h3>🏢 创业/商业（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>叫我阿杭@Astronaut_1216·</strong> · 📷×2 · 14:04 🟡
-卧槽？？？刚才在一个饭局上吃饭，一个做跨境年入百100万的老板跟我说</p>
-</blockquote>
-<p>现在有如果做游戏可以直接上站，并且做的话可以立马获得大量的用户量，通过广告变现或者是赞助变现，他们一天能上20个这种站？？？？？</p>
-<p>然后我随手一查，这件事竟然是真的，而且我操，这个套路真的太骚了，太牛逼了太牛逼了，我觉得我今天就…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-17, 2026-10-19, 2026-10-21, 2026-10-23, 2026-10-24</em></p>
-</blockquote>
-<h3>💻 AI Agent（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>Berryxia.AI@berryxia</strong> · 11:31 🟡
-我去，其实也就在𝕏 上可以免费看这种保姆级可以变现的教程了…</p>
-</blockquote>
-<p>讲真，换做1年前这玩意，你没两把刷子真搞不出来。</p>
-<p>有朋友潜心研究数月的comfyui、N8N工作流，现在Agent 结合画布甚至直接可以用Renoise MCP 和Opus5.5  做也是不要太舒服啊～</p>
-<p>真的模型、工具都在不断的缩小…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-15, 2026-10-16, 2026-10-21, 2026-10-22, 2026-10-24</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-10-24 🔵
-<strong>Ukraine says Starlink connection 'now stable' after network limits</strong> — The slowed Starlink connections had affected the Ukraine's military and drone operations for a week.</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-11, 2026-10-16, 2026-10-19, 2026-10-21, 2026-10-22</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Se/02</strong> 当普京把铁锤挥向文学
-<strong>Oc/14</strong> 普京攻打乌克兰新策略：让所有城市片瓦无存
-<strong>Au/19</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令
-<strong>Ju/23</strong> 李在明接受时报专访，敦促美国放松对朝鲜的制裁 | 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？</p>
-<p>📊 <em>趋势（3天共7条）</em> <code>█4 █1 █2</code></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（152 条）</h2>
-<blockquote>
-<p>🐦 <strong>الأحداث الميدانية بد</strong> · 🎬×1 · 21:52 🟡</p>
-<h1>عاجـــــــــــــــــــــــل</h1>
-<p>نصر الدين عامر: العدو السعودي وأدواته الرخيصة يهددون ويتوعدون المشاهير…</p>
-<p>🐦 <strong>senate24@Senate_24X·</strong> · 📷×1 · 21:23 🟡
-如果你知道中国人找我约的皇牌空战8稿件是moon11的脚臭你也会同情我的。
-如果你知道我兴致勃勃的接下了你也会鄙视我的。 https://t.co/UlGHqQikh6</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:20 🟡
-Lord Almighty, I just got gifted with making a Halloween themed OPM Tatsumaki commission. https://t.…</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:17 🟡
-RT @xunbaol: 真体内长尾巴了，我不行了😭😭😭😭😭 https://t.co/0thYBJqKOh</p>
-<p>🐦 <strong>３バーストXラボ@3burst_x_La</strong> · 📷×1 · 20:39 🟡
-☀即席、朝画像☀</p>
-</blockquote>
-<p>昨日の配信見た！
-渋谷の街をめっちゃ走ったんよ！😆
-応援してくれる人も沢山でさ
-楽しかったよ～🥰</p>
-<p>プロンプトはリプライへ👇</p>
-<h1>AIart #AI美女 #金褐ちゃん https:/…</h1>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×2 · 20:32 🟡
-RT @YuseiRyao_: Phoenix's latex air bladder</p>
-</blockquote>
-<p>Being able to orgasm from choking alone—what a pervert.…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 20:11 🟡
-RT @takutaku12364: 販売されちゃう勇者ちゃん https://t.co/XOZK1IFcPU</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 20:10 🟡
-RT @princebillu6: https://t.co/3TGLV0oeS5</p>
-<p><em>…还有 144 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 145条
-    General: ██████████ (131)</p>
-<p>📰 <strong>RSS 新闻</strong>: 53条
-    · BBC: 31条
-    · NYT: 20条
-    · 爱范儿: 2条</p>
-<p>📚 累计: X=43401 | NGA=584 | S1=372 | RSS=14706</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <a class="back" href="/blog/">← 返回笔记列表</a>
+
+  <h1>10月25日：有人开始数 Claude 的 IP 了</h1>
+  <p class="meta">
+    <span>2026-10-25</span><span class="dot">·</span><span>每日资讯早报</span><span class="dot">·</span><span>增强版</span>
+  </p>
+
+  <div class="stats">
+    <div class="chip">今日 198 条</div>
+    <div class="chip">X · 145</div>
+    <div class="chip">RSS · 53</div>
+    <div class="chip">NGA / S1 · 0</div>
+  </div>
+
+  <article>
+
+    <p class="lede">今天真正值得坐下来写的东西不多。一条挺膈应人：<strong>Claude 客户端被指用 STUN 协议探你的公网 IP</strong>。剩下的，一半是工具，一半是法国街头的催泪瓦斯。</p>
+
+    <h2>对话框为什么想知道你长什么样</h2>
+
+    <p>@HiFrey 的帖子说得很具体：新版 Claude 客户端会连 STUN 服务器。如果你的网络环境有 WebRTC 泄漏，真实出口 IP 就跟着出去了。他建议自己先测一遍 WebRTC 泄漏再决定要不要用。</p>
+
+    <p>我不确定这是产品有意为之，还是某个 WebRTC 依赖顺带进来的副作用。STUN 本身不神秘，视频通话、P2P 打洞天天用。但一个纯文本对话框去问"我在外面长什么样"，确实需要解释。这两件事的区别，用户自己没法验证。</p>
+
+    <p>紧跟着是封号的老话题。有人猜多数被封的号是自己测试时踩了用户政策而不自知；也有人晒 12 个账号全在，说"经验都是钱换来的"。这类总结我看一半信一半——样本全是幸存者，被封的人不会回来发帖。</p>
+
+    <h2>AGENTS.md 治的是什么病</h2>
+
+    <p>@vikingmute 推荐 OpenCode 的 AGENTS.md，说它能治 Codex 的过度设计：茫茫多防御性代码，处理几乎不会发生的极端边界。他把里面 style guide 一节抽出来，当成自己大部分 agent 的默认提示词。</p>
+
+    <p>这个方向我认同。约束模型"写多少"比约束它"写什么"难得多，一份好的 style guide 干的就是前半件事。</p>
+
+    <p>@goan9 那条讲另一面。同样用 Codex，有人一天烧掉几百万 token，收获一堆 bug；有人能让它自己查资料、写代码、修 bug、跑测试，还同时指挥几个 agent。他自己最崩的时刻是项目做到一半，上下文乱了，修一个洞冒出两个。这跟模型聪明不聪明关系不大，是上下文管理的手艺。</p>
+
+    <h2>客厅里那台游戏机跑 125B</h2>
+
+    <p>@DIGITALYCHEE 又推了 Strata：一台家用游戏台式机跑 Qwen 3.8 Flash Next 这种 125B 级别的模型，精度约为完全体的 93%，速度 100–120 token/s，连状态页都是本地模型生成的。</p>
+
+    <p>93% 这个数得看怎么测的。benchmark 上的 93% 和"我用着感觉差不多"是两码事。但 100 token/s 在本地是实打实能用的速度，不是那种等一句话等到走神的水平。</p>
+
+    <p>同一天还有条不那么好看的：10 月 30 日起，ChatGPT Pro（$200/月）里 Codex 和 Work 的用量倍率从 20× Plus 降到 10×，价格不动。云端额度在缩，本地权重在涨，这两条放一起看，比单看哪条都有意思。</p>
+
+    <h2>工具堆：四条值得记一下的</h2>
+
+    <p>TextFold 解决的是真痛点。让 AI 总结长论文，怕它把推导和前提条件省掉；想回原文，又得重新翻找那一段。它把一篇文章折成 5 档，从章节主题一路展开到全文，中间档是每段 1–3 句原句。关键在"原句而非改写"——改写本身就是信息损失，这一步被省掉，前面的档位才有意义。</p>
+
+    <p>Jellyfish 做 AI 短剧，把一章剧本丢进去，从分镜到视频一条龙。作者是北京的个人开发者，仓库 3 月才建，现在 6800 多 star、1100 多 fork。半年做到这个量级，说明需求一直在，只是以前没人把散在各处的几十个镜头管起来。</p>
+
+    <p>free-stockdb 给 A 股回测用，本地量化数据引擎。先同步数据，再起本机服务，然后查和算。股票和 ETF 的日、周、月线都有，也有 1/5/15/30 分钟 K 线，带前复权。写策略的人都懂，回测里最耗时间的从来不是策略。</p>
+
+    <p>Agent Reach 被说成给 AI 装"全网通行证"，能刷 X、挖 Reddit、翻小红书评论，GitHub 上号称 10 万 star。这个数字我持保留态度。最近这类项目的 star 涨得比功能快，收藏和真用是两件事。</p>
+
+    <p>另外还有个西班牙语账号在推 VoiceStudio，标题是"这刚刚杀死了 ElevenLabs"，说 7.4 万人收藏。标题党归标题党，语音克隆这条道的门槛确实在往下掉。</p>
+
+    <h2>法国：第二个周末</h2>
+
+    <p>周六白天大部分游行是平静的，入夜之后冲突起来了，近 1000 人被捕。官方到目前为止避开了上周末那种大规模打砸抢，但马赛"天堂街"的商户已经在算账——那条商业街被洗劫，店主担心客人不回来。</p>
+
+    <p>NYT 那篇讲的是运动的来路：几所高中先起，然后工会和其他组织接了进来。这个路径跟 2018 年的黄马甲不太一样，起点是学生，不是油价。</p>
+
+    <p>顺带一提，BBC 同日还有条"England thrash France 82-0"，橄榄球联盟世界杯。聚合器把它塞进了"欧洲"分类，正好排在催泪瓦斯旁边。数据管道的幽默感有时候比内容本身强。</p>
+
+    <h2>希伯伦</h2>
+
+    <p>周五两名巴勒斯坦枪手打死两名以色列士兵，随后以军在希伯伦展开行动，拆除民宅，数百个巴勒斯坦家庭逃离。BBC 和 NYT 都报了，措辞有差别：BBC 用 crackdown，NYT 用 cracks down in West Bank city after deadly attack。</p>
+
+    <p>同一件事，两家选的动词就是两套叙事。看国际新闻的时候，这类细节比正文更有信息量。</p>
+
+    <h2>星链那一周</h2>
+
+    <p>乌克兰方面说星链连接"现在稳定了"。此前限速持续了整整一周，影响的不只是民用网络，还有军队通信和无人机作战。无人机部队断一周链路意味着什么，不用展开讲。</p>
+
+    <h2>两条我不太信的</h2>
+
+    <p>一条来自 Crypto 区：AI 逆向工程成熟会让私服潮重来，Web3 的 GameFi 会成为传统厂商被迫寻找的最后一片净土。推论跳得有点远。私服门槛降了是真的，但玩家去私服图的是免费和改得爽，不是因为想要代币。把这两件事接起来，更像是想给 GameFi 找故事。</p>
+
+    <p>另一条是饭局转述：某跨境老板说做游戏站可以直接上，一天能上 20 个，靠广告或赞助变现，"立马获得大量用户"。这类站点确实存在，也确实有人在做。但那句话省掉了后面被封、被降权、被起诉的部分，而作业往往全在后面。</p>
+
+    <div class="note">
+      <b>关于数字：</b>文中涉及的 star 数、收藏数、营收说法多来自发布者自述，未经独立核实；新闻部分来自 BBC 与 NYT 的公开报道。标了推文出处的段落是个人观点，不是事实陈述。
+    </div>
+
+    <hr class="sep">
+
+  </article>
+
+  <footer>
+    <span>本内容由 Hermes Agent 自动采集分析，每日更新</span>
+    <span><a href="/blog/">更多笔记 →</a></span>
+  </footer>
+
+</div>
 </body>
 </html>
