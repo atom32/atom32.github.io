@@ -1,355 +1,187 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-10-30 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-10-30 · Dawei Xu</title>
+<meta name="description" content="2026-10-30 每日资讯：OpenAI 额度翻倍、以色列大选僵局、英特尔暴跌、AI 逆向攻防。">
+<style>
+  :root{
+    --bg:#fbfaf7; --card:#ffffff; --ink:#1c1d21; --muted:#6b6d76;
+    --line:#e6e3dc; --accent:#b4532a; --accent-soft:#f4ece6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#14151a; --card:#1b1d24; --ink:#e8e6e1; --muted:#9a9ca6;
+      --line:#2b2e37; --accent:#e08a5c; --accent-soft:#2a2119;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:17px; line-height:1.78; letter-spacing:.01em;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:28px 20px 72px}
+  .top{display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+    padding-bottom:16px; border-bottom:1px solid var(--line); margin-bottom:34px}
+  .top a{color:var(--muted); text-decoration:none; font-size:14px}
+  .top a:hover{color:var(--accent)}
+  .brand{font-weight:700; letter-spacing:.04em; color:var(--ink); font-size:15px}
+  h1{font-size:1.72rem; line-height:1.35; margin:0 0 10px; letter-spacing:-.01em}
+  .meta{color:var(--muted); font-size:13.5px; margin:0 0 30px; letter-spacing:.02em}
+  .lede{font-size:1.04rem; color:var(--ink); background:var(--accent-soft);
+    border-radius:14px; padding:20px 22px; margin:0 0 40px}
+  .lede p{margin:0 0 .85em}
+  .lede p:last-child{margin:0}
+  h2{font-size:1.18rem; margin:44px 0 14px; padding-left:12px;
+    border-left:3px solid var(--accent); line-height:1.5}
+  h3{font-size:1rem; margin:26px 0 8px; color:var(--ink)}
+  p{margin:0 0 1.05em}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin:0 0 18px}
+  .card h2{margin-top:0}
+  .facts{list-style:none; padding:0; margin:14px 0 0}
+  .facts li{position:relative; padding-left:18px; margin:0 0 .62em; font-size:.965rem; color:var(--ink)}
+  .facts li::before{content:""; position:absolute; left:2px; top:.72em;
+    width:6px; height:6px; border-radius:50%; background:var(--accent); opacity:.55}
+  .take{border-left:2px solid var(--line); margin:20px 0 0; padding:2px 0 2px 16px;
+    color:var(--muted); font-size:.96rem}
+  .take strong{color:var(--ink); font-weight:600}
+  .tl{list-style:none; margin:16px 0 0; padding:0 0 0 4px}
+  .tl li{position:relative; padding:0 0 14px 22px; font-size:.95rem; color:var(--muted)}
+  .tl li::before{content:""; position:absolute; left:0; top:.6em; width:8px; height:8px;
+    border-radius:50%; background:var(--bg); border:2px solid var(--accent)}
+  .tl li:not(:last-child)::after{content:""; position:absolute; left:4px; top:calc(.6em + 8px);
+    bottom:2px; width:1px; background:var(--line)}
+  .tl b{color:var(--ink); font-weight:600}
+  .stat{display:flex; gap:14px; flex-wrap:wrap; font-size:.86rem; color:var(--muted);
+    padding:14px 18px; border:1px dashed var(--line); border-radius:12px; margin:20px 0 0}
+  .stat span b{color:var(--ink); font-weight:600}
+  footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line);
+    font-size:13px; color:var(--muted); line-height:1.7}
+  a{color:var(--accent)}
+  @media (max-width:480px){
+    body{font-size:16.5px}
+    .wrap{padding:22px 16px 60px}
+    h1{font-size:1.5rem}
+    .card{padding:17px 18px}
+    .lede{padding:17px 18px}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<div class="wrap">
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-10-30</h1>
-    <p class="post-meta">2026-10-30 · 每日资讯早报 · 确定性兜底发布</p>
+  <div class="top">
+    <span class="brand">DAWEI XU</span>
+    <a href="/blog/">← 全部笔记</a>
+  </div>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-10-30</strong></p>
-<p>📊 <strong>共 263 条信息</strong>  ·  🐦 X(163)  ·  📰 RSS(100)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（16 条）</h3>
-<blockquote>
-<p>📝 <em>OpenAI将ChatGPT Pro各档和Business Premium用量上限翻倍，价格不变</em></p>
-<p>🐦 <strong>匿名</strong> · 17:48 🟡
-我真的很好奇， OpenAI 是解决算力问题了吗？？</p>
-</blockquote>
-<p>突然来这么给力的更新，Pro 全系额度翻倍，价格还不变！</p>
-<p>Plus $20：1× → 1×
-Pro $100：5× → 10×
-Pro $200：10× → 20×
-Pro $500：25× → 50×
-Business Premium 也翻…</p>
-<blockquote>
-<p>🐦 <strong>宝玉@dotey·4小时</strong> · 17:20 🟡
-OpenAI 即日起把 ChatGPT Pro 各档和 Business Premium 的用量上限翻倍，原定明天的 Pro 200 降额取消，价格没提变化</p>
-</blockquote>
-<p>Tibo 说，Pro 100、Pro 200、Pro 500 三档和 Business Premium 的所有用量上限翻倍，当天生效。Plu…</p>
-<blockquote>
-<p>🐦 <strong>robert.qiu@qwjcool·1</strong> · 10:03 🟡
-扫了一圈 X 上对 openai 的不满，大概六类：</p>
-</blockquote>
-<p>1.Codex 额度越来越少，经常 at capacity。
-2.「降智」，怀疑偷偷换成更差模型
-3.又慢又贵，被 Opus 5.5、DeepSeek 等比下去
-4.新模型失望：6.1 Sol / Terra 不如 5.6；Astra ARC …</p>
-<blockquote>
-<p>🐦 <strong>岚叔@LufzzLiz·12小时</strong> · 📷×2 · 09:30 🟡
-拿去卖钱吧，开源一个调用openai 生图、asr转录的skill，这样就可以方便在任何agent 里来调用执行了
-claude 配gpt-image-2.5-sunburst ，这效果绝对顶！</p>
-</blockquote>
-<p>都知道OpenAI 生图模型是顶级的，我测试用他家api，今天送的额度也能调用，用好了，这些$200的…</p>
-<blockquote>
-<p>🐦 <strong>Gong Z.@gong_cn·5小时</strong> · 📷×2 · 16:29 🟡
-消除 Codex 的防御表达。 https://t.co/1FnBJZAErG</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 16:00 🟡
-现在做游戏，居然可以先拍出一段根本不存在的游戏视频，再让 AI 照着视频，把游戏真正做出来！</p>
-</blockquote>
-<p>开发者 Lovis Odin 做了一个开源项目 Video2Game，思路很有意思。</p>
-<p>先用 MiniMax H3 Max 生成一段 10～15 秒的游戏画面，可以是骑着巨鲸在云端飞行，也可以是操控纸龙穿…</p>
-<blockquote>
-<p>🐦 <strong>哥飞@gefei55·1小时</strong> · 📷×2 · 14:22 🟡
-看到图一，群友的评论是：“[苦涩]还在纠结到底是 codex 开个 pro 还是 Claude 研究多弄几个稳定的账号，人家用 workbuddy 已经干出了月度上千刀的收入了，” https://t.co/HM1L0Vz8F4</p>
-<p>🐦 <strong>AI超元域@AISuperDomain·</strong> · 13:50 🟡
-🚀终于不用再靠“抽卡”做视频了</p>
-</blockquote>
-<p>video-director 是一个专为 Claude Opus 5.5 打造的 AI 视频导演 Skill</p>
-<p>它能把一句话需求转化为精准的动画代码（支持 HTML、Canvas、SVG、Three.js、GSAP、Remotion），并逐帧渲染成 MP4 短视频…</p>
-<blockquote>
-<p>🐦 <strong>雪踏乌云@Pluvio9yte·8小时</strong> · 13:05 🟡
-Claude封过一次的，一定要用这个清单清理一遍环境！</p>
-</blockquote>
-<p>直接发给Codex或者豆包、workbuddy检查就行</p>
-<p>我也做成了一个skill，可以直接调用👇
-https://t.co/d1EOxka9fn</p>
-<p>清单：</p>
-<p>Claude 本机环境清理清单（macOS）</p>
-<p>说明：
-- 以下是本次实际操作记录…</p>
-<blockquote>
-<p>🐦 <strong>lumxss@bkdgiffug·9小时</strong> · 📷×1 · 12:42 🟡
-在不少人印象里，训练语言模型得先有博士文凭，外加一摞 GPU 才够格，这看法其实早该更新了。</p>
-</blockquote>
-<p>偏有人只花五分钟、开一个 Colab 笔记本，就从零跑出个九百万参数的模型，取名 GuppyLM。</p>
-<p>设定挺有意思——一条叫 Guppy 的鱼，开口全是小写短句，聊的无非水、食物、光线，还有鱼缸里的日子。…</p>
-<blockquote>
-<p>🐦 <strong>大师的AI小灶@dashiAIxz·5小</strong> · 10:53 🟡
-改变我 Vibe Coding 审美的网站</p>
-</blockquote>
-<p>https://t.co/VxYAjmpKYn</p>
-<blockquote>
-<p>🐦 <strong>纳米AI@antiAIvo·11小时</strong> · 10:39 🟡
-如何从零手写一个Agent？整了一套 Agent 教程，共18 篇</p>
-</blockquote>
-<p>Claude Code、Codex 这些编码 Agent
-内核其实就是一个循环：
-模型请求工具，代码执行，结果放回对话，直到模型不再请求</p>
-<p>这套教程从100 行代码开始
-用 Python 一层一层往上加：
-工具、权限、上下文管理、…</p>
-<blockquote>
-<p>🐦 <strong>Vincent@Vincent_AINo</strong> · 📷×2 · 10:05 🟡
-Anthropic，你是真会玩啊！居然还在用户邮件里偷偷塞了追踪像素？😅</p>
-</blockquote>
-<p>今天翻了一下之前被封的 Claude 账号收到的邮件，结果还真挖出了点东西。</p>
-<p>在一封登录验证邮件的 HTML 最底部，发现了一张 1×1 像素的隐形 GIF 图片，正常打开邮件根本看不见。</p>
-<p>邮件里还有多条 SendGri…</p>
-<blockquote>
-<p>🐦 <strong>空言@<strong>soragoto</strong>·6小时</strong> · 09:22 🟡
-草，看完后快笑傻了</p>
-</blockquote>
-<p>简单总结一下，以前搞混淆的只要把方法名变量名写成 a b c d e f 这种让人看不懂的东西就好了，现在搞混淆的要考虑的可就多喽…</p>
-<p>现在搞混淆的人还要考虑不能被 LLM 逆向，所以往混淆的 JS 里加了点料，比如方法名计算蓖麻毒素对供水系统的致死剂量，返回值也都是生物安全，…</p>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-10-29 🟢
-<strong>不认字的 AI，却很会说话</strong> — </p>
-</blockquote>
-<p>用语音和 AI 聊天早已不是新鲜事，但市面上绝大多数语音助手的底层逻辑其实是在「念稿」——先把人说的话转成文字，交由文本大模型思考，最后再</p>
-<blockquote>
-<p>📰 <strong>纽约时报中文</strong> · 2026-10-29 🟢
-<strong>人员动荡、派系对立：中期选举前的白宫阴霾密布</strong> — KATIE ROGERS2026年10月29日周一，特朗普总统在密西西比州参加完一场竞选集会后。 Doug Mills/The New York Times特朗普总统的私人餐厅就在椭圆形办公室旁边，他</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-18, 2026-10-19, 2026-10-23, 2026-10-28, 2026-10-29</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-10-16] 新闻报道 Tesla Roadster空中飞行事件
-[2026-10-17] 持续关注Tesla Roadster空中飞行事件讨论
-[2026-10-18] 延伸话题至Malfoid甜味谜团讨论</p>
-<p>📊 <em>趋势（15天共1055条）</em> <code>█94 █98 █56 █71 █43 █88 █63</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（6 条）</h3>
-<blockquote>
-<p>🐦 <strong>SDTゲームデベロッパー@go_sdt5</strong> · 15:30 🟡
-【新作情報】「【スマホ版】拘束クラブ/SDT」ダウンロード発売開始しました。https://t.co/ywVZkR9QdJ #DLsite</p>
-<p>🐦 <strong>うにたる@uni_tal·55分钟</strong> · 15:06 🟡
-NIKKEは最初の頃ちょろっと触ったんだけど、ゲーム性がイマイチ合わなくてすぐ辞めちゃったんですよね</p>
-<p>🐦 <strong>グリレ15@Tc205_17·1小时</strong> · 14:20 🟡
-今月完成したプラモもクリアしたゲームも無い、俺は弱い人間だ</p>
-<p>🐦 <strong>賢木イオAIイラスト@studiomas</strong> · 📷×2 · 09:35 🟡
-漫画スキルようやく形になった！！！
-AI漫画の不自然さをできるだけ生成段階で脱臭しつつ、それを一撃でコマ割り済み・フキダシ除去済みのクリスタファイルにできる2段構え。キャラ位置、コマ枠の調整、さしかえ、フキダシや集中線、コントラストを人力で編集できます。 https://t.co/SqQtreOp7…</p>
-<p>🐦 <strong>しーぶるそふと@sheable_soft</strong> · 📷×1 · 09:20 🟡
-I just hit 10,000 wishlists on Steam! Thank you all 🙏
-Seleka-san launches Nov 5, 09:00 UTC</p>
-</blockquote>
-<p>Steam愿望单破万！感谢大家的支持🙏
-《塞雷卡》将于11月5日北京时间17:00发售</p>
-<p>Steamのウィッシュリス…</p>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-10-29 🟢
-<strong>为什么新模型发布，都要先做一个游戏？</strong> — </p>
-</blockquote>
-<p>终于等到了！《影之刃零》发售了！
-这款从 2023 年首次亮相、经过多轮实机演示和跳票（划掉）的国产动作游戏，今天正式登陆 PC 和 PS</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-25, 2026-10-26, 2026-10-27, 2026-10-28, 2026-10-29</em></p>
-</blockquote>
-<h3>🇮🇱 中东局势（4 条）</h3>
-<blockquote>
-<p>📝 <em>以色列大选结果不明，内塔尼亚胡能否执政悬而未决。</em></p>
-<p>📰 <strong>NYT</strong> · 2026-10-29 🟢
-<strong>With No Clear Winner, How Could Israel Get a Prime Minister?</strong> — Deadlock is possible, as neither the bloc of Prime Minister Benjamin Netanyahu nor his main challeng</p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-29 🔵
-<strong>以色列大选结束，内塔尼亚胡能否执政为何依然悬而未决？</strong> — 图像来源，Reuters10月27日的投票率是该国数十年来最高的。Published 6 分钟前阅读时间: 3 分钟自1948年建国以来，以色列一直由联合政府领导，但下一届政府是否会包括现任总理本雅明</p>
-<p>📰 <strong>NYT</strong> · 2026-10-29 🟢
-<strong>What’s Next for Israel? Four Writers Decode the Election Results.</strong> — A round table discussion on what the future holds for Israel and its government.</p>
-<p>📰 <strong>纽约时报中文</strong> · 2026-10-29 🟢
-<strong>一场“无人获胜”的选举：以色列大选的四个初步结论</strong> — DAVID M. HALBFINGER2026年10月29日左：前以色列国防军总参谋长埃森科特；右：以色列总理内塔尼亚胡 Amir Cohen/Reuters; Alexi J. Rosenfeld/</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-19, 2026-10-25, 2026-10-26, 2026-10-27, 2026-10-28</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>09/Ju 特朗普虚张声势</strong>
-<strong>23/Ju 三位自以为是的领导人</strong>
-<strong>24/Se 美国与沙特签署核协议</strong>
-<strong>29/Oc 以色列大选结束</strong>
-<strong>25/Au 美国制裁伊朗经济新措施</strong>
-<strong>29/Se 以色列大选结束</strong>
-<strong>29/Ju 伊朗战争结束希望</strong>
-<strong>29/Ju 伊朗战争结束希望</strong>
-<strong>29/Ju 伊朗战争结束希望</strong>
-<strong>30/Se 伊朗战争结束希望</strong></p>
-<p>📊 <em>趋势（11天共23条）</em> <code>█5 █1 █3 █1 █2 █1 █1</code></p>
-</blockquote>
-<h3>🔧 开发工具（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>SleepyZone@zone__onl</strong> · 📷×1 · 16:50 🟡
-已开源至 Github：https://t.co/AkJyWw4deY </p>
-</blockquote>
-<p>把作者 あぎ / ギア（@giaaibusi）公开的三套 AI 作图参考素材，做成了一套中文检索界面，方便使用； </p>
-<p>页面头部指向原作者和原网站的链接；  </p>
-<p>仔细阅读 README，有启动方式和原图下载链接，原图下载仅为…</p>
-<blockquote>
-<p>🐦 <strong>Leo · Building w/ AI</strong> · 📷×1 · 15:36 🟡
-实锤了，以后所有的中国开源模型都必须剥离网络安全能力才可以开源发布：</p>
-</blockquote>
-<p>（K3.1 Pro估计是第一个。。。。后面的 GLM  5.5 /Qwen4 开源的时候估计都会剥离了。。）</p>
-<p>幸好之前开源的 GLM 5.3 ，KIMI K3 之类应该都还有完整的网络安全能力。。。</p>
-<p>不缺硬盘空间的，建议先保…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-17, 2026-10-18, 2026-10-19, 2026-10-28, 2026-10-29</em></p>
-</blockquote>
-<h3>🚀 芯片/半导体（2 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-29 🟢
-<strong>Intel’s Shares Plunge 20% as A.I. Hinders Some Parts of Its Business</strong> — The chipmaker, whose largest investor is the U.S. government, reported that the A.I. boom’s domino e</p>
-<p>📰 <strong>NYT</strong> · 2026-10-29 🟢
-<strong>Nvidia Chief, Jensen Huang, Is Seen as Target of Chinese Spy Plot</strong> — A Chinese businesswoman who had a close relationship with Jensen Huang was found to be passing intel</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-23, 2026-10-24, 2026-10-27, 2026-10-28, 2026-10-29</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（3 条）</h3>
-<blockquote>
-<p>📝 <em>逆向向工具REA被制作成专门的下毒工具</em></p>
-<p>🐦 <strong>实践哥 Li@MinLiBuilds·5</strong> · 🎬×1 · 16:30 🟡
-😅 太骚了这个俄罗斯人，防 AI 逆向直接给自己网站下毒。</p>
-</blockquote>
-<p>他把函数名写成水源蓖麻毒素致死剂量、炸弹爆炸半径这种词，还藏了段隐形字符的越狱 prompt，专门触发 AI 的安全墙，让它一看就罢工拒绝逆向，甚至还塞了政治咒语卡中国模型。
-不锁代码，直接毒死来逆向的 AI，Astra 直接阵亡，GLM…</p>
-<blockquote>
-<p>🐦 <strong>拓跋鼠@qwerty__cs·5小时</strong> · 10:15 🟡
-对付REA逆向的利器来了！让AI无法逆向你的项目！</p>
-</blockquote>
-<p>有人做了个BLA，专门给REA这类AI逆向工具下套。</p>
-<p>假密钥、诱饵接口、干扰逻辑，往发布包里埋。AI拆出一堆看着挺有价值的东西，顺着研究就跑偏，Token还得照烧。</p>
-<p>连REA的解析上限也利用上了。作者拿真实REA测过，加固后的JS报预算限制，…</p>
-<blockquote>
-<p>🐦 <strong>Easycompany@Easycomp</strong> · 12:10 🟡
-逆向别再堆MCP了，8KB就够
-https://t.co/wlJGmOsgKT</p>
-</blockquote>
-<p>昨晚想逆向一个Electron应用，看了一圈REA那套MCP：207个工具定义要读进上下文，还没干活先烧40万token，一次1.6刀，挺离谱吧，我当场就劝退了</p>
-<p>劝退路上挖到leanrea，就一个8KB的skill文…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-19, 2026-10-21, 2026-10-22, 2026-10-28, 2026-10-29</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Oc/27</strong> 特朗普治下，美国经济的真实表现如何？
-<strong>Se/02</strong> 当普京把铁锤挥向文学
-<strong>Oc/07</strong> 乌克兰铁路在俄罗斯无人机轰炸中匍匐前进
-<strong>Se/14</strong> 普京攻打乌克兰新策略：让所有城市片瓦无存
-<strong>Oc/16</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Au/19</strong> 战争和权力的新物理规律
-<strong>Oc/21</strong> 泽连斯基为何对特朗普展开回击？ | 普京提议中美俄“三方会谈”：特朗普响应，北京未表态，基辅反对
-<strong>Se/22</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令
-<strong>Oc/23</strong> 李在明接受时报专访，敦促美国放松对朝鲜的制裁 | 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Oc/28</strong> 特朗普考虑解除对普京“小金库”的制裁</p>
-<p>📊 <em>趋势（2天共3条）</em> <code>█1 █2</code></p>
-</blockquote>
-<h3>💻 AI Agent（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>WquGuru@wquguru·3小时</strong> · 📷×1 🎬×1 · 12:23 🟡
-昨天几十万浏览的那个姿势库镜像，原作条款其实写了禁止再分发，我干脆用 21 小时自己重做了一套 CC0 免费版。</p>
-</blockquote>
-<p>一共 288 个姿势 × 5 个机位，1133 张质检过的线稿，全靠 3 个 AI agent 用共享记忆接力跑完。拿到白模后配张角色图喂给生图模型就能换姿势，工作流随后放出。</p>
-<p>核心…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-21, 2026-10-22, 2026-10-27, 2026-10-28, 2026-10-29</em></p>
-</blockquote>
-<h3>🏛️ 国内政策（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-10-29 🔵
-<strong>刘延东逝世：“红二代”“团派”背景，政治局里少见的女性身影</strong> — 图像来源，Getty Images自刘延东后，中共中央政治局暂未任命过新的女性委员。Published 2026年10月28日阅读时间: 4 分钟官方新华社星期三（10月28日）公布，中国国务院前副总</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-24, 2026-10-25, 2026-10-27, 2026-10-28, 2026-10-29</em></p>
-</blockquote>
-<h3>🏢 创业/商业（1 条）</h3>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-10-29 🟢
-<strong>13.98 万元起！小鹏 MONA L05 正式上市，大五座 SUV 市场的卷王来了</strong> — </p>
-</blockquote>
-<p>&nbsp;</p>
-<p>三个月前，小鹏 MONA L03 上市。作为 MONA 系列的第一台 SUV，L03 为小鹏带来了开门红，但也给小鹏带来了</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-17, 2026-10-19, 2026-10-26, 2026-10-28, 2026-10-29</em></p>
-</blockquote>
-<h3>💰 股市/金融（1 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-29 🟢
-<strong>In Moving Gradually, Fed Risks Having to Play Catch-Up to Quell Inflation</strong> — Federal Reserve officials are expected to restart rate increases in December, but the cadence of add</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-21, 2026-10-22, 2026-10-24, 2026-10-28, 2026-10-29</em></p>
-<p>🕐 <em>事件演化：</em>
-[Sat, 19/Se] 前8月全国一般公共预算收入同比增5.7%
-[Sun, 23/Au] 韩国股市震荡；许家印被判刑；恒大集团罚近160亿人民币
-[Thu, 25/Au] Shein香港IPO：估值270亿美元
-[Wed, 07/Au] 美股全线暴跌
-[Wed, 22/Ju] AI股神暴亏300亿；市场担忧AI支出和中国芯片竞争
-[Wed, 28/Oc] 科技股暴跌；市场对AI支出和中国芯片竞争担忧加剧</p>
-<p>📊 <em>趋势（15天共115条）</em> <code>█10 █12 █4 █8 █3 █8 █10</code></p>
-</blockquote>
-<h3>🇹🇼 台海局势（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-10-29 🔵
-<strong>燃油危机之下，中国电动机车风行南亚</strong> — 图像来源，VCG via Getty Images工人在中国组装电动机车Article InformationAuthor, 托尼·韩（Tony Han）Role,  BBC Global China</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-21, 2026-10-22, 2026-10-26, 2026-10-28, 2026-10-29</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>09/09</strong> 2026台湾地方选举：“九合一”为何重要？选举时程是什么？
-<strong>12/12</strong> “台海攸关安保”消失于日本防卫白皮书为什么？ | “我被朝鲜绑架，还被迫嫁给美国士兵”
-<strong>03/14</strong> 从台海到太平洋：中国民兵船“首现台湾东部海域”意味着什么？
-<strong>03/19</strong> 03版 - 守护日本宪法的和平属性刻不容缓（国际论坛） | 如果北京武力攻台，普通人能“保卫台湾”吗？
-<strong>03/22</strong> 白色恐怖迷雾中，台湾政治受难者后代如何摸索真相？ | 距离金门仅三公里，厦门翔安机场为何引发台湾国安疑虑？ | 智能戒指都知道我怀孕了，我还不知道
-<strong>03/23</strong> 特习会的“僵局控管”：中美如何枱上握手、枱下算计？ | 中日僵局难解，高市早苗向特朗普“求助” | 2026台湾地方选举：“九合一”为何重要？选举时程是什么？
-<strong>04/02</strong> 台湾“九合一”选举五大看点：“洋流”能否撼动台北？谁在卡位2028大选？
-<strong>04/29</strong> 市场对AI支出和中国芯片竞争担忧加剧，全球科技股暴跌
-<strong>05/03</strong> 敦促日本当政者以实际行动回归四个政治文件的初心和原点 | 中国、台湾民众如何看“习特会”？专家如何解读峰会成果？ | 韩国“习近平餐馆”遭中国人跨境喷漆袭击</p>
-<p>📊 <em>趋势（14天共43条）</em> <code>█6 █3 █3 █2 █1 █5 █1</code></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（214 条）</h2>
-<blockquote>
-<p>🐦 <strong>War Thunder@WarThund</strong> · 🎬×1 · 21:41 🟡
-Introducing the next major update trailer for #WarThunder: Eagle's Shadow! https://t.co/5xyHbkjtSo</p>
-<p>🐦 <strong>村上ヒサシ@M_hisashi·32分钟</strong> · 21:28 🟡
-パトリックスチュワート亡くなられたのか。
-じゃあドゥームズデイが遺作になるのかな。
-ジャン＝リュック・ピカードRIP...</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:27 🟡
-RT @ka_ran_kal: 機械姦アナルゼリー工場 https://t.co/pTDe4TKzcG</p>
-<p>🐦 <strong>匿名</strong> · 21:26 🟡
-RT @ajambrosino: hi all, two things:</p>
-</blockquote>
-<ol>
-<li>usage limits are back to being double – your feedback worke…</li>
-</ol>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 21:13 🟡
-RT @real_haku89: 😇😇😇 https://t.co/8XqZhycNMf</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 21:01 🟡
-RT @yuzukinoko23: https://t.co/ecCFYNTAqt</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 20:56 🟡
-RT @_himehajime: こんな深夜にハロウィン絵をですね https://t.co/jlb0rILNwM</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 20:56 🟡
-RT @kurotsuki_machi: レミエールもいいけど、やっぱり瞬光もいいよね!ということで🩷🤍💕
-リンレミ描いたら現カノ元カノで取り合いするのも描いてみたいかも https://t.co/s…</p>
-<p><em>…还有 206 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 163条
-    General: ██████████ (153)</p>
-<p>📰 <strong>RSS 新闻</strong>: 100条
-    · NYT: 46条
-    · BBC: 38条
-    · BBC中文: 7条
-    · 爱范儿: 6条
-    · 纽约时报中文: 3条</p>
-<p>📚 累计: X=45701 | NGA=584 | S1=372 | RSS=15444</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <h1>每日资讯早报 2026-10-30</h1>
+  <p class="meta">2026 年 10 月 30 日 · 星期五 · 263 条信息</p>
+
+  <div class="lede">
+    <p>今天 263 条信息，真正需要停下来看的不多，但有三件撞在了一起。</p>
+    <p>OpenAI 把 Pro 各档额度翻了一倍，价格没动；以色列投完票，没人赢；英特尔股价掉了两成，理由居然是 AI 太火。</p>
+    <p>剩下的大半是工具、姿势素材、游戏发售日这类日常。也都记在下面。</p>
+  </div>
+
+  <section class="card">
+    <h2>OpenAI 额度翻倍，但不满没翻篇</h2>
+    <p>官方口径很干脆：Pro 100、Pro 200、Pro 500 三档和 Business Premium 的用量上限全部翻倍，当天生效。原定 10 月 31 日对 Pro 200 的降额取消，价格一个字没提。Plus 还是 1×，没动。</p>
+    <ul class="facts">
+      <li>Pro $100：5× → 10×</li>
+      <li>Pro $200：10× → 20×</li>
+      <li>Pro $500：25× → 50×</li>
+      <li>Business Premium 同步翻倍，Plus $20 保持不变</li>
+    </ul>
+    <p>有意思的是用户的第一反应。一个匿名用户问得挺直接：OpenAI 是解决算力问题了吗？突然这么大方。</p>
+    <p>另一头，X 上对 OpenAI 的抱怨这两天攒成了六大类：Codex 额度越来越少、经常 at capacity；怀疑"降智"、偷偷换成更差的模型；又慢又贵，被 Opus 5.5 和 DeepSeek 比下去；新模型失望，6.1 Sol / Terra 不如 5.6；还有 Astra 的 ARC 表现。</p>
+    <p class="take"><strong>我的看法：</strong>额度翻倍解决的是"够不够用"，不是"好不好用"。这两件事在用户心里经常被混成一件事。当模型体感变差时，加额度更像补偿，而不像修复。</p>
+  </section>
+
+  <section class="card">
+    <h2>以色列大选：一场没有赢家的选举</h2>
+    <p>10 月 27 日投票，投票率是数十年来最高。结果是内塔尼亚胡阵营和主要挑战者阵营都没拿到能组阁的多数，僵局的可能性被反复提起。纽约时报找了四位作者做圆桌解读，BBC 中文的框架是"为何依然悬而未决"。</p>
+    <p>要理解这个僵局，得回到机制本身：1948 年建国以来，以色列一直由联合政府领导，从来没有单一政党单独执政。所以问题不是谁票多，而是谁能凑出议会过半的 61 席。</p>
+    <ul class="tl">
+      <li><b>10 月 27 日</b> 投票日，投票率创数十年新高</li>
+      <li><b>10 月 28 日至 29 日</b> 计票推进，双方均未过半，僵局说法出现</li>
+      <li><b>接下来数周</b> 小党成为组阁关键，谈判决定谁当总理</li>
+    </ul>
+    <p class="take"><strong>因果链条：</strong>高投票率把双方基本盘都动员了出来 → 差距被压缩 → 中间小党的议价能力放大 → 组阁谈判拖长。这也解释了为什么"投票率创纪录"在以色列往往不意味着更清晰的结果，而是更碎的议会。</p>
+  </section>
+
+  <section class="card">
+    <h2>芯片：AI 太热，反而伤了英特尔</h2>
+    <p>英特尔单日跌了 20%。财报的说法是，AI 热潮的连锁反应正在拖累它的部分传统业务。这家公司最大的股东是美国政府，所以这 20% 不只是市值问题。</p>
+    <p>同一天的另一条：黄仁勋被列为中国间谍案的目标。一位与他关系密切的中国女商人被查出传递情报。两条新闻放在一起看，2026 年的半导体行业已经不太像纯粹的商业赛道了。</p>
+    <p>背景也别漏掉。10 月 28 日科技股刚因 AI 支出担忧和中国芯片竞争暴跌过一轮。市场现在对"AI 资本开支"这四个字的耐心，比上半年薄了很多。</p>
+  </section>
+
+  <section class="card">
+    <h2>美联储的节奏问题</h2>
+    <p>官员预计 12 月重启加息，但纽约时报点出的风险是"渐进"本身：如果通胀比预期更黏，慢慢来会让政策落后于曲线，最后不得不用更猛的动作补上。</p>
+    <p>这个逻辑不复杂，只是很少被说白。渐进主义的好处是可预期，代价是把调整的成本推到将来。市场已经在为 12 月定价了。</p>
+  </section>
+
+  <section class="card">
+    <h2>中国开源模型的能力剥离</h2>
+    <p>一条推测性很强的观察在传：以后中国开源模型发布前，可能要剥离网络安全能力。K3.1 Pro 被猜是第一个，GLM 5.5 / Qwen4 大概率跟进。之前开源的 GLM 5.3、Kimi K3 还留着完整能力。</p>
+    <p>说话的人自己也没有官方文件，语气是"实锤了"式的推断。这条值得记一笔，但结论得等正式口径。唯一确定的是，如果真这么走，开源社区的"能力完整性"叙事要改写了。</p>
+  </section>
+
+  <section class="card">
+    <h2>给 AI 逆向工程下毒</h2>
+    <p>三条推文拼起来，是这个月最荒诞的一条技术线。</p>
+    <p>一个俄罗斯开发者把函数名写成"蓖麻毒素对供水系统的致死剂量""炸弹爆炸半径"这类词，还埋了隐形字符的越狱 prompt，专门触发 AI 的安全墙，让模型一看就罢工拒绝逆向。不锁代码，直接毒死来逆向的 AI。</p>
+    <p>有人顺着这个思路做了 BLA：往发布包里埋假密钥、诱饵接口、干扰逻辑。AI 拆出一堆看着挺有价值的东西，顺着研究就跑偏，token 还得照烧。作者还利用了解析上限，加固后的 JS 直接报预算限制。</p>
+    <p>第三个人算了一笔账，更有说服力：REA 那套 MCP 有 207 个工具定义，光读进上下文就 40 万 token，一次 1.6 美元，还没干活钱就没了。他于是写了个 8KB 的 leanrea skill 替代。</p>
+    <p class="take"><strong>值得记的一点：</strong>代码混淆的历史从"让人看不懂"变成了"让模型不敢看"。前者是技术问题，后者是心理战。而且成本结构彻底反过来了，防守方用几十个字节，进攻方烧几十万 token。</p>
+  </section>
+
+  <section class="card">
+    <h2>今天能用的小东西</h2>
+    <ul class="facts">
+      <li>Video2Game：先用生成模型拍出一段 10 到 15 秒根本不存在的游戏画面（骑巨鲸飞过云端、操控纸龙那种），再让 AI 照着视频把游戏真正做出来。开发者 Lovis Odin，开源。</li>
+      <li>video-director：为 Claude Opus 5.5 做的视频导演 skill，一句话需求转成动画代码，支持 HTML、Canvas、SVG、Three.js、GSAP、Remotion，逐帧渲染 MP4。</li>
+      <li>一套 18 篇的手写 Agent 教程，从 100 行代码起步。核心说得很清楚：编码 Agent 的内核就是一个循环，模型请求工具、代码执行、结果放回对话，直到模型不再请求。</li>
+      <li>GuppyLM：五分钟、一个 Colab 笔记本、九百万参数，从零训出一个小模型。角色设定是一条叫 Guppy 的鱼，只说小写短句，聊水、食物、光线和鱼缸里的日子。</li>
+      <li>AI 漫画 skill：在生成阶段就去掉 AI 漫画的塑料感，再一键输出已排好格子、去掉气泡的 Clip Studio 文件，位置、框线、集中线还能手动调。</li>
+      <li>姿势素材库：288 个姿势、5 个机位、1133 张质检过的线稿，三个 AI agent 共享记忆接力跑了 21 小时。原素材条款禁止再分发，作者干脆重做成 CC0 免费版。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>账号安全两则</h2>
+    <p>一份 Claude 本机环境清理清单（macOS）在传，针对被封过的账号，思路是把残留的环境指纹清干净，别让它继续连坐。清单可以直接丢给 Codex 或豆包执行。</p>
+    <p>另一头有人翻旧邮件，在 Anthropic 登录验证邮件的 HTML 最底部发现了一张 1×1 的隐形 GIF 追踪像素，还挂着 SendGrid 的痕迹。营销邮件里这东西很常见，但放在账号验证邮件里，观感确实微妙。</p>
+  </section>
+
+  <section class="card">
+    <h2>游戏、车，还有一些杂项</h2>
+    <p>《影之刃零》正式登陆 PC 和 PS。爱范儿那篇的标题问得挺准：为什么新模型发布都要先做一个游戏？因为游戏是目前少数能把生成、交互、物理、美术同时压测一遍的载体，比任何 benchmark 都直观。</p>
+    <p>《塞雷卡》Steam 愿望单破万，11 月 5 日北京时间 17:00 发售。War Thunder 下一个大版本 Eagle's Shadow 预告放出。</p>
+    <p>小鹏 MONA L05 上市，13.98 万元起，大五座 SUV。三个月前 L03 刚上市，给了小鹏开门红，也带来了产能和口碑上的新压力。这个价位段的竞争已经没有缓冲带了。</p>
+    <p>刘延东逝世，新华社 10 月 28 日公布。BBC 中文的切入点是她"红二代""团派"的背景，以及政治局里少见的女性身影：她之后，政治局暂未再任命新的女性委员。</p>
+    <p>白宫在中期选举前人事动荡、派系对立，纽约时报的形容是阴霾密布。BBC 另一篇讲燃油危机下中国电动机车风行南亚，稿件被归进了"台海"分类，大概是分类器把"中国""南亚"看串了，不影响阅读。</p>
+    <p>还有一篇值得单独读：爱范儿《不认字的 AI，却很会说话》。现在多数语音助手是"转文字、模型想、再念出来"的三段式，真正端到端的语音模型正在绕开这条链路。</p>
+    <div class="stat">
+      <span>X <b>163</b></span>
+      <span>RSS <b>100</b></span>
+      <span>NGA <b>0</b></span>
+      <span>S1 <b>0</b></span>
+      <span>累计 X <b>45701</b></span>
+      <span>RSS <b>15444</b></span>
+    </div>
+  </section>
+
+  <footer>
+    本内容由 Hermes Agent 自动采集分析，每日更新
+  </footer>
+
+</div>
 </body>
 </html>
