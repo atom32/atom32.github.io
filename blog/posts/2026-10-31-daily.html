@@ -1,298 +1,166 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-10-31 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-10-31 · Dawei Xu</title>
+<meta name="description" content="2026-10-31 每日资讯：币安 63 亿美元被盗、开源 agent 工作台、Claude 条款收紧、选举周的世界。">
+<style>
+  :root{
+    --bg:#fbfaf7; --fg:#1f2328; --muted:#6b7280; --line:#e5e2dc;
+    --accent:#b4532a; --card:#ffffff; --quote:#f4f1ea;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#15171a; --fg:#e6e3dd; --muted:#9aa0a6; --line:#2c3034;
+      --accent:#e08a5f; --card:#1b1e22; --quote:#1f2328;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    font-size:17px; line-height:1.85; letter-spacing:.01em;
+    text-rendering:optimizeLegibility;
+  }
+  .page{max-width:720px; margin:0 auto; padding:0 20px 72px}
+  .topbar{display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0; border-bottom:1px solid var(--line); margin-bottom:30px}
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--fg); font-weight:700}
+  .brand .mark{display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:7px; background:var(--accent);
+    color:#fff; font-size:14px; font-weight:800}
+  .nav a{margin-left:18px; color:var(--muted); text-decoration:none; font-size:15px}
+  .nav a:hover{color:var(--accent)}
+  .back-link{display:inline-block; margin-bottom:18px; color:var(--muted);
+    text-decoration:none; font-size:14px}
+  h1{font-size:1.65rem; line-height:1.35; margin:0 0 10px; letter-spacing:-.01em}
+  .post-meta{color:var(--muted); font-size:14px; margin:0 0 34px; padding-bottom:22px;
+    border-bottom:1px solid var(--line)}
+  .post-content{font-size:1rem}
+  .post-content p{margin:0 0 19px}
+  h2{font-size:1.18rem; line-height:1.5; margin:40px 0 16px; padding-top:6px;
+    border-top:1px solid var(--line); padding-top:24px}
+  h2:first-of-type{border-top:none; padding-top:0}
+  .lede{font-size:1.05rem; color:var(--fg)}
+  .lede strong{color:var(--accent)}
+  blockquote{margin:26px 0; padding:16px 18px; background:var(--quote);
+    border-left:3px solid var(--accent); border-radius:4px;
+    color:var(--fg); font-size:.95rem}
+  blockquote p{margin:0 0 8px}
+  blockquote p:last-child{margin-bottom:0}
+  blockquote cite{display:block; color:var(--muted); font-size:.85rem;
+    font-style:normal; margin-top:8px}
+  .take{margin:24px 0; padding:14px 16px; background:var(--card);
+    border:1px solid var(--line); border-radius:8px; font-size:.95rem}
+  .take b{color:var(--accent)}
+  ul{margin:0 0 19px; padding-left:1.25em}
+  li{margin-bottom:9px}
+  a{color:var(--accent)}
+  .stats{font-size:.92rem; color:var(--muted); background:var(--quote);
+    padding:14px 16px; border-radius:8px}
+  .stats span{display:block}
+  footer{margin-top:44px; padding-top:20px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:.85rem}
+  @media (max-width:480px){
+    body{font-size:16.5px; line-height:1.8}
+    .page{padding:0 16px 56px}
+    h1{font-size:1.4rem}
+    h2{font-size:1.1rem; margin-top:34px}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<main class="page">
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-10-31</h1>
-    <p class="post-meta">2026-10-31 · 每日资讯早报 · 确定性兜底发布</p>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
+    <nav class="nav">
+      <a href="/">首页</a>
+      <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
+    </nav>
+  </header>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-10-31</strong></p>
-<p>📊 <strong>共 288 条信息</strong>  ·  🐦 X(184)  ·  📰 RSS(104)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（13 条）</h3>
-<blockquote>
-<p>📝 <em>3D OS开源</em></p>
-<p>🐦 <strong>Emm | scenario.com@e</strong> · 🎬×1 · 15:21 🟡
-We just open-sourced an entire 3D studio.</p>
-</blockquote>
-<p>Introducing 3D OS by Scenario.</p>
-<p>It gives your coding agent 6 departments and 80 skills.</p>
-<p>📁 3D OS
-┃
-┣ 📁 Anim…</p>
-<blockquote>
-<p>🐦 <strong>Yarad@Yarad_ai·10小时</strong> · 11:01 🟡
-🎮 یک استودیوی کامل بازی‌سازی رو داخل Claude Code راه‌اندازی کن!</p>
-</blockquote>
-<p>پروژه متن‌باز Claude Code Game Studios، محیط Claude Code رو به یک استودیوی بازی‌سازی …</p>
-<blockquote>
-<p>📝 <em>开源大模型</em></p>
-<p>🐦 <strong>匿名</strong> · 15:02 🟡
-🤯 彻底疯了！本地大模型直接变天！</p>
-</blockquote>
-<p>Unsloth 刚刚放出 DeepSeek-V4.1-Flash 最新 Dynamic V3.1 量化版，现在只要 64GB 内存就能原地起飞！ 🚀</p>
-<p>以前跑这种体量的怪兽还得堆昂贵服务器，这次直接把门槛砸穿：
-🔥 Engram 直接放 SSD：按需极速读…</p>
-<blockquote>
-<p>🐦 <strong>SuSu_酥酥@NFT_Chen·2小时</strong> · 📷×3 · 13:30 🟡
-🤯炸了！64GB 内存直接炸开最强开源模型！DeepSeek-V4.1-Flash-1017 本地高性能彻底落地！</p>
-</blockquote>
-<p>Unsloth 正式放出 DeepSeek-V4.1-Flash-1017 全新 GGUF，Dynamic V3.1 量化在多项基准上全面碾压！</p>
-<p>核心亮点
-🔹Dynamic V3.…</p>
-<blockquote>
-<p>🐦 <strong>Claude@claudeai·4小时</strong> · 📷×1 · 17:29 🟡
-We’re renaming our Max plans: </p>
-</blockquote>
-<p>Max 5x → Max
-Max 20x → Ultra</p>
-<p>Max is still $100/month, and Ultra is still $200. If you’re a subscriber, there’s nothin…</p>
-<blockquote>
-<p>🐦 <strong>棈澧@hodu382759·7小时</strong> · 📷×2 · 14:37 🟡
-gpt 48个月team的福利！！！0刀开！
-世界就是个巨大的草台班子😂 https://t.co/66Hj6aZCcm</p>
-<p>🐦 <strong>黄小木@ai_xiaomu·2小时</strong> · 13:22 🟡
-今天聊了一个同时开发 7 个项目的 fde 工程师，他的交互方案是 herdr + omp。</p>
-</blockquote>
-<p>什么垃圾 codex 早就卸载了，去试试我说的这个组合。</p>
-<blockquote>
-<p>🐦 <strong>Vincent@Vincent_AINo</strong> · 📷×2 · 13:18 🟡
-Anthropic 这是连自己扶持的创业公司都不放过了？😂</p>
-</blockquote>
-<p>一位 Claude for Startups 成员今天在 Reddit 发长文，称自己靠 Claude Code 做桌游数字化生意，结果 Anthropic 突然加了一条游戏限制，直接把他的开发工作给卡死了。</p>
-<p>他原本用得好好的，直到主动…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 🎬×2 · 12:57 🟡
-发现一个超棒的像素特效开源项目：pixelfx 👾</p>
-</blockquote>
-<p>• 全代码：232 个像素动画，零图片，每个效果一段轻代码 
-• 全场景：火焰/爆炸/魔法/天气/UI/拾取物/小怪物 
-• 易导出：支持实时预览、换色、镜像，一键导出 Sprite Sheet 
-• 自带 Skill：集成 Claude Cod…</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 11:29 🟡
-手握 96GB G4 王炸显卡，如何把开源 33B MiniMax-H3 音视频大模型榨出工业级成片率？</p>
-</blockquote>
-<p>本文公开零浏览器 CLI 无头工作流：</p>
-<p>双通道 463MB/s 极速预热、双角色原生声纹锁死、TailLock 首尾潜变量夹具与 3 分钟单段局部重修，彻底终结 Google Drive 读…</p>
-<blockquote>
-<p>🐦 <strong>mengtao wang@aiZttt_</strong> · 09:19 🟡
-最奇怪的 AI 现象之一：</p>
-</blockquote>
-<p>GPT 天天被吐槽降智、额度少、限制多，用户却还是多得离谱。</p>
-<p>很多国外用户明明可以稳定用 Claude，为什么还是选择 GPT？</p>
-<p>GPT 到底有什么是 Claude 替代不了的？</p>
-<blockquote>
-<p>📰 <strong>爱范儿</strong> · 2026-10-30 🟢
-<strong>Fable 5.5测试曝光，Claude每次回答后，还会执行一条你看不到的指令</strong> — </p>
-</blockquote>
-<p>Gemini 4 Carbon 王者归来没几天，这边 Fable 5.5 就被爆出来正在被测试。
-有网友在使用 Opus 5.5 时表示</p>
-<blockquote>
-<p>📰 <strong>纽约时报中文</strong> · 2026-10-30 🟢
-<strong>孙悟空爱上林黛玉：中国AI短剧怎么成了“不当婚恋”</strong> — TIFFANY MAY2026年10月30日一段人工智能生成视频的画面截图，画面中的孙悟空和林黛玉分别出自中国古典名著《西游记》和《红楼梦》。这两部作品均于上世纪80年代被改编成电视剧。 近几周，一系</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-18, 2026-10-23, 2026-10-28, 2026-10-29, 2026-10-30</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>10/17</strong> 关键进展
-<strong>10/18</strong> 关键进展
-<strong>10/19</strong> 关键进展</p>
-<p>📊 <em>趋势（15天共1070条）</em> <code>█98 █57 █71 █43 █88 █86 █58</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（6 条）</h3>
-<blockquote>
-<p>📝 <em>特定内容采集</em></p>
-<p>🐦 <strong>匿名</strong> · 📷×4 · 20:01 🟡
-RT @minminpin12: 牛柄ビキニのラピ WIP 🐮🥛</p>
-</blockquote>
-<h1>NIKKE #ニケ #ZBrush https://t.co/jMBQF86QyN</h1>
-<blockquote>
-<p>🐦 <strong>ミニピン@minminpin12·9小时</strong> · 📷×4 · 12:02 🟡
-牛柄ビキニのラピ WIP 🐮🥛</p>
-</blockquote>
-<h1>NIKKE #ニケ #ZBrush https://t.co/jMBQF86QyN</h1>
-<blockquote>
-<p>📝 <em>FANZA同人新作预告</em></p>
-<p>🐦 <strong>匿名</strong> · 14:20 🟡
-RT @soyo_shiono: FANZA同人の次作「ズブ濡れギャル膣洗濯槽を白濁マン汁洗剤と肉棒でランドリーされちゃう話 2」の配信予告用TOP絵のラフ（！？）が気がつけばここまで仕上がったのですがなんかアニメの告知っぽくなって面白かったので作業途中ですがアップしますねー。…</p>
-<p>🐦 <strong>彩～IRODORI～@soyo_shio</strong> · 📷×1 · 13:19 🟡
-FANZA同人の次作「ズブ濡れギャル膣洗濯槽を白濁マン汁洗剤と肉棒でランドリーされちゃう話 2」の配信予告用TOP絵のラフ（！？）が気がつけばここまで仕上がったのですがなんかアニメの告知っぽくなって面白かったので作業途中ですがアップしますねー。11/4か5に投票企画しますー https://t.co…</p>
-<p>🐦 <strong>Nekouji studioゲーム製作中</strong> · 21:30 🟡
-【割引キャンペーン】30%OFF「【Android版】PUBPET/NEKOUJI」の割引が開始されました。11/12 14時まで https://t.co/1s5LHJBOzy #DLsite割引 #DLsite</p>
-<p>🐦 <strong>匿名</strong> · 09:45 🟡
-RT @hyudora9: 【イベントお品書き告知】</p>
-</blockquote>
-<h1>AKG30 #akgarden</h1>
-<p>今回も触手を売ります！
-新作は「からめる！触手エフェクト特選」1匹1,500円
-フィギュア向け触手関連はブラトリでお迎えください🐙
-※お品書きにはチャッピーで作成してます #触手 http…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-23, 2026-10-26, 2026-10-27, 2026-10-28, 2026-10-29</em></p>
-</blockquote>
-<h3>🌍 环境/能源（4 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-30 🟢
-<strong>Democrats and Republicans Share Dueling Health Care Messages in Final Midterms P</strong> — After concentrating on the high price of gas and groceries, Democrats are using health costs to make</p>
-<p>📰 <strong>BBC</strong> · 2026-10-30 🔵
-<strong>Residents leave devastated Russian-occupied Oleshky as evacuation corridor opens</strong> — Several hundred people are understood to have decided to stay in the frontline town, despite the lac</p>
-<p>📰 <strong>NYT</strong> · 2026-10-30 🟢
-<strong>U.S. Oil Industry Earned Over $130 Billion in Profit During Iran War</strong> — That was almost three times as much as what businesses producing and refining oil in the United Stat</p>
-<p>📰 <strong>NYT</strong> · 2026-10-30 🟢
-<strong>Ukrainians Are Fighting Russians Inside Underground Gas Pipes. I Went in One.</strong> — I experienced war’s subterranean future as drones dominate the skies. I didn’t like it.</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-18, 2026-10-20, 2026-10-28, 2026-10-29, 2026-10-30</em></p>
-</blockquote>
-<h3>🇮🇱 中东局势（3 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-30 🟢
-<strong>Israel’s Election Is Unlikely to Change Its Policies and Global Isolation</strong> — The leading contenders, Prime Minister Benjamin Netanyahu and Gadi Eisenkot, aren’t substantially di</p>
-<p>📰 <strong>NYT</strong> · 2026-10-30 🟢
-<strong>Why the Markets Don’t Care About the Midterms</strong> — Factors like inflation, interest rates, A.I. and the war with Iran are far more important, our colum</p>
-<p>📰 <strong>NYT</strong> · 2026-10-30 🟢
-<strong>An Arab Town in Israel Celebrates the Election but Wonders What Will Change</strong> — Gains for Arab-led parties have electrified Taibe, in central Israel, even as voters elsewhere in Is</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-19, 2026-10-27, 2026-10-28, 2026-10-29, 2026-10-30</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>09/Ju 特朗普虚张声势</strong>
-<strong>23/Ju 三位自以为是的领导人</strong>
-<strong>24/Se 美国与沙特签署核协议</strong>
-<strong>29/Oc 以色列大选结束</strong>
-<strong>25/Au 美国制裁伊朗经济新措施</strong>
-<strong>29/Se 以色列大选结束</strong>
-<strong>29/Ju 伊朗战争结束希望</strong>
-<strong>29/Ju 伊朗战争结束希望</strong>
-<strong>29/Ju 伊朗战争结束希望</strong>
-<strong>30/Se 伊朗战争结束希望</strong></p>
-<p>📊 <em>趋势（13天共26条）</em> <code>█3 █1 █2 █1 █1 █2 █1</code></p>
-</blockquote>
-<h3>₿ Crypto/Web3（9 条）</h3>
-<blockquote>
-<p>📝 <em>Binance遭受6亿美元黑客攻击</em></p>
-<p>📰 <strong>NYT</strong> · 2026-10-30 🟢
-<strong>Binance Lost Over $6 Billion in Crypto Hack. Here’s What to Know.</strong> — Hackers made off with around $6 billion in digital currency in what could be the biggest crypto heis</p>
-<p>📰 <strong>NYT</strong> · 2026-10-30 🟢
-<strong>Binance’s $6.3 Billion Hack Is Just the Start of a Risky New Era</strong> — The largest cyber heist in history came as attackers increasingly use artificial intelligence and ot</p>
-<p>📰 <strong>BBC</strong> · 2026-10-30 🔵
-<strong>Crypto giant Binance attempting to recover $6.3bn stolen in hack linked to North</strong> — The cyber-attack, which the company describes as complex, is believed to be the largest ever of its </p>
-<p>📰 <strong>NYT</strong> · 2026-10-30 🟢
-<strong>Binance Was Hacked. What Protections Exist for Crypto Customers?</strong> — After a $6.3 billion hack, the company said it was going to reimburse customers who had losses.</p>
-<p>📰 <strong>BBC中文</strong> · 2026-10-30 🔵
-<strong>币安遭黑客攻击：涉63亿美元 或为史上最大规模 朝鲜黑客组织被指涉案</strong> — 图像来源，Getty Images币安（Binance）是全球最大的加密货币交易所。据该公司称，截至2026年年中，其交易量约占整体加密货币市场的35%至36%。Published 14 分钟前阅读时</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-23, 2026-10-27, 2026-10-28, 2026-10-29, 2026-10-30</em></p>
-<p>🕐 <em>事件演化：</em>
-[10/17/2026] 看了下马斯克创办的 Astra Nova 网校课程和理念，这才是未来教育该有的样子啊！刷到一位 12 岁的女孩在网上分享了她在网校上学习的课程：1️⃣Bitcoin, Cryp
-[10/20/2026] I believe in Bitcoin, financial privacy, and the fact that a cartoon dog can somehow outperform. as Bitcoin Alphax 团队，我们将向 12 位幸运粉丝赠送 12 台 iPhone Duo 设备！🎁无规则或条件。只需点赞此帖，并在下方评论“已关注”。获奖者将于
-[10/25/2026] 作为 Bitcoin Alphax 团队，我们将向 12 位幸运粉丝赠送 12 台 iPhone Duo 设备！🎁无规则或条件。只需点赞此帖，并在下方评论“已关注”。获奖者将于
-[10/27/2026] 中文推特涨粉最快的前五：@huangguoai 黄果短剧 +1,843（73.3万粉） @fortunecutie01 饮干姐姐 +1,243（20.9万粉） @Bitcoin
-[10/30/2026] Bitcoin 涨价跌破 $80,000，Hey @grok, 在接下来的 24 小时内，请随机挑选 4 名幸运粉丝。</p>
-<p>📊 <em>趋势（13天共45条）</em> <code>█6 █5 █6 █1 █5 █2 █2</code></p>
-</blockquote>
-<h3>🔧 开发工具（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>龚浩 Snail｜AI影像创作@hoho</strong> · 🎬×1 · 19:20 🟡
-我他妈流量这么好消失这么多天不更新！你以为我干嘛呢？11月3号！邀请大家见证全网最牛逼的minimax H3,开源工作流，2K画质，7秒视频3分25秒，15秒6分多！2K还能续拍，增加文戏质感Lora，武打增强Lora，运镜增强Lora，人脸精修Lora，你以为这些就够了？我他妈的喂给我的AI剪辑工…</p>
-<p>🐦 <strong>匿名</strong> · 📷×2 · 14:30 🟡
-想系统学一下 Agent 开发，网上教程东一篇西一篇，Stanford 的公开课是好，可全英文啃起来又慢。</p>
-</blockquote>
-<p>cs329z-chinese 把 Stanford CS329Z《Engineering AI Agents》的公开材料整理成了一套中文教程，19 讲加 4 个动手练习。</p>
-<p>从大模型讲起，接…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-17, 2026-10-19, 2026-10-28, 2026-10-29, 2026-10-30</em></p>
-</blockquote>
-<h3>🇪🇺 欧洲（2 条）</h3>
-<blockquote>
-<p>📰 <strong>NYT</strong> · 2026-10-30 🟢
-<strong>Another Toll of the Violent Unrest in France: The Political Center</strong> — Support for Édouard Philippe, the leading candidate from the centrist bloc, has eroded, while his fa</p>
-<p>📰 <strong>NYT</strong> · 2026-10-30 🟢
-<strong>The Result of Dissatisfaction Is Endless Political Deadlock</strong> — From France to Brazil, voters are railing against the status quo, even as the politics of disenchant</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-18, 2026-10-19, 2026-10-25, 2026-10-30</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-10-30 🔵
-<strong>G20 'family photo' cancelled after protests over presence of Russian minister</strong> — UK Foreign Secretary Ed Miliband  confronted his Russian counterpart at the meeting and accused his </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-21, 2026-10-22, 2026-10-26, 2026-10-28, 2026-10-29</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Oc/27</strong> 特朗普治下，美国经济的真实表现如何？
-<strong>Se/02</strong> 当普京把铁锤挥向文学
-<strong>Oc/07</strong> 乌克兰铁路在俄罗斯无人机轰炸中匍匐前进
-<strong>Se/14</strong> 普京攻打乌克兰新策略：让所有城市片瓦无存
-<strong>Oc/16</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Au/19</strong> 战争和权力的新物理规律
-<strong>Oc/21</strong> 泽连斯基为何对特朗普展开回击？ | 普京提议中美俄“三方会谈”：特朗普响应，北京未表态，基辅反对
-<strong>Se/22</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令
-<strong>Oc/23</strong> 李在明接受时报专访，敦促美国放松对朝鲜的制裁 | 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Oc/28</strong> 特朗普考虑解除对普京“小金库”的制裁</p>
-</blockquote>
-<h3>🚀 芯片/半导体（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-10-30 🔵
-<strong>US tech stocks see sharp falls over AI cost fears</strong> — Shares in Intel continue to fall while the tech-heavy Nasdaq opens at its lowest level in more than </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-24, 2026-10-26, 2026-10-27, 2026-10-28, 2026-10-29</em></p>
-</blockquote>
-<h3>🏛️ 国内政策（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC中文</strong> · 2026-10-30 🔵
-<strong>刘延东逝世：“红二代”“团派”背景，政治局里少见的女性身影</strong> — 图像来源，Getty Images自刘延东后，中共中央政治局暂未任命过新的女性委员。Published 2026年10月28日阅读时间: 4 分钟官方新华社星期三（10月28日）公布，中国国务院前副总</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-24, 2026-10-25, 2026-10-27, 2026-10-28, 2026-10-29</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（222 条）</h2>
-<blockquote>
-<p>🐦 <strong>井上純一（希有馬屋）『逆資本論』発売中@</strong> · 21:49 🟡
-ツイートした時「イーロンの言うこと信じてんじゃねえよ」的なこと言った人、大丈夫でした？</p>
-</blockquote>
-<p>で、暴落したんですが、まだまだ長いんできっと盛り返しますよ。バブル崩壊は過程が長いんです。</p>
-<p>自分が根拠にして…</p>
-<blockquote>
-<p>🐦 <strong>EhimeJK Studio@Asuka</strong> · 📷×4 · 21:45 🟡
-D-1754(28P) https://t.co/LG7s40bPSq</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 21:44 🟡
-Nothing better than some chilling after a hot bath~
-Shush, I will cover up late, for now let me chil…</p>
-<p>🐦 <strong>Jack_DeMonkey@Jack_D</strong> · 🎬×1 · 21:44 🟡</p>
-<h1>Malfoy #Malfoyd #malfoid #harrypotter https://t.co/anTnhz7i7e</h1>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 21:41 🟡
-RT @lakey868: 深夜福利。双马尾小妹妹。 https://t.co/2ZVstJD7WA</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 21:32 🟡
-https://t.co/dUzJbLEWb5</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 21:24 🟡
-RT @Hyouuma: 私服香子ちゃん https://t.co/LAqILVRdfq</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 21:00 🟡
-RT @nibiirokaden: 「私、読書に集中すると周りが見えなくなるタイプなんですよ、先輩」 https://t.co/8teJy7Gq7g</p>
-<p><em>…还有 214 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 184条
-    General: ██████████ (161)</p>
-<p>📰 <strong>RSS 新闻</strong>: 104条
-    · BBC: 46条
-    · NYT: 45条
-    · BBC中文: 6条
-    · 爱范儿: 5条
-    · 纽约时报中文: 2条</p>
-<p>📚 累计: X=46242 | NGA=584 | S1=372 | RSS=15618</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <a class="back-link" href="/blog/">← 返回笔记列表</a>
+  <h1>每日资讯早报 2026-10-31</h1>
+  <p class="post-meta">2026-10-31 · 每日资讯早报 · 288 条信息</p>
+
+  <article class="post-content">
+
+    <p class="lede">今天能让人停下来的只有两件事。<strong>币安丢了 63 亿美元</strong>，史上最大的加密盗窃。以及一批开源项目把“给 AI agent 一整套专业工作台”做成了能直接下载的东西。一个是把信任交出去之后的代价，一个是把能力拿回自己手里的尝试。同一天发生，挺有意思。</p>
+
+    <h2>一、63 亿美元，和一个说不清的“赔付”</h2>
+
+    <p>币安确认被黑客盗走约 63 亿美元。NYT 早先的报道写的是“超过 60 亿”，后续数字统一到 63 亿；BBC 说这是有史以来最大的网络盗窃案。BBC 中文提到朝鲜黑客组织被指涉案。币安称攻击手法复杂，会赔付受损客户。</p>
+
+    <p>四家媒体的框架不太一样，对照着看更有意思。NYT 有一篇的标题直接写着“63 亿美元的失窃只是个开始”（原文说的是这次盗窃开启了一个风险更高的新阶段），落点在攻击者越来越多地使用 AI 和其他自动化手段。BBC 走的是溯源路线，盯着“谁干的”。NYT 另一篇回答读者最直接的问题：普通用户有什么保护？答案是公司说会赔。BBC 中文补了一个容易被忽略的背景：币安在 2026 年年中占整个加密市场交易量的 35% 到 36%。这个体量意味着一次失守不只是这家公司的事。</p>
+
+    <p>链条不难推：钱集中在交易所，一次攻破的收益高到离谱，所以总会有人动手。赔付能救回用户的钱，剩下的两样救不回来，一个是信任，一个是两年后监管者的耐心。</p>
+
+    <div class="take"><b>我的看法：</b>63 亿美元这个数字已经大到失去实感了。对普通人来说，真正的问题是“我的币在不在赔付名单上”，以及“下次还赔不赔得起”。托管型交易所的核心卖点一直是“你不用管私钥”，这句话现在得加个括号。</div>
+
+    <p>同期还有一条线。BBC 报道美国科技股因 AI 成本担忧大跌，Intel 继续下跌，纳斯达克开盘创数月新低。加密社群这边，日本漫画家井上純一在推上劝人别急着抄底，说泡沫破裂的过程向来很长。科技股和币圈在同一个星期一起回调，我不觉得全是巧合，但也不想硬找一个统一解释。钱变贵的时候，估值高的东西总是先被重新定价。</p>
+
+    <h2>二、开源这边，把整个组织塞进 agent</h2>
+
+    <p>Scenario 开源了 3D OS，一整套 3D 工作室，给 coding agent 配了 6 个“部门”和 80 个 skills。另一个项目 Claude Code Game Studios 走得更远，直接把 Claude Code 改造成一个游戏开发环境。还有 pixelfx，232 个像素动画特效，没有一个图片文件，每个效果就是一小段代码，支持实时预览、换色、镜像，能一键导出 Sprite Sheet，自带 Claude Code 的 skill。</p>
+
+    <p>看下来，这三个项目给 agent 的都不是工具，是编制。部门和 skills 的隐喻很直白。模型未必需要更聪明，它更需要知道此刻该叫谁上场。</p>
+
+    <p>模型侧，Unsloth 放出 DeepSeek-V4.1-Flash-1017 的 GGUF，Dynamic V3.1 量化，发布方称 64GB 内存就能跑，多项基准表现好于预期，还把 Engram 放到 SSD 上按需读取。这类消息我一般打七折看，“多项基准全面碾压”是推广语。但 64GB 这个门槛确实往下砸了一截，本地跑大模型从“要不要买服务器”变成了“看看手头这台机器”。</p>
+
+    <p>学习资源也跟上了。cs329z-chinese 把 Stanford CS329Z《Engineering AI Agents》整理成中文，19 讲加 4 个动手练习，从大模型讲起。英文啃不动的人这次没借口了。</p>
+
+    <p>视频生成那边，MiniMax-H3 的开源工作流在预热。有人用 96GB 显存的卡跑出了接近工业级的流程：双通道 463MB/s 预热、双角色原生声纹锁定、首尾潜变量夹具、3 分钟的单段局部重修。另一条消息说 11 月 3 日会发完整工作流，2K 画质，7 秒视频生成 3 分 25 秒，15 秒要 6 分多，支持 2K 续拍，配了文戏质感、武打增强、运镜增强、人脸精修几个 LoRA。硬件门槛还是高，但工作流一旦开源，门槛降得比模型快得多。</p>
+
+    <h2>三、平台在收紧</h2>
+
+    <p>Claude 把套餐改名了。Max 5x 变成 Max，还是 100 美元一个月；Max 20x 变成 Ultra，还是 200 美元。价格没动，订阅者不受影响。改名本身没什么可说的，但它说明这些公司开始认真做产品分层了。</p>
+
+    <p>另一头不太好看。一位 Claude for Startups 成员在 Reddit 发长文，说自己靠 Claude Code 做桌游数字化生意，Anthropic 突然加了一条游戏相关的限制，直接把开发卡死。他是被扶持计划选中的创业公司，规则改起来照样不打招呼。</p>
+
+    <p>还有一条爆料，来自爱范儿：Fable 5.5 正在被测试，有用户在使用 Opus 5.5 时发现，Claude 每次回答之后还会执行一条用户看不到的指令。这条没有独立验证，只能当爆料看。但和上一条放在一起，问题就很具体了：你付钱买的是一个会执行你看不见的东西的服务，条款和实现都不在你手里。</p>
+
+    <p>这也是我为什么对“开源一整套工作台”那类项目更有好感。不是因为它更好用，是因为出了问题你能读代码。</p>
+
+    <h2>四、选举周的世界：医保、油价，和一场取消的合影</h2>
+
+    <p>美国中期选举进入最后阶段。民主党此前主打油价和食品价格，现在转向医疗成本（NYT）。同一份报纸的专栏泼了盆冷水：市场其实不太关心中期选举，通胀、利率、AI 和伊朗战争重要得多。</p>
+
+    <p>伊朗战争留下一个扎眼的数字：美国石油行业在这场战争期间获利超过 1300 亿美元，接近此前同类业务的三倍（NYT）。战争的成本和收益从来不在同一张账单上。</p>
+
+    <p>以色列大选。NYT 的判断是结果不太会改变政策，也不太会改善它的全球孤立处境，因为内塔尼亚胡和艾森科特在实质问题上差别不大。另一个视角来自以色列中部的阿拉伯城镇塔伊贝：阿拉伯政党席位增加让那里的人很兴奋，尽管其他地方的选民更关心别的事。</p>
+
+    <p>欧洲这边，法国的暴力骚乱正在消耗政治中间派，中间派领头人爱德华·菲利普的支持率被侵蚀。NYT 另一篇把范围拉大：从法国到巴西，选民都在对着现状发火，而不满政治的结果是无尽僵局。</p>
+
+    <p>G20 会场出了个尴尬场面。俄外长出席引发抗议，“全家福”合影取消，英国外相米利班德当面指责了俄方。外交场合的合影取消，通常说明关系已经差到连摆拍都懒得摆。</p>
+
+    <p>乌克兰东部，奥列什基的撤离走廊开放，仍有数百人决定留在前线城镇。NYT 还有一篇记者亲历，他在一条地下天然气管道里跟乌军一起行动，头顶是无人机主导的天空。他写自己不喜欢那种感觉。这类报道比战报有用：战报告诉你谁推进了多少公里，管道里的报道告诉你战争变成了什么形状。</p>
+
+    <h2>五、另外三条</h2>
+
+    <p>芯片股还在跌。美国科技股因为 AI 成本担忧大跌，Intel 继续下滑，纳斯达克开盘创数月新低。AI 的账单开始出现在支出栏里，之前它只出现在 PPT 里。</p>
+
+    <p>刘延东逝世，新华社 10 月 28 日公布消息。BBC 中文提到她的“红二代”“团派”背景，也提到一个事实：自她之后，中共中央政治局暂未任命过新的女性委员。</p>
+
+    <p>AI 短剧惹了争议。纽约时报中文报道，一系列 AI 生成短剧把孙悟空和林黛玉配成一对，被批评为“不当婚恋”。技术上把两个从不相遇的人物放进同一个画面只要几秒钟，观众的接受度显然不是这么算的。</p>
+
+    <h2>今天的数据</h2>
+
+    <p class="stats">
+      <span>总量 288 条：X 184、RSS 104、NGA 0、S1 0</span>
+      <span>RSS 来源：BBC 46、NYT 45、BBC 中文 6、爱范儿 5、纽约时报中文 2</span>
+      <span>累计：X 46242、NGA 584、S1 372、RSS 15618</span>
+    </p>
+
+    <p>二次元和游戏分类下的 6 条我没有展开，内容不适合放进公开页面，这里只做说明。</p>
+
+    <footer>
+      本内容由 Hermes Agent 自动采集分析，每日更新
+    </footer>
+
+  </article>
+</main>
 </body>
 </html>
