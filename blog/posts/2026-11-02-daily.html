@@ -1,282 +1,258 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>每日资讯早报 2026-11-02 · Dawei Xu</title>
-  <link rel="stylesheet" href="/blog.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每日资讯早报 2026-11-02 · Dawei Xu</title>
+<meta name="description" content="2026-11-02 每日资讯：DeepSeek Super-agent 与人的注意力瓶颈、GPT-6.2 Astra 灰度、Anthropic 静默下发限制、赫尔松撤离与加沙局势。">
+<style>
+  :root{
+    color-scheme: light;
+    --bg:#f6f7f2; --panel:#ffffff; --ink:#1f2428; --muted:#66706a;
+    --line:#d9ded7; --accent:#226f54; --accent-2:#b1442f;
+    --shadow:0 10px 30px rgba(31,36,40,.07);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",system-ui,sans-serif;
+    font-size:17px; line-height:1.78; letter-spacing:.01em;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:740px;margin:0 auto;padding:28px 22px 64px}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:38px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;text-decoration:none;color:var(--ink)}
+  .mark{display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line);background:var(--panel);color:var(--accent);border-radius:8px;font-weight:700}
+  .nav{display:flex;gap:16px;font-size:14px;color:var(--muted)}
+  .nav a{color:inherit;text-decoration:none}
+  .nav a:hover{color:var(--accent)}
+  .back{display:inline-block;margin-bottom:22px;font-size:14px;color:var(--muted);text-decoration:none}
+  .back:hover{color:var(--accent)}
+  h1{margin:0 0 10px;font-size:clamp(26px,6vw,34px);line-height:1.3;letter-spacing:-.01em;font-weight:700}
+  .meta{color:var(--muted);font-size:13.5px;margin:0 0 28px;letter-spacing:.02em}
+  .meta span{white-space:nowrap}
+
+  .lede{
+    background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:4px;padding:18px 20px;margin:0 0 34px;font-size:16.5px;color:#2b3237;box-shadow:var(--shadow)
+  }
+  .lede p{margin:0 0 10px}
+  .lede p:last-child{margin-bottom:0}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 40px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 10px;text-align:center}
+  .stat b{display:block;font-size:22px;line-height:1.2;color:var(--accent)}
+  .stat span{font-size:12px;color:var(--muted);letter-spacing:.04em}
+
+  h2{
+    font-size:20px;line-height:1.45;margin:46px 0 14px;padding-top:18px;
+    border-top:1px solid var(--line);font-weight:700;letter-spacing:-.005em
+  }
+  h2 .num{display:inline-block;font-size:12px;color:var(--accent-2);font-weight:700;letter-spacing:.12em;margin-right:8px;vertical-align:2px}
+  h3{font-size:17px;margin:26px 0 8px;font-weight:700}
+  p{margin:0 0 16px}
+  strong{font-weight:700}
+  .hl{background:linear-gradient(transparent 62%, #e6efe6 62%);padding:0 1px}
+
+  blockquote{
+    margin:22px 0;padding:14px 18px;background:var(--panel);border-left:2px solid var(--accent-2);
+    color:#3a4247;font-size:16px;border-radius:0 4px 4px 0
+  }
+  blockquote p{margin:0}
+  blockquote cite{display:block;margin-top:8px;font-style:normal;font-size:12.5px;color:var(--muted)}
+
+  ul{margin:0 0 18px;padding-left:1.1em}
+  li{margin-bottom:8px}
+
+  .timeline{margin:24px 0 28px;padding-left:18px;border-left:1px solid var(--line)}
+  .tl{position:relative;padding-bottom:16px}
+  .tl:last-child{padding-bottom:0}
+  .tl::before{content:"";position:absolute;left:-23px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--panel);border:2px solid var(--accent)}
+  .tl time{display:block;font-size:12px;letter-spacing:.06em;color:var(--accent);font-weight:700;margin-bottom:2px}
+  .tl p{margin:0;font-size:15.5px;color:#333b40}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin:0 0 14px}
+  .card h4{margin:0 0 6px;font-size:15.5px;font-weight:700}
+  .card p{margin:0;font-size:15.5px;color:#3a4247}
+  .tag{display:inline-block;font-size:11px;letter-spacing:.08em;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+
+  .aside{margin:26px 0;padding:16px 18px;background:#eef2ea;border-radius:6px;font-size:15.5px;color:#33403a}
+  .aside p{margin:0}
+  .aside p+p{margin-top:10px}
+
+  .divider{height:1px;background:var(--line);margin:44px 0 0;border:0}
+  footer{margin-top:22px;color:var(--muted);font-size:13px;line-height:1.7}
+  footer p{margin:0 0 6px}
+
+  @media (max-width:520px){
+    body{font-size:16.5px;line-height:1.75}
+    .wrap{padding:22px 18px 52px}
+    .stats{grid-template-columns:repeat(3,1fr);gap:8px}
+    .stat b{font-size:19px}
+    .lede{padding:16px 16px}
+    h2{margin-top:38px}
+  }
+</style>
 </head>
 <body>
-  <main class="page">
-    <header class="topbar">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">A</span>
-        <span>Dawei Xu</span>
-      </a>
-      <nav class="nav">
-        <a href="/">首页</a>
-        <a href="/blog/" style="color:var(--accent);font-weight:700;">笔记</a>
-      </nav>
-    </header>
+<div class="wrap">
 
-    <a class="back-link" href="/blog/">← 返回笔记列表</a>
-    <h1>每日资讯早报 2026-11-02</h1>
-    <p class="post-meta">2026-11-02 · 每日资讯早报 · 确定性兜底发布</p>
+  <div class="topbar">
+    <a class="brand" href="/"><span class="mark" aria-hidden="true">A</span><span>Dawei Xu</span></a>
+    <div class="nav">
+      <a href="/">首页</a>
+      <a href="/blog/">笔记</a>
+    </div>
+  </div>
 
-    <article class="post-content">
-<p>🌅 <strong>每日资讯早报 | 2026-11-02</strong></p>
-<p>📊 <strong>共 255 条信息</strong>  ·  🐦 X(191)  ·  📰 RSS(64)  ·  💬 NGA(0)  ·  💭 S1(0)</p>
-<hr />
-<h2>📌 各平台话题</h2>
-<h3>🤖 AI/大模型（12 条）</h3>
-<blockquote>
-<p>📝 <em>Super-agent 解决多任务瓶颈</em></p>
-<p>🐦 <strong>向阳乔木@vista8·6小时</strong> · 15:39 🟡
-AI Agent 的下一个瓶颈，就是人类自己。</p>
-</blockquote>
-<p>DeepSeek 团队观察发现，一般人只能跟进 3~5 个活跃 Session。</p>
-<p>我也发现 Codex 项目多了，每次想找到某个项目迭代，都要翻好久，很痛苦。</p>
-<p>为啥不能通过一个主 Agent 实现所有项目的管理开发？</p>
-<p>其实大家都在往这个方向探索…</p>
-<blockquote>
-<p>🐦 <strong>实践哥 Li@MinLiBuilds·3</strong> · 📷×1 · 12:33 🟡
-今晚的作业来了。</p>
-</blockquote>
-<p>DeepSeek 官方发了一篇超长技术文。</p>
-<p>讲的是 Super-agent，一个更自主的 Agent 系统。</p>
-<p>核心观点：</p>
-<p>单任务，瓶颈是模型。</p>
-<p>多任务，瓶颈是人。</p>
-<p>一个人同时最多盯 3 到 5 个 Session，再多脑子就炸了。</p>
-<p>他们的解法是 Router + Wo…</p>
-<blockquote>
-<p>📝 <em>GPT6.2Astra出现</em></p>
-<p>🐦 <strong>FeiZ@Fei2411·2小时</strong> · 13:17 🟡
-GPT 6.2 Astra 似乎已经在很多账号上出现了，如果你想看看自己有没有，可以在下方链接查看，这个链接指向ChatGPT 的用量分析页。</p>
-</blockquote>
-<p>其实 6 Astra 本身是很不错的，只是依然保留了 GPT 品味差和防御性编程的通病，并且伴随着 OpenAI 近两个月烂到极致的服务，导致 Codex…</p>
-<blockquote>
-<p>🐦 <strong>芒果刀@ThirteenYizuka·6</strong> · 📷×2 · 09:48 🟡
-GPT 6.2 Astra 来啦！！！ https://t.co/PP4wmcZ5zk</p>
-<p>🐦 <strong>lauren@poteto·37分钟</strong> · 21:23 🟡
-Day 28/ tibo's game has landed</p>
-</blockquote>
-<p>i spent $5.99 on this domain, but i had a blast making it with grok bot and cursor! i hope you enjoy it and find all t…</p>
-<blockquote>
-<p>🐦 <strong>Michael Lee@MichaelL</strong> · 📷×1 · 13:45 🟡
-卧槽，Anthropic 又不干人事了！连版本更新都不用发，半夜直接顺着网线往你的 Claude Code 里塞了道“紧箍咒”🤬</p>
-</blockquote>
-<p>10月30日，@chasmmmmmmmmmmm 扒出猛料：
-大约从 27 日起，Anthropic 通过一个叫 tengu_heron_brook 的云端配置字段，偷偷…</p>
-<blockquote>
-<p>🐦 <strong>孙可可@Sunkeke_AI·8小时</strong> · 13:27 🟡
-分享下昨天线下了解到的普通人用 AI 的信息差：（10 人样本，没有纯血 AI小白）</p>
-</blockquote>
-<p>1、基本都用过 WorkBuddy（主力、也是没得选），用过 Codex 的有 3 位！
-2、有充了 ChatGPT plus，但不知道 Codex 可以直接干活的！
-3、有充了 GPT Pro 版，只用来生图，…</p>
-<blockquote>
-<p>🐦 <strong>Unicorn@ohayou792·2小</strong> · 📷×4 · 13:25 🟡
-众所周知 Claude 的审美是顶级的，之所以这么强，就是因为Claude有一套自己极其严苛的内部设计规范。</p>
-</blockquote>
-<p>刚刚Claude泄露了它内部的组件设计系统提示词和完整规范，直接把为什么它写出来的界面有一种高级感的秘密全抖出来了。</p>
-<p>完整规范整理了出来，写前端和Vibe Coding的可以直接抄作业：…</p>
-<blockquote>
-<p>🐦 <strong>卡卡@xKaka1456·5小时</strong> · 10:49 🟡
-OpenAI 把 Chat 模式的无限额度砍掉后</p>
-</blockquote>
-<p>每个月 20 美元的 Plus</p>
-<p>算不算彻底废了？</p>
-<blockquote>
-<p>🐦 <strong>Chao Huang@huang_cha</strong> · 10:13 🟡
-最近我们也一直在想，AI Tutor 到底该长成什么样。坦白说，现在的 DeepTutor 离我们心里的理想状态，还有不小的距离。</p>
-</blockquote>
-<p>现在教育里最难的，也许不是知识本身，而是因材施教的耐心。这学期教课时，我有一个越来越明显的感受：让学生对一个领域产生兴趣，很多时候比直接把知识讲给他更重要。</p>
-<p>有了大…</p>
-<blockquote>
-<p>🐦 <strong>GitHubDaily@GitHub_D</strong> · 📷×1 · 10:00 🟡
-把 A 股代码丢给 AI 分析，聊了一大段，连涨跌停、限售股解禁这些事都没考虑进去，报告看着热闹，拿来研究还得重新查。</p>
-</blockquote>
-<p>TradingAgents-astock 把多 Agent 投研框架改成了 A 股版本，7 位 AI 分析师分头看行情、新闻、财报，也专门设了政策、游资和解禁监控角色。</p>
-<p>各自写…</p>
-<blockquote>
-<p>🐦 <strong>Michael Guo@Michaelz</strong> · 09:56 🟡
-人人都在 REA，连 AI 大神 Andrej Karpathy 也下场了。他把目标瞄准了油管。</p>
-</blockquote>
-<p>起因很简单：周五晚上 11 点，他累了，想刷点视频，打开 YouTube，迎面就是夸张封面、反复推荐的老话题和满屏低质内容。</p>
-<p>睡了一觉，周六起来，他直接给 Claude 下任务：拿 Hacker N…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-23, 2026-10-28, 2026-10-29, 2026-10-30, 2026-11-01</em></p>
-<p>🕐 <em>事件演化：</em>
-[2026-10-19] 关键进展
-[2026-10-20] 关键进展
-[2026-10-21] 关键进展
-[2026-10-22] 关键进展</p>
-<p>📊 <em>趋势（15天共1061条）</em> <code>█71 █43 █89 █89 █72 █55 █44</code></p>
-</blockquote>
-<h3>🎮 二次元/游戏（4 条）</h3>
-<blockquote>
-<p>🐦 <strong>SDTゲームデベロッパー@go_sdt5</strong> · 21:45 🟡
-【100本達成】「【スマホ版】拘束クラブ/SDT」100本販売達成しました。https://t.co/RXGd5KDD2S #DLsite</p>
-<p>🐦 <strong>せいじ丸@naitou0111·5小时</strong> · 📷×4 · 16:02 🟡
-となモには参考フィギュアとして持って行ければ良いな。
-145cmサイズ1/4ドール
-FMD機出力なので実売とかは無しだけどデータ販売時にソレ用で用意するかも</p>
-</blockquote>
-<p>モチロン眼球可動もこの状態で直接出来るのでポージング中でも手間無し！</p>
-<h1>オリジナル可動ドール https://t.co/4WJcTQ6eVG</h1>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 14:56 🟡
-RT @white_and_pink: 甘園房シリーズのママ先生たちの
-フィギュア化の依頼もお待ちしております！</p>
-</blockquote>
-<p>ムチムチ巨乳ボディで個性豊かなヒロインたちが
-たくさん居ます！ https://t.co/LrzpnROzH7</p>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 09:13 🟡
-RT @masakiapsy: ワンフェスでは見られない、交流卓というのが新鮮な感じです。特に交流はせず見ていただけなのですが、20年前に作ったものが今も遊んでいただいているというのは、嬉しくも何か変な汗がでました。 https://t.co/C1dkmSMdT7</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-27, 2026-10-28, 2026-10-29, 2026-10-31, 2026-11-01</em></p>
-</blockquote>
-<h3>🇷🇺 俄乌冲突（4 条）</h3>
-<blockquote>
-<p>📝 <em>从赫尔松撤退的乌克兰人描述生存故事</em></p>
-<p>📰 <strong>BBC中文</strong> · 2026-11-01 🔵
-<strong>乌克兰赫尔松停火：从俄罗斯占领城市撤离的人说“我们从地狱回来了”</strong> — 你的器材不支持播放多媒体材料Play video, &quot;Emotional reunions with loved ones for Oleshky evacuees&quot;, 节目全长 </p>
-<p>📰 <strong>NYT</strong> · 2026-10-31 🟢
-<strong>‘We Are Coming From Hell’: A Ukrainian City’s Evacuees Tell Survival Stories</strong> — Safely out of Oleshky after enduring years in the combat zone and a harrowing 24-hour journey, weary</p>
-<p>📰 <strong>BBC</strong> · 2026-11-01 🔵
-<strong>Russian strikes cut power to thousands in Ukraine as Kherson ceasefire ends</strong> — A rare humanitarian ceasefire allowed civilians to evacuate the Russian-occupied city of Oleshky.</p>
-<p>📰 <strong>BBC</strong> · 2026-10-31 🔵
-<strong>Watch: Emotional reunions for Oleshky evacuees after years in Russia-occupied ci</strong> — The BBC's Dan Johnson travelled to the northern Ukrainian border with Belarus after evacuated Oleshk</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-22, 2026-10-26, 2026-10-28, 2026-10-29, 2026-10-30</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>Oc/27</strong> 特朗普治下，美国经济的真实表现如何？
-<strong>Se/02</strong> 当普京把铁锤挥向文学
-<strong>Oc/07</strong> 乌克兰铁路在俄罗斯无人机轰炸中匍匐前进
-<strong>Se/14</strong> 普京攻打乌克兰新策略：让所有城市片瓦无存
-<strong>Oc/16</strong> 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Au/19</strong> 战争和权力的新物理规律
-<strong>Oc/21</strong> 泽连斯基为何对特朗普展开回击？ | 普京提议中美俄“三方会谈”：特朗普响应，北京未表态，基辅反对
-<strong>Se/22</strong> 泽连斯基为何在战争关键时刻撤换最高将领 | 乌克兰—俄罗斯战争：泽连斯基在连日抗议后撤换军方总司令
-<strong>Oc/23</strong> 李在明接受时报专访，敦促美国放松对朝鲜的制裁 | 朝鲜新一批军人或将增援俄罗斯攻打乌克兰，为甚么？
-<strong>Se/28</strong> 特朗普考虑解除对普京“小金库”的制裁</p>
-</blockquote>
-<h3>🇮🇱 中东局势（3 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-11-01 🔵
-<strong>Israeli strikes in Gaza kill eight including child, hospitals say</strong> — Five officers from the Hamas-run police have been killed in Khan Younis and three people, including </p>
-<p>📰 <strong>NYT</strong> · 2026-11-01 🟢
-<strong>Netanyahu’s Bid to Stay in Power Will Test His Political Savvy</strong> — After losing ground in Israel’s election, Prime Minister Benjamin Netanyahu must draw on decades of </p>
-<p>📰 <strong>NYT</strong> · 2026-11-01 🟢
-<strong>Where Do Israel’s Arab Parties Stand?</strong> — Having won a record 19 seats in Israel’s Parliament, the two Arab-led parties say they want to work </p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-23, 2026-10-28, 2026-10-30, 2026-10-31, 2026-11-01</em></p>
-<p>🕐 <em>事件演化：</em>
-<strong>09/Ju 特朗普虚张声势</strong>
-<strong>23/Ju 三位自以为是的领导人</strong>
-<strong>24/Se 美国与沙特签署核协议</strong>
-<strong>29/Oc 以色列大选结束</strong>
-<strong>25/Au 美国制裁伊朗经济新措施</strong>
-<strong>29/Se 以色列大选结束</strong>
-<strong>29/Ju 伊朗战争结束希望</strong>
-<strong>29/Ju 伊朗战争结束希望</strong>
-<strong>29/Ju 伊朗战争结束希望</strong>
-<strong>30/Se 伊朗战争结束希望</strong></p>
-<p>📊 <em>趋势（14天共28条）</em> <code>█2 █1 █1 █2 █1 █3 █1</code></p>
-</blockquote>
-<h3>🔧 开发工具（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>Gabe@fishjar·4小时</strong> · 17:16 🟡
-逆向工程界这两天迎来了一个极其亮眼的 Rust 开源新项目：craft-anything。</p>
-</blockquote>
-<p>它的定位非常硬核：帮助工程师彻底理解手头任何封闭软件的底层工作原理，并在理解的基础上重新构建出属于自己的原生版本。</p>
-<p>不同于传统的 Ghidra 或 IDA Pro 只专注于将汇编语言反编译成伪代码，cra…</p>
-<blockquote>
-<p>🐦 <strong>SleepyZone@zone__onl</strong> · 📷×1 · 13:53 🟡
-二次元角色换装库已上线！
-Github：https://t.co/HjyMj7xJ1E
-在线访问：https://t.co/T8p8aR8z9h
-原贴：https://t.co/akZJ5DqlzV</p>
-</blockquote>
-<p>（日语区的产出从不让人失望～） https://t.co/d2D3YSgzjJ</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-19, 2026-10-28, 2026-10-29, 2026-10-30, 2026-11-01</em></p>
-</blockquote>
-<h3>🇰🇵 朝鲜半岛（2 条）</h3>
-<blockquote>
-<p>🐦 <strong>Sinya 李新野@realsinya·</strong> · 📷×1 · 13:24 🟡
-我这种水平的天才，如果出生在北朝鲜而不是中国，我的日子也会过得比现在好得多。我在北朝鲜就是TraderTraitor的领导人，劳动党高干，最漂亮的北朝鲜妹随便挑。因为我出生在汕头，连李丽丽、郭菊阳这些最下贱的织女都能骑在我头上。对于没背景的汉男来说，没有比中国更恶心的国家，不如北朝鲜。</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 10:02 🟡
-卧槽！你们看见FBI通缉的朝鲜黑客了嘛？</p>
-</blockquote>
-<p>长得巨他妈帅！像韩国男团的！</p>
-<p>据称具有朝鲜国籍，会说韩语、英语和中文。</p>
-<p>仅美国司法部提起涉案指控的事件就有：</p>
-<p>① 2014年索尼影业黑客攻击
-② 2016年孟加拉国中央银行8100万美元盗窃
-③ 2017年使全球瘫痪的想哭勒索软件 https://t…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-23, 2026-10-25, 2026-10-28, 2026-10-29, 2026-11-01</em></p>
-</blockquote>
-<h3>🏢 创业/商业（1 条）</h3>
-<blockquote>
-<p>🐦 <strong>宋宋@songsong·4小时</strong> · 📷×1 · 11:54 🟡
-找到一个免费的二维游戏素材商店
-https://t.co/0JpqKI5i4Y</p>
-</blockquote>
-<p>适合独立开发者 直接找角色、动作、地图、界面和特效
-如果你做横板闯关、RPG、探索游戏、塔防游戏</p>
-<p>或者给你的游戏做按钮 、血条、背包、图标等界面
-这里都有现成的</p>
-<p>而且看起来还不错
-我记得吸血鬼幸存者的资源最开始都是…</p>
-<blockquote>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-26, 2026-10-28, 2026-10-30, 2026-10-31, 2026-11-01</em></p>
-</blockquote>
-<h3>🇪🇺 欧洲（1 条）</h3>
-<blockquote>
-<p>📰 <strong>BBC</strong> · 2026-11-01 🔵
-<strong>Peaceful protests in Germany spiral into violence and looting</strong> — Thousands joined largely orderly demonstrations earlier in the day, before violence erupted in Frank</p>
-<p>📈 <em>历史脉络：该话题此前出现在 2026-10-18, 2026-10-19, 2026-10-25, 2026-10-30</em></p>
-</blockquote>
-<hr />
-<h2>📌 其他零散内容（212 条）</h2>
-<blockquote>
-<p>🐦 <strong>にゃんごろもち@Drowsy_sheep</strong> · 📷×1 · 22:00 🟡
-Escalayer / エスカレイヤー https://t.co/yLsEoS7tD2</p>
-<p>🐦 <strong>グリレ15@Tc205_17·11分钟</strong> · 21:49 🟡
-未発表品だったので削除しました、やってしまった…</p>
-<p>🐦 <strong>チビすけ (Chibi-Ske)@tib</strong> · 21:41 🟡
-「お前それ他人の話遮ってまで今言うことか？」って思う事が多々ある
-多分外から見ると私もそんな感じなんだろうなと自戒しつつコミュニケーションを頑張ります</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 21:18 🟡
-你们看到的是森林里的美艳少女，而我看到的是这么多蚊子，难道不叮吗？提示词放评论区吧，Made by Grok https://t.co/SKBOAbn5lg</p>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 20:44 🟡
-RT @WaifuCrematori: nami spreading~ https://t.co/sc7dhdjjix</p>
-<p>🐦 <strong>HydraFXX@HydraFXX·1小</strong> · 📷×1 · 20:43 🟡
--Leon, I've got a situation here https://t.co/4bzrbIJWSr</p>
-<p>🐦 <strong>匿名</strong> · 🎬×1 · 20:41 🟡
-RT @guoguodj: 《任意门》第1集</p>
-</blockquote>
-<p>任意门一开，想摸哪里摸哪里。。。</p>
-<p>完整版APP请戳：https://t.co/TnIGzSMJBM</p>
-<h1>短剧推荐 #影视 #魔改短剧 #AI短剧 ht…</h1>
-<blockquote>
-<p>🐦 <strong>匿名</strong> · 📷×1 · 20:30 🟡
-RT @scarmento_: https://t.co/PYGTKzgzV5</p>
-<p><em>…还有 204 条未显示</em></p>
-</blockquote>
-<hr />
-<h2>📊 今日统计</h2>
-<p>🐦 <strong>X 推文</strong>: 191条
-    General: ██████████ (176)</p>
-<p>📰 <strong>RSS 新闻</strong>: 64条
-    · BBC: 40条
-    · NYT: 21条
-    · BBC中文: 3条</p>
-<p>📚 累计: X=47093 | NGA=584 | S1=372 | RSS=15864</p>
-<hr />
-<p>🤖 由 Hermes Agent 自动采集 · 每日09:00推送 · 多源合并+事件聚类+时序分析</p>
-    </article>
-  </main>
+  <a class="back" href="/blog/">← 返回笔记列表</a>
+
+  <h1>每日资讯早报 2026-11-02</h1>
+  <p class="meta"><span>2026-11-02</span> · <span>255 条信息</span> · <span>预计阅读 7 分钟</span></p>
+
+  <div class="lede">
+    <p>255 条信息过完一遍，真正值得坐下来想的没几条。今天最扎眼的是 DeepSeek 那篇讲 Super-agent 的长文，它把一件大家心里有数、但很少写明白的事说破了：卡住 AI 的不是模型，是人。</p>
+    <p>其余几条也各有意思。OpenAI 把新一代模型灰度推了出来，Anthropic 半夜往你的 Claude Code 里塞了道限制，Karpathy 干脆拿 Claude 去治 YouTube 的推荐算法。三条新闻，同一个方向。</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>255</b><span>信息总量</span></div>
+    <div class="stat"><b>191</b><span>X 推文</span></div>
+    <div class="stat"><b>64</b><span>RSS 新闻</span></div>
+  </div>
+
+  <h2><span class="num">01</span>瓶颈从模型换成了人</h2>
+
+  <p>DeepSeek 官方发了一篇很长的技术文，讲他们理解的 Super-agent：一个比现在这些助手更自主的系统。文里的核心判断只有两句——单任务时，瓶颈是模型；多任务时，瓶颈是人。</p>
+
+  <p>依据是个很朴素的观察：普通人同时能跟进的活跃 session，大概 3 到 5 个，再多脑子就跟不上了。他们的解法是 Router 加 Worker，一个主 Agent 负责分派任务、汇总结果，底下挂若干个执行单元。</p>
+
+  <p>这条对天天开一堆 Codex 窗口的人不算新闻。向阳乔木的抱怨很具体：项目一多，想找回某次迭代得翻很久，很痛苦。他要的不是更聪明的模型，是一个能管住所有项目的入口。</p>
+
+  <p>我的看法是，<span class="hl">3 到 5 这个数字大概不是生理上限，是界面上限</span>。人同时能盯几件事，取决于切换成本有多高。现在每个 session 都是一个独立窗口、独立上下文、独立记忆，切一次就掉一次线，切三次就忘了自己在干嘛。如果 Router 真能把上下文接住，这个数字会松动，但松到多少没人知道，也可能根本没变，只是换了个地方累。</p>
+
+  <p>还有一点少有人提：Router 层一旦做厚，出问题时责任就模糊了。是分派错了，还是执行错了，还是汇总时丢了信息？这类系统最难的部分从来不是跑通，是 debug。</p>
+
+  <h2><span class="num">02</span>模型圈的三条暗线</h2>
+
+  <h3>GPT-6.2 Astra 开始灰度</h3>
+
+  <p>不少账号里已经能看到 GPT 6.2 Astra 的入口，指向的是用量分析页。第一批反馈不算好：审美退步、防御性编程的老毛病还在（动不动加一堆兜底和异常捕获），再叠加 OpenAI 最近两个月糟糕的服务稳定性，Codex 的体验被一起拖累。</p>
+
+  <p>灰度期的口碑通常不准，用的人少、情绪重。但它至少说明一件事：这一代的提升不在"更会写代码"，在别的地方。</p>
+
+  <h3>Anthropic 没发版本，改了你的工具</h3>
+
+  <p>这条更值得警惕。10 月 30 日有人扒出，大约从 27 日起，Anthropic 通过一个叫 <code>tengu_heron_brook</code> 的云端配置字段，在没有版本更新的情况下改变了 Claude Code 的行为。用户没装新版本，没读 changelog，行为却变了。</p>
+
+  <p>技术上这是常规操作，功能开关而已，几乎所有云服务都这么干。但它踩到一条线：你买的软件，行为可以在你不知情时被远程调整，而且不留公开记录。今天调的是提示词约束，明天可能是别的。</p>
+
+  <div class="aside">
+    <p>企业采购该问的问题，不是"支不支持"，是"能不能审计"。一条改了行为的配置，能不能查到什么时候改的、改了谁、改之前是什么。</p>
+  </div>
+
+  <h3>反方向的泄露</h3>
+
+  <p>Claude 内部的组件设计规范和系统提示词被整理出来了，解释了为什么它生成的前端界面总有一种克制的质感：间距、字重、圆角、状态反馈，都写在规则里。写前端和做 vibe coding 的人可以直接抄。</p>
+
+  <p>这件事顺带说明，所谓"审美"是可以被写成条文的东西。既让人安心，也让人有点失落——原来那种高级感不是品味，是纪律。</p>
+
+  <p>另一头，OpenAI 把 Chat 模式的无限额度砍了。20 美元的 Plus 现在要重新算账：主力用 Codex 的话额度还在，只拿网页聊天的话，性价比掉得厉害。</p>
+
+  <h2><span class="num">03</span>普通人和 AI 之间还隔着什么</h2>
+
+  <p>孙可可做了个 10 人小样本，都不是纯小白。结论有点残酷：大部分人主力还是 WorkBuddy，用 Codex 的只有 3 位；有人充了 ChatGPT Plus，不知道 Codex 能直接干活；有人买了 GPT Pro，只用来生图。</p>
+
+  <p>10 个人做不了统计，但它指向一个真问题：信息差不在"有没有工具"，在"知不知道这工具能干什么"。产品把功能藏进二级菜单，用户就永远只用第一层，然后觉得这东西不过如此。</p>
+
+  <p>同在 AI 教育这条线上的 Chao Huang 写了段更诚实的反思。他说现在的 DeepTutor 离理想状态还有不小距离，而这学期教课最明显的感受是：让学生对一个领域产生兴趣，往往比直接把知识讲给他更重要。</p>
+
+  <blockquote>
+    <p>教育里最难的也许不是知识本身，而是因材施教的耐心。</p>
+    <cite>Chao Huang，谈 AI Tutor 的定位</cite>
+  </blockquote>
+
+  <p>这句话放到 AI Tutor 上同样成立。模型能讲得比老师清楚，但很难比老师更在意你。想在哪个知识点上多停十分钟，想不通时有人愿意换个说法再讲一遍——这些不是能力问题，是意愿问题。</p>
+
+  <h2><span class="num">04</span>几个值得点开的项目</h2>
+
+  <div class="card">
+    <h4>craft-anything<span class="tag">Rust</span></h4>
+    <p>逆向工程方向的新开源项目，定位很硬：不只把汇编反编译成伪代码（Ghidra、IDA 干的那部分），而是帮你彻底理解一个闭源软件的底层结构，再据此重建一个原生版本。野心很大，能不能落地另说，但方向比又一个反编译器有意思。</p>
+  </div>
+
+  <div class="card">
+    <h4>TradingAgents-astock<span class="tag">投研</span></h4>
+    <p>有人把多 Agent 投研框架改成了 A 股版：7 个分析师分头看行情、新闻、财报，另外专门设了政策、游资、限售解禁的监控角色。起因很实在——直接拿 A 股代码问通用模型，涨跌停、解禁这些规则它根本不知道，报告看着热闹，用起来还得自己重查一遍。</p>
+  </div>
+
+  <div class="card">
+    <h4>Karpathy 的周末项目<span class="tag">推荐流</span></h4>
+    <p>周五晚上 11 点，他累了想刷点视频，打开 YouTube 迎面是夸张封面、反复推的老话题和满屏低质内容。睡一觉起来，周六直接给 Claude 下任务，用 Hacker News 的数据给自己搭了个推荐流。工具本身不重要，重要的是他终于受不了了，而受不了的人很多。</p>
+  </div>
+
+  <div class="card">
+    <h4>免费 2D 素材站<span class="tag">独立开发</span></h4>
+    <p>角色、动作、地图、界面、特效都现成，横板闯关、RPG、探索、塔防都能直接用，做按钮血条背包图标也够。质量看着不差，对一个人做游戏的人来说，省下的不是钱，是两周美术时间。</p>
+  </div>
+
+  <h2><span class="num">05</span>战场与街头</h2>
+
+  <h3>赫尔松：一次很短的窗口</h3>
+
+  <p>一次罕见的人道停火，让 Oleshky 的平民撤了出来。BBC 和 NYT 都引了撤离者那句话：我们从地狱回来了。24 小时的路程，几年战区生活，到安全地带时人已经是脱力的。</p>
+
+  <div class="timeline">
+    <div class="tl">
+      <time>10 月 31 日</time>
+      <p>人道停火生效，Oleshky 居民开始撤离，边境一侧出现重逢画面。</p>
+    </div>
+    <div class="tl">
+      <time>11 月 1 日</time>
+      <p>停火结束。俄军打击切断乌克兰数千人的电力供应。</p>
+    </div>
+    <div class="tl">
+      <time>接下来</time>
+      <p>冬季开始，供暖与电网成为下一轮攻防的重点。</p>
+    </div>
+  </div>
+
+  <p>时间点很糟。战争进入第四个年头，这种"停火窗口"越来越短，能撤出来的人越来越少。停火在战术上是为了撤人，在战略上则常常是双方重新布置的间隙——两边都清楚，所以窗口只会更窄。</p>
+
+  <h3>加沙与以色列政坛</h3>
+
+  <p>以军空袭造成 8 人死亡，其中包括 1 名儿童；汗尤尼斯有 5 名哈马斯管辖的警察死亡。数字每天在变，模式没变。</p>
+
+  <p>以色列国内的变化更值得盯。内塔尼亚胡的政党在选举中失地，他现在要靠几十年的政治手腕保住位置。同时，两个阿拉伯政党拿下创纪录的 19 席，公开表示愿意参与执政。</p>
+
+  <p>把这两件事连起来看，以色列政治的支点正在移动，而且不在安全议题上，在组阁算术上。一个需要阿拉伯政党支持才能成形的联合政府，和过去几年的政府不是同一种东西。</p>
+
+  <h3>法兰克福的夜晚</h3>
+
+  <p>德国白天数千人的示威基本和平，入夜后在法兰克福演变成暴力和抢劫。白天秩序、夜晚失序，这个剧本今年在欧洲重复了太多次，已经不太算新闻，但它说明街头的情绪阈值在下降。</p>
+
+  <h2><span class="num">06</span>一条旧案的注脚</h2>
+
+  <p>FBI 通缉的一名朝鲜黑客这两天被翻出来讨论。据称具有朝鲜国籍，会韩语、英语和中文，长得不像人们想象中的程序员。指控清单不短：2014 年索尼影业攻击、2016 年孟加拉国央行 8100 万美元失窃、2017 年让全球瘫痪的 WannaCry 勒索软件。人至今没到案。</p>
+
+  <p>这条放在今天的语境里有点讽刺：我们讨论 AI Agent 能替人做多少事，而国家级的行为体早就在用另一套方式做同样的事，只是目标不是效率。</p>
+
+  <h2><span class="num">07</span>今天真正一致的一条</h2>
+
+  <p>把上面这些不相干的事放在一起，能看出一条共同的线：控制权在往上游移动。</p>
+
+  <p>模型厂商可以不改版本就改你的工具行为；Agent 架构想把你的注意力收进一个统一入口；平台算法决定你看到什么，Karpathy 的解法是自己写一个；战争里的平民能撤多少，取决于停火窗口开多长。</p>
+
+  <p>普通人能做的其实不多。但有一件事值得做：<span class="hl">知道东西在哪儿被改，比知道它改了什么更重要</span>。改了什么可以适应，在哪儿被改，决定了你有没有说不的余地。</p>
+
+  <hr class="divider">
+
+  <footer>
+    <p>本内容由 Hermes Agent 自动采集分析，每日更新</p>
+    <p>信息来源：X 平台公开推文、BBC、BBC 中文、NYT，共 255 条，经聚类与去重后整理。</p>
+  </footer>
+
+</div>
 </body>
 </html>
